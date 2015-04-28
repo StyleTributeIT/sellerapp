@@ -8,7 +8,7 @@
         <!--welcomeController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="welcomeController" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="welcomeController" customClass="WelcomeController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -122,7 +122,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o">
                                                 <rect key="frame" x="22" y="191" width="276" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="W2W-9d-Wfs" id="Ssf-Xm-GfM"/>
                                                 </connections>
@@ -144,6 +144,9 @@
                                                 <state key="normal" title="Sign In">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="login:" destination="W2W-9d-Wfs" eventType="touchUpInside" id="hQq-xZ-L0d"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-xw-gUD">
                                                 <rect key="frame" x="22" y="283" width="276" height="28"/>
@@ -151,6 +154,9 @@
                                                 <state key="normal" title="Forgot your password?">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="forgotPassword:" destination="W2W-9d-Wfs" eventType="touchUpInside" id="kcu-8w-13x"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -198,6 +204,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="contentView" destination="W9L-dn-4dR" id="qfS-bA-ddH"/>
+                        <outlet property="loginField" destination="JyO-9Y-oef" id="e1Z-Tw-CNI"/>
+                        <outlet property="passwordField" destination="Jag-i6-V2o" id="icz-Vi-QMM"/>
                         <outlet property="scrollView" destination="HhL-aZ-Jzd" id="gNU-IL-u1o"/>
                         <outlet property="widthConstraint" destination="sco-Xu-Z5V" id="0pt-lv-eg4"/>
                     </connections>
@@ -205,6 +213,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIu-UF-Mgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1829" y="479"/>
+        </scene>
+        <!--fbLoginController-->
+        <scene sceneID="pPC-bg-00S">
+            <objects>
+                <viewController id="sjP-DD-tuF" userLabel="fbLoginController" customClass="FBLoginController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="acp-WF-Stg"/>
+                        <viewControllerLayoutGuide type="bottom" id="UFY-tf-2Fn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XSh-Km-qlC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3TJ-aE-XNG">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="370" id="3sr-Cw-GpK"/>
+                                            <constraint firstAttribute="width" constant="320" id="IBr-cJ-JTe"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3TJ-aE-XNG" secondAttribute="trailing" id="bbF-yL-Ubr"/>
+                                    <constraint firstItem="3TJ-aE-XNG" firstAttribute="leading" secondItem="XSh-Km-qlC" secondAttribute="leading" id="cd5-Fd-8aT"/>
+                                    <constraint firstItem="3TJ-aE-XNG" firstAttribute="top" secondItem="XSh-Km-qlC" secondAttribute="top" id="fG6-VA-cV0"/>
+                                    <constraint firstAttribute="bottom" secondItem="3TJ-aE-XNG" secondAttribute="bottom" id="kTb-Iu-qpc"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UFY-tf-2Fn" firstAttribute="top" secondItem="XSh-Km-qlC" secondAttribute="bottom" id="405-gt-SSD"/>
+                            <constraint firstItem="XSh-Km-qlC" firstAttribute="leading" secondItem="J5N-YH-Eaa" secondAttribute="leading" id="4E1-S9-zrq"/>
+                            <constraint firstItem="XSh-Km-qlC" firstAttribute="top" secondItem="acp-WF-Stg" secondAttribute="bottom" id="Arp-NA-yEH"/>
+                            <constraint firstAttribute="trailing" secondItem="XSh-Km-qlC" secondAttribute="trailing" id="BiX-k0-o9a"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="contentView" destination="3TJ-aE-XNG" id="GdS-HK-at0"/>
+                        <outlet property="scrollView" destination="XSh-Km-qlC" id="ncW-D3-2e7"/>
+                        <outlet property="widthConstraint" destination="IBr-cJ-JTe" id="DEz-JF-3Rx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12e-oN-keg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1829" y="-179"/>
         </scene>
         <!--Registration Controller-->
         <scene sceneID="ysi-K3-hsC">
@@ -262,7 +320,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-MD-wNY">
                                                 <rect key="frame" x="22" y="186" width="276" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="OL0-ry-HoW"/>
                                                 </connections>
@@ -304,6 +362,9 @@
                                                 <state key="normal" title="Create new account">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="createAccount:" destination="lMP-mB-1Ki" eventType="touchUpInside" id="iLq-ni-CN1"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ">
                                                 <rect key="frame" x="22" y="338" width="276" height="30"/>
@@ -370,7 +431,14 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="contentView" destination="qQp-DS-sci" id="d3M-iw-6Vg"/>
+                        <outlet property="countryField" destination="DHb-RS-aJg" id="XF4-2P-V9o"/>
+                        <outlet property="emailField" destination="5fF-gd-SfC" id="w7h-BX-UEe"/>
+                        <outlet property="firstNameField" destination="8KA-99-QHL" id="Iul-05-SW1"/>
+                        <outlet property="lastNameField" destination="M89-59-1qN" id="5rN-IP-zG9"/>
+                        <outlet property="passwordField" destination="3ki-MD-wNY" id="8vx-fc-2aK"/>
+                        <outlet property="phoneField" destination="0nx-2n-PqJ" id="paD-UV-BKD"/>
                         <outlet property="scrollView" destination="8Bi-CW-Ped" id="duS-yZ-Huj"/>
+                        <outlet property="userNameField" destination="UNv-hv-yih" id="x3t-Ck-tbm"/>
                         <outlet property="widthConstraint" destination="TXf-oT-uK9" id="020-5n-EwP"/>
                     </connections>
                 </viewController>

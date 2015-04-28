@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
+#import "BaseInputController.h"
 #import <UIKit/UIKit.h>
 
-@interface LoginController : UIViewController<UITextFieldDelegate>
+@interface LoginController : BaseInputController
 
-@property IBOutlet UIScrollView* scrollView;
-@property IBOutlet UIView* contentView;
-@property IBOutlet NSLayoutConstraint* widthConstraint;
+@property IBOutlet UITextField* loginField;
+@property IBOutlet UITextField* passwordField;
+
+-(IBAction)login:(id)sender;
+-(IBAction)forgotPassword:(id)sender;
 
 @end

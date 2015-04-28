@@ -16,6 +16,9 @@
 		7A0EB6181AEE23D400D90001 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6161AEE23D400D90001 /* LaunchScreen.xib */; };
 		7A0EB6241AEE23D400D90001 /* StyleTributeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */; };
 		7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4951AEF7B8E0050803C /* RegistrationController.m */; };
+		7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4981AEFA4B70050803C /* BaseInputController.m */; };
+		7A3FA49C1AEFA58B0050803C /* FBLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA49B1AEFA58B0050803C /* FBLoginController.m */; };
+		7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA49E1AEFC2D00050803C /* WelcomeController.m */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
 /* End PBXBuildFile section */
@@ -47,6 +50,12 @@
 		7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleTributeTests.m; sourceTree = "<group>"; };
 		7A3FA4941AEF7B8E0050803C /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
 		7A3FA4951AEF7B8E0050803C /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
+		7A3FA4971AEFA4B70050803C /* BaseInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInputController.h; sourceTree = "<group>"; };
+		7A3FA4981AEFA4B70050803C /* BaseInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInputController.m; sourceTree = "<group>"; };
+		7A3FA49A1AEFA58B0050803C /* FBLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginController.h; sourceTree = "<group>"; };
+		7A3FA49B1AEFA58B0050803C /* FBLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginController.m; sourceTree = "<group>"; };
+		7A3FA49D1AEFC2D00050803C /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeController.h; sourceTree = "<group>"; };
+		7A3FA49E1AEFC2D00050803C /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeController.m; sourceTree = "<group>"; };
 		7AA5EAD61AEE2F6500CAB83B /* ApiRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiRequester.h; sourceTree = "<group>"; };
 		7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiRequester.m; sourceTree = "<group>"; };
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
@@ -155,6 +164,12 @@
 				7AA5EADC1AEE740500CAB83B /* LoginController.m */,
 				7A3FA4941AEF7B8E0050803C /* RegistrationController.h */,
 				7A3FA4951AEF7B8E0050803C /* RegistrationController.m */,
+				7A3FA4971AEFA4B70050803C /* BaseInputController.h */,
+				7A3FA4981AEFA4B70050803C /* BaseInputController.m */,
+				7A3FA49A1AEFA58B0050803C /* FBLoginController.h */,
+				7A3FA49B1AEFA58B0050803C /* FBLoginController.m */,
+				7A3FA49D1AEFC2D00050803C /* WelcomeController.h */,
+				7A3FA49E1AEFC2D00050803C /* WelcomeController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -312,7 +327,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */,
+				7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */,
+				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7A0EB6101AEE23D400D90001 /* ViewController.m in Sources */,
+				7A3FA49C1AEFA58B0050803C /* FBLoginController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,

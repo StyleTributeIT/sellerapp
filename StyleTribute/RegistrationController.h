@@ -6,12 +6,19 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
+#import "BaseInputController.h"
 #import <UIKit/UIKit.h>
 
-@interface RegistrationController : UIViewController
+@interface RegistrationController : BaseInputController
 
-@property IBOutlet UIScrollView* scrollView;
-@property IBOutlet UIView* contentView;
-@property IBOutlet NSLayoutConstraint* widthConstraint;
+@property IBOutlet UITextField* userNameField;
+@property IBOutlet UITextField* passwordField;
+@property IBOutlet UITextField* firstNameField;
+@property IBOutlet UITextField* lastNameField;
+@property IBOutlet UITextField* emailField;
+@property IBOutlet UITextField* countryField;
+@property IBOutlet UITextField* phoneField;
+
+-(IBAction)createAccount:(id)sender;
 
 @end
