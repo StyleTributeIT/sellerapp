@@ -17,8 +17,11 @@
 		7A0EB6241AEE23D400D90001 /* StyleTributeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */; };
 		7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4951AEF7B8E0050803C /* RegistrationController.m */; };
 		7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4981AEFA4B70050803C /* BaseInputController.m */; };
-		7A3FA49C1AEFA58B0050803C /* FBLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA49B1AEFA58B0050803C /* FBLoginController.m */; };
 		7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA49E1AEFC2D00050803C /* WelcomeController.m */; };
+		7A3FA4A31AEFE5720050803C /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4A21AEFE5720050803C /* Product.m */; };
+		7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */; };
+		7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */; };
+		7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
 /* End PBXBuildFile section */
@@ -52,10 +55,16 @@
 		7A3FA4951AEF7B8E0050803C /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
 		7A3FA4971AEFA4B70050803C /* BaseInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInputController.h; sourceTree = "<group>"; };
 		7A3FA4981AEFA4B70050803C /* BaseInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseInputController.m; sourceTree = "<group>"; };
-		7A3FA49A1AEFA58B0050803C /* FBLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginController.h; sourceTree = "<group>"; };
-		7A3FA49B1AEFA58B0050803C /* FBLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginController.m; sourceTree = "<group>"; };
 		7A3FA49D1AEFC2D00050803C /* WelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeController.h; sourceTree = "<group>"; };
 		7A3FA49E1AEFC2D00050803C /* WelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeController.m; sourceTree = "<group>"; };
+		7A3FA4A11AEFE5720050803C /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		7A3FA4A21AEFE5720050803C /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		7A3FA4A41AEFEAEF0050803C /* WardrobeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WardrobeController.h; sourceTree = "<group>"; };
+		7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WardrobeController.m; sourceTree = "<group>"; };
+		7A4AA2C71AEFF47C00190ED3 /* WardrobeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WardrobeCell.h; sourceTree = "<group>"; };
+		7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WardrobeCell.m; sourceTree = "<group>"; };
+		7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRegistrationController.h; sourceTree = "<group>"; };
+		7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRegistrationController.m; sourceTree = "<group>"; };
 		7AA5EAD61AEE2F6500CAB83B /* ApiRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiRequester.h; sourceTree = "<group>"; };
 		7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiRequester.m; sourceTree = "<group>"; };
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
@@ -107,6 +116,8 @@
 		7A0EB6061AEE23D400D90001 /* StyleTribute */ = {
 			isa = PBXGroup;
 			children = (
+				7A4AA2C61AEFF45300190ED3 /* Cells */,
+				7A3FA4A01AEFE53B0050803C /* DataModel */,
 				7AA5EADA1AEE73D600CAB83B /* Controllers */,
 				7A0EB62D1AEE2AEF00D90001 /* Helpers */,
 				7A0EB60B1AEE23D400D90001 /* AppDelegate.h */,
@@ -157,6 +168,24 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		7A3FA4A01AEFE53B0050803C /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				7A3FA4A11AEFE5720050803C /* Product.h */,
+				7A3FA4A21AEFE5720050803C /* Product.m */,
+			);
+			name = DataModel;
+			sourceTree = "<group>";
+		};
+		7A4AA2C61AEFF45300190ED3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7A4AA2C71AEFF47C00190ED3 /* WardrobeCell.h */,
+				7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		7AA5EADA1AEE73D600CAB83B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,10 +195,12 @@
 				7A3FA4951AEF7B8E0050803C /* RegistrationController.m */,
 				7A3FA4971AEFA4B70050803C /* BaseInputController.h */,
 				7A3FA4981AEFA4B70050803C /* BaseInputController.m */,
-				7A3FA49A1AEFA58B0050803C /* FBLoginController.h */,
-				7A3FA49B1AEFA58B0050803C /* FBLoginController.m */,
 				7A3FA49D1AEFC2D00050803C /* WelcomeController.h */,
 				7A3FA49E1AEFC2D00050803C /* WelcomeController.m */,
+				7A3FA4A41AEFEAEF0050803C /* WardrobeController.h */,
+				7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */,
+				7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */,
+				7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -327,14 +358,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */,
+				7A3FA4A31AEFE5720050803C /* Product.m in Sources */,
 				7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
+				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,
 				7A0EB6101AEE23D400D90001 /* ViewController.m in Sources */,
-				7A3FA49C1AEFA58B0050803C /* FBLoginController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,
+				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,
 				7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */,
+				7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

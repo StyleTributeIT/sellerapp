@@ -11,6 +11,11 @@
 @implementation LoginController
 
 -(IBAction)login:(id)sender {
+    
+    // for testing
+    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+    return;
+    
     if([self noEmptyFields]) {
         if([self validateEmail:self.loginField.text]) {
             // login

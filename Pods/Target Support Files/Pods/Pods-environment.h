@@ -48,3 +48,9 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 3
 
+// MGSwipeTableCell
+#define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell
+#define COCOAPODS_VERSION_MAJOR_MGSwipeTableCell 1
+#define COCOAPODS_VERSION_MINOR_MGSwipeTableCell 4
+#define COCOAPODS_VERSION_PATCH_MGSwipeTableCell 3
+

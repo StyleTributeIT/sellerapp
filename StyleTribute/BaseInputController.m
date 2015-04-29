@@ -28,7 +28,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.widthConstraint.constant = [[UIScreen mainScreen] bounds].size.width;
     [self centerContent];
 }
@@ -84,11 +83,12 @@
 - (void)centerContent
 {
     CGFloat top = 0, left = 0, scrollTop = 0, scrollLeft = 0;
+    CGFloat scrollHeight = self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    if (self.contentView.frame.size.height < self.view.bounds.size.height) {
-        top = (self.view.bounds.size.height - self.contentView.frame.size.height) * 0.5f;
+    if (self.contentView.frame.size.height < scrollHeight) {
+        top = (scrollHeight - self.contentView.frame.size.height) * 0.5f;
     } else {
-        scrollTop = (self.contentView.frame.size.height - self.view.bounds.size.height) * 0.5f;
+        scrollTop = (self.contentView.frame.size.height - scrollHeight) * 0.5f;
     }
     
     self.scrollView.contentInset = UIEdgeInsetsMake(top, left, top, left);

@@ -11,7 +11,16 @@
 @implementation WelcomeController
 
 -(void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+-(IBAction)fbLogin:(id)sender {
+    // for testing
+    [self performSegueWithIdentifier:@"FBRegistrationSegue" sender:self];
 }
 
 @end

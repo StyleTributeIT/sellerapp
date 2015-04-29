@@ -1,13 +1,13 @@
 //
-//  FBLoginController.m
+//  Product.m
 //  StyleTribute
 //
 //  Created by Selim Mustafaev on 28/04/15.
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "FBLoginController.h"
+#import "Product.h"
 
-@implementation FBLoginController
+@implementation Product
 
 @end

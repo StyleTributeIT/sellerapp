@@ -1,15 +1,16 @@
 //
-//  WelcomeController.h
+//  Product.h
 //  StyleTribute
 //
 //  Created by Selim Mustafaev on 28/04/15.
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface WelcomeController : UIViewController
+@interface Product : NSObject
 
--(IBAction)fbLogin:(id)sender;
+@property NSString* title;
+@property NSString* displayState;
 
 @end

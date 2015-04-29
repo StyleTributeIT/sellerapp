@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - MGSwipeTableCell (1.4.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - MGSwipeTableCell
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  MGSwipeTableCell: cb9805df3cc5cad75ad43a5c1eb424be0316f0bf
 
 COCOAPODS: 0.36.3
