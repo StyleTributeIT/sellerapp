@@ -48,6 +48,7 @@
     cell.delegate = self;
     cell.title.text = p.title;
     cell.displayState.text = p.displayState;
+    [cell.displayState sizeToFit];
     
     MGSwipeButton* delButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"remove"] backgroundColor:[UIColor redColor] insets:UIEdgeInsetsMake(10, 0, 10, 0)];
     delButton.buttonWidth = 48;
@@ -122,7 +123,7 @@
     for (int i = 0; i < 15; ++i) {
         Product* p1 = [Product new];
         p1.title = [NSString stringWithFormat:@"selling %d", i];
-        p1.displayState = @"display state";
+        p1.displayState = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
         [self.sellingItems addObject:p1];
         
         Product* p2 = [Product new];
