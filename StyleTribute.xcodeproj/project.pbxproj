@@ -24,6 +24,8 @@
 		7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
+		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
+		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,10 @@
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
 		7AA5EADB1AEE740500CAB83B /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		7AA5EADC1AEE740500CAB83B /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		7AFE43611AF22935004B982B /* AddWardrobeItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWardrobeItemController.h; sourceTree = "<group>"; };
+		7AFE43621AF22935004B982B /* AddWardrobeItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWardrobeItemController.m; sourceTree = "<group>"; };
+		7AFE43641AF22A99004B982B /* GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalHelper.h; sourceTree = "<group>"; };
+		7AFE43651AF22A99004B982B /* GlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalHelper.m; sourceTree = "<group>"; };
 		92D4F01969E74DEDB8E3B992 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,6 +170,8 @@
 			children = (
 				7AA5EAD61AEE2F6500CAB83B /* ApiRequester.h */,
 				7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */,
+				7AFE43641AF22A99004B982B /* GlobalHelper.h */,
+				7AFE43651AF22A99004B982B /* GlobalHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -201,6 +209,8 @@
 				7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */,
 				7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */,
 				7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */,
+				7AFE43611AF22935004B982B /* AddWardrobeItemController.h */,
+				7AFE43621AF22935004B982B /* AddWardrobeItemController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -357,10 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
 				7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */,
 				7A3FA4A31AEFE5720050803C /* Product.m in Sources */,
 				7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
+				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,
 				7A0EB6101AEE23D400D90001 /* ViewController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,

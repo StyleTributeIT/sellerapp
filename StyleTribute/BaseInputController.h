@@ -15,5 +15,7 @@
 @property IBOutlet NSLayoutConstraint* widthConstraint;
 
 -(BOOL)validateEmail:(NSString *)candidate;
+-(void)centerContent;
+-(void)moveContentToTop;
 
 @end

@@ -10,6 +10,10 @@
 
 @implementation FBRegistrationController
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self centerContent];
+}
+
 -(IBAction)createAccount:(id)sender {
     if([self noEmptyFields]) {
         //

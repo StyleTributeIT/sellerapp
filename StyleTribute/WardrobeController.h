@@ -15,5 +15,6 @@
 @property IBOutlet UITableView* itemsTable;
 
 -(IBAction)wardrobeTypeChanged:(id)sender;
+-(IBAction)unwindToWardrobeItems:(UIStoryboardSegue*)sender;
 
 @end

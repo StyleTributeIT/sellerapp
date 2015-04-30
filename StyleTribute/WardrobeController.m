@@ -8,6 +8,7 @@
 
 #import <MGSwipeButton.h>
 
+#import "GlobalHelper.h"
 #import "Product.h"
 #import "WardrobeCell.h"
 #import "WardrobeController.h"
@@ -28,10 +29,7 @@
     [super viewDidLoad];
     
     [self generateFakeData];
-    
-    UIImageView *titleImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    titleImg.image = [UIImage imageNamed:@"LogoHeader"];
-    self.navigationItem.titleView = titleImg;
+    [GlobalHelper addLogoToNavBar:self.navigationItem];
 }
 
 #pragma mark - UITableView
@@ -136,6 +134,12 @@
         p3.displayState = @"display state";
         [self.archivedItems addObject:p3];
     }
+}
+
+//===========================
+
+-(IBAction)unwindToWardrobeItems:(UIStoryboardSegue*)sender {
+    UIViewController *sourceViewController = sender.sourceViewController;
 }
 
 @end

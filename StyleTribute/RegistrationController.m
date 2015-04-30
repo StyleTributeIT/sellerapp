@@ -10,6 +10,10 @@
 
 @implementation RegistrationController
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self centerContent];
+}
+
 -(IBAction)createAccount:(id)sender {
     if([self noEmptyFields]) {
         if([self validateEmail:self.emailField.text]) {

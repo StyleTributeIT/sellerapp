@@ -29,7 +29,6 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.widthConstraint.constant = [[UIScreen mainScreen] bounds].size.width;
-    [self centerContent];
 }
 
 #pragma mark - Keyboard handling
@@ -94,6 +93,14 @@
     self.scrollView.contentInset = UIEdgeInsetsMake(top, left, top, left);
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(scrollTop, scrollLeft, scrollTop, scrollLeft);
     self.bottomInset = top;
+}
+
+-(void)moveContentToTop {
+    NSLog(@"scrollbar height: %f", self.view.bounds.size.height);
+
+    self.scrollView.contentInset = UIEdgeInsetsZero;
+    self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
+    self.bottomInset = 0;
 }
 
 #pragma mark - Utils

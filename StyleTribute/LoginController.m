@@ -10,6 +10,10 @@
 
 @implementation LoginController
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self centerContent];
+}
+
 -(IBAction)login:(id)sender {
     
     // for testing
