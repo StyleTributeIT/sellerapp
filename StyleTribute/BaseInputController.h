@@ -14,6 +14,8 @@
 @property IBOutlet UIView* contentView;
 @property IBOutlet NSLayoutConstraint* widthConstraint;
 
+@property UIView* activeField;
+
 -(BOOL)validateEmail:(NSString *)candidate;
 -(void)centerContent;
 -(void)moveContentToTop;

@@ -9,8 +9,13 @@
 #import "BaseInputController.h"
 #import <UIKit/UIKit.h>
 
-@interface AddWardrobeItemController : BaseInputController
+@interface AddWardrobeItemController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
 
 @property IBOutlet UILabel* messageLabel;
+@property IBOutlet UITextField* categoryField;
+@property IBOutlet UITextField* conditionField;
+@property IBOutlet UITextView* descriptionView;
+@property IBOutlet UITextField* brandField;
+@property IBOutlet UITextField* sizeField;
 
 @end

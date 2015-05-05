@@ -22,6 +22,8 @@
 		7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */; };
 		7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */; };
 		7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */; };
+		7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427101AF8E7E10051466E /* PriceEditController.m */; };
+		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
@@ -67,6 +69,10 @@
 		7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WardrobeCell.m; sourceTree = "<group>"; };
 		7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRegistrationController.h; sourceTree = "<group>"; };
 		7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRegistrationController.m; sourceTree = "<group>"; };
+		7A64270F1AF8E7E10051466E /* PriceEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceEditController.h; sourceTree = "<group>"; };
+		7A6427101AF8E7E10051466E /* PriceEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceEditController.m; sourceTree = "<group>"; };
+		7A6427121AF901CF0051466E /* ChooseCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCategoryController.h; sourceTree = "<group>"; };
+		7A6427131AF901CF0051466E /* ChooseCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCategoryController.m; sourceTree = "<group>"; };
 		7AA5EAD61AEE2F6500CAB83B /* ApiRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiRequester.h; sourceTree = "<group>"; };
 		7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiRequester.m; sourceTree = "<group>"; };
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
@@ -211,6 +217,10 @@
 				7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */,
 				7AFE43611AF22935004B982B /* AddWardrobeItemController.h */,
 				7AFE43621AF22935004B982B /* AddWardrobeItemController.m */,
+				7A64270F1AF8E7E10051466E /* PriceEditController.h */,
+				7A6427101AF8E7E10051466E /* PriceEditController.m */,
+				7A6427121AF901CF0051466E /* ChooseCategoryController.h */,
+				7A6427131AF901CF0051466E /* ChooseCategoryController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -371,9 +381,11 @@
 				7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */,
 				7A3FA4A31AEFE5720050803C /* Product.m in Sources */,
 				7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */,
+				7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,
+				7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */,
 				7A0EB6101AEE23D400D90001 /* ViewController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,

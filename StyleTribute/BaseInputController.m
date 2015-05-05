@@ -10,7 +10,6 @@
 
 @interface BaseInputController()
 
-@property UITextField* activeField;
 @property CGFloat bottomInset;
 
 @end
@@ -43,8 +42,10 @@
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.scrollView.contentInset.top, self.scrollView.contentInset.left, kbSize.height + 40, self.scrollView.contentInset.right);
+    NSLog(@"content inset 1 - %f", contentInsets.bottom);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
+    NSLog(@"content inset 2 - %f", self.scrollView.contentInset.bottom);
     
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
@@ -52,6 +53,14 @@
     if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
         [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
     }
+    
+    UIEdgeInsets ins = self.scrollView.contentInset;
+    NSLog(@"scroll view: %f, %f, %f, %f", ins.top, ins.left, ins.bottom, ins.right);
+    NSLog(@"content size: %f, %f", self.scrollView.contentSize.width, self.scrollView.contentSize.height);
+    
+//    [self.scrollView needsUpdateConstraints];
+//    [self.scrollView setNeedsLayout];
+//    [self.scrollView setNeedsDisplay];
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification {
@@ -75,6 +84,14 @@
 
 -(void)dismissKeyboard {
     [self.activeField resignFirstResponder];
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    self.activeField = textView;
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView {
+    self.activeField = nil;
 }
 
 #pragma mark - Positioning
