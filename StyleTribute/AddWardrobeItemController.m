@@ -9,6 +9,8 @@
 #import "GlobalHelper.h"
 #import "AddWardrobeItemController.h"
 #import "ChooseCategoryController.h"
+#import "TutorialController.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface AddWardrobeItemController ()
 
@@ -20,6 +22,9 @@
 @property NSArray* conditionTypes;
 @property NSArray* sizes;
 
+@property UIImageView* selectedImage;
+@property BOOL isTutorialPresented;
+
 @end
 
 @implementation AddWardrobeItemController
@@ -28,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isTutorialPresented = NO;
 
     self.picker = [[UIPickerView alloc] init];
     self.picker.delegate = self;
@@ -64,6 +71,14 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if(self.isTutorialPresented) {
+        [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+        self.isTutorialPresented = NO;
+    }
 }
 
 - (void)keyboardWillShow:(NSNotification*)aNotification {
@@ -120,18 +135,25 @@
 #pragma mark - Action sheet
 
 -(IBAction)displayPhotosActionSheet:(UIGestureRecognizer *)gestureRecognizer {
-//    UIView* tappedView = gestureRecognizer.view;
-    
+    self.selectedImage = (UIImageView*)gestureRecognizer.view;
     [self.photoActionsSheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
-        case 0: // take new picture
-            NSLog(@"button 0");
+        case 0: { // take new picture
+            NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+            if([defs objectForKey:@"displayTutorial"] == nil) {
+                [self performSegueWithIdentifier:@"tutorialSegue" sender:self];
+                [defs setBool:NO forKey:@"displayTutorial"];
+                self.isTutorialPresented = YES;
+            } else {
+                [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+            }
             break;
+        }
         case 1: // pick from gallery
-            NSLog(@"button 1");
+            [self presentCameraController: UIImagePickerControllerSourceTypePhotoLibrary];
             break;
             
         default:
@@ -145,9 +167,10 @@
     if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
         ChooseCategoryController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory;
+    } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
     }
     
-    NSLog(@"unwindToWardrobeItems");
+    NSLog(@"unwindToAddItem");
 }
 
 -(IBAction)cancelUnwindToAddItem:(UIStoryboardSegue*)sender {
@@ -162,6 +185,47 @@
     }
     
     return YES;
+}
+
+#pragma mark - Camera
+
+-(void)presentCameraController:(UIImagePickerControllerSourceType)type {
+    if([UIImagePickerController isSourceTypeAvailable:type]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.sourceType = type;
+        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+        
+        if(type == UIImagePickerControllerSourceTypeCamera) {
+            CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+            CGRect cameraViewRect = [[UIScreen mainScreen] bounds];
+            if(screenSize.height/screenSize.width > 1.5) {
+                cameraViewRect = CGRectMake(0, 20, screenSize.width, screenSize.width*4.0/3.0);
+            }
+            
+            UIImage* outline = [UIImage imageNamed:@"SquareOutlineDemo"];
+            UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - outline.size.width)/2, (cameraViewRect.size.height - outline.size.height)/2 + cameraViewRect.origin.y, outline.size.width, outline.size.height)];
+            overlay.image = outline;
+            picker.cameraOverlayView = overlay;
+        }
+        
+        [self presentViewController:picker animated:YES completion:^{
+        }];
+    } else {
+        NSLog(@"camera or photo library are not available on this device");
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    self.selectedImage.image = chosenImage;
+    NSData *imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

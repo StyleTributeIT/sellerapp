@@ -282,7 +282,7 @@
                                                         <constraint firstAttribute="width" constant="83" id="w2Q-gH-c4y"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
                                                     <rect key="frame" x="91" y="22" width="197" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -974,6 +974,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="brandField" destination="Spy-gH-EMN" id="Q8d-mL-XOR"/>
@@ -985,6 +986,7 @@
                         <outlet property="scrollView" destination="WKy-EG-yBK" id="D6V-5n-x0D"/>
                         <outlet property="sizeField" destination="KKI-VP-j2D" id="Deb-0K-n8I"/>
                         <outlet property="widthConstraint" destination="CQ8-hn-jax" id="0E5-a3-iSf"/>
+                        <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" modalTransitionStyle="crossDissolve" animates="NO" id="rms-Fm-rAE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gi-6i-1r4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1015,7 +1017,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3652" y="159"/>
+            <point key="canvasLocation" x="3657" y="159"/>
         </scene>
         <!--Title-->
         <scene sceneID="ohv-na-xxH">
@@ -1217,6 +1219,43 @@
                 <exit id="pQR-VK-prv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4078" y="159"/>
+        </scene>
+        <!--Tutorial Controller-->
+        <scene sceneID="vZo-O0-RDz">
+            <objects>
+                <viewController id="lIb-3R-MAJ" customClass="TutorialController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eW8-cd-wzq"/>
+                        <viewControllerLayoutGuide type="bottom" id="TAL-QR-oJC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PfP-76-nnx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Woz-df-hvv">
+                                <rect key="frame" x="264" y="28" width="40" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sfi-iR-J7u" kind="unwind" unwindAction="unwindToAddItem:" id="iMV-fn-Zwg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tutorial will be here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZL-6m-o52">
+                                <rect key="frame" x="86" y="32" width="148" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="170-GQ-0vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sfi-iR-J7u" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4078" y="848"/>
         </scene>
     </scenes>
     <resources>
