@@ -35,25 +35,10 @@
     [super viewDidLoad];
     
     self.isTutorialPresented = NO;
-
-    self.picker = [[UIPickerView alloc] init];
+    
+    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField] withTarget:self doneAction:@selector(pickerOk:) cancelAction:@selector(pickerCancel:)];
     self.picker.delegate = self;
     self.picker.dataSource = self;
-    
-    self.pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
-    self.pickerToolbar.barTintColor = [UIColor grayColor];
-    self.pickerToolbar.translucent = NO;
-    UIBarButtonItem *barDone = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(pickerOk:)];
-    UIBarButtonItem *barCancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(pickerCancel:)];
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    self.pickerToolbar.items = @[barCancel, flexibleSpace, barDone];
-    
-//    self.categoryField.inputView = self.picker;
-//    self.categoryField.inputAccessoryView = self.pickerToolbar;
-    self.conditionField.inputView = self.picker;
-    self.conditionField.inputAccessoryView = self.pickerToolbar;
-    self.sizeField.inputView = self.picker;
-    self.sizeField.inputAccessoryView = self.pickerToolbar;
     
     self.conditionTypes = @[@"condition 1", @"condition 2", @"condition 3", @"condition 4", @"condition 5", @"condition 6", @"condition 7"];
     self.sizes = @[@"size 1", @"size 2", @"size 3", @"size 4", @"size 5"];
@@ -201,7 +186,7 @@
             CGSize screenSize = [[UIScreen mainScreen] bounds].size;
             CGRect cameraViewRect = [[UIScreen mainScreen] bounds];
             if(screenSize.height/screenSize.width > 1.5) {
-                cameraViewRect = CGRectMake(0, 20, screenSize.width, screenSize.width*4.0/3.0);
+                cameraViewRect = CGRectMake(0, 40, screenSize.width, screenSize.width*4.0/3.0);
             }
             
             UIImage* outline = [UIImage imageNamed:@"SquareOutlineDemo"];
@@ -220,7 +205,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     self.selectedImage.image = chosenImage;
-    NSData *imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
+//    NSData *imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 

@@ -21,15 +21,15 @@
     [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
     return;
     
-    if([self noEmptyFields]) {
-        if([self validateEmail:self.loginField.text]) {
-            // login
-        } else {
-            [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Invalid email" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-        }
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Please fill in all fields" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-    }
+//    if([self noEmptyFields]) {
+//        if([self validateEmail:self.loginField.text]) {
+//            // login
+//        } else {
+//            [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Invalid email" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+//        }
+//    } else {
+//        [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Please fill in all fields" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+//    }
 }
 
 -(IBAction)forgotPassword:(id)sender {

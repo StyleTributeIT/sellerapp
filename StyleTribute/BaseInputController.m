@@ -27,6 +27,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.widthConstraint.constant = [[UIScreen mainScreen] bounds].size.width;
 }
 
@@ -42,10 +43,10 @@
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.scrollView.contentInset.top, self.scrollView.contentInset.left, kbSize.height + 40, self.scrollView.contentInset.right);
-    NSLog(@"content inset 1 - %f", contentInsets.bottom);
+//    NSLog(@"content inset 1 - %f", contentInsets.bottom);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
-    NSLog(@"content inset 2 - %f", self.scrollView.contentInset.bottom);
+//    NSLog(@"content inset 2 - %f", self.scrollView.contentInset.bottom);
     
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
@@ -54,13 +55,9 @@
         [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
     }
     
-    UIEdgeInsets ins = self.scrollView.contentInset;
-    NSLog(@"scroll view: %f, %f, %f, %f", ins.top, ins.left, ins.bottom, ins.right);
-    NSLog(@"content size: %f, %f", self.scrollView.contentSize.width, self.scrollView.contentSize.height);
-    
-//    [self.scrollView needsUpdateConstraints];
-//    [self.scrollView setNeedsLayout];
-//    [self.scrollView setNeedsDisplay];
+//    UIEdgeInsets ins = self.scrollView.contentInset;
+//    NSLog(@"scroll view: %f, %f, %f, %f", ins.top, ins.left, ins.bottom, ins.right);
+//    NSLog(@"content size: %f, %f", self.scrollView.contentSize.width, self.scrollView.contentSize.height);
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification {

@@ -27,6 +27,11 @@
 		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
+		7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */; };
+		7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */; };
+		7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */; };
+		7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */; };
+		7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */; };
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
 		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
 /* End PBXBuildFile section */
@@ -81,6 +86,16 @@
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
 		7AA5EADB1AEE740500CAB83B /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		7AA5EADC1AEE740500CAB83B /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountController.h; sourceTree = "<group>"; };
+		7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountController.m; sourceTree = "<group>"; };
+		7ABF95E71AFB500C00E6AA52 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
+		7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileController.m; sourceTree = "<group>"; };
+		7ABF95EA1AFB68C300E6AA52 /* ResidentAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResidentAddressController.h; sourceTree = "<group>"; };
+		7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResidentAddressController.m; sourceTree = "<group>"; };
+		7ABF95ED1AFBA27300E6AA52 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
+		7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
+		7ABF95F01AFBA93200E6AA52 /* BankDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankDetailsController.h; sourceTree = "<group>"; };
+		7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankDetailsController.m; sourceTree = "<group>"; };
 		7AFE43611AF22935004B982B /* AddWardrobeItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWardrobeItemController.h; sourceTree = "<group>"; };
 		7AFE43621AF22935004B982B /* AddWardrobeItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWardrobeItemController.m; sourceTree = "<group>"; };
 		7AFE43641AF22A99004B982B /* GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalHelper.h; sourceTree = "<group>"; };
@@ -226,6 +241,16 @@
 				7A6427131AF901CF0051466E /* ChooseCategoryController.m */,
 				7A116C8D1AFA449300A4D7D9 /* TutorialController.h */,
 				7A116C8E1AFA449300A4D7D9 /* TutorialController.m */,
+				7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */,
+				7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */,
+				7ABF95E71AFB500C00E6AA52 /* EditProfileController.h */,
+				7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */,
+				7ABF95EA1AFB68C300E6AA52 /* ResidentAddressController.h */,
+				7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */,
+				7ABF95ED1AFBA27300E6AA52 /* ChangePasswordController.h */,
+				7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */,
+				7ABF95F01AFBA93200E6AA52 /* BankDetailsController.h */,
+				7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -382,11 +407,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */,
+				7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */,
 				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
+				7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */,
 				7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */,
 				7A3FA4A31AEFE5720050803C /* Product.m in Sources */,
 				7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */,
 				7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */,
+				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
@@ -398,6 +427,7 @@
 				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,
 				7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */,
+				7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */,
 				7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +555,7 @@
 			baseConfigurationReference = 3AAA915C597815E7ED38446F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -539,6 +570,7 @@
 			baseConfigurationReference = 92D4F01969E74DEDB8E3B992 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
