@@ -16,6 +16,9 @@
 		7A0EB6181AEE23D400D90001 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6161AEE23D400D90001 /* LaunchScreen.xib */; };
 		7A0EB6241AEE23D400D90001 /* StyleTributeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */; };
 		7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A116C8E1AFA449300A4D7D9 /* TutorialController.m */; };
+		7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5A1AFCCF010031C629 /* MapKit.framework */; };
+		7A237C5D1AFCD3F70031C629 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5C1AFCD3F70031C629 /* AddressBook.framework */; };
+		7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */; };
 		7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4951AEF7B8E0050803C /* RegistrationController.m */; };
 		7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4981AEFA4B70050803C /* BaseInputController.m */; };
 		7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA49E1AEFC2D00050803C /* WelcomeController.m */; };
@@ -32,6 +35,8 @@
 		7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */; };
 		7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */; };
 		7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */; };
+		7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */; };
+		7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */; };
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
 		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
 /* End PBXBuildFile section */
@@ -63,6 +68,9 @@
 		7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleTributeTests.m; sourceTree = "<group>"; };
 		7A116C8D1AFA449300A4D7D9 /* TutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialController.h; sourceTree = "<group>"; };
 		7A116C8E1AFA449300A4D7D9 /* TutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialController.m; sourceTree = "<group>"; };
+		7A237C5A1AFCCF010031C629 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7A237C5C1AFCD3F70031C629 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7A3FA4941AEF7B8E0050803C /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
 		7A3FA4951AEF7B8E0050803C /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
 		7A3FA4971AEFA4B70050803C /* BaseInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInputController.h; sourceTree = "<group>"; };
@@ -96,6 +104,9 @@
 		7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		7ABF95F01AFBA93200E6AA52 /* BankDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankDetailsController.h; sourceTree = "<group>"; };
 		7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankDetailsController.m; sourceTree = "<group>"; };
+		7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
+		7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
+		7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7AFE43611AF22935004B982B /* AddWardrobeItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWardrobeItemController.h; sourceTree = "<group>"; };
 		7AFE43621AF22935004B982B /* AddWardrobeItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWardrobeItemController.m; sourceTree = "<group>"; };
 		7AFE43641AF22A99004B982B /* GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalHelper.h; sourceTree = "<group>"; };
@@ -109,6 +120,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */,
+				7A237C5D1AFCD3F70031C629 /* AddressBook.framework in Frameworks */,
+				7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */,
+				7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */,
 				60846BFEBA3D93E7C0E7CFEB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +266,8 @@
 				7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */,
 				7ABF95F01AFBA93200E6AA52 /* BankDetailsController.h */,
 				7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */,
+				7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */,
+				7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -267,6 +284,10 @@
 		D358717626AA9718DD7716CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */,
+				7A237C5C1AFCD3F70031C629 /* AddressBook.framework */,
+				7A237C5A1AFCCF010031C629 /* MapKit.framework */,
+				7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */,
 				A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -408,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */,
+				7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */,
 				7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */,
 				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
 				7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */,

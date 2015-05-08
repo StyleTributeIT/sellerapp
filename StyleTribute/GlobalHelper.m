@@ -35,4 +35,10 @@
     return picker;
 }
 
++(void)showMessage:(NSString*)msg withTitle:(NSString*)title {
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:title message:msg
+                                                     delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [message show];
+}
+
 @end

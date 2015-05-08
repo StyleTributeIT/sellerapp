@@ -60,6 +60,9 @@
         case 3:
             [self performSegueWithIdentifier:@"bankDetailsSegue" sender:self];
             break;
+        case 4:
+            [self performSegueWithIdentifier:@"contactUsSegue" sender:self];
+            break;
             
         default:
             break;

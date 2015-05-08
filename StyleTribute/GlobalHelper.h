@@ -13,5 +13,6 @@
 
 +(void)addLogoToNavBar:(UINavigationItem*)item;
 +(UIPickerView*)createPickerForFields:(NSArray*)fields withTarget:(id)target doneAction:(SEL)done cancelAction:(SEL)cancel;
++(void)showMessage:(NSString*)msg withTitle:(NSString*)title;
 
 @end
