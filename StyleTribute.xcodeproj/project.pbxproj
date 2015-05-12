@@ -30,6 +30,8 @@
 		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
+		7AB78D911B02200100C13D13 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */; };
+		7AB78D931B0223C500C13D13 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */; };
 		7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */; };
 		7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */; };
 		7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */; };
@@ -94,6 +96,8 @@
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
 		7AA5EADB1AEE740500CAB83B /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		7AA5EADC1AEE740500CAB83B /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountController.h; sourceTree = "<group>"; };
 		7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountController.m; sourceTree = "<group>"; };
 		7ABF95E71AFB500C00E6AA52 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
@@ -121,8 +125,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */,
+				7AB78D911B02200100C13D13 /* FBSDKCoreKit.framework in Frameworks */,
 				7A237C5D1AFCD3F70031C629 /* AddressBook.framework in Frameworks */,
 				7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */,
+				7AB78D931B0223C500C13D13 /* FBSDKLoginKit.framework in Frameworks */,
 				7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */,
 				60846BFEBA3D93E7C0E7CFEB /* libPods.a in Frameworks */,
 			);
@@ -284,6 +290,8 @@
 		D358717626AA9718DD7716CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */,
+				7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */,
 				7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */,
 				7A237C5C1AFCD3F70031C629 /* AddressBook.framework */,
 				7A237C5A1AFCCF010031C629 /* MapKit.framework */,
@@ -579,6 +587,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -594,6 +606,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

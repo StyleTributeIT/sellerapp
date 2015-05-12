@@ -92,6 +92,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="sjP-DD-tuF" kind="show" identifier="FBRegistrationSegue" id="cSg-UA-WeG"/>
+                        <segue destination="dua-YX-667" kind="presentation" identifier="showMainScreenSegue" id="Iws-61-RlG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -226,7 +227,7 @@
         <!--My Account Controller-->
         <scene sceneID="900-3Z-7Sr">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="tSN-ez-241" customClass="MyAccountController" sceneMemberID="viewController">
+                <viewController id="tSN-ez-241" customClass="MyAccountController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5b2-9C-mSv"/>
                         <viewControllerLayoutGuide type="bottom" id="6My-v9-w5w"/>
@@ -1672,13 +1673,11 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Spy-gH-EMN" secondAttribute="trailing" constant="8" id="4Ub-Ht-pdj"/>
-                                            <constraint firstItem="OcZ-FH-FKF" firstAttribute="top" secondItem="VlM-R9-Zbi" secondAttribute="bottom" constant="46" id="5xT-qu-89T"/>
                                             <constraint firstItem="zjl-wN-HZW" firstAttribute="top" secondItem="VlM-R9-Zbi" secondAttribute="bottom" constant="8" id="5y9-KA-mtL"/>
                                             <constraint firstItem="jbD-EG-R7x" firstAttribute="top" secondItem="VlM-R9-Zbi" secondAttribute="bottom" constant="8" id="8eY-qA-cuj"/>
                                             <constraint firstAttribute="width" constant="320" id="CQ8-hn-jax"/>
                                             <constraint firstItem="Ele-kR-1Pi" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="EP6-11-0qH"/>
                                             <constraint firstAttribute="trailing" secondItem="KKI-VP-j2D" secondAttribute="trailing" constant="8" id="F7y-SY-oyi"/>
-                                            <constraint firstItem="Ele-kR-1Pi" firstAttribute="top" secondItem="xMe-XH-bzd" secondAttribute="bottom" constant="8" id="GOG-xd-CU4"/>
                                             <constraint firstItem="C5g-mu-h3z" firstAttribute="width" secondItem="9aL-mw-Aq2" secondAttribute="width" id="HPk-8w-F5D"/>
                                             <constraint firstItem="KKI-VP-j2D" firstAttribute="top" secondItem="Spy-gH-EMN" secondAttribute="bottom" constant="8" id="HuZ-SS-xV8"/>
                                             <constraint firstItem="z6y-lS-1cy" firstAttribute="top" secondItem="kL1-B6-Usj" secondAttribute="top" constant="8" id="I1m-vT-8ip"/>
@@ -1708,19 +1707,11 @@
                                             <constraint firstItem="VlM-R9-Zbi" firstAttribute="top" secondItem="z6y-lS-1cy" secondAttribute="bottom" constant="8" id="rIa-ZI-HOl"/>
                                             <constraint firstItem="jbD-EG-R7x" firstAttribute="leading" secondItem="OcZ-FH-FKF" secondAttribute="trailing" constant="8" id="tN4-Je-4dg"/>
                                             <constraint firstAttribute="trailing" secondItem="Ele-kR-1Pi" secondAttribute="trailing" constant="8" id="uAp-Ao-kVT"/>
-                                            <constraint firstItem="Ele-kR-1Pi" firstAttribute="top" secondItem="Spy-gH-EMN" secondAttribute="bottom" constant="8" id="vzD-ww-Run"/>
                                             <constraint firstItem="OcZ-FH-FKF" firstAttribute="top" secondItem="VlM-R9-Zbi" secondAttribute="bottom" constant="8" id="wo7-Rm-p23"/>
                                             <constraint firstItem="VlM-R9-Zbi" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="x5c-O2-LiF"/>
                                             <constraint firstItem="C5g-mu-h3z" firstAttribute="top" secondItem="VlM-R9-Zbi" secondAttribute="bottom" constant="8" id="y8R-IS-kOK"/>
                                             <constraint firstItem="C5g-mu-h3z" firstAttribute="leading" secondItem="jbD-EG-R7x" secondAttribute="trailing" constant="9" id="yfL-m3-Lgo"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="5xT-qu-89T"/>
-                                                <exclude reference="GOG-xd-CU4"/>
-                                                <exclude reference="vzD-ww-Run"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1757,12 +1748,12 @@
                         <outlet property="brandField" destination="Spy-gH-EMN" id="Q8d-mL-XOR"/>
                         <outlet property="categoryField" destination="VlM-R9-Zbi" id="2A2-8a-o7H"/>
                         <outlet property="conditionField" destination="Ele-kR-1Pi" id="1oP-I7-qbu"/>
-                        <outlet property="contentView" destination="kL1-B6-Usj" id="aQX-1N-zIj"/>
+                        <outlet property="contentView" destination="kL1-B6-Usj" id="h5Q-fs-BMz"/>
                         <outlet property="descriptionView" destination="xMe-XH-bzd" id="aBh-wk-NIO"/>
                         <outlet property="messageLabel" destination="z6y-lS-1cy" id="qRd-fh-kQX"/>
-                        <outlet property="scrollView" destination="WKy-EG-yBK" id="D6V-5n-x0D"/>
+                        <outlet property="scrollView" destination="WKy-EG-yBK" id="yXj-5V-Xdz"/>
                         <outlet property="sizeField" destination="KKI-VP-j2D" id="Deb-0K-n8I"/>
-                        <outlet property="widthConstraint" destination="CQ8-hn-jax" id="0E5-a3-iSf"/>
+                        <outlet property="widthConstraint" destination="CQ8-hn-jax" id="oeR-wg-LKo"/>
                         <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" modalTransitionStyle="crossDissolve" animates="NO" id="rms-Fm-rAE"/>
                     </connections>
                 </viewController>
@@ -2060,4 +2051,7 @@
         <image name="placeholder" width="64" height="64"/>
         <image name="wardrobe" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Iws-61-RlG"/>
+    </inferredMetricsTieBreakers>
 </document>

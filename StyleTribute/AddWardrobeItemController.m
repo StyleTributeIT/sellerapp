@@ -51,7 +51,7 @@
     self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
     self.photoActionsSheet.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -66,7 +66,7 @@
     }
 }
 
-- (void)keyboardWillShow:(NSNotification*)aNotification {
+- (void)setPickerData:(NSNotification*)aNotification {
     if(self.activeField == self.conditionField || self.activeField == self.sizeField) {
         [self.picker reloadAllComponents];
         
