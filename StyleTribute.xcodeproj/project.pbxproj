@@ -595,7 +595,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a86b453-abf7-46c1-b7b4-20e941b7c84a";
+				PROVISIONING_PROFILE = "cd5b6673-a22e-4fc7-a952-3170832c43fb";
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -610,11 +611,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a86b453-abf7-46c1-b7b4-20e941b7c84a";
+				PROVISIONING_PROFILE = "cd5b6673-a22e-4fc7-a952-3170832c43fb";
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Release;
 		};

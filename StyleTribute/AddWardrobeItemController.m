@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
+#import "GlobalDefs.h"
 #import "GlobalHelper.h"
 #import "AddWardrobeItemController.h"
 #import "ChooseCategoryController.h"

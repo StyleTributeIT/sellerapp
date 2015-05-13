@@ -54,3 +54,9 @@
 #define COCOAPODS_VERSION_MINOR_MGSwipeTableCell 4
 #define COCOAPODS_VERSION_PATCH_MGSwipeTableCell 3
 
+// TestFairy
+#define COCOAPODS_POD_AVAILABLE_TestFairy
+#define COCOAPODS_VERSION_MAJOR_TestFairy 1
+#define COCOAPODS_VERSION_MINOR_TestFairy 4
+#define COCOAPODS_VERSION_PATCH_TestFairy 4
+

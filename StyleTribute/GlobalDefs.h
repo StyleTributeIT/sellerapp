@@ -10,6 +10,7 @@
 #define StyleTribute_GlobalDefs_h
 
 #import <Foundation/Foundation.h>
+#import <TestFairy.h>
 
 static NSString* const DefApiHost		= @"http://styletribute.com/";
 

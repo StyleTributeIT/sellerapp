@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <TestFairy.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +20,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
+    
     return YES;
 }
 

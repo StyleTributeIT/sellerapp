@@ -7,6 +7,7 @@
 //
 
 #import "LoginController.h"
+#import "GlobalDefs.h"
 
 @implementation LoginController
 

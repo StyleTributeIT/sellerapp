@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TestFairy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>09D28437114DD0AD959A0E4F</key>
+		<key>01BEE9596B3B8EF9CCE0022A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DAE98F018AE262BBBFCBB04</key>
+		<key>25E6DD849F6B3A3179A3F366</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F3AE8BBEE2DEF650C15CEFFB</key>
+		<key>40136AC384A824AFF3ED2692</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5AE4CDF672F90002557C392D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
