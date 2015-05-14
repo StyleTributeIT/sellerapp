@@ -12,6 +12,8 @@
 #import <Foundation/Foundation.h>
 #import <TestFairy.h>
 
-static NSString* const DefApiHost		= @"http://styletribute.com/";
+static NSString* const DefApiHost		= @"http://selim.deva/api_test123/";
+
+static NSString* const DefGeneralErrMsg	= @"Something gone wrong. Try again later.";
 
 #endif

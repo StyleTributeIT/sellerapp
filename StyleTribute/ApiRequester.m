@@ -7,10 +7,13 @@
 //
 
 #import "ApiRequester.h"
+#import "Product.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
 @implementation ApiRequester
+
+#pragma mark - Helper methods
 
 +(ApiRequester*)sharedInstance
 {
@@ -40,6 +43,44 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 //    [req addValue:cook forHTTPHeaderField:DefApiToken];
     [req setHTTPMethod:@"GET"];
     return req;
+}
+
+#pragma mark - API methods
+
+-(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespProducts)success failure:(JSONRespError)failure
+{
+    NSMutableURLRequest *req = [self getReqToApiPath:@"products.json"];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:req];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if([[responseObject objectForKey:@"success"] boolValue] == YES) {
+            NSMutableArray* products = [NSMutableArray new];
+            NSArray* productsArray = [responseObject objectForKey:@"data"];
+            if(productsArray) {
+                for (NSDictionary* productDict in productsArray) {
+                    Product* product = [Product parseFromJson:productDict];
+                    [products addObject:product];
+                }
+            }
+            success(products);
+        } else {
+            NSString* errMsg = [responseObject objectForKey:@"message"];
+            if(errMsg == nil) {
+                errMsg = DefGeneralErrMsg;
+            }
+            
+            NSLog(@"get products error: %@", errMsg);
+            failure(errMsg);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"get products request error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    [operation start];
+    return operation;
 }
 
 @end

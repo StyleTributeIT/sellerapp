@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Product : NSObject
+@interface Product : NSObject<NSCoding>
 
 @property NSString* title;
 @property NSString* displayState;
+
++(Product*)parseFromJson:(NSDictionary*)dict;
 
 @end
