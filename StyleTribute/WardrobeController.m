@@ -14,6 +14,7 @@
 #import "WardrobeController.h"
 #import "ApiRequester.h"
 #import "DataCache.h"
+#import <MRProgress.h>
 
 @interface WardrobeController()
 
@@ -30,20 +31,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self generateFakeData];
+//    [self generateFakeData];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     
-//    self.sellingItems = [[DataCache sharedInstance] loadSellingItems];
-//    self.soldItems = [[DataCache sharedInstance] loadSoldItems];
-//    self.archivedItems = [[DataCache sharedInstance] loadArchivedItems];
-//    
-//    [[ApiRequester sharedInstance] getProductsWithSuccess:^(NSArray *products) {
-//        self.sellingItems = [products mutableCopy];
-//        [self.itemsTable reloadData];
-//        [[DataCache sharedInstance] saveSellingItems:self.sellingItems];
-//    } failure:^(NSString* error) {
-//        [GlobalHelper showMessage:error withTitle:@"Error"];
-//    }];
+    self.sellingItems = [[DataCache sharedInstance] loadSellingItems];
+    self.soldItems = [[DataCache sharedInstance] loadSoldItems];
+    self.archivedItems = [[DataCache sharedInstance] loadArchivedItems];
+    
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [[ApiRequester sharedInstance] getProductsWithSuccess:^(NSArray *products) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        self.sellingItems = [products mutableCopy];
+        [self.itemsTable reloadData];
+        [[DataCache sharedInstance] saveSellingItems:self.sellingItems];
+    } failure:^(NSString* error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [GlobalHelper showMessage:error withTitle:@"Error"];
+    }];
 }
 
 #pragma mark - UITableView

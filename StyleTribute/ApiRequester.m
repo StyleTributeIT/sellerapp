@@ -8,6 +8,8 @@
 
 #import "ApiRequester.h"
 #import "Product.h"
+#import "GlobalHelper.h"
+#import <Reachability.h>
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
@@ -45,10 +47,25 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     return req;
 }
 
+-(BOOL)checkInternetConnection {
+    if(![Reachability reachabilityForInternetConnection].isReachable) {
+//        [GlobalHelper showMessage:@"internet connection not reachable" withTitle:@"error"];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 #pragma mark - API methods
 
 -(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespProducts)success failure:(JSONRespError)failure
 {
+    if(![self checkInternetConnection]) {
+        NSLog(@"get products internet connection problem");
+        failure(DefInternetUnavailableMsg);
+        return nil;
+    }
+    
     NSMutableURLRequest *req = [self getReqToApiPath:@"products.json"];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:req];
