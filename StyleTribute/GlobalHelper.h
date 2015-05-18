@@ -12,7 +12,7 @@
 @interface GlobalHelper : NSObject
 
 +(void)addLogoToNavBar:(UINavigationItem*)item;
-+(UIPickerView*)createPickerForFields:(NSArray*)fields withTarget:(id)target doneAction:(SEL)done cancelAction:(SEL)cancel;
++(UIPickerView*)createPickerForFields:(NSArray*)fields;
 +(void)showMessage:(NSString*)msg withTitle:(NSString*)title;
 
 @end

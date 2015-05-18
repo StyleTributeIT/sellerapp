@@ -7,10 +7,12 @@
 //
 
 #import "BaseInputController.h"
+#import "XCDFormInputAccessoryView.h"
 
 @interface BaseInputController()
 
 @property CGFloat bottomInset;
+@property XCDFormInputAccessoryView* inputAccessoryView;
 
 @end
 
@@ -24,6 +26,8 @@
     [self registerForKeyboardNotifications];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    
+    self.inputAccessoryView = [[XCDFormInputAccessoryView alloc] initWithTarget:self doneAction:@selector(inputDone)];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -43,10 +47,8 @@
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.scrollView.contentInset.top, self.scrollView.contentInset.left, kbSize.height + 40, self.scrollView.contentInset.right);
-//    NSLog(@"content inset 1 - %f", contentInsets.bottom);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
-//    NSLog(@"content inset 2 - %f", self.scrollView.contentInset.bottom);
     
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
@@ -54,10 +56,6 @@
     if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
         [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
     }
-    
-//    UIEdgeInsets ins = self.scrollView.contentInset;
-//    NSLog(@"scroll view: %f, %f, %f, %f", ins.top, ins.left, ins.bottom, ins.right);
-//    NSLog(@"content size: %f, %f", self.scrollView.contentSize.width, self.scrollView.contentSize.height);
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification {
@@ -71,6 +69,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self inputDone];
     self.activeField = nil;
 }
 
@@ -89,6 +88,10 @@
 
 -(void)textViewDidEndEditing:(UITextView *)textView {
     self.activeField = nil;
+}
+
+-(void)inputDone {
+    [self.activeField resignFirstResponder];
 }
 
 #pragma mark - Positioning

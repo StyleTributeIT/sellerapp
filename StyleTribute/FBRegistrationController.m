@@ -21,7 +21,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.countries = @[@"country 1", @"country 2", @"country 3", @"country 4", @"country 5"];
-    self.picker = [GlobalHelper createPickerForFields:@[self.countryField] withTarget:self doneAction:@selector(pickerOk:) cancelAction:@selector(pickerCancel:)];
+    self.picker = [GlobalHelper createPickerForFields:@[self.countryField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
@@ -62,13 +62,9 @@
     return [self.countries objectAtIndex:row];
 }
 
--(void)pickerOk:(id)sender {
+-(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
     self.countryField.text = [self.countries objectAtIndex:index];
-    [self.activeField resignFirstResponder];
-}
-
--(void)pickerCancel:(id)sender {
     [self.activeField resignFirstResponder];
 }
 

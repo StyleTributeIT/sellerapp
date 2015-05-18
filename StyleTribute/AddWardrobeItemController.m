@@ -37,7 +37,7 @@
     
     self.isTutorialPresented = NO;
     
-    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField] withTarget:self doneAction:@selector(pickerOk:) cancelAction:@selector(pickerCancel:)];
+    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
@@ -103,7 +103,7 @@
     return [[self getCurrentDatasource] objectAtIndex:row];
 }
 
--(void)pickerOk:(id)sender {
+-(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
     if(self.activeField == self.conditionField) {
         self.conditionField.text = [self.conditionTypes objectAtIndex:index];
@@ -111,10 +111,6 @@
         self.sizeField.text = [self.sizes objectAtIndex:index];
     }
     
-    [self.activeField resignFirstResponder];
-}
-
--(void)pickerCancel:(id)sender {
     [self.activeField resignFirstResponder];
 }
 
@@ -171,6 +167,11 @@
     }
     
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeField = textField;
+    [self setPickerData:nil];
 }
 
 #pragma mark - Camera
