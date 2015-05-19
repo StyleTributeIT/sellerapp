@@ -15,6 +15,7 @@
 		7A0EB6181AEE23D400D90001 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6161AEE23D400D90001 /* LaunchScreen.xib */; };
 		7A0EB6241AEE23D400D90001 /* StyleTributeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */; };
 		7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A116C8E1AFA449300A4D7D9 /* TutorialController.m */; };
+		7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2327351B0B98700064C4B3 /* AttributedLabel.m */; };
 		7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5A1AFCCF010031C629 /* MapKit.framework */; };
 		7A237C5D1AFCD3F70031C629 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5C1AFCD3F70031C629 /* AddressBook.framework */; };
 		7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */; };
@@ -72,6 +73,8 @@
 		7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleTributeTests.m; sourceTree = "<group>"; };
 		7A116C8D1AFA449300A4D7D9 /* TutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialController.h; sourceTree = "<group>"; };
 		7A116C8E1AFA449300A4D7D9 /* TutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialController.m; sourceTree = "<group>"; };
+		7A2327341B0B98700064C4B3 /* AttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedLabel.h; sourceTree = "<group>"; };
+		7A2327351B0B98700064C4B3 /* AttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedLabel.m; sourceTree = "<group>"; };
 		7A237C5A1AFCCF010031C629 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7A237C5C1AFCD3F70031C629 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -229,6 +232,8 @@
 				7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */,
 				7AFE43641AF22A99004B982B /* GlobalHelper.h */,
 				7AFE43651AF22A99004B982B /* GlobalHelper.m */,
+				7A2327341B0B98700064C4B3 /* AttributedLabel.h */,
+				7A2327351B0B98700064C4B3 /* AttributedLabel.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 			files = (
 				7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */,
 				7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */,
+				7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */,
 				7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */,
 				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
 				7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */,

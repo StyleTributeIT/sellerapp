@@ -16,7 +16,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.slideShow setDelay:3];
+    [self.slideShow setDelay:6];
     [self.slideShow setTransitionDuration:1];
     [self.slideShow setTransitionType:KASlideShowTransitionSlide];
     [self.slideShow setImagesContentMode:UIViewContentModeScaleAspectFill];

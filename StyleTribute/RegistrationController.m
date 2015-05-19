@@ -19,6 +19,10 @@
 
 @implementation RegistrationController
 
+//-(id)initWithCoder:(NSCoder *)aDecoder {
+//    return [super initWithCoder:aDecoder];
+//}
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.countries = @[@"country 1", @"country 2", @"country 3", @"country 4", @"country 5"];
