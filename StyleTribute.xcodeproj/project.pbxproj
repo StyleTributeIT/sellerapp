@@ -26,6 +26,9 @@
 		7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */; };
 		7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */; };
 		7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */; };
+		7A600F771B0B773A00CCD5F3 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */; };
+		7A600F781B0B777200CCD5F3 /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */; };
+		7A600F791B0B777500CCD5F3 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */; };
 		7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427101AF8E7E10051466E /* PriceEditController.m */; };
 		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7A66FDDE1B04E04800961709 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A66FDDD1B04E04800961709 /* DataCache.m */; };
@@ -88,6 +91,9 @@
 		7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WardrobeCell.m; sourceTree = "<group>"; };
 		7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRegistrationController.h; sourceTree = "<group>"; };
 		7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRegistrationController.m; sourceTree = "<group>"; };
+		7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
+		7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
+		7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
 		7A64270F1AF8E7E10051466E /* PriceEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceEditController.h; sourceTree = "<group>"; };
 		7A6427101AF8E7E10051466E /* PriceEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceEditController.m; sourceTree = "<group>"; };
 		7A6427121AF901CF0051466E /* ChooseCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCategoryController.h; sourceTree = "<group>"; };
@@ -170,6 +176,7 @@
 		7A0EB6061AEE23D400D90001 /* StyleTribute */ = {
 			isa = PBXGroup;
 			children = (
+				7A600F731B0B750300CCD5F3 /* Fonts */,
 				7A4AA2C61AEFF45300190ED3 /* Cells */,
 				7A3FA4A01AEFE53B0050803C /* DataModel */,
 				7AA5EADA1AEE73D600CAB83B /* Controllers */,
@@ -242,6 +249,16 @@
 				7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		7A600F731B0B750300CCD5F3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */,
+				7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */,
+				7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		7AA5EADA1AEE73D600CAB83B /* Controllers */ = {
@@ -388,9 +405,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A600F791B0B777500CCD5F3 /* Gotham-Medium.otf in Resources */,
 				7A0EB6131AEE23D400D90001 /* Main.storyboard in Resources */,
 				7A0EB6181AEE23D400D90001 /* LaunchScreen.xib in Resources */,
+				7A600F771B0B773A00CCD5F3 /* Gotham-Book.otf in Resources */,
 				7A0EB6151AEE23D400D90001 /* Images.xcassets in Resources */,
+				7A600F781B0B777200CCD5F3 /* Gotham-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

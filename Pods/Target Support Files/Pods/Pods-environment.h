@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
+// KASlideShow
+#define COCOAPODS_POD_AVAILABLE_KASlideShow
+#define COCOAPODS_VERSION_MAJOR_KASlideShow 2
+#define COCOAPODS_VERSION_MINOR_KASlideShow 2
+#define COCOAPODS_VERSION_PATCH_KASlideShow 0
+
 // MGSwipeTableCell
 #define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell
 #define COCOAPODS_VERSION_MAJOR_MGSwipeTableCell 1

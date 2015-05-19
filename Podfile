@@ -5,4 +5,5 @@ pod 'MGSwipeTableCell'
 pod 'TestFairy'
 pod 'Reachability'
 pod 'MRProgress'
+pod 'KASlideShow'
 

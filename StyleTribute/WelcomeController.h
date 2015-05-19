@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <KASlideShow.h>
 
 @interface WelcomeController : UIViewController
+
+@property IBOutlet KASlideShow* slideShow;
+@property IBOutlet UIButton* signInButton;
 
 -(IBAction)fbLogin:(id)sender;
 

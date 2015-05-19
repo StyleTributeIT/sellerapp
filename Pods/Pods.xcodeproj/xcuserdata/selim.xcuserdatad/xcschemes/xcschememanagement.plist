@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-KASlideShow.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MGSwipeTableCell.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TestFairy.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3CDD115C3B443912A936BCAB</key>
+		<key>0EF6FE78753352895C009FC8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A0ED9FBC408BE5D2B2028BD</key>
+		<key>3F192B20F996B7C825DDDE21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3DC56871D78B1CF26DAFA11</key>
+		<key>40F13D11E69F045E92A76CF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B7531AF64582EDAFD2F42D66</key>
+		<key>6F971C80922A2FAF6CEF2180</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CAA7AB286F3E10CD9D6D7BB9</key>
+		<key>DF498E7725BB7D05608417AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FECD2FBFC63CB74EF9340FE9</key>
+		<key>F7A3551E4EE32322E650FE3F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
