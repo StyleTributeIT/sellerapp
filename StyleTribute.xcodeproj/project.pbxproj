@@ -44,6 +44,7 @@
 		7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */; };
 		7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */; };
 		7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */; };
+		7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */; };
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
 		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
 /* End PBXBuildFile section */
@@ -123,6 +124,8 @@
 		7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
 		7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
 		7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		7AFCA13C1B0C800C005BB904 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		7AFE43611AF22935004B982B /* AddWardrobeItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWardrobeItemController.h; sourceTree = "<group>"; };
 		7AFE43621AF22935004B982B /* AddWardrobeItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWardrobeItemController.m; sourceTree = "<group>"; };
 		7AFE43641AF22A99004B982B /* GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalHelper.h; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */,
 				7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */,
 				7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */,
+				7AFCA13C1B0C800C005BB904 /* MainTabBarController.h */,
+				7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */,
 				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
+				7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,

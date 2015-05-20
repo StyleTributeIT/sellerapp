@@ -34,6 +34,10 @@
 //    [self generateFakeData];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     
+    UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
+    self.wardrobeType.tintColor = pink;
+    [[UITabBar appearance] setSelectedImageTintColor:pink];
+    
     self.sellingItems = [[DataCache sharedInstance] loadSellingItems];
     self.soldItems = [[DataCache sharedInstance] loadSoldItems];
     self.archivedItems = [[DataCache sharedInstance] loadArchivedItems];
@@ -48,7 +52,25 @@
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         [GlobalHelper showMessage:error withTitle:@"Error"];
     }];
+    
+    NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:12],
+                                      NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
+    NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:12],
+                                              NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
+    [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
 }
+
+//-(void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
+//}
+//
+//-(void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+//}
 
 #pragma mark - UITableView
 

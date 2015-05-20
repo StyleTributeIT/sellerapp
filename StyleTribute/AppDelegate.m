@@ -23,6 +23,12 @@
     
     [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
     
+    UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
+    [[UITabBar appearance] setSelectedImageTintColor:pink];
+    
+//    [[UITextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
+//    [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
+    
     return YES;
 }
 

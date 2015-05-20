@@ -21,6 +21,8 @@
             <string>Gotham-Light</string>
             <string>Gotham-Light</string>
             <string>Gotham-Light</string>
+            <string>Gotham-Light</string>
+            <string>Gotham-Light</string>
         </mutableArray>
         <mutableArray key="Gotham-Medium.otf">
             <string>Gotham-Medium</string>
@@ -132,7 +134,7 @@
                                         <fragment content="Sign in">
                                             <attributes>
                                                 <color key="NSColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="16" name="Gotham-Light"/>
+                                                <font key="NSFont" metaFont="system" size="16"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -729,7 +731,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvp-lq-7KE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Pgu-pG-jKm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4078" y="848"/>
+            <point key="canvasLocation" x="4057" y="848"/>
         </scene>
         <!--Title-->
         <scene sceneID="Ka6-Vr-ZoQ">
@@ -853,7 +855,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HC4-8v-jCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3ec-lA-3IZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4473" y="848"/>
+            <point key="canvasLocation" x="4479" y="848"/>
         </scene>
         <!--Title-->
         <scene sceneID="lC3-OS-TXm">
@@ -1007,7 +1009,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-3h-1LV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qZY-yz-hbq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4900" y="848"/>
+            <point key="canvasLocation" x="4894" y="848"/>
         </scene>
         <!--Contact us-->
         <scene sceneID="02h-ZL-Kac">
@@ -1102,7 +1104,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5317" y="848"/>
+            <point key="canvasLocation" x="5291" y="848"/>
         </scene>
         <!--Wardrobe Controller-->
         <scene sceneID="Pip-kP-ofg">
@@ -1127,7 +1129,7 @@
                                     <action selector="wardrobeTypeChanged:" destination="gWl-q7-vZa" eventType="valueChanged" id="ebm-6t-lTm"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
                                 <rect key="frame" x="16" y="132" width="288" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1137,26 +1139,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOn-Le-vWG" id="KIm-Or-0xq">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
-                                                    <rect key="frame" x="0.0" y="4" width="83" height="64"/>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
+                                                    <rect key="frame" x="0.0" y="4" width="64" height="64"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="83" id="w2Q-gH-c4y"/>
+                                                        <constraint firstAttribute="width" constant="64" id="w2Q-gH-c4y"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="91" y="22" width="197" height="15"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="72" y="22" width="216" height="12"/>
+                                                    <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham" pointSize="12"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
-                                                    <rect key="frame" x="91" y="4" width="197" height="18"/>
+                                                    <rect key="frame" x="72" y="4" width="216" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="L5w-qT-ZbS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham" pointSize="16"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1197,13 +1199,7 @@
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="top" secondItem="xrR-oq-fgh" secondAttribute="bottom" constant="20" id="hwB-BX-xhi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Wny-Ee-xTf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="jyj-7J-odB">
-                            <connections>
-                                <segue destination="JCl-pv-8pa" kind="show" id="nBJ-KL-mvc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Wny-Ee-xTf"/>
                     <connections>
                         <outlet property="itemsTable" destination="ydo-Bi-8mJ" id="f9M-Fa-LDx"/>
                         <outlet property="wardrobeType" destination="xrR-oq-fgh" id="vo8-dv-p0y"/>
@@ -1211,12 +1207,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0O-si-xHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3191" y="159"/>
+            <point key="canvasLocation" x="3185" y="-526"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="5D6-10-5KI">
             <objects>
-                <tabBarController id="dua-YX-667" sceneMemberID="viewController">
+                <tabBarController id="dua-YX-667" customClass="MainTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="eKq-5x-BKt">
@@ -1226,12 +1222,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="KH2-pt-0fW" kind="relationship" relationship="viewControllers" id="JC2-N0-uGn"/>
+                        <segue destination="ohT-Nb-oJU" kind="relationship" relationship="viewControllers" id="R9J-P4-ueX"/>
                         <segue destination="kTd-Km-Eng" kind="relationship" relationship="viewControllers" id="uiE-tb-8LF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBu-cM-koQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2308" y="479"/>
+            <point key="canvasLocation" x="2232" y="479"/>
         </scene>
         <!--fbRegistrationController-->
         <scene sceneID="pPC-bg-00S">
@@ -1437,7 +1434,7 @@
                                                     <fragment content="Just a few more details, before you get started...">
                                                         <attributes>
                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <font key="NSFont" size="16" name="Gotham-Light"/>
+                                                            <font key="NSFont" metaFont="system" size="16"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                         </attributes>
                                                     </fragment>
@@ -1655,12 +1652,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxs-xj-Y9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2771" y="159"/>
+            <point key="canvasLocation" x="2771" y="-526"/>
         </scene>
         <!--Title-->
         <scene sceneID="j8t-bR-Z8K">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="JCl-pv-8pa" customClass="AddWardrobeItemController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddWardrobeItemController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JCl-pv-8pa" customClass="AddWardrobeItemController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tFD-Zu-I0S"/>
                         <viewControllerLayoutGuide type="bottom" id="bW5-s7-tra"/>
@@ -1869,12 +1866,12 @@
                     <navigationItem key="navigationItem" title="Title" id="Ao4-pW-szc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Rgk-aL-MtS">
                             <connections>
-                                <segue destination="9IW-3n-jkb" kind="unwind" unwindAction="cancelUnwindToWardrobeItems:" id="AAZ-vu-9fJ"/>
+                                <action selector="cancel:" destination="JCl-pv-8pa" id="fDo-Zk-41y"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="dRM-uF-VYh">
                             <connections>
-                                <segue destination="9IW-3n-jkb" kind="unwind" identifier="" unwindAction="unwindToWardrobeItems:" id="akL-XU-Dhp"/>
+                                <action selector="done:" destination="JCl-pv-8pa" id="fmS-jv-GG9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1894,7 +1891,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gi-6i-1r4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="9IW-3n-jkb" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="qlY-2D-e1Z">
                     <connections>
                         <action selector="displayPhotosActionSheet:" destination="JCl-pv-8pa" id="gU3-F2-OVu"/>
@@ -1921,7 +1917,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3657" y="159"/>
+            <point key="canvasLocation" x="3185" y="164"/>
         </scene>
         <!--Title-->
         <scene sceneID="ohv-na-xxH">
@@ -1960,7 +1956,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNt-KW-ktF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tm3-rZ-94c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4078" y="-502"/>
+            <point key="canvasLocation" x="3732" y="-512"/>
         </scene>
         <!--Title-->
         <scene sceneID="ouN-cX-hFq">
@@ -2122,7 +2118,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDx-b3-heL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pQR-VK-prv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4078" y="159"/>
+            <point key="canvasLocation" x="3657" y="164"/>
         </scene>
         <!--Tutorial Controller-->
         <scene sceneID="vZo-O0-RDz">
@@ -2159,7 +2155,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="170-GQ-0vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sfi-iR-J7u" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4473" y="159"/>
+            <point key="canvasLocation" x="4057" y="164"/>
         </scene>
         <!--My account-->
         <scene sceneID="yse-FJ-1hJ">
@@ -2180,16 +2176,37 @@
             </objects>
             <point key="canvasLocation" x="2771" y="848"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BWq-Cj-uqG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="add-item" id="VZF-2f-aWD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylh-HF-fxa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JCl-pv-8pa" kind="relationship" relationship="rootViewController" id="XaG-dt-6Cm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJU-8B-GIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2771" y="164"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
         <image name="Logo" width="64" height="64"/>
         <image name="account" width="30" height="30"/>
+        <image name="add-item" width="40" height="40"/>
         <image name="placeholder" width="64" height="64"/>
-        <image name="wardrobe" width="30" height="30"/>
+        <image name="stub" width="64" height="64"/>
+        <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Iws-61-RlG"/>
+        <segue reference="XTf-8t-q92"/>
     </inferredMetricsTieBreakers>
 </document>

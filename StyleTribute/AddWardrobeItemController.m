@@ -11,6 +11,7 @@
 #import "AddWardrobeItemController.h"
 #import "ChooseCategoryController.h"
 #import "TutorialController.h"
+#import "MainTabBarController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
 @interface AddWardrobeItemController ()
@@ -213,6 +214,18 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - Actions
+
+-(IBAction)cancel:(id)sender {
+    NSLog(@"cancel");
+    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+    [tabController selectPreviousTab];
+}
+
+-(IBAction)done:(id)sender {
+    NSLog(@"done");
 }
 
 @end
