@@ -29,6 +29,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-StyleTributeTests-KIF.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StyleTributeTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TestFairy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0EF6FE78753352895C009FC8</key>
+		<key>136486AA7479A30E6149BCCB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3F192B20F996B7C825DDDE21</key>
+		<key>26595D04FDCEB631B2A90A57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40F13D11E69F045E92A76CF4</key>
+		<key>6F4C83ED165B27CEAF99064C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F971C80922A2FAF6CEF2180</key>
+		<key>A8880E7741799B4B6219F551</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF498E7725BB7D05608417AF</key>
+		<key>B8C2BD18F1FDBFC8993D5E81</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F7A3551E4EE32322E650FE3F</key>
+		<key>D0557D40F6A1AAD0F6927174</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D875FCF6507684FDE6406B76</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCE61A277D306E6D72BD9844</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB441E3363011894F9B17F77</key>
 		<dict>
 			<key>primary</key>
 			<true/>

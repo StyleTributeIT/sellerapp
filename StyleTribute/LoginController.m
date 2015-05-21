@@ -8,29 +8,48 @@
 
 #import "LoginController.h"
 #import "GlobalDefs.h"
+#import "GlobalHelper.h"
 
 @implementation LoginController
 
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    [self.forgotPasswordButton setAttributedTitle:[GlobalHelper linkWithString:@"Forgot your password?"] forState:UIControlStateNormal];
+    [GlobalHelper configureSlideshow:self.slideShow];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self centerContent];
+//    [self centerContent];
+    [self.slideShow start];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.slideShow stop];
+    [super viewWillDisappear:animated];
 }
 
 -(IBAction)login:(id)sender {
     
     // for testing
-    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-    return;
+    //    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+    //    return;
     
-//    if([self noEmptyFields]) {
-//        if([self validateEmail:self.loginField.text]) {
-//            // login
-//        } else {
-//            [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Invalid email" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-//        }
-//    } else {
-//        [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Please fill in all fields" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
-//    }
+    if([self noEmptyFields]) {
+        if([self validateEmail:self.loginField.text]) {
+            // for testing
+            // TODO: replace by login API method call
+            if([self.passwordField.text isEqualToString:@"123456"]) {
+                [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+            } else {
+                [GlobalHelper showMessage:DefInvalidLoginPassword withTitle:@"error"];
+            }
+        } else {
+            [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];
+        }
+    } else {
+        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+    }
 }
 
 -(IBAction)forgotPassword:(id)sender {

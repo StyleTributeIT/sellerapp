@@ -26,8 +26,10 @@
     UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
     [[UITabBar appearance] setSelectedImageTintColor:pink];
     
-//    [[UITextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
-//    [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
+    [[UITextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
+    [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
+    [[UITextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+    [[UITextField appearance] setTextAlignment:NSTextAlignmentCenter];
     
     return YES;
 }

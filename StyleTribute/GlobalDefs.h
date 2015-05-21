@@ -16,5 +16,8 @@ static NSString* const DefApiHost		= @"http://selim.deva/api_test/";
 
 static NSString* const DefGeneralErrMsg	= @"Something gone wrong. Try again later.";
 static NSString* const DefInternetUnavailableMsg = @"internet connection not reachable";
+static NSString* const DefInvalidLoginPassword = @"Invalid login or password";
+static NSString* const DefInvalidEmail = @"Invalid email";
+static NSString* const DefEmptyFields = @"Please fill in all fields";
 
 #endif

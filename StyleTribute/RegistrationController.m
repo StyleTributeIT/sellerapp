@@ -8,6 +8,7 @@
 
 #import "RegistrationController.h"
 #import "GlobalHelper.h"
+#import "GlobalDefs.h"
 
 @interface RegistrationController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -30,6 +31,8 @@
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
+    [GlobalHelper configureSlideshow:self.slideShow];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
 }
 
@@ -41,18 +44,25 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self centerContent];
+//    [self centerContent];
+    [self.slideShow start];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.slideShow stop];
+    [super viewWillDisappear:animated];
 }
 
 -(IBAction)createAccount:(id)sender {
     if([self noEmptyFields]) {
         if([self validateEmail:self.emailField.text]) {
-            // login
+            // TODO: replace with registration API method call
+            [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Invalid email" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+            [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];
         }
     } else {
-        [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Please fill in all fields" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
     }
 }
 

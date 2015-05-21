@@ -8,6 +8,7 @@
 
 #import "FBRegistrationController.h"
 #import "GlobalHelper.h"
+#import "GlobalDefs.h"
 
 @interface FBRegistrationController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -24,19 +25,28 @@
     self.picker = [GlobalHelper createPickerForFields:@[self.countryField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
+    
+    [GlobalHelper configureSlideshow:self.slideShow];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self centerContent];
+//    [self centerContent];
+    [self.slideShow start];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.slideShow stop];
+    [super viewWillDisappear:animated];
 }
 
 -(IBAction)createAccount:(id)sender {
     if([self noEmptyFields]) {
         //
     } else {
-        [[[UIAlertView alloc] initWithTitle:@"error"  message:@"Please fill in all fields" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
     }
 }
 

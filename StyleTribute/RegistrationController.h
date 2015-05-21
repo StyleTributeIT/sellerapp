@@ -8,6 +8,7 @@
 
 #import "BaseInputController.h"
 #import <UIKit/UIKit.h>
+#import <KASlideShow.h>
 
 @interface RegistrationController : BaseInputController
 
@@ -18,6 +19,7 @@
 @property IBOutlet UITextField* emailField;
 @property IBOutlet UITextField* countryField;
 @property IBOutlet UITextField* phoneField;
+@property IBOutlet KASlideShow* slideShow;
 
 -(IBAction)createAccount:(id)sender;
 

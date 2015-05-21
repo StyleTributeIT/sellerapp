@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <KASlideShow.h>
 
 @interface GlobalHelper : NSObject
 
 +(void)addLogoToNavBar:(UINavigationItem*)item;
 +(UIPickerView*)createPickerForFields:(NSArray*)fields;
 +(void)showMessage:(NSString*)msg withTitle:(NSString*)title;
++(NSAttributedString*)linkWithString:(NSString*)string;
++(void)configureSlideshow:(KASlideShow*)slideShow;
 
 @end

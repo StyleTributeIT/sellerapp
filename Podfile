@@ -7,3 +7,7 @@ pod 'Reachability'
 pod 'MRProgress'
 pod 'KASlideShow'
 
+target 'StyleTributeTests', :exclusive => true do
+	pod 'KIF', :configuration => ['Debug']
+end
+

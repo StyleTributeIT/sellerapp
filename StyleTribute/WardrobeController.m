@@ -60,6 +60,7 @@
     
     [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
     [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
+    self.wardrobeType.accessibilityLabel = @"Wardrobe items type";
 }
 
 //-(void)viewWillAppear:(BOOL)animated {

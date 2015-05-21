@@ -21,6 +21,9 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - KASlideShow (2.2)
+  - KIF (3.2.2):
+    - KIF/XCTest (= 3.2.2)
+  - KIF/XCTest (3.2.2)
   - MGSwipeTableCell (1.4.3)
   - MRProgress (0.8.2):
     - MRProgress/ActivityIndicator (= 0.8.2)
@@ -56,6 +59,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - KASlideShow
+  - KIF
   - MGSwipeTableCell
   - MRProgress
   - Reachability
@@ -64,9 +68,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
+  KIF: b0bd762b0c7890b04920cf618021d6d4fd5127bd
   MGSwipeTableCell: cb9805df3cc5cad75ad43a5c1eb424be0316f0bf
   MRProgress: f4cfe862082418e8f542f077772283f425d6c699
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   TestFairy: 726094c49c74a1795d74cd6f31ef13e38cc9d686
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.36.3

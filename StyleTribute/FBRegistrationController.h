@@ -7,6 +7,7 @@
 //
 
 #import "BaseInputController.h"
+#import <KASlideShow.h>
 
 @interface FBRegistrationController : BaseInputController
 
@@ -15,6 +16,7 @@
 @property IBOutlet UITextField* lastNameField;
 @property IBOutlet UITextField* countryField;
 @property IBOutlet UITextField* phoneField;
+@property IBOutlet KASlideShow* slideShow;
 
 -(IBAction)createAccount:(id)sender;
 

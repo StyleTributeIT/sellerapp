@@ -13,7 +13,6 @@
 		7A0EB6131AEE23D400D90001 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6111AEE23D400D90001 /* Main.storyboard */; };
 		7A0EB6151AEE23D400D90001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6141AEE23D400D90001 /* Images.xcassets */; };
 		7A0EB6181AEE23D400D90001 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6161AEE23D400D90001 /* LaunchScreen.xib */; };
-		7A0EB6241AEE23D400D90001 /* StyleTributeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */; };
 		7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A116C8E1AFA449300A4D7D9 /* TutorialController.m */; };
 		7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2327351B0B98700064C4B3 /* AttributedLabel.m */; };
 		7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5A1AFCCF010031C629 /* MapKit.framework */; };
@@ -33,8 +32,12 @@
 		7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427101AF8E7E10051466E /* PriceEditController.m */; };
 		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7A66FDDE1B04E04800961709 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A66FDDD1B04E04800961709 /* DataCache.m */; };
+		7A7E45DB1B0DDD0C000A7C84 /* SlideShowDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7E45DA1B0DDD0C000A7C84 /* SlideShowDataSource.m */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
+		7AAA8A6E1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A6D1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m */; };
+		7AAA8A711B0CF37B00BDE617 /* LoginTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A6F1B0CF37B00BDE617 /* LoginTest.m */; };
+		7AAA8A721B0CF37B00BDE617 /* RegistrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */; };
 		7AB78D911B02200100C13D13 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */; };
 		7AB78D931B0223C500C13D13 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */; };
 		7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */; };
@@ -47,6 +50,7 @@
 		7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */; };
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
 		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
+		FE66A89E4F6C6938CCCD3D07 /* libPods-StyleTributeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC957447A82DF788870EABBD /* libPods-StyleTributeTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		112BD99F1E8D42C7033A650C /* Pods-StyleTributeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.release.xcconfig"; sourceTree = "<group>"; };
 		3AAA915C597815E7ED38446F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7A0EB6041AEE23D400D90001 /* StyleTribute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleTribute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EB6081AEE23D400D90001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,7 +76,6 @@
 		7A0EB6171AEE23D400D90001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7A0EB61D1AEE23D400D90001 /* StyleTributeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StyleTributeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EB6221AEE23D400D90001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyleTributeTests.m; sourceTree = "<group>"; };
 		7A116C8D1AFA449300A4D7D9 /* TutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialController.h; sourceTree = "<group>"; };
 		7A116C8E1AFA449300A4D7D9 /* TutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialController.m; sourceTree = "<group>"; };
 		7A2327341B0B98700064C4B3 /* AttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedLabel.h; sourceTree = "<group>"; };
@@ -104,11 +108,17 @@
 		7A6427131AF901CF0051466E /* ChooseCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCategoryController.m; sourceTree = "<group>"; };
 		7A66FDDC1B04E04800961709 /* DataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCache.h; sourceTree = "<group>"; };
 		7A66FDDD1B04E04800961709 /* DataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
+		7A7E45D91B0DDD0C000A7C84 /* SlideShowDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideShowDataSource.h; sourceTree = "<group>"; };
+		7A7E45DA1B0DDD0C000A7C84 /* SlideShowDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideShowDataSource.m; sourceTree = "<group>"; };
 		7AA5EAD61AEE2F6500CAB83B /* ApiRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiRequester.h; sourceTree = "<group>"; };
 		7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiRequester.m; sourceTree = "<group>"; };
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
 		7AA5EADB1AEE740500CAB83B /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		7AA5EADC1AEE740500CAB83B /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		7AAA8A6C1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+EXAdditions.h"; sourceTree = "<group>"; };
+		7AAA8A6D1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+EXAdditions.m"; sourceTree = "<group>"; };
+		7AAA8A6F1B0CF37B00BDE617 /* LoginTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTest.m; sourceTree = "<group>"; };
+		7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationTest.m; sourceTree = "<group>"; };
 		7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountController.h; sourceTree = "<group>"; };
@@ -132,6 +142,8 @@
 		7AFE43651AF22A99004B982B /* GlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalHelper.m; sourceTree = "<group>"; };
 		92D4F01969E74DEDB8E3B992 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC957447A82DF788870EABBD /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6130A20683DADD2B3BADCCF /* Pods-StyleTributeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE66A89E4F6C6938CCCD3D07 /* libPods-StyleTributeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +225,10 @@
 		7A0EB6201AEE23D400D90001 /* StyleTributeTests */ = {
 			isa = PBXGroup;
 			children = (
-				7A0EB6231AEE23D400D90001 /* StyleTributeTests.m */,
+				7AAA8A6C1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.h */,
+				7AAA8A6D1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m */,
+				7AAA8A6F1B0CF37B00BDE617 /* LoginTest.m */,
+				7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */,
 				7A0EB6211AEE23D400D90001 /* Supporting Files */,
 			);
 			path = StyleTributeTests;
@@ -237,6 +253,8 @@
 				7AFE43651AF22A99004B982B /* GlobalHelper.m */,
 				7A2327341B0B98700064C4B3 /* AttributedLabel.h */,
 				7A2327351B0B98700064C4B3 /* AttributedLabel.m */,
+				7A7E45D91B0DDD0C000A7C84 /* SlideShowDataSource.h */,
+				7A7E45DA1B0DDD0C000A7C84 /* SlideShowDataSource.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -315,6 +333,8 @@
 			children = (
 				3AAA915C597815E7ED38446F /* Pods.debug.xcconfig */,
 				92D4F01969E74DEDB8E3B992 /* Pods.release.xcconfig */,
+				C6130A20683DADD2B3BADCCF /* Pods-StyleTributeTests.debug.xcconfig */,
+				112BD99F1E8D42C7033A650C /* Pods-StyleTributeTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -329,6 +349,7 @@
 				7A237C5A1AFCCF010031C629 /* MapKit.framework */,
 				7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */,
 				A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */,
+				AC957447A82DF788870EABBD /* libPods-StyleTributeTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -359,9 +380,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A0EB62A1AEE23D400D90001 /* Build configuration list for PBXNativeTarget "StyleTributeTests" */;
 			buildPhases = (
+				0E12ED366ACCEDFF1130598F /* Check Pods Manifest.lock */,
 				7A0EB6191AEE23D400D90001 /* Sources */,
 				7A0EB61A1AEE23D400D90001 /* Frameworks */,
 				7A0EB61B1AEE23D400D90001 /* Resources */,
+				AEA738BAB12D55BF8619D476 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -434,6 +457,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0E12ED366ACCEDFF1130598F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AEA738BAB12D55BF8619D476 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C950A3F0A356645AFCA64833 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,6 +527,7 @@
 				7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */,
 				7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */,
 				7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */,
+				7A7E45DB1B0DDD0C000A7C84 /* SlideShowDataSource.m in Sources */,
 				7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */,
 				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
 				7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */,
@@ -504,7 +558,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A0EB6241AEE23D400D90001 /* StyleTributeTests.m in Sources */,
+				7AAA8A721B0CF37B00BDE617 /* RegistrationTest.m in Sources */,
+				7AAA8A711B0CF37B00BDE617 /* LoginTest.m in Sources */,
+				7AAA8A6E1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +717,7 @@
 		};
 		7A0EB62B1AEE23D400D90001 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6130A20683DADD2B3BADCCF /* Pods-StyleTributeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -680,6 +737,7 @@
 		};
 		7A0EB62C1AEE23D400D90001 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 112BD99F1E8D42C7033A650C /* Pods-StyleTributeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
