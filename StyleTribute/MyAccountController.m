@@ -8,6 +8,7 @@
 
 #import "GlobalHelper.h"
 #import "MyAccountController.h"
+#import "MyAccountCell.h"
 
 @interface MyAccountController ()
 
@@ -21,11 +22,12 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.accountSettings = @[@"Edit profile", @"Resident address", @"Change/update password", @"My bank details", @"Contact & find us"];
+    self.accountSettings = @[@"EDIT PROFILE", @"RESIDENT ADDRESS", @"CHANGE MY PASSWORD", @"MY BANK DETAILS", @"CONTACT & FIND US"];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.widthConstraint.constant = [[UIScreen mainScreen] bounds].size.width;
     [GlobalHelper addLogoToNavBar:self.navigationItem];
 }
 
@@ -36,10 +38,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    MyAccountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     cell.tag = indexPath.row;
-    cell.textLabel.text = [self.accountSettings objectAtIndex:indexPath.row];
+    cell.title.text = [self.accountSettings objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -72,6 +74,11 @@
 #pragma mark - Unwind handlers
 
 -(IBAction)unwindToMyAccount:(UIStoryboardSegue*)sender {
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.scrollView setContentOffset: CGPointMake(0, scrollView.contentOffset.y)];
 }
 
 @end

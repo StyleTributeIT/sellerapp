@@ -41,9 +41,7 @@
     return sharedInstance;
 }
 
--(UIImage*)slideShow:(KASlideShow*)slideShow imageForPosition:(KASlideShowPosition)position {
-    NSLog(@"position: %zd", position);
-    
+-(UIImage*)slideShow:(KASlideShow*)slideShow imageForPosition:(KASlideShowPosition)position {    
     switch (position) {
         case KASlideShowPositionTop: {
             NSUInteger current = self.curIndex;

@@ -32,24 +32,24 @@
 -(IBAction)login:(id)sender {
     
     // for testing
-    //    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-    //    return;
+    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+    return;
     
-    if([self noEmptyFields]) {
-        if([self validateEmail:self.loginField.text]) {
-            // for testing
-            // TODO: replace by login API method call
-            if([self.passwordField.text isEqualToString:@"123456"]) {
-                [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-            } else {
-                [GlobalHelper showMessage:DefInvalidLoginPassword withTitle:@"error"];
-            }
-        } else {
-            [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];
-        }
-    } else {
-        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
-    }
+//    if([self noEmptyFields]) {
+//        if([self validateEmail:self.loginField.text]) {
+//            // for testing
+//            // TODO: replace by login API method call
+//            if([self.passwordField.text isEqualToString:@"123456"]) {
+//                [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+//            } else {
+//                [GlobalHelper showMessage:DefInvalidLoginPassword withTitle:@"error"];
+//            }
+//        } else {
+//            [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];
+//        }
+//    } else {
+//        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+//    }
 }
 
 -(IBAction)forgotPassword:(id)sender {

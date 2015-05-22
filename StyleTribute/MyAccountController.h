@@ -10,4 +10,8 @@
 
 @interface MyAccountController : UIViewController
 
+@property IBOutlet UIScrollView* scrollView;
+@property IBOutlet UIView* contentView;
+@property IBOutlet NSLayoutConstraint* widthConstraint;
+
 @end

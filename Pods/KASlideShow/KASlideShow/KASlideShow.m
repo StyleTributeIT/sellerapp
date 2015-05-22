@@ -170,7 +170,10 @@ typedef NS_ENUM(NSInteger, KASlideShowSlideMode) {
 - (void) start
 {
     _doStop = NO;
+    float trueDuration = transitionDuration;
+    transitionDuration = 0;
     [self next];
+    transitionDuration = trueDuration;
 }
 
 - (void) next

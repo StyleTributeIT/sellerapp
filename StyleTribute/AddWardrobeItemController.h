@@ -17,5 +17,6 @@
 @property IBOutlet UITextView* descriptionView;
 @property IBOutlet UITextField* brandField;
 @property IBOutlet UITextField* sizeField;
+@property IBOutlet UIImageView* textViewBackground;
 
 @end

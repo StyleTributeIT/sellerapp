@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		60846BFEBA3D93E7C0E7CFEB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */; };
+		7A05074D1B0E220F00438D64 /* MyAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A05074C1B0E220F00438D64 /* MyAccountCell.m */; };
 		7A0EB60A1AEE23D400D90001 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB6091AEE23D400D90001 /* main.m */; };
 		7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB60C1AEE23D400D90001 /* AppDelegate.m */; };
 		7A0EB6131AEE23D400D90001 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6111AEE23D400D90001 /* Main.storyboard */; };
 		7A0EB6151AEE23D400D90001 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6141AEE23D400D90001 /* Images.xcassets */; };
-		7A0EB6181AEE23D400D90001 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6161AEE23D400D90001 /* LaunchScreen.xib */; };
 		7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A116C8E1AFA449300A4D7D9 /* TutorialController.m */; };
 		7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2327351B0B98700064C4B3 /* AttributedLabel.m */; };
 		7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5A1AFCCF010031C629 /* MapKit.framework */; };
@@ -45,6 +45,7 @@
 		7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */; };
 		7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */; };
 		7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */; };
+		7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */; };
 		7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */; };
 		7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */; };
 		7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */; };
@@ -66,6 +67,8 @@
 /* Begin PBXFileReference section */
 		112BD99F1E8D42C7033A650C /* Pods-StyleTributeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.release.xcconfig"; sourceTree = "<group>"; };
 		3AAA915C597815E7ED38446F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7A05074B1B0E220F00438D64 /* MyAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountCell.h; sourceTree = "<group>"; };
+		7A05074C1B0E220F00438D64 /* MyAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountCell.m; sourceTree = "<group>"; };
 		7A0EB6041AEE23D400D90001 /* StyleTribute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleTribute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EB6081AEE23D400D90001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A0EB6091AEE23D400D90001 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,7 +76,6 @@
 		7A0EB60C1AEE23D400D90001 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7A0EB6121AEE23D400D90001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A0EB6141AEE23D400D90001 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7A0EB6171AEE23D400D90001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7A0EB61D1AEE23D400D90001 /* StyleTributeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StyleTributeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EB6221AEE23D400D90001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A116C8D1AFA449300A4D7D9 /* TutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialController.h; sourceTree = "<group>"; };
@@ -131,6 +133,8 @@
 		7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		7ABF95F01AFBA93200E6AA52 /* BankDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankDetailsController.h; sourceTree = "<group>"; };
 		7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankDetailsController.m; sourceTree = "<group>"; };
+		7AC4D1001B0F0C5C007724E2 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
+		7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
 		7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
 		7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -206,7 +210,6 @@
 				7A66FDDD1B04E04800961709 /* DataCache.m */,
 				7A0EB6111AEE23D400D90001 /* Main.storyboard */,
 				7A0EB6141AEE23D400D90001 /* Images.xcassets */,
-				7A0EB6161AEE23D400D90001 /* LaunchScreen.xib */,
 				7A0EB6071AEE23D400D90001 /* Supporting Files */,
 				7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */,
 			);
@@ -273,6 +276,10 @@
 			children = (
 				7A4AA2C71AEFF47C00190ED3 /* WardrobeCell.h */,
 				7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */,
+				7A05074B1B0E220F00438D64 /* MyAccountCell.h */,
+				7A05074C1B0E220F00438D64 /* MyAccountCell.m */,
+				7AC4D1001B0F0C5C007724E2 /* CategoryCell.h */,
+				7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -440,7 +447,6 @@
 			files = (
 				7A600F791B0B777500CCD5F3 /* Gotham-Medium.otf in Resources */,
 				7A0EB6131AEE23D400D90001 /* Main.storyboard in Resources */,
-				7A0EB6181AEE23D400D90001 /* LaunchScreen.xib in Resources */,
 				7A600F771B0B773A00CCD5F3 /* Gotham-Book.otf in Resources */,
 				7A0EB6151AEE23D400D90001 /* Images.xcassets in Resources */,
 				7A600F781B0B777200CCD5F3 /* Gotham-Light.otf in Resources */,
@@ -537,6 +543,7 @@
 				7A3365AE1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.m in Sources */,
 				7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */,
 				7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */,
+				7A05074D1B0E220F00438D64 /* MyAccountCell.m in Sources */,
 				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */,
@@ -548,6 +555,7 @@
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,
 				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,
+				7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */,
 				7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */,
 				7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */,
 				7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */,
@@ -581,14 +589,6 @@
 				7A0EB6121AEE23D400D90001 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7A0EB6161AEE23D400D90001 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7A0EB6171AEE23D400D90001 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

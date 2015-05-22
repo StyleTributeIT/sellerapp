@@ -31,27 +31,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self generateFakeData];
+    [self generateFakeData];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     
     UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
     self.wardrobeType.tintColor = pink;
     [[UITabBar appearance] setSelectedImageTintColor:pink];
     
-    self.sellingItems = [[DataCache sharedInstance] loadSellingItems];
-    self.soldItems = [[DataCache sharedInstance] loadSoldItems];
-    self.archivedItems = [[DataCache sharedInstance] loadArchivedItems];
+//    self.sellingItems = [[DataCache sharedInstance] loadSellingItems];
+//    self.soldItems = [[DataCache sharedInstance] loadSoldItems];
+//    self.archivedItems = [[DataCache sharedInstance] loadArchivedItems];
     
-    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] getProductsWithSuccess:^(NSArray *products) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        self.sellingItems = [products mutableCopy];
-        [self.itemsTable reloadData];
-        [[DataCache sharedInstance] saveSellingItems:self.sellingItems];
-    } failure:^(NSString* error) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        [GlobalHelper showMessage:error withTitle:@"Error"];
-    }];
+//    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+//    [[ApiRequester sharedInstance] getProductsWithSuccess:^(NSArray *products) {
+//        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+//        self.sellingItems = [products mutableCopy];
+//        [self.itemsTable reloadData];
+//        [[DataCache sharedInstance] saveSellingItems:self.sellingItems];
+//    } failure:^(NSString* error) {
+//        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+//        [GlobalHelper showMessage:error withTitle:@"Error"];
+//    }];
     
     NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };

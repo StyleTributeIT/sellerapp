@@ -8,6 +8,7 @@
 
 #import "GlobalHelper.h"
 #import "ChooseCategoryController.h"
+#import "CategoryCell.h"
 
 @interface ChooseCategoryController ()
 
@@ -20,7 +21,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
-    self.categories = @[@"Bags", @"Shoes", @"Clothing", @"Accessories"];
+    self.categories = @[@"BAGS", @"SHOES", @"CLOTHING", @"ACCESSORIES"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -28,10 +29,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    CategoryCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     cell.tag = indexPath.row;
-    cell.textLabel.text = [self.categories objectAtIndex:indexPath.row];
+    cell.categoryName.text = [self.categories objectAtIndex:indexPath.row];
     
     return cell;
 }
