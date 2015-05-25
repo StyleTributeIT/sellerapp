@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface Product : NSObject<NSCoding>
+@interface Product : BaseModel<NSCoding>
 
 @property NSString* title;
 @property NSString* displayState;
 
-+(Product*)parseFromJson:(NSDictionary*)dict;
++(instancetype)parseFromJson:(NSDictionary*)dict;
 
 @end

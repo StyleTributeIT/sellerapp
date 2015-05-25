@@ -462,7 +462,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Th8-VD-QdL" kind="unwind" unwindAction="unwindToWelcomeController:" id="S0r-an-P3G"/>
+                                                    <action selector="logout:" destination="tSN-ez-241" eventType="touchUpInside" id="Mim-FF-ath"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -522,6 +522,7 @@
                         <segue destination="HNe-sU-zJZ" kind="show" identifier="changePasswordSegue" id="AoC-3Q-ih0"/>
                         <segue destination="4Gf-0K-49B" kind="show" identifier="bankDetailsSegue" id="6AN-6H-riM"/>
                         <segue destination="dMc-TR-sjB" kind="show" identifier="contactUsSegue" id="P3p-p5-pwg"/>
+                        <segue destination="Th8-VD-QdL" kind="unwind" identifier="logoutSegue" unwindAction="unwindToWelcomeController:" id="X5m-eK-T21"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxX-xU-RjD" userLabel="First Responder" sceneMemberID="firstResponder"/>

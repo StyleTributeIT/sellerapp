@@ -10,18 +10,18 @@
 
 @implementation Product
 
-+(Product*)parseFromJson:(NSDictionary*)dict {
++(instancetype)parseFromJson:(NSDictionary*)dict; {
     Product* product = [Product new];
     
-    product.title = [dict objectForKey:@"title"];
-    product.displayState = [dict objectForKey:@"display_state"];
+    product.title = [[self class] parseString:@"title" fromDict:dict];
+    product.displayState = [[self class] parseString:@"display_state" fromDict:dict];
     
     return product;
 }
 
 #pragma mark - NSCoding
 
--(id)initWithCoder:(NSCoder *)decoder {
+-(instancetype)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if(!self) {
         return nil;

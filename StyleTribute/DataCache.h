@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserProfile.h"
 
 @interface DataCache : NSObject
 
@@ -15,6 +16,7 @@
 @property NSMutableArray* sellingItems;
 @property NSMutableArray* soldItems;
 @property NSMutableArray* archivedItems;
+@property UserProfile* userProfile;
 
 -(NSMutableArray*)loadSellingItems;
 -(void)saveSellingItems:(NSArray*)items;

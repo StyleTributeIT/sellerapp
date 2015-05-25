@@ -9,6 +9,9 @@
 #import "LoginController.h"
 #import "GlobalDefs.h"
 #import "GlobalHelper.h"
+#import "ApiRequester.h"
+#import <MRProgress.h>
+#import "DataCache.h"
 
 @implementation LoginController
 
@@ -32,24 +35,28 @@
 -(IBAction)login:(id)sender {
     
     // for testing
-    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-    return;
+//    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+//    return;
     
-//    if([self noEmptyFields]) {
-//        if([self validateEmail:self.loginField.text]) {
-//            // for testing
-//            // TODO: replace by login API method call
-//            if([self.passwordField.text isEqualToString:@"123456"]) {
-//                [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-//            } else {
-//                [GlobalHelper showMessage:DefInvalidLoginPassword withTitle:@"error"];
-//            }
-//        } else {
-//            [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];
-//        }
-//    } else {
-//        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
-//    }
+    if([self noEmptyFields]) {
+        if([self validateEmail:self.loginField.text]) {
+            [self.activeField resignFirstResponder];
+            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            [[ApiRequester sharedInstance] loginWithEmail:self.loginField.text andPassword:self.passwordField.text success:^(UserProfile* profile) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                [DataCache sharedInstance].userProfile = profile;
+                [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                [GlobalHelper showMessage:error withTitle:@"Login error"];
+            }];
+            
+        } else {
+            [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];
+        }
+    } else {
+        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+    }
 }
 
 -(IBAction)forgotPassword:(id)sender {

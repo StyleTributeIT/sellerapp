@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <TestFairy.h>
 
-static NSString* const DefApiHost		= @"http://selim.deva/api_test/";
+static NSString* const DefApiHost		= @"http://magapi.evgeniy.lara/";
 
 static NSString* const DefGeneralErrMsg	= @"Something gone wrong. Try again later.";
 static NSString* const DefInternetUnavailableMsg = @"internet connection not reachable";

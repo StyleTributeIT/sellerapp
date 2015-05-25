@@ -10,8 +10,15 @@
 #import "Product.h"
 #import "GlobalHelper.h"
 #import <Reachability.h>
+#import "UserProfile.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
+
+@interface ApiRequester ()
+
+@property AFHTTPSessionManager* sessionManager;
+
+@end
 
 @implementation ApiRequester
 
@@ -21,83 +28,147 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 {
     static dispatch_once_t once;
     static ApiRequester *sharedInstance;
-    dispatch_once(&once, ^ { sharedInstance = [[ApiRequester alloc] init]; });
+    dispatch_once(&once, ^ {
+        sharedInstance = [[ApiRequester alloc] init];
+        sharedInstance.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:DefApiHost]];
+        sharedInstance.sessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        
+        NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+        NSString* apiToken = [defs stringForKey:@"apiToken"];
+        if(apiToken) {
+            [sharedInstance.sessionManager.requestSerializer setValue:apiToken forHTTPHeaderField:@"X-Auth-Token"];
+        }
+        
+    });
     return sharedInstance;
 }
 
--(NSMutableURLRequest*)postReqToApiPath:(NSString*)apiPath postBody:(NSString*)body
-{
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[DefApiHost stringByAppendingString:apiPath]]];
-    //	NSLog(@"API token: %@", cook);
-    
-    [req setHTTPShouldHandleCookies:NO];
-//    [req addValue:cook forHTTPHeaderField:DefApiToken];
-    [req setHTTPMethod:@"POST"];
-    if (body && body.length > 0)
-        [req setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
-    return req;
-}
-
--(NSMutableURLRequest*)getReqToApiPath:(NSString*)apiPath
-{
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[DefApiHost stringByAppendingString:apiPath]]];
-    [req setHTTPShouldHandleCookies:NO];
-//    [req addValue:cook forHTTPHeaderField:DefApiToken];
-    [req setHTTPMethod:@"GET"];
-    return req;
-}
-
--(BOOL)checkInternetConnection {
+-(BOOL)checkInternetConnectionWithErrCallback:(JSONRespError)errCallback {
     if(![Reachability reachabilityForInternetConnection].isReachable) {
-//        [GlobalHelper showMessage:@"internet connection not reachable" withTitle:@"error"];
+        NSLog(@"get products internet connection problem");
+        errCallback(DefInternetUnavailableMsg);
         return NO;
     } else {
         return YES;
     }
 }
 
-#pragma mark - API methods
-
--(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespProducts)success failure:(JSONRespError)failure
-{
-    if(![self checkInternetConnection]) {
-        NSLog(@"get products internet connection problem");
-        failure(DefInternetUnavailableMsg);
-        return nil;
+-(BOOL)checkSuccessForResponse:(NSDictionary*)resp errCalback:(JSONRespError)errCallback {
+    if(!resp) {
+        errCallback(DefGeneralErrMsg);
+        return NO;
     }
     
-    NSMutableURLRequest *req = [self getReqToApiPath:@"products.json"];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:req];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if([[responseObject objectForKey:@"success"] boolValue] == YES) {
-            NSMutableArray* products = [NSMutableArray new];
-            NSArray* productsArray = [responseObject objectForKey:@"data"];
-            if(productsArray) {
-                for (NSDictionary* productDict in productsArray) {
-                    Product* product = [Product parseFromJson:productDict];
-                    [products addObject:product];
-                }
-            }
-            success(products);
-        } else {
-            NSString* errMsg = [responseObject objectForKey:@"message"];
-            if(errMsg == nil) {
-                errMsg = DefGeneralErrMsg;
-            }
-            
-            NSLog(@"get products error: %@", errMsg);
-            failure(errMsg);
+    if([[resp objectForKey:@"success"] boolValue]) {
+        return YES;
+    } else {
+        NSString* error = [resp objectForKey:@"error"];
+        if(!error) {
+            error = DefGeneralErrMsg;
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"get products request error: %@", [error description]);
+        NSLog(@"checkSuccessForResponse error: %@", error);
+        errCallback(error);
+        
+        return NO;
+    }
+}
+
+#pragma mark - API methods
+
+-(AFHTTPRequestOperation*)registerWithEmail:(NSString*)email
+                                   password:(NSString*)password
+                                  firstName:(NSString*)firstName
+                                   lastName:(NSString*)lastName
+                                    success:(JSONRespLogin)success
+                                    failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager POST:@"account/register" parameters:@{@"email":email, @"password":password, @"firstName": firstName, @"lastName": lastName} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            NSString* token = [responseObject objectForKey:@"token"];
+            [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"X-Auth-Token"];
+            
+            UserProfile* profile = [UserProfile parseFromJson:[responseObject objectForKey:@"model"]];
+            success(profile);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"login error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
     
-    [operation start];
-    return operation;
+    return nil;
+}
+
+-(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespLogin)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager POST:@"app/authorize" parameters:@{@"email":email, @"password":password} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            NSString* token = [responseObject objectForKey:@"token"];
+            [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"X-Auth-Token"];
+            NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+            [defs setObject:token forKey:@"apiToken"];
+            [defs synchronize];
+            
+            UserProfile* profile = [UserProfile parseFromJson:[responseObject objectForKey:@"model"]];
+            success(profile);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"login error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    return nil;
+}
+
+-(AFHTTPRequestOperation*)logoutWithSuccess:(JSONRespLogout)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager GET:@"app/invalidate" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            [self.sessionManager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+            NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+            [defs removeObjectForKey:@"apiToken"];
+            [defs synchronize];
+            success();
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"logout error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    return nil;
+}
+
+-(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespProducts)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager GET:@"products/filter/10/0" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            success(nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getProducts error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    return nil;
+}
+
+-(AFHTTPRequestOperation*)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager GET:@"account" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            success(nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getAccount error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    return nil;
 }
 
 @end

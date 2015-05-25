@@ -9,6 +9,8 @@
 #import "GlobalHelper.h"
 #import "MyAccountController.h"
 #import "MyAccountCell.h"
+#import "ApiRequester.h"
+#import <MRProgress.h>
 
 @interface MyAccountController ()
 
@@ -76,9 +78,17 @@
 -(IBAction)unwindToMyAccount:(UIStoryboardSegue*)sender {
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.scrollView setContentOffset: CGPointMake(0, scrollView.contentOffset.y)];
+#pragma mark - Actions
+
+-(IBAction)logout:(id)sender {
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [[ApiRequester sharedInstance] logoutWithSuccess:^() {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [self performSegueWithIdentifier:@"logoutSegue" sender:self];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [GlobalHelper showMessage:error withTitle:@"Login error"];
+    }];
 }
 
 @end
