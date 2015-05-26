@@ -9,6 +9,11 @@
 #import "FBRegistrationController.h"
 #import "GlobalHelper.h"
 #import "GlobalDefs.h"
+#import "ApiRequester.h"
+#import <MRProgress.h>
+#import "DataCache.h"
+#import "Country.h"
+#import <NSArray+LinqExtensions.h>
 
 @interface FBRegistrationController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -21,14 +26,24 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.countries = @[@"country 1", @"country 2", @"country 3", @"country 4", @"country 5"];
     self.picker = [GlobalHelper createPickerForFields:@[self.countryField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
     [GlobalHelper configureSlideshow:self.slideShow];
     
+    if([DataCache sharedInstance].countries == nil) {
+        [[ApiRequester sharedInstance] getCountries:^(NSArray *countries) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+            [DataCache sharedInstance].countries = countries;
+            [self.picker reloadAllComponents];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+        }];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDidOpen:) name:UIKeyboardDidShowNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -40,6 +55,14 @@
 -(void)viewWillDisappear:(BOOL)animated {
     [self.slideShow stop];
     [super viewWillDisappear:animated];
+}
+
+- (void)pickerDidOpen:(NSNotification*)aNotification {
+    if(self.activeField == self.countryField && [DataCache sharedInstance].countries == nil) {
+        if([MRProgressOverlayView overlayForView:self.picker] == nil) {
+            [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
+        }
+    }
 }
 
 -(IBAction)createAccount:(id)sender {
@@ -65,24 +88,23 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.countries.count;
+    return [DataCache sharedInstance].countries.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.countries objectAtIndex:row];
-}
-
--(void)inputDone {
-    NSInteger index = [self.picker selectedRowInComponent:0];
-    self.countryField.text = [self.countries objectAtIndex:index];
-    [self.activeField resignFirstResponder];
+    Country* country = [[DataCache sharedInstance].countries objectAtIndex:row];
+    return country.name;
 }
 
 - (void)setPickerData:(NSNotification*)aNotification {
     if(self.activeField == self.countryField) {
         [self.picker reloadAllComponents];
         
-        NSUInteger index = [self.countries indexOfObject:((UITextField*)self.activeField).text];
+        Country* curCountry = [[[DataCache sharedInstance].countries linq_where:^BOOL(Country* country) {
+            return [country.name isEqualToString:((UITextField*)self.activeField).text];
+        }] firstObject];
+        
+        NSUInteger index = [[DataCache sharedInstance].countries indexOfObject:curCountry];
         if(index == NSNotFound) {
             index = 0;
         }

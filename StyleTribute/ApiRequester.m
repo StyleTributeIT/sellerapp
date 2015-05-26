@@ -11,6 +11,7 @@
 #import "GlobalHelper.h"
 #import <Reachability.h>
 #import "UserProfile.h"
+#import "Country.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
@@ -45,7 +46,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
 -(BOOL)checkInternetConnectionWithErrCallback:(JSONRespError)errCallback {
     if(![Reachability reachabilityForInternetConnection].isReachable) {
-        NSLog(@"get products internet connection problem");
+        NSLog(@"internet connection problem");
         errCallback(DefInternetUnavailableMsg);
         return NO;
     } else {
@@ -80,30 +81,37 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                    password:(NSString*)password
                                   firstName:(NSString*)firstName
                                    lastName:(NSString*)lastName
-                                    success:(JSONRespLogin)success
+                                   userName:(NSString*)userName
+                                    country:(NSString*)country
+                                      phone:(NSString*)phone
+                                    success:(JSONRespAccount)success
                                     failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
     
-    [self.sessionManager POST:@"account/register" parameters:@{@"email":email, @"password":password, @"firstName": firstName, @"lastName": lastName} success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary* params = @{@"email":email, @"password":password, @"firstname": firstName, @"lastname": lastName, @"username": userName, @"country": country, @"phone_number": phone};
+    [self.sessionManager POST:@"seller/register" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
             NSString* token = [responseObject objectForKey:@"token"];
             [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"X-Auth-Token"];
+            NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+            [defs setObject:token forKey:@"apiToken"];
+            [defs synchronize];
             
             UserProfile* profile = [UserProfile parseFromJson:[responseObject objectForKey:@"model"]];
             success(profile);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"login error: %@", [error description]);
+        NSLog(@"registration error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
     
     return nil;
 }
 
--(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespLogin)success failure:(JSONRespError)failure {
+-(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
     
-    [self.sessionManager POST:@"app/authorize" parameters:@{@"email":email, @"password":password} success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.sessionManager POST:@"authorize" parameters:@{@"email":email, @"password":password} success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
             NSString* token = [responseObject objectForKey:@"token"];
             [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"X-Auth-Token"];
@@ -125,7 +133,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(AFHTTPRequestOperation*)logoutWithSuccess:(JSONRespLogout)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
     
-    [self.sessionManager GET:@"app/invalidate" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.sessionManager GET:@"invalidate" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
             [self.sessionManager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
             NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
@@ -141,7 +149,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     return nil;
 }
 
--(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespProducts)success failure:(JSONRespError)failure {
+-(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
     
     [self.sessionManager GET:@"products/filter/10/0" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -165,6 +173,23 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"getAccount error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    return nil;
+}
+
+-(AFHTTPRequestOperation*)getCountries:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager GET:@"checkout/countryList" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+        NSMutableArray* countries = [NSMutableArray new];
+        for (NSDictionary* countryDict in responseObject) {
+            [countries addObject:[Country parseFromJson:countryDict]];
+        }
+        success(countries);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getCountries error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
     

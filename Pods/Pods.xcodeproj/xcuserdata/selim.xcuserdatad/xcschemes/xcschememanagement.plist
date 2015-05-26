@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-LinqToObjectiveC.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MGSwipeTableCell.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,11 +44,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TestFairy.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>136486AA7479A30E6149BCCB</key>
+		<key>391D8D16A25AB9173B2E9D34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>26595D04FDCEB631B2A90A57</key>
+		<key>3C03A06F28DD8EB476EB6AB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F4C83ED165B27CEAF99064C</key>
+		<key>42F1A1DEA18EBA7F50A338B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A8880E7741799B4B6219F551</key>
+		<key>532A3FDE54A22AA177B9D989</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8C2BD18F1FDBFC8993D5E81</key>
+		<key>6569534F55325669A96A2D86</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D0557D40F6A1AAD0F6927174</key>
+		<key>8AC4EC8F2B8871102DDAB665</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D875FCF6507684FDE6406B76</key>
+		<key>8EC98FB72CEEA967EE80AAF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DCE61A277D306E6D72BD9844</key>
+		<key>9E6F84D402E3AD8A37B9B7B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB441E3363011894F9B17F77</key>
+		<key>EB841118ECCF3931AFDFDC2B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

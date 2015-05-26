@@ -17,6 +17,7 @@
 @property NSMutableArray* soldItems;
 @property NSMutableArray* archivedItems;
 @property UserProfile* userProfile;
+@property NSArray* countries;
 
 -(NSMutableArray*)loadSellingItems;
 -(void)saveSellingItems:(NSArray*)items;

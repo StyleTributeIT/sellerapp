@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_KASlideShow 2
 #define COCOAPODS_VERSION_PATCH_KASlideShow 0
 
+// LinqToObjectiveC
+#define COCOAPODS_POD_AVAILABLE_LinqToObjectiveC
+#define COCOAPODS_VERSION_MAJOR_LinqToObjectiveC 2
+#define COCOAPODS_VERSION_MINOR_LinqToObjectiveC 0
+#define COCOAPODS_VERSION_PATCH_LinqToObjectiveC 0
+
 // MGSwipeTableCell
 #define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell
 #define COCOAPODS_VERSION_MAJOR_MGSwipeTableCell 1

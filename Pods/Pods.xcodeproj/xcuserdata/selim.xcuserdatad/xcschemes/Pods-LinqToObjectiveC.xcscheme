@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "136486AA7479A30E6149BCCB"
-               BuildableName = "libPods-TestFairy.a"
-               BlueprintName = "Pods-TestFairy"
+               BlueprintIdentifier = "8AC4EC8F2B8871102DDAB665"
+               BuildableName = "libPods-LinqToObjectiveC.a"
+               BlueprintName = "Pods-LinqToObjectiveC"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

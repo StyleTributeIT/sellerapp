@@ -31,6 +31,7 @@
 		7A600F791B0B777500CCD5F3 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */; };
 		7A6097981B133BA000209340 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6097971B133BA000209340 /* UserProfile.m */; };
 		7A60979B1B13402600209340 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60979A1B13402600209340 /* BaseModel.m */; };
+		7A60979E1B14848F00209340 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60979D1B14848F00209340 /* Country.m */; };
 		7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427101AF8E7E10051466E /* PriceEditController.m */; };
 		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7A66FDDE1B04E04800961709 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A66FDDD1B04E04800961709 /* DataCache.m */; };
@@ -110,6 +111,8 @@
 		7A6097971B133BA000209340 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		7A6097991B13402600209340 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		7A60979A1B13402600209340 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		7A60979C1B14848F00209340 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		7A60979D1B14848F00209340 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		7A64270F1AF8E7E10051466E /* PriceEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceEditController.h; sourceTree = "<group>"; };
 		7A6427101AF8E7E10051466E /* PriceEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceEditController.m; sourceTree = "<group>"; };
 		7A6427121AF901CF0051466E /* ChooseCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCategoryController.h; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				7A3FA4A21AEFE5720050803C /* Product.m */,
 				7A6097961B133BA000209340 /* UserProfile.h */,
 				7A6097971B133BA000209340 /* UserProfile.m */,
+				7A60979C1B14848F00209340 /* Country.h */,
+				7A60979D1B14848F00209340 /* Country.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -564,6 +569,7 @@
 				7A60979B1B13402600209340 /* BaseModel.m in Sources */,
 				7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
+				7A60979E1B14848F00209340 /* Country.m in Sources */,
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,
 				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,

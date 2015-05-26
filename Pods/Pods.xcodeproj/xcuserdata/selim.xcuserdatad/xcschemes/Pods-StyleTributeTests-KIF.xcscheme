@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D0557D40F6A1AAD0F6927174"
+               BlueprintIdentifier = "532A3FDE54A22AA177B9D989"
                BuildableName = "libPods-StyleTributeTests-KIF.a"
                BlueprintName = "Pods-StyleTributeTests-KIF"
                ReferencedContainer = "container:Pods.xcodeproj">

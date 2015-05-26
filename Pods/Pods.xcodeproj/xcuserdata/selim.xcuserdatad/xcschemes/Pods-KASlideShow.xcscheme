@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A8880E7741799B4B6219F551"
+               BlueprintIdentifier = "6569534F55325669A96A2D86"
                BuildableName = "libPods-KASlideShow.a"
                BlueprintName = "Pods-KASlideShow"
                ReferencedContainer = "container:Pods.xcodeproj">

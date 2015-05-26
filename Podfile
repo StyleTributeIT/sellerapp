@@ -6,6 +6,7 @@ pod 'TestFairy'
 pod 'Reachability'
 pod 'MRProgress'
 pod 'KASlideShow'
+pod 'LinqToObjectiveC'
 
 target 'StyleTributeTests', :exclusive => true do
 	pod 'KIF', :configuration => ['Debug']

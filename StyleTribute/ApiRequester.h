@@ -12,10 +12,9 @@
 #import <AFHTTPRequestOperation.h>
 #import "UserProfile.h"
 
-typedef void (^JSONRespLogin)(UserProfile* profile);
 typedef void (^JSONRespAccount)(UserProfile* profile);
 typedef void (^JSONRespLogout)();
-typedef void (^JSONRespProducts)(NSArray* products);
+typedef void (^JSONRespArray)(NSArray* products);
 typedef void (^JSONRespError)(NSString* error);
 
 @interface ApiRequester : NSObject
@@ -26,13 +25,16 @@ typedef void (^JSONRespError)(NSString* error);
                                    password:(NSString*)password
                                   firstName:(NSString*)firstName
                                    lastName:(NSString*)lastName
-                                    success:(JSONRespLogin)success
+                                   userName:(NSString*)userName
+                                    country:(NSString*)country
+                                      phone:(NSString*)phone
+                                    success:(JSONRespAccount)success
                                     failure:(JSONRespError)failure;
 
--(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespLogin)success failure:(JSONRespError)failure;
+-(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(AFHTTPRequestOperation*)logoutWithSuccess:(JSONRespLogout)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespProducts)success failure:(JSONRespError)failure;
+-(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure;
 -(AFHTTPRequestOperation*)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure;
-
+-(AFHTTPRequestOperation*)getCountries:(JSONRespArray)success failure:(JSONRespError)failure;
 
 @end

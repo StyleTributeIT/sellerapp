@@ -9,12 +9,15 @@
 #import "RegistrationController.h"
 #import "GlobalHelper.h"
 #import "GlobalDefs.h"
+#import "ApiRequester.h"
+#import <MRProgress.h>
+#import "DataCache.h"
+#import "Country.h"
+#import <NSArray+LinqExtensions.h>
 
 @interface RegistrationController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property NSArray* countries;
 @property UIPickerView* picker;
-
 
 @end
 
@@ -26,26 +29,44 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.countries = @[@"country 1", @"country 2", @"country 3", @"country 4", @"country 5"];
     self.picker = [GlobalHelper createPickerForFields:@[self.countryField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
     [GlobalHelper configureSlideshow:self.slideShow];
     
+    if([DataCache sharedInstance].countries == nil) {
+        [[ApiRequester sharedInstance] getCountries:^(NSArray *countries) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+            [DataCache sharedInstance].countries = countries;
+            [self.picker reloadAllComponents];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+        }];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDidOpen:) name:UIKeyboardDidShowNotification object:nil];
 }
 
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
-    self.countryField.text = [self.countries objectAtIndex:index];
+    Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
+    self.countryField.text = country.name;
     [self.activeField resignFirstResponder];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [self centerContent];
     [self.slideShow start];
+}
+
+- (void)pickerDidOpen:(NSNotification*)aNotification {
+    if(self.activeField == self.countryField && [DataCache sharedInstance].countries == nil) {
+        if([MRProgressOverlayView overlayForView:self.picker] == nil) {
+            [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
+        }
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -56,8 +77,28 @@
 -(IBAction)createAccount:(id)sender {
     if([self noEmptyFields]) {
         if([self validateEmail:self.emailField.text]) {
-            // TODO: replace with registration API method call
-            [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+            
+            [self.activeField resignFirstResponder];
+            NSInteger index = [self.picker selectedRowInComponent:0];
+            Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
+            
+            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            [[ApiRequester sharedInstance] registerWithEmail:self.emailField.text
+                                                    password:self.passwordField.text
+                                                   firstName:self.firstNameField.text
+                                                    lastName:self.lastNameField.text
+                                                    userName:self.userNameField.text
+                                                     country:country.identifier
+                                                       phone:self.phoneField.text
+                                                     success:^(UserProfile *profile) {
+                                                         
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                [DataCache sharedInstance].userProfile = profile;
+                [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                [GlobalHelper showMessage:error withTitle:@"Registration error"];
+            }];
         } else {
             [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];
         }
@@ -83,18 +124,23 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.countries.count;
+    return [DataCache sharedInstance].countries.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.countries objectAtIndex:row];
+    Country* country = [[DataCache sharedInstance].countries objectAtIndex:row];
+    return country.name;
 }
 
 - (void)setPickerData:(NSNotification*)aNotification {
     if(self.activeField == self.countryField) {
         [self.picker reloadAllComponents];
         
-        NSUInteger index = [self.countries indexOfObject:((UITextField*)self.activeField).text];
+        Country* curCountry = [[[DataCache sharedInstance].countries linq_where:^BOOL(Country* country) {
+            return [country.name isEqualToString:((UITextField*)self.activeField).text];
+        }] firstObject];
+        
+        NSUInteger index = [[DataCache sharedInstance].countries indexOfObject:curCountry];
         if(index == NSNotFound) {
             index = 0;
         }
