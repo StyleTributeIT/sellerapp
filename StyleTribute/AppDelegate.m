@@ -31,6 +31,8 @@
     [[UITextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
     [[UITextField appearance] setTextAlignment:NSTextAlignmentCenter];
     
+//    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setTextColor:[UIColor blueColor]];
+    
     return YES;
 }
 

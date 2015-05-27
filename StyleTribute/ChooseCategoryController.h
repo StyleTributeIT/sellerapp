@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Category.h"
 
 @interface ChooseCategoryController : UITableViewController
 
-@property NSString* selectedCategory;
+@property IBOutlet UITableView* tableView;
+
+@property STCategory* selectedCategory;
 
 @end

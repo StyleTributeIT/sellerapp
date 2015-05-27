@@ -12,6 +12,7 @@
 #import <Reachability.h>
 #import "UserProfile.h"
 #import "Country.h"
+#import "Category.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
@@ -130,6 +131,34 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     return nil;
 }
 
+-(AFHTTPRequestOperation*)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager POST:@"authorizeFb" parameters:@{@"token":fbToken} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            UserProfile* profile = nil;
+            BOOL isLoggedIn = [[responseObject objectForKey:@"loggedIn"] boolValue];
+            if(isLoggedIn) {
+                NSString* token = [responseObject objectForKey:@"token"];
+                [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"X-Auth-Token"];
+                NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+                [defs setObject:token forKey:@"apiToken"];
+                [defs synchronize];
+                profile = [UserProfile parseFromJson:[responseObject objectForKey:@"model"]];
+            } else {
+                profile = [UserProfile parseFromFBJson:[responseObject objectForKey:@"fb"]];
+            }
+            
+            success(isLoggedIn, profile);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"FB login error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    return nil;
+}
+
 -(AFHTTPRequestOperation*)logoutWithSuccess:(JSONRespLogout)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
     
@@ -169,7 +198,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     [self.sessionManager GET:@"account" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-            success(nil);
+            success([UserProfile parseFromJson:[responseObject objectForKey:@"model"]]);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"getAccount error: %@", [error description]);
@@ -190,6 +219,23 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         success(countries);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"getCountries error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+    
+    return nil;
+}
+
+-(AFHTTPRequestOperation*)getCategories:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    
+    [self.sessionManager GET:@"categories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+        NSMutableArray* categories = [NSMutableArray new];
+        for (NSDictionary* categoryDict in responseObject) {
+            [categories addObject:[STCategory parseFromJson:categoryDict]];
+        }
+        success(categories);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getCategories error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
     

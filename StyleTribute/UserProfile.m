@@ -22,4 +22,14 @@
     return profile;
 }
 
++(instancetype)parseFromFBJson:(NSDictionary*)dict {
+    UserProfile* profile = [UserProfile new];
+    
+    profile.email = [[self class] parseString:@"email" fromDict:dict];
+    profile.firstName = [[self class] parseString:@"first_name" fromDict:dict];
+    profile.lastName = [[self class] parseString:@"last_name" fromDict:dict];
+    
+    return profile;
+}
+
 @end

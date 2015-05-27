@@ -11,7 +11,12 @@
 @implementation BaseModel
 
 +(BOOL)parseBool:(NSString*)param fromDict:(NSDictionary*)dict {
-    return [[dict objectForKey:param] boolValue];
+    NSNumber* val = [dict objectForKey:param];
+    if(val) {
+        return [val boolValue];
+    } else {
+        return NO;
+    }
 }
 
 +(NSString*)parseString:(NSString*)param fromDict:(NSDictionary*)dict {
@@ -20,6 +25,15 @@
         return @"";
     } else {
         return val;
+    }
+}
+
++(BOOL)parseUInteger:(NSString*)param fromDict:(NSDictionary*)dict {
+    NSNumber* val = [dict objectForKey:param];
+    if(val) {
+        return [val unsignedIntegerValue];
+    } else {
+        return 0;
     }
 }
 

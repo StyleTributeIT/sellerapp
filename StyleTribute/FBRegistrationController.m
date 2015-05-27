@@ -14,6 +14,7 @@
 #import "DataCache.h"
 #import "Country.h"
 #import <NSArray+LinqExtensions.h>
+#import "RFPasswordGenerator.h"
 
 @interface FBRegistrationController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -42,8 +43,19 @@
         }];
     }
     
+    UserProfile* profile = [DataCache sharedInstance].userProfile;
+    if(profile.firstName.length > 0) self.firstNameField.text = profile.firstName;
+    if(profile.lastName.length > 0) self.lastNameField.text = profile.lastName;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDidOpen:) name:UIKeyboardDidShowNotification object:nil];
+}
+
+-(void)inputDone {
+    NSInteger index = [self.picker selectedRowInComponent:0];
+    Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
+    self.countryField.text = country.name;
+    [self.activeField resignFirstResponder];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -67,7 +79,28 @@
 
 -(IBAction)createAccount:(id)sender {
     if([self noEmptyFields]) {
-        //
+        [self.activeField resignFirstResponder];
+        NSInteger index = [self.picker selectedRowInComponent:0];
+        Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
+        NSString* password = [RFPasswordGenerator generateMediumSecurityPassword];
+        
+        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [[ApiRequester sharedInstance] registerWithEmail:[DataCache sharedInstance].userProfile.email
+                                                password:password
+                                               firstName:self.firstNameField.text
+                                                lastName:self.lastNameField.text
+                                                userName:self.userNameField.text
+                                                 country:country.identifier
+                                                   phone:self.phoneField.text
+                                                 success:^(UserProfile *profile) {
+                                                     
+                                                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                                                     [DataCache sharedInstance].userProfile = profile;
+                                                     [self performSegueWithIdentifier:@"fbShowMainScreen" sender:self];
+                                                 } failure:^(NSString *error) {
+                                                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                                                     [GlobalHelper showMessage:error withTitle:@"Registration error"];
+                                                 }];
     } else {
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
     }

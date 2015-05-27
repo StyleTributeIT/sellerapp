@@ -16,6 +16,7 @@ typedef void (^JSONRespAccount)(UserProfile* profile);
 typedef void (^JSONRespLogout)();
 typedef void (^JSONRespArray)(NSArray* products);
 typedef void (^JSONRespError)(NSString* error);
+typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
 
 @interface ApiRequester : NSObject
 
@@ -32,9 +33,11 @@ typedef void (^JSONRespError)(NSString* error);
                                     failure:(JSONRespError)failure;
 
 -(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure;
+-(AFHTTPRequestOperation*)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure;
 -(AFHTTPRequestOperation*)logoutWithSuccess:(JSONRespLogout)success failure:(JSONRespError)failure;
 -(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure;
 -(AFHTTPRequestOperation*)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(AFHTTPRequestOperation*)getCountries:(JSONRespArray)success failure:(JSONRespError)failure;
+-(AFHTTPRequestOperation*)getCategories:(JSONRespArray)success failure:(JSONRespError)failure;
 
 @end

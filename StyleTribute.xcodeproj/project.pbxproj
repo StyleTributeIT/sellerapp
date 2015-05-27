@@ -32,6 +32,8 @@
 		7A6097981B133BA000209340 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6097971B133BA000209340 /* UserProfile.m */; };
 		7A60979B1B13402600209340 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60979A1B13402600209340 /* BaseModel.m */; };
 		7A60979E1B14848F00209340 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60979D1B14848F00209340 /* Country.m */; };
+		7A60FCD11B15EEAE00731F6E /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60FCD01B15EEAE00731F6E /* Category.m */; };
+		7A60FCD51B160F7800731F6E /* RFPasswordGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60FCD41B160F7800731F6E /* RFPasswordGenerator.m */; };
 		7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427101AF8E7E10051466E /* PriceEditController.m */; };
 		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7A66FDDE1B04E04800961709 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A66FDDD1B04E04800961709 /* DataCache.m */; };
@@ -113,6 +115,10 @@
 		7A60979A1B13402600209340 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		7A60979C1B14848F00209340 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
 		7A60979D1B14848F00209340 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		7A60FCCF1B15EEAE00731F6E /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		7A60FCD01B15EEAE00731F6E /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		7A60FCD31B160F7800731F6E /* RFPasswordGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFPasswordGenerator.h; sourceTree = "<group>"; };
+		7A60FCD41B160F7800731F6E /* RFPasswordGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFPasswordGenerator.m; sourceTree = "<group>"; };
 		7A64270F1AF8E7E10051466E /* PriceEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceEditController.h; sourceTree = "<group>"; };
 		7A6427101AF8E7E10051466E /* PriceEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceEditController.m; sourceTree = "<group>"; };
 		7A6427121AF901CF0051466E /* ChooseCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCategoryController.h; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 		7A0EB6061AEE23D400D90001 /* StyleTribute */ = {
 			isa = PBXGroup;
 			children = (
+				7A60FCD21B160F5D00731F6E /* External */,
 				7A600F731B0B750300CCD5F3 /* Fonts */,
 				7A4AA2C61AEFF45300190ED3 /* Cells */,
 				7A3FA4A01AEFE53B0050803C /* DataModel */,
@@ -257,8 +264,6 @@
 		7A0EB62D1AEE2AEF00D90001 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7A3365AC1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.h */,
-				7A3365AD1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.m */,
 				7AA5EAD61AEE2F6500CAB83B /* ApiRequester.h */,
 				7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */,
 				7AFE43641AF22A99004B982B /* GlobalHelper.h */,
@@ -282,6 +287,8 @@
 				7A6097971B133BA000209340 /* UserProfile.m */,
 				7A60979C1B14848F00209340 /* Country.h */,
 				7A60979D1B14848F00209340 /* Country.m */,
+				7A60FCCF1B15EEAE00731F6E /* Category.h */,
+				7A60FCD01B15EEAE00731F6E /* Category.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -307,6 +314,17 @@
 				7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		7A60FCD21B160F5D00731F6E /* External */ = {
+			isa = PBXGroup;
+			children = (
+				7A60FCD31B160F7800731F6E /* RFPasswordGenerator.h */,
+				7A60FCD41B160F7800731F6E /* RFPasswordGenerator.m */,
+				7A3365AC1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.h */,
+				7A3365AD1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.m */,
+			);
+			name = External;
 			sourceTree = "<group>";
 		};
 		7AA5EADA1AEE73D600CAB83B /* Controllers */ = {
@@ -570,12 +588,14 @@
 				7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
 				7A60979E1B14848F00209340 /* Country.m in Sources */,
+				7A60FCD11B15EEAE00731F6E /* Category.m in Sources */,
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,
 				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,
 				7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */,
 				7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */,
 				7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */,
+				7A60FCD51B160F7800731F6E /* RFPasswordGenerator.m in Sources */,
 				7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

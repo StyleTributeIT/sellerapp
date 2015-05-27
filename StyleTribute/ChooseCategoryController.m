@@ -9,10 +9,11 @@
 #import "GlobalHelper.h"
 #import "ChooseCategoryController.h"
 #import "CategoryCell.h"
+#import "ApiRequester.h"
+#import <MRProgress.h>
+#import "DataCache.h"
 
 @interface ChooseCategoryController ()
-
-@property NSArray* categories;
 
 @end
 
@@ -21,25 +22,35 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
-    self.categories = @[@"BAGS", @"SHOES", @"CLOTHING", @"ACCESSORIES"];
+    
+    if([DataCache sharedInstance].categories == nil) {
+        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [DataCache sharedInstance].categories = categories;
+            [self.tableView reloadData];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            NSLog(@"get categories error: %@", [error description]);
+        }];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.categories.count;
+    return [DataCache sharedInstance].categories.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CategoryCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
+    STCategory* category = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
     cell.tag = indexPath.row;
-    cell.categoryName.text = [self.categories objectAtIndex:indexPath.row];
-    
+    cell.categoryName.text = category.name;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.selectedCategory = [self.categories objectAtIndex:indexPath.row];
+    self.selectedCategory = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
 }
 

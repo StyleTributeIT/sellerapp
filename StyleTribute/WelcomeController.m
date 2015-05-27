@@ -11,6 +11,8 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <MRProgress.h>
 #import "GlobalHelper.h"
+#import "ApiRequester.h"
+#import "DataCache.h"
 
 @implementation WelcomeController
 
@@ -19,6 +21,16 @@
     
     [GlobalHelper configureSlideshow:self.slideShow];
     [self.signInButton setAttributedTitle:[GlobalHelper linkWithString:@"Sign in"] forState:UIControlStateNormal];
+    
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [DataCache sharedInstance].userProfile = profile;
+        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        NSLog(@"getAccount error: %@", [error description]);
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -35,13 +47,12 @@
 }
 
 -(IBAction)fbLogin:(id)sender {
-    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-    NSString* token = [defs stringForKey:@"fbToken"];
-    if(token) {
-        // We are already logged in
-        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-        return;
-    }
+//    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+//    NSString* token = [defs stringForKey:@"fbToken"];
+//    if(token) {
+//        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+//        return;
+//    }
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
@@ -53,12 +64,21 @@
         } else if (result.isCancelled) {
             NSLog(@"FB login cancelled");
         } else {
-            NSLog(@"FB login succedeed with token: %@", result.token.tokenString);
-            [defs setObject:result.token.tokenString forKey:@"fbToken"];
+//            [defs setObject:result.token.tokenString forKey:@"fbToken"];
             
-            // TODO: call FB registration API method and if it succedeed, go to the next screen
-            // to provide more data
-            [self performSegueWithIdentifier:@"FBRegistrationSegue" sender:self];
+            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            [[ApiRequester sharedInstance] loginWithFBToken:result.token.tokenString success:^(BOOL loggedIn, UserProfile* fbProfile) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                [DataCache sharedInstance].userProfile = fbProfile;
+                if(loggedIn) {
+                    [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+                } else {
+                    [self performSegueWithIdentifier:@"FBRegistrationSegue" sender:self];
+                }
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                [GlobalHelper showMessage:error withTitle:@"Login error"];
+            }];
         }
     }];
 }
