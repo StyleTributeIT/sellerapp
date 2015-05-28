@@ -19,6 +19,7 @@
 @property UserProfile* userProfile;
 @property NSArray* countries;
 @property NSArray* categories;
+@property NSString* deviceToken;
 
 -(NSMutableArray*)loadSellingItems;
 -(void)saveSellingItems:(NSArray*)items;

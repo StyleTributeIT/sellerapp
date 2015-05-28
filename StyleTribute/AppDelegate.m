@@ -10,6 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <TestFairy.h>
+#import "DataCache.h"
 
 @interface AppDelegate ()
 
@@ -32,6 +33,8 @@
     [[UITextField appearance] setTextAlignment:NSTextAlignmentCenter];
     
 //    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setTextColor:[UIColor blueColor]];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
     return YES;
 }
@@ -66,6 +69,26 @@
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+}
+
+#pragma mark - Push notifications
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
+    NSString *newToken = [deviceToken description];
+    newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [DataCache sharedInstance].deviceToken = newToken;
+    
+    NSLog(@"My token is: %@", newToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Failed to get device token, error: %@", error);
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Received push notification: %@", userInfo);
 }
 
 @end
