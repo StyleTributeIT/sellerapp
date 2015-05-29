@@ -18,6 +18,9 @@
     profile.phone = [[self class] parseString:@"phone" fromDict:dict];
     profile.gender = [[self class] parseString:@"gender" fromDict:dict];
     profile.country = [[self class] parseString:@"country" fromDict:dict];
+    profile.userName = [[self class] parseString:@"nickname" fromDict:dict];
+    profile.firstName = [[self class] parseString:@"firstname" fromDict:dict];
+    profile.lastName = [[self class] parseString:@"lastname" fromDict:dict];
     
     return profile;
 }

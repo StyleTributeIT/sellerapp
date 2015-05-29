@@ -13,6 +13,11 @@
 #import "TutorialController.h"
 #import "MainTabBarController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "DataCache.h"
+#import "Category.h"
+#import "PhotoCell.h"
+
+#define PHOTOS_PER_ROW 4
 
 @interface AddWardrobeItemController ()
 
@@ -20,12 +25,10 @@
 @property UIToolbar* pickerToolbar;
 @property UIActionSheet* photoActionsSheet;
 
-@property NSArray* categories;
-@property NSArray* conditionTypes;
 @property NSArray* sizes;
-
-@property UIImageView* selectedImage;
 @property BOOL isTutorialPresented;
+@property NSArray* photoTypes;
+@property UIImageView* selectedImage;
 
 @end
 
@@ -37,12 +40,13 @@
     [super viewDidLoad];
     
     self.isTutorialPresented = NO;
+    self.photoTypes = @[@"Front", @"Back", @"Side"];
+    self.collectionViewHeight.constant = self.collectionView.frame.size.width/PHOTOS_PER_ROW;
     
-    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField]];
+    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField, self.brandField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
-    self.conditionTypes = @[@"condition 1", @"condition 2", @"condition 3", @"condition 4", @"condition 5", @"condition 6", @"condition 7"];
     self.sizes = @[@"size 1", @"size 2", @"size 3", @"size 4", @"size 5"];
 
     self.messageLabel.text = @""; //@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -71,7 +75,7 @@
 }
 
 - (void)setPickerData:(NSNotification*)aNotification {
-    if(self.activeField == self.conditionField || self.activeField == self.sizeField) {
+    if(self.activeField == self.conditionField || self.activeField == self.sizeField | self.activeField == self.brandField) {
         [self.picker reloadAllComponents];
         
         NSUInteger index = [[self getCurrentDatasource] indexOfObject:((UITextField*)self.activeField).text];
@@ -86,9 +90,11 @@
 
 -(NSArray*)getCurrentDatasource {
     if(self.activeField == self.conditionField) {
-        return self.conditionTypes;
+        return [DataCache sharedInstance].conditions;
     } else if(self.activeField == self.sizeField) {
         return self.sizes;
+    } else if(self.activeField == self.brandField) {
+        return [DataCache sharedInstance].brands;
     }
     
     return nil;
@@ -109,20 +115,17 @@
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
     if(self.activeField == self.conditionField) {
-        self.conditionField.text = [self.conditionTypes objectAtIndex:index];
+        self.conditionField.text = [[DataCache sharedInstance].conditions objectAtIndex:index];
     } else if(self.activeField == self.sizeField) {
         self.sizeField.text = [self.sizes objectAtIndex:index];
+    } else if(self.activeField == self.brandField) {
+        self.brandField.text = [[DataCache sharedInstance].brands objectAtIndex:index];
     }
     
     [self.activeField resignFirstResponder];
 }
 
 #pragma mark - Action sheet
-
--(IBAction)displayPhotosActionSheet:(UIGestureRecognizer *)gestureRecognizer {
-    self.selectedImage = (UIImageView*)gestureRecognizer.view;
-    [self.photoActionsSheet showInView:self.view];
-}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
@@ -151,7 +154,23 @@
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
     if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
         ChooseCategoryController* ccController = sender.sourceViewController;
-        self.categoryField.text = ccController.selectedCategory;
+        self.categoryField.text = ccController.selectedCategory.name;
+        
+        if([ccController.selectedCategory.idStr isEqualToString:@"clothing"]) {
+            self.photoTypes = @[@"Front", @"Back", @"Side"];
+        } else if([ccController.selectedCategory.idStr isEqualToString:@"bags"]) {
+            self.photoTypes = @[@"Front", @"Back", @"Side", @"Inside", @"Details", @"Dust bag"];
+        } else if([ccController.selectedCategory.idStr isEqualToString:@"shoes"]) {
+            self.photoTypes = @[@"Front", @"Back", @"Side", @"Sole", @"Details"];
+        } else if([ccController.selectedCategory.idStr isEqualToString:@"accessories"]) {
+            self.photoTypes = @[@"Front", @"Back", @"Side", @"Packaging"];
+        } else {
+            self.photoTypes = @[@"Front", @"Back", @"Side"];
+        }
+        
+        NSUInteger rowsCount = self.photoTypes.count/PHOTOS_PER_ROW + ((self.photoTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
+        self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
+        [self.collectionView reloadData];
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
     }
     
@@ -228,6 +247,44 @@
 
 -(IBAction)done:(id)sender {
     NSLog(@"done");
+}
+
+#pragma mark - Photo collection
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.photoTypes.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
+    newCell.photoTypeLabel.text = [self.photoTypes objectAtIndex:indexPath.row];
+    return newCell;
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat itemSize = collectionView.frame.size.width/PHOTOS_PER_ROW;
+    return CGSizeMake(itemSize, itemSize);
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"shouldHighlightItemAtIndexPath");
+    PhotoCell* cell = (PhotoCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    self.selectedImage = cell.photoView;
+    [self.photoActionsSheet showInView:self.view];
+    return YES;
+}
+
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"didSelectItemAtIndexPath");
+//}
+
+-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    PhotoCell* cell = (PhotoCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    [cell setHighlighted:NO];
 }
 
 @end

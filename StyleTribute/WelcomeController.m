@@ -21,16 +21,6 @@
     
     [GlobalHelper configureSlideshow:self.slideShow];
     [self.signInButton setAttributedTitle:[GlobalHelper linkWithString:@"Sign in"] forState:UIControlStateNormal];
-    
-    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        [DataCache sharedInstance].userProfile = profile;
-        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-    } failure:^(NSString *error) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        NSLog(@"getAccount error: %@", [error description]);
-    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -44,6 +34,19 @@
     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self.slideShow stop];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [DataCache sharedInstance].userProfile = profile;
+        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        NSLog(@"getAccount error: %@", [error description]);
+    }];
 }
 
 -(IBAction)fbLogin:(id)sender {

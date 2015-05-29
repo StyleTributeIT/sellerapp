@@ -9,7 +9,7 @@
 #import "BaseInputController.h"
 #import <UIKit/UIKit.h>
 
-@interface AddWardrobeItemController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface AddWardrobeItemController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property IBOutlet UILabel* messageLabel;
 @property IBOutlet UITextField* categoryField;
@@ -18,5 +18,7 @@
 @property IBOutlet UITextField* brandField;
 @property IBOutlet UITextField* sizeField;
 @property IBOutlet UIImageView* textViewBackground;
+@property IBOutlet UICollectionView* collectionView;
+@property IBOutlet NSLayoutConstraint* collectionViewHeight;
 
 @end

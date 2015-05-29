@@ -28,6 +28,11 @@
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].categories = categories;
+            
+            for (STCategory* cat in categories) {
+                NSLog(@"category: %@", cat.idStr);
+            }
+            
             [self.tableView reloadData];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];

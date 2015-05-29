@@ -20,6 +20,7 @@
     self.emailField.text = profile.email;
     self.firstNameField.text = profile.firstName;
     self.lastNameField.text = profile.lastName;
+    self.userNameField.text = profile.userName;
 }
 
 -(IBAction)cancel:(id)sender {

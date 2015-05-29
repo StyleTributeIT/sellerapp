@@ -15,6 +15,11 @@
     static dispatch_once_t once;
     static DataCache *sharedInstance;
     dispatch_once(&once, ^ { sharedInstance = [[DataCache alloc] init]; });
+    
+    // Hardcoded for now
+    sharedInstance.brands = @[@"3.1 PHILLIP LIM", @"7 FOR ALL MANKIND", @"A.J. BARI", @"A.L.C", @"ABS", @"ABS ALLEN SCHWARTZ", @"ACNE", @"ADAM LIPPES", @"ADOLFO DOMINGUES", @"ADRIANNA PAPELL", @"ADRIENNE VITTADINI", @"AGENT PROVOCATEUR", @"AGNES B", @"AIDA MADDOX", @"AIDAN MATTOX", @"AIGNER", @"AKIRA", @"ALAIA", @"ALANNAH HILL", @"ALBANO", @"ALBERTA FERRETTI", @"ALESSANDRA RICH", @"ALEXANDER MCQUEEN"];
+    sharedInstance.conditions = @[@"Gently loved", @"Good", @"Excellent", @"New with tag"];
+    
     return sharedInstance;
 }
 

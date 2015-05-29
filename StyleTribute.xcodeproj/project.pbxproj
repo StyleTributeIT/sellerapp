@@ -26,6 +26,7 @@
 		7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */; };
 		7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */; };
 		7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */; };
+		7A5124B21B18B64A00DA8841 /* BankAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5124B11B18B64A00DA8841 /* BankAccount.m */; };
 		7A600F771B0B773A00CCD5F3 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */; };
 		7A600F781B0B777200CCD5F3 /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */; };
 		7A600F791B0B777500CCD5F3 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */; };
@@ -43,6 +44,7 @@
 		7AAA8A6E1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A6D1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m */; };
 		7AAA8A711B0CF37B00BDE617 /* LoginTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A6F1B0CF37B00BDE617 /* LoginTest.m */; };
 		7AAA8A721B0CF37B00BDE617 /* RegistrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */; };
+		7AAD0F821B1889B200CE1AD2 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAD0F811B1889B200CE1AD2 /* PhotoCell.m */; };
 		7AB78D911B02200100C13D13 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */; };
 		7AB78D931B0223C500C13D13 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */; };
 		7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */; };
@@ -106,6 +108,8 @@
 		7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WardrobeCell.m; sourceTree = "<group>"; };
 		7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRegistrationController.h; sourceTree = "<group>"; };
 		7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRegistrationController.m; sourceTree = "<group>"; };
+		7A5124B01B18B64A00DA8841 /* BankAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankAccount.h; sourceTree = "<group>"; };
+		7A5124B11B18B64A00DA8841 /* BankAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankAccount.m; sourceTree = "<group>"; };
 		7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
 		7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 		7AAA8A6D1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+EXAdditions.m"; sourceTree = "<group>"; };
 		7AAA8A6F1B0CF37B00BDE617 /* LoginTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTest.m; sourceTree = "<group>"; };
 		7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationTest.m; sourceTree = "<group>"; };
+		7AAD0F801B1889B200CE1AD2 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		7AAD0F811B1889B200CE1AD2 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountController.h; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 		7A0EB6061AEE23D400D90001 /* StyleTribute */ = {
 			isa = PBXGroup;
 			children = (
+				7A123F971B1869B100D52ADA /* CustomViews */,
 				7A60FCD21B160F5D00731F6E /* External */,
 				7A600F731B0B750300CCD5F3 /* Fonts */,
 				7A4AA2C61AEFF45300190ED3 /* Cells */,
@@ -268,12 +275,19 @@
 				7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */,
 				7AFE43641AF22A99004B982B /* GlobalHelper.h */,
 				7AFE43651AF22A99004B982B /* GlobalHelper.m */,
-				7A2327341B0B98700064C4B3 /* AttributedLabel.h */,
-				7A2327351B0B98700064C4B3 /* AttributedLabel.m */,
 				7A7E45D91B0DDD0C000A7C84 /* SlideShowDataSource.h */,
 				7A7E45DA1B0DDD0C000A7C84 /* SlideShowDataSource.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7A123F971B1869B100D52ADA /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				7A2327341B0B98700064C4B3 /* AttributedLabel.h */,
+				7A2327351B0B98700064C4B3 /* AttributedLabel.m */,
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		7A3FA4A01AEFE53B0050803C /* DataModel */ = {
@@ -289,6 +303,8 @@
 				7A60979D1B14848F00209340 /* Country.m */,
 				7A60FCCF1B15EEAE00731F6E /* Category.h */,
 				7A60FCD01B15EEAE00731F6E /* Category.m */,
+				7A5124B01B18B64A00DA8841 /* BankAccount.h */,
+				7A5124B11B18B64A00DA8841 /* BankAccount.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -302,6 +318,8 @@
 				7A05074C1B0E220F00438D64 /* MyAccountCell.m */,
 				7AC4D1001B0F0C5C007724E2 /* CategoryCell.h */,
 				7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */,
+				7AAD0F801B1889B200CE1AD2 /* PhotoCell.h */,
+				7AAD0F811B1889B200CE1AD2 /* PhotoCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -564,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AAD0F821B1889B200CE1AD2 /* PhotoCell.m in Sources */,
 				7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */,
 				7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */,
 				7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */,
@@ -576,6 +595,7 @@
 				7A3FA4A31AEFE5720050803C /* Product.m in Sources */,
 				7A3365AE1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.m in Sources */,
 				7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */,
+				7A5124B21B18B64A00DA8841 /* BankAccount.m in Sources */,
 				7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */,
 				7A05074D1B0E220F00438D64 /* MyAccountCell.m in Sources */,
 				7A6097981B133BA000209340 /* UserProfile.m in Sources */,

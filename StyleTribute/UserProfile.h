@@ -21,5 +21,6 @@
 @property NSString* country;
 @property NSString* firstName;
 @property NSString* lastName;
+@property NSString* userName;
 
 @end
