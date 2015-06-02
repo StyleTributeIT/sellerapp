@@ -97,7 +97,12 @@
                 [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                [GlobalHelper showMessage:error withTitle:@"Registration error"];
+                
+                if([error isEqualToString:@"exists"]) {
+                    [GlobalHelper showMessage:DefUserAlreadyExists withTitle:@"Registration error"];
+                } else {
+                    [GlobalHelper showMessage:error withTitle:@"Registration error"];
+                }
             }];
         } else {
             [GlobalHelper showMessage:DefInvalidEmail withTitle:@"error"];

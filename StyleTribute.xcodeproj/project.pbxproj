@@ -19,6 +19,8 @@
 		7A237C5D1AFCD3F70031C629 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5C1AFCD3F70031C629 /* AddressBook.framework */; };
 		7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */; };
 		7A3365AE1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3365AD1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.m */; };
+		7A3E73B61B1C8AC600F4F9B0 /* AddItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E73B51B1C8AC600F4F9B0 /* AddItemTest.m */; };
+		7A3E73BA1B1DCEF200F4F9B0 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E73B91B1DCEF200F4F9B0 /* UIView+Additions.m */; };
 		7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4951AEF7B8E0050803C /* RegistrationController.m */; };
 		7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA4981AEFA4B70050803C /* BaseInputController.m */; };
 		7A3FA49F1AEFC2D00050803C /* WelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3FA49E1AEFC2D00050803C /* WelcomeController.m */; };
@@ -94,6 +96,10 @@
 		7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7A3365AC1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDFormInputAccessoryView.h; sourceTree = "<group>"; };
 		7A3365AD1B09FE7F0037E1D6 /* XCDFormInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCDFormInputAccessoryView.m; sourceTree = "<group>"; };
+		7A3E73B51B1C8AC600F4F9B0 /* AddItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemTest.m; sourceTree = "<group>"; };
+		7A3E73B71B1C909700F4F9B0 /* TestDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDefs.h; sourceTree = "<group>"; };
+		7A3E73B81B1DCEF200F4F9B0 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		7A3E73B91B1DCEF200F4F9B0 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		7A3FA4941AEF7B8E0050803C /* RegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationController.h; sourceTree = "<group>"; };
 		7A3FA4951AEF7B8E0050803C /* RegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationController.m; sourceTree = "<group>"; };
 		7A3FA4971AEFA4B70050803C /* BaseInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseInputController.h; sourceTree = "<group>"; };
@@ -251,11 +257,15 @@
 		7A0EB6201AEE23D400D90001 /* StyleTributeTests */ = {
 			isa = PBXGroup;
 			children = (
+				7A3E73B71B1C909700F4F9B0 /* TestDefs.h */,
 				7AAA8A6C1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.h */,
 				7AAA8A6D1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m */,
 				7AAA8A6F1B0CF37B00BDE617 /* LoginTest.m */,
 				7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */,
+				7A3E73B51B1C8AC600F4F9B0 /* AddItemTest.m */,
 				7A0EB6211AEE23D400D90001 /* Supporting Files */,
+				7A3E73B81B1DCEF200F4F9B0 /* UIView+Additions.h */,
+				7A3E73B91B1DCEF200F4F9B0 /* UIView+Additions.m */,
 			);
 			path = StyleTributeTests;
 			sourceTree = "<group>";
@@ -625,8 +635,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A3E73B61B1C8AC600F4F9B0 /* AddItemTest.m in Sources */,
 				7AAA8A721B0CF37B00BDE617 /* RegistrationTest.m in Sources */,
 				7AAA8A711B0CF37B00BDE617 /* LoginTest.m in Sources */,
+				7A3E73BA1B1DCEF200F4F9B0 /* UIView+Additions.m in Sources */,
 				7AAA8A6E1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

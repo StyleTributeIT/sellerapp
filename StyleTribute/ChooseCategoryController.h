@@ -11,8 +11,7 @@
 
 @interface ChooseCategoryController : UITableViewController
 
-@property IBOutlet UITableView* tableView;
-
+@property IBOutlet UITableView* categoriesTableView;
 @property STCategory* selectedCategory;
 
 @end

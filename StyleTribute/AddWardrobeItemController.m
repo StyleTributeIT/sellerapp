@@ -54,10 +54,14 @@
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     [self.messageLabel sizeToFit];
     
-    self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
+    self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
     self.photoActionsSheet.delegate = self;
     
     self.textViewBackground.image = [[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
+    self.collectionView.allowsSelection = YES;
+    self.collectionView.allowsMultipleSelection = NO;
+    self.collectionView.accessibilityIdentifier = @"Photos collection";
+    self.collectionView.accessibilityLabel = @"Photos collection";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
 }
@@ -247,6 +251,18 @@
 
 -(IBAction)done:(id)sender {
     NSLog(@"done");
+    
+    if(self.categoryField.text.length == 0 ||
+       self.descriptionView.text.length == 0 ||
+       self.brandField.text.length == 0 ||
+       self.sizeField.text.length == 0 ||
+       self.conditionField.text.length == 0) {
+        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+        return;
+    } else {
+        MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+        [tabController selectPreviousTab];
+    }
 }
 
 #pragma mark - Photo collection
@@ -262,6 +278,8 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
     newCell.photoTypeLabel.text = [self.photoTypes objectAtIndex:indexPath.row];
+    newCell.photoView.tag = indexPath.row;
+    newCell.accessibilityLabel = [NSString stringWithFormat:@"Photo cell %td", indexPath.row];
     return newCell;
 }
 
@@ -270,21 +288,11 @@
     return CGSizeMake(itemSize, itemSize);
 }
 
--(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"shouldHighlightItemAtIndexPath");
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCell* cell = (PhotoCell*)[collectionView cellForItemAtIndexPath:indexPath];
     self.selectedImage = cell.photoView;
     [self.photoActionsSheet showInView:self.view];
-    return YES;
-}
-
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"didSelectItemAtIndexPath");
-//}
-
--(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-    PhotoCell* cell = (PhotoCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    [cell setHighlighted:NO];
+    return NO;
 }
 
 @end

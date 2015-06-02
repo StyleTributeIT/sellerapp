@@ -10,9 +10,7 @@
 #import <KIFUITestActor.h>
 #import "KIFUITestActor+EXAdditions.h"
 #import "GlobalDefs.h"
-
-static NSString* correctLogin = @"test@gmail.com";
-static NSString* correctPassword = @"123456";
+#import "TestDefs.h"
 
 @interface LoginTest : KIFTestCase
 
@@ -22,6 +20,7 @@ static NSString* correctPassword = @"123456";
 
 - (void)setUp {
     [super setUp];
+    [KIFUITestActor setDefaultTimeout:60];
     [tester navigateToLoginScreen];
 }
 

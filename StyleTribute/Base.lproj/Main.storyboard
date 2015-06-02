@@ -1908,6 +1908,7 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VlM-R9-Zbi">
                                                 <rect key="frame" x="8" y="37" width="304" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" label="Choose category"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="lCR-fS-NwN"/>
@@ -1921,6 +1922,7 @@
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spy-gH-EMN">
                                                 <rect key="frame" x="8" y="291" width="304" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" label="Brand"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="OTY-ji-Qwi"/>
                                                 </constraints>
@@ -1932,6 +1934,7 @@
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-VP-j2D">
                                                 <rect key="frame" x="8" y="329" width="304" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" label="Size"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="G6t-ag-EDN"/>
                                                 </constraints>
@@ -1943,6 +1946,7 @@
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Condition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-kR-1Pi">
                                                 <rect key="frame" x="8" y="367" width="304" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" label="Condition"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cf2-BB-JVC"/>
                                                 </constraints>
@@ -1954,6 +1958,7 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-OC-s45">
                                                 <rect key="frame" x="40" y="405" width="240" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" label="Price"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cks-vp-y9K"/>
                                                 </constraints>
@@ -1975,10 +1980,10 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-XH-bzd">
                                                 <rect key="frame" x="8" y="183" width="304" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration" label="Description"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="PUL-dK-YHU"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 <connections>
@@ -2007,6 +2012,7 @@
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="bg3-Pq-KTn">
                                                                     <rect key="frame" x="4" y="4" width="52" height="52"/>
+                                                                    <gestureRecognizers/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-O8-oZw">
                                                                     <rect key="frame" x="4" y="21" width="52" height="18"/>
@@ -2184,7 +2190,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="tableView" destination="HMG-Gc-zjG" id="sRi-Bx-twh"/>
+                        <outlet property="categoriesTableView" destination="HMG-Gc-zjG" id="yjB-NM-RQE"/>
                         <segue destination="tm3-rZ-94c" kind="unwind" identifier="unwindToAddItem" unwindAction="unwindToAddItem:" id="FI6-id-h3E"/>
                     </connections>
                 </tableViewController>

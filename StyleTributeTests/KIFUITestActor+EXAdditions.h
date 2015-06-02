@@ -13,5 +13,7 @@
 -(void)navigateToLoginScreen;
 -(void)navigateToRegistrationScreen;
 -(void)logoutIfPossible;
+-(void)navigateToMainScreen;
+-(void)navigateToAddItemScreen;
 
 @end

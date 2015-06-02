@@ -48,7 +48,12 @@
                 [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                [GlobalHelper showMessage:error withTitle:@"Login error"];
+                
+                if([error isEqualToString:@"credentials"]) {
+                    [GlobalHelper showMessage:DefInvalidLoginPassword withTitle:@"Login error"];
+                } else {
+                    [GlobalHelper showMessage:error withTitle:@"Login error"];
+                }
             }];
             
         } else {

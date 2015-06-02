@@ -22,6 +22,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
+    self.categoriesTableView.accessibilityIdentifier = @"Choose category table";
     
     if([DataCache sharedInstance].categories == nil) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
@@ -29,11 +30,7 @@
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].categories = categories;
             
-            for (STCategory* cat in categories) {
-                NSLog(@"category: %@", cat.idStr);
-            }
-            
-            [self.tableView reloadData];
+            [self.categoriesTableView reloadData];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             NSLog(@"get categories error: %@", [error description]);

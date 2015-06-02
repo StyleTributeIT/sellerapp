@@ -19,5 +19,6 @@ static NSString* const DefInternetUnavailableMsg = @"internet connection not rea
 static NSString* const DefInvalidLoginPassword = @"Invalid login or password";
 static NSString* const DefInvalidEmail = @"Invalid email";
 static NSString* const DefEmptyFields = @"Please fill in all fields";
+static NSString* const DefUserAlreadyExists = @"User with this email already exists";
 
 #endif

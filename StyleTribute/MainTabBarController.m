@@ -31,6 +31,7 @@
         UITabBarItem* addItem = [self.tabBar.items objectAtIndex:1];
         [addItem setImage:[[UIImage imageNamed:@"add-item"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         addItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+        addItem.accessibilityLabel = @"Add item";
         
         UITabBarItem* wardrobeItem = [self.tabBar.items objectAtIndex:0];
         [wardrobeItem setImage:[[UIImage imageNamed:@"wardrobe"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

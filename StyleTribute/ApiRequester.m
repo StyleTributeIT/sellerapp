@@ -248,8 +248,8 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     [self.sessionManager GET:@"seller/products" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* products = [NSMutableArray new];
-        for (NSDictionary* productDict in responseObject) {
-        }
+//        for (NSDictionary* productDict in responseObject) {
+//        }
         success(products);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"getProducts error: %@", [error description]);

@@ -14,11 +14,18 @@
 #import "ApiRequester.h"
 #import "DataCache.h"
 
+@interface WelcomeController ()
+
+@property BOOL loadedFirstTime;
+
+@end
+
 @implementation WelcomeController
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     
+    self.loadedFirstTime = YES;
     [GlobalHelper configureSlideshow:self.slideShow];
     [self.signInButton setAttributedTitle:[GlobalHelper linkWithString:@"Sign in"] forState:UIControlStateNormal];
 }
@@ -38,15 +45,19 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        [DataCache sharedInstance].userProfile = profile;
-        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-    } failure:^(NSString *error) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        NSLog(@"getAccount error: %@", [error description]);
-    }];
+    
+    if(self.loadedFirstTime) {
+        self.loadedFirstTime = NO;
+        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [DataCache sharedInstance].userProfile = profile;
+            [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            NSLog(@"getAccount error: %@", [error description]);
+        }];
+    }
 }
 
 -(IBAction)fbLogin:(id)sender {
