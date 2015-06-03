@@ -40,7 +40,7 @@
 +(void)configureSlideshow:(KASlideShow*)slideShow {
     [slideShow setDelay:6];
     [slideShow setTransitionDuration:1];
-    [slideShow setTransitionType:KASlideShowTransitionSlide];
+    [slideShow setTransitionType:KASlideShowTransitionFade];
     [slideShow setImagesContentMode:UIViewContentModeScaleAspectFill];
     [slideShow setDataSource:[SlideShowDataSource sharedInstance]];
 //    [slideShow addImage:[UIImage imageNamed:@"1.jpg"]];
