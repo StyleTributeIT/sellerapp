@@ -13,6 +13,10 @@
 #import <MRProgress.h>
 #import "DataCache.h"
 
+@interface LoginController () <UIAlertViewDelegate>
+
+@end
+
 @implementation LoginController
 
 -(void)viewDidLoad {
@@ -45,7 +49,13 @@
             [[ApiRequester sharedInstance] loginWithEmail:self.loginField.text andPassword:self.passwordField.text success:^(UserProfile* profile) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 [DataCache sharedInstance].userProfile = profile;
-                [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+                if(profile.userName.length == 0) {
+                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:@"Enter your username" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+                    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+                    [alert show];
+                } else {
+                    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+                }
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 
@@ -70,6 +80,21 @@
 
 -(BOOL)noEmptyFields {
     return (self.loginField.text.length > 0 && self.passwordField.text.length > 0);
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    UITextField* textField = [alertView textFieldAtIndex:0];
+    [DataCache sharedInstance].userProfile.userName = textField.text;
+    
+    // TODO: here we should call API to update account
+    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
+    UITextField* textField = [alertView textFieldAtIndex:0];
+    return textField.text.length > 5;
 }
 
 @end

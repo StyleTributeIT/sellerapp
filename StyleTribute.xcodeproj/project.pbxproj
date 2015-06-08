@@ -55,6 +55,7 @@
 		7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */; };
 		7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */; };
 		7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */; };
+		7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC54C7D1B25DF0900539C94 /* CustomTextField.m */; };
 		7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */; };
 		7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */; };
 		7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */; };
@@ -162,6 +163,8 @@
 		7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankDetailsController.m; sourceTree = "<group>"; };
 		7AC4D1001B0F0C5C007724E2 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		7AC54C7C1B25DF0900539C94 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		7AC54C7D1B25DF0900539C94 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
 		7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
 		7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -296,6 +299,8 @@
 			children = (
 				7A2327341B0B98700064C4B3 /* AttributedLabel.h */,
 				7A2327351B0B98700064C4B3 /* AttributedLabel.m */,
+				7AC54C7C1B25DF0900539C94 /* CustomTextField.h */,
+				7AC54C7D1B25DF0900539C94 /* CustomTextField.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */,
+				7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,
@@ -682,7 +688,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -725,7 +730,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -751,8 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -772,8 +775,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

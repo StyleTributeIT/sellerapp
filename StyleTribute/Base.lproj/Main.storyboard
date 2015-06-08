@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU1-hE-138">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -235,7 +235,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-jq-QA3">
                                                 <rect key="frame" x="128" y="8" width="64" height="64"/>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyO-9Y-oef">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyO-9Y-oef" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="152" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your email"/>
                                                 <constraints>
@@ -247,7 +247,7 @@
                                                     <outlet property="delegate" destination="W2W-9d-Wfs" id="YGR-mr-8su"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="190" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
@@ -558,7 +558,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-4b-pml">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-4b-pml" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="45" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="P6O-Bp-GyP"/>
@@ -569,7 +569,7 @@
                                                     <outlet property="delegate" destination="tr0-6J-Wdp" id="ldZ-HO-GU2"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FT6-vb-44k">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FT6-vb-44k" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="83" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="lZi-cG-mp8"/>
@@ -580,7 +580,7 @@
                                                     <outlet property="delegate" destination="tr0-6J-Wdp" id="4xw-NT-kyK"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="noB-08-po4">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="noB-08-po4" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="121" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="hXr-qj-lOw"/>
@@ -591,7 +591,7 @@
                                                     <outlet property="delegate" destination="tr0-6J-Wdp" id="vcZ-7r-fdp"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nld-v3-z7S">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nld-v3-z7S" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="159" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="NZg-nK-v2S"/>
@@ -602,7 +602,7 @@
                                                     <outlet property="delegate" destination="tr0-6J-Wdp" id="Sc4-FZ-IP9"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country of residence" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEt-Cj-ftT">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country of residence" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEt-Cj-ftT" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="197" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="dwV-4O-Fmn"/>
@@ -712,7 +712,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Gb-CD-WuE">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Gb-CD-WuE" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="45" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="yED-J3-RZa"/>
@@ -723,7 +723,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="CzG-gL-1Q2"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Af-rQ-iTM">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Af-rQ-iTM" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="83" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="hSC-WO-Zsa"/>
@@ -734,7 +734,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="9dn-h3-sJg"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuD-Wk-V9e">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuD-Wk-V9e" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="121" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cxV-Tb-MhV"/>
@@ -745,7 +745,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="hvk-Rq-trs"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xg3-HO-ve7">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xg3-HO-ve7" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="159" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5zR-72-9jA"/>
@@ -756,7 +756,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="2Ms-ZA-c2U"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMF-lg-kH3">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMF-lg-kH3" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="197" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="r8N-lg-wWA"/>
@@ -767,7 +767,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="5Yg-Hr-x9e"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postal code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7na-yA-0IR">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postal code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7na-yA-0IR" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="235" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="O8N-18-wB2"/>
@@ -778,7 +778,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="htA-hb-wfS"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUj-h6-onR">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VUj-h6-onR" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="273" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="M9h-Ue-bfA"/>
@@ -896,7 +896,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l44-EB-YuR">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l44-EB-YuR" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="45" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="MuZ-Ec-jI6"/>
@@ -907,7 +907,7 @@
                                                     <outlet property="delegate" destination="HNe-sU-zJZ" id="i6t-fu-z2B"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5I-PZ-28I">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5I-PZ-28I" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="83" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="rBx-tz-tFa"/>
@@ -918,7 +918,7 @@
                                                     <outlet property="delegate" destination="HNe-sU-zJZ" id="nqy-91-N13"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter new password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nrn-KN-jNe">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter new password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nrn-KN-jNe" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="121" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="c2h-L9-aX4"/>
@@ -1020,7 +1020,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bank name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZv-tm-CPu">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bank name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZv-tm-CPu" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="45" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="LXa-2Q-Zio"/>
@@ -1031,7 +1031,7 @@
                                                     <outlet property="delegate" destination="4Gf-0K-49B" id="JZ3-JL-uyJ"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bc-dM-3dY">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bc-dM-3dY" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="83" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="vnZ-Yr-JqC"/>
@@ -1042,7 +1042,7 @@
                                                     <outlet property="delegate" destination="4Gf-0K-49B" id="ZJC-99-lbC"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Swift code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvC-GE-7yw">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Swift code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvC-GE-7yw" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="121" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="AhW-HI-urI"/>
@@ -1053,7 +1053,7 @@
                                                     <outlet property="delegate" destination="4Gf-0K-49B" id="nJ6-sU-Ndc"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Branch code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YHc-6X-Peu">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Branch code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YHc-6X-Peu" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="159" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="t38-Ff-dU3"/>
@@ -1064,7 +1064,7 @@
                                                     <outlet property="delegate" destination="4Gf-0K-49B" id="JeK-aG-0Qi"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of holder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fej-rx-F8c">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of holder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fej-rx-F8c" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="197" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="mmr-GU-S9G"/>
@@ -1395,7 +1395,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-KE-yG7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="424"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKh-7d-kPR">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKh-7d-kPR" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="184" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="aBF-AF-CZA"/>
@@ -1406,7 +1406,7 @@
                                                     <outlet property="delegate" destination="sjP-DD-tuF" id="0p2-Uw-CNK"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3v-hM-vnc">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3v-hM-vnc" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="260" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ihL-x8-CeU"/>
@@ -1417,7 +1417,7 @@
                                                     <outlet property="delegate" destination="sjP-DD-tuF" id="W04-Oy-ahS"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GQ-82-o1R">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GQ-82-o1R" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="298" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="VSD-Ii-yE1"/>
@@ -1428,7 +1428,7 @@
                                                     <outlet property="delegate" destination="sjP-DD-tuF" id="I9t-mH-yhh"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ac-YBF">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ac-YBF" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="336" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="sv0-hP-qlB"/>
@@ -1446,7 +1446,7 @@
                                                     <constraint firstAttribute="width" constant="64" id="aIS-MM-mwK"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCx-9Z-RPU">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCx-9Z-RPU" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="222" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kd9-ea-VwT"/>
@@ -1663,7 +1663,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your username" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-hv-yih">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your username" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-hv-yih" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="176" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your username"/>
                                                 <constraints>
@@ -1675,7 +1675,7 @@
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="DIq-1D-lcf"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-MD-wNY">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-MD-wNY" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="214" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
@@ -1687,7 +1687,7 @@
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="OL0-ry-HoW"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-99-QHL">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-99-QHL" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="252" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="First name"/>
                                                 <constraints>
@@ -1699,7 +1699,7 @@
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="FCf-f5-zyN"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="M89-59-1qN">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="M89-59-1qN" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="290" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Last name"/>
                                                 <constraints>
@@ -1711,7 +1711,7 @@
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="WNB-VS-1JI"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-gd-SfC">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-gd-SfC" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="328" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Email"/>
                                                 <constraints>
@@ -1723,7 +1723,7 @@
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="cwm-UW-mO4"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="DHb-RS-aJg">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="DHb-RS-aJg" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="366" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Country"/>
                                                 <constraints>
@@ -1735,7 +1735,7 @@
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="zJm-8h-Nqu"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ" customClass="CustomTextField">
                                                 <rect key="frame" x="40" y="404" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Phone number"/>
                                                 <constraints>
@@ -1906,7 +1906,7 @@
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VlM-R9-Zbi">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VlM-R9-Zbi" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="37" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Choose category"/>
                                                 <gestureRecognizers/>
@@ -1920,7 +1920,7 @@
                                                     <segue destination="kpk-cm-DsD" kind="show" identifier="chooseCategorySegue" id="Eif-tY-SAz"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spy-gH-EMN">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spy-gH-EMN" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="291" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Brand"/>
                                                 <constraints>
@@ -1932,7 +1932,7 @@
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="Q7V-Uf-nBW"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-VP-j2D">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-VP-j2D" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="329" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Size"/>
                                                 <constraints>
@@ -1944,7 +1944,7 @@
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="aR2-dH-NaR"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Condition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-kR-1Pi">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Condition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-kR-1Pi" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="367" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Condition"/>
                                                 <constraints>
@@ -2014,7 +2014,7 @@
                                                                     <rect key="frame" x="4" y="4" width="52" height="52"/>
                                                                     <gestureRecognizers/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-O8-oZw">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-O8-oZw">
                                                                     <rect key="frame" x="4" y="21" width="52" height="18"/>
                                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                                                     <constraints>
@@ -2217,7 +2217,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-Mw-Cns">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="315"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Original price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-FV-4pu">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Original price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-FV-4pu" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="8" width="304" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="sPX-aR-gdh"/>
@@ -2228,7 +2228,7 @@
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="Z4w-ps-onP"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="StyleTribute proposed price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRZ-m7-uSp">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="StyleTribute proposed price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRZ-m7-uSp" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="46" width="304" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="waT-64-jaj"/>
@@ -2257,7 +2257,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your selling price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-ub-d6M">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your selling price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-ub-d6M" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="159" width="304" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="VS1-zl-jsl"/>
@@ -2268,7 +2268,7 @@
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="esD-36-YNh"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your takeback value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your takeback value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26" customClass="CustomTextField">
                                                 <rect key="frame" x="8" y="265" width="304" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Tr0-1l-LrH"/>
@@ -2448,6 +2448,6 @@
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mG1-qk-ojj"/>
+        <segue reference="1dd-Ww-h8O"/>
     </inferredMetricsTieBreakers>
 </document>

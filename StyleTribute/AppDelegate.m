@@ -11,6 +11,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <TestFairy.h>
 #import "DataCache.h"
+#import "CustomTextField.h"
 
 @interface AppDelegate ()
 
@@ -27,10 +28,10 @@
     UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
     [[UITabBar appearance] setSelectedImageTintColor:pink];
     
-    [[UITextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
-    [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
-    [[UITextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
-    [[UITextField appearance] setTextAlignment:NSTextAlignmentCenter];
+    [[CustomTextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
+    [[CustomTextField appearance] setBorderStyle:UITextBorderStyleNone];
+    [[CustomTextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+    [[CustomTextField appearance] setTextAlignment:NSTextAlignmentCenter];
     
 //    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setTextColor:[UIColor blueColor]];
     
