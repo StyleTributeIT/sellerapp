@@ -45,8 +45,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CategoryCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     STCategory* category = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
+    
     cell.tag = indexPath.row;
     cell.categoryName.text = category.name;
+    if(category.thumbnail.length > 0) {
+        cell.categoryImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.thumbnail]]];
+    }
+    
     return cell;
 }
 

@@ -11,9 +11,8 @@
 @interface STCategory : BaseModel
 
 @property NSUInteger idNum;
-@property NSString* idStr;
 @property NSString* name;
-@property NSUInteger productCount;
+@property NSString* thumbnail;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
 

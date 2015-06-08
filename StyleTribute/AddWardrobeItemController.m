@@ -160,17 +160,17 @@
         ChooseCategoryController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory.name;
         
-        if([ccController.selectedCategory.idStr isEqualToString:@"clothing"]) {
-            self.photoTypes = @[@"Front", @"Back", @"Side"];
-        } else if([ccController.selectedCategory.idStr isEqualToString:@"bags"]) {
-            self.photoTypes = @[@"Front", @"Back", @"Side", @"Inside", @"Details", @"Dust bag"];
-        } else if([ccController.selectedCategory.idStr isEqualToString:@"shoes"]) {
-            self.photoTypes = @[@"Front", @"Back", @"Side", @"Sole", @"Details"];
-        } else if([ccController.selectedCategory.idStr isEqualToString:@"accessories"]) {
-            self.photoTypes = @[@"Front", @"Back", @"Side", @"Packaging"];
-        } else {
-            self.photoTypes = @[@"Front", @"Back", @"Side"];
-        }
+//        if([ccController.selectedCategory.idStr isEqualToString:@"clothing"]) {
+//            self.photoTypes = @[@"Front", @"Back", @"Side"];
+//        } else if([ccController.selectedCategory.idStr isEqualToString:@"bags"]) {
+//            self.photoTypes = @[@"Front", @"Back", @"Side", @"Inside", @"Details", @"Dust bag"];
+//        } else if([ccController.selectedCategory.idStr isEqualToString:@"shoes"]) {
+//            self.photoTypes = @[@"Front", @"Back", @"Side", @"Sole", @"Details"];
+//        } else if([ccController.selectedCategory.idStr isEqualToString:@"accessories"]) {
+//            self.photoTypes = @[@"Front", @"Back", @"Side", @"Packaging"];
+//        } else {
+//            self.photoTypes = @[@"Front", @"Back", @"Side"];
+//        }
         
         NSUInteger rowsCount = self.photoTypes.count/PHOTOS_PER_ROW + ((self.photoTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
         self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;

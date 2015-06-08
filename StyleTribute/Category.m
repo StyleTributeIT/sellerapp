@@ -14,9 +14,8 @@
     STCategory* category = [STCategory new];
 
     category.idNum = [[self class] parseUInteger:@"id" fromDict:dict];
-    category.idStr = [[self class] parseString:@"ident" fromDict:dict];
     category.name = [[self class] parseString:@"name" fromDict:dict];
-    category.productCount = [[self class] parseUInteger:@"productCount" fromDict:dict];
+    category.thumbnail = [[self class] parseString:@"thumbnail" fromDict:dict];
     
     return category;
 }

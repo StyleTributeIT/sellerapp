@@ -229,7 +229,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(AFHTTPRequestOperation*)getCategories:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
     
-    [self.sessionManager GET:@"categories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+    [self.sessionManager GET:@"seller/getSellerCategories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* categories = [NSMutableArray new];
         for (NSDictionary* categoryDict in responseObject) {
             [categories addObject:[STCategory parseFromJson:categoryDict]];
