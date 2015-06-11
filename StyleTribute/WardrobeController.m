@@ -14,6 +14,7 @@
 #import "WardrobeController.h"
 #import "ApiRequester.h"
 #import "DataCache.h"
+#import "MainTabBarController.h"
 #import <MRProgress.h>
 
 @interface WardrobeController()
@@ -118,6 +119,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+    [tabController setSelectedIndex:1];  // Go to item detail page
 }
 
 #pragma mark - MGSwipeTableCellDelegate

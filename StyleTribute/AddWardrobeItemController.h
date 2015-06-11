@@ -7,6 +7,7 @@
 //
 
 #import "BaseInputController.h"
+#import "Product.h"
 #import <UIKit/UIKit.h>
 
 @interface AddWardrobeItemController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
@@ -20,5 +21,7 @@
 @property IBOutlet UIImageView* textViewBackground;
 @property IBOutlet UICollectionView* collectionView;
 @property IBOutlet NSLayoutConstraint* collectionViewHeight;
+
+@property Product* curProduct;
 
 @end

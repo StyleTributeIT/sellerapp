@@ -38,28 +38,12 @@
     return items;
 }
 
--(NSMutableArray*)loadSellingItems {
-    return [self loadItemsFromFile:@"sellingItems"];
+-(NSMutableArray*)loadProducts {
+    return [self loadItemsFromFile:@"products"];
 }
 
--(void)saveSellingItems:(NSArray*)items {
-    [NSKeyedArchiver archiveRootObject:items toFile:[self getPathInDocuments:@"sellingItems"]];
-}
-
--(NSMutableArray*)loadSoldItems {
-    return [self loadItemsFromFile:@"soldItems"];
-}
-
--(void)saveSoldItems:(NSArray*)items {
-    [NSKeyedArchiver archiveRootObject:items toFile:[self getPathInDocuments:@"soldItems"]];
-}
-
--(NSMutableArray*)loadArchivedItems {
-    return [self loadItemsFromFile:@"archivedItems"];
-}
-
--(void)saveArchivedItems:(NSArray*)items {
-    [NSKeyedArchiver archiveRootObject:items toFile:[self getPathInDocuments:@"archivedItems"]];
+-(void)saveProducts:(NSArray*)items {
+    [NSKeyedArchiver archiveRootObject:items toFile:[self getPathInDocuments:@"products"]];
 }
 
 @end

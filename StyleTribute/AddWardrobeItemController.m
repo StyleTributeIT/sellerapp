@@ -27,8 +27,8 @@
 
 @property NSArray* sizes;
 @property BOOL isTutorialPresented;
-@property NSArray* photoTypes;
 @property UIImageView* selectedImage;
+@property NSUInteger selectedImageIndex;
 
 @end
 
@@ -40,7 +40,6 @@
     [super viewDidLoad];
     
     self.isTutorialPresented = NO;
-    self.photoTypes = @[@"Front", @"Back", @"Side"];
     self.collectionViewHeight.constant = self.collectionView.frame.size.width/PHOTOS_PER_ROW;
     
     self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField, self.brandField]];
@@ -64,6 +63,13 @@
     self.collectionView.accessibilityLabel = @"Photos collection";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+    
+    if(self.curProduct == nil) {
+        self.curProduct = [Product new];
+    } else {
+        // TODO: fill in all fields
+        self.categoryField.text = self.curProduct.category.name;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -159,20 +165,8 @@
     if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
         ChooseCategoryController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory.name;
-        
-//        if([ccController.selectedCategory.idStr isEqualToString:@"clothing"]) {
-//            self.photoTypes = @[@"Front", @"Back", @"Side"];
-//        } else if([ccController.selectedCategory.idStr isEqualToString:@"bags"]) {
-//            self.photoTypes = @[@"Front", @"Back", @"Side", @"Inside", @"Details", @"Dust bag"];
-//        } else if([ccController.selectedCategory.idStr isEqualToString:@"shoes"]) {
-//            self.photoTypes = @[@"Front", @"Back", @"Side", @"Sole", @"Details"];
-//        } else if([ccController.selectedCategory.idStr isEqualToString:@"accessories"]) {
-//            self.photoTypes = @[@"Front", @"Back", @"Side", @"Packaging"];
-//        } else {
-//            self.photoTypes = @[@"Front", @"Back", @"Side"];
-//        }
-        
-        NSUInteger rowsCount = self.photoTypes.count/PHOTOS_PER_ROW + ((self.photoTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
+        self.curProduct.category = ccController.selectedCategory;
+        NSUInteger rowsCount = self.curProduct.category.imageTypes.count/PHOTOS_PER_ROW + ((self.curProduct.category.imageTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
         self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
         [self.collectionView reloadData];
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
@@ -217,7 +211,7 @@
                 cameraViewRect = CGRectMake(0, 40, screenSize.width, screenSize.width*4.0/3.0);
             }
             
-            UIImage* outline = [UIImage imageNamed:@"SquareOutlineDemo"];
+            UIImage* outline = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
             UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - outline.size.width)/2, (cameraViewRect.size.height - outline.size.height)/2 + cameraViewRect.origin.y, outline.size.width, outline.size.height)];
             overlay.image = outline;
             picker.cameraOverlayView = overlay;
@@ -272,12 +266,14 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.photoTypes.count;
+    return self.curProduct.category.imageTypes.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
-    newCell.photoTypeLabel.text = [self.photoTypes objectAtIndex:indexPath.row];
+    ImageType* imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
+    newCell.photoTypeLabel.text = imgType.name;
+    newCell.photoView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgType.preview]]];
     newCell.photoView.tag = indexPath.row;
     newCell.accessibilityLabel = [NSString stringWithFormat:@"Photo cell %td", indexPath.row];
     return newCell;
@@ -291,6 +287,7 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCell* cell = (PhotoCell*)[collectionView cellForItemAtIndexPath:indexPath];
     self.selectedImage = cell.photoView;
+    self.selectedImageIndex = indexPath.row;
     [self.photoActionsSheet showInView:self.view];
     return NO;
 }

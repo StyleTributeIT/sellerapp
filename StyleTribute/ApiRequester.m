@@ -79,7 +79,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
 #pragma mark - API methods
 
--(AFHTTPRequestOperation*)registerWithEmail:(NSString*)email
+-(void)registerWithEmail:(NSString*)email
                                    password:(NSString*)password
                                   firstName:(NSString*)firstName
                                    lastName:(NSString*)lastName
@@ -88,7 +88,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                       phone:(NSString*)phone
                                     success:(JSONRespAccount)success
                                     failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     NSDictionary* params = @{@"email":email, @"password":password, @"firstname": firstName, @"lastname": lastName, @"username": userName, @"country": country, @"phone_number": phone};
     [self.sessionManager POST:@"seller/register" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -106,12 +106,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"registration error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager POST:@"authorize" parameters:@{@"email":email, @"password":password} success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
@@ -128,12 +126,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"login error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager POST:@"authorizeFb" parameters:@{@"token":fbToken} success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
@@ -156,12 +152,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"FB login error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"invalidate" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
@@ -175,12 +169,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"logout error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"products/filter/10/0" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
@@ -190,12 +182,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"getProducts error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"account" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
@@ -205,12 +195,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"getAccount error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)getCountries:(JSONRespArray)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)getCountries:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"checkout/countryList" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* countries = [NSMutableArray new];
@@ -222,12 +210,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"getCountries error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)getCategories:(JSONRespArray)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)getCategories:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"seller/getSellerCategories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* categories = [NSMutableArray new];
@@ -239,12 +225,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"getCategories error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)getProducts:(JSONRespArray)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)getProducts:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"seller/products" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* products = [NSMutableArray new];
@@ -255,12 +239,24 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"getProducts error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)setProduct:(NSString*)product success:(JSONRespEmpty)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    // TODO: fill parameters
+    [self.sessionManager POST:@"seller/product" parameters:@{} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            success();
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"setProduct error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager POST:@"deviceToken" parameters:@{@"deviceToken":token} success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
@@ -270,12 +266,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"setDeviceToken error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+-(void)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"seller/bankAccount" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         success([BankAccount parseFromJson:responseObject]);
@@ -283,18 +277,16 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"getBankAccount error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
--(AFHTTPRequestOperation*)setBankAccountWithBankName:(NSString*)bankName
+-(void)setBankAccountWithBankName:(NSString*)bankName
                                             bankCode:(NSString*)bankCode
                                          beneficiary:(NSString*)beneficiary
                                        accountNumber:(NSString*)accountNumber
                                           branchCode:(NSString*)branchCode
                                              success:(JSONRespEmpty)success
                                              failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return nil;
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     NSDictionary* params = @{@"bankname":bankName, @"bankcode":bankCode, @"bankbeneficiary":beneficiary, @"bankaccountnumber":accountNumber, @"bankbranchcode":branchCode};
     [self.sessionManager POST:@"seller/bankAccount" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -305,8 +297,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         NSLog(@"setDeviceToken error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
-    
-    return nil;
 }
 
 @end

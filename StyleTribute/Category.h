@@ -13,6 +13,7 @@
 @property NSUInteger idNum;
 @property NSString* name;
 @property NSString* thumbnail;
+@property NSArray* imageTypes;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
 

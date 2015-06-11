@@ -13,9 +13,7 @@
 
 +(DataCache*)sharedInstance;
 
-@property NSMutableArray* sellingItems;
-@property NSMutableArray* soldItems;
-@property NSMutableArray* archivedItems;
+@property NSMutableArray* products;
 @property UserProfile* userProfile;
 @property NSArray* countries;
 @property NSArray* categories;
@@ -23,13 +21,7 @@
 @property NSArray* brands;
 @property NSArray* conditions;
 
--(NSMutableArray*)loadSellingItems;
--(void)saveSellingItems:(NSArray*)items;
-
--(NSMutableArray*)loadSoldItems;
--(void)saveSoldItems:(NSArray*)items;
-
--(NSMutableArray*)loadArchivedItems;
--(void)saveArchivedItems:(NSArray*)items;
+-(NSMutableArray*)loadProducts;
+-(void)saveProducts:(NSArray*)items;
 
 @end

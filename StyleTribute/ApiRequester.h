@@ -24,7 +24,7 @@ typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
 
 +(ApiRequester*)sharedInstance;
 
--(AFHTTPRequestOperation*)registerWithEmail:(NSString*)email
+-(void)registerWithEmail:(NSString*)email
                                    password:(NSString*)password
                                   firstName:(NSString*)firstName
                                    lastName:(NSString*)lastName
@@ -34,18 +34,18 @@ typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
                                     success:(JSONRespAccount)success
                                     failure:(JSONRespError)failure;
 
--(AFHTTPRequestOperation*)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)getCountries:(JSONRespArray)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)getCategories:(JSONRespArray)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)getProducts:(JSONRespArray)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure;
--(AFHTTPRequestOperation*)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure;
+-(void)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure;
+-(void)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure;
+-(void)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure;
+-(void)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure;
+-(void)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure;
+-(void)getCountries:(JSONRespArray)success failure:(JSONRespError)failure;
+-(void)getCategories:(JSONRespArray)success failure:(JSONRespError)failure;
+-(void)getProducts:(JSONRespArray)success failure:(JSONRespError)failure;
+-(void)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure;
+-(void)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure;
 
--(AFHTTPRequestOperation*)setBankAccountWithBankName:(NSString*)bankName
+-(void)setBankAccountWithBankName:(NSString*)bankName
                                             bankCode:(NSString*)bankCode
                                          beneficiary:(NSString*)beneficiary
                                        accountNumber:(NSString*)accountNumber

@@ -7,6 +7,8 @@ pod 'Reachability'
 pod 'MRProgress'
 pod 'KASlideShow'
 pod 'LinqToObjectiveC'
+pod 'SDWebImage'
+pod 'UIActivityIndicator-for-SDWebImage'
 
 target 'StyleTributeTests', :exclusive => true do
 	pod 'KIF', :configuration => ['Debug']
