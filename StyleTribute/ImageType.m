@@ -19,8 +19,10 @@
     
     imgType.name = [[self class] parseString:@"name" fromDict:dict];
     imgType.type = [[self class] parseString:@"type" fromDict:dict];
-    imgType.preview = [[self class] parseString:@"preview_image" fromDict:dict];
-    imgType.outline = [[self class] parseString:@"outline_image" fromDict:dict];
+    
+    // FIXME: remove replacing after backend fix
+    imgType.preview = [[[self class] parseString:@"preview_image" fromDict:dict] stringByReplacingOccurrencesOfString:@"media" withString:@"media/catalog/category"];
+    imgType.outline = [[[self class] parseString:@"outline_image" fromDict:dict] stringByReplacingOccurrencesOfString:@"media" withString:@"media/catalog/category"];
     
     return imgType;
 }

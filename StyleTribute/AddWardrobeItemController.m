@@ -16,6 +16,7 @@
 #import "DataCache.h"
 #import "Category.h"
 #import "PhotoCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define PHOTOS_PER_ROW 4
 
@@ -211,14 +212,25 @@
                 cameraViewRect = CGRectMake(0, 40, screenSize.width, screenSize.width*4.0/3.0);
             }
             
-            UIImage* outline = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
-            UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - outline.size.width)/2, (cameraViewRect.size.height - outline.size.height)/2 + cameraViewRect.origin.y, outline.size.width, outline.size.height)];
-            overlay.image = outline;
-            picker.cameraOverlayView = overlay;
+            ImageType* imgType = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+            
+            [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgType.outline] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            } completed:^(UIImage *outline, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                if(error != nil) {
+                    NSLog(@"error loading outline image: %@", [error description]);
+                } else {
+                    UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - outline.size.width)/2, (cameraViewRect.size.height - outline.size.height)/2 + cameraViewRect.origin.y, outline.size.width, outline.size.height)];
+                    overlay.image = outline;
+                    picker.cameraOverlayView = overlay;
+                    
+                    [self presentViewController:picker animated:YES completion:^{
+                    }];
+                }
+            }];
+        } else {
+            [self presentViewController:picker animated:YES completion:^{
+            }];
         }
-        
-        [self presentViewController:picker animated:YES completion:^{
-        }];
     } else {
         NSLog(@"camera or photo library are not available on this device");
     }
@@ -273,7 +285,7 @@
     PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
     ImageType* imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
     newCell.photoTypeLabel.text = imgType.name;
-    newCell.photoView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgType.preview]]];
+    [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
     newCell.photoView.tag = indexPath.row;
     newCell.accessibilityLabel = [NSString stringWithFormat:@"Photo cell %td", indexPath.row];
     return newCell;
