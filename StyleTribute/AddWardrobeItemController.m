@@ -219,7 +219,14 @@
                 if(error != nil) {
                     NSLog(@"error loading outline image: %@", [error description]);
                 } else {
-                    UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - outline.size.width)/2, (cameraViewRect.size.height - outline.size.height)/2 + cameraViewRect.origin.y, outline.size.width, outline.size.height)];
+                    CGSize oSize = CGSizeMake(outline.size.width, outline.size.height);
+                    if(outline.size.width > screenSize.width) {
+                        CGFloat m = screenSize.width/outline.size.width;
+                        oSize.width *= m;
+                        oSize.height *= m;
+                    }
+                    
+                    UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - oSize.width)/2, (cameraViewRect.size.height - oSize.height)/2 + cameraViewRect.origin.y, oSize.width, oSize.height)];
                     overlay.image = outline;
                     picker.cameraOverlayView = overlay;
                     
