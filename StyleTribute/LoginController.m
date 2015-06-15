@@ -12,6 +12,7 @@
 #import "ApiRequester.h"
 #import <MRProgress.h>
 #import "DataCache.h"
+#import "FBRegistrationController.h"
 
 @interface LoginController () <UIAlertViewDelegate>
 
@@ -50,9 +51,7 @@
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 [DataCache sharedInstance].userProfile = profile;
                 if(profile.userName.length == 0) {
-                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:@"Enter your username" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-                    [alert show];
+                    [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
                 } else {
                     [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
                 }
@@ -82,19 +81,12 @@
     return (self.loginField.text.length > 0 && self.passwordField.text.length > 0);
 }
 
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    UITextField* textField = [alertView textFieldAtIndex:0];
-    [DataCache sharedInstance].userProfile.userName = textField.text;
-    
-    // TODO: here we should call API to update account
-    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-}
-
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
-    UITextField* textField = [alertView textFieldAtIndex:0];
-    return textField.text.length > 5;
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"moreDetailsSegue"]) {
+        FBRegistrationController* controller = segue.destinationViewController;
+        controller.updatingProfile = YES;
+        NSLog(@"prepareForSegue");
+    }
 }
 
 @end

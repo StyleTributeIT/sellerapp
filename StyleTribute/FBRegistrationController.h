@@ -17,6 +17,9 @@
 @property IBOutlet UITextField* countryField;
 @property IBOutlet UITextField* phoneField;
 @property IBOutlet KASlideShow* slideShow;
+@property IBOutlet UIButton* accountButton;
+
+@property BOOL updatingProfile;
 
 -(IBAction)createAccount:(id)sender;
 

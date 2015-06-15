@@ -370,6 +370,7 @@
                         <outlet property="slideShow" destination="yft-WL-wt5" id="h84-Eb-p2r"/>
                         <outlet property="widthConstraint" destination="sco-Xu-Z5V" id="0pt-lv-eg4"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="mainScreenSegue" id="XTf-8t-q92"/>
+                        <segue destination="sjP-DD-tuF" kind="show" identifier="moreDetailsSegue" id="ReU-Ip-U3f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIu-UF-Mgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1571,6 +1572,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="accountButton" destination="WlM-xJ-Wjc" id="buV-Yf-oj0"/>
                         <outlet property="contentView" destination="GgL-KE-yG7" id="si9-bP-5aH"/>
                         <outlet property="countryField" destination="7GQ-82-o1R" id="ReO-Pa-VwE"/>
                         <outlet property="firstNameField" destination="TCx-9Z-RPU" id="EVY-jF-HfD"/>
@@ -2448,6 +2450,7 @@
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1dd-Ww-h8O"/>
+        <segue reference="ReU-Ip-U3f"/>
+        <segue reference="mG1-qk-ojj"/>
     </inferredMetricsTieBreakers>
 </document>
