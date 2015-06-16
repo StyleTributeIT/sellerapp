@@ -43,6 +43,7 @@
 		7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6427131AF901CF0051466E /* ChooseCategoryController.m */; };
 		7A66FDDE1B04E04800961709 /* DataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A66FDDD1B04E04800961709 /* DataCache.m */; };
 		7A7E45DB1B0DDD0C000A7C84 /* SlideShowDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7E45DA1B0DDD0C000A7C84 /* SlideShowDataSource.m */; };
+		7A8A174D1B2F2439006489C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8A174C1B2F2439006489C8 /* CoreGraphics.framework */; };
 		7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */; };
 		7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA5EADC1AEE740500CAB83B /* LoginController.m */; };
 		7AAA8A6E1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A6D1B0CF2A400BDE617 /* KIFUITestActor+EXAdditions.m */; };
@@ -144,6 +145,7 @@
 		7A66FDDD1B04E04800961709 /* DataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCache.m; sourceTree = "<group>"; };
 		7A7E45D91B0DDD0C000A7C84 /* SlideShowDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideShowDataSource.h; sourceTree = "<group>"; };
 		7A7E45DA1B0DDD0C000A7C84 /* SlideShowDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideShowDataSource.m; sourceTree = "<group>"; };
+		7A8A174C1B2F2439006489C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7AA5EAD61AEE2F6500CAB83B /* ApiRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiRequester.h; sourceTree = "<group>"; };
 		7AA5EAD71AEE2F6500CAB83B /* ApiRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiRequester.m; sourceTree = "<group>"; };
 		7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalDefs.h; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A8A174D1B2F2439006489C8 /* CoreGraphics.framework in Frameworks */,
 				7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */,
 				7AB78D911B02200100C13D13 /* FBSDKCoreKit.framework in Frameworks */,
 				7A237C5D1AFCD3F70031C629 /* AddressBook.framework in Frameworks */,
@@ -425,6 +428,7 @@
 		D358717626AA9718DD7716CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7A8A174C1B2F2439006489C8 /* CoreGraphics.framework */,
 				7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */,
 				7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */,
 				7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */,

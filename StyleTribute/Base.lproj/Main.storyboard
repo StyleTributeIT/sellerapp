@@ -393,7 +393,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xF-vN-mHu">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="402"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel free to change your personal details to better assist you with payments and password credentials in this space" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cl-eb-aQj">
                                                 <rect key="frame" x="10" y="37" width="300" height="49"/>
@@ -472,7 +472,7 @@
                                         <constraints>
                                             <constraint firstItem="b1K-gw-wKD" firstAttribute="top" secondItem="7xF-vN-mHu" secondAttribute="top" constant="8" id="BKD-zw-vcW"/>
                                             <constraint firstItem="rNJ-vz-aMo" firstAttribute="top" secondItem="9Cl-eb-aQj" secondAttribute="bottom" constant="8" id="C5O-fl-ddv"/>
-                                            <constraint firstAttribute="height" constant="402" id="KVX-gD-t98"/>
+                                            <constraint firstAttribute="height" constant="432" id="KVX-gD-t98"/>
                                             <constraint firstAttribute="width" constant="320" id="Oxw-4v-Ev8"/>
                                             <constraint firstAttribute="trailing" secondItem="9Cl-eb-aQj" secondAttribute="trailing" constant="10" id="aAJ-6W-1gH"/>
                                             <constraint firstItem="9Cl-eb-aQj" firstAttribute="top" secondItem="b1K-gw-wKD" secondAttribute="bottom" constant="8" id="hSL-RM-bbQ"/>
@@ -2016,7 +2016,7 @@
                                                                     <rect key="frame" x="4" y="4" width="52" height="52"/>
                                                                     <gestureRecognizers/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-O8-oZw">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-O8-oZw">
                                                                     <rect key="frame" x="4" y="21" width="52" height="18"/>
                                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                                                     <constraints>
@@ -2419,11 +2419,11 @@
             </objects>
             <point key="canvasLocation" x="2771" y="848"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Sell-->
         <scene sceneID="BWq-Cj-uqG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="add-item" id="VZF-2f-aWD"/>
+                    <tabBarItem key="tabBarItem" title="Sell" image="add-item" id="VZF-2f-aWD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylh-HF-fxa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2444,7 +2444,7 @@
         <image name="Edit" width="205" height="30"/>
         <image name="Logo" width="64" height="64"/>
         <image name="account" width="30" height="30"/>
-        <image name="add-item" width="40" height="40"/>
+        <image name="add-item" width="56" height="56"/>
         <image name="placeholder" width="64" height="64"/>
         <image name="stub" width="64" height="64"/>
         <image name="wardrobe" width="50" height="30"/>
