@@ -17,6 +17,10 @@
 #import "Category.h"
 #import "PhotoCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ApiRequester.h"
+#import <MRProgress.h>
+#import "Designer.h"
+#import <NSArray+LinqExtensions.h>
 
 #define PHOTOS_PER_ROW 4
 
@@ -30,6 +34,8 @@
 @property BOOL isTutorialPresented;
 @property UIImageView* selectedImage;
 @property NSUInteger selectedImageIndex;
+@property STCategory* curCategory;
+@property Designer* curDesigner;
 
 @end
 
@@ -64,17 +70,33 @@
     self.collectionView.accessibilityLabel = @"Photos collection";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDidOpen:) name:UIKeyboardDidShowNotification object:nil];
     
-    if(self.curProduct == nil) {
-        self.curProduct = [Product new];
-    } else {
-        // TODO: fill in all fields
-        self.categoryField.text = self.curProduct.category.name;
+    if([DataCache sharedInstance].designers == nil) {
+        [[ApiRequester sharedInstance] getDesigners:^(NSArray *designers) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+            [DataCache sharedInstance].designers = designers;
+            [self.picker reloadAllComponents];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+        }];
     }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if(self.curProduct == nil) {
+        self.curProduct = [Product new];
+        self.categoryField.text = @"";
+        self.brandField.text = @"";
+        self.sizeField.text = @"";
+        self.conditionField.text = @"";
+    } else {
+        // TODO: fill in all fields
+        self.categoryField.text = self.curProduct.category.name;
+        self.brandField.text = self.curProduct.designer.name;
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -86,13 +108,23 @@
 }
 
 - (void)setPickerData:(NSNotification*)aNotification {
-    if(self.activeField == self.conditionField || self.activeField == self.sizeField | self.activeField == self.brandField) {
+    if(self.activeField == self.conditionField || self.activeField == self.sizeField || self.activeField == self.brandField) {
         [self.picker reloadAllComponents];
         
-        NSUInteger index = [[self getCurrentDatasource] indexOfObject:((UITextField*)self.activeField).text];
+        NSUInteger index = 0;
+        if(self.activeField == self.brandField) {
+            Designer* curDesigner = [[[DataCache sharedInstance].designers linq_where:^BOOL(Designer* item) {
+                return [item.name isEqualToString:((UITextField*)self.activeField).text];
+            }] firstObject];
+            index = [[DataCache sharedInstance].designers indexOfObject:curDesigner];
+        } else {
+            index = [[self getCurrentDatasource] indexOfObject:((UITextField*)self.activeField).text];
+        }
+        
         if(index == NSNotFound) {
             index = 0;
         }
+        
         [self.picker selectRow:index inComponent:0 animated:NO];
     }
 }
@@ -105,7 +137,7 @@
     } else if(self.activeField == self.sizeField) {
         return self.sizes;
     } else if(self.activeField == self.brandField) {
-        return [DataCache sharedInstance].brands;
+        return [DataCache sharedInstance].designers;
     }
     
     return nil;
@@ -120,7 +152,12 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [[self getCurrentDatasource] objectAtIndex:row];
+    if(self.activeField == self.brandField) {
+        Designer* designer = [[self getCurrentDatasource] objectAtIndex:row];
+        return designer.name;
+    } else {
+        return [[self getCurrentDatasource] objectAtIndex:row];
+    }
 }
 
 -(void)inputDone {
@@ -130,10 +167,20 @@
     } else if(self.activeField == self.sizeField) {
         self.sizeField.text = [self.sizes objectAtIndex:index];
     } else if(self.activeField == self.brandField) {
-        self.brandField.text = [[DataCache sharedInstance].brands objectAtIndex:index];
+        Designer* designer = [[DataCache sharedInstance].designers objectAtIndex:index];
+        self.curDesigner = designer;
+        self.brandField.text = designer.name;
     }
     
     [self.activeField resignFirstResponder];
+}
+
+- (void)pickerDidOpen:(NSNotification*)aNotification {
+    if(self.activeField == self.brandField && [DataCache sharedInstance].designers == nil) {
+        if([MRProgressOverlayView overlayForView:self.picker] == nil) {
+            [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
+        }
+    }
 }
 
 #pragma mark - Action sheet
@@ -166,7 +213,7 @@
     if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
         ChooseCategoryController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory.name;
-        self.curProduct.category = ccController.selectedCategory;
+        self.curCategory = ccController.selectedCategory;
         NSUInteger rowsCount = self.curProduct.category.imageTypes.count/PHOTOS_PER_ROW + ((self.curProduct.category.imageTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
         self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
         [self.collectionView reloadData];
@@ -258,6 +305,7 @@
 
 -(IBAction)cancel:(id)sender {
     NSLog(@"cancel");
+    
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
     [tabController selectPreviousTab];
 }
@@ -273,6 +321,9 @@
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
     } else {
+        self.curProduct.category = self.curCategory;
+        self.curProduct.designer = self.curDesigner;
+        
         MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
         [tabController selectPreviousTab];
     }

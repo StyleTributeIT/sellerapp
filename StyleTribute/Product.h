@@ -10,6 +10,7 @@
 #import "BaseModel.h"
 #import "Category.h"
 #import "ProductPhoto.h"
+#import "Designer.h"
 
 typedef enum : NSUInteger {
     ProductTypeSelling,
@@ -24,6 +25,7 @@ typedef enum : NSUInteger {
 @property NSString* displayState;
 @property STCategory* category;
 @property NSArray* photos;
+@property Designer* designer;
 
 -(instancetype)init;
 +(instancetype)parseFromJson:(NSDictionary*)dict;

@@ -14,6 +14,7 @@
 #import "Country.h"
 #import "Category.h"
 #import "DataCache.h"
+#import "Designer.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
@@ -215,14 +216,14 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getCategories:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    [self.sessionManager GET:@"seller/getSellerCategories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+    [self.sessionManager GET:@"seller/categories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* categories = [NSMutableArray new];
         for (NSDictionary* categoryDict in responseObject) {
             [categories addObject:[STCategory parseFromJson:categoryDict]];
         }
         success(categories);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getCategories error: %@", [error description]);
+        NSLog(@"getSellerCategories error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
 }
@@ -295,6 +296,21 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"setDeviceToken error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)getDesigners:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    [self.sessionManager GET:@"seller/designers" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+        NSMutableArray* designers = [NSMutableArray new];
+        for (NSDictionary* designerDict in responseObject) {
+            [designers addObject:[Designer parseFromJson:designerDict]];
+        }
+        success(designers);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getDesigners error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
 }

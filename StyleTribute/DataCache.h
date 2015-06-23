@@ -18,8 +18,8 @@
 @property NSArray* countries;
 @property NSArray* categories;
 @property NSString* deviceToken;
-@property NSArray* brands;
 @property NSArray* conditions;
+@property NSArray* designers;
 
 -(NSMutableArray*)loadProducts;
 -(void)saveProducts:(NSArray*)items;
