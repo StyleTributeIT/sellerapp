@@ -16,7 +16,7 @@
     static DataCache *sharedInstance;
     dispatch_once(&once, ^ { sharedInstance = [[DataCache alloc] init]; });
     
-    sharedInstance.conditions = @[@"Gently loved", @"Good", @"Excellent", @"New with tag"];
+//    sharedInstance.conditions = @[@"Gently loved", @"Good", @"Excellent", @"New with tag"];
     
     return sharedInstance;
 }

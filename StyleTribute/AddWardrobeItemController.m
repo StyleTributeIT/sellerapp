@@ -19,8 +19,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ApiRequester.h"
 #import <MRProgress.h>
-#import "Designer.h"
 #import <NSArray+LinqExtensions.h>
+#import "NamedItems.h"
 
 #define PHOTOS_PER_ROW 4
 
@@ -34,8 +34,6 @@
 @property BOOL isTutorialPresented;
 @property UIImageView* selectedImage;
 @property NSUInteger selectedImageIndex;
-@property STCategory* curCategory;
-@property Designer* curDesigner;
 
 @end
 
@@ -70,12 +68,21 @@
     self.collectionView.accessibilityLabel = @"Photos collection";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDidOpen:) name:UIKeyboardDidShowNotification object:nil];
     
     if([DataCache sharedInstance].designers == nil) {
         [[ApiRequester sharedInstance] getDesigners:^(NSArray *designers) {
             [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
             [DataCache sharedInstance].designers = designers;
+            [self.picker reloadAllComponents];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+        }];
+    }
+    
+    if([DataCache sharedInstance].conditions == nil) {
+        [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+            [DataCache sharedInstance].conditions = conditions;
             [self.picker reloadAllComponents];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
@@ -92,11 +99,14 @@
         self.brandField.text = @"";
         self.sizeField.text = @"";
         self.conditionField.text = @"";
+        self.descriptionView.text = @"";
     } else {
         // TODO: fill in all fields
         self.categoryField.text = self.curProduct.category.name;
         self.brandField.text = self.curProduct.designer.name;
     }
+    
+    [self updatePhotosCollection];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -113,10 +123,15 @@
         
         NSUInteger index = 0;
         if(self.activeField == self.brandField) {
-            Designer* curDesigner = [[[DataCache sharedInstance].designers linq_where:^BOOL(Designer* item) {
+            NamedItem* curDesigner = [[[DataCache sharedInstance].designers linq_where:^BOOL(NamedItem* item) {
                 return [item.name isEqualToString:((UITextField*)self.activeField).text];
             }] firstObject];
             index = [[DataCache sharedInstance].designers indexOfObject:curDesigner];
+        } else if(self.activeField == self.conditionField) {
+            NamedItem* curCondition = [[[DataCache sharedInstance].conditions linq_where:^BOOL(NamedItem* item) {
+                return [item.name isEqualToString:((UITextField*)self.conditionField).text];
+            }] firstObject];
+            index = [[DataCache sharedInstance].conditions indexOfObject:curCondition];
         } else {
             index = [[self getCurrentDatasource] indexOfObject:((UITextField*)self.activeField).text];
         }
@@ -126,6 +141,17 @@
         }
         
         [self.picker selectRow:index inComponent:0 animated:NO];
+    }
+    
+    if((self.activeField == self.brandField && [DataCache sharedInstance].designers == nil) ||
+       (self.activeField == self.conditionField && [DataCache sharedInstance].conditions == nil)) {
+        if([MRProgressOverlayView overlayForView:self.picker] == nil) {
+            [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
+        }
+    } else {
+        if([MRProgressOverlayView overlayForView:self.picker] != nil) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:NO];
+        }
     }
 }
 
@@ -152,9 +178,9 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if(self.activeField == self.brandField) {
-        Designer* designer = [[self getCurrentDatasource] objectAtIndex:row];
-        return designer.name;
+    if(self.activeField == self.brandField || self.activeField == self.conditionField) {
+        NamedItem* item = [[self getCurrentDatasource] objectAtIndex:row];
+        return item.name;
     } else {
         return [[self getCurrentDatasource] objectAtIndex:row];
     }
@@ -162,25 +188,19 @@
 
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
-    if(self.activeField == self.conditionField) {
-        self.conditionField.text = [[DataCache sharedInstance].conditions objectAtIndex:index];
-    } else if(self.activeField == self.sizeField) {
+    if(self.activeField == self.sizeField) {
         self.sizeField.text = [self.sizes objectAtIndex:index];
     } else if(self.activeField == self.brandField) {
-        Designer* designer = [[DataCache sharedInstance].designers objectAtIndex:index];
-        self.curDesigner = designer;
+        NamedItem* designer = [[DataCache sharedInstance].designers objectAtIndex:index];
+        self.curProduct.designer = designer;
         self.brandField.text = designer.name;
+    } else if(self.activeField == self.conditionField) {
+        NamedItem* condition = [[DataCache sharedInstance].conditions objectAtIndex:index];
+        self.curProduct.condition = condition;
+        self.conditionField.text = condition.name;
     }
     
     [self.activeField resignFirstResponder];
-}
-
-- (void)pickerDidOpen:(NSNotification*)aNotification {
-    if(self.activeField == self.brandField && [DataCache sharedInstance].designers == nil) {
-        if([MRProgressOverlayView overlayForView:self.picker] == nil) {
-            [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
-        }
-    }
 }
 
 #pragma mark - Action sheet
@@ -213,10 +233,8 @@
     if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
         ChooseCategoryController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory.name;
-        self.curCategory = ccController.selectedCategory;
-        NSUInteger rowsCount = self.curProduct.category.imageTypes.count/PHOTOS_PER_ROW + ((self.curProduct.category.imageTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
-        self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
-        [self.collectionView reloadData];
+        self.curProduct.category = ccController.selectedCategory;
+        [self updatePhotosCollection];
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
     }
     
@@ -306,6 +324,8 @@
 -(IBAction)cancel:(id)sender {
     NSLog(@"cancel");
     
+    self.curProduct = nil;
+    
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
     [tabController selectPreviousTab];
 }
@@ -321,9 +341,7 @@
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
     } else {
-        self.curProduct.category = self.curCategory;
-        self.curProduct.designer = self.curDesigner;
-        
+        self.curProduct = nil;
         MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
         [tabController selectPreviousTab];
     }
@@ -360,6 +378,15 @@
     self.selectedImageIndex = indexPath.row;
     [self.photoActionsSheet showInView:self.view];
     return NO;
+}
+
+-(void)updatePhotosCollection {
+    NSUInteger rowsCount = 0;
+    if(self.curProduct != nil && self.curProduct.category != nil) {
+        rowsCount = self.curProduct.category.imageTypes.count/PHOTOS_PER_ROW + ((self.curProduct.category.imageTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
+    }
+    self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
+    [self.collectionView reloadData];
 }
 
 @end

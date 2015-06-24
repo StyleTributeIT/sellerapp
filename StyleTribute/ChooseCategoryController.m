@@ -33,7 +33,7 @@
             [self.categoriesTableView reloadData];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            NSLog(@"get categories error: %@", [error description]);
+            [GlobalHelper showMessage:error withTitle:@"error"];
         }];
     }
 }

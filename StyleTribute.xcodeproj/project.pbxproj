@@ -59,7 +59,7 @@
 		7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */; };
 		7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */; };
 		7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC54C7D1B25DF0900539C94 /* CustomTextField.m */; };
-		7ADB24551B39479A0058EABE /* Designer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB24541B39479A0058EABE /* Designer.m */; };
+		7AE6C7171B3AD10000EB2B5F /* NamedItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE6C7161B3AD10000EB2B5F /* NamedItems.m */; };
 		7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */; };
 		7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */; };
 		7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */; };
@@ -174,8 +174,8 @@
 		7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		7AC54C7C1B25DF0900539C94 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		7AC54C7D1B25DF0900539C94 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
-		7ADB24531B39479A0058EABE /* Designer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Designer.h; sourceTree = "<group>"; };
-		7ADB24541B39479A0058EABE /* Designer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Designer.m; sourceTree = "<group>"; };
+		7AE6C7151B3AD10000EB2B5F /* NamedItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamedItems.h; sourceTree = "<group>"; };
+		7AE6C7161B3AD10000EB2B5F /* NamedItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamedItems.m; sourceTree = "<group>"; };
 		7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
 		7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
 		7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -336,8 +336,8 @@
 				7A1E44AE1B296CD000063F17 /* ProductPhoto.m */,
 				7A1E44B01B299E8F00063F17 /* ImageType.h */,
 				7A1E44B11B299E8F00063F17 /* ImageType.m */,
-				7ADB24531B39479A0058EABE /* Designer.h */,
-				7ADB24541B39479A0058EABE /* Designer.m */,
+				7AE6C7151B3AD10000EB2B5F /* NamedItems.h */,
+				7AE6C7161B3AD10000EB2B5F /* NamedItems.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -622,7 +622,6 @@
 				7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */,
 				7A1E44B21B299E8F00063F17 /* ImageType.m in Sources */,
 				7A7E45DB1B0DDD0C000A7C84 /* SlideShowDataSource.m in Sources */,
-				7ADB24551B39479A0058EABE /* Designer.m in Sources */,
 				7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */,
 				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
 				7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */,
@@ -643,6 +642,7 @@
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,
 				7A60979B1B13402600209340 /* BaseModel.m in Sources */,
+				7AE6C7171B3AD10000EB2B5F /* NamedItems.m in Sources */,
 				7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
 				7A60979E1B14848F00209340 /* Country.m in Sources */,

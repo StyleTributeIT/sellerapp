@@ -14,7 +14,7 @@
 #import "Country.h"
 #import "Category.h"
 #import "DataCache.h"
-#import "Designer.h"
+#import "NamedItems.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
@@ -223,7 +223,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
         success(categories);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getSellerCategories error: %@", [error description]);
+        NSLog(@"getCategories error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
 }
@@ -306,11 +306,26 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     [self.sessionManager GET:@"seller/designers" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* designers = [NSMutableArray new];
         for (NSDictionary* designerDict in responseObject) {
-            [designers addObject:[Designer parseFromJson:designerDict]];
+            [designers addObject:[NamedItem parseFromJson:designerDict]];
         }
         success(designers);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"getDesigners error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)getConditions:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    [self.sessionManager GET:@"seller/conditions" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+        NSMutableArray* conditions = [NSMutableArray new];
+        for (NSDictionary* conditionDict in responseObject) {
+            [conditions addObject:[NamedItem parseFromJson:conditionDict]];
+        }
+        success(conditions);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getConditions error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
 }

@@ -1,26 +1,27 @@
 //
-//  Designer.m
+//  BaseItem.m
 //  StyleTribute
 //
-//  Created by selim mustafaev on 23/06/15.
+//  Created by selim mustafaev on 24/06/15.
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "Designer.h"
+#import "NamedItems.h"
 
-@interface Designer () <NSCoding>
+@interface NamedItem () <NSCoding>
 
 @end
 
-@implementation Designer
+@implementation NamedItem
 
-+(instancetype)parseFromJson:(NSDictionary*)dict; {
-    Designer* designer = [Designer new];
++(instancetype)parseFromJson:(NSDictionary*)dict {
     
-    designer.identifier = [[self class] parseString:@"id" fromDict:dict];
-    designer.name = [[self class] parseString:@"name" fromDict:dict];
+    NamedItem *item = [self new];
     
-    return designer;
+    item.identifier = [self parseString:@"id" fromDict:dict];
+    item.name = [self parseString:@"name" fromDict:dict];
+    
+    return item;
 }
 
 #pragma mark - NSCoding
