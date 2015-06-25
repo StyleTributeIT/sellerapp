@@ -13,6 +13,7 @@
 #import "GlobalHelper.h"
 #import "ApiRequester.h"
 #import "DataCache.h"
+#import "FBRegistrationController.h"
 
 @interface WelcomeController ()
 
@@ -52,7 +53,12 @@
         [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].userProfile = profile;
-            [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+            
+            if([profile isFilled]) {
+                [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+            } else {
+                [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+            }
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             NSLog(@"getAccount error: %@", [error description]);
@@ -99,6 +105,13 @@
 
 -(IBAction)unwindToWelcomeController:(UIStoryboardSegue*)sender {
     NSLog(@"unwindToWelcomeController");
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"moreDetailsSegue"]) {
+        FBRegistrationController* controller = segue.destinationViewController;
+        controller.updatingProfile = YES;
+    }
 }
 
 @end

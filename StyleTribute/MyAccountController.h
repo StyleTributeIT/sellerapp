@@ -13,5 +13,6 @@
 @property IBOutlet UIScrollView* scrollView;
 @property IBOutlet UIView* contentView;
 @property IBOutlet NSLayoutConstraint* widthConstraint;
+@property IBOutlet UILabel* userNameLabel;
 
 @end

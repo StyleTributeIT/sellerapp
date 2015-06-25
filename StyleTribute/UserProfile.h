@@ -11,9 +11,6 @@
 
 @interface UserProfile : BaseModel
 
-+(instancetype)parseFromJson:(NSDictionary*)dict;
-+(instancetype)parseFromFBJson:(NSDictionary*)dict;
-
 @property BOOL isActive;
 @property NSString* email;
 @property NSString* phone;
@@ -22,5 +19,10 @@
 @property NSString* firstName;
 @property NSString* lastName;
 @property NSString* userName;
+
++(instancetype)parseFromJson:(NSDictionary*)dict;
++(instancetype)parseFromFBJson:(NSDictionary*)dict;
+
+-(BOOL)isFilled;
 
 @end

@@ -330,4 +330,22 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }];
 }
 
+-(void)setAccountWithUserName:(NSString*)userName
+                    firstName:(NSString*)firstName
+                     lastName:(NSString*)lastName
+                      country:(NSString*)country
+                        phone:(NSString*)phone
+                      success:(JSONRespEmpty)success
+                      failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSDictionary* params = @{@"userName":userName, @"firstName": firstName, @"lastName": lastName, @"country": country, @"phone": phone};
+    [self.sessionManager POST:@"seller/account" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        success();
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"setAccount error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+}
+
 @end

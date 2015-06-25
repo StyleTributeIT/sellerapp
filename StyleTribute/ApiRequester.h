@@ -56,4 +56,12 @@ typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
 -(void)getDesigners:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getConditions:(JSONRespArray)success failure:(JSONRespError)failure;
 
+-(void)setAccountWithUserName:(NSString*)username
+                    firstName:(NSString*)firstName
+                     lastName:(NSString*)lastName
+                      country:(NSString*)country
+                        phone:(NSString*)phone
+                      success:(JSONRespEmpty)success
+                      failure:(JSONRespError)failure;
+
 @end

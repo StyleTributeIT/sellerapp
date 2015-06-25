@@ -35,4 +35,12 @@
     return profile;
 }
 
+-(BOOL)isFilled {
+    if(self.userName.length > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 @end

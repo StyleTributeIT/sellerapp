@@ -50,10 +50,10 @@
             [[ApiRequester sharedInstance] loginWithEmail:self.loginField.text andPassword:self.passwordField.text success:^(UserProfile* profile) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 [DataCache sharedInstance].userProfile = profile;
-                if(profile.userName.length == 0) {
-                    [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
-                } else {
+                if([profile isFilled]) {
                     [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+                } else {
+                    [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
                 }
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -85,7 +85,6 @@
     if([segue.identifier isEqualToString:@"moreDetailsSegue"]) {
         FBRegistrationController* controller = segue.destinationViewController;
         controller.updatingProfile = YES;
-        NSLog(@"prepareForSegue");
     }
 }
 

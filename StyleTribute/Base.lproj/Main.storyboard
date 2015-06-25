@@ -201,6 +201,7 @@
                         <outlet property="slideShow" destination="FoV-xd-dpw" id="Wkk-we-04F"/>
                         <segue destination="sjP-DD-tuF" kind="show" identifier="FBRegistrationSegue" id="cSg-UA-WeG"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="showMainScreenSegue" id="Iws-61-RlG"/>
+                        <segue destination="sjP-DD-tuF" kind="show" identifier="moreDetailsSegue" id="dPg-nh-fPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -518,6 +519,7 @@
                     <connections>
                         <outlet property="contentView" destination="7xF-vN-mHu" id="T0q-bg-G7I"/>
                         <outlet property="scrollView" destination="Cfr-uw-wMs" id="6sa-h0-J3t"/>
+                        <outlet property="userNameLabel" destination="b1K-gw-wKD" id="s7M-Vs-ihC"/>
                         <outlet property="widthConstraint" destination="Oxw-4v-Ev8" id="z7r-Mt-8w7"/>
                         <segue destination="tr0-6J-Wdp" kind="show" identifier="editProfileSegue" id="w6Z-kg-Ydb"/>
                         <segue destination="grn-Wi-nkv" kind="show" identifier="residentAddressSegue" id="9cY-71-45b"/>
@@ -2450,7 +2452,7 @@
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ReU-Ip-U3f"/>
-        <segue reference="mG1-qk-ojj"/>
+        <segue reference="Iws-61-RlG"/>
+        <segue reference="dPg-nh-fPh"/>
     </inferredMetricsTieBreakers>
 </document>

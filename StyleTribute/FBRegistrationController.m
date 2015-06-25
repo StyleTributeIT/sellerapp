@@ -102,7 +102,24 @@
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         
         if(self.updatingProfile) {
-            // TODO: update profile
+            [[ApiRequester sharedInstance] setAccountWithUserName:self.userNameField.text
+                                                        firstName:self.firstNameField.text
+                                                         lastName:self.lastNameField.text
+                                                          country:country.identifier
+                                                            phone:self.phoneField.text
+                                                          success:^{
+                                                              [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                                                              UserProfile* curProfile = [DataCache sharedInstance].userProfile;
+                                                              curProfile.userName = self.userNameField.text;
+                                                              curProfile.firstName = self.firstNameField.text;
+                                                              curProfile.lastName = self.lastNameField.text;
+                                                              curProfile.country = country.name;
+                                                              curProfile.phone = self.phoneField.text;
+                                                              [self performSegueWithIdentifier:@"fbShowMainScreen" sender:self];
+                                                          } failure:^(NSString *error) {
+                                                              [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                                                              [GlobalHelper showMessage:error withTitle:@"Update profile error"];
+                                                          }];
         } else {
             [[ApiRequester sharedInstance] registerWithEmail:[DataCache sharedInstance].userProfile.email
                                                     password:password
