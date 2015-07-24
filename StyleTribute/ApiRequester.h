@@ -19,6 +19,8 @@ typedef void (^JSONRespEmpty)();
 typedef void (^JSONRespArray)(NSArray* products);
 typedef void (^JSONRespError)(NSString* error);
 typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
+typedef void (^JSONRespId)(NSUInteger identifier);
+typedef void (^JSONRespProgress)(float progress);
 
 @interface ApiRequester : NSObject
 
@@ -37,7 +39,6 @@ typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
 -(void)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(void)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure;
 -(void)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure;
--(void)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(void)getCountries:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getCategories:(JSONRespArray)success failure:(JSONRespError)failure;
@@ -63,5 +64,19 @@ typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
                         phone:(NSString*)phone
                       success:(JSONRespEmpty)success
                       failure:(JSONRespError)failure;
+
+-(void)setProductWithId:(NSUInteger)identifier
+                   name:(NSString*)name
+            description:(NSString*)description
+              shortDesc:(NSString*)shortDesc
+                  price:(float)price
+               category:(NSUInteger)categoryId
+              condition:(NSUInteger)conditionId
+               designer:(NSUInteger)designerId
+                success:(JSONRespId)success
+                failure:(JSONRespError)failure;
+
+-(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress;
+-(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure;
 
 @end

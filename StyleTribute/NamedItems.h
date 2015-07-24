@@ -10,7 +10,7 @@
 
 @interface NamedItem : BaseModel
 
-@property NSString* identifier;
+@property NSUInteger identifier;
 @property NSString* name;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;

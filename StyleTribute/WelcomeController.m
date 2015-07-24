@@ -54,7 +54,7 @@
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].userProfile = profile;
             
-            if([profile isFilled]) {
+            if(/*[profile isFilled]*/TRUE) {
                 [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
             } else {
                 [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];

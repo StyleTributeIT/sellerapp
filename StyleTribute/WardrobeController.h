@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
+#import "Product.h"
 #import <MGSwipeTableCell.h>
 #import <UIKit/UIKit.h>
 
@@ -16,5 +17,7 @@
 
 -(IBAction)wardrobeTypeChanged:(id)sender;
 -(IBAction)unwindToWardrobeItems:(UIStoryboardSegue*)sender;
+
+-(void)addNewProduct:(Product*)product;
 
 @end

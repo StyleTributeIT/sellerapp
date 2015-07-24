@@ -21,6 +21,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 @interface ApiRequester ()
 
 @property AFHTTPSessionManager* sessionManager;
+@property AFHTTPRequestOperationManager *requsetOperationManager;
 
 @end
 
@@ -34,8 +35,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     static ApiRequester *sharedInstance;
     dispatch_once(&once, ^ {
         sharedInstance = [[ApiRequester alloc] init];
+        sharedInstance.requsetOperationManager = [AFHTTPRequestOperationManager manager];
         sharedInstance.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:DefApiHost]];
         sharedInstance.sessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        sharedInstance.sessionManager.requestSerializer.timeoutInterval = 3600;
         
         NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
         NSString* apiToken = [defs stringForKey:@"apiToken"];
@@ -172,19 +175,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }];
 }
 
--(void)getProductsWithSuccess:(JSONRespArray)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    
-    [self.sessionManager GET:@"products/filter/10/0" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-            success(nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getProducts error: %@", [error description]);
-        failure(DefGeneralErrMsg);
-    }];
-}
-
 -(void)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
@@ -231,27 +221,15 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getProducts:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    [self.sessionManager GET:@"seller/products" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+    [self.sessionManager GET:@"seller/products" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseArray) {
         NSMutableArray* products = [NSMutableArray new];
-//        for (NSDictionary* productDict in responseObject) {
-//        }
+        for (NSDictionary* productDict in responseArray) {
+            Product* product = [Product parseFromJson:productDict];
+            [products addObject:product];
+        }
         success(products);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"getProducts error: %@", [error description]);
-        failure(DefGeneralErrMsg);
-    }];
-}
-
--(void)setProduct:(NSString*)product success:(JSONRespEmpty)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    
-    // TODO: fill parameters
-    [self.sessionManager POST:@"seller/product" parameters:@{} success:^(NSURLSessionDataTask *task, id responseObject) {
-        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-            success();
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"setProduct error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
 }
@@ -344,6 +322,71 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         success();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"setAccount error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)setProductWithId:(NSUInteger)identifier
+                   name:(NSString*)name
+            description:(NSString*)description
+              shortDesc:(NSString*)shortDesc
+                  price:(float)price
+               category:(NSUInteger)categoryId
+              condition:(NSUInteger)conditionId
+               designer:(NSUInteger)designerId
+                success:(JSONRespId)success
+                failure:(JSONRespError)failure  {
+    
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSDictionary* params = @{@"name": name, @"description": description, @"short_description": shortDesc, @"category": @(categoryId), @"condition": @(conditionId), @"designer": @(designerId)};
+    [self.sessionManager POST:@"seller/product" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            NSUInteger idNum = (NSUInteger)[[responseObject objectForKey:@"id"] integerValue];
+            success(idNum);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"setProduct error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
+    NSString* url = [NSString stringWithFormat:@"%@seller/product/%zd/photos", DefApiHost, productId];
+    NSDictionary* params = @{@"label": type};
+    
+    NSProgress *p;
+    NSMutableURLRequest *request = [self.sessionManager.requestSerializer  multipartFormRequestWithMethod:@"POST" URLString:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"file" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+    } error:nil];
+    
+    [self.sessionManager setTaskDidSendBodyDataBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
+        progress(1.0*totalBytesSent/totalBytesExpectedToSend);
+    }];
+    
+    NSURLSessionUploadTask* task = [self.sessionManager uploadTaskWithStreamedRequest:request progress:&p completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if(error) {
+            NSLog(@"uploadImage error: %@", [error description]);
+            failure(DefGeneralErrMsg);
+        } else {
+            success();
+        }
+    }];
+    
+    [task resume];
+}
+
+-(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSString* url = [NSString stringWithFormat:@"seller/product/%zd/photos/%zd", productId, imageId];
+    [self.sessionManager DELETE:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"deleteImage success: %@", [responseObject description]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"deleteImage error: %@", [error description]);
         failure(DefGeneralErrMsg);
     }];
 }

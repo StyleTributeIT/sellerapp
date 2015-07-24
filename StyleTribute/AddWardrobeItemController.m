@@ -21,6 +21,8 @@
 #import <MRProgress.h>
 #import <NSArray+LinqExtensions.h>
 #import "NamedItems.h"
+#import "Photo.h"
+#import "WardrobeController.h"
 
 #define PHOTOS_PER_ROW 4
 
@@ -95,15 +97,19 @@
     
     if(self.curProduct == nil) {
         self.curProduct = [Product new];
-        self.categoryField.text = @"";
-        self.brandField.text = @"";
-        self.sizeField.text = @"";
-        self.conditionField.text = @"";
-        self.descriptionView.text = @"";
+        [self clearAllFields];
     } else {
         // TODO: fill in all fields
-        self.categoryField.text = self.curProduct.category.name;
-        self.brandField.text = self.curProduct.designer.name;
+        if(self.categoryField.text.length == 0)
+            self.categoryField.text = self.curProduct.category.name;
+        if(self.brandField.text.length == 0)
+            self.brandField.text = self.curProduct.designer.name;
+        if(self.conditionField.text.length == 0)
+            self.conditionField.text = self.curProduct.condition.name;
+        if(self.nameField.text.length == 0)
+            self.nameField.text = self.curProduct.name;
+        if(self.descriptionView.text.length == 0)
+            self.descriptionView.text = self.curProduct.descriptionText;
     }
     
     [self updatePhotosCollection];
@@ -235,6 +241,7 @@
         self.categoryField.text = ccController.selectedCategory.name;
         self.curProduct.category = ccController.selectedCategory;
         [self updatePhotosCollection];
+        self.curProduct.photos = [NSMutableArray arrayWithCapacity:self.curProduct.category.imageTypes.count];
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
     }
     
@@ -244,6 +251,11 @@
 -(IBAction)cancelUnwindToAddItem:(UIStoryboardSegue*)sender {
     //    UIViewController *sourceViewController = sender.sourceViewController;
     NSLog(@"cancelUnwindToWardrobeItems");
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Store all fields
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -279,26 +291,31 @@
             
             ImageType* imgType = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
             
-            [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgType.outline] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-            } completed:^(UIImage *outline, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                if(error != nil) {
-                    NSLog(@"error loading outline image: %@", [error description]);
-                } else {
-                    CGSize oSize = CGSizeMake(outline.size.width, outline.size.height);
-                    if(outline.size.width > screenSize.width) {
-                        CGFloat m = screenSize.width/outline.size.width;
-                        oSize.width *= m;
-                        oSize.height *= m;
+            if(imgType.outline.length > 0) {
+                [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgType.outline] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                } completed:^(UIImage *outline, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                    if(error != nil) {
+                        NSLog(@"error loading outline image: %@", [error description]);
+                    } else {
+                        CGSize oSize = CGSizeMake(outline.size.width, outline.size.height);
+                        if(outline.size.width > screenSize.width) {
+                            CGFloat m = screenSize.width/outline.size.width;
+                            oSize.width *= m;
+                            oSize.height *= m;
+                        }
+                        
+                        UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - oSize.width)/2, (cameraViewRect.size.height - oSize.height)/2 + cameraViewRect.origin.y, oSize.width, oSize.height)];
+                        overlay.image = outline;
+                        picker.cameraOverlayView = overlay;
+                        
+                        [self presentViewController:picker animated:YES completion:^{
+                        }];
                     }
-                    
-                    UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - oSize.width)/2, (cameraViewRect.size.height - oSize.height)/2 + cameraViewRect.origin.y, oSize.width, oSize.height)];
-                    overlay.image = outline;
-                    picker.cameraOverlayView = overlay;
-                    
-                    [self presentViewController:picker animated:YES completion:^{
-                    }];
-                }
-            }];
+                }];
+            } else {
+                [self presentViewController:picker animated:YES completion:^{
+                }];
+            }
         } else {
             [self presentViewController:picker animated:YES completion:^{
             }];
@@ -311,7 +328,11 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     self.selectedImage.image = chosenImage;
-//    NSData *imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
+    Photo* photo = [Photo new];
+    photo.image = chosenImage;
+//    [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
+    [self.curProduct.photos insertObject:photo atIndex:self.selectedImageIndex];
+    [self.collectionView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -321,9 +342,19 @@
 
 #pragma mark - Actions
 
+-(void)clearAllFields {
+    self.categoryField.text = @"";
+    self.brandField.text = @"";
+    self.sizeField.text = @"";
+    self.conditionField.text = @"";
+    self.descriptionView.text = @"";
+    self.nameField.text = @"";
+}
+
 -(IBAction)cancel:(id)sender {
     NSLog(@"cancel");
     
+    [self clearAllFields];
     self.curProduct = nil;
     
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
@@ -334,16 +365,73 @@
     NSLog(@"done");
     
     if(self.categoryField.text.length == 0 ||
-       self.descriptionView.text.length == 0 ||
-       self.brandField.text.length == 0 ||
-       self.sizeField.text.length == 0 ||
-       self.conditionField.text.length == 0) {
+        self.descriptionView.text.length == 0 ||
+        self.brandField.text.length == 0 ||
+        self.sizeField.text.length == 0 ||
+        self.conditionField.text.length == 0 ||
+        self.nameField.text.length == 0) {
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
     } else {
-        self.curProduct = nil;
-        MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-        [tabController selectPreviousTab];
+        
+        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [[ApiRequester sharedInstance] setProductWithId:self.curProduct.identifier
+                                                   name:self.nameField.text
+                                            description:self.descriptionView.text
+                                              shortDesc:self.descriptionView.text
+                                                  price:100
+                                               category:self.curProduct.category.idNum
+                                              condition:self.curProduct.condition.identifier
+                                               designer:self.curProduct.designer.identifier
+                                                success:^(NSUInteger identifier){
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            self.curProduct.identifier = identifier;
+                                   
+            dispatch_group_t group = dispatch_group_create();
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                                                    
+            MRProgressOverlayView * progressView =[MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Uploading images" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
+                                                    
+            if(self.curProduct.photos != nil) {
+                for (int i = 0; i < self.curProduct.photos.count; ++i) {
+                    [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading images %d/%zd", i + 1, self.curProduct.photos.count]];
+                    Photo* photo = [self.curProduct.photos objectAtIndex:i];
+                    ImageType* imageType = [self.curProduct.category.imageTypes objectAtIndex:i];
+                    if(photo != nil && [photo isKindOfClass:[Photo class]]) {
+                        dispatch_group_enter(group);
+                        [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
+                            dispatch_group_leave(group);
+                        } failure:^(NSString *error) {
+                            dispatch_group_leave(group);
+                        } progress:^(float progress) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [progressView setProgress:progress animated:YES];
+                                NSLog(@"progress: %f", progress);
+                            });
+                        }];
+                    }
+                }
+            }
+                                                    
+            dispatch_group_notify(group, queue, ^{
+                NSLog(@"All tasks done");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    [self clearAllFields];
+                    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+                    WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
+                    self.curProduct.name = self.nameField.text;
+                    self.curProduct.descriptionText = self.descriptionView.text;
+                    [wc addNewProduct:self.curProduct];
+                    self.curProduct = nil;
+                    [tabController selectPreviousTab];
+                });
+            });
+                                                    
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [GlobalHelper showMessage:error withTitle:@"error"];
+        }];
     }
 }
 
@@ -361,7 +449,18 @@
     PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
     ImageType* imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
     newCell.photoTypeLabel.text = imgType.name;
-    [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+    
+    if(self.curProduct.photos != nil && self.curProduct.photos.count >= (indexPath.row + 1)) {
+        Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
+        if(photo != nil && [photo isKindOfClass:[Photo class]]) {
+            newCell.photoView.image = photo.image;
+        } else {
+            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+        }
+    } else {
+        [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+    }
+    
     newCell.photoView.tag = indexPath.row;
     newCell.accessibilityLabel = [NSString stringWithFormat:@"Photo cell %td", indexPath.row];
     return newCell;

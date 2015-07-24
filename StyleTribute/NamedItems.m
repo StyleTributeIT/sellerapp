@@ -18,7 +18,7 @@
     
     NamedItem *item = [self new];
     
-    item.identifier = [self parseString:@"id" fromDict:dict];
+    item.identifier = (NSUInteger)[[self parseString:@"id" fromDict:dict] integerValue];
     item.name = [self parseString:@"name" fromDict:dict];
     
     return item;
@@ -32,14 +32,14 @@
         return nil;
     }
     
-    self.identifier = [decoder decodeObjectForKey:@"id"];
+    self.identifier = [[decoder decodeObjectForKey:@"id"] unsignedIntegerValue];
     self.name = [decoder decodeObjectForKey:@"name"];
     
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:self.identifier forKey:@"id"];
+    [encoder encodeObject:@(self.identifier) forKey:@"id"];
     [encoder encodeObject:self.name forKey:@"name"];
 }
 

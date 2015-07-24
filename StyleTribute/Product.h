@@ -20,13 +20,18 @@ typedef enum : NSUInteger {
 
 @interface Product : BaseModel<NSCoding>
 
+@property NSUInteger identifier;
 @property ProductType type;
-@property NSString* title;
-@property NSString* displayState;
+@property NSString* name;
+@property NSString* processStatus;
 @property STCategory* category;
-@property NSArray* photos;
+@property NSMutableArray* photos;
 @property NamedItem* designer;
 @property NamedItem* condition;
+@property float originalPrice;
+@property float price;
+@property NSMutableArray* allowedTransitions;
+@property NSString* descriptionText;
 
 -(instancetype)init;
 +(instancetype)parseFromJson:(NSDictionary*)dict;

@@ -13,6 +13,7 @@
 @interface AddWardrobeItemController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property IBOutlet UILabel* messageLabel;
+@property IBOutlet UITextField* nameField;
 @property IBOutlet UITextField* categoryField;
 @property IBOutlet UITextField* conditionField;
 @property IBOutlet UITextView* descriptionView;

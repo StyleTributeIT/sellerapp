@@ -16,6 +16,7 @@
 #import "DataCache.h"
 #import "MainTabBarController.h"
 #import <MRProgress.h>
+#import "AddWardrobeItemController.h"
 
 @interface WardrobeController()
 
@@ -32,7 +33,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self generateFakeData];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     
     UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
@@ -49,6 +49,9 @@
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        // TODO: we should divide products array on three parts
+        self.sellingItems = [products mutableCopy];
+        [self.itemsTable reloadData];
     } failure:^(NSString *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
     }];
@@ -85,8 +88,8 @@
     
     cell.tag = indexPath.row;
     cell.delegate = self;
-    cell.title.text = p.title;
-    cell.displayState.text = p.displayState;
+    cell.title.text = p.name;
+    cell.displayState.text = p.processStatus;
     [cell.displayState sizeToFit];
     
     MGSwipeButton* delButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"remove"] backgroundColor:[UIColor redColor] insets:UIEdgeInsetsMake(10, 0, 10, 0)];
@@ -120,6 +123,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+    AddWardrobeItemController* awic = (AddWardrobeItemController*)[[tabController.viewControllers objectAtIndex:1] visibleViewController];
+    awic.curProduct = [[self getCurrentItemsArray] objectAtIndex:indexPath.row];
     [tabController setSelectedIndex:1];  // Go to item detail page
 }
 
@@ -156,29 +161,6 @@
     }
 }
 
--(void)generateFakeData {
-    self.sellingItems = [NSMutableArray new];
-    self.soldItems = [NSMutableArray new];
-    self.archivedItems = [NSMutableArray new];
-    
-    for (int i = 0; i < 15; ++i) {
-        Product* p1 = [Product new];
-        p1.title = [NSString stringWithFormat:@"selling %d", i];
-        p1.displayState = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-        [self.sellingItems addObject:p1];
-        
-        Product* p2 = [Product new];
-        p2.title = [NSString stringWithFormat:@"sold %d", i];
-        p2.displayState = @"display state";
-        [self.soldItems addObject:p2];
-        
-        Product* p3 = [Product new];
-        p3.title = [NSString stringWithFormat:@"archived %d", i];
-        p3.displayState = @"display state";
-        [self.archivedItems addObject:p3];
-    }
-}
-
 //===========================
 
 -(IBAction)unwindToWardrobeItems:(UIStoryboardSegue*)sender {
@@ -189,6 +171,21 @@
 -(IBAction)cancelUnwindToWardrobeItems:(UIStoryboardSegue*)sender {
     //    UIViewController *sourceViewController = sender.sourceViewController;
     NSLog(@"cancelUnwindToWardrobeItems");
+}
+
+-(void)addNewProduct:(Product*)product {
+//    [self.sellingItems addObject:product];
+//    [self.itemsTable reloadData];
+    
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        // TODO: we should divide products array on three parts
+        self.sellingItems = [products mutableCopy];
+        [self.itemsTable reloadData];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+    }];
 }
 
 @end
