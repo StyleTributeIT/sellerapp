@@ -12,6 +12,7 @@
 #import "ApiRequester.h"
 #import <MRProgress.h>
 #import "DataCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ChooseCategoryController ()
 
@@ -49,7 +50,7 @@
     cell.tag = indexPath.row;
     cell.categoryName.text = category.name;
     if(category.thumbnail.length > 0) {
-        cell.categoryImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.thumbnail]]];
+        [cell.categoryImage sd_setImageWithURL:[NSURL URLWithString:category.thumbnail] placeholderImage:[UIImage imageNamed:@"stub"]];
     }
     
     return cell;

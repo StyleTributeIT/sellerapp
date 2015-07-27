@@ -354,7 +354,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
     NSString* url = [NSString stringWithFormat:@"%@seller/product/%zd/photos", DefApiHost, productId];
     NSDictionary* params = @{@"label": type};
     

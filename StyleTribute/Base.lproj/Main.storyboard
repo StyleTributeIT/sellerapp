@@ -2166,7 +2166,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EF3-7w-xOt" id="CGq-z7-XlJ">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="28B-eB-BtK">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="28B-eB-BtK">
                                             <rect key="frame" x="8" y="8" width="79" height="79"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="28B-eB-BtK" secondAttribute="height" multiplier="1:1" id="edp-oU-oNK"/>

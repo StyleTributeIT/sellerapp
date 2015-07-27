@@ -21,6 +21,7 @@
     imgType.type = [[self class] parseString:@"type" fromDict:dict];
     imgType.preview = [[self class] parseString:@"preview_image" fromDict:dict];
     imgType.outline = [[self class] parseString:@"outline_image" fromDict:dict];
+    imgType.state = ImageStateNormal;
     
     return imgType;
 }
@@ -35,6 +36,7 @@
     self.type = [decoder decodeObjectForKey:@"type"];
     self.preview = [decoder decodeObjectForKey:@"preview"];
     self.outline = [decoder decodeObjectForKey:@"outline"];
+    self.state = [[decoder decodeObjectForKey:@"state"] unsignedIntegerValue];
     
     return self;
 }
@@ -44,5 +46,6 @@
     [encoder encodeObject:self.type forKey:@"type"];
     [encoder encodeObject:self.preview forKey:@"preview"];
     [encoder encodeObject:self.outline forKey:@"outline"];
+    [encoder encodeObject:@(self.state) forKey:@"state"];
 }
 @end

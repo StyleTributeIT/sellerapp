@@ -37,6 +37,8 @@
 @property UIImageView* selectedImage;
 @property NSUInteger selectedImageIndex;
 
+@property BOOL isEditing;
+
 @end
 
 @implementation AddWardrobeItemController
@@ -55,12 +57,12 @@
     
     self.sizes = @[@"size 1", @"size 2", @"size 3", @"size 4", @"size 5"];
 
-    self.messageLabel.text = @""; //@"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+    self.messageLabel.text = @"";
     
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     [self.messageLabel sizeToFit];
     
-    self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
+    self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete picture" otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
     self.photoActionsSheet.delegate = self;
     
     self.textViewBackground.image = [[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
@@ -95,7 +97,9 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if(self.curProduct == nil) {
+    self.isEditing = (self.curProduct != nil);
+    
+    if(!self.isEditing) {
         self.curProduct = [Product new];
         [self clearAllFields];
     } else {
@@ -213,7 +217,20 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
-        case 0: { // take new picture
+        case 0: {  // Delete
+            ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+            if(imgType.state != ImageStateDeleted) {
+                if(imgType.state == ImageStateModified || (imgType.state == ImageStateNormal && ![[self.curProduct.photos objectAtIndex:self.selectedImageIndex] isKindOfClass:[NSNull class]]))
+                    imgType.state = ImageStateDeleted;
+                else if(imgType.state == ImageStateNew)
+                    imgType.state = ImageStateNormal;
+                
+                [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:[NSNull null]];
+                [self.collectionView reloadData];
+            }
+            break;
+        }
+        case 1: { // take new picture
             NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
             if([defs objectForKey:@"displayTutorial"] == nil) {
                 [self performSegueWithIdentifier:@"tutorialSegue" sender:self];
@@ -224,7 +241,7 @@
             }
             break;
         }
-        case 1: // pick from gallery
+        case 2: // pick from gallery
             [self presentCameraController: UIImagePickerControllerSourceTypePhotoLibrary];
             break;
             
@@ -242,6 +259,9 @@
         self.curProduct.category = ccController.selectedCategory;
         [self updatePhotosCollection];
         self.curProduct.photos = [NSMutableArray arrayWithCapacity:self.curProduct.category.imageTypes.count];
+        for(int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
+            [self.curProduct.photos addObject:[NSNull null]];
+        }
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
     }
     
@@ -330,8 +350,9 @@
     self.selectedImage.image = chosenImage;
     Photo* photo = [Photo new];
     photo.image = chosenImage;
-//    [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
-    [self.curProduct.photos insertObject:photo atIndex:self.selectedImageIndex];
+    [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
+    ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+    imgType.state = (imgType.state == ImageStateNormal ? ImageStateNew : ImageStateModified);
     [self.collectionView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -392,14 +413,17 @@
                                                     
             MRProgressOverlayView * progressView =[MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Uploading images" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
                                                     
-            if(self.curProduct.photos != nil) {
+            if(self.curProduct.photos != nil && self.curProduct.category != nil) {
                 for (int i = 0; i < self.curProduct.photos.count; ++i) {
                     [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading images %d/%zd", i + 1, self.curProduct.photos.count]];
                     Photo* photo = [self.curProduct.photos objectAtIndex:i];
                     ImageType* imageType = [self.curProduct.category.imageTypes objectAtIndex:i];
-                    if(photo != nil && [photo isKindOfClass:[Photo class]]) {
+                    
+                    // If we have new or modified images, then we should upload them
+                    if(photo != nil && [photo isKindOfClass:[Photo class]] && (imageType.state == ImageStateNew || imageType.state == ImageStateModified)) {
                         dispatch_group_enter(group);
                         [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
+                            imageType.state = ImageStateNormal;
                             dispatch_group_leave(group);
                         } failure:^(NSString *error) {
                             dispatch_group_leave(group);
@@ -408,6 +432,14 @@
                                 [progressView setProgress:progress animated:YES];
                                 NSLog(@"progress: %f", progress);
                             });
+                        }];
+                    } else if(imageType.state == ImageStateDeleted) {
+                        // TODO: this code needs to be tested (when we will get category of current product from /seller/products)
+                        dispatch_group_enter(group);
+                        [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
+                            dispatch_group_leave(group);
+                        } failure:^(NSString *error) {
+                            dispatch_group_leave(group);
                         }];
                     }
                 }
