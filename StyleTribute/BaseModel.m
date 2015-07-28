@@ -28,10 +28,28 @@
     }
 }
 
++(long)parseInt:(NSString*)param fromDict:(NSDictionary*)dict {
+    NSNumber* val = [dict objectForKey:param];
+    if(val) {
+        return [val intValue];
+    } else {
+        return 0;
+    }
+}
+
 +(BOOL)parseUInteger:(NSString*)param fromDict:(NSDictionary*)dict {
     NSNumber* val = [dict objectForKey:param];
     if(val) {
         return [val unsignedIntegerValue];
+    } else {
+        return 0;
+    }
+}
+
++(long)parseLong:(NSString*)param fromDict:(NSDictionary*)dict {
+    NSNumber* val = [dict objectForKey:param];
+    if(val) {
+        return [val longValue];
     } else {
         return 0;
     }

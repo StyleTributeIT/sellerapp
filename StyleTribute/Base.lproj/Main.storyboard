@@ -1273,7 +1273,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
-                                <rect key="frame" x="16" y="132" width="288" height="387"/>
+                                <rect key="frame" x="16" y="132" width="288" height="377"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1333,6 +1333,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="ydo-Bi-8mJ" secondAttribute="bottom" constant="10" id="4B8-ls-3Kq"/>
                             <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="ydo-Bi-8mJ" secondAttribute="bottom" id="HMd-SZ-BBK"/>
                             <constraint firstItem="xrR-oq-fgh" firstAttribute="top" secondItem="OsQ-Wz-Vxq" secondAttribute="bottom" constant="20" id="Na4-iL-qbL"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" id="SqC-xw-cbD"/>
@@ -1341,6 +1342,11 @@
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" id="dlT-qK-qZg"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="top" secondItem="xrR-oq-fgh" secondAttribute="bottom" constant="20" id="hwB-BX-xhi"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HMd-SZ-BBK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Wny-Ee-xTf"/>
                     <connections>

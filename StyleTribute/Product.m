@@ -8,6 +8,8 @@
 
 #import "Product.h"
 #import "Photo.h"
+#import "DataCache.h"
+#import <NSArray+LinqExtensions.h>
 
 @implementation Product
 
@@ -23,11 +25,12 @@
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     Product* product = [Product new];
     
-    product.identifier = (NSUInteger)[[self parseString:@"id" fromDict:dict] integerValue];
+    product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
     product.name = [self parseString:@"name" fromDict:dict];
     product.processStatus = [self parseString:@"process_status" fromDict:dict];
     product.originalPrice = [[self parseString:@"original_price" fromDict:dict] floatValue];
     product.price = [[self parseString:@"price" fromDict:dict] floatValue];
+    product.descriptionText = [self parseString:@"description" fromDict:dict];
     
     product.allowedTransitions = [NSMutableArray new];
     NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
@@ -35,11 +38,46 @@
         [product.allowedTransitions addObject:transition];
     }
     
-    product.photos = [NSMutableArray new];
+    if([DataCache sharedInstance].categories != nil) {
+        NSUInteger categoryId = (NSUInteger)[[dict objectForKey:@"category"] integerValue];
+        product.category = [[[DataCache sharedInstance].categories linq_where:^BOOL(STCategory* category) {
+            return (category.idNum == categoryId);
+        }] firstObject];
+    }
+    
+    if([DataCache sharedInstance].conditions != nil) {
+        NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition"] integerValue];
+        product.condition = [[[DataCache sharedInstance].conditions linq_where:^BOOL(NamedItem* condition) {
+            return (condition.identifier == conditionId);
+        }] firstObject];
+    }
+    
+    if([DataCache sharedInstance].designers != nil) {
+        NSUInteger designerId = (NSUInteger)[[dict objectForKey:@"designer"] integerValue];
+        product.designer = [[[DataCache sharedInstance].designers linq_where:^BOOL(NamedItem* designer) {
+            return (designer.identifier == designerId);
+        }] firstObject];
+    }
+    
+    product.photos = [[NSMutableArray alloc] initWithCapacity:product.category.imageTypes.count];
+    for(int i = 0; i < product.category.imageTypes.count; ++i) {
+        [product.photos addObject:[NSNull null]];
+    }
+    
     NSArray* images = [dict objectForKey:@"images"];
     if(images != nil) for(NSDictionary* imageDict in images) {
         Photo* photo = [Photo parseFromJson:imageDict];
-        [product.photos addObject:photo];
+
+        ImageType* type = [[product.category.imageTypes linq_where:^BOOL(ImageType* imgType) {
+            return [imgType.type isEqualToString:photo.label];
+        }] firstObject];
+        
+        if(type != nil) {
+            NSUInteger index = [product.category.imageTypes indexOfObject:type];
+            if(index < product.photos.count) {
+                [product.photos replaceObjectAtIndex:index withObject:photo];
+            }
+        }
     }
     
     return product;

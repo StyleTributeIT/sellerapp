@@ -12,6 +12,8 @@
 
 +(BOOL)parseBool:(NSString*)param fromDict:(NSDictionary*)dict;
 +(NSString*)parseString:(NSString*)param fromDict:(NSDictionary*)dict;
++(long)parseInt:(NSString*)param fromDict:(NSDictionary*)dict;
 +(BOOL)parseUInteger:(NSString*)param fromDict:(NSDictionary*)dict;
++(long)parseLong:(NSString*)param fromDict:(NSDictionary*)dict;
 
 @end

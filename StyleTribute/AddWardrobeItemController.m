@@ -103,7 +103,7 @@
         self.curProduct = [Product new];
         [self clearAllFields];
     } else {
-        // TODO: fill in all fields
+        // TODO: fill in size field
         if(self.categoryField.text.length == 0)
             self.categoryField.text = self.curProduct.category.name;
         if(self.brandField.text.length == 0)
@@ -208,6 +208,10 @@
         NamedItem* condition = [[DataCache sharedInstance].conditions objectAtIndex:index];
         self.curProduct.condition = condition;
         self.conditionField.text = condition.name;
+    } else if(self.activeField == self.nameField) {
+        self.curProduct.name = self.nameField.text;
+    } else if(self.activeField == self.descriptionView) {
+        self.curProduct.descriptionText = self.descriptionView.text;
     }
     
     [self.activeField resignFirstResponder];
@@ -225,7 +229,10 @@
                 else if(imgType.state == ImageStateNew)
                     imgType.state = ImageStateNormal;
                 
-                [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:[NSNull null]];
+//                [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:[NSNull null]];
+                Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+                photo.image = nil;
+                photo.thumbnailUrl = photo.imageUrl = @"";
                 [self.collectionView reloadData];
             }
             break;
@@ -394,19 +401,19 @@
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
     } else {
-        
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] setProductWithId:self.curProduct.identifier
                                                    name:self.nameField.text
                                             description:self.descriptionView.text
-                                              shortDesc:self.descriptionView.text
+                                              shortDesc:@""
                                                   price:100
                                                category:self.curProduct.category.idNum
                                               condition:self.curProduct.condition.identifier
                                                designer:self.curProduct.designer.identifier
-                                                success:^(NSUInteger identifier){
+                                                success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            self.curProduct.identifier = identifier;
+            self.curProduct.identifier = product.identifier;
+            self.curProduct.processStatus = product.processStatus;
                                    
             dispatch_group_t group = dispatch_group_create();
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -415,13 +422,13 @@
                                                     
             if(self.curProduct.photos != nil && self.curProduct.category != nil) {
                 for (int i = 0; i < self.curProduct.photos.count; ++i) {
-                    [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading images %d/%zd", i + 1, self.curProduct.photos.count]];
                     Photo* photo = [self.curProduct.photos objectAtIndex:i];
                     ImageType* imageType = [self.curProduct.category.imageTypes objectAtIndex:i];
                     
                     // If we have new or modified images, then we should upload them
                     if(photo != nil && [photo isKindOfClass:[Photo class]] && (imageType.state == ImageStateNew || imageType.state == ImageStateModified)) {
                         dispatch_group_enter(group);
+                        [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
                         [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
                             imageType.state = ImageStateNormal;
                             dispatch_group_leave(group);
@@ -434,8 +441,9 @@
                             });
                         }];
                     } else if(imageType.state == ImageStateDeleted) {
-                        // TODO: this code needs to be tested (when we will get category of current product from /seller/products)
                         dispatch_group_enter(group);
+                        [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
+                        [progressView setProgress:1.0f animated:YES];
                         [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
                             dispatch_group_leave(group);
                         } failure:^(NSString *error) {
@@ -452,9 +460,13 @@
                     [self clearAllFields];
                     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
                     WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
-                    self.curProduct.name = self.nameField.text;
-                    self.curProduct.descriptionText = self.descriptionView.text;
-                    [wc addNewProduct:self.curProduct];
+                    
+                    if(!self.isEditing) {
+                        [wc addNewProduct:self.curProduct];
+                    } else {
+                        [wc updateProductsList];
+                    }
+                    
                     self.curProduct = nil;
                     [tabController selectPreviousTab];
                 });
@@ -485,7 +497,11 @@
     if(self.curProduct.photos != nil && self.curProduct.photos.count >= (indexPath.row + 1)) {
         Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
         if(photo != nil && [photo isKindOfClass:[Photo class]]) {
-            newCell.photoView.image = photo.image;
+            if(photo.image != nil) {
+                newCell.photoView.image = photo.image;
+            } else {
+                [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+            }
         } else {
             [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
         }

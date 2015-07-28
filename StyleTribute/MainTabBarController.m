@@ -56,14 +56,29 @@
         self.tabBar.selectedImageTintColor = [UIColor clearColor];
 //        self.tabBar.selectionIndicatorImage = [UIImage new];
         self.tabBar.shadowImage = [UIImage new];
+        
+//        UIView* buttonView = [self.tabBar.subviews objectAtIndex:1];
+//        CGRect buttonFrame = buttonView.frame;
+//        buttonFrame.origin = CGPointMake(buttonFrame.origin.x, buttonFrame.origin.y - 50);
+//        [buttonView setFrame:buttonFrame];
+//        NSLog(@"Button: %@", buttonView);
+//        
+//        UIView* imageView = [[buttonView subviews] objectAtIndex:0];
+//        NSLog(@"image view: %@", imageView);
+//        
+//        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+//        [imageView setUserInteractionEnabled:YES];
+//        [imageView addGestureRecognizer:singleFingerTap];
     }
     
     return self;
 }
 
+//- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+//    NSLog(@"QWE!!!!!!!!!!!!");
+//}
+
 -(void)selectPreviousTab {
-    // TODO: Here we can get added item
-    //AddWardrobeItemController* controller = [self.selectedViewController.childViewControllers firstObject];
     [self setSelectedIndex:self.previousTabIndex];
 }
 

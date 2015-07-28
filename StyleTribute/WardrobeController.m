@@ -17,6 +17,9 @@
 #import "MainTabBarController.h"
 #import <MRProgress.h>
 #import "AddWardrobeItemController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <NSArray+LinqExtensions.h>
+#import "Photo.h"
 
 @interface WardrobeController()
 
@@ -46,15 +49,7 @@
         }];
     }
     
-    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        // TODO: we should divide products array on three parts
-        self.sellingItems = [products mutableCopy];
-        [self.itemsTable reloadData];
-    } failure:^(NSString *error) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-    }];
+    [self updateProducts];
     
     NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
@@ -66,15 +61,59 @@
     self.wardrobeType.accessibilityLabel = @"Wardrobe items type";
 }
 
-//-(void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES animated:animated];
-//}
-//
-//-(void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:animated];
-//}
+-(void)updateProducts {
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    
+    if([DataCache sharedInstance].categories == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
+            NSLog(@"getCategories finished");
+            [DataCache sharedInstance].categories = categories;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].designers == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getDesigners:^(NSArray *designers) {
+            NSLog(@"getDesigners finished");
+            [DataCache sharedInstance].designers = designers;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].conditions == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
+            NSLog(@"getConditions finished");
+            [DataCache sharedInstance].conditions = conditions;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    dispatch_group_notify(group, queue, ^{
+        NSLog(@"first step done!");
+        [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
+            NSLog(@"getProducts finished");
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            // TODO: we should divide products array on three parts
+            self.sellingItems = [products mutableCopy];
+            [self.itemsTable reloadData];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [GlobalHelper showMessage:error withTitle:@"error"];
+        }];
+    });
+}
 
 #pragma mark - UITableView
 
@@ -85,6 +124,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WardrobeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wardrobeCell" forIndexPath:indexPath];
     Product* p = [[self getCurrentItemsArray] objectAtIndex:indexPath.row];
+    
+    [cell.image setImage:[UIImage imageNamed:@"stub"]];
+    if(p.photos.count > 0) {
+        Photo* photo = [[p.photos linq_where:^BOOL(Photo* item) {
+            if([item isKindOfClass:[Photo class]])
+                return (item.thumbnailUrl.length > 0 || item.image != nil);
+            else
+                return NO;
+        }] firstObject];
+        
+        if(photo != nil) {
+            if(photo.image == nil)
+                [cell.image sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+            else
+                [cell.image setImage:photo.image];
+        }
+    }
     
     cell.tag = indexPath.row;
     cell.delegate = self;
@@ -174,18 +230,12 @@
 }
 
 -(void)addNewProduct:(Product*)product {
-//    [self.sellingItems addObject:product];
-//    [self.itemsTable reloadData];
-    
-    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        // TODO: we should divide products array on three parts
-        self.sellingItems = [products mutableCopy];
-        [self.itemsTable reloadData];
-    } failure:^(NSString *error) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-    }];
+    [self.sellingItems addObject:product];
+    [self.itemsTable reloadData];
+}
+
+-(void)updateProductsList {
+    [self.itemsTable reloadData];
 }
 
 @end

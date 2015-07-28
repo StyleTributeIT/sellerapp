@@ -18,9 +18,9 @@
 +(instancetype)parseFromJson:(NSDictionary*)dict; {
     STCategory* category = [STCategory new];
 
-    category.idNum = [[self class] parseUInteger:@"id" fromDict:dict];
-    category.name = [[self class] parseString:@"name" fromDict:dict];
-    category.thumbnail = [[self class] parseString:@"thumbnail" fromDict:dict];
+    category.idNum = (NSUInteger)[self parseInt:@"id" fromDict:dict];
+    category.name = [self parseString:@"name" fromDict:dict];
+    category.thumbnail = [self parseString:@"thumbnail" fromDict:dict];
     
     NSMutableArray* imgTypes = [NSMutableArray new];
     NSDictionary* imgTypeArray = [dict objectForKey:@"image_types"];

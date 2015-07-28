@@ -19,5 +19,6 @@
 -(IBAction)unwindToWardrobeItems:(UIStoryboardSegue*)sender;
 
 -(void)addNewProduct:(Product*)product;
+-(void)updateProductsList;
 
 @end

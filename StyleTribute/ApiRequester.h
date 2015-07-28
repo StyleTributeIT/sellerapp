@@ -12,6 +12,7 @@
 #import <AFHTTPRequestOperation.h>
 #import "UserProfile.h"
 #import "BankAccount.h"
+#import "Product.h"
 
 typedef void (^JSONRespAccount)(UserProfile* profile);
 typedef void (^JSONRespBankAccount)(BankAccount* profile);
@@ -21,6 +22,7 @@ typedef void (^JSONRespError)(NSString* error);
 typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
 typedef void (^JSONRespId)(NSUInteger identifier);
 typedef void (^JSONRespProgress)(float progress);
+typedef void (^JSONRespProduct)(Product* product);
 
 @interface ApiRequester : NSObject
 
@@ -73,7 +75,7 @@ typedef void (^JSONRespProgress)(float progress);
                category:(NSUInteger)categoryId
               condition:(NSUInteger)conditionId
                designer:(NSUInteger)designerId
-                success:(JSONRespId)success
+                success:(JSONRespProduct)success
                 failure:(JSONRespError)failure;
 
 -(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress;

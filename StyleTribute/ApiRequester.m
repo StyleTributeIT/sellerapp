@@ -94,7 +94,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                     failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSDictionary* params = @{@"email":email, @"password":password, @"firstname": firstName, @"lastname": lastName, @"username": userName, @"country": country, @"phone_number": phone};
+    NSDictionary* params = @{@"email":email, @"password":password, @"firstName": firstName, @"lastName": lastName, @"userName": userName, @"country": country, @"phone": phone};
     [self.sessionManager POST:@"seller/register" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
             NSString* token = [responseObject objectForKey:@"token"];
@@ -334,16 +334,21 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                category:(NSUInteger)categoryId
               condition:(NSUInteger)conditionId
                designer:(NSUInteger)designerId
-                success:(JSONRespId)success
+                success:(JSONRespProduct)success
                 failure:(JSONRespError)failure  {
     
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSDictionary* params = @{@"name": name, @"description": description, @"short_description": shortDesc, @"category": @(categoryId), @"condition": @(conditionId), @"designer": @(designerId)};
+    NSMutableDictionary* params = [@{@"name": name, @"description": description, @"short_description": shortDesc, @"category": @(categoryId), @"condition": @(conditionId), @"designer": @(designerId)} mutableCopy];
+    if(identifier > 0) {
+        [params setObject:@(identifier) forKey:@"id"];
+    }
+    
     [self.sessionManager POST:@"seller/product" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-            NSUInteger idNum = (NSUInteger)[[responseObject objectForKey:@"id"] integerValue];
-            success(idNum);
+            NSDictionary* productDict = [responseObject objectForKey:@"product"];
+            Product* product = [Product parseFromJson:productDict];
+            success(product);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"setProduct error: %@", [error description]);
@@ -385,6 +390,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     NSString* url = [NSString stringWithFormat:@"seller/product/%zd/photos/%zd", productId, imageId];
     [self.sessionManager DELETE:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"deleteImage success: %@", [responseObject description]);
+        success();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"deleteImage error: %@", [error description]);
         failure(DefGeneralErrMsg);
