@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D3A17FE08962AE7684D8FA8F"
+               BlueprintIdentifier = "184AD2E8B305C339AE7A0323"
                BuildableName = "libPods-KASlideShow.a"
                BlueprintName = "Pods-KASlideShow"
                ReferencedContainer = "container:Pods.xcodeproj">

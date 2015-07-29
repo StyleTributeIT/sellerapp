@@ -63,8 +63,8 @@
 // MGSwipeTableCell
 #define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell
 #define COCOAPODS_VERSION_MAJOR_MGSwipeTableCell 1
-#define COCOAPODS_VERSION_MINOR_MGSwipeTableCell 4
-#define COCOAPODS_VERSION_PATCH_MGSwipeTableCell 3
+#define COCOAPODS_VERSION_MINOR_MGSwipeTableCell 5
+#define COCOAPODS_VERSION_PATCH_MGSwipeTableCell 1
 
 // MRProgress
 #define COCOAPODS_POD_AVAILABLE_MRProgress
@@ -136,19 +136,19 @@
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage 2
+#define COCOAPODS_VERSION_PATCH_SDWebImage 3
 
 // SDWebImage/Core
 #define COCOAPODS_POD_AVAILABLE_SDWebImage_Core
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 2
+#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 3
 
 // TestFairy
 #define COCOAPODS_POD_AVAILABLE_TestFairy
 #define COCOAPODS_VERSION_MAJOR_TestFairy 1
 #define COCOAPODS_VERSION_MINOR_TestFairy 4
-#define COCOAPODS_VERSION_PATCH_TestFairy 4
+#define COCOAPODS_VERSION_PATCH_TestFairy 6
 
 // UIActivityIndicator-for-SDWebImage
 #define COCOAPODS_POD_AVAILABLE_UIActivityIndicator_for_SDWebImage

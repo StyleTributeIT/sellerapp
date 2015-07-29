@@ -25,7 +25,7 @@ PODS:
     - KIF/XCTest (= 3.2.3)
   - KIF/XCTest (3.2.3)
   - LinqToObjectiveC (2.0.0)
-  - MGSwipeTableCell (1.4.3)
+  - MGSwipeTableCell (1.5.1)
   - MRProgress (0.8.2):
     - MRProgress/ActivityIndicator (= 0.8.2)
     - MRProgress/Blur (= 0.8.2)
@@ -55,10 +55,10 @@ PODS:
   - MRProgress/Stopable (0.8.2):
     - MRProgress/Helper
   - Reachability (3.2)
-  - SDWebImage (3.7.2):
-    - SDWebImage/Core (= 3.7.2)
-  - SDWebImage/Core (3.7.2)
-  - TestFairy (1.4.4)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - TestFairy (1.4.6)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
 
@@ -79,11 +79,11 @@ SPEC CHECKSUMS:
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
   KIF: a94bffe9c97e449e44f8fa481c53243d21309e1e
   LinqToObjectiveC: 768f98c62d5b57cb6bdb7ab869e33d0a7a2da29c
-  MGSwipeTableCell: cb9805df3cc5cad75ad43a5c1eb424be0316f0bf
+  MGSwipeTableCell: a51fa670c01f0aa048f12af040acebf315223137
   MRProgress: f4cfe862082418e8f542f077772283f425d6c699
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  TestFairy: 726094c49c74a1795d74cd6f31ef13e38cc9d686
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  TestFairy: 49a9cfa71e370cc3cd3b8da09beeaec63eede356
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
 
 COCOAPODS: 0.37.2

@@ -12,6 +12,7 @@
 #import <TestFairy.h>
 #import "DataCache.h"
 #import "CustomTextField.h"
+#import "UIFloatLabelTextField.h"
 
 @interface AppDelegate ()
 
@@ -25,13 +26,22 @@
     
     [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
     
-    UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
+    UIColor* pink = [UIColor colorWithRed:218/256.0 green:0 blue:100.0/255 alpha:1];
     [[UITabBar appearance] setSelectedImageTintColor:pink];
     
     [[CustomTextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
     [[CustomTextField appearance] setBorderStyle:UITextBorderStyleNone];
     [[CustomTextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
     [[CustomTextField appearance] setTextAlignment:NSTextAlignmentCenter];
+    
+    [[UIFloatLabelTextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
+    [[UIFloatLabelTextField appearance] setBorderStyle:UITextBorderStyleNone];
+    [[UIFloatLabelTextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+    [[UIFloatLabelTextField appearance] setTextAlignment:NSTextAlignmentCenter];
+    [[UIFloatLabelTextField appearance] setFloatLabelActiveColor:pink];
+    [[UIFloatLabelTextField appearance] setFloatLabelFont:[UIFont fontWithName:@"Gotham-Book" size:10]];
+    [[UIFloatLabelTextField appearance] setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
+    
     
 //    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setTextColor:[UIColor blueColor]];
     

@@ -9,6 +9,7 @@ pod 'KASlideShow'
 pod 'LinqToObjectiveC'
 pod 'SDWebImage'
 pod 'UIActivityIndicator-for-SDWebImage'
+#pod 'UIFloatLabelTextField'
 
 target 'StyleTributeTests', :exclusive => true do
 	pod 'KIF', :configuration => ['Debug']
