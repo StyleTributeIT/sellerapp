@@ -1947,7 +1947,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL1-B6-Usj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="z6y-lS-1cy">
                                                 <rect key="frame" x="8" y="8" width="304" height="21"/>
@@ -1959,7 +1959,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VlM-R9-Zbi" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="75" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="83" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Choose category"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -1973,7 +1973,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spy-gH-EMN" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="337" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="345" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Brand"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="OTY-ji-Qwi"/>
@@ -1985,7 +1985,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-VP-j2D" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="383" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="391" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Size"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="G6t-ag-EDN"/>
@@ -1997,7 +1997,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Condition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-kR-1Pi" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="429" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="437" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Condition"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="cf2-BB-JVC"/>
@@ -2009,7 +2009,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-OC-s45">
-                                                <rect key="frame" x="40" y="475" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="483" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Price"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cks-vp-y9K"/>
@@ -2024,13 +2024,13 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="REE-Fz-JhP">
-                                                <rect key="frame" x="8" y="229" width="304" height="100"/>
+                                                <rect key="frame" x="8" y="237" width="304" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Jrn-Ho-z0g"/>
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-XH-bzd">
-                                                <rect key="frame" x="8" y="229" width="304" height="100"/>
+                                                <rect key="frame" x="8" y="237" width="304" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration" label="Description"/>
                                                 <constraints>
@@ -2043,7 +2043,7 @@
                                                 </connections>
                                             </textView>
                                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c94-ID-zDO">
-                                                <rect key="frame" x="4" y="121" width="312" height="100"/>
+                                                <rect key="frame" x="4" y="129" width="312" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="9Q8-2T-d0P"/>
@@ -2099,10 +2099,10 @@
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="hO1-zo-Lx4"/>
                                                 </connections>
                                             </collectionView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-kg-xHB" customClass="CustomTextField">
-                                                <rect key="frame" x="8" y="37" width="304" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-kg-xHB" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="8" y="37" width="304" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="KKK-jQ-mbC"/>
+                                                    <constraint firstAttribute="height" constant="38" id="KKK-jQ-mbC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
