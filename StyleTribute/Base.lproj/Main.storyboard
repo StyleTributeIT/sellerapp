@@ -460,7 +460,7 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRr-8i-PRe">
-                                                <rect key="frame" x="40" y="352" width="240" height="30"/>
+                                                <rect key="frame" x="8" y="352" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Logout"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="016-ns-F42"/>
@@ -489,8 +489,8 @@
                                             <constraint firstAttribute="trailing" secondItem="b1K-gw-wKD" secondAttribute="trailing" constant="8" id="rDI-lA-098"/>
                                             <constraint firstItem="b1K-gw-wKD" firstAttribute="leading" secondItem="7xF-vN-mHu" secondAttribute="leading" constant="8" id="rVE-8D-Zsa"/>
                                             <constraint firstAttribute="trailing" secondItem="rNJ-vz-aMo" secondAttribute="trailing" constant="8" id="tVa-yR-lfI"/>
-                                            <constraint firstItem="SRr-8i-PRe" firstAttribute="leading" secondItem="7xF-vN-mHu" secondAttribute="leading" constant="40" id="uhi-Ja-pVq"/>
-                                            <constraint firstAttribute="trailing" secondItem="SRr-8i-PRe" secondAttribute="trailing" constant="40" id="wyY-7B-s6p"/>
+                                            <constraint firstItem="SRr-8i-PRe" firstAttribute="leading" secondItem="7xF-vN-mHu" secondAttribute="leading" constant="8" id="uhi-Ja-pVq"/>
+                                            <constraint firstAttribute="trailing" secondItem="SRr-8i-PRe" secondAttribute="trailing" constant="8" id="wyY-7B-s6p"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1947,7 +1947,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL1-B6-Usj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="z6y-lS-1cy">
                                                 <rect key="frame" x="8" y="8" width="304" height="21"/>
@@ -2009,7 +2009,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-OC-s45">
-                                                <rect key="frame" x="40" y="483" width="240" height="30"/>
+                                                <rect key="frame" x="8" y="483" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Price"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cks-vp-y9K"/>
@@ -2128,14 +2128,14 @@
                                             <constraint firstItem="KKI-VP-j2D" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="WEu-xp-2IB"/>
                                             <constraint firstItem="VlM-R9-Zbi" firstAttribute="top" secondItem="Wcp-kg-xHB" secondAttribute="bottom" constant="8" id="Wt1-As-bSf"/>
                                             <constraint firstAttribute="trailing" secondItem="Wcp-kg-xHB" secondAttribute="trailing" constant="8" id="Zv7-dn-h58"/>
-                                            <constraint firstItem="fH1-OC-s45" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="40" id="aA1-Ga-edq"/>
+                                            <constraint firstItem="fH1-OC-s45" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="aA1-Ga-edq"/>
                                             <constraint firstAttribute="trailing" secondItem="VlM-R9-Zbi" secondAttribute="trailing" constant="8" id="cKd-jV-6un"/>
                                             <constraint firstAttribute="trailing" secondItem="REE-Fz-JhP" secondAttribute="trailing" constant="8" id="drk-CA-HHx"/>
                                             <constraint firstItem="z6y-lS-1cy" firstAttribute="top" secondItem="kL1-B6-Usj" secondAttribute="top" constant="8" id="eVO-Dm-f6D"/>
                                             <constraint firstItem="Ele-kR-1Pi" firstAttribute="top" secondItem="KKI-VP-j2D" secondAttribute="bottom" constant="8" id="eWx-DU-xXT"/>
                                             <constraint firstItem="fH1-OC-s45" firstAttribute="top" secondItem="Ele-kR-1Pi" secondAttribute="bottom" constant="8" id="fbV-2f-KYN"/>
                                             <constraint firstItem="REE-Fz-JhP" firstAttribute="top" secondItem="c94-ID-zDO" secondAttribute="bottom" constant="8" id="fms-RP-vHg"/>
-                                            <constraint firstAttribute="trailing" secondItem="fH1-OC-s45" secondAttribute="trailing" constant="40" id="gqL-g1-sOG"/>
+                                            <constraint firstAttribute="trailing" secondItem="fH1-OC-s45" secondAttribute="trailing" constant="8" id="gqL-g1-sOG"/>
                                             <constraint firstItem="Wcp-kg-xHB" firstAttribute="top" secondItem="z6y-lS-1cy" secondAttribute="bottom" constant="8" id="kKK-nQ-YfB"/>
                                             <constraint firstItem="Spy-gH-EMN" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="knK-HT-8Kh"/>
                                             <constraint firstAttribute="bottom" secondItem="fH1-OC-s45" secondAttribute="bottom" constant="8" id="lbx-hv-21o"/>
