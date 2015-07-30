@@ -40,7 +40,7 @@
     [[UIFloatLabelTextField appearance] setTextAlignment:NSTextAlignmentCenter];
     [[UIFloatLabelTextField appearance] setFloatLabelActiveColor:pink];
     [[UIFloatLabelTextField appearance] setFloatLabelFont:[UIFont fontWithName:@"Gotham-Book" size:10]];
-    [[UIFloatLabelTextField appearance] setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
+//    [[UIFloatLabelTextField appearance] setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
     
     
 //    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setTextColor:[UIColor blueColor]];

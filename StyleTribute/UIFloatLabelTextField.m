@@ -171,6 +171,10 @@
                         options:combinedOptions
                      animations:animationBlock
                      completion:nil];
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.contentVerticalAlignment = (animationType == UIFloatLabelAnimationTypeShow ? UIControlContentVerticalAlignmentBottom : UIControlContentVerticalAlignmentCenter);
+    }];
 }
 
 - (void)animateClearingTextFieldWithArray:(NSTimer *)timer
@@ -203,7 +207,7 @@
 - (UIEdgeInsets)floatLabelInsets
 {
     CGFloat top = [self.text length] ? 5.0f : 0.0f;
-    return UIEdgeInsetsMake(top, _horizontalPadding, 5.0f, _horizontalPadding);
+    return UIEdgeInsetsMake(top, _horizontalPadding, top, _horizontalPadding);
 }
 
 - (void)textDidChange:(NSNotification *)notification
@@ -269,6 +273,7 @@
     if ([text length] && !_storedText) {
         [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeShow];
         _floatLabel.textColor = _floatLabelPassiveColor;
+        self.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     }
 }
 
@@ -318,10 +323,6 @@
     _floatLabelFont = floatLabelFont;
     _floatLabel.font = _floatLabelFont;
     [_floatLabel sizeToFit];
-//    [_floatLabel setNeedsLayout];
-//    [_floatLabel setNeedsDisplay];
-//    [self setNeedsLayout];
-//    [self setNeedsDisplay];
 }
 
 #pragma mark - UIView (Override)
