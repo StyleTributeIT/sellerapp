@@ -442,10 +442,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="53B-AI-w6e" firstAttribute="top" secondItem="h0F-28-CnO" secondAttribute="topMargin" constant="-4" id="5pZ-97-dsF"/>
-                                                                <constraint firstItem="53B-AI-w6e" firstAttribute="leading" secondItem="h0F-28-CnO" secondAttribute="leadingMargin" constant="-8" id="Xqh-7K-pcs"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="53B-AI-w6e" secondAttribute="trailing" constant="-8" id="oIq-PN-szI"/>
-                                                                <constraint firstAttribute="bottomMargin" secondItem="53B-AI-w6e" secondAttribute="bottom" constant="-4" id="vqF-Zl-0fF"/>
+                                                                <constraint firstItem="53B-AI-w6e" firstAttribute="leading" secondItem="h0F-28-CnO" secondAttribute="leading" id="Lze-FC-wMM"/>
+                                                                <constraint firstAttribute="trailing" secondItem="53B-AI-w6e" secondAttribute="trailing" id="NTR-AE-8nz"/>
+                                                                <constraint firstAttribute="bottom" secondItem="53B-AI-w6e" secondAttribute="bottom" constant="4" id="b45-Ji-Wyy"/>
+                                                                <constraint firstItem="53B-AI-w6e" firstAttribute="top" secondItem="h0F-28-CnO" secondAttribute="top" constant="4" id="qUs-dD-VF4"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
