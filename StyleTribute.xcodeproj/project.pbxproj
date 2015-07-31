@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		60846BFEBA3D93E7C0E7CFEB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */; };
 		7A05074D1B0E220F00438D64 /* MyAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A05074C1B0E220F00438D64 /* MyAccountCell.m */; };
+		7A07364E1B6B75D300B1FB7D /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A07364B1B6B75D300B1FB7D /* MGSwipeButton.m */; };
+		7A07364F1B6B75D300B1FB7D /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A07364D1B6B75D300B1FB7D /* MGSwipeTableCell.m */; };
 		7A0EB60A1AEE23D400D90001 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB6091AEE23D400D90001 /* main.m */; };
 		7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EB60C1AEE23D400D90001 /* AppDelegate.m */; };
 		7A0EB6131AEE23D400D90001 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EB6111AEE23D400D90001 /* Main.storyboard */; };
@@ -85,6 +87,10 @@
 		3AAA915C597815E7ED38446F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7A05074B1B0E220F00438D64 /* MyAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountCell.h; sourceTree = "<group>"; };
 		7A05074C1B0E220F00438D64 /* MyAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountCell.m; sourceTree = "<group>"; };
+		7A07364A1B6B75D300B1FB7D /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
+		7A07364B1B6B75D300B1FB7D /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
+		7A07364C1B6B75D300B1FB7D /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
+		7A07364D1B6B75D300B1FB7D /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
 		7A0EB6041AEE23D400D90001 /* StyleTribute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleTribute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EB6081AEE23D400D90001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A0EB6091AEE23D400D90001 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -224,6 +230,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A0736491B6B75D300B1FB7D /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				7A07364A1B6B75D300B1FB7D /* MGSwipeButton.h */,
+				7A07364B1B6B75D300B1FB7D /* MGSwipeButton.m */,
+				7A07364C1B6B75D300B1FB7D /* MGSwipeTableCell.h */,
+				7A07364D1B6B75D300B1FB7D /* MGSwipeTableCell.m */,
+			);
+			path = MGSwipeTableCell;
+			sourceTree = "<group>";
+		};
 		7A0EB5FB1AEE23D400D90001 = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +395,7 @@
 		7A60FCD21B160F5D00731F6E /* External */ = {
 			isa = PBXGroup;
 			children = (
+				7A0736491B6B75D300B1FB7D /* MGSwipeTableCell */,
 				7AF59F191B68E70B007DBAB5 /* UIFloatLabelTextField.h */,
 				7AF59F1A1B68E70B007DBAB5 /* UIFloatLabelTextField.m */,
 				7A60FCD31B160F7800731F6E /* RFPasswordGenerator.h */,
@@ -651,6 +669,8 @@
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,
+				7A07364F1B6B75D300B1FB7D /* MGSwipeTableCell.m in Sources */,
+				7A07364E1B6B75D300B1FB7D /* MGSwipeButton.m in Sources */,
 				7A60979B1B13402600209340 /* BaseModel.m in Sources */,
 				7AE6C7171B3AD10000EB2B5F /* NamedItems.m in Sources */,
 				7AF59F1B1B68E70B007DBAB5 /* UIFloatLabelTextField.m in Sources */,

@@ -273,7 +273,12 @@
     if ([text length] && !_storedText) {
         [self toggleFloatLabelProperties:UIFloatLabelAnimationTypeShow];
         _floatLabel.textColor = _floatLabelPassiveColor;
+    }
+    
+    if(self.text.length > 0) {
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+    } else {
+        self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     }
 }
 
@@ -342,6 +347,10 @@
 -(BOOL)becomeFirstResponder
 {
     [super becomeFirstResponder];
+    
+    if(!self.isEditing) {
+        return NO;
+    }
     
     /*
      verticalPadding must be manually set if textField was initialized

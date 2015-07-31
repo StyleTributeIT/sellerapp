@@ -60,12 +60,6 @@
 #define COCOAPODS_VERSION_MINOR_LinqToObjectiveC 0
 #define COCOAPODS_VERSION_PATCH_LinqToObjectiveC 0
 
-// MGSwipeTableCell
-#define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell
-#define COCOAPODS_VERSION_MAJOR_MGSwipeTableCell 1
-#define COCOAPODS_VERSION_MINOR_MGSwipeTableCell 5
-#define COCOAPODS_VERSION_PATCH_MGSwipeTableCell 1
-
 // MRProgress
 #define COCOAPODS_POD_AVAILABLE_MRProgress
 #define COCOAPODS_VERSION_MAJOR_MRProgress 0

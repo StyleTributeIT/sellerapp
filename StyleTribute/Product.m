@@ -17,6 +17,7 @@
     self = [super init];
     if(self) {
         self.type = ProductTypeSelling;
+        self.processStatus = @"in_review";
         self.identifier = 0;
     }
     return self;
@@ -37,6 +38,10 @@
     if(transitionsArray != nil) for(NSString* transition in transitionsArray) {
         [product.allowedTransitions addObject:transition];
     }
+    
+    // Uncomment this to test transitions
+//    [product.allowedTransitions addObject:@"archived"];
+//    [product.allowedTransitions addObject:@"deleted"];
     
     if([DataCache sharedInstance].categories != nil) {
         NSUInteger categoryId = (NSUInteger)[[dict objectForKey:@"category"] integerValue];
@@ -116,6 +121,56 @@
     [encoder encodeObject:@(self.price) forKey:@"price"];
     [encoder encodeObject:self.allowedTransitions forKey:@"allowedTransitions"];
     [encoder encodeObject:self.descriptionText forKey:@"descriptionText"];
+}
+
+#pragma mark - Helpers
+
+-(ProductType)getProductType {
+    if([self.processStatus isEqualToString:@"new"] ||
+       [self.processStatus isEqualToString:@"in_review"] ||
+       [self.processStatus isEqualToString:@"in_review_add"] ||
+       [self.processStatus isEqualToString:@"incomplete"] ||
+       [self.processStatus isEqualToString:@"image_processing"] ||
+       [self.processStatus isEqualToString:@"selling"] ||
+       [self.processStatus isEqualToString:@"suspended"])
+    {
+        return ProductTypeSelling;
+    }
+    else if([self.processStatus isEqualToString:@"sold"] ||
+            [self.processStatus isEqualToString:@"sold_confirmed"] ||
+            [self.processStatus isEqualToString:@"received"] ||
+            [self.processStatus isEqualToString:@"authenticated"] ||
+            [self.processStatus isEqualToString:@"sent_to_buyer"] ||
+            [self.processStatus isEqualToString:@"received_by_buyer"] ||
+            [self.processStatus isEqualToString:@"payout_seller"] ||
+            [self.processStatus isEqualToString:@"complete"])
+    {
+        return ProductTypeSold;
+    }
+    else if([self.processStatus isEqualToString:@"archived"])
+    {
+        return ProductTypeArchived;
+    }
+    
+    return ProductTypeNonVisible;
+}
+
+-(EditingType)getEditingType {
+    if([self.processStatus isEqualToString:@"in_review"] ||
+       [self.processStatus isEqualToString:@"in_review_add"] ||
+       [self.processStatus isEqualToString:@"incomplete"])
+    {
+        return EditingTypeAll;
+    }
+    else if([self.processStatus isEqualToString:@"image_processing"] ||
+            [self.processStatus isEqualToString:@"selling"])
+    {
+        return EditingTypeDescriptionAndCondition;
+    }
+    else
+    {
+        return EditingTypeNothing;
+    }
 }
 
 @end

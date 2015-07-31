@@ -12,11 +12,18 @@
 #import "ProductPhoto.h"
 #import "NamedItems.h"
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, ProductType) {
     ProductTypeSelling,
     ProductTypeSold,
     ProductTypeArchived,
-} ProductType;
+    ProductTypeNonVisible
+};
+
+typedef NS_ENUM(NSUInteger, EditingType) {
+    EditingTypeAll,
+    EditingTypeDescriptionAndCondition,
+    EditingTypeNothing
+};
 
 @interface Product : BaseModel<NSCoding>
 
@@ -35,5 +42,8 @@ typedef enum : NSUInteger {
 
 -(instancetype)init;
 +(instancetype)parseFromJson:(NSDictionary*)dict;
+
+-(ProductType)getProductType;
+-(EditingType)getEditingType;
 
 @end

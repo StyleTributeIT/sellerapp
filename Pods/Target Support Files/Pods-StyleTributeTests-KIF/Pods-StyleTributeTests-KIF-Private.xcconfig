@@ -1,7 +1,7 @@
 #include "Pods-StyleTributeTests-KIF.xcconfig"
 FRAMEWORK_SEARCH_PATHS = ${PODS_STYLETRIBUTETESTS_KIF_FRAMEWORK_SEARCH_PATHS}
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/KIF" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/KASlideShow" "${PODS_ROOT}/Headers/Public/KIF" "${PODS_ROOT}/Headers/Public/LinqToObjectiveC" "${PODS_ROOT}/Headers/Public/MGSwipeTableCell" "${PODS_ROOT}/Headers/Public/MRProgress" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/TestFairy" "${PODS_ROOT}/Headers/Public/UIActivityIndicator-for-SDWebImage"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/KIF" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/KASlideShow" "${PODS_ROOT}/Headers/Public/KIF" "${PODS_ROOT}/Headers/Public/LinqToObjectiveC" "${PODS_ROOT}/Headers/Public/MRProgress" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/TestFairy" "${PODS_ROOT}/Headers/Public/UIActivityIndicator-for-SDWebImage"
 OTHER_CFLAGS = ${PODS_STYLETRIBUTETESTS_KIF_OTHER_CFLAGS}
 OTHER_LDFLAGS = ${PODS_STYLETRIBUTETESTS_KIF_OTHER_LDFLAGS} -ObjC
 PODS_ROOT = ${SRCROOT}

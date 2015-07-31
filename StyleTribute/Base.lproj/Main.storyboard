@@ -51,6 +51,7 @@
             <string>Gotham-Medium</string>
             <string>Gotham-Medium</string>
             <string>Gotham-Medium</string>
+            <string>Gotham-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1947,7 +1948,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL1-B6-Usj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="545"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="z6y-lS-1cy">
                                                 <rect key="frame" x="8" y="8" width="304" height="21"/>
@@ -1973,7 +1974,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spy-gH-EMN" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="345" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="331" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Brand"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="OTY-ji-Qwi"/>
@@ -1985,7 +1986,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-VP-j2D" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="391" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="377" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Size"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="G6t-ag-EDN"/>
@@ -1997,7 +1998,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Condition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-kR-1Pi" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="437" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="423" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Condition"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="cf2-BB-JVC"/>
@@ -2009,7 +2010,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-OC-s45">
-                                                <rect key="frame" x="8" y="483" width="304" height="30"/>
+                                                <rect key="frame" x="8" y="469" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Price"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cks-vp-y9K"/>
@@ -2024,17 +2025,17 @@
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="REE-Fz-JhP">
-                                                <rect key="frame" x="8" y="237" width="304" height="100"/>
+                                                <rect key="frame" x="8" y="237" width="304" height="86"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="Jrn-Ho-z0g"/>
+                                                    <constraint firstAttribute="height" constant="86" id="Jrn-Ho-z0g"/>
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-XH-bzd">
-                                                <rect key="frame" x="8" y="237" width="304" height="100"/>
+                                                <rect key="frame" x="8" y="237" width="304" height="90"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration" label="Description"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="PUL-dK-YHU"/>
+                                                    <constraint firstAttribute="height" constant="90" id="PUL-dK-YHU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -2066,8 +2067,8 @@
                                                                     <rect key="frame" x="4" y="4" width="52" height="52"/>
                                                                     <gestureRecognizers/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-O8-oZw">
-                                                                    <rect key="frame" x="4" y="21" width="52" height="18"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56d-O8-oZw">
+                                                                    <rect key="frame" x="4" y="22" width="52" height="17"/>
                                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="56d-O8-oZw" secondAttribute="height" multiplier="3:1" id="7Ap-Iu-vYF"/>
@@ -2110,6 +2111,19 @@
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="BVH-yw-iQU"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2J-jy-p57">
+                                                <rect key="frame" x="8" y="507" width="304" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Y0H-ez-lRr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="15"/>
+                                                <state key="normal" title="I can't sell this product now" backgroundImage="RedButton">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cantSellProduct:" destination="JCl-pv-8pa" eventType="touchUpInside" id="bMm-7s-huJ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -2125,10 +2139,12 @@
                                             <constraint firstItem="KKI-VP-j2D" firstAttribute="top" secondItem="Spy-gH-EMN" secondAttribute="bottom" constant="8" id="HuZ-SS-xV8"/>
                                             <constraint firstItem="z6y-lS-1cy" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="Rv0-GZ-1y9"/>
                                             <constraint firstItem="c94-ID-zDO" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="4" id="Uld-yb-EmD"/>
+                                            <constraint firstItem="t2J-jy-p57" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="Vwu-cv-vba"/>
                                             <constraint firstItem="KKI-VP-j2D" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="WEu-xp-2IB"/>
                                             <constraint firstItem="VlM-R9-Zbi" firstAttribute="top" secondItem="Wcp-kg-xHB" secondAttribute="bottom" constant="8" id="Wt1-As-bSf"/>
                                             <constraint firstAttribute="trailing" secondItem="Wcp-kg-xHB" secondAttribute="trailing" constant="8" id="Zv7-dn-h58"/>
                                             <constraint firstItem="fH1-OC-s45" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="aA1-Ga-edq"/>
+                                            <constraint firstAttribute="trailing" secondItem="t2J-jy-p57" secondAttribute="trailing" constant="8" id="bGX-vz-XJW"/>
                                             <constraint firstAttribute="trailing" secondItem="VlM-R9-Zbi" secondAttribute="trailing" constant="8" id="cKd-jV-6un"/>
                                             <constraint firstAttribute="trailing" secondItem="REE-Fz-JhP" secondAttribute="trailing" constant="8" id="drk-CA-HHx"/>
                                             <constraint firstItem="z6y-lS-1cy" firstAttribute="top" secondItem="kL1-B6-Usj" secondAttribute="top" constant="8" id="eVO-Dm-f6D"/>
@@ -2138,14 +2154,21 @@
                                             <constraint firstAttribute="trailing" secondItem="fH1-OC-s45" secondAttribute="trailing" constant="8" id="gqL-g1-sOG"/>
                                             <constraint firstItem="Wcp-kg-xHB" firstAttribute="top" secondItem="z6y-lS-1cy" secondAttribute="bottom" constant="8" id="kKK-nQ-YfB"/>
                                             <constraint firstItem="Spy-gH-EMN" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="knK-HT-8Kh"/>
+                                            <constraint firstItem="t2J-jy-p57" firstAttribute="top" secondItem="fH1-OC-s45" secondAttribute="bottom" constant="8" id="l6C-Ma-IbW"/>
                                             <constraint firstAttribute="bottom" secondItem="fH1-OC-s45" secondAttribute="bottom" constant="8" id="lbx-hv-21o"/>
                                             <constraint firstAttribute="trailing" secondItem="c94-ID-zDO" secondAttribute="trailing" constant="4" id="oah-Sx-1h7"/>
+                                            <constraint firstAttribute="bottom" secondItem="t2J-jy-p57" secondAttribute="bottom" constant="8" id="pPS-e6-Bh5"/>
                                             <constraint firstItem="xMe-XH-bzd" firstAttribute="top" secondItem="c94-ID-zDO" secondAttribute="bottom" constant="8" id="r7d-K0-pyh"/>
                                             <constraint firstAttribute="trailing" secondItem="Ele-kR-1Pi" secondAttribute="trailing" constant="8" id="uAp-Ao-kVT"/>
                                             <constraint firstItem="VlM-R9-Zbi" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="x5c-O2-LiF"/>
                                             <constraint firstAttribute="trailing" secondItem="z6y-lS-1cy" secondAttribute="trailing" constant="8" id="xFs-Ix-xAF"/>
                                             <constraint firstItem="REE-Fz-JhP" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="xua-9t-Svi"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="lbx-hv-21o"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -2180,6 +2203,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="brandField" destination="Spy-gH-EMN" id="Q8d-mL-XOR"/>
+                        <outlet property="cantSellButton" destination="t2J-jy-p57" id="yLx-sD-s8t"/>
                         <outlet property="categoryField" destination="VlM-R9-Zbi" id="2A2-8a-o7H"/>
                         <outlet property="collectionView" destination="c94-ID-zDO" id="WdN-aL-hTH"/>
                         <outlet property="collectionViewHeight" destination="9Q8-2T-d0P" id="D6C-X9-JWn"/>
@@ -2188,6 +2212,7 @@
                         <outlet property="descriptionView" destination="xMe-XH-bzd" id="aBh-wk-NIO"/>
                         <outlet property="messageLabel" destination="z6y-lS-1cy" id="qRd-fh-kQX"/>
                         <outlet property="nameField" destination="Wcp-kg-xHB" id="3ao-a9-Jzu"/>
+                        <outlet property="priceButton" destination="fH1-OC-s45" id="ooG-wt-pmj"/>
                         <outlet property="scrollView" destination="WKy-EG-yBK" id="yXj-5V-Xdz"/>
                         <outlet property="sizeField" destination="KKI-VP-j2D" id="Deb-0K-n8I"/>
                         <outlet property="textViewBackground" destination="REE-Fz-JhP" id="ifc-ca-GDo"/>
@@ -2507,6 +2532,7 @@
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
         <image name="Logo" width="64" height="64"/>
+        <image name="RedButton" width="205" height="30"/>
         <image name="account" width="30" height="30"/>
         <image name="add-item" width="56" height="56"/>
         <image name="placeholder" width="64" height="64"/>

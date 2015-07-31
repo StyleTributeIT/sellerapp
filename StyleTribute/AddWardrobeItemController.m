@@ -37,8 +37,6 @@
 @property UIImageView* selectedImage;
 @property NSUInteger selectedImageIndex;
 
-@property BOOL isEditing;
-
 @end
 
 @implementation AddWardrobeItemController
@@ -97,9 +95,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.isEditing = (self.curProduct != nil);
-    
-    if(!self.isEditing) {
+    if(self.curProduct == nil) {
         self.curProduct = [Product new];
         [self clearAllFields];
     } else {
@@ -115,6 +111,12 @@
         if(self.descriptionView.text.length == 0)
             self.descriptionView.text = self.curProduct.descriptionText;
     }
+    
+    EditingType editingType = [self.curProduct getEditingType];
+    ProductType productType = [self.curProduct getProductType];
+    [self.priceButton setEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
+    [self.collectionView setUserInteractionEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
+    [self.cantSellButton setEnabled:((productType == ProductTypeSelling && self.isEditing) ? YES : NO)];
     
     [self updatePhotosCollection];
 }
@@ -285,18 +287,38 @@
     // Store all fields
 }
 
+#pragma mark - Text fields
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    if(textField == self.categoryField) {
+    EditingType editing = [self.curProduct getEditingType];
+    
+    if(textField == self.categoryField && editing == EditingTypeAll) {
         [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
         return NO;
+    } else if(editing == EditingTypeAll || !self.isEditing) {
+        return YES;
+    } else if(editing == EditingTypeNothing) {
+        return NO;
+    } else if(textField == self.conditionField && editing == EditingTypeDescriptionAndCondition) {
+        return YES;
+    } else {
+        return NO;
     }
-    
-    return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     self.activeField = textField;
     [self setPickerData:nil];
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    EditingType editing = [self.curProduct getEditingType];
+    
+    if(textView == self.descriptionView && (editing == EditingTypeAll || editing == EditingTypeDescriptionAndCondition)) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - Camera
@@ -371,12 +393,12 @@
 #pragma mark - Actions
 
 -(void)clearAllFields {
-    self.categoryField.text = @"";
-    self.brandField.text = @"";
-    self.sizeField.text = @"";
-    self.conditionField.text = @"";
-    self.descriptionView.text = @"";
-    self.nameField.text = @"";
+    self.categoryField.text = nil;
+    self.brandField.text = nil;
+    self.sizeField.text = nil;
+    self.conditionField.text = nil;
+    self.descriptionView.text = nil;
+    self.nameField.text = nil;
 }
 
 -(IBAction)cancel:(id)sender {
@@ -384,6 +406,7 @@
     
     [self clearAllFields];
     self.curProduct = nil;
+    self.isEditing = NO;
     
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
     [tabController selectPreviousTab];
@@ -468,7 +491,8 @@
                     }
                     
                     self.curProduct = nil;
-                    [tabController selectPreviousTab];
+                    self.isEditing = NO;
+                    [tabController setSelectedIndex:0];
                 });
             });
                                                     
@@ -477,6 +501,21 @@
             [GlobalHelper showMessage:error withTitle:@"error"];
         }];
     }
+}
+
+-(IBAction)cantSellProduct:(id)sender {
+    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+    WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
+    
+    // TODO: we can do this local update only after successfully updating product through API (which is unavailable right now)
+    self.curProduct.processStatus = @"product_not_available";
+    [wc updateProductsList];
+    
+    [self clearAllFields];
+    self.curProduct = nil;
+    self.isEditing = NO;
+    
+    [tabController setSelectedIndex:0];
 }
 
 #pragma mark - Photo collection

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import <MGSwipeButton.h>
+#import "MGSwipeButton.h"
 
 #import "GlobalHelper.h"
 #import "Product.h"
@@ -23,6 +23,7 @@
 
 @interface WardrobeController()
 
+@property NSMutableArray* allProducts;
 @property NSMutableArray* sellingItems;
 @property NSMutableArray* soldItems;
 @property NSMutableArray* archivedItems;
@@ -105,8 +106,8 @@
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
             NSLog(@"getProducts finished");
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            // TODO: we should divide products array on three parts
-            self.sellingItems = [products mutableCopy];
+            self.allProducts = [products mutableCopy];
+            [self storeProductsInGroups:products];
             [self.itemsTable reloadData];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -148,15 +149,37 @@
     cell.displayState.text = p.processStatus;
     [cell.displayState sizeToFit];
     
-    MGSwipeButton* delButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"remove"] backgroundColor:[UIColor redColor] insets:UIEdgeInsetsMake(10, 0, 10, 0)];
-    delButton.buttonWidth = 48;
-    MGSwipeButton* archiveButton = [MGSwipeButton buttonWithTitle:@"Archive" backgroundColor:[UIColor darkGrayColor]];
-    
-    cell.rightButtons = @[ delButton, archiveButton ];
-    cell.rightSwipeSettings.transition = MGSwipeTransition3D;
+    cell.rightButtons = [self rightButtonsForProduct:p];
+    cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
     cell.allowsButtonsWithDifferentWidth = YES;
     
     return cell;
+}
+
+-(NSArray*)rightButtonsForProduct:(Product*)product {
+    NSMutableArray* buttons = [NSMutableArray new];
+    
+    MGSwipeButton* delButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"remove"] backgroundColor:[UIColor redColor] insets:UIEdgeInsetsMake(10, 0, 10, 0)];
+    delButton.buttonWidth = 48;
+    delButton.tag = 0;
+    MGSwipeButton* archiveButton = [MGSwipeButton buttonWithTitle:@"Archive" backgroundColor:[UIColor darkGrayColor]];
+    archiveButton.tag = 1;
+    MGSwipeButton* suspendButton = [MGSwipeButton buttonWithTitle:@"Suspend" backgroundColor:[UIColor darkGrayColor]];
+    suspendButton.tag = 2;
+    
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"deleted"]; }]) {
+        [buttons addObject:delButton];
+    }
+    
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"archived"]; }]) {
+        [buttons addObject:archiveButton];
+    }
+    
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"suspended"]; }]) {
+        [buttons addObject:suspendButton];
+    }
+    
+    return buttons;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -181,23 +204,35 @@
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
     AddWardrobeItemController* awic = (AddWardrobeItemController*)[[tabController.viewControllers objectAtIndex:1] visibleViewController];
     awic.curProduct = [[self getCurrentItemsArray] objectAtIndex:indexPath.row];
+    awic.isEditing = YES;
     [tabController setSelectedIndex:1];  // Go to item detail page
 }
 
 #pragma mark - MGSwipeTableCellDelegate
 
--(BOOL) swipeTableCell:(MGSwipeTableCell*) cell tappedButtonAtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion {
-    NSInteger itemIndex = cell.tag;
-    switch (index) {
-        case 0: {   // Delete button
-            [[self getCurrentItemsArray] removeObjectAtIndex:itemIndex];
-            [self.itemsTable reloadData];
+-(BOOL) swipeTableCell:(MGSwipeTableCell*) cell tappedButton:(MGSwipeButton*)button AtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion {
+    Product* p = [[self getCurrentItemsArray] objectAtIndex:cell.tag];
+    NSString* newStatus = p.processStatus;
+    
+    switch (button.tag) {
+        case 0:  // Delete button
+            newStatus = @"deleted";
             break;
-        }
+        case 1:  // Archive button
+            newStatus = @"archived";
+            break;
+        case 2:  // Suspend button
+            newStatus = @"suspended";
+            break;
         
         default:
             break;
     }
+    
+    // TODO: we can do this local update only after successfully updating product through API (which is unavailable right now)
+    p.processStatus = newStatus;
+    [self storeProductsInGroups:self.allProducts];
+    [self.itemsTable reloadData];
     
     return TRUE;
 }
@@ -230,12 +265,39 @@
 }
 
 -(void)addNewProduct:(Product*)product {
-    [self.sellingItems addObject:product];
+    [self.allProducts addObject:product];
+    [self storeProductsInGroups:self.allProducts];
     [self.itemsTable reloadData];
 }
 
 -(void)updateProductsList {
+    [self storeProductsInGroups:self.allProducts];
     [self.itemsTable reloadData];
+}
+
+-(void)storeProductsInGroups:(NSArray*)products {
+    self.sellingItems = [NSMutableArray new];
+    self.soldItems = [NSMutableArray new];
+    self.archivedItems = [NSMutableArray new];
+    
+    for (Product* product in products) {
+        ProductType type = [product getProductType];
+        
+        switch (type) {
+            case ProductTypeSelling:
+                [self.sellingItems addObject:product];
+                break;
+            case ProductTypeSold:
+                [self.soldItems addObject:product];
+                break;
+            case ProductTypeArchived:
+                [self.archivedItems addObject:product];
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 @end

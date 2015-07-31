@@ -10,7 +10,7 @@
 #import "Product.h"
 #import <UIKit/UIKit.h>
 
-@interface AddWardrobeItemController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface AddWardrobeItemController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITextViewDelegate>
 
 @property IBOutlet UILabel* messageLabel;
 @property IBOutlet UITextField* nameField;
@@ -22,7 +22,10 @@
 @property IBOutlet UIImageView* textViewBackground;
 @property IBOutlet UICollectionView* collectionView;
 @property IBOutlet NSLayoutConstraint* collectionViewHeight;
+@property IBOutlet UIButton* priceButton;
+@property IBOutlet UIButton* cantSellButton;
 
 @property Product* curProduct;
+@property BOOL isEditing;
 
 @end

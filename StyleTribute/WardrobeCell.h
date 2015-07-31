@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import <MGSwipeTableCell.h>
+#import "MGSwipeTableCell.h"
 #import <UIKit/UIKit.h>
 
 @interface WardrobeCell : MGSwipeTableCell
