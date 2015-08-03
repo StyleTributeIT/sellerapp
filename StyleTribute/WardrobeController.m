@@ -109,6 +109,16 @@
             self.allProducts = [products mutableCopy];
             [self storeProductsInGroups:products];
             [self.itemsTable reloadData];
+            
+            if([DataCache sharedInstance].openProductOnstart > 0) {
+                Product* p = [[self.allProducts linq_where:^BOOL(Product* item) {
+                    return (item.identifier == [DataCache sharedInstance].openProductOnstart);
+                }] firstObject];
+                
+                if(p != nil) {
+                    [self openProductDetails:p];
+                }
+            }
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [GlobalHelper showMessage:error withTitle:@"error"];
@@ -201,9 +211,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self openProductDetails:[[self getCurrentItemsArray] objectAtIndex:indexPath.row]];
+}
+
+-(void)openProductDetails:(Product*)product {
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
     AddWardrobeItemController* awic = (AddWardrobeItemController*)[[tabController.viewControllers objectAtIndex:1] visibleViewController];
-    awic.curProduct = [[self getCurrentItemsArray] objectAtIndex:indexPath.row];
+    awic.curProduct = product;
     awic.isEditing = YES;
     [tabController setSelectedIndex:1];  // Go to item detail page
 }
@@ -229,10 +243,16 @@
             break;
     }
     
-    // TODO: we can do this local update only after successfully updating product through API (which is unavailable right now)
-    p.processStatus = newStatus;
-    [self storeProductsInGroups:self.allProducts];
-    [self.itemsTable reloadData];
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [[ApiRequester sharedInstance] setProcessStatus:@"product_not_available" forProduct:p.identifier success:^(Product *product) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        p.processStatus = @"product_not_available";
+        [self storeProductsInGroups:self.allProducts];
+        [self.itemsTable reloadData];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [GlobalHelper showMessage:error withTitle:@"error"];
+    }];
     
     return TRUE;
 }

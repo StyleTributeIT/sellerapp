@@ -20,6 +20,7 @@
 @property NSString* deviceToken;
 @property NSArray* conditions;
 @property NSArray* designers;
+@property NSUInteger openProductOnstart;
 
 -(NSMutableArray*)loadProducts;
 -(void)saveProducts:(NSArray*)items;

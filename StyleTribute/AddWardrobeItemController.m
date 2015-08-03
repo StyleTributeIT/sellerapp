@@ -507,15 +507,19 @@
     MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
     WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
     
-    // TODO: we can do this local update only after successfully updating product through API (which is unavailable right now)
-    self.curProduct.processStatus = @"product_not_available";
-    [wc updateProductsList];
-    
-    [self clearAllFields];
-    self.curProduct = nil;
-    self.isEditing = NO;
-    
-    [tabController setSelectedIndex:0];
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [[ApiRequester sharedInstance] setProcessStatus:@"product_not_available" forProduct:self.curProduct.identifier success:^(Product *product) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        self.curProduct.processStatus = @"product_not_available";
+        [wc updateProductsList];
+        [self clearAllFields];
+        self.curProduct = nil;
+        self.isEditing = NO;
+        [tabController setSelectedIndex:0];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+         [GlobalHelper showMessage:error withTitle:@"error"];
+    }];
 }
 
 #pragma mark - Photo collection

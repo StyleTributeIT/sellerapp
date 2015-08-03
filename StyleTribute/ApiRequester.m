@@ -397,4 +397,20 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }];
 }
 
+-(void)setProcessStatus:(NSString*)status forProduct:(NSUInteger)productId success:(JSONRespProduct)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSDictionary* params = @{@"id": @(productId), @"process_status": status};
+    [self.sessionManager POST:@"seller/product" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
+            NSDictionary* productDict = [responseObject objectForKey:@"product"];
+            Product* product = [Product parseFromJson:productDict];
+            success(product);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"setProcessStatus error: %@", [error description]);
+        failure(DefGeneralErrMsg);
+    }];
+}
+
 @end

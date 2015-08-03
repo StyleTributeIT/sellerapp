@@ -87,7 +87,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     NSString *newToken = [deviceToken description];
     newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     [DataCache sharedInstance].deviceToken = newToken;
     
@@ -100,6 +100,9 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received push notification: %@", userInfo);
+//    NSDictionary* aps = [userInfo objectForKey:@"aps"];
+//    NSDictionary* alert = [aps objectForKey:@"alert"];
+//    NSUInteger productId = 4187;
 }
 
 @end
