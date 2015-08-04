@@ -81,6 +81,21 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }
 }
 
+-(void)logError:(NSError*)error withCaption:(NSString*)caption {
+    NSLog(@"=============== %@", caption);
+    
+    if(error != nil && error.userInfo != nil) {
+        for(id key in error.userInfo) {
+            id val = [error.userInfo objectForKey:key];
+            if([val isKindOfClass:[NSData class]]) {
+                val = [[NSString alloc] initWithData:val encoding:NSUTF8StringEncoding];
+            }
+            
+            NSLog(@"%@: %@", key, val);
+        }
+    }
+}
+
 #pragma mark - API methods
 
 -(void)registerWithEmail:(NSString*)email
@@ -107,7 +122,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success(profile);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"registration error: %@", [error description]);
+        [self logError:error withCaption:@"registration error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -127,7 +142,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success(profile);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"login error: %@", [error description]);
+        [self logError:error withCaption:@"login error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -153,7 +168,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success(isLoggedIn, profile);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"FB login error: %@", [error description]);
+        [self logError:error withCaption:@"FB login error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -170,7 +185,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success();
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"logout error: %@", [error description]);
+        [self logError:error withCaption:@"logout error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -183,7 +198,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success([UserProfile parseFromJson:[responseObject objectForKey:@"model"]]);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getAccount error: %@", [error description]);
+        [self logError:error withCaption:@"getAccount error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -198,7 +213,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
         success(countries);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getCountries error: %@", [error description]);
+        [self logError:error withCaption:@"getCountries error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -213,7 +228,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
         success(categories);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getCategories error: %@", [error description]);
+        [self logError:error withCaption:@"getCategories error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -229,7 +244,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
         success(products);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getProducts error: %@", [error description]);
+        [self logError:error withCaption:@"getProducts error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -242,7 +257,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success();
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"setDeviceToken error: %@", [error description]);
+        [self logError:error withCaption:@"setDeviceToken error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -253,7 +268,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     [self.sessionManager GET:@"seller/bankAccount" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         success([BankAccount parseFromJson:responseObject]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getBankAccount error: %@", [error description]);
+        [self logError:error withCaption:@"getBankAccount error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -273,7 +288,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success();
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"setDeviceToken error: %@", [error description]);
+        [self logError:error withCaption:@"setDeviceToken error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -288,7 +303,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
         success(designers);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getDesigners error: %@", [error description]);
+        [self logError:error withCaption:@"getDesigners error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -303,7 +318,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
         success(conditions);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getConditions error: %@", [error description]);
+        [self logError:error withCaption:@"getConditions error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -321,7 +336,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     [self.sessionManager POST:@"seller/account" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         success();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"setAccount error: %@", [error description]);
+        [self logError:error withCaption:@"setAccount error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -351,7 +366,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success(product);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"setProduct error: %@", [error description]);
+        [self logError:error withCaption:@"setProduct error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -374,7 +389,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     NSURLSessionUploadTask* task = [self.sessionManager uploadTaskWithStreamedRequest:request progress:&p completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if(error) {
-            NSLog(@"uploadImage error: %@", [error description]);
+            [self logError:error withCaption:@"uploadImage error"];
             failure(DefGeneralErrMsg);
         } else {
             success();
@@ -389,10 +404,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     NSString* url = [NSString stringWithFormat:@"seller/product/%zd/photos/%zd", productId, imageId];
     [self.sessionManager DELETE:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"deleteImage success: %@", [responseObject description]);
         success();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"deleteImage error: %@", [error description]);
+        [self logError:error withCaption:@"deleteImage error"];
         failure(DefGeneralErrMsg);
     }];
 }
@@ -408,7 +422,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             success(product);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"setProcessStatus error: %@", [error description]);
+        [self logError:error withCaption:@"setProcessStatus error"];
         failure(DefGeneralErrMsg);
     }];
 }
