@@ -113,10 +113,16 @@
     }
     
     EditingType editingType = [self.curProduct getEditingType];
-    ProductType productType = [self.curProduct getProductType];
     [self.priceButton setEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
     [self.collectionView setUserInteractionEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
-    [self.cantSellButton setEnabled:((productType == ProductTypeSelling && self.isEditing) ? YES : NO)];
+    
+    if(self.isEditing && [self.curProduct.allowedTransitions linq_any:^BOOL(NSString* item) {
+        return [item isEqualToString:@"product_not_available"];
+    }]) {
+        [self.cantSellButton setHidden:NO];
+    } else {
+        [self.cantSellButton setHidden:YES];
+    }
     
     [self updatePhotosCollection];
 }
