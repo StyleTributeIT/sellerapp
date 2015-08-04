@@ -23,7 +23,6 @@
 
 @interface WardrobeController()
 
-@property NSMutableArray* allProducts;
 @property NSMutableArray* sellingItems;
 @property NSMutableArray* soldItems;
 @property NSMutableArray* archivedItems;
@@ -106,14 +105,15 @@
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
             NSLog(@"getProducts finished");
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            self.allProducts = [products mutableCopy];
+            [DataCache sharedInstance].products = [products mutableCopy];
             [self storeProductsInGroups:products];
             [self.itemsTable reloadData];
             
             if([DataCache sharedInstance].openProductOnstart > 0) {
-                Product* p = [[self.allProducts linq_where:^BOOL(Product* item) {
+                Product* p = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* item) {
                     return (item.identifier == [DataCache sharedInstance].openProductOnstart);
                 }] firstObject];
+                [DataCache sharedInstance].openProductOnstart = 0;
                 
                 if(p != nil) {
                     [self openProductDetails:p];
@@ -247,7 +247,7 @@
     [[ApiRequester sharedInstance] setProcessStatus:@"product_not_available" forProduct:p.identifier success:^(Product *product) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         p.processStatus = @"product_not_available";
-        [self storeProductsInGroups:self.allProducts];
+        [self storeProductsInGroups:[DataCache sharedInstance].products];
         [self.itemsTable reloadData];
     } failure:^(NSString *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -285,13 +285,13 @@
 }
 
 -(void)addNewProduct:(Product*)product {
-    [self.allProducts addObject:product];
-    [self storeProductsInGroups:self.allProducts];
+    [[DataCache sharedInstance].products addObject:product];
+    [self storeProductsInGroups:[DataCache sharedInstance].products];
     [self.itemsTable reloadData];
 }
 
 -(void)updateProductsList {
-    [self storeProductsInGroups:self.allProducts];
+    [self storeProductsInGroups:[DataCache sharedInstance].products];
     [self.itemsTable reloadData];
 }
 

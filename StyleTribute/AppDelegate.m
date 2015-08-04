@@ -13,8 +13,13 @@
 #import "DataCache.h"
 #import "CustomTextField.h"
 #import "UIFloatLabelTextField.h"
+#import <NSArray+LinqExtensions.h>
+#import "Product.h"
+#import "GlobalHelper.h"
 
 @interface AppDelegate ()
+
+@property BOOL isInBackground;
 
 @end
 
@@ -47,6 +52,15 @@
     
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
+    self.isInBackground = NO;
+    
+    NSDictionary *remoteNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(remoteNotif) {
+        NSDictionary* aps = [remoteNotif objectForKey:@"aps"];
+        NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
+        [DataCache sharedInstance].openProductOnstart = productId;
+    }
+    
     return YES;
 }
 
@@ -58,6 +72,8 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    self.isInBackground = YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -66,6 +82,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    self.isInBackground = NO;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -99,10 +116,22 @@
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"Received push notification: %@", userInfo);
-//    NSDictionary* aps = [userInfo objectForKey:@"aps"];
-//    NSDictionary* alert = [aps objectForKey:@"alert"];
-//    NSUInteger productId = 4187;
+    NSDictionary* aps = [userInfo objectForKey:@"aps"];
+    NSString* alert = [aps objectForKey:@"alert"];
+    NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
+    
+    // get product name from id
+    if([DataCache sharedInstance].products != nil) {
+        Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
+            return (p.identifier == productId);
+        }] firstObject];
+        
+        if(product != nil) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [GlobalHelper showMessage:alert withTitle:product.name];
+            });
+        }
+    }
 }
 
 @end
