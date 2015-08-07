@@ -39,6 +39,10 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 @property float price;
 @property NSMutableArray* allowedTransitions;
 @property NSString* descriptionText;
+@property NSString* size;
+@property NSString* shoeSize;
+@property NSString* heelHeight;
+@property NSArray* dimensions;
 
 -(instancetype)init;
 +(instancetype)parseFromJson:(NSDictionary*)dict;

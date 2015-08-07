@@ -22,7 +22,7 @@
 +(NSString*)parseString:(NSString*)param fromDict:(NSDictionary*)dict {
     NSString* val = [dict objectForKey:param];
     if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
-        return @"";
+        return nil;
     } else {
         return val;
     }

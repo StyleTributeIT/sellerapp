@@ -67,19 +67,12 @@ typedef void (^JSONRespProduct)(Product* product);
                       success:(JSONRespEmpty)success
                       failure:(JSONRespError)failure;
 
--(void)setProductWithId:(NSUInteger)identifier
-                   name:(NSString*)name
-            description:(NSString*)description
-              shortDesc:(NSString*)shortDesc
-                  price:(float)price
-               category:(NSUInteger)categoryId
-              condition:(NSUInteger)conditionId
-               designer:(NSUInteger)designerId
-                success:(JSONRespProduct)success
-                failure:(JSONRespError)failure;
+-(void)setProduct:(Product*)product success:(JSONRespProduct)success failure:(JSONRespError)failure;
 
 -(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress;
 -(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure;
 -(void)setProcessStatus:(NSString*)status forProduct:(NSUInteger)productId success:(JSONRespProduct)success failure:(JSONRespError)failure;
+-(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure;
+
 
 @end

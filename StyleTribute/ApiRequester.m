@@ -341,22 +341,30 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }];
 }
 
--(void)setProductWithId:(NSUInteger)identifier
-                   name:(NSString*)name
-            description:(NSString*)description
-              shortDesc:(NSString*)shortDesc
-                  price:(float)price
-               category:(NSUInteger)categoryId
-              condition:(NSUInteger)conditionId
-               designer:(NSUInteger)designerId
-                success:(JSONRespProduct)success
-                failure:(JSONRespError)failure  {
-    
+-(void)setProduct:(Product*)product success:(JSONRespProduct)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSMutableDictionary* params = [@{@"name": name, @"description": description, @"short_description": shortDesc, @"category": @(categoryId), @"condition": @(conditionId), @"designer": @(designerId)} mutableCopy];
-    if(identifier > 0) {
-        [params setObject:@(identifier) forKey:@"id"];
+    NSMutableDictionary* params = [@{@"name": product.name,
+                                     @"description": product.descriptionText,
+                                     @"short_description": @"",
+                                     @"category": @(product.category.idNum),
+                                     @"condition": @(product.condition.identifier),
+                                     @"designer": @(product.designer.identifier)} mutableCopy];
+    
+    NSString* firstSize = [product.category.sizeFields firstObject];
+    if([firstSize isEqualToString:@"size"]) {
+        [params setObject:product.size forKey:@"size"];
+    } else if([firstSize isEqualToString:@"shoesize"]) {
+        [params setObject:product.shoeSize forKey:@"shoesize"];
+        [params setObject:product.heelHeight forKey:@"heel_height"];
+    } else if([firstSize isEqualToString:@"dimensions"]) {
+        [params setObject:[product.dimensions objectAtIndex:0] forKey:@"dimensions[width]"];
+        [params setObject:[product.dimensions objectAtIndex:1] forKey:@"dimensions[height]"];
+        [params setObject:[product.dimensions objectAtIndex:2] forKey:@"dimensions[depth]"];
+    }
+    
+    if(product.identifier > 0) {
+        [params setObject:@(product.identifier) forKey:@"id"];
     }
     
     [self.sessionManager POST:@"seller/product" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -423,6 +431,23 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self logError:error withCaption:@"setProcessStatus error"];
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSDictionary* params = @{@"attribute": attrName};
+    [self.sessionManager GET:@"seller/attribute_possible_values" parameters:params success:^(NSURLSessionDataTask *task, NSArray* responseArray) {
+        NSMutableArray* sizeVaules = [NSMutableArray new];
+        for (NSDictionary* item in responseArray) {
+            NamedItem* sizeItem = [NamedItem parseFromJson:item];
+            [sizeVaules addObject:sizeItem];
+        }
+        success(sizeVaules);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"getSizeValues error"];
         failure(DefGeneralErrMsg);
     }];
 }

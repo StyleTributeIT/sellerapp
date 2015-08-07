@@ -49,7 +49,7 @@
     self.isTutorialPresented = NO;
     self.collectionViewHeight.constant = self.collectionView.frame.size.width/PHOTOS_PER_ROW;
     
-    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField, self.brandField]];
+    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField, self.shoeSizeField, self.brandField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
@@ -70,26 +70,6 @@
     self.collectionView.accessibilityLabel = @"Photos collection";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-    
-    if([DataCache sharedInstance].designers == nil) {
-        [[ApiRequester sharedInstance] getDesigners:^(NSArray *designers) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
-            [DataCache sharedInstance].designers = designers;
-            [self.picker reloadAllComponents];
-        } failure:^(NSString *error) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
-        }];
-    }
-    
-    if([DataCache sharedInstance].conditions == nil) {
-        [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
-            [DataCache sharedInstance].conditions = conditions;
-            [self.picker reloadAllComponents];
-        } failure:^(NSString *error) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
-        }];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -110,6 +90,23 @@
             self.nameField.text = self.curProduct.name;
         if(self.descriptionView.text.length == 0)
             self.descriptionView.text = self.curProduct.descriptionText;
+        if(self.sizeField.text.length == 0)
+            self.sizeField.text = self.curProduct.size;
+        if(self.shoeSizeField.text.length == 0)
+            self.shoeSizeField.text = self.curProduct.shoeSize;
+        if(self.heelHeightField.text.length == 0)
+            self.heelHeightField.text = self.curProduct.heelHeight;
+        
+        if(self.curProduct.dimensions) {
+            if(self.widthField.text.length == 0)
+                self.widthField.text = [self.curProduct.dimensions objectAtIndex:0];
+            if(self.heightField.text.length == 0)
+                self.heightField.text = [self.curProduct.dimensions objectAtIndex:1];
+            if(self.deepField.text.length == 0)
+                self.deepField.text = [self.curProduct.dimensions objectAtIndex:2];
+        }
+        
+        [self displaySizeFieldsByCategory:self.curProduct.category];
     }
     
     EditingType editingType = [self.curProduct getEditingType];
@@ -161,8 +158,8 @@
         [self.picker selectRow:index inComponent:0 animated:NO];
     }
     
-    if((self.activeField == self.brandField && [DataCache sharedInstance].designers == nil) ||
-       (self.activeField == self.conditionField && [DataCache sharedInstance].conditions == nil)) {
+    if((self.activeField == self.sizeField && [DataCache sharedInstance].sizes == nil) ||
+       (self.activeField == self.shoeSizeField && [DataCache sharedInstance].shoeSizes == nil)) {
         if([MRProgressOverlayView overlayForView:self.picker] == nil) {
             [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
         }
@@ -179,9 +176,11 @@
     if(self.activeField == self.conditionField) {
         return [DataCache sharedInstance].conditions;
     } else if(self.activeField == self.sizeField) {
-        return self.sizes;
+        return [DataCache sharedInstance].sizes;
     } else if(self.activeField == self.brandField) {
         return [DataCache sharedInstance].designers;
+    } else if(self.activeField == self.shoeSizeField) {
+        return [DataCache sharedInstance].shoeSizes;
     }
     
     return nil;
@@ -196,18 +195,16 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if(self.activeField == self.brandField || self.activeField == self.conditionField) {
-        NamedItem* item = [[self getCurrentDatasource] objectAtIndex:row];
-        return item.name;
-    } else {
-        return [[self getCurrentDatasource] objectAtIndex:row];
-    }
+    NamedItem* item = [[self getCurrentDatasource] objectAtIndex:row];
+    return item.name;
 }
 
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
     if(self.activeField == self.sizeField) {
-        self.sizeField.text = [self.sizes objectAtIndex:index];
+        NamedItem* size = [[DataCache sharedInstance].sizes objectAtIndex:index];
+        self.sizeField.text = size.name;
+        self.curProduct.size = size.name;
     } else if(self.activeField == self.brandField) {
         NamedItem* designer = [[DataCache sharedInstance].designers objectAtIndex:index];
         self.curProduct.designer = designer;
@@ -220,6 +217,14 @@
         self.curProduct.name = self.nameField.text;
     } else if(self.activeField == self.descriptionView) {
         self.curProduct.descriptionText = self.descriptionView.text;
+    } else if(self.activeField == self.shoeSizeField) {
+        NamedItem* shoeSize = [[DataCache sharedInstance].shoeSizes objectAtIndex:index];
+        self.shoeSizeField.text = shoeSize.name;
+        self.curProduct.shoeSize = shoeSize.name;
+    } else if(self.activeField == self.heelHeightField) {
+        self.curProduct.heelHeight = self.heelHeightField.text;
+    } else if(self.activeField == self.widthField || self.activeField == self.heightField || self.deepField) {
+        self.curProduct.dimensions = @[self.widthField.text, self.heightField.text, self.deepField.text];
     }
     
     [self.activeField resignFirstResponder];
@@ -277,6 +282,8 @@
         for(int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
             [self.curProduct.photos addObject:[NSNull null]];
         }
+        [self displaySizeFieldsByCategory:self.curProduct.category];
+        [self loadSizesForCategory:self.curProduct.category];
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
     }
     
@@ -405,6 +412,19 @@
     self.conditionField.text = nil;
     self.descriptionView.text = nil;
     self.nameField.text = nil;
+    
+    self.shoeSizeField.text = nil;
+    self.heelHeightField.text = nil;
+    self.widthField.text = nil;
+    self.heightField.text = nil;
+    self.deepField.text = nil;
+    
+    [self.sizeField setHidden:YES];
+    [self.shoeSizeField setHidden:YES];
+    [self.heelHeightField setHidden:YES];
+    [self.widthField setHidden:YES];
+    [self.heightField setHidden:YES];
+    [self.deepField setHidden:YES];
 }
 
 -(IBAction)cancel:(id)sender {
@@ -421,29 +441,19 @@
 -(IBAction)done:(id)sender {
     NSLog(@"done");
     
-    if(self.categoryField.text.length == 0 ||
-        self.descriptionView.text.length == 0 ||
-        self.brandField.text.length == 0 ||
-        self.sizeField.text.length == 0 ||
-        self.conditionField.text.length == 0 ||
-        self.nameField.text.length == 0) {
+    if(![self noEmptyFields]) {
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
     } else {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        [[ApiRequester sharedInstance] setProductWithId:self.curProduct.identifier
-                                                   name:self.nameField.text
-                                            description:self.descriptionView.text
-                                              shortDesc:@""
-                                                  price:100
-                                               category:self.curProduct.category.idNum
-                                              condition:self.curProduct.condition.identifier
-                                               designer:self.curProduct.designer.identifier
-                                                success:^(Product* product){
+        self.curProduct.descriptionText = self.descriptionView.text;
+        [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            self.curProduct.identifier = product.identifier;
-            self.curProduct.processStatus = product.processStatus;
-                                   
+//            self.curProduct.identifier = product.identifier;
+//            self.curProduct.processStatus = product.processStatus;
+            product.photos = self.curProduct.photos;
+            self.curProduct = product;
+            
             dispatch_group_t group = dispatch_group_create();
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                                                     
@@ -583,6 +593,78 @@
     }
     self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
     [self.collectionView reloadData];
+}
+
+#pragma mark - Product size
+
+-(void)displaySizeFieldsByCategory:(STCategory*)category {
+    NSString* firstSize = [category.sizeFields firstObject];
+    if([firstSize isEqualToString:@"size"]) {
+        [self.sizeField setHidden:NO];
+        [self.shoeSizeField setHidden:YES];
+        [self.heelHeightField setHidden:YES];
+        [self.widthField setHidden:YES];
+        [self.heightField setHidden:YES];
+        [self.deepField setHidden:YES];
+    } else if([firstSize isEqualToString:@"shoesize"]) {
+        [self.sizeField setHidden:YES];
+        [self.shoeSizeField setHidden:NO];
+        [self.heelHeightField setHidden:NO];
+        [self.widthField setHidden:YES];
+        [self.heightField setHidden:YES];
+        [self.deepField setHidden:YES];
+    } else if([firstSize isEqualToString:@"dimensions"]) {
+        [self.sizeField setHidden:YES];
+        [self.shoeSizeField setHidden:YES];
+        [self.heelHeightField setHidden:YES];
+        [self.widthField setHidden:NO];
+        [self.heightField setHidden:NO];
+        [self.deepField setHidden:NO];
+    }
+}
+
+-(void)loadSizesForCategory:(STCategory*)category {
+    NSString* firstSize = [category.sizeFields firstObject];
+    if([firstSize isEqualToString:@"size"]) {
+        [[ApiRequester sharedInstance] getSizeValues:@"size" success:^(NSArray *sizes) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:NO];
+            [DataCache sharedInstance].sizes = sizes;
+            [self.picker reloadAllComponents];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+        }];
+    } else if([firstSize isEqualToString:@"shoesize"]) {
+        [[ApiRequester sharedInstance] getSizeValues:@"shoesize" success:^(NSArray *sizes) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:NO];
+            [DataCache sharedInstance].shoeSizes = sizes;
+            [self.picker reloadAllComponents];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
+        }];
+    }
+}
+
+-(BOOL)noEmptyFields {
+    NSString* firstSize = [self.curProduct.category.sizeFields firstObject];
+    BOOL isSizeFilled = NO;
+    if([firstSize isEqualToString:@"size"]) {
+        isSizeFilled = (self.sizeField.text.length > 0);
+    } else if([firstSize isEqualToString:@"shoesize"]) {
+        isSizeFilled = (self.shoeSizeField.text.length > 0 && self.heelHeightField.text.length > 0);
+    } else if([firstSize isEqualToString:@"dimensions"]) {
+        isSizeFilled = (self.widthField.text.length > 0 && self.heightField.text.length > 0 && self.deepField.text.length > 0);
+    }
+    
+    if(self.categoryField.text.length == 0 ||
+       self.descriptionView.text.length == 0 ||
+       self.brandField.text.length == 0 ||
+       self.conditionField.text.length == 0 ||
+       self.nameField.text.length == 0 ||
+       !isSizeFilled) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end

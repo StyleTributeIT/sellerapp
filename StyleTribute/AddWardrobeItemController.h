@@ -24,6 +24,11 @@
 @property IBOutlet NSLayoutConstraint* collectionViewHeight;
 @property IBOutlet UIButton* priceButton;
 @property IBOutlet UIButton* cantSellButton;
+@property IBOutlet UITextField* shoeSizeField;
+@property IBOutlet UITextField* heelHeightField;
+@property IBOutlet UITextField* widthField;
+@property IBOutlet UITextField* heightField;
+@property IBOutlet UITextField* deepField;
 
 @property Product* curProduct;
 @property BOOL isEditing;

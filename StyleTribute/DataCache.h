@@ -21,6 +21,8 @@
 @property NSArray* conditions;
 @property NSArray* designers;
 @property NSUInteger openProductOnstart;
+@property NSArray* sizes;
+@property NSArray* shoeSizes;
 
 -(NSMutableArray*)loadProducts;
 -(void)saveProducts:(NSArray*)items;

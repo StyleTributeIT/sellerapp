@@ -141,11 +141,11 @@
 
 - (void)setupMenuController
 {
-    _pastingEnabled = @YES;
-    _copyingEnabled = @YES;
-    _cuttingEnabled = @YES;
-    _selectEnabled = @YES;
-    _selectAllEnabled = @YES;
+    _pastingEnabled = @NO;
+    _copyingEnabled = @NO;
+    _cuttingEnabled = @NO;
+    _selectEnabled = @NO;
+    _selectAllEnabled = @NO;
 }
 
 #pragma mark - Animation

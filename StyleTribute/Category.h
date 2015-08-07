@@ -14,6 +14,7 @@
 @property NSString* name;
 @property NSString* thumbnail;
 @property NSArray* imageTypes;
+@property NSArray* sizeFields;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
 

@@ -29,6 +29,7 @@
         [imgTypes addObject:imgType];
     }
     category.imageTypes = imgTypes;
+    category.sizeFields = [dict objectForKey:@"size_fields"];
     
     return category;
 }
@@ -43,6 +44,7 @@
     self.name = [decoder decodeObjectForKey:@"name"];
     self.thumbnail = [decoder decodeObjectForKey:@"thumbnail"];
     self.imageTypes = [decoder decodeObjectForKey:@"imageTypes"];
+    self.sizeFields = [decoder decodeObjectForKey:@"sizeFields"];
     
     return self;
 }
@@ -52,6 +54,7 @@
     [encoder encodeObject:self.name forKey:@"name"];
     [encoder encodeObject:self.thumbnail forKey:@"thumbnail"];
     [encoder encodeObject:self.imageTypes forKey:@"imageTypes"];
+    [encoder encodeObject:self.sizeFields forKey:@"sizeFields"];
 }
 
 @end

@@ -6,6 +6,7 @@
 //
 
 #import "XCDFormInputAccessoryView.h"
+#import <NSArray+LinqExtensions.h>
 
 static NSString * UIKitLocalizedString(NSString *string)
 {
@@ -161,16 +162,20 @@ static NSArray * EditableTextInputsInView(UIView *view)
 
 - (void) selectAdjacentResponder:(UISegmentedControl *)sender
 {
-	NSArray *firstResponders = [self.responders filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UIResponder *responder, NSDictionary *bindings) {
+    NSArray* visibleResponders = [self.responders linq_where:^BOOL(UIView* item) {
+        return !item.isHidden;
+    }];
+    
+	NSArray *firstResponders = [visibleResponders filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UIResponder *responder, NSDictionary *bindings) {
 		return [responder isFirstResponder];
 	}]];
 	UIResponder *firstResponder = [firstResponders lastObject];
 	NSInteger offset = sender.selectedSegmentIndex == 0 ? -1 : +1;
-	NSInteger firstResponderIndex = [self.responders indexOfObject:firstResponder];
+	NSInteger firstResponderIndex = [visibleResponders indexOfObject:firstResponder];
 	NSInteger adjacentResponderIndex = firstResponderIndex != NSNotFound ? firstResponderIndex + offset : NSNotFound;
 	UIResponder *adjacentResponder = nil;
-	if (adjacentResponderIndex >= 0 && adjacentResponderIndex < (NSInteger)[self.responders count])
-		adjacentResponder = [self.responders objectAtIndex:adjacentResponderIndex];
+	if (adjacentResponderIndex >= 0 && adjacentResponderIndex < (NSInteger)[visibleResponders count])
+		adjacentResponder = [visibleResponders objectAtIndex:adjacentResponderIndex];
 	
 	[adjacentResponder becomeFirstResponder];
 }
