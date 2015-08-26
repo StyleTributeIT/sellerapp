@@ -438,8 +438,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSDictionary* params = @{@"attribute": attrName};
-    [self.sessionManager GET:@"seller/attribute_possible_values" parameters:params success:^(NSURLSessionDataTask *task, NSArray* responseArray) {
+	[self.sessionManager GET:[@"seller/getAttributePossibleValues/" stringByAppendingString:attrName]  parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseArray) {
         NSMutableArray* sizeVaules = [NSMutableArray new];
         for (NSDictionary* item in responseArray) {
             NamedItem* sizeItem = [NamedItem parseFromJson:item];

@@ -1306,7 +1306,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
-                                <rect key="frame" x="16" y="132" width="288" height="377"/>
+                                <rect key="frame" x="0.0" y="132" width="320" height="377"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1328,7 +1328,7 @@
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
                                                     <rect key="frame" x="74" y="4" width="214" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="L5w-qT-ZbS"/>
@@ -1376,11 +1376,11 @@
                             <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="ydo-Bi-8mJ" secondAttribute="bottom" id="HMd-SZ-BBK"/>
                             <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="RuY-Yc-7YU" secondAttribute="bottom" id="Kax-W1-v08"/>
                             <constraint firstItem="xrR-oq-fgh" firstAttribute="top" secondItem="OsQ-Wz-Vxq" secondAttribute="bottom" constant="20" id="Na4-iL-qbL"/>
-                            <constraint firstItem="ydo-Bi-8mJ" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" id="SqC-xw-cbD"/>
+                            <constraint firstItem="ydo-Bi-8mJ" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" constant="16" id="SqC-xw-cbD"/>
                             <constraint firstItem="xrR-oq-fgh" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" id="Upl-gw-oGg"/>
                             <constraint firstItem="RuY-Yc-7YU" firstAttribute="top" secondItem="ATV-x9-siS" secondAttribute="top" id="VkE-eW-DyP"/>
                             <constraint firstItem="xrR-oq-fgh" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" id="YHn-9D-5LU"/>
-                            <constraint firstItem="ydo-Bi-8mJ" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" id="dlT-qK-qZg"/>
+                            <constraint firstItem="ydo-Bi-8mJ" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" constant="-16" id="dlT-qK-qZg"/>
                             <constraint firstItem="RuY-Yc-7YU" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leading" id="eIA-r1-uOK"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="top" secondItem="xrR-oq-fgh" secondAttribute="bottom" constant="20" id="hwB-BX-xhi"/>
                             <constraint firstAttribute="trailing" secondItem="RuY-Yc-7YU" secondAttribute="trailing" id="zPy-du-EcV"/>
