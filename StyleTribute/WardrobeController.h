@@ -14,6 +14,7 @@
 
 @property IBOutlet UISegmentedControl* wardrobeType;
 @property IBOutlet UITableView* itemsTable;
+@property (weak, nonatomic) IBOutlet UIView *welcomView;
 
 -(IBAction)wardrobeTypeChanged:(id)sender;
 -(IBAction)unwindToWardrobeItems:(UIStoryboardSegue*)sender;

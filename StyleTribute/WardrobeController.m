@@ -35,6 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	[self updateWelcomeView];
     
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     
@@ -59,6 +61,8 @@
     [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
     [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
     self.wardrobeType.accessibilityLabel = @"Wardrobe items type";
+	
+	//_itemsTable.scrollIndicatorInsets=UIEdgeInsetsMake(64.0,0.0,44.0,0.0);
 }
 
 -(void)updateProducts {
@@ -107,8 +111,9 @@
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].products = [products mutableCopy];
             [self storeProductsInGroups:products];
-            [self.itemsTable reloadData];
-            
+			[self.itemsTable reloadData];
+			[self updateWelcomeView];
+			
             if([DataCache sharedInstance].openProductOnstart > 0) {
                 Product* p = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* item) {
                     return (item.identifier == [DataCache sharedInstance].openProductOnstart);
@@ -248,7 +253,8 @@
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         p.processStatus = @"product_not_available";
         [self storeProductsInGroups:[DataCache sharedInstance].products];
-        [self.itemsTable reloadData];
+		[self.itemsTable reloadData];
+		[self updateWelcomeView];
     } failure:^(NSString *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         [GlobalHelper showMessage:error withTitle:@"error"];
@@ -260,7 +266,8 @@
 #pragma mark - Other
 
 -(IBAction)wardrobeTypeChanged:(id)sender {
-    [self.itemsTable reloadData];
+	[self.itemsTable reloadData];
+	[self updateWelcomeView];
 }
 
 -(NSMutableArray*)getCurrentItemsArray {
@@ -287,12 +294,14 @@
 -(void)addNewProduct:(Product*)product {
     [[DataCache sharedInstance].products addObject:product];
     [self storeProductsInGroups:[DataCache sharedInstance].products];
-    [self.itemsTable reloadData];
+	[self.itemsTable reloadData];
+	[self updateWelcomeView];
 }
 
 -(void)updateProductsList {
     [self storeProductsInGroups:[DataCache sharedInstance].products];
     [self.itemsTable reloadData];
+	[self updateWelcomeView];
 }
 
 -(void)storeProductsInGroups:(NSArray*)products {
@@ -318,6 +327,10 @@
                 break;
         }
     }
+}
+
+- (void)updateWelcomeView {
+	_welcomView.hidden = self.sellingItems.count || self.soldItems.count || self.archivedItems.count;
 }
 
 @end
