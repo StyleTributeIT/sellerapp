@@ -34,7 +34,7 @@
 }
 
 +(NSAttributedString*)linkWithString:(NSString*)string {
-    return [[NSAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Gotham-Light" size:16], NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1], NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
+    return [[NSAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Montserrat-UltraLight" size:16], NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1], NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
 }
 
 +(void)configureSlideshow:(KASlideShow*)slideShow {

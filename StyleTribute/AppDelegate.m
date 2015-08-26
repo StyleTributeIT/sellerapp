@@ -36,15 +36,15 @@
     
     [[CustomTextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
     [[CustomTextField appearance] setBorderStyle:UITextBorderStyleNone];
-    [[CustomTextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+    [[CustomTextField appearance] setFont:[UIFont fontWithName:@"Montserrat-UltraLight" size:14]];
     [[CustomTextField appearance] setTextAlignment:NSTextAlignmentCenter];
     
     [[UIFloatLabelTextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
     [[UIFloatLabelTextField appearance] setBorderStyle:UITextBorderStyleNone];
-    [[UIFloatLabelTextField appearance] setFont:[UIFont fontWithName:@"Gotham-Light" size:14]];
+    [[UIFloatLabelTextField appearance] setFont:[UIFont fontWithName:@"Montserrat-UltraLight" size:14]];
     [[UIFloatLabelTextField appearance] setTextAlignment:NSTextAlignmentCenter];
     [[UIFloatLabelTextField appearance] setFloatLabelActiveColor:pink];
-    [[UIFloatLabelTextField appearance] setFloatLabelFont:[UIFont fontWithName:@"Gotham-Book" size:10]];
+    [[UIFloatLabelTextField appearance] setFloatLabelFont:[UIFont fontWithName:@"Montserrat-Light" size:10]];
 //    [[UIFloatLabelTextField appearance] setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
     
     

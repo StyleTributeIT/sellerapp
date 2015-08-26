@@ -51,9 +51,9 @@
     
     [self updateProducts];
     
-    NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:12],
+    NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Light" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
-    NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Book" size:12],
+    NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Light" size:12],
                                               NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];

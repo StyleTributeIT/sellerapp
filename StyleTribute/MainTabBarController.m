@@ -24,9 +24,9 @@
         self.previousTabIndex = 0;
         self.delegate = self;
         
-        NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Light" size:11],
+        NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-UltraLight" size:11],
                                           NSForegroundColorAttributeName: [UIColor blackColor] };
-        NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Gotham-Light" size:11],
+        NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-UltraLight" size:11],
                                           NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1] };
         
         UITabBarItem* addItem = [self.tabBar.items objectAtIndex:1];

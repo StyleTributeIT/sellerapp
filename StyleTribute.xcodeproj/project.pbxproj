@@ -37,9 +37,9 @@
 		7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */; };
 		7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */; };
 		7A5124B21B18B64A00DA8841 /* BankAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5124B11B18B64A00DA8841 /* BankAccount.m */; };
-		7A600F771B0B773A00CCD5F3 /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */; };
-		7A600F781B0B777200CCD5F3 /* Gotham-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */; };
-		7A600F791B0B777500CCD5F3 /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */; };
+		7A600F771B0B773A00CCD5F3 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F741B0B767200CCD5F3 /* Montserrat-Light.otf */; };
+		7A600F781B0B777200CCD5F3 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F751B0B768400CCD5F3 /* Montserrat-UltraLight.otf */; };
+		7A600F791B0B777500CCD5F3 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7A600F761B0B769B00CCD5F3 /* Montserrat-Regular.otf */; };
 		7A6097981B133BA000209340 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A6097971B133BA000209340 /* UserProfile.m */; };
 		7A60979B1B13402600209340 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60979A1B13402600209340 /* BaseModel.m */; };
 		7A60979E1B14848F00209340 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A60979D1B14848F00209340 /* Country.m */; };
@@ -141,9 +141,9 @@
 		7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRegistrationController.m; sourceTree = "<group>"; };
 		7A5124B01B18B64A00DA8841 /* BankAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankAccount.h; sourceTree = "<group>"; };
 		7A5124B11B18B64A00DA8841 /* BankAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankAccount.m; sourceTree = "<group>"; };
-		7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
-		7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
-		7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
+		7A600F741B0B767200CCD5F3 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		7A600F751B0B768400CCD5F3 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
+		7A600F761B0B769B00CCD5F3 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		7A6097961B133BA000209340 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
 		7A6097971B133BA000209340 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		7A6097991B13402600209340 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -394,9 +394,9 @@
 				67E756531B8DA7EB000C1BDD /* Montserrat-Light.otf */,
 				67E756541B8DA7EB000C1BDD /* Montserrat-Regular.otf */,
 				67E756551B8DA7EB000C1BDD /* Montserrat-UltraLight.otf */,
-				7A600F761B0B769B00CCD5F3 /* Gotham-Medium.otf */,
-				7A600F751B0B768400CCD5F3 /* Gotham-Light.otf */,
-				7A600F741B0B767200CCD5F3 /* Gotham-Book.otf */,
+				7A600F761B0B769B00CCD5F3 /* Montserrat-Regular.otf */,
+				7A600F751B0B768400CCD5F3 /* Montserrat-UltraLight.otf */,
+				7A600F741B0B767200CCD5F3 /* Montserrat-Light.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -568,12 +568,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A600F791B0B777500CCD5F3 /* Gotham-Medium.otf in Resources */,
+				7A600F791B0B777500CCD5F3 /* Montserrat-Regular.otf in Resources */,
 				7A0EB6131AEE23D400D90001 /* Main.storyboard in Resources */,
-				7A600F771B0B773A00CCD5F3 /* Gotham-Book.otf in Resources */,
+				7A600F771B0B773A00CCD5F3 /* Montserrat-Light.otf in Resources */,
 				7A0EB6151AEE23D400D90001 /* Images.xcassets in Resources */,
 				67E756581B8DA7EB000C1BDD /* Montserrat-UltraLight.otf in Resources */,
-				7A600F781B0B777200CCD5F3 /* Gotham-Light.otf in Resources */,
+				7A600F781B0B777200CCD5F3 /* Montserrat-UltraLight.otf in Resources */,
 				67E756571B8DA7EB000C1BDD /* Montserrat-Regular.otf in Resources */,
 				67E756561B8DA7EB000C1BDD /* Montserrat-Light.otf in Resources */,
 			);
