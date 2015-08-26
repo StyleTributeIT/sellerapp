@@ -12,9 +12,11 @@
 #import <Foundation/Foundation.h>
 #import <TestFairy.h>
 
-static NSString* const DefApiHost		= @"http://magapi.mkopus.lara/";
+// static NSString* const DefApiHost		= @"http://test-api.styletribute.com/";
+// static NSString* const DefApiHost		= @"http://magentolocal.ctrlm.sg/Magento-on-Angular/api/public/";
+static NSString* const DefApiHost              = @"http://magapi.mkopus.lara/";
 
-static NSString* const DefGeneralErrMsg	= @"Something gone wrong. Try again later.";
+static NSString* const DefGeneralErrMsg	= @"Oops! Something has gone wrong.Please try again later.";
 static NSString* const DefInternetUnavailableMsg = @"internet connection not reachable";
 static NSString* const DefInvalidLoginPassword = @"Invalid login or password";
 static NSString* const DefInvalidEmail = @"Invalid email";
