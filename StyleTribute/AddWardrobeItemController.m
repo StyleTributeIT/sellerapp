@@ -251,12 +251,13 @@
             break;
         }
         case 1: { // take new picture
+		/* tutorial disabled:
             NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
             if([defs objectForKey:@"displayTutorial"] == nil) {
                 [self performSegueWithIdentifier:@"tutorialSegue" sender:self];
                 [defs setBool:NO forKey:@"displayTutorial"];
                 self.isTutorialPresented = YES;
-            } else {
+            } else*/ {
                 [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
             }
             break;
