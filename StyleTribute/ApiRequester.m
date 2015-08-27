@@ -353,7 +353,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     NSString* firstSize = [product.category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {
-        [params setObject:product.size forKey:@"size"];
+        [params setObject:product.size forKey:@"size"]; // TODO: '["EU", "8"]'
     } else if([firstSize isEqualToString:@"shoesize"]) {
         [params setObject:product.shoeSize forKey:@"shoesize"];
         [params setObject:product.heelHeight forKey:@"heel_height"];
