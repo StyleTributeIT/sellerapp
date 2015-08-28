@@ -74,7 +74,7 @@
 }
 
 -(IBAction)forgotPassword:(id)sender {
-    NSLog(@"forgotPassword");
+   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://m.styletribute.com/#!/recoverpassword"]];
 }
 
 -(BOOL)noEmptyFields {
