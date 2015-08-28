@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface NamedItem : BaseModel
+@interface NamedItem : BaseModel<NSCopying> 
 
 @property NSUInteger identifier;
 @property NSString* name;

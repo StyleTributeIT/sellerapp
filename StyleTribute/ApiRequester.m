@@ -353,7 +353,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     NSString* firstSize = [product.category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {
-        [params setObject:product.size forKey:@"size"]; // TODO: '["EU", "8"]'
+        [params setObject:@[product.unit, product.size] forKey:@"size"];
     } else if([firstSize isEqualToString:@"shoesize"]) {
         [params setObject:product.shoeSize forKey:@"shoesize"];
         [params setObject:product.heelHeight forKey:@"heel_height"];
@@ -449,6 +449,43 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         [self logError:error withCaption:@"getSizeValues error"];
         failure(DefGeneralErrMsg);
     }];
+}
+
+-(void)getUnitAndSizeValues:(NSString*)attrName success:(JSONRespDictionary)success failure:(JSONRespError)failure {
+	if(![self checkInternetConnectionWithErrCallback:failure]) return;
+	
+	[self.sessionManager GET:[@"seller/getAttributePossibleValues/" stringByAppendingString:attrName]  parameters:nil success:^(NSURLSessionDataTask *task, NSDictionary* response) {
+		
+		NSMutableDictionary* units = [NSMutableDictionary new];
+		for (NSString* unit in response)
+		{
+			NSArray* responseSize = response[unit];
+			NSMutableArray* sizeVaules = [NSMutableArray new];
+			for (NSArray* item in responseSize)
+			{
+				NamedItem* sizeItem = [NamedItem new];
+    
+				sizeItem.identifier = (NSUInteger)[item[1] integerValue];
+				NSObject* value = item[0];
+				if([value respondsToSelector:@selector(stringValue)]) {
+					value = [value performSelector:@selector(stringValue)];
+				}
+				sizeItem.name = [BaseModel validatedString:(NSString*)value];
+			
+				[sizeVaules addObject:sizeItem];
+			}
+			
+			NamedItem* unitItem = [NamedItem new];
+			unitItem.name = unit;
+			
+			units[unitItem] = sizeVaules;
+		}
+		success(units);
+		
+	} failure:^(NSURLSessionDataTask *task, NSError *error) {
+		[self logError:error withCaption:@"getSizeValues error"];
+		failure(DefGeneralErrMsg);
+	}];
 }
 
 @end

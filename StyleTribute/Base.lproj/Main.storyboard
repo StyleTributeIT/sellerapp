@@ -2029,8 +2029,20 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="Q7V-Uf-nBW"/>
                                                 </connections>
                                             </textField>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cmV-PH-PoO" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="8" y="376" width="148" height="38"/>
+                                                <accessibility key="accessibilityConfiguration" label="Unit"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="aZ2-9Q-zn3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JCl-pv-8pa" id="j9Q-dC-tMX"/>
+                                                </connections>
+                                            </textField>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-VP-j2D" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="376" width="304" height="38"/>
+                                                <rect key="frame" x="164" y="376" width="148" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Size"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="G6t-ag-EDN"/>
@@ -2246,6 +2258,7 @@ Citilink Warehouse Complex
                                             <constraint firstAttribute="trailing" secondItem="Has-dD-jix" secondAttribute="trailing" constant="8" id="Grd-Z4-xwT"/>
                                             <constraint firstItem="c94-ID-zDO" firstAttribute="top" secondItem="VlM-R9-Zbi" secondAttribute="bottom" constant="8" id="HFV-XA-NMX"/>
                                             <constraint firstItem="KKI-VP-j2D" firstAttribute="top" secondItem="Spy-gH-EMN" secondAttribute="bottom" constant="8" id="HuZ-SS-xV8"/>
+                                            <constraint firstItem="cmV-PH-PoO" firstAttribute="top" secondItem="Spy-gH-EMN" secondAttribute="bottom" constant="8" id="JFX-YQ-J5U"/>
                                             <constraint firstItem="Ele-kR-1Pi" firstAttribute="top" secondItem="KeR-7F-1NK" secondAttribute="bottom" constant="8" id="LVH-MD-cfr"/>
                                             <constraint firstItem="Ele-kR-1Pi" firstAttribute="top" secondItem="pB2-Sz-Jcp" secondAttribute="bottom" constant="8" id="OCx-EA-2qV"/>
                                             <constraint firstItem="Ele-kR-1Pi" firstAttribute="top" secondItem="ObM-gk-FB0" secondAttribute="bottom" constant="8" id="OXW-VM-Ig7"/>
@@ -2254,10 +2267,12 @@ Citilink Warehouse Complex
                                             <constraint firstItem="ObM-gk-FB0" firstAttribute="leading" secondItem="KeR-7F-1NK" secondAttribute="trailing" constant="8" id="THC-cC-205"/>
                                             <constraint firstItem="c94-ID-zDO" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="4" id="Uld-yb-EmD"/>
                                             <constraint firstItem="HEf-eD-S3z" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="VAX-T5-WBS"/>
+                                            <constraint firstItem="KKI-VP-j2D" firstAttribute="leading" secondItem="cmV-PH-PoO" secondAttribute="trailing" constant="8" id="VAX-WY-RHR"/>
                                             <constraint firstItem="t2J-jy-p57" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="Vwu-cv-vba"/>
                                             <constraint firstItem="KKI-VP-j2D" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="WEu-xp-2IB"/>
                                             <constraint firstAttribute="trailing" secondItem="ObM-gk-FB0" secondAttribute="trailing" constant="8" id="WMV-1N-BQs"/>
                                             <constraint firstItem="VlM-R9-Zbi" firstAttribute="top" secondItem="Wcp-kg-xHB" secondAttribute="bottom" constant="8" id="Wt1-As-bSf"/>
+                                            <constraint firstItem="cmV-PH-PoO" firstAttribute="width" secondItem="KKI-VP-j2D" secondAttribute="width" id="X4h-2Z-A7v"/>
                                             <constraint firstItem="HEf-eD-S3z" firstAttribute="width" secondItem="ObM-gk-FB0" secondAttribute="width" id="Yk1-lb-D5k"/>
                                             <constraint firstAttribute="trailing" secondItem="Wcp-kg-xHB" secondAttribute="trailing" constant="8" id="Zv7-dn-h58"/>
                                             <constraint firstItem="fH1-OC-s45" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="aA1-Ga-edq"/>
@@ -2278,16 +2293,19 @@ Citilink Warehouse Complex
                                             <constraint firstAttribute="bottom" secondItem="t2J-jy-p57" secondAttribute="bottom" constant="8" id="pPS-e6-Bh5"/>
                                             <constraint firstItem="Has-dD-jix" firstAttribute="top" secondItem="Spy-gH-EMN" secondAttribute="bottom" constant="8" id="quY-4p-5Pi"/>
                                             <constraint firstItem="xMe-XH-bzd" firstAttribute="top" secondItem="c94-ID-zDO" secondAttribute="bottom" constant="8" id="r7d-K0-pyh"/>
+                                            <constraint firstItem="Ele-kR-1Pi" firstAttribute="top" secondItem="cmV-PH-PoO" secondAttribute="bottom" constant="8" id="sba-D6-EyS"/>
                                             <constraint firstItem="KeR-7F-1NK" firstAttribute="leading" secondItem="HEf-eD-S3z" secondAttribute="trailing" constant="8" id="tT6-te-WNN"/>
                                             <constraint firstAttribute="trailing" secondItem="Ele-kR-1Pi" secondAttribute="trailing" constant="8" id="uAp-Ao-kVT"/>
                                             <constraint firstItem="pB2-Sz-Jcp" firstAttribute="width" secondItem="Has-dD-jix" secondAttribute="width" id="vPL-vp-IH3"/>
                                             <constraint firstItem="VlM-R9-Zbi" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="x5c-O2-LiF"/>
                                             <constraint firstAttribute="trailing" secondItem="z6y-lS-1cy" secondAttribute="trailing" constant="8" id="xFs-Ix-xAF"/>
+                                            <constraint firstItem="cmV-PH-PoO" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="xYL-wG-LFS"/>
                                             <constraint firstItem="REE-Fz-JhP" firstAttribute="leading" secondItem="kL1-B6-Usj" secondAttribute="leading" constant="8" id="xua-9t-Svi"/>
                                             <constraint firstItem="Has-dD-jix" firstAttribute="leading" secondItem="pB2-Sz-Jcp" secondAttribute="trailing" constant="8" id="yGw-J5-2qh"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="WEu-xp-2IB"/>
                                                 <exclude reference="lbx-hv-21o"/>
                                             </mask>
                                         </variation>
@@ -2342,6 +2360,7 @@ Citilink Warehouse Complex
                         <outlet property="shoeSizeField" destination="pB2-Sz-Jcp" id="401-ot-On0"/>
                         <outlet property="sizeField" destination="KKI-VP-j2D" id="Deb-0K-n8I"/>
                         <outlet property="textViewBackground" destination="REE-Fz-JhP" id="ifc-ca-GDo"/>
+                        <outlet property="unitField" destination="cmV-PH-PoO" id="KdZ-GT-JWu"/>
                         <outlet property="widthConstraint" destination="CQ8-hn-jax" id="oeR-wg-LKo"/>
                         <outlet property="widthField" destination="HEf-eD-S3z" id="6Qz-DD-q8a"/>
                         <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" modalTransitionStyle="crossDissolve" animates="NO" id="rms-Fm-rAE"/>

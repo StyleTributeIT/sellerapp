@@ -20,9 +20,11 @@
 #import "ApiRequester.h"
 #import <MRProgress.h>
 #import <NSArray+LinqExtensions.h>
+#import <NSDictionary+LinqExtensions.h>
 #import "NamedItems.h"
 #import "Photo.h"
 #import "WardrobeController.h"
+#import "UIFloatLabelTextField.h"
 
 #define PHOTOS_PER_ROW 4
 
@@ -49,7 +51,7 @@
     self.isTutorialPresented = NO;
     self.collectionViewHeight.constant = self.collectionView.frame.size.width/PHOTOS_PER_ROW;
     
-    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.sizeField, self.shoeSizeField, self.brandField]];
+    self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.unitField, self.sizeField, self.shoeSizeField, self.brandField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
@@ -90,6 +92,8 @@
             self.nameField.text = self.curProduct.name;
         if(self.descriptionView.text.length == 0)
             self.descriptionView.text = self.curProduct.descriptionText;
+		if(self.unitField.text.length == 0)
+			self.unitField.text = self.curProduct.unit;
         if(self.sizeField.text.length == 0)
             self.sizeField.text = self.curProduct.size;
         if(self.shoeSizeField.text.length == 0)
@@ -133,7 +137,7 @@
 }
 
 - (void)setPickerData:(NSNotification*)aNotification {
-    if(self.activeField == self.conditionField || self.activeField == self.sizeField || self.activeField == self.brandField) {
+    if(self.activeField == self.conditionField || self.activeField == self.unitField || self.activeField == self.sizeField || self.activeField == self.brandField) {
         [self.picker reloadAllComponents];
         
         NSUInteger index = 0;
@@ -148,7 +152,14 @@
             }] firstObject];
             index = [[DataCache sharedInstance].conditions indexOfObject:curCondition];
         } else {
-            index = [[self getCurrentDatasource] indexOfObject:((UITextField*)self.activeField).text];
+			if([self.getCurrentDatasource.firstObject isKindOfClass:[NamedItem class]]) {
+				NamedItem* namedItem = [[[self getCurrentDatasource] linq_where:^BOOL(NamedItem* item) {
+					return [item.name isEqualToString:((UITextField*)self.activeField).text];
+				}] firstObject];
+				index = [[self getCurrentDatasource] indexOfObject:namedItem];
+			} else {
+				index = [[self getCurrentDatasource] indexOfObject:((UITextField*)self.activeField).text];
+			}
         }
         
         if(index == NSNotFound) {
@@ -157,8 +168,8 @@
         
         [self.picker selectRow:index inComponent:0 animated:NO];
     }
-    
-    if((self.activeField == self.sizeField && [DataCache sharedInstance].sizes == nil) ||
+	
+	if(((self.activeField == self.sizeField || self.activeField == self.unitField) && [DataCache sharedInstance].units == nil) ||
        (self.activeField == self.shoeSizeField && [DataCache sharedInstance].shoeSizes == nil)) {
         if([MRProgressOverlayView overlayForView:self.picker] == nil) {
             [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
@@ -175,8 +186,14 @@
 -(NSArray*)getCurrentDatasource {
     if(self.activeField == self.conditionField) {
         return [DataCache sharedInstance].conditions;
-    } else if(self.activeField == self.sizeField) {
-        return [DataCache sharedInstance].sizes;
+	} else if(self.activeField == self.unitField) {
+		return [[DataCache sharedInstance].units.allKeys sortedArrayUsingComparator:^NSComparisonResult(NamedItem* obj1, NamedItem* obj2) {
+			return [obj1.name compare: obj2.name];
+		}];
+	} else if(self.activeField == self.sizeField) {
+		return [[[[DataCache sharedInstance].units linq_where:^BOOL(NamedItem* item, id value) {
+			return [item.name isEqualToString:((UITextField*)self.unitField).text];
+		}] allValues] firstObject];
     } else if(self.activeField == self.brandField) {
         return [DataCache sharedInstance].designers;
     } else if(self.activeField == self.shoeSizeField) {
@@ -201,8 +218,24 @@
 
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
-    if(self.activeField == self.sizeField) {
-        NamedItem* size = [[DataCache sharedInstance].sizes objectAtIndex:index];
+	if(self.activeField == self.unitField) {
+		NamedItem* unit = [self.getCurrentDatasource objectAtIndex:index];
+		self.unitField.text = unit.name;
+		self.curProduct.unit = unit.name;
+		if( self.sizeField.text.length && [[DataCache sharedInstance].units[unit] linq_where:^BOOL(NamedItem* item) {
+				return [item.name isEqualToString:((UITextField*)self.sizeField).text];
+			}].count == 0)
+		{
+			self.sizeField.text = nil;
+			self.curProduct.size = nil; 
+			
+			[(UIFloatLabelTextField*)self.sizeField toggleFloatLabel:UIFloatLabelAnimationTypeHide];
+		}
+	} else if(self.activeField == self.sizeField) {
+		NSArray* sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NamedItem* item, id value) {
+			return [item.name isEqualToString:((UITextField*)self.unitField).text];
+		}] allValues] firstObject];
+		NamedItem* size = [sizes objectAtIndex:index];
         self.sizeField.text = size.name;
         self.curProduct.size = size.name;
     } else if(self.activeField == self.brandField) {
@@ -409,6 +442,7 @@
 -(void)clearAllFields {
     self.categoryField.text = nil;
     self.brandField.text = nil;
+	self.unitField.text = nil;
     self.sizeField.text = nil;
     self.conditionField.text = nil;
     self.descriptionView.text = nil;
@@ -419,7 +453,8 @@
     self.widthField.text = nil;
     self.heightField.text = nil;
     self.deepField.text = nil;
-    
+	
+	[self.unitField setHidden:YES];
     [self.sizeField setHidden:YES];
     [self.shoeSizeField setHidden:YES];
     [self.heelHeightField setHidden:YES];
@@ -601,6 +636,7 @@
 -(void)displaySizeFieldsByCategory:(STCategory*)category {
     NSString* firstSize = [category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {
+		[self.unitField setHidden:NO];
         [self.sizeField setHidden:NO];
         [self.shoeSizeField setHidden:YES];
         [self.heelHeightField setHidden:YES];
@@ -608,6 +644,7 @@
         [self.heightField setHidden:YES];
         [self.deepField setHidden:YES];
     } else if([firstSize isEqualToString:@"shoesize"]) {
+		[self.unitField setHidden:YES];
         [self.sizeField setHidden:YES];
         [self.shoeSizeField setHidden:NO];
         [self.heelHeightField setHidden:NO];
@@ -615,6 +652,7 @@
         [self.heightField setHidden:YES];
         [self.deepField setHidden:YES];
     } else if([firstSize isEqualToString:@"dimensions"]) {
+		[self.unitField setHidden:YES];
         [self.sizeField setHidden:YES];
         [self.shoeSizeField setHidden:YES];
         [self.heelHeightField setHidden:YES];
@@ -627,9 +665,9 @@
 -(void)loadSizesForCategory:(STCategory*)category {
     NSString* firstSize = [category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {
-        [[ApiRequester sharedInstance] getSizeValues:@"size" success:^(NSArray *sizes) {
+        [[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
             [MRProgressOverlayView dismissOverlayForView:self.picker animated:NO];
-            [DataCache sharedInstance].sizes = sizes;
+            [DataCache sharedInstance].units = units;
             [self.picker reloadAllComponents];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];

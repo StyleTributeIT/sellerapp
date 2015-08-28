@@ -55,4 +55,12 @@
     }
 }
 
++(NSString*)validatedString:(NSString*)val {
+	if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
+		return nil;
+	} else {
+		return val;
+	}
+}
+
 @end

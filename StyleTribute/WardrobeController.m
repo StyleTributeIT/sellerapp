@@ -103,7 +103,18 @@
             dispatch_group_leave(group);
         }];
     }
-    
+	
+	if([DataCache sharedInstance].units == nil) {
+		dispatch_group_enter(group);
+		[[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
+			NSLog(@"getUnitAndSizeValues finished");
+			[DataCache sharedInstance].units = units;
+			dispatch_group_leave(group);
+		} failure:^(NSString *error) {
+			dispatch_group_leave(group);
+		}];
+	}
+	
     dispatch_group_notify(group, queue, ^{
         NSLog(@"first step done!");
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {

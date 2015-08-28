@@ -18,6 +18,7 @@ typedef void (^JSONRespAccount)(UserProfile* profile);
 typedef void (^JSONRespBankAccount)(BankAccount* profile);
 typedef void (^JSONRespEmpty)();
 typedef void (^JSONRespArray)(NSArray* products);
+typedef void (^JSONRespDictionary)(NSDictionary* units);
 typedef void (^JSONRespError)(NSString* error);
 typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
 typedef void (^JSONRespId)(NSUInteger identifier);
@@ -73,6 +74,6 @@ typedef void (^JSONRespProduct)(Product* product);
 -(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure;
 -(void)setProcessStatus:(NSString*)status forProduct:(NSUInteger)productId success:(JSONRespProduct)success failure:(JSONRespError)failure;
 -(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure;
-
+-(void)getUnitAndSizeValues:(NSString*)attrName success:(JSONRespDictionary)success failure:(JSONRespError)failure;
 
 @end

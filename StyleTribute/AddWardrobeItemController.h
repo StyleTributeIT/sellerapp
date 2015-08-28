@@ -18,6 +18,7 @@
 @property IBOutlet UITextField* conditionField;
 @property IBOutlet UITextView* descriptionView;
 @property IBOutlet UITextField* brandField;
+@property IBOutlet UITextField* unitField;
 @property IBOutlet UITextField* sizeField;
 @property IBOutlet UIImageView* textViewBackground;
 @property IBOutlet UICollectionView* collectionView;

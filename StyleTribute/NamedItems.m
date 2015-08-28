@@ -14,6 +14,21 @@
 
 @implementation NamedItem
 
+- (id)copyWithZone:(NSZone *)zone
+{
+	typeof(self) copy = [[[self class] alloc] init];
+	
+	if (copy) {
+		// Copy NSObject subclasses
+		copy.name = [self.name copyWithZone:zone];
+		
+		// Set primitives
+		copy.identifier = self.identifier;
+	}
+	
+	return copy;
+}
+
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     
     NamedItem *item = [self new];

@@ -92,11 +92,26 @@
         NSString* depth = [self parseString:@"depth" fromDict:dimensions];
         product.dimensions = @[width, height, depth];
     }
-    
-    product.size = [self parseString:@"size" fromDict:dict];
+	
+	product.sizeId = [self parseInt:@"size" fromDict:dict];
     product.shoeSize = [self parseString:@"shoesize" fromDict:dict];
     product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
-    
+	
+	// sizeId -> unit  & size
+	if(product.sizeId && [DataCache sharedInstance].units != nil) {
+		[[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NamedItem* unit, NSArray* sizes, BOOL *stop) {
+			for(NamedItem* size in sizes) {
+				if(size.identifier == product.sizeId) {
+					product.unit = unit.name;
+					product.size = size.name;
+					
+					*stop = YES;
+					break;
+				}
+			}
+		}];
+	}
+	
     return product;
 }
 
@@ -118,6 +133,7 @@
     self.price = [[decoder decodeObjectForKey:@"price"] floatValue];
     self.allowedTransitions = [decoder decodeObjectForKey:@"allowedTransitions"];
     self.descriptionText = [decoder decodeObjectForKey:@"descriptionText"];
+	self.unit = [decoder decodeObjectForKey:@"unit"];
     self.size = [decoder decodeObjectForKey:@"size"];
     self.shoeSize = [decoder decodeObjectForKey:@"shoeSize"];
     self.heelHeight = [decoder decodeObjectForKey:@"heelHeight"];
@@ -137,6 +153,7 @@
     [encoder encodeObject:@(self.price) forKey:@"price"];
     [encoder encodeObject:self.allowedTransitions forKey:@"allowedTransitions"];
     [encoder encodeObject:self.descriptionText forKey:@"descriptionText"];
+	[encoder encodeObject:self.unit forKey:@"unit"];
     [encoder encodeObject:self.size forKey:@"size"];
     [encoder encodeObject:self.shoeSize forKey:@"shoeSize"];
     [encoder encodeObject:self.heelHeight forKey:@"heelHeight"];

@@ -39,7 +39,9 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 @property float price;
 @property NSMutableArray* allowedTransitions;
 @property NSString* descriptionText;
+@property NSString* unit;
 @property NSString* size;
+@property NSUInteger sizeId;
 @property NSString* shoeSize;
 @property NSString* heelHeight;
 @property NSArray* dimensions;
