@@ -14,8 +14,8 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 // TODO: set real data
-static NSString* stPhoneNumber = @"123456789";
-static NSString* stMessage = @"Hello world!";
+static NSString* stPhoneNumber = @"6591593853";
+static NSString* stMessage = @"Hello!";
 
 @interface ContactUsController () <MFMailComposeViewControllerDelegate, ABNewPersonViewControllerDelegate>
 
@@ -33,9 +33,6 @@ static NSString* stMessage = @"Hello world!";
     }
 	
 	[self addPinToMap];
-	
-	[self.emailButton setAttributedTitle:[GlobalHelper linkWithString:[self.emailButton titleForState:UIControlStateNormal]] forState:UIControlStateNormal];
-	[self.whatsappButton setAttributedTitle:[GlobalHelper linkWithString:[self.whatsappButton titleForState:UIControlStateNormal]] forState:UIControlStateNormal];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -43,11 +40,18 @@ static NSString* stMessage = @"Hello world!";
     [GlobalHelper addLogoToNavBar:self.navigationItem];
 }
 
--(IBAction)emailUs:(id)sender {
-    [self sendMailTo:@"info@styletribute.com" subject:@"Hello!" body:@"Hello!"];
+#pragma mark - Call phone
+
+- (IBAction)callUs:(id)sender {
+	NSURL *url = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:stPhoneNumber]];
+	[[UIApplication sharedApplication] openURL:url];
 }
 
 #pragma mark - Send mail
+
+-(IBAction)emailUs:(id)sender {
+	[self sendMailTo:@"info@styletribute.com" subject:@"Hello!" body:@"Hello!"];
+}
 
 -(void)sendMailTo:(NSString*)toStr subject:(NSString*)subject body:(NSString*)body
 {

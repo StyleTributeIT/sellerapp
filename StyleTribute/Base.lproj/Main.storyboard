@@ -37,6 +37,7 @@
             <string>Montserrat-Regular</string>
             <string>Montserrat-Regular</string>
             <string>Montserrat-Regular</string>
+            <string>Montserrat-Regular</string>
         </mutableArray>
         <mutableArray key="Montserrat-UltraLight.otf">
             <string>Montserrat-UltraLight</string>
@@ -1216,7 +1217,7 @@ Citilink Warehouse Complex
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obv-BD-aqT">
-                                <rect key="frame" x="16" y="347" width="288" height="29"/>
+                                <rect key="frame" x="16" y="339" width="288" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="PZe-ls-2TH"/>
                                 </constraints>
@@ -1225,47 +1226,66 @@ Citilink Warehouse Complex
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScH-LV-MYk">
-                                <rect key="frame" x="40" y="389" width="240" height="30"/>
+                                <rect key="frame" x="40" y="376" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Da3-3Z-AuX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                <state key="normal" title="CALL US">
+                                <state key="normal" title="CALL US" backgroundImage="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="whatsappUs:" destination="dMc-TR-sjB" eventType="touchUpInside" id="xul-GV-crP"/>
+                                    <action selector="callUs:" destination="dMc-TR-sjB" eventType="touchUpInside" id="K1D-RR-TUc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-Z9-7Ee">
-                                <rect key="frame" x="40" y="427" width="240" height="30"/>
+                                <rect key="frame" x="40" y="414" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Wln-8X-lTY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                <state key="normal" title="SEND US AN EMAIL">
+                                <state key="normal" title="EMAIL US" backgroundImage="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="emailUs:" destination="dMc-TR-sjB" eventType="touchUpInside" id="zuU-Jp-nqy"/>
+                                    <action selector="emailUs:" destination="dMc-TR-sjB" eventType="touchUpInside" id="wqV-fV-fm2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wic-WM-Ph2">
+                                <rect key="frame" x="40" y="452" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8kI-VW-NT9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="WHATSAPP US" backgroundImage="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="whatsappUs:" destination="dMc-TR-sjB" eventType="touchUpInside" id="EWs-Xe-ELh"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qAc-Nn-EhL" firstAttribute="trailing" secondItem="iic-X1-5Hj" secondAttribute="trailingMargin" id="3ZT-TU-gez"/>
-                            <constraint firstItem="Obv-BD-aqT" firstAttribute="top" secondItem="qAc-Nn-EhL" secondAttribute="bottom" constant="16" id="ATA-QK-8VN"/>
+                            <constraint firstItem="Obv-BD-aqT" firstAttribute="top" secondItem="qAc-Nn-EhL" secondAttribute="bottom" priority="750" constant="8" id="ATA-QK-8VN"/>
                             <constraint firstAttribute="trailing" secondItem="ScH-LV-MYk" secondAttribute="trailing" constant="40" id="ETz-Jf-RUf"/>
                             <constraint firstItem="Fm2-Z9-7Ee" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leading" constant="40" id="HiD-5c-Nv0"/>
                             <constraint firstItem="Mkg-Kr-FY6" firstAttribute="trailing" secondItem="iic-X1-5Hj" secondAttribute="trailingMargin" id="RIG-7k-vgz"/>
                             <constraint firstItem="Fm2-Z9-7Ee" firstAttribute="top" secondItem="ScH-LV-MYk" secondAttribute="bottom" constant="8" id="TKG-hY-DTu"/>
                             <constraint firstItem="Obv-BD-aqT" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leadingMargin" id="UBJ-3z-rPi"/>
-                            <constraint firstItem="ScH-LV-MYk" firstAttribute="top" secondItem="Obv-BD-aqT" secondAttribute="bottom" constant="13" id="Vvr-LH-PJS"/>
+                            <constraint firstItem="ScH-LV-MYk" firstAttribute="top" secondItem="Obv-BD-aqT" secondAttribute="bottom" constant="8" id="Vvr-LH-PJS"/>
                             <constraint firstItem="qAc-Nn-EhL" firstAttribute="top" secondItem="Mkg-Kr-FY6" secondAttribute="bottom" constant="8" id="WjW-Ri-OET"/>
                             <constraint firstItem="qAc-Nn-EhL" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leadingMargin" id="Z5E-fC-gRq"/>
+                            <constraint firstItem="Wic-WM-Ph2" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leading" constant="40" id="bVF-Ya-Thn"/>
                             <constraint firstItem="Mkg-Kr-FY6" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leadingMargin" id="dKx-Me-GvJ"/>
                             <constraint firstItem="Mkg-Kr-FY6" firstAttribute="top" secondItem="hTy-nb-eoF" secondAttribute="bottom" constant="16" id="fKY-Py-h4b"/>
+                            <constraint firstItem="Wic-WM-Ph2" firstAttribute="top" secondItem="Fm2-Z9-7Ee" secondAttribute="bottom" constant="8" id="ggo-Xz-2o1"/>
                             <constraint firstAttribute="trailing" secondItem="Fm2-Z9-7Ee" secondAttribute="trailing" constant="40" id="nBo-jD-2AE"/>
+                            <constraint firstAttribute="trailing" secondItem="Wic-WM-Ph2" secondAttribute="trailing" constant="40" id="oKm-lm-3lS"/>
                             <constraint firstItem="Obv-BD-aqT" firstAttribute="trailing" secondItem="iic-X1-5Hj" secondAttribute="trailingMargin" id="vvW-97-tXB"/>
                             <constraint firstItem="ScH-LV-MYk" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leading" constant="40" id="ycy-Iq-2Sq"/>
                         </constraints>
@@ -1279,9 +1299,8 @@ Citilink Warehouse Complex
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="emailButton" destination="Fm2-Z9-7Ee" id="71u-SE-J6v"/>
                         <outlet property="mapView" destination="Mkg-Kr-FY6" id="cZj-dm-qf1"/>
-                        <outlet property="whatsappButton" destination="ScH-LV-MYk" id="ab6-hU-7EP"/>
+                        <outlet property="whatsappButton" destination="Wic-WM-Ph2" id="iwF-sV-yip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYm-p2-MSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
