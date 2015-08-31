@@ -187,12 +187,12 @@
     if(self.activeField == self.conditionField) {
         return [DataCache sharedInstance].conditions;
 	} else if(self.activeField == self.unitField) {
-		return [[DataCache sharedInstance].units.allKeys sortedArrayUsingComparator:^NSComparisonResult(NamedItem* obj1, NamedItem* obj2) {
-			return [obj1.name compare: obj2.name];
+		return [[DataCache sharedInstance].units.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString* unit1, NSString* unit2) {
+			return [unit1 compare: unit2];
 		}];
 	} else if(self.activeField == self.sizeField) {
-		return [[[[DataCache sharedInstance].units linq_where:^BOOL(NamedItem* item, id value) {
-			return [item.name isEqualToString:((UITextField*)self.unitField).text];
+		return [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
+			return [unit isEqualToString:((UITextField*)self.unitField).text];
 		}] allValues] firstObject];
     } else if(self.activeField == self.brandField) {
         return [DataCache sharedInstance].designers;
@@ -212,32 +212,38 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NamedItem* item = [[self getCurrentDatasource] objectAtIndex:row];
-    return item.name;
+	id item = [[self getCurrentDatasource] objectAtIndex:row];
+	if([item isKindOfClass:[NSString class]]) {
+		return item;
+	} else if([item isKindOfClass:[NamedItem class]]) {
+		  return ((NamedItem*)item).name;
+	}
+    return nil;
 }
 
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
 	if(self.activeField == self.unitField) {
-		NamedItem* unit = [self.getCurrentDatasource objectAtIndex:index];
-		self.unitField.text = unit.name;
-		self.curProduct.unit = unit.name;
+		NSString* unit = [self.getCurrentDatasource objectAtIndex:index];
+		self.unitField.text = unit;
+		self.curProduct.unit = unit;
 		if( self.sizeField.text.length && [[DataCache sharedInstance].units[unit] linq_where:^BOOL(NamedItem* item) {
-				return [item.name isEqualToString:((UITextField*)self.sizeField).text];
+				return (self.curProduct.sizeId && self.curProduct.sizeId == item.identifier);
 			}].count == 0)
 		{
 			self.sizeField.text = nil;
-			self.curProduct.size = nil; 
-			
+			self.curProduct.size = nil;
+			self.curProduct.sizeId = 0;
 			[(UIFloatLabelTextField*)self.sizeField toggleFloatLabel:UIFloatLabelAnimationTypeHide];
 		}
 	} else if(self.activeField == self.sizeField) {
-		NSArray* sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NamedItem* item, id value) {
-			return [item.name isEqualToString:((UITextField*)self.unitField).text];
+		NSArray* sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
+			return [unit isEqualToString:((UITextField*)self.unitField).text];
 		}] allValues] firstObject];
 		NamedItem* size = [sizes objectAtIndex:index];
         self.sizeField.text = size.name;
         self.curProduct.size = size.name;
+		self.curProduct.sizeId = size.identifier;
     } else if(self.activeField == self.brandField) {
         NamedItem* designer = [[DataCache sharedInstance].designers objectAtIndex:index];
         self.curProduct.designer = designer;

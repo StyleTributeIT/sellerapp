@@ -99,10 +99,10 @@
 	
 	// sizeId -> unit  & size
 	if(product.sizeId && [DataCache sharedInstance].units != nil) {
-		[[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NamedItem* unit, NSArray* sizes, BOOL *stop) {
+		[[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
 			for(NamedItem* size in sizes) {
 				if(size.identifier == product.sizeId) {
-					product.unit = unit.name;
+					product.unit = unit;
 					product.size = size.name;
 					
 					*stop = YES;

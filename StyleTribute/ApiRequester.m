@@ -457,15 +457,15 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 	[self.sessionManager GET:[@"seller/getAttributePossibleValues/" stringByAppendingString:attrName]  parameters:nil success:^(NSURLSessionDataTask *task, NSDictionary* response) {
 		
 		NSMutableDictionary* units = [NSMutableDictionary new];
-		for (NSString* unit in response)
-		{
-			NSArray* responseSize = response[unit];
+		[response enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* responseSize, BOOL *stop) {
+			
 			NSMutableArray* sizeVaules = [NSMutableArray new];
 			for (NSArray* item in responseSize)
 			{
 				NamedItem* sizeItem = [NamedItem new];
     
 				sizeItem.identifier = (NSUInteger)[item[1] integerValue];
+				
 				NSObject* value = item[0];
 				if([value respondsToSelector:@selector(stringValue)]) {
 					value = [value performSelector:@selector(stringValue)];
@@ -475,11 +475,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 				[sizeVaules addObject:sizeItem];
 			}
 			
-			NamedItem* unitItem = [NamedItem new];
-			unitItem.name = unit;
+			units[unit] = sizeVaules;
 			
-			units[unitItem] = sizeVaules;
-		}
+		}];
 		success(units);
 		
 	} failure:^(NSURLSessionDataTask *task, NSError *error) {

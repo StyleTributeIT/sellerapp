@@ -29,6 +29,14 @@
 	return copy;
 }
 
+- (BOOL)isEqual:(id)object {
+	return [self.name isEqualToString:((NamedItem *)object).name] && (self.identifier == ((NamedItem *)object).identifier);
+}
+
+- (NSString*)description {
+	return [NSString stringWithFormat:@"id: %u, name: %@", self.identifier, self.name];
+}
+
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     
     NamedItem *item = [self new];
