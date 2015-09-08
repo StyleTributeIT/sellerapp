@@ -15,6 +15,7 @@
 +(long)parseInt:(NSString*)param fromDict:(NSDictionary*)dict;
 +(BOOL)parseUInteger:(NSString*)param fromDict:(NSDictionary*)dict;
 +(long)parseLong:(NSString*)param fromDict:(NSDictionary*)dict;
++(float)parseFloat:(NSString*)param fromDict:(NSDictionary*)dict;
 
 +(NSString*)validatedString:(NSString*)val;
 @end

@@ -25,6 +25,7 @@
 #import "Photo.h"
 #import "WardrobeController.h"
 #import "UIFloatLabelTextField.h"
+#import "PriceEditController.h"
 
 #define PHOTOS_PER_ROW 4
 
@@ -337,7 +338,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Store all fields
+    if([segue.identifier isEqualToString:@"priceSegue"]) {
+        PriceEditController* priceController = segue.destinationViewController;
+        priceController.product = self.curProduct;
+    }
 }
 
 #pragma mark - Text fields
@@ -705,7 +709,9 @@
        self.brandField.text.length == 0 ||
        self.conditionField.text.length == 0 ||
        self.nameField.text.length == 0 ||
-       !isSizeFilled) {
+       !isSizeFilled ||
+       self.curProduct.price == 0 ||
+       self.curProduct.originalPrice == 0) {
         return NO;
     } else {
         return YES;

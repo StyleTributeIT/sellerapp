@@ -51,7 +51,9 @@ static NSArray * EditableTextInputsInView(UIView *view)
 	if (!(self = [super initWithFrame:CGRectZero]))
 		return nil;
 	
-	_responders = responders;
+    _responders = [responders linq_where:^BOOL(UIView* item) {
+        return (!item.isHidden && item.userInteractionEnabled);
+    }]; //responders;
 	
 	_toolbar = [[UIToolbar alloc] init];
 	_toolbar.tintColor = nil;
@@ -124,7 +126,7 @@ static NSArray * EditableTextInputsInView(UIView *view)
 		return _responders;
 	
 	NSArray *textInputs = EditableTextInputsInView([[UIApplication sharedApplication] keyWindow]);
-	return [textInputs sortedArrayUsingComparator:^NSComparisonResult(UIView *textInput1, UIView *textInput2) {
+	NSArray* res = [textInputs sortedArrayUsingComparator:^NSComparisonResult(UIView *textInput1, UIView *textInput2) {
 		UIView *commonAncestorView = textInput1.superview;
 		while (commonAncestorView && ![textInput2 isDescendantOfView:commonAncestorView])
 			commonAncestorView = commonAncestorView.superview;
@@ -133,6 +135,10 @@ static NSArray * EditableTextInputsInView(UIView *view)
 		CGRect frame2 = [textInput2 convertRect:textInput2.bounds toView:commonAncestorView];
 		return [@(CGRectGetMinY(frame1)) compare:@(CGRectGetMinY(frame2))];
 	}];
+    
+    return [res linq_where:^BOOL(UIView* item) {
+        return (!item.isHidden && item.userInteractionEnabled);
+    }];
 }
 
 - (void) setHasDoneButton:(BOOL)hasDoneButton
@@ -162,20 +168,16 @@ static NSArray * EditableTextInputsInView(UIView *view)
 
 - (void) selectAdjacentResponder:(UISegmentedControl *)sender
 {
-    NSArray* visibleResponders = [self.responders linq_where:^BOOL(UIView* item) {
-        return !item.isHidden;
-    }];
-    
-	NSArray *firstResponders = [visibleResponders filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UIResponder *responder, NSDictionary *bindings) {
-		return [responder isFirstResponder];
+	NSArray *firstResponders = [self.responders filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UIResponder *responder, NSDictionary *bindings) {
+        return [responder isFirstResponder];
 	}]];
 	UIResponder *firstResponder = [firstResponders lastObject];
 	NSInteger offset = sender.selectedSegmentIndex == 0 ? -1 : +1;
-	NSInteger firstResponderIndex = [visibleResponders indexOfObject:firstResponder];
+	NSInteger firstResponderIndex = [self.responders indexOfObject:firstResponder];
 	NSInteger adjacentResponderIndex = firstResponderIndex != NSNotFound ? firstResponderIndex + offset : NSNotFound;
 	UIResponder *adjacentResponder = nil;
-	if (adjacentResponderIndex >= 0 && adjacentResponderIndex < (NSInteger)[visibleResponders count])
-		adjacentResponder = [visibleResponders objectAtIndex:adjacentResponderIndex];
+	if (adjacentResponderIndex >= 0 && adjacentResponderIndex < (NSInteger)[self.responders count])
+		adjacentResponder = [self.responders objectAtIndex:adjacentResponderIndex];
 	
 	[adjacentResponder becomeFirstResponder];
 }

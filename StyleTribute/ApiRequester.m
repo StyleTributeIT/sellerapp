@@ -349,7 +349,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                      @"short_description": @"",
                                      @"category": @(product.category.idNum),
                                      @"condition": @(product.condition.identifier),
-                                     @"designer": @(product.designer.identifier)} mutableCopy];
+                                     @"designer": @(product.designer.identifier),
+                                     @"original_price": @(product.originalPrice),
+                                     @"price": @(product.price)} mutableCopy];
     
     NSString* firstSize = [product.category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {
@@ -484,6 +486,19 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 		[self logError:error withCaption:@"getSizeValues error"];
 		failure(DefGeneralErrMsg);
 	}];
+}
+
+-(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSString* url = [NSString stringWithFormat:@"seller/priceSuggestion/designer/%zd/condition/%zd/category/%zd/original/%f",
+                     product.designer.identifier, product.condition.identifier, product.category.idNum, price];
+    [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
+        success([responseObject floatValue]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"getPriceSuggestionForProduct error"];
+        failure(DefGeneralErrMsg);
+    }];
 }
 
 @end

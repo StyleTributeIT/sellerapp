@@ -19,6 +19,9 @@
         self.type = ProductTypeSelling;
         self.processStatus = @"in_review";
         self.identifier = 0;
+        self.originalPrice = 0;
+        self.suggestedPrice = 0;
+        self.price = 0;
     }
     return self;
 }
@@ -29,8 +32,8 @@
     product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
     product.name = [self parseString:@"name" fromDict:dict];
     product.processStatus = [self parseString:@"process_status" fromDict:dict];
-    product.originalPrice = [[self parseString:@"original_price" fromDict:dict] floatValue];
-    product.price = [[self parseString:@"price" fromDict:dict] floatValue];
+    product.originalPrice = [self parseFloat:@"original_price" fromDict:dict];
+    product.price = [self parseFloat:@"price" fromDict:dict];
     product.descriptionText = [self parseString:@"description" fromDict:dict];
     
     product.allowedTransitions = [NSMutableArray new];
@@ -130,6 +133,7 @@
     self.category = [decoder decodeObjectForKey:@"category"];
     self.photos = [decoder decodeObjectForKey:@"photos"];
     self.originalPrice = [[decoder decodeObjectForKey:@"originalPrice"] floatValue];
+    self.suggestedPrice = [[decoder decodeObjectForKey:@"suggestedPrice"] floatValue];
     self.price = [[decoder decodeObjectForKey:@"price"] floatValue];
     self.allowedTransitions = [decoder decodeObjectForKey:@"allowedTransitions"];
     self.descriptionText = [decoder decodeObjectForKey:@"descriptionText"];
@@ -150,6 +154,7 @@
     [encoder encodeObject:self.category forKey:@"category"];
     [encoder encodeObject:self.photos forKey:@"photos"];
     [encoder encodeObject:@(self.originalPrice) forKey:@"originalPrice"];
+    [encoder encodeObject:@(self.suggestedPrice) forKey:@"suggestedPrice"];
     [encoder encodeObject:@(self.price) forKey:@"price"];
     [encoder encodeObject:self.allowedTransitions forKey:@"allowedTransitions"];
     [encoder encodeObject:self.descriptionText forKey:@"descriptionText"];

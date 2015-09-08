@@ -63,4 +63,13 @@
 	}
 }
 
++(float)parseFloat:(NSString*)param fromDict:(NSDictionary*)dict {
+    NSNumber* val = [dict objectForKey:param];
+    if(val) {
+        return [val floatValue];
+    } else {
+        return 0;
+    }
+}
+
 @end
