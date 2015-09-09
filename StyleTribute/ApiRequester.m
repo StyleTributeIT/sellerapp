@@ -37,7 +37,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         sharedInstance = [[ApiRequester alloc] init];
         sharedInstance.requsetOperationManager = [AFHTTPRequestOperationManager manager];
         sharedInstance.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:DefApiHost]];
-        sharedInstance.sessionManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        AFJSONResponseSerializer* serializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        serializer.removesKeysWithNullValues = YES;
+        sharedInstance.sessionManager.responseSerializer = serializer;
         sharedInstance.sessionManager.requestSerializer.timeoutInterval = 3600;
         
         NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];

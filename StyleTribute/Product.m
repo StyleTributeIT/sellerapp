@@ -47,6 +47,7 @@
 //    [product.allowedTransitions addObject:@"deleted"];
     
     if([DataCache sharedInstance].categories != nil) {
+    
         NSUInteger categoryId = (NSUInteger)[[dict objectForKey:@"category"] integerValue];
         product.category = [[[DataCache sharedInstance].categories linq_where:^BOOL(STCategory* category) {
             return (category.idNum == categoryId);

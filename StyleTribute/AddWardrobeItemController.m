@@ -617,6 +617,9 @@
         [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
     }
     
+    UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+    [newCell.photoView addGestureRecognizer:tapRecognizer];
+    
     newCell.photoView.tag = indexPath.row;
     newCell.accessibilityLabel = [NSString stringWithFormat:@"Photo cell %td", indexPath.row];
     return newCell;
@@ -627,14 +630,6 @@
     return CGSizeMake(itemSize, itemSize);
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-    PhotoCell* cell = (PhotoCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    self.selectedImage = cell.photoView;
-    self.selectedImageIndex = indexPath.row;
-    [self.photoActionsSheet showInView:self.view];
-    return NO;
-}
-
 -(void)updatePhotosCollection {
     NSUInteger rowsCount = 0;
     if(self.curProduct != nil && self.curProduct.category != nil) {
@@ -642,6 +637,13 @@
     }
     self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
     [self.collectionView reloadData];
+}
+
+- (void) handleTapFrom: (UITapGestureRecognizer *)recognizer {
+    PhotoCell* cell = (PhotoCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathWithIndex:recognizer.view.tag]];
+    self.selectedImage = cell.photoView;
+    self.selectedImageIndex = recognizer.view.tag;
+    [self.photoActionsSheet showInView:self.view];
 }
 
 #pragma mark - Product size
