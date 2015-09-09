@@ -26,6 +26,7 @@
 #import "WardrobeController.h"
 #import "UIFloatLabelTextField.h"
 #import "PriceEditController.h"
+#import "UIImage+FixOrientation.h"
 
 #define PHOTOS_PER_ROW 4
 
@@ -433,11 +434,11 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-//    UIImage *finalImage = [UIImage imageWithCGImage:[chosenImage CGImage] scale:1.0 orientation: UIImageOrientationUp];
+    UIImage *finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
     
-    self.selectedImage.image = chosenImage;
+    self.selectedImage.image = finalImage;
     Photo* photo = [Photo new];
-    photo.image = chosenImage;
+    photo.image = finalImage;
     [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
     ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
     imgType.state = (imgType.state == ImageStateNormal ? ImageStateNew : ImageStateModified);
