@@ -23,7 +23,6 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self.forgotPasswordButton setAttributedTitle:[GlobalHelper linkWithString:@"Forgot your password?"] forState:UIControlStateNormal];
-    [GlobalHelper configureSlideshow:self.slideShow];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

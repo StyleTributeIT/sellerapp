@@ -247,13 +247,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yft-WL-wt5" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="184" width="320" height="320"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="yft-WL-wt5" secondAttribute="height" multiplier="1:1" id="8Aw-RX-F5L"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-aZ-Jzd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
@@ -388,9 +381,6 @@
                             <constraint firstItem="jNw-e3-dRw" firstAttribute="top" secondItem="HhL-aZ-Jzd" secondAttribute="bottom" id="6Et-4r-kci"/>
                             <constraint firstItem="HhL-aZ-Jzd" firstAttribute="leading" secondItem="NY5-ro-TzI" secondAttribute="leading" id="ET3-mz-zck"/>
                             <constraint firstItem="HhL-aZ-Jzd" firstAttribute="top" secondItem="KeO-l6-gRQ" secondAttribute="bottom" id="M7z-O3-cyX"/>
-                            <constraint firstItem="yft-WL-wt5" firstAttribute="leading" secondItem="NY5-ro-TzI" secondAttribute="leading" id="cSN-If-Yh0"/>
-                            <constraint firstItem="jNw-e3-dRw" firstAttribute="top" secondItem="yft-WL-wt5" secondAttribute="bottom" id="dFY-a8-WKy"/>
-                            <constraint firstAttribute="trailing" secondItem="yft-WL-wt5" secondAttribute="trailing" id="ooa-2d-2gj"/>
                             <constraint firstAttribute="trailing" secondItem="HhL-aZ-Jzd" secondAttribute="trailing" id="wdo-U6-2Co"/>
                         </constraints>
                     </view>
@@ -401,7 +391,6 @@
                         <outlet property="loginField" destination="JyO-9Y-oef" id="e1Z-Tw-CNI"/>
                         <outlet property="passwordField" destination="Jag-i6-V2o" id="icz-Vi-QMM"/>
                         <outlet property="scrollView" destination="HhL-aZ-Jzd" id="gNU-IL-u1o"/>
-                        <outlet property="slideShow" destination="yft-WL-wt5" id="h84-Eb-p2r"/>
                         <outlet property="widthConstraint" destination="sco-Xu-Z5V" id="0pt-lv-eg4"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="mainScreenSegue" id="XTf-8t-q92"/>
                         <segue destination="sjP-DD-tuF" kind="show" identifier="moreDetailsSegue" id="ReU-Ip-U3f"/>
@@ -1488,13 +1477,6 @@ Citilink Warehouse Complex
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11R-L0-8kQ" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="184" width="320" height="320"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="11R-L0-8kQ" secondAttribute="height" multiplier="1:1" id="YzI-ug-1YC"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-SH-YtR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
@@ -1672,10 +1654,7 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="11R-L0-8kQ" firstAttribute="leading" secondItem="J5N-YH-Eaa" secondAttribute="leading" id="24K-Kd-FbG"/>
-                            <constraint firstAttribute="trailing" secondItem="11R-L0-8kQ" secondAttribute="trailing" id="ROU-qq-vVH"/>
                             <constraint firstAttribute="trailing" secondItem="jyP-SH-YtR" secondAttribute="trailing" id="aL1-Jd-Dv7"/>
-                            <constraint firstItem="UFY-tf-2Fn" firstAttribute="top" secondItem="11R-L0-8kQ" secondAttribute="bottom" id="fZ2-LK-HgG"/>
                             <constraint firstItem="jyP-SH-YtR" firstAttribute="leading" secondItem="J5N-YH-Eaa" secondAttribute="leading" id="fwm-MN-JfL"/>
                             <constraint firstItem="UFY-tf-2Fn" firstAttribute="top" secondItem="jyP-SH-YtR" secondAttribute="bottom" id="lD2-v3-HD1"/>
                             <constraint firstItem="jyP-SH-YtR" firstAttribute="top" secondItem="acp-WF-Stg" secondAttribute="bottom" id="lad-7d-rI2"/>
@@ -1690,7 +1669,6 @@ Citilink Warehouse Complex
                         <outlet property="lastNameField" destination="t3v-hM-vnc" id="8zq-in-G4c"/>
                         <outlet property="phoneField" destination="CZJ-ac-YBF" id="rRW-Ah-2lK"/>
                         <outlet property="scrollView" destination="jyP-SH-YtR" id="h2w-my-Drk"/>
-                        <outlet property="slideShow" destination="11R-L0-8kQ" id="Pii-AF-X5u"/>
                         <outlet property="userNameField" destination="eKh-7d-kPR" id="Yj1-fA-KHa"/>
                         <outlet property="widthConstraint" destination="Sjg-Rd-ono" id="HhC-BA-H4Z"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="fbShowMainScreen" id="mG1-qk-ojj"/>
@@ -1712,13 +1690,6 @@ Citilink Warehouse Complex
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJo-79-UW7" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="184" width="320" height="320"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="GJo-79-UW7" secondAttribute="height" multiplier="1:1" id="R0i-II-dha"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
@@ -1931,13 +1902,10 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="GJo-79-UW7" secondAttribute="trailing" id="6zB-RY-g9s"/>
-                            <constraint firstItem="ouI-7M-v2j" firstAttribute="top" secondItem="GJo-79-UW7" secondAttribute="bottom" id="9nF-0w-YEG"/>
                             <constraint firstAttribute="trailing" secondItem="8Bi-CW-Ped" secondAttribute="trailing" id="VRD-Bc-bQg"/>
                             <constraint firstItem="ouI-7M-v2j" firstAttribute="top" secondItem="8Bi-CW-Ped" secondAttribute="bottom" id="ZEg-1N-9CN"/>
                             <constraint firstItem="8Bi-CW-Ped" firstAttribute="top" secondItem="y6t-Ec-MNt" secondAttribute="bottom" id="ZoY-fx-uws"/>
                             <constraint firstItem="8Bi-CW-Ped" firstAttribute="leading" secondItem="hM7-JS-bIu" secondAttribute="leading" id="oMl-tM-nKP"/>
-                            <constraint firstItem="GJo-79-UW7" firstAttribute="leading" secondItem="hM7-JS-bIu" secondAttribute="leading" id="zvp-j5-JWC"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -1950,7 +1918,6 @@ Citilink Warehouse Complex
                         <outlet property="passwordField" destination="3ki-MD-wNY" id="8vx-fc-2aK"/>
                         <outlet property="phoneField" destination="0nx-2n-PqJ" id="paD-UV-BKD"/>
                         <outlet property="scrollView" destination="8Bi-CW-Ped" id="duS-yZ-Huj"/>
-                        <outlet property="slideShow" destination="GJo-79-UW7" id="zve-NP-Fy6"/>
                         <outlet property="userNameField" destination="UNv-hv-yih" id="x3t-Ck-tbm"/>
                         <outlet property="widthConstraint" destination="SJY-eF-ne1" id="eHm-Aq-5Oq"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="showMainScreenSegue" id="1dd-Ww-h8O"/>
@@ -2804,7 +2771,7 @@ know before you get started!</string>
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XTf-8t-q92"/>
+        <segue reference="mG1-qk-ojj"/>
         <segue reference="ReU-Ip-U3f"/>
     </inferredMetricsTieBreakers>
 </document>

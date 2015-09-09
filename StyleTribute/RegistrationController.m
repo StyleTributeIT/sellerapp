@@ -33,8 +33,6 @@
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
-    [GlobalHelper configureSlideshow:self.slideShow];
-    
     if([DataCache sharedInstance].countries == nil) {
         [[ApiRequester sharedInstance] getCountries:^(NSArray *countries) {
             [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
