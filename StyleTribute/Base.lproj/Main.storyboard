@@ -72,11 +72,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-xd-dpw" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="184" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="316" width="320" height="188"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FoV-xd-dpw" secondAttribute="height" multiplier="1:1" id="Xua-zg-CtR"/>
+                                    <constraint firstAttribute="width" secondItem="FoV-xd-dpw" secondAttribute="height" multiplier="641:507" id="Xua-zg-CtR"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Xua-zg-CtR"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Rte-X5-A1W">
                                 <rect key="frame" x="128" y="20" width="64" height="64"/>
@@ -184,20 +189,37 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="FoV-xd-dpw" secondAttribute="bottom" id="9Ea-L2-hBV"/>
                             <constraint firstAttribute="centerX" secondItem="Rte-X5-A1W" secondAttribute="centerX" id="AFx-mU-nDl"/>
                             <constraint firstAttribute="trailing" secondItem="FoV-xd-dpw" secondAttribute="trailing" id="C98-WH-ozF"/>
+                            <constraint firstItem="FoV-xd-dpw" firstAttribute="top" secondItem="336-qA-KE7" secondAttribute="bottom" constant="8" id="E8V-Ff-4El"/>
                             <constraint firstItem="clY-Sy-ZP3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="KG6-X3-ypn"/>
                             <constraint firstItem="7oc-gx-i8R" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="NY0-jb-Zch"/>
                             <constraint firstItem="336-qA-KE7" firstAttribute="top" secondItem="clY-Sy-ZP3" secondAttribute="bottom" constant="8" id="QBe-wR-Ik3"/>
                             <constraint firstItem="FoV-xd-dpw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="QGa-mD-byI"/>
                             <constraint firstItem="7oc-gx-i8R" firstAttribute="top" secondItem="Rte-X5-A1W" secondAttribute="bottom" constant="8" id="VpS-3E-c1j"/>
                             <constraint firstAttribute="centerX" secondItem="mzk-qV-fOS" secondAttribute="centerX" id="c6t-9c-TH1"/>
+                            <constraint firstItem="FoV-xd-dpw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="c8C-89-rWc"/>
+                            <constraint firstAttribute="trailing" secondItem="FoV-xd-dpw" secondAttribute="trailing" id="e2a-Jh-q2m"/>
                             <constraint firstAttribute="centerX" secondItem="pn8-Cb-f8A" secondAttribute="centerX" id="hLA-BM-9xD"/>
+                            <constraint firstAttribute="centerX" secondItem="FoV-xd-dpw" secondAttribute="centerX" id="iMb-lc-Rzu"/>
+                            <constraint firstItem="FoV-xd-dpw" firstAttribute="top" secondItem="pn8-Cb-f8A" secondAttribute="bottom" constant="78" id="jU8-K1-sjy"/>
+                            <constraint firstAttribute="centerX" secondItem="FoV-xd-dpw" secondAttribute="centerX" id="pIP-NT-hMa"/>
                             <constraint firstAttribute="centerX" secondItem="336-qA-KE7" secondAttribute="centerX" id="q88-t1-BV2"/>
                             <constraint firstItem="clY-Sy-ZP3" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="qxo-OR-20M"/>
                             <constraint firstItem="7oc-gx-i8R" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="rXb-sw-qTy"/>
+                            <constraint firstItem="FoV-xd-dpw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pn8-Cb-f8A" secondAttribute="bottom" constant="24" id="rdq-EI-tOm"/>
                             <constraint firstItem="dig-Q9-QwW" firstAttribute="top" secondItem="7oc-gx-i8R" secondAttribute="bottom" constant="18" id="wi8-AY-sFN"/>
                             <constraint firstItem="clY-Sy-ZP3" firstAttribute="top" secondItem="pn8-Cb-f8A" secondAttribute="bottom" constant="14" id="wvv-Ly-yeO"/>
                             <constraint firstItem="dig-Q9-QwW" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="ykh-wd-Cji"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="C98-WH-ozF"/>
+                                <exclude reference="QGa-mD-byI"/>
+                                <exclude reference="iMb-lc-Rzu"/>
+                                <exclude reference="jU8-K1-sjy"/>
+                                <exclude reference="pIP-NT-hMa"/>
+                                <exclude reference="rdq-EI-tOm"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="j0b-t9-vfJ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -2782,7 +2804,7 @@ know before you get started!</string>
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1dd-Ww-h8O"/>
+        <segue reference="XTf-8t-q92"/>
         <segue reference="ReU-Ip-U3f"/>
     </inferredMetricsTieBreakers>
 </document>

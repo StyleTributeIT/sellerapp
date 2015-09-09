@@ -21,14 +21,13 @@
     self = [super init];
     if(self) {
         self.curIndex = 0;
-        self.images = @[[UIImage imageNamed:@"1.jpg"],
-                        [UIImage imageNamed:@"2.jpg"],
-                        [UIImage imageNamed:@"3.jpg"],
-                        [UIImage imageNamed:@"4.jpg"],
-                        [UIImage imageNamed:@"5.jpg"],
-                        [UIImage imageNamed:@"6.jpg"],
-                        [UIImage imageNamed:@"7.jpg"],
-                        [UIImage imageNamed:@"8.jpg"]];
+        self.images = @[[UIImage imageNamed:@"Untitled-2.jpg"],
+                        [UIImage imageNamed:@"Untitled-5.jpg"],
+                        [UIImage imageNamed:@"Untitled-21.jpg"],
+                        [UIImage imageNamed:@"Untitled-22.jpg"],
+                        [UIImage imageNamed:@"Untitled-23.jpg"],
+                        [UIImage imageNamed:@"Untitled-24.jpg"],
+                        [UIImage imageNamed:@"Untitled-25.jpg"]];
     }
     
     return self;

@@ -38,19 +38,11 @@
 }
 
 +(void)configureSlideshow:(KASlideShow*)slideShow {
-    [slideShow setDelay:6];
+    [slideShow setDelay:4];
     [slideShow setTransitionDuration:1];
-    [slideShow setTransitionType:KASlideShowTransitionFade];
-    [slideShow setImagesContentMode:UIViewContentModeScaleAspectFill];
+    [slideShow setTransitionType:KASlideShowTransitionSlide];
+    [slideShow setImagesContentMode:UIViewContentModeScaleAspectFit];
     [slideShow setDataSource:[SlideShowDataSource sharedInstance]];
-//    [slideShow addImage:[UIImage imageNamed:@"1.jpg"]];
-//    [slideShow addImage:[UIImage imageNamed:@"2.jpg"]];
-//    [slideShow addImage:[UIImage imageNamed:@"3.jpg"]];
-//    [slideShow addImage:[UIImage imageNamed:@"4.jpg"]];
-//    [slideShow addImage:[UIImage imageNamed:@"5.jpg"]];
-//    [slideShow addImage:[UIImage imageNamed:@"6.jpg"]];
-//    [slideShow addImage:[UIImage imageNamed:@"7.jpg"]];
-//    [slideShow addImage:[UIImage imageNamed:@"8.jpg"]];
 }
 
 @end

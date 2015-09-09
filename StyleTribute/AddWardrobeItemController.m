@@ -433,6 +433,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+//    UIImage *finalImage = [UIImage imageWithCGImage:[chosenImage CGImage] scale:1.0 orientation: UIImageOrientationUp];
+    
     self.selectedImage.image = chosenImage;
     Photo* photo = [Photo new];
     photo.image = chosenImage;

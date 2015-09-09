@@ -11,12 +11,19 @@
 #import "ApiRequester.h"
 #import <MRProgress.h>
 
+@interface PriceEditController ()
+
+@property BOOL isInProgress;
+
+@end
+
 @implementation PriceEditController
 
 -(void)viewDidLoad {
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     [self hideAdvice];
+    self.isInProgress = NO;
     
     if(self.product.originalPrice > 0) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
@@ -39,8 +46,9 @@
 
 -(void)inputDone {
     if(self.activeField == self.originalPrice) {
-        if(self.originalPrice.text.length > 0 && self.originalPrice.isFirstResponder) {
-            [self.activeField resignFirstResponder];
+        [self.activeField resignFirstResponder];
+        if(self.originalPrice.text.length > 0 && !self.isInProgress) {
+            self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:[self.originalPrice.text floatValue] success:^(float priceSuggestion) {
                 self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
@@ -48,8 +56,10 @@
                     self.userPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
                 }
                 [self updateAdvice];
+                self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             } failure:^(NSString *error) {
+                self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             }];
         }
