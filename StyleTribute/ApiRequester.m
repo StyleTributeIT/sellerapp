@@ -370,6 +370,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(product.identifier > 0) {
         [params setObject:@(product.identifier) forKey:@"id"];
     }
+    if(product.processStatus.length > 0) {
+        [params setObject:product.processStatus forKey:@"process_status"];
+    }
     
     [self.sessionManager POST:@"seller/product" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {

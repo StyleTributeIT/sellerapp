@@ -362,7 +362,7 @@ typedef void(^ImageLoadBlock)(int);
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     EditingType editing = [self.curProduct getEditingType];
     
-    if(textField == self.categoryField && editing == EditingTypeAll) {
+    if(textField == self.categoryField) {
 //        [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
         return NO;
     } else if(editing == EditingTypeAll || !self.isEditing) {
@@ -507,7 +507,12 @@ typedef void(^ImageLoadBlock)(int);
         return;
     } else {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        
         self.curProduct.descriptionText = self.descriptionView.text;
+        if(self.isEditing && [self.curProduct.processStatus isEqualToString:@"incomplete"]) {
+            self.curProduct.processStatus = @"in_review_add";
+        }
+        
         [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
 //            self.curProduct.identifier = product.identifier;
@@ -521,7 +526,6 @@ typedef void(^ImageLoadBlock)(int);
             MRProgressOverlayView * progressView =[MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Uploading images" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
                                                     
             if(self.curProduct.photos != nil && self.curProduct.category != nil) {
-//                for (int i = 0; i < self.curProduct.photos.count; ++i) {
                 
                 self.imgLoadBlock = ^(int i){
                     if(i >= self.curProduct.photos.count)

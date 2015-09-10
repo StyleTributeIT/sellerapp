@@ -17,7 +17,7 @@
     self = [super init];
     if(self) {
         self.type = ProductTypeSelling;
-        self.processStatus = @"in_review";
+        self.processStatus = @"";
         self.identifier = 0;
         self.originalPrice = 0;
         self.suggestedPrice = 0;
@@ -201,7 +201,8 @@
 -(EditingType)getEditingType {
     if([self.processStatus isEqualToString:@"in_review"] ||
        [self.processStatus isEqualToString:@"in_review_add"] ||
-       [self.processStatus isEqualToString:@"incomplete"])
+       [self.processStatus isEqualToString:@"incomplete"] ||
+       self.processStatus.length == 0)
     {
         return EditingTypeAll;
     }

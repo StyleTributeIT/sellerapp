@@ -72,6 +72,7 @@
 		7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */; };
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
 		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
+		7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */; };
 		FE66A89E4F6C6938CCCD3D07 /* libPods-StyleTributeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC957447A82DF788870EABBD /* libPods-StyleTributeTests.a */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +204,8 @@
 		7AFE43621AF22935004B982B /* AddWardrobeItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWardrobeItemController.m; sourceTree = "<group>"; };
 		7AFE43641AF22A99004B982B /* GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalHelper.h; sourceTree = "<group>"; };
 		7AFE43651AF22A99004B982B /* GlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalHelper.m; sourceTree = "<group>"; };
+		7AFF6EE91BA1B2460023CDD4 /* PushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNoAnimationSegue.h; sourceTree = "<group>"; };
+		7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNoAnimationSegue.m; sourceTree = "<group>"; };
 		92D4F01969E74DEDB8E3B992 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC957447A82DF788870EABBD /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +273,7 @@
 		7A0EB6061AEE23D400D90001 /* StyleTribute */ = {
 			isa = PBXGroup;
 			children = (
+				7AFF6EE81BA1B1BA0023CDD4 /* Segues */,
 				7A123F971B1869B100D52ADA /* CustomViews */,
 				7A60FCD21B160F5D00731F6E /* External */,
 				7A600F731B0B750300CCD5F3 /* Fonts */,
@@ -454,6 +458,15 @@
 				7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7AFF6EE81BA1B1BA0023CDD4 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				7AFF6EE91BA1B2460023CDD4 /* PushNoAnimationSegue.h */,
+				7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */,
+			);
+			name = Segues;
 			sourceTree = "<group>";
 		};
 		BB88AA05F2865CA9E498D74F /* Pods */ = {
@@ -691,6 +704,7 @@
 				7A60979E1B14848F00209340 /* Country.m in Sources */,
 				7A44696C1B61228000E3A752 /* Photo.m in Sources */,
 				7A60FCD11B15EEAE00731F6E /* Category.m in Sources */,
+				7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */,
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,
 				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,
