@@ -26,6 +26,7 @@
 @property NSMutableArray* sellingItems;
 @property NSMutableArray* soldItems;
 @property NSMutableArray* archivedItems;
+@property UIRefreshControl* refreshControl;
 
 @end
 
@@ -63,6 +64,12 @@
     self.wardrobeType.accessibilityLabel = @"Wardrobe items type";
 	
 	//_itemsTable.scrollIndicatorInsets=UIEdgeInsetsMake(64.0,0.0,44.0,0.0);
+    
+    NSDictionary* refreshTextAttributes = @{NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Light" size:14]};
+    self.refreshControl = [UIRefreshControl new];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Updating products" attributes:refreshTextAttributes];
+    [self.refreshControl addTarget:self action:@selector(refreshProducts:) forControlEvents:UIControlEventValueChanged];
+    [self.itemsTable addSubview:self.refreshControl];
 }
 
 -(void)updateProducts {
@@ -342,6 +349,21 @@
 
 - (void)updateWelcomeView {
 	_welcomView.hidden = self.sellingItems.count || self.soldItems.count || self.archivedItems.count;
+}
+
+-(void)refreshProducts:(UIRefreshControl*)sender {
+    NSLog(@"start refresh");
+    [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
+        [sender endRefreshing];
+        [DataCache sharedInstance].products = [products mutableCopy];
+        [self storeProductsInGroups:products];
+        [self.itemsTable reloadData];
+        [self updateWelcomeView];
+        NSLog(@"stop refresh");
+    } failure:^(NSString *error) {
+        [sender endRefreshing];
+        [GlobalHelper showMessage:error withTitle:@"error"];
+    }];
 }
 
 @end
