@@ -69,7 +69,7 @@
     self.refreshControl = [UIRefreshControl new];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Updating products" attributes:refreshTextAttributes];
     [self.refreshControl addTarget:self action:@selector(refreshProducts:) forControlEvents:UIControlEventValueChanged];
-    [self.itemsTable addSubview:self.refreshControl];
+    [self.itemsTable insertSubview:self.refreshControl atIndex:0];
 }
 
 -(void)updateProducts {
