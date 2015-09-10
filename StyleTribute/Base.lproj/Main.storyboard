@@ -2003,7 +2003,7 @@ Citilink Warehouse Complex
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="lah-Ls-tRe"/>
-                                                    <segue destination="kpk-cm-DsD" kind="show" identifier="chooseCategorySegue" id="Eif-tY-SAz"/>
+                                                    <segue destination="kpk-cm-DsD" kind="custom" identifier="chooseCategorySegue" customClass="PushNoAnimationSegue" id="Eif-tY-SAz"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spy-gH-EMN" customClass="UIFloatLabelTextField">

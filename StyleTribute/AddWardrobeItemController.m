@@ -30,6 +30,8 @@
 
 #define PHOTOS_PER_ROW 4
 
+typedef void(^ImageLoadBlock)(int);
+
 @interface AddWardrobeItemController ()
 
 @property UIPickerView* picker;
@@ -40,6 +42,8 @@
 @property BOOL isTutorialPresented;
 @property UIImageView* selectedImage;
 @property NSUInteger selectedImageIndex;
+
+@property (copy) ImageLoadBlock imgLoadBlock;
 
 @end
 
@@ -128,6 +132,10 @@
     }
     
     [self updatePhotosCollection];
+    
+    if(!self.isEditing && self.categoryField.text.length == 0) {
+        [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -335,6 +343,10 @@
 -(IBAction)cancelUnwindToAddItem:(UIStoryboardSegue*)sender {
     //    UIViewController *sourceViewController = sender.sourceViewController;
     NSLog(@"cancelUnwindToWardrobeItems");
+    
+    if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
+        [self cancel:nil];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -351,7 +363,7 @@
     EditingType editing = [self.curProduct getEditingType];
     
     if(textField == self.categoryField && editing == EditingTypeAll) {
-        [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
+//        [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
         return NO;
     } else if(editing == EditingTypeAll || !self.isEditing) {
         return YES;
@@ -509,18 +521,26 @@
             MRProgressOverlayView * progressView =[MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Uploading images" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
                                                     
             if(self.curProduct.photos != nil && self.curProduct.category != nil) {
-                for (int i = 0; i < self.curProduct.photos.count; ++i) {
+//                for (int i = 0; i < self.curProduct.photos.count; ++i) {
+                
+                self.imgLoadBlock = ^(int i){
+                    if(i >= self.curProduct.photos.count)
+                        return;
+                    
                     Photo* photo = [self.curProduct.photos objectAtIndex:i];
                     ImageType* imageType = [self.curProduct.category.imageTypes objectAtIndex:i];
                     
                     // If we have new or modified images, then we should upload them
                     if(photo != nil && [photo isKindOfClass:[Photo class]] && (imageType.state == ImageStateNew || imageType.state == ImageStateModified)) {
                         dispatch_group_enter(group);
+                        NSLog(@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count);
                         [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
                         [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
                             imageType.state = ImageStateNormal;
+                            self.imgLoadBlock(i + 1);
                             dispatch_group_leave(group);
                         } failure:^(NSString *error) {
+                            self.imgLoadBlock(i + 1);
                             dispatch_group_leave(group);
                         } progress:^(float progress) {
                             dispatch_async(dispatch_get_main_queue(), ^{
@@ -533,12 +553,15 @@
                         [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
                         [progressView setProgress:1.0f animated:YES];
                         [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
+                            self.imgLoadBlock(i + 1);
                             dispatch_group_leave(group);
                         } failure:^(NSString *error) {
+                            self.imgLoadBlock(i + 1);
                             dispatch_group_leave(group);
                         }];
                     }
-                }
+                };
+                self.imgLoadBlock(0);
             }
                                                     
             dispatch_group_notify(group, queue, ^{
@@ -640,7 +663,8 @@
 }
 
 - (void) handleTapFrom: (UITapGestureRecognizer *)recognizer {
-    PhotoCell* cell = (PhotoCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathWithIndex:recognizer.view.tag]];
+    NSIndexPath* path = [NSIndexPath indexPathForRow:recognizer.view.tag inSection:0];
+    PhotoCell* cell = (PhotoCell*)[self.collectionView cellForItemAtIndexPath:path];
     self.selectedImage = cell.photoView;
     self.selectedImageIndex = recognizer.view.tag;
     [self.photoActionsSheet showInView:self.view];
