@@ -147,7 +147,8 @@ typedef void(^ImageLoadBlock)(int);
 }
 
 - (void)setPickerData:(NSNotification*)aNotification {
-    if(self.activeField == self.conditionField || self.activeField == self.unitField || self.activeField == self.sizeField || self.activeField == self.brandField) {
+    if(self.activeField == self.conditionField || self.activeField == self.unitField || self.activeField == self.sizeField || self.activeField == self.brandField ||
+       self.activeField == self.shoeSizeField) {
         [self.picker reloadAllComponents];
         
         NSUInteger index = 0;
@@ -181,6 +182,10 @@ typedef void(^ImageLoadBlock)(int);
 	
 	if(((self.activeField == self.sizeField || self.activeField == self.unitField) && [DataCache sharedInstance].units == nil) ||
        (self.activeField == self.shoeSizeField && [DataCache sharedInstance].shoeSizes == nil)) {
+        if([MRProgressOverlayView overlayForView:self.picker] == nil) {
+            [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
+        }
+    } else if(self.activeField == self.shoeSizeField && [DataCache sharedInstance].shoeSizes == nil) {
         if([MRProgressOverlayView overlayForView:self.picker] == nil) {
             [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
         }
@@ -491,6 +496,10 @@ typedef void(^ImageLoadBlock)(int);
 -(IBAction)cancel:(id)sender {
     NSLog(@"cancel");
     
+    if(self.activeField) {
+        [self.activeField resignFirstResponder];
+    }
+    
     [self clearAllFields];
     self.curProduct = nil;
     self.isEditing = NO;
@@ -506,6 +515,10 @@ typedef void(^ImageLoadBlock)(int);
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
     } else {
+        if(self.activeField) {
+            [self.activeField resignFirstResponder];
+        }
+        
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         
         self.curProduct.descriptionText = self.descriptionView.text;
