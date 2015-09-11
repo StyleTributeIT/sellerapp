@@ -50,7 +50,14 @@
     
 //    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setTextColor:[UIColor blueColor]];
     
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+                                                                                             | UIUserNotificationTypeBadge
+                                                                                             | UIUserNotificationTypeSound) categories:nil];
+        [application registerUserNotificationSettings:settings];
+    } else {
+        [application registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
     
     self.isInBackground = NO;
     
@@ -132,6 +139,10 @@
             });
         }
     }
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [application registerForRemoteNotifications];
 }
 
 @end
