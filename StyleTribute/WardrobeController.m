@@ -192,8 +192,8 @@
 -(NSArray*)rightButtonsForProduct:(Product*)product {
     NSMutableArray* buttons = [NSMutableArray new];
     
-    MGSwipeButton* delButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"remove"] backgroundColor:[UIColor redColor] insets:UIEdgeInsetsMake(10, 0, 10, 0)];
-    delButton.buttonWidth = 48;
+    MGSwipeButton* delButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"remove"] backgroundColor:[UIColor redColor] insets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    delButton.buttonWidth = 68;
     delButton.tag = 0;
     MGSwipeButton* archiveButton = [MGSwipeButton buttonWithTitle:@"Archive" backgroundColor:[UIColor darkGrayColor]];
     archiveButton.tag = 1;
@@ -267,9 +267,9 @@
     }
     
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] setProcessStatus:@"product_not_available" forProduct:p.identifier success:^(Product *product) {
+    [[ApiRequester sharedInstance] setProcessStatus:newStatus forProduct:p.identifier success:^(Product *product) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        p.processStatus = @"product_not_available";
+        p.processStatus = newStatus;
         [self storeProductsInGroups:[DataCache sharedInstance].products];
 		[self.itemsTable reloadData];
 		[self updateWelcomeView];

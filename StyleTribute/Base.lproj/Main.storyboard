@@ -1217,7 +1217,7 @@
                                     <outletCollection property="gestureRecognizers" destination="wiI-Su-grp" appends="YES" id="z8h-oJ-XES"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-Nn-EhL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-Nn-EhL">
                                 <rect key="frame" x="16" y="248" width="288" height="83"/>
                                 <string key="text">StyleTribute Pte. Ltd. 
 102F Pasir Panjang Road 
@@ -1227,7 +1227,7 @@ Citilink Warehouse Complex
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obv-BD-aqT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contact us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obv-BD-aqT">
                                 <rect key="frame" x="16" y="339" width="288" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="PZe-ls-2TH"/>
@@ -1236,7 +1236,7 @@ Citilink Warehouse Complex
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScH-LV-MYk">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScH-LV-MYk">
                                 <rect key="frame" x="40" y="376" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Da3-3Z-AuX"/>
@@ -1250,7 +1250,7 @@ Citilink Warehouse Complex
                                     <action selector="callUs:" destination="dMc-TR-sjB" eventType="touchUpInside" id="K1D-RR-TUc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-Z9-7Ee">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-Z9-7Ee">
                                 <rect key="frame" x="40" y="414" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Wln-8X-lTY"/>
@@ -1264,7 +1264,7 @@ Citilink Warehouse Complex
                                     <action selector="emailUs:" destination="dMc-TR-sjB" eventType="touchUpInside" id="wqV-fV-fm2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wic-WM-Ph2">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wic-WM-Ph2">
                                 <rect key="frame" x="40" y="452" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8kI-VW-NT9"/>
@@ -1358,20 +1358,20 @@ Citilink Warehouse Complex
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
-                                                    <rect key="frame" x="0.0" y="4" width="66" height="66"/>
+                                                    <rect key="frame" x="16" y="4" width="66" height="66"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="66" id="w2Q-gH-c4y"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="74" y="22" width="214" height="12"/>
+                                                    <rect key="frame" x="90" y="22" width="214" height="15"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
-                                                    <rect key="frame" x="74" y="4" width="214" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
+                                                    <rect key="frame" x="90" y="4" width="214" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="L5w-qT-ZbS"/>
                                                     </constraints>
@@ -1382,9 +1382,9 @@ Citilink Warehouse Complex
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dBz-kO-QAU" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="4" id="9Y9-Pu-RCy"/>
-                                                <constraint firstAttribute="trailing" secondItem="7Wf-il-BAC" secondAttribute="trailing" id="Klj-lb-kNx"/>
-                                                <constraint firstAttribute="trailing" secondItem="Cbt-pm-K7d" secondAttribute="trailing" id="U3M-Ps-fm3"/>
-                                                <constraint firstItem="dBz-kO-QAU" firstAttribute="leading" secondItem="KIm-Or-0xq" secondAttribute="leading" id="V9l-CZ-tWC"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Wf-il-BAC" secondAttribute="trailing" constant="16" id="Klj-lb-kNx"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cbt-pm-K7d" secondAttribute="trailing" constant="16" id="U3M-Ps-fm3"/>
+                                                <constraint firstItem="dBz-kO-QAU" firstAttribute="leading" secondItem="KIm-Or-0xq" secondAttribute="leading" constant="16" id="V9l-CZ-tWC"/>
                                                 <constraint firstItem="7Wf-il-BAC" firstAttribute="top" secondItem="Cbt-pm-K7d" secondAttribute="bottom" id="Vdx-Vg-4Ok"/>
                                                 <constraint firstItem="Cbt-pm-K7d" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="4" id="WsK-DY-FAU"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7Wf-il-BAC" secondAttribute="bottom" constant="4" id="ZqM-VV-eMH"/>
@@ -2443,7 +2443,7 @@ Citilink Warehouse Complex
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYh-G4-FOn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-Mw-Cns">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-Mw-Cns">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="337"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Original price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-FV-4pu" customClass="UIFloatLabelTextField">
@@ -2477,7 +2477,7 @@ Citilink Warehouse Complex
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELLING ADVICE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb5-Ej-jyH">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SELLING ADVICE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb5-Ej-jyH">
                                                 <rect key="frame" x="8" y="221" width="182" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="qHe-L4-0oW"/>
@@ -2497,7 +2497,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="esD-36-YNh"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your takeback value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your takeback value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="8" y="279" width="304" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="Tr0-1l-LrH"/>
@@ -2508,7 +2508,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="8sq-l7-uWa"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JJ-31-sFN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JJ-31-sFN">
                                                 <rect key="frame" x="8" y="250" width="304" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bQw-2q-PkY"/>
@@ -2767,34 +2767,34 @@ Citilink Warehouse Complex
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="s3p-LN-sHj">
                                 <rect key="frame" x="0.0" y="39" width="320" height="381"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8B-xV-awX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8B-xV-awX">
                                         <rect key="frame" x="16" y="70" width="288" height="36"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="30"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="tutorialstepsiphone6-04" translatesAutoresizingMaskIntoConstraints="NO" id="U1i-iF-UEE">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="tutorialstepsiphone6-04" translatesAutoresizingMaskIntoConstraints="NO" id="U1i-iF-UEE">
                                         <rect key="frame" x="0.0" y="155" width="320" height="70"/>
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="a6H-Lm-C4K"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="tutorialstepsiphone6-05" translatesAutoresizingMaskIntoConstraints="NO" id="Vsp-jP-pFB">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="tutorialstepsiphone6-05" translatesAutoresizingMaskIntoConstraints="NO" id="Vsp-jP-pFB">
                                         <rect key="frame" x="0.0" y="233" width="320" height="70"/>
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="eet-Qx-rye"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="tutorialstepsiphone6-06" translatesAutoresizingMaskIntoConstraints="NO" id="MvU-6S-Lvw">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="tutorialstepsiphone6-06" translatesAutoresizingMaskIntoConstraints="NO" id="MvU-6S-Lvw">
                                         <rect key="frame" x="0.0" y="311" width="320" height="70"/>
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="RX3-qQ-nXd"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL7-CY-ac7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL7-CY-ac7">
                                         <rect key="frame" x="16" y="109" width="288" height="32"/>
                                         <string key="text">Here are couple of things to
 know before you get started!</string>

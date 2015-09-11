@@ -14,15 +14,15 @@
 {
 	[super layoutSubviews];
 	
-	CGRect rect = self.contentView.frame;
-	if(rect.origin.x == 0.)
-	{
-		rect.origin.x += 16.;
-		rect.size.width -= 32.;
-		
-		self.selectedBackgroundView.frame = rect;
-		self.contentView.frame = rect;
-	}
+//	CGRect rect = self.contentView.frame;
+//	if(rect.origin.x == 0.)
+//	{
+//		rect.origin.x += 16.;
+//		rect.size.width -= 32.;
+//		
+//		self.selectedBackgroundView.frame = rect;
+//		self.contentView.frame = rect;
+//	}
 }
 
 @end
