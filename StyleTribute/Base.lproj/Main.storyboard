@@ -2355,6 +2355,7 @@ Citilink Warehouse Complex
                         <outlet property="widthConstraint" destination="CQ8-hn-jax" id="oeR-wg-LKo"/>
                         <outlet property="widthField" destination="HEf-eD-S3z" id="6Qz-DD-q8a"/>
                         <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" modalTransitionStyle="crossDissolve" animates="NO" id="rms-Fm-rAE"/>
+                        <segue destination="jT0-Up-6a5" kind="show" identifier="ChooseBrandSegue2" id="1Xh-1B-7ma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gi-6i-1r4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2425,7 +2426,7 @@ Citilink Warehouse Complex
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNt-KW-ktF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tm3-rZ-94c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3732" y="-512"/>
+            <point key="canvasLocation" x="3657" y="-499"/>
         </scene>
         <!--Title-->
         <scene sceneID="ouN-cX-hFq">
@@ -2597,6 +2598,84 @@ Citilink Warehouse Complex
                 <exit id="pQR-VK-prv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3657" y="164"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="mtX-Ps-w7n">
+            <objects>
+                <viewController id="jT0-Up-6a5" customClass="ChooseBrandController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bBh-uR-Dk6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q22-RC-n9e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7ED-FF-8ya">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="LtM-A4-5LF">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="GOb-EY-uWo"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jT0-Up-6a5" id="jlf-xI-ej2"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KTF-5v-76c">
+                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jT0-Up-6a5" id="mRx-x7-5EB"/>
+                                    <outlet property="delegate" destination="jT0-Up-6a5" id="uTQ-ts-vhO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LtM-A4-5LF" firstAttribute="leading" secondItem="7ED-FF-8ya" secondAttribute="leading" id="Jfd-Xv-i2u"/>
+                            <constraint firstAttribute="bottom" secondItem="KTF-5v-76c" secondAttribute="bottom" id="Knx-MK-hGg"/>
+                            <constraint firstItem="KTF-5v-76c" firstAttribute="top" secondItem="LtM-A4-5LF" secondAttribute="bottom" id="dGX-CQ-fKs"/>
+                            <constraint firstItem="LtM-A4-5LF" firstAttribute="top" secondItem="bBh-uR-Dk6" secondAttribute="bottom" id="fsp-FU-wfX"/>
+                            <constraint firstItem="KTF-5v-76c" firstAttribute="leading" secondItem="7ED-FF-8ya" secondAttribute="leading" id="gHQ-dM-ayf"/>
+                            <constraint firstAttribute="trailing" secondItem="LtM-A4-5LF" secondAttribute="trailing" id="pbh-Ce-hWd"/>
+                            <constraint firstAttribute="trailing" secondItem="KTF-5v-76c" secondAttribute="trailing" id="smc-hp-UqW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Yqp-uj-8yi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UaN-Vo-Tn9">
+                            <connections>
+                                <segue destination="qCf-72-ySC" kind="unwind" unwindAction="cancelUnwindToAddItem:" id="sKF-b5-YsS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="0Ub-KF-c2h" id="S8t-g6-EH0"/>
+                        <outlet property="tableView" destination="KTF-5v-76c" id="Zcy-gK-jjV"/>
+                        <segue destination="qCf-72-ySC" kind="unwind" identifier="unwindToAddItem" unwindAction="unwindToAddItem:" id="1ht-31-9zc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTb-LN-uah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qCf-72-ySC" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="oxe-Pq-Eht">
+                    <connections>
+                        <outlet property="delegate" destination="jT0-Up-6a5" id="cAd-AF-32W"/>
+                        <outlet property="searchContentsController" destination="jT0-Up-6a5" id="yh2-Ki-xkV"/>
+                        <outlet property="searchResultsDataSource" destination="jT0-Up-6a5" id="9un-ka-JqM"/>
+                        <outlet property="searchResultsDelegate" destination="jT0-Up-6a5" id="Xr3-0C-Nhi"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="0Ub-KF-c2h">
+                    <connections>
+                        <outlet property="delegate" destination="jT0-Up-6a5" id="zib-ht-xHv"/>
+                        <outlet property="searchBar" destination="LtM-A4-5LF" id="grf-jb-kTr"/>
+                        <outlet property="searchContentsController" destination="jT0-Up-6a5" id="6bW-mG-NaQ"/>
+                        <outlet property="searchResultsDataSource" destination="jT0-Up-6a5" id="MVV-t1-yJq"/>
+                        <outlet property="searchResultsDelegate" destination="jT0-Up-6a5" id="box-v0-S4t"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="4057" y="-499"/>
         </scene>
         <!--Tutorial Controller-->
         <scene sceneID="vZo-O0-RDz">

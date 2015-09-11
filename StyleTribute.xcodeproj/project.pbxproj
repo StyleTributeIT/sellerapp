@@ -73,6 +73,7 @@
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
 		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
 		7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */; };
+		7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */; };
 		FE66A89E4F6C6938CCCD3D07 /* libPods-StyleTributeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC957447A82DF788870EABBD /* libPods-StyleTributeTests.a */; };
 /* End PBXBuildFile section */
 
@@ -206,6 +207,8 @@
 		7AFE43651AF22A99004B982B /* GlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalHelper.m; sourceTree = "<group>"; };
 		7AFF6EE91BA1B2460023CDD4 /* PushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNoAnimationSegue.h; sourceTree = "<group>"; };
 		7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNoAnimationSegue.m; sourceTree = "<group>"; };
+		7AFF6EEC1BA2BCD40023CDD4 /* ChooseBrandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBrandController.h; sourceTree = "<group>"; };
+		7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBrandController.m; sourceTree = "<group>"; };
 		92D4F01969E74DEDB8E3B992 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A8F1CC30E3CF5C0E05EE98E9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC957447A82DF788870EABBD /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -456,6 +459,8 @@
 				7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */,
 				7AFCA13C1B0C800C005BB904 /* MainTabBarController.h */,
 				7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */,
+				7AFF6EEC1BA2BCD40023CDD4 /* ChooseBrandController.h */,
+				7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -701,6 +706,7 @@
 				7AF59F1B1B68E70B007DBAB5 /* UIFloatLabelTextField.m in Sources */,
 				7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
+				7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */,
 				7A60979E1B14848F00209340 /* Country.m in Sources */,
 				7A44696C1B61228000E3A752 /* Photo.m in Sources */,
 				7A60FCD11B15EEAE00731F6E /* Category.m in Sources */,

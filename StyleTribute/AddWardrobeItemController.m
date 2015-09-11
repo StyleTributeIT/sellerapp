@@ -27,6 +27,7 @@
 #import "UIFloatLabelTextField.h"
 #import "PriceEditController.h"
 #import "UIImage+FixOrientation.h"
+#import "ChooseBrandController.h"
 
 #define PHOTOS_PER_ROW 4
 
@@ -359,6 +360,9 @@ typedef void(^ImageLoadBlock)(int);
     if([segue.identifier isEqualToString:@"priceSegue"]) {
         PriceEditController* priceController = segue.destinationViewController;
         priceController.product = self.curProduct;
+    } else if([segue.identifier isEqualToString:@"ChooseBrandSegue2"]) {
+        ChooseBrandController* brandController = segue.destinationViewController;
+        brandController.product = self.curProduct;
     }
 }
 
@@ -368,7 +372,9 @@ typedef void(^ImageLoadBlock)(int);
     EditingType editing = [self.curProduct getEditingType];
     
     if(textField == self.categoryField) {
-//        [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
+        return NO;
+    } else if(textField == self.brandField) {
+        [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:self];
         return NO;
     } else if(editing == EditingTypeAll || !self.isEditing) {
         return YES;
