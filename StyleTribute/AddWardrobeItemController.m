@@ -341,6 +341,8 @@ typedef void(^ImageLoadBlock)(int);
         [self displaySizeFieldsByCategory:self.curProduct.category];
         [self loadSizesForCategory:self.curProduct.category];
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
+    } else if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {
+        self.brandField.text = self.curProduct.designer.name;
     }
     
     NSLog(@"unwindToAddItem");
