@@ -1981,7 +1981,7 @@ Citilink Warehouse Complex
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL1-B6-Usj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="544"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="560"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="z6y-lS-1cy">
                                                 <rect key="frame" x="8" y="8" width="304" height="21"/>
@@ -1993,7 +1993,7 @@ Citilink Warehouse Complex
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Spy-gH-EMN" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="329" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="330" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Brand"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="OTY-ji-Qwi"/>
@@ -2005,7 +2005,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cmV-PH-PoO" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="375" width="148" height="38"/>
+                                                <rect key="frame" x="8" y="376" width="148" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Unit"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="aZ2-9Q-zn3"/>
@@ -2017,7 +2017,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-VP-j2D" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="164" y="375" width="148" height="38"/>
+                                                <rect key="frame" x="164" y="376" width="148" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Size"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="G6t-ag-EDN"/>
@@ -2029,7 +2029,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Condition" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ele-kR-1Pi" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="421" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="422" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Condition"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="cf2-BB-JVC"/>
@@ -2041,10 +2041,10 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-OC-s45">
-                                                <rect key="frame" x="8" y="467" width="304" height="30"/>
+                                                <rect key="frame" x="8" y="468" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Price"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="cks-vp-y9K"/>
+                                                    <constraint firstAttribute="height" constant="38" id="cks-vp-y9K"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="Price" backgroundImage="Button">
@@ -2056,13 +2056,13 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="REE-Fz-JhP">
-                                                <rect key="frame" x="8" y="235" width="304" height="86"/>
+                                                <rect key="frame" x="8" y="236" width="304" height="86"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="86" id="Jrn-Ho-z0g"/>
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-XH-bzd">
-                                                <rect key="frame" x="8" y="235" width="304" height="90"/>
+                                                <rect key="frame" x="8" y="236" width="304" height="90"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration" label="Description"/>
                                                 <constraints>
@@ -2075,7 +2075,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textView>
                                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c94-ID-zDO">
-                                                <rect key="frame" x="4" y="36" width="312" height="99"/>
+                                                <rect key="frame" x="4" y="37" width="312" height="99"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="99" id="eon-sT-r8a"/>
@@ -2132,7 +2132,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </collectionView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wcp-kg-xHB" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="189" width="304" height="38"/>
+                                                <rect key="frame" x="8" y="190" width="304" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="pwH-0O-9eQ"/>
                                                 </constraints>
@@ -2143,9 +2143,9 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2J-jy-p57">
-                                                <rect key="frame" x="8" y="505" width="304" height="30"/>
+                                                <rect key="frame" x="8" y="514" width="304" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Y0H-ez-lRr"/>
+                                                    <constraint firstAttribute="height" constant="38" id="Y0H-ez-lRr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                                                 <state key="normal" title="I can't sell this product now" backgroundImage="RedButton">
@@ -2156,7 +2156,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </button>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shoe size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pB2-Sz-Jcp" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="375" width="148" height="38"/>
+                                                <rect key="frame" x="8" y="376" width="148" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="Nux-RX-8JW"/>
                                                 </constraints>
@@ -2166,8 +2166,8 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="PZy-Kq-rcO"/>
                                                 </connections>
                                             </textField>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Heel height" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Has-dD-jix" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="164" y="375" width="148" height="38"/>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Heel height (cm)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Has-dD-jix" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="164" y="376" width="148" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="H93-tG-bo7"/>
                                                 </constraints>
@@ -2177,8 +2177,8 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="nVK-2i-QDs"/>
                                                 </connections>
                                             </textField>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Width" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-eD-S3z" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="375" width="96" height="38"/>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Width (cm)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-eD-S3z" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="8" y="376" width="96" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="QDB-5X-JhG"/>
                                                 </constraints>
@@ -2188,8 +2188,8 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="BNd-zq-fxg"/>
                                                 </connections>
                                             </textField>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-7F-1NK" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="112" y="375" width="96" height="38"/>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height (cm)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KeR-7F-1NK" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="112" y="376" width="96" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="IwR-J3-rbr"/>
                                                 </constraints>
@@ -2199,8 +2199,8 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="oJv-Kx-788"/>
                                                 </connections>
                                             </textField>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Depth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ObM-gk-FB0" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="216" y="375" width="96" height="38"/>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Depth (cm)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ObM-gk-FB0" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="216" y="376" width="96" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="cRu-WM-Oq1"/>
                                                 </constraints>
@@ -2210,8 +2210,8 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="JCl-pv-8pa" id="JlL-cP-PLy"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VlM-R9-Zbi" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="143" width="304" height="38"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VlM-R9-Zbi" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="8" y="144" width="304" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Choose category"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -2451,7 +2451,7 @@ Citilink Warehouse Complex
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-Mw-Cns">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="337"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Original price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-FV-4pu" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Original price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-FV-4pu" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="8" y="8" width="304" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sPX-aR-gdh"/>
@@ -2462,7 +2462,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="Z4w-ps-onP"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="StyleTribute proposed price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRZ-m7-uSp" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="StyleTribute proposed price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRZ-m7-uSp" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="8" y="54" width="304" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="waT-64-jaj"/>
@@ -2491,7 +2491,7 @@ Citilink Warehouse Complex
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your selling price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-ub-d6M" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your selling price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTg-ub-d6M" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="8" y="175" width="304" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="VS1-zl-jsl"/>
@@ -2502,7 +2502,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="esD-36-YNh"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your takeback value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your takeback value (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="8" y="279" width="304" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="Tr0-1l-LrH"/>
