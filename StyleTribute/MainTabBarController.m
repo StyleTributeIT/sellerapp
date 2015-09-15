@@ -82,6 +82,10 @@
     [self setSelectedIndex:self.previousTabIndex];
 }
 
+-(void)setSelectedIndex:(NSUInteger)selectedIndex {
+    self.previousTabIndex = self.selectedIndex;
+    [super setSelectedIndex:selectedIndex];
+}
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     self.previousTabIndex = self.selectedIndex;
