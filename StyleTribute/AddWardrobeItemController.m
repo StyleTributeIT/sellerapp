@@ -69,9 +69,6 @@ typedef void(^ImageLoadBlock)(int);
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     [self.messageLabel sizeToFit];
     
-    self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete picture" otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
-    self.photoActionsSheet.delegate = self;
-    
     self.textViewBackground.image = [[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
     self.collectionView.allowsSelection = YES;
     self.collectionView.allowsMultipleSelection = NO;
@@ -287,8 +284,14 @@ typedef void(^ImageLoadBlock)(int);
 
 #pragma mark - Action sheet
 
+-(void)displayActionSheet:(BOOL)displayDestructiveButton {
+    self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:(displayDestructiveButton ? @"Delete picture" : nil) otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
+    self.photoActionsSheet.delegate = self;
+}
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
+    NSInteger index = (actionSheet.destructiveButtonIndex == -1 ? (buttonIndex + 1) : buttonIndex);
+    switch (index) {
         case 0: {  // Delete
             ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
             if(imgType.state != ImageStateDeleted) {
@@ -692,6 +695,14 @@ typedef void(^ImageLoadBlock)(int);
     PhotoCell* cell = (PhotoCell*)[self.collectionView cellForItemAtIndexPath:path];
     self.selectedImage = cell.photoView;
     self.selectedImageIndex = recognizer.view.tag;
+    
+    Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+    if([photo isKindOfClass:[NSNull class]] || (photo.imageUrl.length == 0 && photo.image == nil)) {
+        [self displayActionSheet:NO];
+    } else {
+        [self displayActionSheet:YES];
+    }
+
     [self.photoActionsSheet showInView:self.view];
 }
 
