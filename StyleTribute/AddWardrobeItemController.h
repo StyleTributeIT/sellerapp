@@ -31,6 +31,8 @@
 @property IBOutlet UITextField* heightField;
 @property IBOutlet UITextField* deepField;
 
+@property IBOutletCollection(NSLayoutConstraint) NSArray *sfHeightConstraints;
+
 @property Product* curProduct;
 @property BOOL isEditing;
 

@@ -2354,6 +2354,11 @@ Citilink Warehouse Complex
                         <outlet property="unitField" destination="cmV-PH-PoO" id="KdZ-GT-JWu"/>
                         <outlet property="widthConstraint" destination="CQ8-hn-jax" id="oeR-wg-LKo"/>
                         <outlet property="widthField" destination="HEf-eD-S3z" id="6Qz-DD-q8a"/>
+                        <outletCollection property="sfHeightConstraints" destination="cRu-WM-Oq1" id="AzQ-96-gng"/>
+                        <outletCollection property="sfHeightConstraints" destination="IwR-J3-rbr" id="PPa-ei-lwK"/>
+                        <outletCollection property="sfHeightConstraints" destination="QDB-5X-JhG" id="0Vb-61-nVa"/>
+                        <outletCollection property="sfHeightConstraints" destination="H93-tG-bo7" id="8sk-FO-DX0"/>
+                        <outletCollection property="sfHeightConstraints" destination="Nux-RX-8JW" id="9Rd-kw-G6H"/>
                         <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" modalTransitionStyle="crossDissolve" animates="NO" id="rms-Fm-rAE"/>
                         <segue destination="jT0-Up-6a5" kind="show" identifier="ChooseBrandSegue2" id="1Xh-1B-7ma"/>
                     </connections>

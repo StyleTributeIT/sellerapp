@@ -698,6 +698,23 @@ typedef void(^ImageLoadBlock)(int);
 #pragma mark - Product size
 
 -(void)displaySizeFieldsByCategory:(STCategory*)category {
+    
+    NSInteger sizeFieldsHeight = (category.sizeFields ? 38 : 0);
+    for (NSLayoutConstraint* heightConstraint in self.sfHeightConstraints) {
+        heightConstraint.constant = sizeFieldsHeight;
+    }
+    
+    if(!category.sizeFields) {
+        [self.unitField setHidden:YES];
+        [self.sizeField setHidden:YES];
+        [self.shoeSizeField setHidden:YES];
+        [self.heelHeightField setHidden:YES];
+        [self.widthField setHidden:YES];
+        [self.heightField setHidden:YES];
+        [self.deepField setHidden:YES];
+        return;
+    }
+    
     NSString* firstSize = [category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {
 		[self.unitField setHidden:NO];
@@ -757,6 +774,9 @@ typedef void(^ImageLoadBlock)(int);
     } else if([firstSize isEqualToString:@"dimensions"]) {
         isSizeFilled = (self.widthField.text.length > 0 && self.heightField.text.length > 0 && self.deepField.text.length > 0);
     }
+    
+    if(!self.curProduct.category.sizeFields)
+        isSizeFilled = YES;
     
     if(self.categoryField.text.length == 0 ||
        self.descriptionView.text.length == 0 ||
