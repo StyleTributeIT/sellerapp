@@ -8,6 +8,7 @@
 
 #import "GlobalHelper.h"
 #import "SlideShowDataSource.h"
+#import <CRToast.h>
 
 @implementation GlobalHelper
 
@@ -31,6 +32,31 @@
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:title message:msg
                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [message show];
+}
+
++(void)showToastNotificationWithTitle:(NSString*)title subtitle:(NSString*)subtitle {
+    NSDictionary *options = @{
+                              kCRToastTextKey : title,
+                              kCRToastSubtitleTextKey: subtitle,
+                              kCRToastSubtitleTextMaxNumberOfLinesKey: @(2),
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentLeft),
+                              kCRToastSubtitleTextAlignmentKey: @(NSTextAlignmentLeft),
+                              kCRToastNotificationTypeKey: @(CRToastTypeNavigationBar),
+                              kCRToastNotificationPreferredPaddingKey: @(4),
+                              kCRToastFontKey: [UIFont fontWithName:@"Montserrat-Regular" size:16],
+                              kCRToastSubtitleFontKey: [UIFont fontWithName:@"Montserrat-Light" size:12],
+//                              kCRToastImageKey: image,
+                              kCRToastBackgroundColorKey : [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8],
+                              kCRToastAnimationInTypeKey : @(CRToastAnimationTypeLinear),
+                              kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),
+                              kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
+                              kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)
+                              };
+    
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                    NSLog(@"notification completed");
+                                }];
 }
 
 +(NSAttributedString*)linkWithString:(NSString*)string {

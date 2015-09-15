@@ -8,6 +8,7 @@ pod 'LinqToObjectiveC'
 pod 'SDWebImage'
 pod 'UIActivityIndicator-for-SDWebImage'
 pod 'MRProgress'
+pod 'CRToast'
 
 target 'StyleTributeTests', :exclusive => true do
 	pod 'KIF', :configuration => ['Debug']
