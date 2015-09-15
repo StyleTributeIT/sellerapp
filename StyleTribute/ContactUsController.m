@@ -14,7 +14,7 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 // TODO: set real data
-static NSString* stPhoneNumber = @"6591593853";
+static NSString* stPhoneNumber = @"+6591593853";
 static NSString* stMessage = @"Hello!";
 
 @interface ContactUsController () <MFMailComposeViewControllerDelegate, ABNewPersonViewControllerDelegate>
