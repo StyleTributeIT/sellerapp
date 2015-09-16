@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
+#import "Address.h"
 
 @interface UserProfile : BaseModel
 
@@ -19,6 +20,7 @@
 @property NSString* firstName;
 @property NSString* lastName;
 @property NSString* userName;
+@property Address* shippingAddress;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
 +(instancetype)parseFromFBJson:(NSDictionary*)dict;

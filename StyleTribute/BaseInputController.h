@@ -20,4 +20,6 @@
 -(void)centerContent;
 -(void)moveContentToTop;
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+
 @end

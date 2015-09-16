@@ -11,11 +11,13 @@
 @interface ResidentAddressController : BaseInputController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property IBOutlet UITextField* companyField;
-@property IBOutlet UITextField* firstLineField;
-@property IBOutlet UITextField* secondLineField;
+@property IBOutlet UITextField* firstNameField;
+@property IBOutlet UITextField* lastNameField;
 @property IBOutlet UITextField* cityField;
 @property IBOutlet UITextField* countryField;
 @property IBOutlet UITextField* postalCodeField;
 @property IBOutlet UITextField* phoneNumberField;
+@property IBOutlet UITextField* addressField;
+@property IBOutlet UITextField* stateField;
 
 @end

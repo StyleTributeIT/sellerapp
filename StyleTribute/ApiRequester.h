@@ -13,6 +13,7 @@
 #import "UserProfile.h"
 #import "BankAccount.h"
 #import "Product.h"
+#import "Address.h"
 
 typedef void (^JSONRespAccount)(UserProfile* profile);
 typedef void (^JSONRespBankAccount)(BankAccount* profile);
@@ -77,5 +78,7 @@ typedef void (^JSONRespPrice)(float priceSuggestion);
 -(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getUnitAndSizeValues:(NSString*)attrName success:(JSONRespDictionary)success failure:(JSONRespError)failure;
 -(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure;
+-(void)getRegionsByCountry:(NSString*)country success:(JSONRespArray)success failure:(JSONRespError)failure;
+-(void)setShippingAddress:(Address*)address success:(JSONRespEmpty)success failure:(JSONRespError)failure;
 
 @end

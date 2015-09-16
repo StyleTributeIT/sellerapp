@@ -10,6 +10,14 @@
 
 @implementation UserProfile
 
+-(instancetype)init {
+    self = [super init];
+    if(self) {
+        self.shippingAddress = [Address new];
+    }
+    return self;
+}
+
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     UserProfile* profile = [UserProfile new];
     
@@ -21,6 +29,11 @@
     profile.userName = [[self class] parseString:@"nickname" fromDict:dict];
     profile.firstName = [[self class] parseString:@"firstname" fromDict:dict];
     profile.lastName = [[self class] parseString:@"lastname" fromDict:dict];
+    
+    NSDictionary* shippingDict = [dict objectForKey:@"shipping"];
+    if(shippingDict) {
+        profile.shippingAddress = [Address parseFromJson:shippingDict];
+    }
     
     return profile;
 }

@@ -72,6 +72,12 @@
     [self.itemsTable insertSubview:self.refreshControl atIndex:0];
 }
 
+//-(void)viewDidAppear:(BOOL)animated{
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [GlobalHelper showToastNotificationWithTitle:@"Test product" subtitle:@"Test message" imageUrl:/*@"http://image.made-in-china.com/2f0j00dvBQaODhfNkr/2011-Fashion-Women-High-Heel-Shoes-J85-.jpg"*/nil];
+//    });
+//}
+
 -(void)updateProducts {
     dispatch_group_t group = dispatch_group_create();
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -105,6 +111,17 @@
         [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
             NSLog(@"getConditions finished");
             [DataCache sharedInstance].conditions = conditions;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].countries == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getCountries:^(NSArray *countries) {
+            NSLog(@"getCountries finished");
+            [DataCache sharedInstance].countries = countries;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
             dispatch_group_leave(group);

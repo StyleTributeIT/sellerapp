@@ -47,6 +47,15 @@
     return item;
 }
 
+-(instancetype)initWithName:(NSString*)name andId:(NSUInteger)identifier {
+    self = [super init];
+    if(self) {
+        self.identifier = identifier;
+        self.name = name;
+    }
+    return self;
+}
+
 #pragma mark - NSCoding
 
 -(instancetype)initWithCoder:(NSCoder *)decoder {

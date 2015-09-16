@@ -8,52 +8,178 @@
 
 #import "GlobalHelper.h"
 #import "ResidentAddressController.h"
+#import "ApiRequester.h"
+#import "DataCache.h"
+#import "Country.h"
+#import <NSArray+LinqExtensions.h>
+#import <MRProgress.h>
 
 @interface ResidentAddressController ()
 
 @property UIPickerView* picker;
-@property NSArray* countries;
+@property NSArray* states;
+
+@property NSInteger curCountryIndex;
+@property NSInteger curStateIndex;
 
 @end
 
 @implementation ResidentAddressController
 
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.curCountryIndex = -1;
+    self.curStateIndex = -1;
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     
-    self.countries = @[@"country 1", @"country 2", @"country 3", @"country 4", @"country 5"];
-    self.picker = [GlobalHelper createPickerForFields:@[self.countryField]];
+    self.picker = [GlobalHelper createPickerForFields:@[self.countryField, self.stateField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
+    
+    Address* curShippingAddress = [DataCache sharedInstance].userProfile.shippingAddress;
+    if(curShippingAddress) {
+        self.firstNameField.text = curShippingAddress.firstName;
+        self.lastNameField.text = curShippingAddress.lastName;
+        self.companyField.text = curShippingAddress.company;
+        self.addressField.text = curShippingAddress.address;
+        self.cityField.text = curShippingAddress.city;
+        self.postalCodeField.text = curShippingAddress.zipCode;
+        self.phoneNumberField.text = curShippingAddress.contactNumber;
+        
+        Country* curCountry = [[[DataCache sharedInstance].countries linq_where:^BOOL(Country* item) {
+            return [item.identifier isEqualToString:curShippingAddress.countryId];
+        }] firstObject];
+        self.curCountryIndex = [[DataCache sharedInstance].countries indexOfObject:curCountry];
+        self.countryField.text = curCountry.name;
+        
+        if(curShippingAddress.state) {
+            self.stateField.text = curShippingAddress.state.name;
+            [[ApiRequester sharedInstance] getRegionsByCountry:curCountry.identifier success:^(NSArray *regions) {
+                self.states = regions;
+                curShippingAddress.state = [[regions linq_where:^BOOL(NamedItem* item) {
+                    return (item.identifier == curShippingAddress.state.identifier);
+                }] firstObject];
+                self.curStateIndex = [regions indexOfObject:curShippingAddress.state];
+                [self.stateField setEnabled:(regions != nil)];
+            } failure:^(NSString *error) {}];
+        }
+    }
 }
+
+#pragma mark - Actions
 
 -(IBAction)cancel:(id)sender {
     [self performSegueWithIdentifier:@"unwindFromResidentAddress" sender:self];
 }
 
 -(IBAction)save:(id)sender {
-    [self performSegueWithIdentifier:@"unwindFromResidentAddress" sender:self];
+    if([self noEmptyFields]) {
+        Country* curCountry = [[DataCache sharedInstance].countries objectAtIndex:self.curCountryIndex];
+        Address* newAddress = [Address new];
+        newAddress.firstName = self.firstNameField.text;
+        newAddress.lastName = self.lastNameField.text;
+        newAddress.company = self.companyField.text;
+        newAddress.address = self.addressField.text;
+        newAddress.city = self.cityField.text;
+        newAddress.state = [self.states objectAtIndex:self.curStateIndex];
+        newAddress.zipCode = self.postalCodeField.text;
+        newAddress.countryId = curCountry.identifier;
+        newAddress.contactNumber = self.phoneNumberField.text;
+        
+        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [[ApiRequester sharedInstance] setShippingAddress:newAddress success:^{
+            [DataCache sharedInstance].userProfile.shippingAddress = newAddress;
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [self performSegueWithIdentifier:@"unwindFromResidentAddress" sender:self];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [GlobalHelper showMessage:error withTitle:@"error"];
+        }];
+    } else {
+        [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+    }
+}
+
+#pragma mark - Text fields
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [super textFieldDidBeginEditing:textField];
+    
+    if(self.activeField == self.countryField) {
+        [self.picker reloadAllComponents];
+        [self.picker selectRow:(self.curCountryIndex >= 0 ? self.curCountryIndex : 0) inComponent:0 animated:NO];
+    } else if(self.activeField == self.stateField) {
+        [self.picker reloadAllComponents];
+        [self.picker selectRow:(self.curStateIndex >= 0 ? self.curStateIndex : 0) inComponent:0 animated:NO];
+    }
 }
 
 #pragma mark - UIPicker
+
+-(NSArray*)getCurrentDatasource {
+    if(self.activeField == self.countryField) {
+        return [DataCache sharedInstance].countries;
+    } else if(self.activeField == self.stateField) {
+        return self.states;
+    } else {
+        return nil;
+    }
+}
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
     return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.countries.count;
+    return [self getCurrentDatasource].count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.countries objectAtIndex:row];
+    return [[[self getCurrentDatasource] objectAtIndex:row] name];
 }
 
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
-    self.countryField.text = [self.countries objectAtIndex:index];
+
+    if(self.activeField == self.countryField) {
+        Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
+        if(index != self.curCountryIndex) {
+            [self.stateField setEnabled:NO];
+            [[ApiRequester sharedInstance] getRegionsByCountry:country.identifier success:^(NSArray *regions) {
+                self.states = regions;
+                [self.stateField setEnabled:(regions != nil)];
+            } failure:^(NSString *error) {}];
+        }
+        self.curCountryIndex = index;
+        self.countryField.text = country.name;
+    } else if(self.activeField == self.stateField) {
+        self.curStateIndex = index;
+        self.stateField.text = [[self.states objectAtIndex:index] name];
+    }
+    
     [self.activeField resignFirstResponder];
+}
+
+#pragma mark -
+
+-(BOOL)noEmptyFields {
+    BOOL isStateFilled = (self.stateField.isEnabled ? (self.stateField.text.length > 0) : YES);
+    
+    return (self.firstNameField.text.length > 0 &&
+            self.lastNameField.text.length > 0 &&
+            self.companyField.text.length > 0 &&
+            self.cityField.text.length > 0 &&
+            isStateFilled &&
+            self.postalCodeField.text.length > 0 &&
+            self.countryField.text.length > 0 &&
+            self.phoneNumberField.text.length > 0 &&
+            self.addressField.text.length > 0);
 }
 
 @end

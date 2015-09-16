@@ -14,5 +14,6 @@
 @property NSString* name;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
+-(instancetype)initWithName:(NSString*)name andId:(NSUInteger)identifier;
 
 @end

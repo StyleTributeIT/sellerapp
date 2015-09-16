@@ -15,6 +15,7 @@
 #import "Category.h"
 #import "DataCache.h"
 #import "NamedItems.h"
+#import "Address.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
@@ -502,6 +503,54 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         success([responseObject floatValue]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self logError:error withCaption:@"getPriceSuggestionForProduct error"];
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)getRegionsByCountry:(NSString*)country success:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSString* url = [NSString stringWithFormat:@"checkout/regionsByCountry/%@", country];
+    [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, id response) {
+        if([response isKindOfClass:[NSNumber class]]) {
+            success(nil);
+            return;
+        }
+        
+        NSMutableArray* regions = [NSMutableArray new];
+        for (NSDictionary* regionDict in response) {
+            [regions addObject:[NamedItem parseFromJson:regionDict]];
+        }
+        success(regions);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"regionsByCountry"];
+        failure(DefGeneralErrMsg);
+    }];
+}
+
+-(void)setShippingAddress:(Address*)address success:(JSONRespEmpty)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSMutableDictionary* params = [@{@"city": address.city,
+                             @"company": address.company,
+                             @"country_id": address.countryId,
+                             @"firstname": address.firstName,
+                             @"lastname": address.lastName,
+                             @"postcode": address.zipCode,
+                             @"street": address.address,
+                             @"telephone": address.contactNumber } mutableCopy];
+    
+    if(address.state) {
+        [params setObject:address.state.name forKey:@"region"];
+        [params setObject:[@(address.state.identifier) stringValue] forKey:@"region_id"];
+    }
+    
+    [self.sessionManager POST:@"account/setShippingAddress" parameters:params success:^(NSURLSessionDataTask *task, id response) {
+        if([self checkSuccessForResponse:response errCalback:failure]) {
+            success();
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"setShippingAddress"];
         failure(DefGeneralErrMsg);
     }];
 }
