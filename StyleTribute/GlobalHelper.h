@@ -17,6 +17,6 @@
 +(void)showMessage:(NSString*)msg withTitle:(NSString*)title;
 +(NSAttributedString*)linkWithString:(NSString*)string;
 +(void)configureSlideshow:(KASlideShow*)slideShow;
-+(void)showToastNotificationWithTitle:(NSString*)title subtitle:(NSString*)subtitle;
++(void)showToastNotificationWithTitle:(NSString*)title subtitle:(NSString*)subtitle imageUrl:(NSString*)url;
 
 @end

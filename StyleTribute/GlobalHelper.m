@@ -9,6 +9,8 @@
 #import "GlobalHelper.h"
 #import "SlideShowDataSource.h"
 #import <CRToast.h>
+#import <SDWebImageDownloader.h>
+#import <SDWebImageManager.h>
 
 @implementation GlobalHelper
 
@@ -34,8 +36,8 @@
     [message show];
 }
 
-+(void)showToastNotificationWithTitle:(NSString*)title subtitle:(NSString*)subtitle {
-    NSDictionary *options = @{
++(void)showToastNotificationWithTitle:(NSString*)title subtitle:(NSString*)subtitle imageUrl:(NSString*)url {
+    NSMutableDictionary *options = [@{
                               kCRToastTextKey : title,
                               kCRToastSubtitleTextKey: subtitle,
                               kCRToastSubtitleTextMaxNumberOfLinesKey: @(2),
@@ -45,18 +47,36 @@
                               kCRToastNotificationPreferredPaddingKey: @(4),
                               kCRToastFontKey: [UIFont fontWithName:@"Montserrat-Regular" size:16],
                               kCRToastSubtitleFontKey: [UIFont fontWithName:@"Montserrat-Light" size:12],
-//                              kCRToastImageKey: image,
                               kCRToastBackgroundColorKey : [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8],
                               kCRToastAnimationInTypeKey : @(CRToastAnimationTypeLinear),
                               kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeLinear),
                               kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
                               kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionTop)
-                              };
+                              } mutableCopy];
     
-    [CRToastManager showNotificationWithOptions:options
-                                completionBlock:^{
-                                    NSLog(@"notification completed");
-                                }];
+    if(url) {
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[NSURL URLWithString:url]
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                if (image) {
+                                    UIImage* resizedImage = [GlobalHelper imageWithImage:image scaledToSize:CGSizeMake(48, 48)];
+                                    [options setObject:resizedImage forKey:kCRToastImageKey];
+                                    [CRToastManager showNotificationWithOptions:options
+                                                                completionBlock:^{
+
+                                                                }];
+                                }
+                            }];
+    } else {
+        [CRToastManager showNotificationWithOptions:options
+                                    completionBlock:^{
+
+                                    }];
+    }
 }
 
 +(NSAttributedString*)linkWithString:(NSString*)string {
@@ -69,6 +89,17 @@
     [slideShow setTransitionType:KASlideShowTransitionSlide];
     [slideShow setImagesContentMode:UIViewContentModeScaleAspectFit];
     [slideShow setDataSource:[SlideShowDataSource sharedInstance]];
+}
+
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end
