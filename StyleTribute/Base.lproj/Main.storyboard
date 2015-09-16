@@ -2449,7 +2449,7 @@ Citilink Warehouse Complex
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-Mw-Cns">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Original price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-FV-4pu" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="8" y="8" width="304" height="38"/>
@@ -2462,7 +2462,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="Z4w-ps-onP"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="StyleTribute proposed price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRZ-m7-uSp" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="StyleTribute's suggested selling price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRZ-m7-uSp" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="8" y="54" width="304" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="waT-64-jaj"/>
@@ -2473,21 +2473,12 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="PwK-P4-mKf"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is our suggested selling price, adjust the price if you wish to sell it at another price" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="6f5-HE-oEO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*This is our suggested selling price. Adjust the price if you wish to sell it at another price." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="6f5-HE-oEO">
                                                 <rect key="frame" x="8" y="100" width="304" height="67"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="67" id="dJi-eL-bYC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELLING ADVICE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb5-Ej-jyH">
-                                                <rect key="frame" x="8" y="221" width="182" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="qHe-L4-0oW"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2502,10 +2493,10 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="esD-36-YNh"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your takeback value (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="8" y="279" width="304" height="38"/>
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What you earn (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Sk-Bh-U26" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="8" y="221" width="304" height="38"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="Tr0-1l-LrH"/>
+                                                    <constraint firstAttribute="height" constant="38" id="0Od-yg-eLc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -2513,10 +2504,20 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="8sq-l7-uWa"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JJ-31-sFN">
-                                                <rect key="frame" x="8" y="250" width="304" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELLING ADVICE:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb5-Ej-jyH">
+                                                <rect key="frame" x="8" y="267" width="182" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="bQw-2q-PkY"/>
+                                                    <constraint firstAttribute="height" constant="21" id="NkA-XC-BOc"/>
+                                                    <constraint firstAttribute="width" constant="182" id="Z2b-aS-8d4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JJ-31-sFN">
+                                                <rect key="frame" x="8" y="296" width="304" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="zeB-uJ-vPK"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2525,34 +2526,36 @@ Citilink Warehouse Complex
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Nb5-Ej-jyH" firstAttribute="top" secondItem="4Sk-Bh-U26" secondAttribute="bottom" constant="8" id="154-0U-ahg"/>
+                                            <constraint firstItem="Nb5-Ej-jyH" firstAttribute="top" secondItem="4Sk-Bh-U26" secondAttribute="bottom" constant="8" id="2dY-V3-zZK"/>
                                             <constraint firstItem="gRZ-m7-uSp" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="2fi-Ac-rip"/>
                                             <constraint firstItem="uTg-ub-d6M" firstAttribute="top" secondItem="6f5-HE-oEO" secondAttribute="bottom" constant="8" id="5Ai-ck-q4v"/>
                                             <constraint firstItem="oe3-FV-4pu" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="7hz-2n-9c0"/>
+                                            <constraint firstItem="5JJ-31-sFN" firstAttribute="top" secondItem="Nb5-Ej-jyH" secondAttribute="bottom" constant="8" id="95r-HP-4Ad"/>
                                             <constraint firstAttribute="trailing" secondItem="gRZ-m7-uSp" secondAttribute="trailing" constant="8" id="9Qt-Rn-UMb"/>
-                                            <constraint firstAttribute="trailing" secondItem="4Sk-Bh-U26" secondAttribute="trailing" constant="8" id="C8X-M3-x7k"/>
+                                            <constraint firstItem="Nb5-Ej-jyH" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="AZs-Ex-dSj"/>
                                             <constraint firstAttribute="trailing" secondItem="uTg-ub-d6M" secondAttribute="trailing" constant="8" id="Fcw-12-E3H"/>
                                             <constraint firstAttribute="width" constant="320" id="I6c-qZ-xjw"/>
+                                            <constraint firstAttribute="bottom" secondItem="5JJ-31-sFN" secondAttribute="bottom" constant="8" id="J3v-84-n20"/>
                                             <constraint firstAttribute="trailing" secondItem="oe3-FV-4pu" secondAttribute="trailing" constant="8" id="LbM-oE-doR"/>
-                                            <constraint firstItem="Nb5-Ej-jyH" firstAttribute="top" secondItem="uTg-ub-d6M" secondAttribute="bottom" constant="8" id="Lsj-92-fTm"/>
+                                            <constraint firstAttribute="trailing" secondItem="4Sk-Bh-U26" secondAttribute="trailing" constant="8" id="OWX-gm-KbU"/>
                                             <constraint firstAttribute="trailing" secondItem="6f5-HE-oEO" secondAttribute="trailing" constant="8" id="Rt4-mg-djj"/>
-                                            <constraint firstItem="5JJ-31-sFN" firstAttribute="top" secondItem="Nb5-Ej-jyH" secondAttribute="bottom" constant="8" id="asd-M0-j5C"/>
-                                            <constraint firstItem="4Sk-Bh-U26" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="bWn-hG-33g"/>
+                                            <constraint firstItem="5JJ-31-sFN" firstAttribute="top" secondItem="Nb5-Ej-jyH" secondAttribute="bottom" constant="8" id="fIP-cG-n62"/>
                                             <constraint firstItem="gRZ-m7-uSp" firstAttribute="top" secondItem="oe3-FV-4pu" secondAttribute="bottom" constant="8" id="fMH-Gk-n7t"/>
-                                            <constraint firstItem="Nb5-Ej-jyH" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="jwU-Vi-PdY"/>
-                                            <constraint firstAttribute="trailing" secondItem="Nb5-Ej-jyH" secondAttribute="trailing" constant="130" id="kgM-4d-vu0"/>
+                                            <constraint firstItem="4Sk-Bh-U26" firstAttribute="top" secondItem="uTg-ub-d6M" secondAttribute="bottom" constant="8" id="kHa-lu-5bV"/>
+                                            <constraint firstItem="5JJ-31-sFN" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="nQA-l1-BJM"/>
                                             <constraint firstItem="4Sk-Bh-U26" firstAttribute="top" secondItem="uTg-ub-d6M" secondAttribute="bottom" priority="500" constant="8" id="ntF-os-jEu"/>
                                             <constraint firstItem="6f5-HE-oEO" firstAttribute="top" secondItem="gRZ-m7-uSp" secondAttribute="bottom" constant="8" id="pnf-0K-rHe"/>
+                                            <constraint firstAttribute="trailing" secondItem="5JJ-31-sFN" secondAttribute="trailing" constant="8" id="rua-e8-axp"/>
                                             <constraint firstItem="oe3-FV-4pu" firstAttribute="top" secondItem="uYm-Mw-Cns" secondAttribute="top" constant="8" id="rvy-P0-PpY"/>
-                                            <constraint firstItem="4Sk-Bh-U26" firstAttribute="top" secondItem="5JJ-31-sFN" secondAttribute="bottom" constant="8" id="sCk-WU-SKJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="4Sk-Bh-U26" secondAttribute="bottom" constant="20" id="vqb-v6-rmn"/>
                                             <constraint firstItem="6f5-HE-oEO" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="wJg-gM-ZID"/>
                                             <constraint firstItem="uTg-ub-d6M" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="x9V-WV-ofL"/>
-                                            <constraint firstItem="5JJ-31-sFN" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="xd6-Qw-O3T"/>
-                                            <constraint firstAttribute="trailing" secondItem="5JJ-31-sFN" secondAttribute="trailing" constant="8" id="ylb-n2-c9j"/>
+                                            <constraint firstItem="4Sk-Bh-U26" firstAttribute="leading" secondItem="uYm-Mw-Cns" secondAttribute="leading" constant="8" id="xps-sb-Px9"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="ntF-os-jEu"/>
+                                                <exclude reference="fIP-cG-n62"/>
                                             </mask>
                                         </variation>
                                     </view>
