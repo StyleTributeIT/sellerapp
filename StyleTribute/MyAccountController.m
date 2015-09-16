@@ -25,7 +25,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.accountSettings = @[@"EDIT PROFILE", @"RESIDENT ADDRESS", @"CHANGE MY PASSWORD", @"MY BANK DETAILS", @"CONTACT & FIND US"];
+    self.accountSettings = @[@"EDIT PROFILE", @"RESIDENT ADDRESS", /* @"CHANGE MY PASSWORD", */ @"MY BANK DETAILS", @"CONTACT & FIND US"];
     self.userNameLabel.text = [NSString stringWithFormat:@"Hi %@!", [DataCache sharedInstance].userProfile.userName];
 }
 

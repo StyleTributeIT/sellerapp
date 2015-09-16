@@ -437,10 +437,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rNJ-vz-aMo">
-                                                <rect key="frame" x="8" y="99" width="304" height="250"/>
+                                                <rect key="frame" x="8" y="99" width="304" height="200"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="250" id="EJZ-GV-yaT"/>
+                                                    <constraint firstAttribute="height" constant="200" id="EJZ-GV-yaT"/>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="eXp-aJ-P6h" customClass="MyAccountCell">
@@ -476,7 +476,7 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRr-8i-PRe">
-                                                <rect key="frame" x="8" y="357" width="304" height="30"/>
+                                                <rect key="frame" x="8" y="307" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Logout"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="016-ns-F42"/>
