@@ -415,11 +415,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfr-uw-wMs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xF-vN-mHu">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7xF-vN-mHu">
+                                        <rect key="frame" x="0.0" y="68" width="320" height="432"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel free to change your personal details to better assist you with payments and password credentials in this space" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cl-eb-aQj">
-                                                <rect key="frame" x="10" y="37" width="300" height="49"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel free to change your personal details to better assist you with payments and password credentials in this space" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cl-eb-aQj">
+                                                <rect key="frame" x="10" y="42" width="300" height="49"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="uii-e6-s3h"/>
                                                 </constraints>
@@ -428,16 +428,16 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi $username!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1K-gw-wKD">
-                                                <rect key="frame" x="8" y="8" width="304" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="304" height="26"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="cP8-fo-xmw"/>
+                                                    <constraint firstAttribute="height" constant="26" id="cP8-fo-xmw"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="21"/>
                                                 <color key="textColor" red="1" green="0.0" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rNJ-vz-aMo">
-                                                <rect key="frame" x="8" y="94" width="304" height="250"/>
+                                                <rect key="frame" x="8" y="99" width="304" height="250"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="EJZ-GV-yaT"/>
@@ -476,7 +476,7 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRr-8i-PRe">
-                                                <rect key="frame" x="8" y="352" width="304" height="30"/>
+                                                <rect key="frame" x="8" y="357" width="304" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Logout"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="016-ns-F42"/>
