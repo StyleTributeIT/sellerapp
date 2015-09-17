@@ -101,7 +101,7 @@ typedef void(^ImageLoadBlock)(int);
         if(self.sizeField.text.length == 0)
             self.sizeField.text = self.curProduct.size;
         if(self.shoeSizeField.text.length == 0)
-            self.shoeSizeField.text = self.curProduct.shoeSize;
+            self.shoeSizeField.text = self.curProduct.shoeSize.name;
         if(self.heelHeightField.text.length == 0)
             self.heelHeightField.text = self.curProduct.heelHeight;
         
@@ -281,7 +281,7 @@ typedef void(^ImageLoadBlock)(int);
     } else if(self.activeField == self.shoeSizeField) {
         NamedItem* shoeSize = [[DataCache sharedInstance].shoeSizes objectAtIndex:index];
         self.shoeSizeField.text = shoeSize.name;
-        self.curProduct.shoeSize = shoeSize.name;
+        self.curProduct.shoeSize = shoeSize;
     } else if(self.activeField == self.heelHeightField) {
         self.curProduct.heelHeight = self.heelHeightField.text;
     } else if(self.activeField == self.widthField || self.activeField == self.heightField || self.deepField) {
@@ -351,7 +351,6 @@ typedef void(^ImageLoadBlock)(int);
             [self.curProduct.photos addObject:[NSNull null]];
         }
         [self displaySizeFieldsByCategory:self.curProduct.category];
-        [self loadSizesForCategory:self.curProduct.category];
     } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
     } else if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {
         self.brandField.text = self.curProduct.designer.name;
@@ -791,27 +790,6 @@ typedef void(^ImageLoadBlock)(int);
         [self.widthField setHidden:NO];
         [self.heightField setHidden:NO];
         [self.deepField setHidden:NO];
-    }
-}
-
--(void)loadSizesForCategory:(STCategory*)category {
-    NSString* firstSize = [category.sizeFields firstObject];
-    if([firstSize isEqualToString:@"size"]) {
-        [[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:NO];
-            [DataCache sharedInstance].units = units;
-            [self.picker reloadAllComponents];
-        } failure:^(NSString *error) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
-        }];
-    } else if([firstSize isEqualToString:@"shoesize"]) {
-        [[ApiRequester sharedInstance] getSizeValues:@"shoesize" success:^(NSArray *sizes) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:NO];
-            [DataCache sharedInstance].shoeSizes = sizes;
-            [self.picker reloadAllComponents];
-        } failure:^(NSString *error) {
-            [MRProgressOverlayView dismissOverlayForView:self.picker animated:YES];
-        }];
     }
 }
 

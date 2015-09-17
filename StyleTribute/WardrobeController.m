@@ -87,7 +87,6 @@
     if([DataCache sharedInstance].categories == nil) {
         dispatch_group_enter(group);
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
-            NSLog(@"getCategories finished");
             [DataCache sharedInstance].categories = categories;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
@@ -98,7 +97,6 @@
     if([DataCache sharedInstance].designers == nil) {
         dispatch_group_enter(group);
         [[ApiRequester sharedInstance] getDesigners:^(NSArray *designers) {
-            NSLog(@"getDesigners finished");
             [DataCache sharedInstance].designers = designers;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
@@ -109,7 +107,6 @@
     if([DataCache sharedInstance].conditions == nil) {
         dispatch_group_enter(group);
         [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
-            NSLog(@"getConditions finished");
             [DataCache sharedInstance].conditions = conditions;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
@@ -120,8 +117,17 @@
     if([DataCache sharedInstance].countries == nil) {
         dispatch_group_enter(group);
         [[ApiRequester sharedInstance] getCountries:^(NSArray *countries) {
-            NSLog(@"getCountries finished");
             [DataCache sharedInstance].countries = countries;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].shoeSizes == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getSizeValues:@"shoesize" success:^(NSArray *sizes) {
+            [DataCache sharedInstance].shoeSizes = sizes;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
             dispatch_group_leave(group);
@@ -131,7 +137,6 @@
 	if([DataCache sharedInstance].units == nil) {
 		dispatch_group_enter(group);
 		[[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
-			NSLog(@"getUnitAndSizeValues finished");
 			[DataCache sharedInstance].units = units;
 			dispatch_group_leave(group);
 		} failure:^(NSString *error) {
@@ -140,9 +145,7 @@
 	}
 	
     dispatch_group_notify(group, queue, ^{
-        NSLog(@"first step done!");
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
-            NSLog(@"getProducts finished");
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].products = [products mutableCopy];
             [self storeProductsInGroups:products];

@@ -98,7 +98,6 @@
     }
 	
 	product.sizeId = [self parseInt:@"size" fromDict:dict];
-    product.shoeSize = [self parseString:@"shoesize" fromDict:dict];
     product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
 	
 	// sizeId -> unit  & size
@@ -117,6 +116,13 @@
 	}
     
     product.processComment = [self parseString:@"process_comment" fromDict:dict];
+    
+    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoesize" fromDict:dict] integerValue];
+    if([DataCache sharedInstance].shoeSizes) {
+        product.shoeSize = [[[DataCache sharedInstance].shoeSizes linq_where:^BOOL(NamedItem* item) {
+            return (item.identifier == shoesizeId);
+        }] firstObject];
+    }
 	
     return product;
 }

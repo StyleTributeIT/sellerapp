@@ -360,7 +360,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if([firstSize isEqualToString:@"size"]) {
         [params setObject:@[product.unit, product.size] forKey:@"size"];
     } else if([firstSize isEqualToString:@"shoesize"]) {
-        [params setObject:product.shoeSize forKey:@"shoesize"];
+        [params setObject:@(product.shoeSize.identifier) forKey:@"shoesize"];
         [params setObject:product.heelHeight forKey:@"heel_height"];
     } else if([firstSize isEqualToString:@"dimensions"]) {
         [params setObject:[product.dimensions objectAtIndex:0] forKey:@"dimensions[width]"];

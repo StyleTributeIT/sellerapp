@@ -31,7 +31,7 @@
     profile.lastName = [[self class] parseString:@"lastname" fromDict:dict];
     
     NSDictionary* shippingDict = [dict objectForKey:@"shipping"];
-    if(shippingDict) {
+    if(shippingDict && ![shippingDict isKindOfClass:[NSNumber class]]) {
         profile.shippingAddress = [Address parseFromJson:shippingDict];
     }
     
