@@ -114,7 +114,7 @@ typedef void(^ImageLoadBlock)(int);
                 self.deepField.text = [self.curProduct.dimensions objectAtIndex:2];
         }
         
-        if(self.messageLabel.text.length == 0 && self.curProduct.processComment != nil) {
+        if(self.messageLabel.attributedText.length == 0 && self.curProduct.processComment != nil && self.curProduct.processComment.length > 0) {
             NSString* text = [NSString stringWithFormat:@"Our comment:\n%@", self.curProduct.processComment];
             NSMutableAttributedString *attString=[[NSMutableAttributedString alloc] initWithString:text];
             [attString addAttribute:NSFontAttributeName
@@ -561,6 +561,16 @@ typedef void(^ImageLoadBlock)(int);
             product.photos = self.curProduct.photos;
             self.curProduct = product;
             
+            for (int i = 0; i < product.photos.count; ++i) {
+                Photo* pOld = [oldPhotos objectAtIndex:i];
+                Photo* pNew = [self.curProduct.photos objectAtIndex:i];
+                
+                if(![pOld isKindOfClass:[NSNull class]] && ![pNew isKindOfClass:[NSNull class]]) {
+                    pNew.imageUrl = pOld.imageUrl;
+                    pNew.identifier = pOld.identifier;
+                }
+            }
+            
             dispatch_group_t group = dispatch_group_create();
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                                                     
@@ -605,6 +615,7 @@ typedef void(^ImageLoadBlock)(int);
                         }];
                     } else if(imageType.state == ImageStateDeleted) {
                         dispatch_group_enter(group);
+                        imageType.state = ImageStateNormal;
                         [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
                         [progressView setProgress:1.0f animated:YES];
                         [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
