@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 @property ProductType type;
 @property NSString* name;
 @property NSString* processStatus;
+@property NSString* processStatusDisplay;
 @property NSString* processComment;
 @property STCategory* category;
 @property NSMutableArray* photos;

@@ -199,7 +199,7 @@
     cell.tag = indexPath.row;
     cell.delegate = self;
     cell.title.text = p.name;
-    cell.displayState.text = p.processStatus;
+    cell.displayState.text = p.processStatusDisplay;
     [cell.displayState sizeToFit];
     
     cell.rightButtons = [self rightButtonsForProduct:p];

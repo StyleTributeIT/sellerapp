@@ -116,6 +116,7 @@
 	}
     
     product.processComment = [self parseString:@"process_comment" fromDict:dict];
+    product.processStatusDisplay = [self parseString:@"process_status_display" fromDict:dict];
     
     NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoesize" fromDict:dict] integerValue];
     if([DataCache sharedInstance].shoeSizes) {
@@ -139,6 +140,7 @@
     self.type = [[decoder decodeObjectForKey:@"type"] unsignedIntegerValue];
     self.name = [decoder decodeObjectForKey:@"name"];
     self.processStatus = [decoder decodeObjectForKey:@"processStatus"];
+    self.processStatusDisplay = [decoder decodeObjectForKey:@"processStatusDisplay"];
     self.processComment = [decoder decodeObjectForKey:@"processComment"];
     self.category = [decoder decodeObjectForKey:@"category"];
     self.photos = [decoder decodeObjectForKey:@"photos"];
@@ -161,6 +163,7 @@
     [encoder encodeObject:@(self.type) forKey:@"type"];
     [encoder encodeObject:self.name forKey:@"name"];
     [encoder encodeObject:self.processStatus forKey:@"processStatus"];
+    [encoder encodeObject:self.processStatusDisplay forKey:@"processStatusDisplay"];
     [encoder encodeObject:self.processComment forKey:@"processComment"];
     [encoder encodeObject:self.category forKey:@"category"];
     [encoder encodeObject:self.photos forKey:@"photos"];
