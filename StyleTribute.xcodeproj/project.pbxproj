@@ -66,6 +66,7 @@
 		7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */; };
 		7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */; };
 		7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC54C7D1B25DF0900539C94 /* CustomTextField.m */; };
+		7AD54BFA1BAAA26F009EFFA6 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD54BF91BAAA26F009EFFA6 /* Address.m */; };
 		7AE6C7171B3AD10000EB2B5F /* NamedItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE6C7161B3AD10000EB2B5F /* NamedItems.m */; };
 		7AF59F1B1B68E70B007DBAB5 /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF59F1A1B68E70B007DBAB5 /* UIFloatLabelTextField.m */; };
 		7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */; };
@@ -195,6 +196,8 @@
 		7AC4D1011B0F0C5C007724E2 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
 		7AC54C7C1B25DF0900539C94 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		7AC54C7D1B25DF0900539C94 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		7AD54BF81BAAA26F009EFFA6 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		7AD54BF91BAAA26F009EFFA6 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		7AE6C7151B3AD10000EB2B5F /* NamedItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NamedItems.h; sourceTree = "<group>"; };
 		7AE6C7161B3AD10000EB2B5F /* NamedItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NamedItems.m; sourceTree = "<group>"; };
 		7AF59F191B68E70B007DBAB5 /* UIFloatLabelTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFloatLabelTextField.h; sourceTree = "<group>"; };
@@ -380,6 +383,8 @@
 				7AE6C7161B3AD10000EB2B5F /* NamedItems.m */,
 				7A44696A1B61228000E3A752 /* Photo.h */,
 				7A44696B1B61228000E3A752 /* Photo.m */,
+				7AD54BF81BAAA26F009EFFA6 /* Address.h */,
+				7AD54BF91BAAA26F009EFFA6 /* Address.m */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,
 				7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */,
+				7AD54BFA1BAAA26F009EFFA6 /* Address.m in Sources */,
 				7A1E44AF1B296CD000063F17 /* ProductPhoto.m in Sources */,
 				7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */,
 				7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */,
