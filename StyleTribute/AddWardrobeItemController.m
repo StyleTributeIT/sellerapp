@@ -114,6 +114,15 @@ typedef void(^ImageLoadBlock)(int);
                 self.deepField.text = [self.curProduct.dimensions objectAtIndex:2];
         }
         
+        if(self.messageLabel.text.length == 0 && self.curProduct.processComment != nil) {
+            NSString* text = [NSString stringWithFormat:@"Our comment:\n%@", self.curProduct.processComment];
+            NSMutableAttributedString *attString=[[NSMutableAttributedString alloc] initWithString:text];
+            [attString addAttribute:NSFontAttributeName
+                              value:[UIFont fontWithName:@"Montserrat-Light" size:17.0]
+                              range:NSMakeRange(0, 12)];
+            self.messageLabel.attributedText = attString;
+        }
+        
         [self displaySizeFieldsByCategory:self.curProduct.category];
     }
     
@@ -493,6 +502,7 @@ typedef void(^ImageLoadBlock)(int);
     self.conditionField.text = nil;
     self.descriptionView.text = nil;
     self.nameField.text = nil;
+    self.messageLabel.attributedText = nil;
     
     self.shoeSizeField.text = nil;
     self.heelHeightField.text = nil;

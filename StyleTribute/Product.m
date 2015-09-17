@@ -115,6 +115,8 @@
 			}
 		}];
 	}
+    
+    product.processComment = [self parseString:@"process_comment" fromDict:dict];
 	
     return product;
 }
@@ -131,6 +133,7 @@
     self.type = [[decoder decodeObjectForKey:@"type"] unsignedIntegerValue];
     self.name = [decoder decodeObjectForKey:@"name"];
     self.processStatus = [decoder decodeObjectForKey:@"processStatus"];
+    self.processComment = [decoder decodeObjectForKey:@"processComment"];
     self.category = [decoder decodeObjectForKey:@"category"];
     self.photos = [decoder decodeObjectForKey:@"photos"];
     self.originalPrice = [[decoder decodeObjectForKey:@"originalPrice"] floatValue];
@@ -152,6 +155,7 @@
     [encoder encodeObject:@(self.type) forKey:@"type"];
     [encoder encodeObject:self.name forKey:@"name"];
     [encoder encodeObject:self.processStatus forKey:@"processStatus"];
+    [encoder encodeObject:self.processComment forKey:@"processComment"];
     [encoder encodeObject:self.category forKey:@"category"];
     [encoder encodeObject:self.photos forKey:@"photos"];
     [encoder encodeObject:@(self.originalPrice) forKey:@"originalPrice"];
