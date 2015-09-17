@@ -95,8 +95,8 @@
     return (self.userNameField.text.length > 0 &&
             self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
-            self.emailField.text.length > 0 &&
-            self.countryField.text.length > 0);
+            self.emailField.text.length > 0 /* &&
+            self.countryField.text.length > 0*/);
 }
 
 -(void)updateCurCountry {
