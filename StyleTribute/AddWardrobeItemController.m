@@ -467,9 +467,14 @@ typedef void(^ImageLoadBlock)(int);
     self.selectedImage.image = finalImage;
     Photo* photo = [Photo new];
     photo.image = finalImage;
+    Photo* oldPhoto = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
     [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
     ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
     imgType.state = (imgType.state == ImageStateNormal ? ImageStateNew : ImageStateModified);
+
+    if(oldPhoto && ![oldPhoto isKindOfClass:[NSNull class]] && oldPhoto.imageUrl.length > 0)
+        imgType.state = ImageStateModified;
+    
     [self.collectionView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -541,6 +546,8 @@ typedef void(^ImageLoadBlock)(int);
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
 //            self.curProduct.identifier = product.identifier;
 //            self.curProduct.processStatus = product.processStatus;
+            NSArray* oldPhotos = product.photos;
+            NSArray* oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;
             self.curProduct = product;
             
@@ -556,12 +563,12 @@ typedef void(^ImageLoadBlock)(int);
                         return;
                     
                     Photo* photo = [self.curProduct.photos objectAtIndex:i];
-                    ImageType* imageType = [self.curProduct.category.imageTypes objectAtIndex:i];
+                    Photo* oldPhoto = [oldPhotos objectAtIndex:i];
+                    ImageType* imageType = [/*self.curProduct.category.imageTypes*/ oldImageTypes objectAtIndex:i];
                     
                     // If we have new or modified images, then we should upload them
-                    if(photo != nil && [photo isKindOfClass:[Photo class]] && (imageType.state == ImageStateNew || imageType.state == ImageStateModified)) {
+                    if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateNew) {
                         dispatch_group_enter(group);
-                        NSLog(@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count);
                         [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
                         [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
                             imageType.state = ImageStateNormal;
@@ -576,6 +583,16 @@ typedef void(^ImageLoadBlock)(int);
                                 NSLog(@"progress: %f", progress);
                             });
                         }];
+                    } else if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateModified) {
+                        dispatch_group_enter(group);
+                        imageType.state = ImageStateNew;
+                        [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:self.curProduct.identifier success:^{
+                            self.imgLoadBlock(i);
+                            dispatch_group_leave(group);
+                        } failure:^(NSString *error) {
+                            self.imgLoadBlock(i);
+                            dispatch_group_leave(group);
+                        }];
                     } else if(imageType.state == ImageStateDeleted) {
                         dispatch_group_enter(group);
                         [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
@@ -587,6 +604,8 @@ typedef void(^ImageLoadBlock)(int);
                             self.imgLoadBlock(i + 1);
                             dispatch_group_leave(group);
                         }];
+                    } else {
+                        self.imgLoadBlock(i + 1);
                     }
                 };
                 self.imgLoadBlock(0);
