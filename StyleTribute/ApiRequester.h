@@ -26,6 +26,7 @@ typedef void (^JSONRespId)(NSUInteger identifier);
 typedef void (^JSONRespProgress)(float progress);
 typedef void (^JSONRespProduct)(Product* product);
 typedef void (^JSONRespPrice)(float priceSuggestion);
+typedef void (^JSONRespAppViersion)(float appVersion);
 
 @interface ApiRequester : NSObject
 
@@ -80,5 +81,6 @@ typedef void (^JSONRespPrice)(float priceSuggestion);
 -(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure;
 -(void)getRegionsByCountry:(NSString*)country success:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)setShippingAddress:(Address*)address success:(JSONRespEmpty)success failure:(JSONRespError)failure;
+-(void)getMinimumAppVersionWithSuccess:(JSONRespAppViersion)success failure:(JSONRespError)failure;
 
 @end

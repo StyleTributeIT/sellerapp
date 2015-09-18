@@ -15,9 +15,10 @@
 #import "DataCache.h"
 #import "FBRegistrationController.h"
 
-@interface WelcomeController ()
+@interface WelcomeController () <UIAlertViewDelegate>
 
 @property BOOL loadedFirstTime;
+@property BOOL needUpdate;
 
 @end
 
@@ -27,6 +28,8 @@
     [super viewDidLoad];
     
     self.loadedFirstTime = YES;
+    self.needUpdate = NO;
+    
     [GlobalHelper configureSlideshow:self.slideShow];
     [self.signInButton setAttributedTitle:[GlobalHelper linkWithString:@"Sign in"] forState:UIControlStateNormal];
 }
@@ -49,19 +52,33 @@
     
     if(self.loadedFirstTime) {
         self.loadedFirstTime = NO;
+        
+        float curVersion = [[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"] floatValue];
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
-            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            [DataCache sharedInstance].userProfile = profile;
-            
-            if([profile isFilled]) {
-                [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+        [[ApiRequester sharedInstance] getMinimumAppVersionWithSuccess:^(float minimumAppVersion) {
+            if(curVersion < minimumAppVersion) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                self.needUpdate = YES;
+                [self setInterfaceEnabled:NO];
+                [self showVertionAlert];
             } else {
-                [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+                [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    [DataCache sharedInstance].userProfile = profile;
+                    
+                    if([profile isFilled]) {
+                        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+                    } else {
+                        [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+                    }
+                } failure:^(NSString *error) {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    NSLog(@"getAccount error: %@", [error description]);
+                }];
             }
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            NSLog(@"getAccount error: %@", [error description]);
+            [GlobalHelper showMessage:error withTitle:@"error"];
         }];
     }
 }
@@ -112,6 +129,27 @@
         FBRegistrationController* controller = segue.destinationViewController;
         controller.updatingProfile = YES;
     }
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void)showVertionAlert {
+    if(self.needUpdate) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"version check" message:DefAppOutdated delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://"]];
+}
+
+#pragma mark -
+
+-(void)setInterfaceEnabled:(BOOL)enabled {
+    [self.signInButton setEnabled:enabled];
+    [self.signUpButton setEnabled:enabled];
+    [self.signUpFBButton setEnabled:enabled];
 }
 
 @end

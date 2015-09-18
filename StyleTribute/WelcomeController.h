@@ -13,7 +13,10 @@
 
 @property IBOutlet KASlideShow* slideShow;
 @property IBOutlet UIButton* signInButton;
+@property IBOutlet UIButton* signUpButton;
+@property IBOutlet UIButton* signUpFBButton;
 
 -(IBAction)fbLogin:(id)sender;
+-(void)showVertionAlert;
 
 @end

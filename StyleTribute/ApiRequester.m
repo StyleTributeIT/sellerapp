@@ -555,4 +555,16 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }];
 }
 
+-(void)getMinimumAppVersionWithSuccess:(JSONRespAppViersion)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    [self.sessionManager GET:@"seller/minimumAppVersion" parameters:nil success:^(NSURLSessionDataTask *task, id response) {
+        NSString* versionString = [response objectForKey:@"version"];
+        success([versionString floatValue]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"getMinimumAppVersion"];
+        failure(DefGeneralErrMsg);
+    }];
+}
+
 @end

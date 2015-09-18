@@ -226,6 +226,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="signInButton" destination="336-qA-KE7" id="hvn-Cs-yJk"/>
+                        <outlet property="signUpButton" destination="mzk-qV-fOS" id="5ZT-7s-imC"/>
+                        <outlet property="signUpFBButton" destination="pn8-Cb-f8A" id="i0T-3f-Od7"/>
                         <outlet property="slideShow" destination="FoV-xd-dpw" id="Wkk-we-04F"/>
                         <segue destination="sjP-DD-tuF" kind="show" identifier="FBRegistrationSegue" id="cSg-UA-WeG"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="showMainScreenSegue" id="Iws-61-RlG"/>
@@ -2899,7 +2901,7 @@ know before you get started!</string>
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ReU-Ip-U3f"/>
-        <segue reference="1dd-Ww-h8O"/>
+        <segue reference="Iws-61-RlG"/>
+        <segue reference="dPg-nh-fPh"/>
     </inferredMetricsTieBreakers>
 </document>
