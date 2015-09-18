@@ -391,7 +391,8 @@ typedef void(^ImageLoadBlock)(int);
     if(textField == self.categoryField) {
         return NO;
     } else if(textField == self.brandField) {
-        [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:self];
+        if(!self.isEditing)
+            [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:self];
         return NO;
     } else if(editing == EditingTypeAll || !self.isEditing) {
         return YES;
