@@ -28,6 +28,7 @@
 #import "PriceEditController.h"
 #import "UIImage+FixOrientation.h"
 #import "ChooseBrandController.h"
+#import "UITextView+Placeholder.h"
 
 #define PHOTOS_PER_ROW 4
 
@@ -74,6 +75,9 @@ typedef void(^ImageLoadBlock)(int);
     self.collectionView.allowsMultipleSelection = NO;
     self.collectionView.accessibilityIdentifier = @"Photos collection";
     self.collectionView.accessibilityLabel = @"Photos collection";
+    
+    self.descriptionView.placeholder = @"Description";
+    self.descriptionView.placeholderColor = [UIColor lightGrayColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
 }
@@ -819,6 +823,21 @@ typedef void(^ImageLoadBlock)(int);
     } else {
         return YES;
     }
+}
+
+-(BOOL)imagesAreFilled {
+    BOOL result = YES;
+    
+    // TODO: check only required images
+    for (int i = 0; i < self.curProduct.photos.count; ++i) {
+        Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
+        ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
+        
+        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && curPhoto.imageUrl.length == 0)
+            result = NO;
+    }
+    
+    return result;
 }
 
 @end
