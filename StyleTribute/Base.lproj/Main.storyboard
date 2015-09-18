@@ -2531,6 +2531,7 @@ Citilink Warehouse Complex
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                 <connections>
+                                                    <action selector="textFieldDidChange:" destination="Jn6-xf-VI8" eventType="editingChanged" id="4cd-1W-oxW"/>
                                                     <outlet property="delegate" destination="Jn6-xf-VI8" id="esD-36-YNh"/>
                                                 </connections>
                                             </textField>

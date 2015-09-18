@@ -44,6 +44,8 @@
     [self updateAdvice];
 }
 
+#pragma mark - UITextFieldDelegate
+
 -(void)inputDone {
     if(self.activeField == self.originalPrice) {
         [self.activeField resignFirstResponder];
@@ -56,6 +58,7 @@
                     self.userPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
                 }
                 [self updateAdvice];
+                [self updateTakeback];
                 self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             } failure:^(NSString *error) {
@@ -71,6 +74,15 @@
         [self.activeField resignFirstResponder];
     }
 }
+
+-(IBAction)textFieldDidChange :(UITextField *)theTextField {
+    if(self.activeField == theTextField) {
+        [self updateAdvice];
+        [self updateTakeback];
+    }
+}
+
+#pragma mark - Helpers
 
 -(void)updateAdvice {
     float suggestedPrice = [self.suggestedPrice.text floatValue];
@@ -97,17 +109,14 @@
     self.sellingAdviceText.text = text;
 }
 
--(BOOL)noEmptyFields {
-    return (self.userPrice.text.length > 0 &&
-            self.originalPrice.text.length > 0);
-}
-
 -(void)updateTakeback {
     if(self.userPrice.text.length > 0) {
         float userPrice = [self.userPrice.text floatValue];
         self.takeBack.text = [NSString stringWithFormat:@"%.2f", userPrice*0.75];
     }
 }
+
+#pragma mark - Actions
 
 -(IBAction)done:(id)sender {
     if([self noEmptyFields]) {
@@ -122,6 +131,13 @@
 
 -(IBAction)cancel:(id)sender {
     [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+}
+
+#pragma mark - 
+
+-(BOOL)noEmptyFields {
+    return (self.userPrice.text.length > 0 &&
+            self.originalPrice.text.length > 0);
 }
 
 @end

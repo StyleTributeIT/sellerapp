@@ -20,4 +20,6 @@
 
 @property (weak) Product* product;
 
+-(IBAction)textFieldDidChange :(UITextField *)theTextField;
+
 @end
