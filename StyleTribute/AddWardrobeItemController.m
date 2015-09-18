@@ -131,7 +131,7 @@ typedef void(^ImageLoadBlock)(int);
     }
     
     EditingType editingType = [self.curProduct getEditingType];
-    [self.priceButton setEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
+//    [self.priceButton setEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
     [self.collectionView setUserInteractionEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
     
     if(self.isEditing && [self.curProduct.allowedTransitions linq_any:^BOOL(NSString* item) {
