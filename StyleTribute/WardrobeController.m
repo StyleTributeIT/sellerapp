@@ -219,6 +219,8 @@
     archiveButton.tag = 1;
     MGSwipeButton* suspendButton = [MGSwipeButton buttonWithTitle:@"Suspend" backgroundColor:[UIColor darkGrayColor]];
     suspendButton.tag = 2;
+    MGSwipeButton* relistButton = [MGSwipeButton buttonWithTitle:@"re-list" backgroundColor:[UIColor darkGrayColor]];
+    relistButton.tag = 3;
     
     if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"deleted"]; }]) {
         [buttons addObject:delButton];
@@ -230,6 +232,10 @@
     
     if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"suspended"]; }]) {
         [buttons addObject:suspendButton];
+    }
+    
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"selling"]; }]) {
+        [buttons addObject:relistButton];
     }
     
     return buttons;
@@ -280,6 +286,9 @@
             break;
         case 2:  // Suspend button
             newStatus = @"suspended";
+            break;
+        case 3:  // re-list button
+            newStatus = @"selling";
             break;
         
         default:
