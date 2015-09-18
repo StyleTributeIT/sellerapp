@@ -361,11 +361,19 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         [params setObject:@[product.unit, product.size] forKey:@"size"];
     } else if([firstSize isEqualToString:@"shoesize"]) {
         [params setObject:@(product.shoeSize.identifier) forKey:@"shoesize"];
-        [params setObject:product.heelHeight forKey:@"heel_height"];
-    } else if([firstSize isEqualToString:@"dimensions"]) {
-        [params setObject:[product.dimensions objectAtIndex:0] forKey:@"dimensions[width]"];
-        [params setObject:[product.dimensions objectAtIndex:1] forKey:@"dimensions[height]"];
-        [params setObject:[product.dimensions objectAtIndex:2] forKey:@"dimensions[depth]"];
+        if(product.heelHeight)
+            [params setObject:product.heelHeight forKey:@"heel_height"];
+    } else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
+        NSString* width = [product.dimensions objectAtIndex:0];
+        NSString* height = [product.dimensions objectAtIndex:1];
+        NSString* depth = [product.dimensions objectAtIndex:2];
+        
+        if(width)
+            [params setObject:width forKey:@"dimensions[width]"];
+        if(height)
+            [params setObject:height forKey:@"dimensions[height]"];
+        if(depth)
+            [params setObject:depth forKey:@"dimensions[depth]"];
     }
     
     if(product.identifier > 0) {

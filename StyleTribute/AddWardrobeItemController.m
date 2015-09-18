@@ -803,9 +803,13 @@ typedef void(^ImageLoadBlock)(int);
     if([firstSize isEqualToString:@"size"]) {
         isSizeFilled = (self.sizeField.text.length > 0);
     } else if([firstSize isEqualToString:@"shoesize"]) {
-        isSizeFilled = (self.shoeSizeField.text.length > 0 && self.heelHeightField.text.length > 0);
+        isSizeFilled = (self.shoeSizeField.text.length > 0 /*&& self.heelHeightField.text.length > 0*/);
     } else if([firstSize isEqualToString:@"dimensions"]) {
         isSizeFilled = (self.widthField.text.length > 0 && self.heightField.text.length > 0 && self.deepField.text.length > 0);
+    }
+    
+    if([self.curProduct.category.name isEqualToString:@"ACCESSORIES"]) {
+        isSizeFilled = YES;
     }
     
     if(!self.curProduct.category.sizeFields)
