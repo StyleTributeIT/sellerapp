@@ -86,6 +86,9 @@
             if(index < product.photos.count) {
                 [product.photos replaceObjectAtIndex:index withObject:photo];
             }
+        } else {
+            // additional image
+            [product.photos addObject:photo];
         }
     }
     

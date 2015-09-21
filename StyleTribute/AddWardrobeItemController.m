@@ -30,7 +30,7 @@
 #import "ChooseBrandController.h"
 #import "UITextView+Placeholder.h"
 
-#define PHOTOS_PER_ROW 4
+#define PHOTOS_PER_ROW 3.5f
 
 typedef void(^ImageLoadBlock)(int);
 
@@ -44,6 +44,8 @@ typedef void(^ImageLoadBlock)(int);
 @property BOOL isTutorialPresented;
 @property UIImageView* selectedImage;
 @property NSUInteger selectedImageIndex;
+@property NSMutableArray* photosToDelete;
+@property BOOL isInitialized;
 
 @property (copy) ImageLoadBlock imgLoadBlock;
 
@@ -56,6 +58,7 @@ typedef void(^ImageLoadBlock)(int);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.isInitialized = NO;
     self.isTutorialPresented = NO;
     self.collectionViewHeight.constant = self.collectionView.frame.size.width/PHOTOS_PER_ROW;
     
@@ -78,6 +81,8 @@ typedef void(^ImageLoadBlock)(int);
     
     self.descriptionView.placeholder = @"Description";
     self.descriptionView.placeholderColor = [UIColor lightGrayColor];
+    
+    self.photosToDelete = [NSMutableArray new];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
 }
@@ -142,8 +147,6 @@ typedef void(^ImageLoadBlock)(int);
         [self.cantSellButton setHidden:YES];
     }
     
-    [self updatePhotosCollection];
-    
     if(!self.isEditing && self.categoryField.text.length == 0) {
         [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
     }
@@ -155,6 +158,14 @@ typedef void(^ImageLoadBlock)(int);
         [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
         self.isTutorialPresented = NO;
     }
+    
+    self.collectionViewHeight.constant = self.collectionView.frame.size.width/PHOTOS_PER_ROW;
+    
+    if(self.isInitialized) {
+        [self.collectionView reloadData];
+    }
+    
+    self.isInitialized = YES;
 }
 
 - (void)setPickerData:(NSNotification*)aNotification {
@@ -306,19 +317,24 @@ typedef void(^ImageLoadBlock)(int);
     NSInteger index = (actionSheet.destructiveButtonIndex == -1 ? (buttonIndex + 1) : buttonIndex);
     switch (index) {
         case 0: {  // Delete
-            ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
-            if(imgType.state != ImageStateDeleted) {
-                if(imgType.state == ImageStateModified || (imgType.state == ImageStateNormal && ![[self.curProduct.photos objectAtIndex:self.selectedImageIndex] isKindOfClass:[NSNull class]]))
-                    imgType.state = ImageStateDeleted;
-                else if(imgType.state == ImageStateNew)
-                    imgType.state = ImageStateNormal;
-                
-//                [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:[NSNull null]];
-                Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
-                photo.image = nil;
-                photo.thumbnailUrl = photo.imageUrl = @"";
-                [self.collectionView reloadData];
+            Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+            if(self.selectedImageIndex >= self.curProduct.category.imageTypes.count) {
+                [self.curProduct.photos removeObject:photo];
+                if(photo.identifier != 0) {
+                    [self.photosToDelete addObject:photo];
+                }
+            } else {
+                ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+                if(imgType.state != ImageStateDeleted) {
+                    if(imgType.state == ImageStateModified || (imgType.state == ImageStateNormal && ![[self.curProduct.photos objectAtIndex:self.selectedImageIndex] isKindOfClass:[NSNull class]]))
+                        imgType.state = ImageStateDeleted;
+                    else if(imgType.state == ImageStateNew)
+                        imgType.state = ImageStateNormal;
+                }
             }
+            photo.image = nil;
+            photo.thumbnailUrl = photo.imageUrl = @"";
+            [self.collectionView reloadData];
             break;
         }
         case 1: { // take new picture
@@ -349,7 +365,7 @@ typedef void(^ImageLoadBlock)(int);
         ChooseCategoryController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory.name;
         self.curProduct.category = ccController.selectedCategory;
-        [self updatePhotosCollection];
+        [self.collectionView reloadData];
         self.curProduct.photos = [NSMutableArray arrayWithCapacity:self.curProduct.category.imageTypes.count];
         for(int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
             [self.curProduct.photos addObject:[NSNull null]];
@@ -477,16 +493,29 @@ typedef void(^ImageLoadBlock)(int);
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     UIImage *finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
     
-    self.selectedImage.image = finalImage;
     Photo* photo = [Photo new];
     photo.image = finalImage;
-    Photo* oldPhoto = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
-    [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
-    ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
-    imgType.state = (imgType.state == ImageStateNormal ? ImageStateNew : ImageStateModified);
+    
+    // if we pressed on "plus", we should add photo instead of replace.
+    if(self.selectedImageIndex == self.curProduct.photos.count) {
+        [self.curProduct.photos addObject:photo];
+    } else {
+        Photo* oldPhoto = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+        [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
+        
+        if(self.selectedImageIndex < self.curProduct.category.imageTypes.count) {
+            ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+            imgType.state = (imgType.state == ImageStateNormal ? ImageStateNew : ImageStateModified);
 
-    if(oldPhoto && ![oldPhoto isKindOfClass:[NSNull class]] && oldPhoto.imageUrl.length > 0)
-        imgType.state = ImageStateModified;
+            if(oldPhoto && ![oldPhoto isKindOfClass:[NSNull class]] && oldPhoto.imageUrl.length > 0)
+                imgType.state = ImageStateModified;
+        } else {
+            // if we going to replace previosly uploaded photo, then add them to deletion list
+            if(oldPhoto.identifier != 0) {
+                [self.photosToDelete addObject:oldPhoto];
+            }
+        }
+    }
     
     [self.collectionView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -541,7 +570,7 @@ typedef void(^ImageLoadBlock)(int);
 -(IBAction)done:(id)sender {
     NSLog(@"done");
     
-    if(![self noEmptyFields]) {
+    if(![self noEmptyFields] || ![self imagesAreFilled]) {
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
     } else {
@@ -565,7 +594,7 @@ typedef void(^ImageLoadBlock)(int);
             product.photos = self.curProduct.photos;
             self.curProduct = product;
             
-            for (int i = 0; i < product.photos.count; ++i) {
+            for (int i = 0; i < product.category.imageTypes.count; ++i) {
                 Photo* pOld = [oldPhotos objectAtIndex:i];
                 Photo* pNew = [self.curProduct.photos objectAtIndex:i];
                 
@@ -583,54 +612,92 @@ typedef void(^ImageLoadBlock)(int);
             if(self.curProduct.photos != nil && self.curProduct.category != nil) {
                 
                 self.imgLoadBlock = ^(int i){
-                    if(i >= self.curProduct.photos.count)
+                    if(i >= oldPhotos.count)
                         return;
                     
-                    Photo* photo = [self.curProduct.photos objectAtIndex:i];
-                    Photo* oldPhoto = [oldPhotos objectAtIndex:i];
-                    ImageType* imageType = [/*self.curProduct.category.imageTypes*/ oldImageTypes objectAtIndex:i];
+                    Photo* photo = (i < self.curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
                     
-                    // If we have new or modified images, then we should upload them
-                    if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateNew) {
-                        dispatch_group_enter(group);
-                        [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
-                        [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
+                    if(i < self.curProduct.category.imageTypes.count) {
+                        Photo* oldPhoto = [oldPhotos objectAtIndex:i];
+                        ImageType* imageType = [/*self.curProduct.category.imageTypes*/ oldImageTypes objectAtIndex:i];
+                        
+                        // If we have new or modified images, then we should upload them
+                        if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateNew) {
+                            dispatch_group_enter(group);
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
+                                imageType.state = ImageStateNormal;
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } progress:^(float progress) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [progressView setProgress:progress animated:YES];
+                                    NSLog(@"progress: %f", progress);
+                                });
+                            }];
+                        } else if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateModified) {
+                            dispatch_group_enter(group);
+                            imageType.state = ImageStateNew;
+                            [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            }];
+                        } else if(imageType.state == ImageStateDeleted) {
+                            dispatch_group_enter(group);
                             imageType.state = ImageStateNormal;
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            [progressView setProgress:1.0f animated:YES];
+                            [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            }];
+                        } else {
                             self.imgLoadBlock(i + 1);
-                            dispatch_group_leave(group);
-                        } failure:^(NSString *error) {
-                            self.imgLoadBlock(i + 1);
-                            dispatch_group_leave(group);
-                        } progress:^(float progress) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [progressView setProgress:progress animated:YES];
-                                NSLog(@"progress: %f", progress);
-                            });
-                        }];
-                    } else if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateModified) {
-                        dispatch_group_enter(group);
-                        imageType.state = ImageStateNew;
-                        [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:self.curProduct.identifier success:^{
-                            self.imgLoadBlock(i);
-                            dispatch_group_leave(group);
-                        } failure:^(NSString *error) {
-                            self.imgLoadBlock(i);
-                            dispatch_group_leave(group);
-                        }];
-                    } else if(imageType.state == ImageStateDeleted) {
-                        dispatch_group_enter(group);
-                        imageType.state = ImageStateNormal;
-                        [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
-                        [progressView setProgress:1.0f animated:YES];
-                        [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
-                            self.imgLoadBlock(i + 1);
-                            dispatch_group_leave(group);
-                        } failure:^(NSString *error) {
-                            self.imgLoadBlock(i + 1);
-                            dispatch_group_leave(group);
-                        }];
+                        }
                     } else {
-                        self.imgLoadBlock(i + 1);
+                        // remove images marked for deletion
+                        if(self.photosToDelete.count > 0) {
+                            Photo* toDelete = [self.photosToDelete firstObject];
+                            [self.photosToDelete removeObject:toDelete];
+                            dispatch_group_enter(group);
+                            [[ApiRequester sharedInstance] deleteImage:toDelete.identifier fromProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            }];
+                            return;
+                        }
+                        
+                        // Additional images
+                        if(photo != nil && photo.image != nil) {
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            dispatch_group_enter(group);
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:@"custom" toProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } progress:^(float progress) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [progressView setProgress:progress animated:YES];
+                                    NSLog(@"progress: %f", progress);
+                                });
+                            }];
+                        } else {
+                            self.imgLoadBlock(i + 1);
+                        }
                     }
                 };
                 self.imgLoadBlock(0);
@@ -689,27 +756,45 @@ typedef void(^ImageLoadBlock)(int);
 }
 
 -(NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.curProduct.category.imageTypes.count;
+    return self.curProduct.photos.count + 1;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
-    ImageType* imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
-    newCell.photoTypeLabel.text = imgType.name;
+//    NSString* reuseId = [NSString stringWithFormat:@"reuse%zd", indexPath.row];
+    __block PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
+//    PhotoCell* newCell = [PhotoCell new];
     
-    if(self.curProduct.photos != nil && self.curProduct.photos.count >= (indexPath.row + 1)) {
-        Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
-        if(photo != nil && [photo isKindOfClass:[Photo class]]) {
-            if(photo.image != nil) {
-                newCell.photoView.image = photo.image;
+    // Handle "plus" item
+    NSLog(@"index: %zd || %zd", indexPath.row, self.curProduct.photos.count);
+    if(indexPath.row == self.curProduct.photos.count) {
+        newCell.photoView.image = [UIImage imageNamed:@"plus"];
+        [newCell.photoTypeLabel setHidden:YES];
+    } else {
+        ImageType* imgType = nil;
+        if(indexPath.row >= self.curProduct.category.imageTypes.count) {
+            imgType = [ImageType new];
+            imgType.name = [NSString stringWithFormat:@"%zd", indexPath.row - self.curProduct.category.imageTypes.count + 1];
+        } else {
+            imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
+        }
+        
+        newCell.photoTypeLabel.text = imgType.name;
+        [newCell.photoTypeLabel setHidden:NO];
+        
+        if(self.curProduct.photos != nil && self.curProduct.photos.count >= (indexPath.row + 1)) {
+            Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
+            if(photo != nil && [photo isKindOfClass:[Photo class]]) {
+                if(photo.image != nil) {
+                    newCell.photoView.image = photo.image;
+                } else {
+                    [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+                }
             } else {
-                [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+                [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
             }
         } else {
             [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
-    } else {
-        [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
     }
     
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
@@ -725,26 +810,20 @@ typedef void(^ImageLoadBlock)(int);
     return CGSizeMake(itemSize, itemSize);
 }
 
--(void)updatePhotosCollection {
-    NSUInteger rowsCount = 0;
-    if(self.curProduct != nil && self.curProduct.category != nil) {
-        rowsCount = self.curProduct.category.imageTypes.count/PHOTOS_PER_ROW + ((self.curProduct.category.imageTypes.count % PHOTOS_PER_ROW) == 0 ? 0 : 1);
-    }
-    self.collectionViewHeight.constant = self.collectionView.frame.size.width*rowsCount/PHOTOS_PER_ROW;
-    [self.collectionView reloadData];
-}
-
 - (void) handleTapFrom: (UITapGestureRecognizer *)recognizer {
-    NSIndexPath* path = [NSIndexPath indexPathForRow:recognizer.view.tag inSection:0];
-    PhotoCell* cell = (PhotoCell*)[self.collectionView cellForItemAtIndexPath:path];
-    self.selectedImage = cell.photoView;
+//    NSIndexPath* path = [NSIndexPath indexPathForRow:recognizer.view.tag inSection:0];
+//    PhotoCell* cell = (PhotoCell*)[self.collectionView cellForItemAtIndexPath:path];
+//    self.selectedImage = cell.photoView;
     self.selectedImageIndex = recognizer.view.tag;
     
-    Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
-    if([photo isKindOfClass:[NSNull class]] || (photo.imageUrl.length == 0 && photo.image == nil)) {
+    if(self.selectedImageIndex == self.curProduct.photos.count) {
         [self displayActionSheet:NO];
     } else {
-        [self displayActionSheet:YES];
+        if(self.selectedImageIndex >= self.curProduct.category.imageTypes.count) {
+            [self displayActionSheet:YES];
+        } else {
+            [self displayActionSheet:NO];
+        }
     }
 
     [self.photoActionsSheet showInView:self.view];
@@ -834,11 +913,11 @@ typedef void(^ImageLoadBlock)(int);
     BOOL result = YES;
     
     // TODO: check only required images
-    for (int i = 0; i < self.curProduct.photos.count; ++i) {
+    for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
         Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
         
-        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && curPhoto.imageUrl.length == 0)
+        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && ([curPhoto isKindOfClass:[NSNull class]] || curPhoto.imageUrl.length == 0))
             result = NO;
     }
     
