@@ -611,8 +611,10 @@ typedef void(^ImageLoadBlock)(int);
                                                     
             if(self.curProduct.photos != nil && self.curProduct.category != nil) {
                 
+                NSInteger count = MAX(self.curProduct.photos.count, oldPhotos.count);
                 self.imgLoadBlock = ^(int i){
-                    if(i >= oldPhotos.count)
+                    
+                    if(i >= count)
                         return;
                     
                     Photo* photo = (i < self.curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
@@ -917,7 +919,7 @@ typedef void(^ImageLoadBlock)(int);
         Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
         
-        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && ([curPhoto isKindOfClass:[NSNull class]] || curPhoto.imageUrl.length == 0))
+        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && ([curPhoto isKindOfClass:[NSNull class]] || (curPhoto.imageUrl.length == 0 && curPhoto.image == nil)))
             result = NO;
     }
     
