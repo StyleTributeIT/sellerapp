@@ -298,7 +298,8 @@
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
     [[ApiRequester sharedInstance] setProcessStatus:newStatus forProduct:p.identifier success:^(Product *product) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        p.processStatus = newStatus;
+        p.processStatus = product.processStatus;
+        p.processStatusDisplay = product.processStatusDisplay;
         [self storeProductsInGroups:[DataCache sharedInstance].products];
 		[self.itemsTable reloadData];
 		[self updateWelcomeView];
