@@ -888,7 +888,7 @@ typedef void(^ImageLoadBlock)(int);
         isSizeFilled = (self.widthField.text.length > 0 && self.heightField.text.length > 0 && self.deepField.text.length > 0);
     }
     
-    if([self.curProduct.category.name isEqualToString:@"ACCESSORIES"]) {
+    if([self.curProduct.category.name isEqualToString:@"BAGS"]) {
         isSizeFilled = YES;
     }
     
