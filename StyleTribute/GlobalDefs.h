@@ -26,5 +26,6 @@ static NSString* const DefLowPriceAdvice = @"Great! You will sell in no time!";
 static NSString* const DefHighPriceAdvice = @"Consider lowering the price if the item doesn't sell within 2 months.";
 static NSString* const DefAppOutdated = @"Your App is outdated. Please update to the latest version.";
 static NSString* const DefProductDeleteWarning = @"Are you sure?";
+static NSString* const DefCantSellWarning = @"Are you sure? Your product will be permanently de-listed.";
 
 #endif

@@ -733,22 +733,24 @@ typedef void(^ImageLoadBlock)(int);
 }
 
 -(IBAction)cantSellProduct:(id)sender {
-    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-    WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
-    
-    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] setProcessStatus:@"product_not_available" forProduct:self.curProduct.identifier success:^(Product *product) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        self.curProduct.processStatus = @"product_not_available";
-        [wc updateProductsList];
-        [self clearAllFields];
-        self.curProduct = nil;
-        self.isEditing = NO;
-        [tabController setSelectedIndex:0];
-    } failure:^(NSString *error) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-         [GlobalHelper showMessage:error withTitle:@"error"];
-    }];
+    [GlobalHelper askConfirmationWithTitle:@"" message:DefCantSellWarning yes:^{
+        MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+        WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
+        
+        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [[ApiRequester sharedInstance] setProcessStatus:@"product_not_available" forProduct:self.curProduct.identifier success:^(Product *product) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            self.curProduct.processStatus = @"product_not_available";
+            [wc updateProductsList];
+            [self clearAllFields];
+            self.curProduct = nil;
+            self.isEditing = NO;
+            [tabController setSelectedIndex:0];
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [GlobalHelper showMessage:error withTitle:@"error"];
+        }];
+    } no:nil];
 }
 
 #pragma mark - Photo collection
