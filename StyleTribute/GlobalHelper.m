@@ -11,6 +11,7 @@
 #import <CRToast.h>
 #import <SDWebImageDownloader.h>
 #import <SDWebImageManager.h>
+#import "UIAlertView+Blocks.h"
 
 @implementation GlobalHelper
 
@@ -100,6 +101,18 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
++(void)askConfirmationWithTitle:(NSString*)title message:(NSString*)message yes:(void(^)())yesCallback no:(void(^)())noCallback {
+    [UIAlertView showWithTitle:title message:message cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] tapBlock: ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if (buttonIndex == [alertView cancelButtonIndex]) {
+            if(noCallback)
+                noCallback();
+        } else {
+            if(yesCallback)
+                yesCallback();
+        }
+    }];
 }
 
 @end

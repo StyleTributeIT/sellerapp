@@ -276,10 +276,12 @@
 -(BOOL) swipeTableCell:(MGSwipeTableCell*) cell tappedButton:(MGSwipeButton*)button AtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion {
     Product* p = [[self getCurrentItemsArray] objectAtIndex:cell.tag];
     NSString* newStatus = p.processStatus;
+    NSString* warningMessage = nil;
     
     switch (button.tag) {
         case 0:  // Delete button
             newStatus = @"deleted";
+            warningMessage = DefProductDeleteWarning;
             break;
         case 1:  // Archive button
             newStatus = @"archived";
@@ -295,20 +297,30 @@
             break;
     }
     
+    if(warningMessage) {
+        [GlobalHelper askConfirmationWithTitle:@"" message:warningMessage yes:^{
+            [self setStatus:newStatus forProduct:p];
+        } no:nil];
+    } else {
+        [self setStatus:newStatus forProduct:p];
+    }
+    
+    return TRUE;
+}
+
+-(void)setStatus:(NSString*)status forProduct:(Product*)p {
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [[ApiRequester sharedInstance] setProcessStatus:newStatus forProduct:p.identifier success:^(Product *product) {
+    [[ApiRequester sharedInstance] setProcessStatus:status forProduct:p.identifier success:^(Product *product) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         p.processStatus = product.processStatus;
         p.processStatusDisplay = product.processStatusDisplay;
         [self storeProductsInGroups:[DataCache sharedInstance].products];
-		[self.itemsTable reloadData];
-		[self updateWelcomeView];
+        [self.itemsTable reloadData];
+        [self updateWelcomeView];
     } failure:^(NSString *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         [GlobalHelper showMessage:error withTitle:@"error"];
     }];
-    
-    return TRUE;
 }
 
 #pragma mark - Other

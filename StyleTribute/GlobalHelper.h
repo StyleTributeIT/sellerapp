@@ -18,5 +18,6 @@
 +(NSAttributedString*)linkWithString:(NSString*)string;
 +(void)configureSlideshow:(KASlideShow*)slideShow;
 +(void)showToastNotificationWithTitle:(NSString*)title subtitle:(NSString*)subtitle imageUrl:(NSString*)url;
++(void)askConfirmationWithTitle:(NSString*)title message:(NSString*)message yes:(void(^)())yesCallback no:(void(^)())noCallback;
 
 @end
