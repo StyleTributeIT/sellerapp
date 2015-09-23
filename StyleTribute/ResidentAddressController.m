@@ -173,7 +173,7 @@
     
     return (self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
-            self.companyField.text.length > 0 &&
+//            self.companyField.text.length > 0 &&
             self.cityField.text.length > 0 &&
             isStateFilled &&
             self.postalCodeField.text.length > 0 &&
