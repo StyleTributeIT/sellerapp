@@ -453,9 +453,12 @@ typedef void(^ImageLoadBlock)(int);
                 cameraViewRect = CGRectMake(0, 40, screenSize.width, screenSize.width*4.0/3.0);
             }
             
-            ImageType* imgType = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+            ImageType* imgType = nil;
+            if(self.selectedImageIndex < self.curProduct.photos.count) {
+                imgType = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+            }
             
-            if(imgType.outline.length > 0) {
+            if(imgType && imgType.outline.length > 0) {
                 [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgType.outline] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 } completed:^(UIImage *outline, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                     if(error != nil) {
