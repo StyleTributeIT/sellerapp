@@ -61,12 +61,9 @@
             [self performSegueWithIdentifier:@"residentAddressSegue" sender:self];
             break;
         case 2:
-            [self performSegueWithIdentifier:@"changePasswordSegue" sender:self];
-            break;
-        case 3:
             [self performSegueWithIdentifier:@"bankDetailsSegue" sender:self];
             break;
-        case 4:
+        case 3:
             [self performSegueWithIdentifier:@"contactUsSegue" sender:self];
             break;
             

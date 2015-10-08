@@ -112,7 +112,7 @@
 -(void)updateTakeback {
     if(self.userPrice.text.length > 0) {
         float userPrice = [self.userPrice.text floatValue];
-        self.takeBack.text = [NSString stringWithFormat:@"%.2f", userPrice*0.75];
+        self.takeBack.text = [NSString stringWithFormat:@"%.2f", userPrice*0.85];
     }
 }
 
