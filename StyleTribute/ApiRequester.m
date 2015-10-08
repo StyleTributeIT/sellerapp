@@ -112,7 +112,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                     failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSDictionary* params = @{@"email":email, @"password":password, @"firstName": firstName, @"lastName": lastName, @"userName": userName, /* @"country": country, */ @"phone": phone};
+    NSDictionary* params = @{@"email":email, @"password":password, @"firstName": firstName, @"lastName": lastName, /* @"userName": userName, @"country": country, */ @"phone": phone};
     [self.sessionManager POST:@"seller/register" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         if([self checkSuccessForResponse:responseObject errCalback:failure]) {
             NSString* token = [responseObject objectForKey:@"token"];
@@ -335,7 +335,11 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                       failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSDictionary* params = @{@"userName":userName, @"firstName": firstName, @"lastName": lastName, /* @"country": country, */ @"phone": phone};
+    NSMutableDictionary* params = [@{/* @"userName":userName, */ @"firstName": firstName, @"lastName": lastName, /* @"country": country, */} mutableCopy];
+    if(phone != nil && ![phone isKindOfClass:[NSNull class]]) {
+        [params setObject:phone forKey:@"phone"];
+    }
+    
     [self.sessionManager POST:@"seller/account" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         success();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

@@ -56,7 +56,6 @@
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
             <string>Montserrat-UltraLight</string>
-            <string>Montserrat-UltraLight</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -254,13 +253,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-dn-4dR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="324"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="326"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-jq-QA3">
                                                 <rect key="frame" x="128" y="8" width="64" height="64"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyO-9Y-oef" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="152" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="154" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your email"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sVs-KJ-a1f"/>
@@ -272,7 +271,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="198" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="200" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="fFH-Aq-LfI"/>
@@ -284,16 +283,16 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please log in to proceed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-tQ-Hms">
-                                                <rect key="frame" x="16" y="114" width="288" height="23"/>
+                                                <rect key="frame" x="16" y="114" width="288" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="23" id="fHy-pP-I9a"/>
+                                                    <constraint firstAttribute="height" constant="25" id="fHy-pP-I9a"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="22"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJM-Um-52Y">
-                                                <rect key="frame" x="40" y="244" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="246" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Sign in"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JpL-78-iKv"/>
@@ -326,7 +325,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-xw-gUD">
-                                                <rect key="frame" x="40" y="288" width="240" height="28"/>
+                                                <rect key="frame" x="40" y="290" width="240" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="f3m-Vk-SCL"/>
                                                 </constraints>
@@ -575,7 +574,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KqL-Cw-hfk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="229"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44j-8B-CKN">
                                                 <rect key="frame" x="40" y="8" width="240" height="29"/>
@@ -586,19 +585,8 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5i-4b-pml" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="45" width="240" height="38"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="P6O-Bp-GyP"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="tr0-6J-Wdp" id="ldZ-HO-GU2"/>
-                                                </connections>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FT6-vb-44k" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="91" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="45" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="lZi-cG-mp8"/>
                                                 </constraints>
@@ -609,7 +597,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="noB-08-po4" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="137" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="91" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="hXr-qj-lOw"/>
                                                 </constraints>
@@ -620,7 +608,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nld-v3-z7S" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="183" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="137" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="NZg-nK-v2S"/>
                                                 </constraints>
@@ -631,7 +619,7 @@
                                                 </connections>
                                             </textField>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" placeholder="Country of residence" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEt-Cj-ftT" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="229" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="183" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="dwV-4O-Fmn"/>
                                                 </constraints>
@@ -646,7 +634,6 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Nld-v3-z7S" secondAttribute="trailing" constant="40" id="4I2-RV-aPc"/>
                                             <constraint firstItem="GEt-Cj-ftT" firstAttribute="leading" secondItem="KqL-Cw-hfk" secondAttribute="leading" constant="40" id="5NB-E8-0h3"/>
-                                            <constraint firstItem="E5i-4b-pml" firstAttribute="leading" secondItem="KqL-Cw-hfk" secondAttribute="leading" constant="40" id="6YT-jA-N54"/>
                                             <constraint firstItem="Nld-v3-z7S" firstAttribute="top" secondItem="noB-08-po4" secondAttribute="bottom" constant="8" id="Dli-qv-gWb"/>
                                             <constraint firstItem="44j-8B-CKN" firstAttribute="top" secondItem="KqL-Cw-hfk" secondAttribute="top" constant="8" id="Jvk-JF-x23"/>
                                             <constraint firstItem="Nld-v3-z7S" firstAttribute="leading" secondItem="KqL-Cw-hfk" secondAttribute="leading" constant="40" id="MUs-XG-ICX"/>
@@ -657,13 +644,11 @@
                                             <constraint firstAttribute="trailing" secondItem="FT6-vb-44k" secondAttribute="trailing" constant="40" id="U2y-P7-W8n"/>
                                             <constraint firstItem="44j-8B-CKN" firstAttribute="leading" secondItem="KqL-Cw-hfk" secondAttribute="leading" constant="40" id="aR6-NE-c4E"/>
                                             <constraint firstItem="noB-08-po4" firstAttribute="top" secondItem="FT6-vb-44k" secondAttribute="bottom" constant="8" id="be6-Wk-Dke"/>
-                                            <constraint firstItem="FT6-vb-44k" firstAttribute="top" secondItem="E5i-4b-pml" secondAttribute="bottom" constant="8" id="bln-Dt-eW5"/>
                                             <constraint firstAttribute="width" constant="320" id="cqO-sR-h1g"/>
                                             <constraint firstItem="noB-08-po4" firstAttribute="leading" secondItem="KqL-Cw-hfk" secondAttribute="leading" constant="40" id="gyy-iN-Dxa"/>
-                                            <constraint firstItem="E5i-4b-pml" firstAttribute="top" secondItem="44j-8B-CKN" secondAttribute="bottom" constant="8" id="hrE-SU-9Yp"/>
                                             <constraint firstItem="FT6-vb-44k" firstAttribute="leading" secondItem="KqL-Cw-hfk" secondAttribute="leading" constant="40" id="jW3-Yu-vWg"/>
-                                            <constraint firstAttribute="trailing" secondItem="E5i-4b-pml" secondAttribute="trailing" constant="40" id="jnl-jZ-nFr"/>
                                             <constraint firstAttribute="trailing" secondItem="noB-08-po4" secondAttribute="trailing" constant="40" id="u2C-WH-aqa"/>
+                                            <constraint firstItem="FT6-vb-44k" firstAttribute="top" secondItem="44j-8B-CKN" secondAttribute="bottom" constant="8" id="wfy-Va-Mbe"/>
                                             <constraint firstAttribute="bottom" secondItem="GEt-Cj-ftT" secondAttribute="bottom" constant="8" id="xpC-dF-bOl"/>
                                         </constraints>
                                         <variation key="default">
@@ -709,7 +694,6 @@
                         <outlet property="firstNameField" destination="noB-08-po4" id="EIx-my-M0k"/>
                         <outlet property="lastNameField" destination="Nld-v3-z7S" id="7Jo-O3-BZq"/>
                         <outlet property="scrollView" destination="HKR-lQ-8nh" id="oxx-jv-y2I"/>
-                        <outlet property="userNameField" destination="E5i-4b-pml" id="hN3-hw-kEH"/>
                         <outlet property="widthConstraint" destination="cqO-sR-h1g" id="q30-4u-3dO"/>
                         <segue destination="lq4-XZ-SBB" kind="unwind" identifier="unwindFromEditProfile" unwindAction="unwindToMyAccount:" id="Ohy-gM-uiC"/>
                     </connections>
@@ -1522,21 +1506,10 @@ Citilink Warehouse Complex
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-KE-yG7">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="406"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKh-7d-kPR" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="184" width="240" height="38"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="aBF-AF-CZA"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="sjP-DD-tuF" id="0p2-Uw-CNK"/>
-                                                </connections>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3v-hM-vnc" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="276" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="256" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ihL-x8-CeU"/>
                                                 </constraints>
@@ -1547,7 +1520,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GQ-82-o1R" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="314" width="240" height="0.0"/>
+                                                <rect key="frame" x="40" y="294" width="240" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="VSD-Ii-yE1"/>
                                                 </constraints>
@@ -1558,7 +1531,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ac-YBF" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="322" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="302" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sv0-hP-qlB"/>
                                                 </constraints>
@@ -1576,7 +1549,7 @@ Citilink Warehouse Complex
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCx-9Z-RPU" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="230" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="210" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="kd9-ea-VwT"/>
                                                 </constraints>
@@ -1606,12 +1579,12 @@ Citilink Warehouse Complex
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="9Ep-EI-4zT" customClass="AttributedLabel">
-                                                <rect key="frame" x="20" y="128" width="280" height="34"/>
+                                                <rect key="frame" x="20" y="128" width="280" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="plZ-FH-81r"/>
+                                                    <constraint firstAttribute="height" constant="44" id="plZ-FH-81r"/>
                                                 </constraints>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="Just a few more details, before you get started...">
+                                                    <fragment content="Just a few more details before you get started.">
                                                         <attributes>
                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <font key="NSFont" metaFont="system" size="16"/>
@@ -1632,7 +1605,7 @@ Citilink Warehouse Complex
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlM-xJ-Wjc">
-                                                <rect key="frame" x="40" y="368" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="348" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ieh-8k-43o"/>
                                                 </constraints>
@@ -1658,24 +1631,21 @@ Citilink Warehouse Complex
                                             <constraint firstItem="CZJ-ac-YBF" firstAttribute="leading" secondItem="GgL-KE-yG7" secondAttribute="leading" constant="40" id="QJ3-hE-bYG"/>
                                             <constraint firstAttribute="width" constant="320" id="Sjg-Rd-ono"/>
                                             <constraint firstItem="9Ep-EI-4zT" firstAttribute="top" secondItem="LX9-6W-bhH" secondAttribute="bottom" constant="15" id="TB8-Wn-xXa"/>
-                                            <constraint firstAttribute="trailing" secondItem="eKh-7d-kPR" secondAttribute="trailing" constant="40" id="WR0-8W-Jvc"/>
                                             <constraint firstAttribute="trailing" secondItem="TCx-9Z-RPU" secondAttribute="trailing" constant="40" id="YGP-ib-ptL"/>
                                             <constraint firstAttribute="trailing" secondItem="9Ep-EI-4zT" secondAttribute="trailing" constant="20" id="dlX-7z-OTr"/>
                                             <constraint firstItem="7GQ-82-o1R" firstAttribute="top" secondItem="t3v-hM-vnc" secondAttribute="bottom" id="fp2-Cs-dbc"/>
+                                            <constraint firstItem="TCx-9Z-RPU" firstAttribute="top" secondItem="9Ep-EI-4zT" secondAttribute="bottom" constant="38" id="hwH-PW-anl"/>
                                             <constraint firstAttribute="centerX" secondItem="P1I-dc-QUd" secondAttribute="centerX" id="iLF-xv-tw5"/>
                                             <constraint firstItem="TCx-9Z-RPU" firstAttribute="leading" secondItem="GgL-KE-yG7" secondAttribute="leading" constant="40" id="iOe-0t-DW6"/>
                                             <constraint firstItem="P1I-dc-QUd" firstAttribute="top" secondItem="GgL-KE-yG7" secondAttribute="top" constant="20" id="ll2-j4-5im"/>
                                             <constraint firstAttribute="trailing" secondItem="7GQ-82-o1R" secondAttribute="trailing" constant="40" id="mQz-S0-5G7"/>
                                             <constraint firstItem="LX9-6W-bhH" firstAttribute="leading" secondItem="GgL-KE-yG7" secondAttribute="leading" constant="16" id="mkd-Z5-VWz"/>
                                             <constraint firstItem="t3v-hM-vnc" firstAttribute="leading" secondItem="GgL-KE-yG7" secondAttribute="leading" constant="40" id="mqH-zX-WNr"/>
-                                            <constraint firstItem="TCx-9Z-RPU" firstAttribute="top" secondItem="eKh-7d-kPR" secondAttribute="bottom" constant="8" id="nH2-It-WZc"/>
                                             <constraint firstAttribute="bottom" secondItem="WlM-xJ-Wjc" secondAttribute="bottom" constant="8" id="oBk-lQ-bf9"/>
                                             <constraint firstAttribute="trailing" secondItem="CZJ-ac-YBF" secondAttribute="trailing" constant="40" id="opC-vT-CUG"/>
                                             <constraint firstItem="CZJ-ac-YBF" firstAttribute="top" secondItem="7GQ-82-o1R" secondAttribute="bottom" constant="8" id="qmQ-fR-T52"/>
                                             <constraint firstAttribute="trailing" secondItem="LX9-6W-bhH" secondAttribute="trailing" constant="16" id="tDE-i2-U5d"/>
-                                            <constraint firstItem="eKh-7d-kPR" firstAttribute="leading" secondItem="GgL-KE-yG7" secondAttribute="leading" constant="40" id="tn5-I3-YKf"/>
                                             <constraint firstItem="WlM-xJ-Wjc" firstAttribute="leading" secondItem="GgL-KE-yG7" secondAttribute="leading" constant="40" id="tna-D2-C3t"/>
-                                            <constraint firstItem="eKh-7d-kPR" firstAttribute="top" secondItem="9Ep-EI-4zT" secondAttribute="bottom" constant="22" id="vMG-Ie-Ir8"/>
                                             <constraint firstItem="WlM-xJ-Wjc" firstAttribute="top" secondItem="CZJ-ac-YBF" secondAttribute="bottom" constant="8" id="x0t-QA-H2U"/>
                                         </constraints>
                                         <variation key="default">
@@ -1710,7 +1680,6 @@ Citilink Warehouse Complex
                         <outlet property="lastNameField" destination="t3v-hM-vnc" id="8zq-in-G4c"/>
                         <outlet property="phoneField" destination="CZJ-ac-YBF" id="rRW-Ah-2lK"/>
                         <outlet property="scrollView" destination="jyP-SH-YtR" id="h2w-my-Drk"/>
-                        <outlet property="userNameField" destination="eKh-7d-kPR" id="Yj1-fA-KHa"/>
                         <outlet property="widthConstraint" destination="Sjg-Rd-ono" id="HhC-BA-H4Z"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="fbShowMainScreen" id="mG1-qk-ojj"/>
                     </connections>
@@ -1734,7 +1703,7 @@ Citilink Warehouse Complex
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQp-DS-sci">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qQp-DS-sci">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="490"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Aqx-VT-Mf3">
@@ -1763,12 +1732,12 @@ Citilink Warehouse Complex
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9u-Vu-r6w" customClass="AttributedLabel">
-                                                <rect key="frame" x="20" y="120" width="280" height="34"/>
+                                                <rect key="frame" x="20" y="120" width="280" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="5sJ-uM-vny"/>
+                                                    <constraint firstAttribute="height" constant="44" id="5sJ-uM-vny"/>
                                                 </constraints>
                                                 <attributedString key="attributedText">
-                                                    <fragment content="Just a few more details, before you get started...">
+                                                    <fragment content="Just a few more details before you get started.">
                                                         <attributes>
                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <font key="NSFont" metaFont="system" size="16"/>
@@ -1788,44 +1757,32 @@ Citilink Warehouse Complex
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your username" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-hv-yih" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-MD-wNY" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="176" width="240" height="38"/>
-                                                <accessibility key="accessibilityConfiguration" label="Enter your username"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="38" id="Ztc-C3-2dO"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="lMP-mB-1Ki" id="DIq-1D-lcf"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-MD-wNY" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="222" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ywr-8B-5Fk"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="OL0-ry-HoW"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-99-QHL" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="268" width="240" height="38"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-99-QHL" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="40" y="222" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="First name"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="Iuq-US-pLu"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="FCf-f5-zyN"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="M89-59-1qN" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="314" width="240" height="38"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="M89-59-1qN" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="40" y="268" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Last name"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="LNT-c1-qIZ"/>
@@ -1836,20 +1793,20 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="WNB-VS-1JI"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-gd-SfC" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="360" width="240" height="38"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-gd-SfC" customClass="UIFloatLabelTextField">
+                                                <rect key="frame" x="40" y="314" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Email"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ICs-XP-LJv"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="cwm-UW-mO4"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="406" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="360" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Phone number"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="dRa-Rn-4oT"/>
@@ -1861,7 +1818,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jD-Ox-uNA">
-                                                <rect key="frame" x="40" y="452" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="406" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Create new account"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="kD8-yK-03k"/>
@@ -1875,7 +1832,7 @@ Citilink Warehouse Complex
                                                     <action selector="createAccount:" destination="lMP-mB-1Ki" eventType="touchUpInside" id="iLq-ni-CN1"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="DHb-RS-aJg" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="DHb-RS-aJg" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="398" width="240" height="0.0"/>
                                                 <accessibility key="accessibilityConfiguration" label="Country"/>
                                                 <constraints>
@@ -1890,15 +1847,12 @@ Citilink Warehouse Complex
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="UNv-hv-yih" firstAttribute="top" secondItem="v9u-Vu-r6w" secondAttribute="bottom" constant="22" id="4Ry-xC-PFd"/>
-                                            <constraint firstItem="UNv-hv-yih" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="40" id="5lU-zk-8jx"/>
                                             <constraint firstAttribute="trailing" secondItem="0nx-2n-PqJ" secondAttribute="trailing" constant="40" id="9vu-SK-bdf"/>
                                             <constraint firstItem="9jD-Ox-uNA" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="40" id="AFV-a0-1O0"/>
                                             <constraint firstItem="v9u-Vu-r6w" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="20" id="Cbk-yA-yoc"/>
                                             <constraint firstAttribute="centerX" secondItem="Aqx-VT-Mf3" secondAttribute="centerX" id="Djj-hF-6dA"/>
                                             <constraint firstItem="5fF-gd-SfC" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="40" id="GyX-gW-dNj"/>
                                             <constraint firstItem="0nx-2n-PqJ" firstAttribute="top" secondItem="DHb-RS-aJg" secondAttribute="bottom" constant="8" id="MJd-cX-l3N"/>
-                                            <constraint firstAttribute="trailing" secondItem="UNv-hv-yih" secondAttribute="trailing" constant="40" id="Nw9-Zz-WEG"/>
                                             <constraint firstItem="qgg-66-BJ3" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="16" id="OCd-cW-1Ga"/>
                                             <constraint firstAttribute="trailing" secondItem="3ki-MD-wNY" secondAttribute="trailing" constant="40" id="QVg-VW-S1j"/>
                                             <constraint firstAttribute="trailing" secondItem="5fF-gd-SfC" secondAttribute="trailing" constant="40" id="RJ6-z3-b6Q"/>
@@ -1911,10 +1865,10 @@ Citilink Warehouse Complex
                                             <constraint firstItem="qgg-66-BJ3" firstAttribute="top" secondItem="Aqx-VT-Mf3" secondAttribute="bottom" constant="8" id="ZzR-2O-6tN"/>
                                             <constraint firstItem="8KA-99-QHL" firstAttribute="top" secondItem="3ki-MD-wNY" secondAttribute="bottom" constant="8" id="aHC-IM-LWJ"/>
                                             <constraint firstItem="M89-59-1qN" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="40" id="b8E-Li-RIE"/>
-                                            <constraint firstItem="3ki-MD-wNY" firstAttribute="top" secondItem="UNv-hv-yih" secondAttribute="bottom" constant="8" id="bug-7e-umY"/>
                                             <constraint firstItem="Aqx-VT-Mf3" firstAttribute="top" secondItem="qQp-DS-sci" secondAttribute="top" constant="15" id="dSY-wF-Je0"/>
                                             <constraint firstItem="8KA-99-QHL" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="40" id="hBx-fh-ONu"/>
                                             <constraint firstItem="DHb-RS-aJg" firstAttribute="top" secondItem="5fF-gd-SfC" secondAttribute="bottom" id="i7q-V9-ln2"/>
+                                            <constraint firstItem="3ki-MD-wNY" firstAttribute="top" secondItem="v9u-Vu-r6w" secondAttribute="bottom" constant="12" id="jif-C9-2W0"/>
                                             <constraint firstAttribute="trailing" secondItem="qgg-66-BJ3" secondAttribute="trailing" constant="16" id="oC6-p2-WfJ"/>
                                             <constraint firstItem="DHb-RS-aJg" firstAttribute="leading" secondItem="qQp-DS-sci" secondAttribute="leading" constant="40" id="oml-CE-y9d"/>
                                             <constraint firstAttribute="trailing" secondItem="8KA-99-QHL" secondAttribute="trailing" constant="40" id="pK0-c9-vou"/>
@@ -1953,13 +1907,12 @@ Citilink Warehouse Complex
                     <connections>
                         <outlet property="contentView" destination="qQp-DS-sci" id="d3M-iw-6Vg"/>
                         <outlet property="countryField" destination="DHb-RS-aJg" id="XF4-2P-V9o"/>
-                        <outlet property="emailField" destination="5fF-gd-SfC" id="w7h-BX-UEe"/>
-                        <outlet property="firstNameField" destination="8KA-99-QHL" id="Iul-05-SW1"/>
-                        <outlet property="lastNameField" destination="M89-59-1qN" id="5rN-IP-zG9"/>
-                        <outlet property="passwordField" destination="3ki-MD-wNY" id="8vx-fc-2aK"/>
+                        <outlet property="emailField" destination="3ki-MD-wNY" id="o0v-lu-h7n"/>
+                        <outlet property="firstNameField" destination="M89-59-1qN" id="GYC-OW-hOG"/>
+                        <outlet property="lastNameField" destination="5fF-gd-SfC" id="hoZ-iJ-4qD"/>
+                        <outlet property="passwordField" destination="8KA-99-QHL" id="QYZ-b0-vXp"/>
                         <outlet property="phoneField" destination="0nx-2n-PqJ" id="paD-UV-BKD"/>
                         <outlet property="scrollView" destination="8Bi-CW-Ped" id="duS-yZ-Huj"/>
-                        <outlet property="userNameField" destination="UNv-hv-yih" id="x3t-Ck-tbm"/>
                         <outlet property="widthConstraint" destination="SJY-eF-ne1" id="eHm-Aq-5Oq"/>
                         <segue destination="dua-YX-667" kind="presentation" identifier="showMainScreenSegue" id="1dd-Ww-h8O"/>
                     </connections>
@@ -2902,7 +2855,7 @@ know before you get started!</string>
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dPg-nh-fPh"/>
-        <segue reference="Iws-61-RlG"/>
+        <segue reference="1dd-Ww-h8O"/>
+        <segue reference="ReU-Ip-U3f"/>
     </inferredMetricsTieBreakers>
 </document>

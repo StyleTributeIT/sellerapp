@@ -10,7 +10,6 @@
 
 @interface EditProfileController : BaseInputController
 
-@property IBOutlet UITextField* userNameField;
 @property IBOutlet UITextField* emailField;
 @property IBOutlet UITextField* firstNameField;
 @property IBOutlet UITextField* lastNameField;

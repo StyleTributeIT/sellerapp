@@ -36,7 +36,6 @@
     self.emailField.text = profile.email;
     self.firstNameField.text = profile.firstName;
     self.lastNameField.text = profile.lastName;
-    self.userNameField.text = profile.userName;
     
     if([DataCache sharedInstance].countries == nil) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
@@ -65,11 +64,11 @@
     if([self noEmptyFields]) {
         if([self validateEmail:self.emailField.text]) {
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-            [[ApiRequester sharedInstance] setAccountWithUserName:self.userNameField.text
+            [[ApiRequester sharedInstance] setAccountWithUserName:nil
                                                         firstName:self.firstNameField.text
                                                          lastName:self.lastNameField.text
                                                           country:self.curCountry.identifier
-                                                            phone:(NSString*)[NSNull null]
+                                                            phone:[DataCache sharedInstance].userProfile.phone
                                                           success:^{
                                                               [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                                                               UserProfile* curProfile = [DataCache sharedInstance].userProfile;
@@ -92,8 +91,7 @@
 #pragma mark - Utils
 
 -(BOOL)noEmptyFields {
-    return (self.userNameField.text.length > 0 &&
-            self.firstNameField.text.length > 0 &&
+    return (self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
             self.emailField.text.length > 0 /* &&
             self.countryField.text.length > 0*/);

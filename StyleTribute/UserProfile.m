@@ -49,7 +49,7 @@
 }
 
 -(BOOL)isFilled {
-    if(self.userName.length > 0) {
+    if(self.firstName.length > 0 && self.lastName.length > 0 && self.phone.length > 0) {
         return YES;
     } else {
         return NO;
