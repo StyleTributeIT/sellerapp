@@ -52,7 +52,6 @@
     UserProfile* profile = [DataCache sharedInstance].userProfile;
     if(profile.firstName.length > 0) self.firstNameField.text = profile.firstName;
     if(profile.lastName.length > 0) self.lastNameField.text = profile.lastName;
-    if(profile.userName.length > 0) self.userNameField.text = profile.userName;
     if(profile.country.length > 0) self.countryField.text = profile.country;
     if(profile.phone.length > 0) self.phoneField.text = profile.phone;
     
@@ -100,7 +99,7 @@
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         
         if(self.updatingProfile) {
-            [[ApiRequester sharedInstance] setAccountWithUserName:self.userNameField.text
+            [[ApiRequester sharedInstance] setAccountWithUserName:nil
                                                         firstName:self.firstNameField.text
                                                          lastName:self.lastNameField.text
                                                           country:country.identifier
@@ -108,7 +107,6 @@
                                                           success:^{
                                                               [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                                                               UserProfile* curProfile = [DataCache sharedInstance].userProfile;
-                                                              curProfile.userName = self.userNameField.text;
                                                               curProfile.firstName = self.firstNameField.text;
                                                               curProfile.lastName = self.lastNameField.text;
                                                               curProfile.country = country.name;
@@ -123,7 +121,7 @@
                                                     password:password
                                                    firstName:self.firstNameField.text
                                                     lastName:self.lastNameField.text
-                                                    userName:self.userNameField.text
+                                                    userName:nil
                                                      country:country.identifier
                                                        phone:self.phoneField.text
                                                      success:^(UserProfile *profile) {
@@ -142,8 +140,7 @@
 }
 
 -(BOOL)noEmptyFields {
-    return (self.userNameField.text.length > 0 &&
-            self.firstNameField.text.length > 0 &&
+    return (self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
 //            self.countryField.text.length > 0 &&
             self.phoneField.text.length > 0);

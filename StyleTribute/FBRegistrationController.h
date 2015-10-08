@@ -11,7 +11,6 @@
 
 @interface FBRegistrationController : BaseInputController
 
-@property IBOutlet UITextField* userNameField;
 @property IBOutlet UITextField* firstNameField;
 @property IBOutlet UITextField* lastNameField;
 @property IBOutlet UITextField* countryField;

@@ -12,7 +12,6 @@
 
 @interface RegistrationController : BaseInputController
 
-@property IBOutlet UITextField* userNameField;
 @property IBOutlet UITextField* passwordField;
 @property IBOutlet UITextField* firstNameField;
 @property IBOutlet UITextField* lastNameField;

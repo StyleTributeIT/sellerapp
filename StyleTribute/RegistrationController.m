@@ -85,7 +85,7 @@
                                                     password:self.passwordField.text
                                                    firstName:self.firstNameField.text
                                                     lastName:self.lastNameField.text
-                                                    userName:self.userNameField.text
+                                                    userName:nil
                                                      country:country.identifier
                                                        phone:self.phoneField.text
                                                      success:^(UserProfile *profile) {
@@ -111,8 +111,7 @@
 }
 
 -(BOOL)noEmptyFields {
-    return (self.userNameField.text.length > 0 &&
-            self.passwordField.text.length > 0 &&
+    return (self.passwordField.text.length > 0 &&
             self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
             self.emailField.text.length > 0 &&

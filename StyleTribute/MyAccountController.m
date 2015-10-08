@@ -26,13 +26,13 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.accountSettings = @[@"EDIT PROFILE", @"RESIDENT ADDRESS", /* @"CHANGE MY PASSWORD", */ @"MY BANK DETAILS", @"CONTACT & FIND US"];
-    self.userNameLabel.text = [NSString stringWithFormat:@"Hi %@!", [DataCache sharedInstance].userProfile.userName];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.widthConstraint.constant = [[UIScreen mainScreen] bounds].size.width;
     [GlobalHelper addLogoToNavBar:self.navigationItem];
+    self.userNameLabel.text = [NSString stringWithFormat:@"Hi %@!", [DataCache sharedInstance].userProfile.firstName];
 }
 
 #pragma mark - UITableView
