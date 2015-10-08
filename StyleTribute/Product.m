@@ -191,17 +191,23 @@
        [self.processStatus isEqualToString:@"incomplete"] ||
        [self.processStatus isEqualToString:@"image_processing"] ||
        [self.processStatus isEqualToString:@"selling"] ||
+       [self.processStatus isEqualToString:@"rejected"] ||
+       [self.processStatus isEqualToString:@"sold"] ||
        [self.processStatus isEqualToString:@"suspended"])
     {
         return ProductTypeSelling;
     }
-    else if([self.processStatus isEqualToString:@"sold"] ||
-            [self.processStatus isEqualToString:@"sold_confirmed"] ||
+    else if([self.processStatus isEqualToString:@"sold_confirmed"] ||
             [self.processStatus isEqualToString:@"received"] ||
             [self.processStatus isEqualToString:@"authenticated"] ||
             [self.processStatus isEqualToString:@"sent_to_buyer"] ||
+            [self.processStatus isEqualToString:@"product_not_available"] ||
             [self.processStatus isEqualToString:@"received_by_buyer"] ||
             [self.processStatus isEqualToString:@"payout_seller"] ||
+            [self.processStatus isEqualToString:@"payment_sent"] ||
+            [self.processStatus isEqualToString:@"reimburse_buyer"] ||
+            [self.processStatus isEqualToString:@"returned_by_buyer"] ||
+            [self.processStatus isEqualToString:@"rejected_send_back"] ||
             [self.processStatus isEqualToString:@"complete"])
     {
         return ProductTypeSold;
