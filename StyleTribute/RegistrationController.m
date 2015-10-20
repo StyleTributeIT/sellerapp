@@ -114,9 +114,7 @@
     return (self.passwordField.text.length > 0 &&
             self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
-            self.emailField.text.length > 0 &&
-//            self.countryField.text.length > 0 &&
-            self.phoneField.text.length > 0);
+            self.emailField.text.length > 0);
 }
 
 #pragma mark - UIPickerView

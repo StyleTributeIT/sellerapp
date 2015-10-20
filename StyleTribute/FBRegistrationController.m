@@ -141,9 +141,7 @@
 
 -(BOOL)noEmptyFields {
     return (self.firstNameField.text.length > 0 &&
-            self.lastNameField.text.length > 0 &&
-//            self.countryField.text.length > 0 &&
-            self.phoneField.text.length > 0);
+            self.lastNameField.text.length > 0);
 }
 
 #pragma mark - UIPickerView

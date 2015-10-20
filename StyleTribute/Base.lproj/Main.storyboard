@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU1-hE-138">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -1508,7 +1508,7 @@ Citilink Warehouse Complex
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-KE-yG7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3v-hM-vnc" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name *" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t3v-hM-vnc" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="256" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ihL-x8-CeU"/>
@@ -1548,7 +1548,7 @@ Citilink Warehouse Complex
                                                     <constraint firstAttribute="width" constant="64" id="aIS-MM-mwK"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCx-9Z-RPU" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name *" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCx-9Z-RPU" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="210" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="kd9-ea-VwT"/>
@@ -1757,9 +1757,9 @@ Citilink Warehouse Complex
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-MD-wNY" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail *" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="3ki-MD-wNY" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="176" width="240" height="38"/>
-                                                <accessibility key="accessibilityConfiguration" label="Enter your password"/>
+                                                <accessibility key="accessibilityConfiguration" label="E-Mail"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ywr-8B-5Fk"/>
                                                 </constraints>
@@ -1769,9 +1769,9 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="OL0-ry-HoW"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-99-QHL" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="130" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password *" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-99-QHL" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="222" width="240" height="38"/>
-                                                <accessibility key="accessibilityConfiguration" label="First name"/>
+                                                <accessibility key="accessibilityConfiguration" label="Password"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="Iuq-US-pLu"/>
                                                 </constraints>
@@ -1781,9 +1781,9 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="FCf-f5-zyN"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="M89-59-1qN" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name *" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="M89-59-1qN" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="268" width="240" height="38"/>
-                                                <accessibility key="accessibilityConfiguration" label="Last name"/>
+                                                <accessibility key="accessibilityConfiguration" label="First name"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="LNT-c1-qIZ"/>
                                                 </constraints>
@@ -1793,9 +1793,9 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="WNB-VS-1JI"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-gd-SfC" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name *" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-gd-SfC" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="314" width="240" height="38"/>
-                                                <accessibility key="accessibilityConfiguration" label="Email"/>
+                                                <accessibility key="accessibilityConfiguration" label="Last name"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="ICs-XP-LJv"/>
                                                 </constraints>
@@ -2855,7 +2855,7 @@ know before you get started!</string>
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1dd-Ww-h8O"/>
+        <segue reference="mG1-qk-ojj"/>
         <segue reference="ReU-Ip-U3f"/>
     </inferredMetricsTieBreakers>
 </document>
