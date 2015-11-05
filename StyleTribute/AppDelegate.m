@@ -69,6 +69,8 @@
         NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
         [DataCache sharedInstance].openProductOnstart = productId;
     }
+	
+	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
 }
