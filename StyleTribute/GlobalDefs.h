@@ -13,7 +13,7 @@
 #import <TestFairy.h>
 
 // static NSString* const DefApiHost		= @"http://test-api.styletribute.com/";
-// static NSString* const DefApiHost		= @"http://magentolocal.ctrlm.sg/Magento-on-Angular/api/public/";
+//static NSString* const DefApiHost		= @"http://magentolocal.ctrlm.sg/Magento-on-Angular/api/public/";
 //static NSString* const DefApiHost       = @"http://magapi.evgeniy.lara/";
 static NSString* const DefApiHost		= @"https://api.styletribute.com/";
 
