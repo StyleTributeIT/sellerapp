@@ -454,7 +454,7 @@ typedef void(^ImageLoadBlock)(int);
             }
             
             ImageType* imgType = nil;
-            if(self.selectedImageIndex < self.curProduct.photos.count) {
+            if(self.selectedImageIndex < self.curProduct.category.imageTypes.count) {
                 imgType = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
             }
             
