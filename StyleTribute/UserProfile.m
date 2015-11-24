@@ -13,7 +13,7 @@
 -(instancetype)init {
     self = [super init];
     if(self) {
-        self.shippingAddress = [Address new];
+		self.shippingAddress = nil;
     }
     return self;
 }
