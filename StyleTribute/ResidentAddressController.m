@@ -169,16 +169,16 @@
 #pragma mark -
 
 -(BOOL)noEmptyFields {
-    BOOL isStateFilled = (self.stateField.isEnabled ? (self.stateField.text.length > 0) : YES);
+//    BOOL isStateFilled = (self.stateField.isEnabled ? (self.stateField.text.length > 0) : YES);
     
     return (self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
 //            self.companyField.text.length > 0 &&
             self.cityField.text.length > 0 &&
-            isStateFilled &&
+//            isStateFilled &&
             self.postalCodeField.text.length > 0 &&
             self.countryField.text.length > 0 &&
-            self.phoneNumberField.text.length > 0 &&
+//            self.phoneNumberField.text.length > 0 &&
             self.addressField.text.length > 0);
 }
 

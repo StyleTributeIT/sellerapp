@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU1-hE-138">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -68,7 +68,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-xd-dpw" customClass="KASlideShow">
@@ -246,7 +246,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jNw-e3-dRw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NY5-ro-TzI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-aZ-Jzd">
@@ -446,8 +446,10 @@
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="eXp-aJ-P6h" customClass="MyAccountCell">
+                                                        <rect key="frame" x="0.0" y="22" width="304" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eXp-aJ-P6h" id="h0F-28-CnO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53B-AI-w6e">
@@ -741,7 +743,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="CzG-gL-1Q2"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Af-rQ-iTM" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Af-rQ-iTM" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="45" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="mcY-Sb-EoE"/>
@@ -752,7 +754,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="NL3-ID-2Ao"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuD-Wk-V9e" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second Name *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuD-Wk-V9e" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="91" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="To2-e9-Fkc"/>
@@ -763,7 +765,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="2kF-19-Ffm"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xg3-HO-ve7" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xg3-HO-ve7" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="229" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="RXK-sk-5ez"/>
@@ -774,7 +776,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="2Ms-ZA-c2U"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMF-lg-kH3" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMF-lg-kH3" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="321" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="z7i-u7-axR"/>
@@ -785,7 +787,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="5Yg-Hr-x9e"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ZIP/Postal code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7na-yA-0IR" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ZIP/Postal code *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7na-yA-0IR" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="275" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="162-l7-X79"/>
@@ -796,7 +798,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="htA-hb-wfS"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUQ-Mh-DdT" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUQ-Mh-DdT" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="183" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="S4R-ns-ZmN"/>
@@ -1358,7 +1360,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="bottom" id="NMy-RC-vS5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ATV-x9-siS">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
@@ -1378,8 +1380,10 @@ Citilink Warehouse Complex
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="wardrobeCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wardrobeCell" rowHeight="74" id="dOn-Le-vWG" customClass="WardrobeCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOn-Le-vWG" id="KIm-Or-0xq">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
@@ -1499,7 +1503,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="bottom" id="UFY-tf-2Fn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-SH-YtR">
@@ -1697,7 +1701,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="bottom" id="ouI-7M-v2j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hM7-JS-bIu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
@@ -1968,7 +1972,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="bottom" id="bW5-s7-tra"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="y6f-9S-XTb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKy-EG-yBK">
@@ -2082,7 +2086,7 @@ Citilink Warehouse Complex
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="1ac-WL-CXH" customClass="PhotoCell">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -2353,7 +2357,7 @@ Citilink Warehouse Complex
                         <outletCollection property="sfHeightConstraints" destination="QDB-5X-JhG" id="0Vb-61-nVa"/>
                         <outletCollection property="sfHeightConstraints" destination="H93-tG-bo7" id="8sk-FO-DX0"/>
                         <outletCollection property="sfHeightConstraints" destination="Nux-RX-8JW" id="9Rd-kw-G6H"/>
-                        <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" modalTransitionStyle="crossDissolve" animates="NO" id="rms-Fm-rAE"/>
+                        <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" animates="NO" modalTransitionStyle="crossDissolve" id="rms-Fm-rAE"/>
                         <segue destination="jT0-Up-6a5" kind="show" identifier="ChooseBrandSegue2" id="1Xh-1B-7ma"/>
                     </connections>
                 </viewController>
@@ -2372,8 +2376,10 @@ Citilink Warehouse Complex
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="96" id="EF3-7w-xOt" customClass="CategoryCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EF3-7w-xOt" id="CGq-z7-XlJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="28B-eB-BtK">
@@ -2436,7 +2442,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="bottom" id="aaH-iC-B3A"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Rb-Vy-ewe">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYh-G4-FOn">
