@@ -92,9 +92,9 @@
 //    }
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
+    login.loginBehavior = FBSDKLoginBehaviorNative;
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-    [login logInWithReadPermissions:@[@"email"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+	[login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         if (error) {
             NSLog(@"FB login error: %@", [error description]);
@@ -106,12 +106,17 @@
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             [[ApiRequester sharedInstance] loginWithFBToken:result.token.tokenString success:^(BOOL loggedIn, UserProfile* fbProfile) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                [DataCache sharedInstance].userProfile = fbProfile;
-                if(loggedIn) {
-                    [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-                } else {
-                    [self performSegueWithIdentifier:@"FBRegistrationSegue" sender:self];
-                }
+				
+				[DataCache sharedInstance].userProfile = fbProfile;
+				if(loggedIn) {
+					if([fbProfile isFilled]) {
+						[self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+					} else {
+						[self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+					}
+				} else {
+					[self performSegueWithIdentifier:@"FBRegistrationSegue" sender:self];
+				}
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 [GlobalHelper showMessage:error withTitle:@"Login error"];
