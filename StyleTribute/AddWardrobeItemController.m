@@ -474,10 +474,10 @@ typedef void(^ImageLoadBlock)(int);
                         UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - oSize.width)/2, (cameraViewRect.size.height - oSize.height)/2 + cameraViewRect.origin.y, oSize.width, oSize.height)];
                         overlay.image = outline;
                         picker.cameraOverlayView = overlay;
-                        
-                        [self presentViewController:picker animated:YES completion:^{
-                        }];
                     }
+					
+					[self presentViewController:picker animated:YES completion:^{
+					}];
                 }];
             } else {
                 [self presentViewController:picker animated:YES completion:^{
