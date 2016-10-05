@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 
-pod 'AFNetworking'
+pod 'AFNetworking', '~> 2.6'
 pod 'TestFairy'
 pod 'Reachability'
 pod 'KASlideShow'
