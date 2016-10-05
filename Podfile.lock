@@ -21,8 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CRToast (0.0.9)
-  - KASlideShow (3.0.0):
-    - SDWebImage (~> 3.8)
+  - KASlideShow (2.2)
   - KIF (3.4.2):
     - KIF/Core (= 3.4.2)
   - KIF/Core (3.4.2)
@@ -66,7 +65,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
   - CRToast
-  - KASlideShow
+  - KASlideShow (= 2.2)
   - KIF
   - LinqToObjectiveC
   - MRProgress
@@ -78,7 +77,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
-  KASlideShow: d737c734ee603ed4fc7de09876d5193192e74ee4
+  KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
   KIF: b518c9831453abea5afdbbde3908ec47832d6d56
   LinqToObjectiveC: f0e40c137a458b6b9725c4c7b6a575c0c72e3aec
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
