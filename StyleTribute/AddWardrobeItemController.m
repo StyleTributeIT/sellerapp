@@ -557,17 +557,17 @@ typedef void(^ImageLoadBlock)(int);
 
 -(IBAction)cancel:(id)sender {
     NSLog(@"cancel");
-    
-    if(self.activeField) {
-        [self.activeField resignFirstResponder];
-    }
-    
-    [self clearAllFields];
-    self.curProduct = nil;
-    self.isEditing = NO;
-    
-    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-    [tabController selectPreviousTab];
+    [self dismissViewControllerAnimated:true completion:nil];
+//    if(self.activeField) {
+//        [self.activeField resignFirstResponder];
+//    }
+//    
+//    [self clearAllFields];
+//    self.curProduct = nil;
+//    self.isEditing = NO;
+//    
+//    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+//    [tabController selectPreviousTab];
 }
 
 -(IBAction)done:(id)sender {
