@@ -725,6 +725,7 @@ typedef void(^ImageLoadBlock)(int);
                     self.curProduct = nil;
                     self.isEditing = NO;
                     [tabController setSelectedIndex:0];
+                    [self dismissViewControllerAnimated:true completion:nil];
                 });
             });
                                                     
