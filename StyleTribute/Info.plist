@@ -63,6 +63,8 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow StyleTribute to use you photo library.</string>
+	<string>Allow StyleTribute to use your photo library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow StyleTribute to use your camera.</string>
 </dict>
 </plist>
