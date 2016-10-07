@@ -52,7 +52,7 @@
         }];
     }
     
-    [self updateProducts];
+    //[self updateProducts];
     
     NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Light" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
@@ -269,11 +269,21 @@
 }
 
 -(void)openProductDetails:(Product*)product {
-    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-    AddWardrobeItemController* awic = (AddWardrobeItemController*)[[tabController.viewControllers objectAtIndex:1] visibleViewController];
-    awic.curProduct = product;
-    awic.isEditing = YES;
-    [tabController setSelectedIndex:1];  // Go to item detail page
+    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
+    for(UIViewController * viewController in navController.viewControllers){
+        if ([viewController isKindOfClass:[AddWardrobeItemController class]]){
+            AddWardrobeItemController *vc = (AddWardrobeItemController * ) viewController;
+            vc.curProduct = product;
+            vc.isEditing = YES;
+            
+        }
+    }
+    [self presentViewController:navController animated:YES completion:nil] ;
+//    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+//    AddWardrobeItemController* awic = (AddWardrobeItemController*)[[tabController.viewControllers objectAtIndex:1] visibleViewController];
+//    awic.curProduct = product;
+//    awic.isEditing = YES;
+//    [tabController setSelectedIndex:1];  // Go to item detail page
 }
 
 #pragma mark - MGSwipeTableCellDelegate
