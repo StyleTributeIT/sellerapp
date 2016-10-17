@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface STCategory : BaseModel
+@interface STCategory : BaseModel<NSCopying>
 
 @property NSUInteger idNum;
 @property NSString* name;

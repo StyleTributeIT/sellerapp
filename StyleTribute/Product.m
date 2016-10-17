@@ -239,4 +239,164 @@
     }
 }
 
+//Implementation of NSCopying Protocol
+- (id)copyWithZone:(NSZone *)zone{
+    Product *newProduct = [[Product allocWithZone:zone]init];
+    newProduct.identifier = _identifier;
+    newProduct.type = _type;
+    newProduct.name = [_name copy];
+    newProduct.processStatus = [_processStatus copy];
+    newProduct.processStatusDisplay = [_processStatusDisplay copy];
+    newProduct.processComment = [_processComment copy];
+    newProduct.category = [_category copy];
+    newProduct.photos = [_photos mutableCopy];
+    newProduct.designer = [_designer copy];
+    newProduct.condition = [_condition copy];
+    newProduct.originalPrice = _originalPrice;
+    newProduct.suggestedPrice = _suggestedPrice;
+    newProduct.price = _price;
+    newProduct.allowedTransitions = [_allowedTransitions mutableCopy];
+    newProduct.descriptionText = [_descriptionText copy];
+    newProduct.unit = [_unit copy];
+    newProduct.size = [_size copy];
+    newProduct.sizeId = _sizeId;
+    newProduct.shoeSize = [_shoeSize copy];
+    newProduct.heelHeight = [_heelHeight copy];
+    newProduct.dimensions = [_dimensions copy];
+    return newProduct;
+}
+
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:[self class]]){
+        Product *product = (Product *) object;
+        if (!(product.identifier && _identifier && product.identifier == _identifier)){
+            if (!(!product.identifier && !_identifier)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.type && _type && product.type == _type)){
+            if (!(!product.type && !_type)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.name && _name && [product.name isEqualToString:_name])){
+            if (!(!product.name && !_name)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.processStatus && _processStatus && [product.processStatus isEqualToString:_processStatus])){
+            if (!(!product.processStatus && ! _processStatus)) {
+                return NO;
+            }
+        }
+        if (!(product.processStatusDisplay && _processStatusDisplay && [product.processStatusDisplay isEqualToString:_processStatusDisplay])){
+            if (!(!product.processStatusDisplay && !_processStatusDisplay)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.processComment && _processComment && [product.processComment isEqualToString:_processComment])){
+            if (!(!product.processComment && !_processComment)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.category && _category && [product.category isEqual:_category])){
+            if (!(!product.category && !_category)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.photos && _photos && [product.photos isEqualToArray:_photos])){
+            if (!(!product.photos && !_photos)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.designer && _designer && [product.designer isEqual:_designer])){
+            if (!(!product.designer && !_designer)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.condition && _condition && [product.condition isEqual:_condition])){
+            if (!(!product.condition && !_condition)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.originalPrice && _originalPrice && product.originalPrice == _originalPrice)){
+            if (!(!product.originalPrice && !_originalPrice)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.suggestedPrice && _suggestedPrice && product.suggestedPrice == _suggestedPrice)){
+            if (!(!product.suggestedPrice && !_suggestedPrice)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.price && _price && product.price == _price)){
+            if (!(!product.price && !_price)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.allowedTransitions && _allowedTransitions && [product.allowedTransitions isEqualToArray:_allowedTransitions])){
+            if (!(!product.allowedTransitions && !_allowedTransitions)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.descriptionText && _descriptionText && [product.descriptionText isEqualToString:_descriptionText])){
+            if (!(!product.descriptionText && !_descriptionText)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.unit && _unit && [product.unit isEqualToString:_unit])){
+            if (!(!product.unit && !_unit)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.size && _size && [product.size isEqualToString:_size])){
+            if (!(!product.size && !_size)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.sizeId && _sizeId && product.sizeId == _sizeId)){
+            if (!(!product.sizeId && !_sizeId)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.shoeSize && _shoeSize && [product.shoeSize isEqual:_shoeSize])){
+            if (!(!product.shoeSize && !_shoeSize)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.heelHeight && _heelHeight && [product.heelHeight isEqualToString: _heelHeight])){
+            if (!(!product.heelHeight && !_heelHeight)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.dimensions && _dimensions && [product.dimensions isEqualToArray:_dimensions]) ){
+            if (!(!product.dimensions && !_dimensions)) {
+                return NO;
+            }
+        }
+    }else{
+        return NO;
+    }
+    return YES;
+}
+
 @end

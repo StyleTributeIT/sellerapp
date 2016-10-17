@@ -57,4 +57,49 @@
     [encoder encodeObject:self.sizeFields forKey:@"sizeFields"];
 }
 
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:[self class]]){
+        STCategory *stCategory = (STCategory *) object;
+        
+        if (!(stCategory.name && _name && [stCategory.name isEqualToString:_name])){
+            if (!(!stCategory.name && !_name)) {
+                return NO;
+            }
+        }
+        if (!(stCategory.idNum && _idNum && stCategory.idNum == _idNum)){
+            if (!(!stCategory.idNum && !_idNum)) {
+                return NO;
+            }
+        }
+        if (!(stCategory.thumbnail && _thumbnail && [stCategory.thumbnail isEqualToString:_thumbnail])){
+            if (!(!stCategory.thumbnail && !_thumbnail)) {
+                return NO;
+            }
+        }
+        if (!(stCategory.imageTypes && _imageTypes && [stCategory.imageTypes isEqualToArray:_imageTypes])){
+            if (!(!stCategory.imageTypes && !_imageTypes)) {
+                return NO;
+            }
+        }
+        if (!(stCategory.sizeFields && _sizeFields && [stCategory.sizeFields isEqualToArray:_sizeFields])){
+            if (!(!stCategory.sizeFields && !_sizeFields)) {
+                return NO;
+            }
+        }
+    }else{
+        return NO;
+    }
+    return YES;
+}
+
+- (id)copyWithZone:(NSZone *)zone{
+    STCategory *newCategory = [[STCategory allocWithZone:zone] init];
+    newCategory.idNum = _idNum;
+    newCategory.name = [_name copy];
+    newCategory.thumbnail = [_thumbnail copy];
+    newCategory.imageTypes = [_imageTypes copy];
+    newCategory.sizeFields = [_sizeFields copy];
+    return newCategory;
+}
+
 @end

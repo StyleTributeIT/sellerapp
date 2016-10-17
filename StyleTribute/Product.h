@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, EditingType) {
     EditingTypeNothing
 };
 
-@interface Product : BaseModel<NSCoding>
+@interface Product : BaseModel<NSCoding,NSCopying>
 
 @property NSUInteger identifier;
 @property ProductType type;

@@ -46,9 +46,10 @@ typedef void(^ImageLoadBlock)(int);
 @property NSUInteger selectedImageIndex;
 @property NSMutableArray* photosToDelete;
 @property BOOL isInitialized;
+@property BOOL isProductUpdated;
 
 @property (copy) ImageLoadBlock imgLoadBlock;
-
+@property Product *productCopy;
 @end
 
 @implementation AddWardrobeItemController
@@ -85,6 +86,8 @@ typedef void(^ImageLoadBlock)(int);
     self.photosToDelete = [NSMutableArray new];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+    
+    self.productCopy = [self.curProduct copy];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -262,6 +265,7 @@ typedef void(^ImageLoadBlock)(int);
     NSInteger index = [self.picker selectedRowInComponent:0];
 	if(self.activeField == self.unitField) {
 		NSString* unit = [self.getCurrentDatasource objectAtIndex:index];
+        
 		self.unitField.text = unit;
 		self.curProduct.unit = unit;
 		if( self.sizeField.text.length && [[DataCache sharedInstance].units[unit] linq_where:^BOOL(NamedItem* item) {
@@ -579,6 +583,11 @@ typedef void(^ImageLoadBlock)(int);
     } else {
         if(self.activeField) {
             [self.activeField resignFirstResponder];
+        }
+        if (self.isEditing){
+            if ([self.curProduct isEqual:self.productCopy]) {
+                return;
+            }
         }
         
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];

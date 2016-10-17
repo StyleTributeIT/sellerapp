@@ -16,21 +16,31 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-	typeof(self) copy = [[[self class] alloc] init];
+    NamedItem *newNameItem = [[NamedItem allocWithZone:zone]init];
+    newNameItem.name = [_name copy];
+    newNameItem.identifier = _identifier;
 	
-	if (copy) {
-		// Copy NSObject subclasses
-		copy.name = [self.name copyWithZone:zone];
-		
-		// Set primitives
-		copy.identifier = self.identifier;
-	}
-	
-	return copy;
+	return newNameItem;
 }
 
 - (BOOL)isEqual:(id)object {
-	return [self.name isEqualToString:((NamedItem *)object).name] && (self.identifier == ((NamedItem *)object).identifier);
+    if ([object isKindOfClass:[self class]]){
+        NamedItem *namedItem = (NamedItem *) object;
+        
+        if (!(namedItem.identifier && _identifier && namedItem.identifier == _identifier)){
+            if (!(!namedItem.identifier && !_identifier)) {
+                return NO;
+            }
+        }
+        if (!(namedItem.name && _name && [namedItem.name isEqualToString:_name])){
+            if (!(!namedItem.name && !_name)) {
+                return NO;
+            }
+        }
+    }else{
+        return NO;
+    }
+	return YES;
 }
 
 - (NSString*)description {
