@@ -3320,7 +3320,7 @@ fi
 			<key>isa</key>
 			<string>PBXShellScriptBuildPhase</string>
 			<key>name</key>
-			<string>&#128230; Check Pods Manifest.lock</string>
+			<string>[CP] Check Pods Manifest.lock</string>
 			<key>outputPaths</key>
 			<array/>
 			<key>runOnlyForDeploymentPostprocessing</key>
@@ -3350,7 +3350,7 @@ fi
 			<key>isa</key>
 			<string>PBXShellScriptBuildPhase</string>
 			<key>name</key>
-			<string>&#128230; Check Pods Manifest.lock</string>
+			<string>[CP] Check Pods Manifest.lock</string>
 			<key>outputPaths</key>
 			<array/>
 			<key>runOnlyForDeploymentPostprocessing</key>

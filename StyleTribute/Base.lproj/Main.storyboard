@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -2631,70 +2631,33 @@ Citilink Warehouse Complex
                         <subviews>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="s3p-LN-sHj">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8B-xV-awX">
-                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="tutorialstepsiphone6-04" translatesAutoresizingMaskIntoConstraints="NO" id="U1i-iF-UEE">
-                                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start_selling" translatesAutoresizingMaskIntoConstraints="NO" id="kPA-K8-Owj">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="a6H-Lm-C4K"/>
+                                            <constraint firstAttribute="width" constant="181" id="8au-PL-dJO"/>
+                                            <constraint firstAttribute="height" constant="252" id="IUX-n1-paj"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="tutorialstepsiphone6-05" translatesAutoresizingMaskIntoConstraints="NO" id="Vsp-jP-pFB">
-                                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="eet-Qx-rye"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="tutorialstepsiphone6-06" translatesAutoresizingMaskIntoConstraints="NO" id="MvU-6S-Lvw">
-                                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="RX3-qQ-nXd"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL7-CY-ac7">
-                                        <string key="text">Here are couple of things to
-know before you get started!</string>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="U1i-iF-UEE" firstAttribute="leading" secondItem="s3p-LN-sHj" secondAttribute="leading" id="35q-d4-dF7"/>
-                                    <constraint firstItem="o8B-xV-awX" firstAttribute="leading" secondItem="s3p-LN-sHj" secondAttribute="leading" constant="16" id="5Li-U2-x6V"/>
-                                    <constraint firstAttribute="trailing" secondItem="MvU-6S-Lvw" secondAttribute="trailing" id="LGd-RU-Xu1"/>
-                                    <constraint firstItem="Vsp-jP-pFB" firstAttribute="leading" secondItem="s3p-LN-sHj" secondAttribute="leading" id="LKM-cw-GXh"/>
-                                    <constraint firstItem="pL7-CY-ac7" firstAttribute="top" secondItem="o8B-xV-awX" secondAttribute="bottom" constant="3" id="O1b-Vm-ZBd"/>
-                                    <constraint firstItem="U1i-iF-UEE" firstAttribute="top" secondItem="pL7-CY-ac7" secondAttribute="bottom" constant="14" id="OX4-Im-2fW"/>
-                                    <constraint firstItem="o8B-xV-awX" firstAttribute="top" secondItem="s3p-LN-sHj" secondAttribute="top" constant="70" id="PsR-Lj-dZL"/>
-                                    <constraint firstAttribute="trailing" secondItem="o8B-xV-awX" secondAttribute="trailing" constant="16" id="VTL-Kn-Rdy"/>
-                                    <constraint firstItem="MvU-6S-Lvw" firstAttribute="leading" secondItem="s3p-LN-sHj" secondAttribute="leading" id="hbI-sX-e6n"/>
-                                    <constraint firstItem="pL7-CY-ac7" firstAttribute="leading" secondItem="s3p-LN-sHj" secondAttribute="leading" constant="16" id="hle-1U-gJb"/>
-                                    <constraint firstAttribute="height" constant="381" id="ihg-lq-mrd"/>
-                                    <constraint firstItem="MvU-6S-Lvw" firstAttribute="top" secondItem="Vsp-jP-pFB" secondAttribute="bottom" constant="8" id="qNP-Yc-a2z"/>
-                                    <constraint firstItem="Vsp-jP-pFB" firstAttribute="top" secondItem="U1i-iF-UEE" secondAttribute="bottom" constant="8" id="rfK-jn-rQ3"/>
-                                    <constraint firstAttribute="trailing" secondItem="pL7-CY-ac7" secondAttribute="trailing" constant="16" id="xnM-wv-mKS"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vsp-jP-pFB" secondAttribute="trailing" id="yOv-Qv-HhY"/>
-                                    <constraint firstAttribute="trailing" secondItem="U1i-iF-UEE" secondAttribute="trailing" id="zhg-xk-I1Q"/>
+                                    <constraint firstItem="kPA-K8-Owj" firstAttribute="centerX" secondItem="s3p-LN-sHj" secondAttribute="centerX" id="C7l-9E-RdX"/>
+                                    <constraint firstAttribute="bottom" secondItem="kPA-K8-Owj" secondAttribute="bottom" constant="17" id="OvX-nk-1Tn"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="s3p-LN-sHj" secondAttribute="trailing" id="8kz-iw-rup"/>
-                            <constraint firstItem="s3p-LN-sHj" firstAttribute="leading" secondItem="ZZ2-j3-YMt" secondAttribute="leading" id="RPc-LS-rPO"/>
-                            <constraint firstAttribute="centerY" secondItem="s3p-LN-sHj" secondAttribute="centerY" constant="30" id="vyL-I1-mQ2"/>
+                            <constraint firstItem="s3p-LN-sHj" firstAttribute="top" secondItem="TyN-7o-3Gb" secondAttribute="bottom" constant="39" id="3jm-em-5LH"/>
+                            <constraint firstItem="s3p-LN-sHj" firstAttribute="leading" secondItem="ZZ2-j3-YMt" secondAttribute="leading" id="DWw-cG-Z7D"/>
+                            <constraint firstAttribute="trailing" secondItem="s3p-LN-sHj" secondAttribute="trailing" id="cch-2F-Nve"/>
+                            <constraint firstItem="yCq-FD-tf5" firstAttribute="top" secondItem="s3p-LN-sHj" secondAttribute="bottom" constant="35" id="jyL-xa-LsG"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Pa-vO-6Bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3779" y="-1435"/>
+            <point key="canvasLocation" x="3777.5999999999999" y="-1435.2323838080961"/>
         </scene>
     </scenes>
     <resources>
@@ -2704,10 +2667,8 @@ know before you get started!</string>
         <image name="RedButton" width="205" height="30"/>
         <image name="account" width="30" height="30"/>
         <image name="add-item" width="56" height="56"/>
+        <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
-        <image name="tutorialstepsiphone6-04" width="1558" height="367"/>
-        <image name="tutorialstepsiphone6-05" width="1558" height="367"/>
-        <image name="tutorialstepsiphone6-06" width="1558" height="367"/>
         <image name="wardrobe" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
