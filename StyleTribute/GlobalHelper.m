@@ -16,9 +16,11 @@
 @implementation GlobalHelper
 
 +(void)addLogoToNavBar:(UINavigationItem*)item {
-    UIImageView *titleImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    titleImg.image = [UIImage imageNamed:@"LogoHeader"];
-    item.titleView = titleImg;
+    UIImageView *titleImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 78, 35)];
+    titleImg.image = [UIImage imageNamed:@"logo-1"];
+    UIImageView *workaroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 78, 34)];
+    [workaroundImageView addSubview:titleImg];
+    item.titleView = workaroundImageView;
 }
 
 +(UIPickerView*)createPickerForFields:(NSArray*)fields {
