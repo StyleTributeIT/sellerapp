@@ -14,52 +14,24 @@
 
 @property NSUInteger previousTabIndex;
 @property (strong, nonatomic) UIButton *myWardrobeButton;
+@property (strong, nonatomic) UIButton *shopButton;
 @property (strong, nonatomic) UIButton *addItemButton;
 @property (strong, nonatomic) UIButton *myAccountButton;
+@property (strong, nonatomic) UIButton *notificationsButton;
 @end
 
 @implementation MainTabBarController
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self=  [super initWithCoder:aDecoder];
+    
     if(self) {
         self.previousTabIndex = 0;
         self.delegate = self;
-        
-//        NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-UltraLight" size:11],
-//                                          NSForegroundColorAttributeName: [UIColor blackColor] };
-//        NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-UltraLight" size:11],
-//                                          NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1] };
-//        
-//        UITabBarItem* addItem = [self.tabBar.items objectAtIndex:1];
-//        [addItem setImage:[[UIImage imageNamed:@"add-item"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//        addItem.imageInsets = UIEdgeInsetsMake(-20, 0, 20, 0);
-//        addItem.accessibilityLabel = @"Add item";
-//        [addItem setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-//        [addItem setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
-//        [addItem setTitlePositionAdjustment:UIOffsetMake(0, -4)];
-//        
-//        UITabBarItem* wardrobeItem = [self.tabBar.items objectAtIndex:0];
-//        [wardrobeItem setImage:[[UIImage imageNamed:@"wardrobe"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//        wardrobeItem.imageInsets = UIEdgeInsetsMake(-8, 0, 8, 0);
-//        [wardrobeItem setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-//        [wardrobeItem setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
-//        [wardrobeItem setTitlePositionAdjustment:UIOffsetMake(0, -4)];
-//        
-//        UITabBarItem* accountItem = [self.tabBar.items objectAtIndex:2];
-//        [accountItem setImage:[[UIImage imageNamed:@"account"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-//        accountItem.imageInsets = UIEdgeInsetsMake(-8, 0, 8, 0);
-//        [accountItem setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-//        [accountItem setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
-//        [accountItem setTitlePositionAdjustment:UIOffsetMake(0, -4)];
-        
-        //[self.tabBar setBackgroundImage:[self resizeBackgroundImage:[UIImage imageNamed:@"TabBar"]]];
-        
         CGSize screenSize = [UIScreen mainScreen].bounds.size;
         
         //Widht of button
-        CGFloat itemWidth = screenSize.width/3;
-        
+        CGFloat itemWidth = screenSize.width/5;
         
         UIImage * backgroundImage = [self resizeBackgroundImage:[UIImage imageNamed:@"TabBar"]];
         
@@ -70,48 +42,41 @@
         UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:tabbarContainer.bounds];
         bgImageView.contentMode = UIViewContentModeBottom;
         bgImageView.image = backgroundImage;
+      //  [self.tabBar setBackgroundImage:backgroundImage];
         [tabbarContainer addSubview:bgImageView];
-        
+       // return self;
         //My wardrobe Tab button created
         self.myWardrobeButton = [self getTabbarButtonforFrame:CGRectMake(0, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"wardrobe"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"My Wardrobe" andTopOffset:0];
         [self.myWardrobeButton addTarget:self action:@selector(myWardrobeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
+        //Shop button
+        self.shopButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"shop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Shop" andTopOffset:0];
+        [self.myWardrobeButton addTarget:self action:@selector(shopButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        
         //Add Item Tab Button created
-        self.addItemButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth,backgroundImage.size.height - (backgroundImage.size.height * 0.8333333333) , itemWidth, backgroundImage.size.height) icon:[[UIImage imageNamed:@"add-item"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Add Item" andTopOffset: -16];
+        self.addItemButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 2,backgroundImage.size.height - (backgroundImage.size.height * 0.8333333333) , itemWidth, backgroundImage.size.height) icon:[[UIImage imageNamed:@"add-item"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Add Item" andTopOffset: -16];
         [self.addItemButton addTarget:self action:@selector(addItemButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //My Account Butoon Created
-        self.myAccountButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 2, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"account"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"My Account" andTopOffset:0];
+        self.myAccountButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 3, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"profile"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"My Account" andTopOffset:0];
         [self.myAccountButton addTarget:self action:@selector(myAccountButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.notificationsButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 4, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"notifications"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Notifications" andTopOffset:0];
+        [self.myAccountButton addTarget:self action:@selector(notificationsButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //Added all the button to container
         [tabbarContainer addSubview:self.myWardrobeButton];
+        [tabbarContainer addSubview:self.shopButton];
         [tabbarContainer addSubview:self.addItemButton];
         [tabbarContainer addSubview:self.myAccountButton];
+        [tabbarContainer addSubview:self.notificationsButton];
         
         //Added container to the view
         [self.view addSubview:tabbarContainer];
         
         //by default My Wardrobe button is selected
         [self myWardrobeButtonPressed];
-        
-//        self.tabBar.barTintColor = [UIColor clearColor];
-//        self.tabBar.selectedImageTintColor = [UIColor clearColor];
-////        self.tabBar.selectionIndicatorImage = [UIImage new];
-//        self.tabBar.shadowImage = [UIImage new];
-        
-//        UIView* buttonView = [self.tabBar.subviews objectAtIndex:1];
-//        CGRect buttonFrame = buttonView.frame;
-//        buttonFrame.origin = CGPointMake(buttonFrame.origin.x, buttonFrame.origin.y - 50);
-//        [buttonView setFrame:buttonFrame];
-//        NSLog(@"Button: %@", buttonView);
-//        
-//        UIView* imageView = [[buttonView subviews] objectAtIndex:0];
-//        NSLog(@"image view: %@", imageView);
-//        
-//        UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-//        [imageView setUserInteractionEnabled:YES];
-//        [imageView addGestureRecognizer:singleFingerTap];
+    
     }
     
     return self;
@@ -124,6 +89,8 @@
 -(void)selectPreviousTab {
     [self setSelectedIndex:self.previousTabIndex];
 }
+
+
 
 -(void)setSelectedIndex:(NSUInteger)selectedIndex {
     self.previousTabIndex = self.selectedIndex;
@@ -185,13 +152,22 @@
     return button;
 }
 
+-(void) shopButtonPressed
+{
+    
+}
+
+- (void) notificationsButtonPressed
+{
+    
+}
+
 - (void) myWardrobeButtonPressed{
     [self setSelectedIndex:0];
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe-pink"] forState: UIControlStateNormal];
-    [self.myAccountButton setImage:[UIImage imageNamed:@"account"] forState: UIControlStateNormal];
+    [self.myAccountButton setImage:[UIImage imageNamed:@"profile"] forState: UIControlStateNormal];
     [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]forState:UIControlStateNormal];
     [self.myAccountButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
-    
 }
 
 - (void) addItemButtonPressed{
@@ -205,9 +181,44 @@
 - (void) myAccountButtonPressed{
     [self setSelectedIndex:2];
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe"] forState: UIControlStateNormal];
-    [self.myAccountButton setImage:[UIImage imageNamed:@"account-pink"] forState: UIControlStateNormal];
+    [self.myAccountButton setImage:[UIImage imageNamed:@"profile-pink"] forState: UIControlStateNormal];
     [self.myAccountButton setTitleColor: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]forState:UIControlStateNormal];
     [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+}
+
+
+-(UIViewController*) viewControllerWithTabTitle:(NSString*) title image:(UIImage*)image
+{
+    UIViewController* viewController = [[UIViewController alloc] init];
+    viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:0];
+    return viewController;
+}
+
+// Create a custom UIButton and add it to the center of our tab bar
+-(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
+{
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+    button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    
+    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+    if (heightDifference < 0)
+        button.center = self.tabBar.center;
+    else
+    {
+        CGPoint center = self.tabBar.center;
+        center.y = center.y - heightDifference/2.0;
+        button.center = center;
+    }
+    
+    [self.view addSubview:button];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 @end

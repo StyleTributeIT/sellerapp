@@ -537,7 +537,7 @@
         <scene sceneID="As9-Y2-XEX">
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" selectedImage="notifications" id="7Ro-sA-wqG"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1886,7 +1886,7 @@ Citilink Warehouse Complex
         <scene sceneID="dii-Pr-ipc">
             <objects>
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Wardrobe" image="wardrobe" id="1lF-wO-pHw"/>
+                    <tabBarItem key="tabBarItem" title="My Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2677,7 +2677,7 @@ Citilink Warehouse Complex
         <scene sceneID="yse-FJ-1hJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My account" image="account" id="6Az-wg-XNO"/>
+                    <tabBarItem key="tabBarItem" title="My account" image="account" selectedImage="account-pink" id="6Az-wg-XNO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2692,11 +2692,11 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="2049" y="1610"/>
         </scene>
-        <!--Sell-->
+        <!--Navigation Controller-->
         <scene sceneID="BWq-Cj-uqG">
             <objects>
                 <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sell" image="add-item" id="VZF-2f-aWD"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="camera" id="VZF-2f-aWD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2760,12 +2760,15 @@ Citilink Warehouse Complex
         <image name="Logo" width="64" height="64"/>
         <image name="RedButton" width="205" height="30"/>
         <image name="account" width="30" height="30"/>
-        <image name="add-item" width="56" height="56"/>
+        <image name="account-pink" width="30" height="30"/>
+        <image name="camera" width="46" height="46"/>
         <image name="notifications" width="23" height="22"/>
+        <image name="notifications-pink" width="23" height="22"/>
         <image name="shop" width="22" height="22"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
         <image name="wardrobe" width="50" height="30"/>
+        <image name="wardrobe-pink" width="50" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dPg-nh-fPh"/>
