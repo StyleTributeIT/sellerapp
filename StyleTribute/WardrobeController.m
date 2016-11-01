@@ -70,6 +70,7 @@
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Updating products" attributes:refreshTextAttributes];
     [self.refreshControl addTarget:self action:@selector(refreshProducts:) forControlEvents:UIControlEventValueChanged];
     [self.itemsTable insertSubview:self.refreshControl atIndex:0];
+    [self customizeSegment];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -421,6 +422,65 @@
         [sender endRefreshing];
         [GlobalHelper showMessage:error withTitle:@"error"];
     }];
+}
+
+-(void) customizeSegment
+{
+    CALayer *upperBorder = [CALayer layer];
+    upperBorder.backgroundColor = [[UIColor grayColor] CGColor];
+    upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.wardrobeType.frame), 1.0f);
+    [self.wardrobeType.layer addSublayer:upperBorder];
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.backgroundColor = [[UIColor grayColor] CGColor];
+    bottomBorder.frame = CGRectMake(0, self.wardrobeType.frame.size.height + 1, CGRectGetWidth(self.wardrobeType.frame), 1.0f);
+    [self.wardrobeType.layer addSublayer:bottomBorder];
+    
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, self.wardrobeType.frame.size.height), NO, 0.0);
+    UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self.wardrobeType setDividerImage:blank
+                    forLeftSegmentState:UIControlStateNormal
+                      rightSegmentState:UIControlStateNormal
+                             barMetrics:UIBarMetricsDefault];
+    
+    [self.wardrobeType setBackgroundImage:[UIImage imageNamed:@"segmentNormal"]
+                                       forState:UIControlStateNormal
+                                     barMetrics:UIBarMetricsDefault];
+    
+    //The alredy selected button is stil selected when it is highlighted
+    [self.wardrobeType setBackgroundImage:[UIImage imageNamed:@"segmentActive"]
+                                       forState:UIControlStateSelected
+                                     barMetrics:UIBarMetricsDefault];
+    
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
+    
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateNormal];
+    
+    //Handle when the right segment is highlighted but the left is selected
+ /*   [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentActive"]
+                         forLeftSegmentState:UIControlStateSelected
+                           rightSegmentState:UIControlStateHighlighted
+                                  barMetrics:UIBarMetricsDefault];
+    
+    //Handle when the right segment is already selected and just highlighted and the right is normal
+    [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentNormal"]
+                         forLeftSegmentState:UIControlStateHighlighted|UIControlStateSelected
+                           rightSegmentState:UIControlStateNormal
+                                  barMetrics:UIBarMetricsDefault];
+    
+    //Handle when the left segment is highlighted but the right is selected
+    [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentActive"]
+                         forLeftSegmentState:UIControlStateHighlighted
+                           rightSegmentState:UIControlStateSelected
+                                  barMetrics:UIBarMetricsDefault];
+    
+    //Handle when the left segment is already selected and just highlighted and the left is normal
+    [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentActive"]
+                         forLeftSegmentState:UIControlStateNormal
+                           rightSegmentState:UIControlStateHighlighted|UIControlStateSelected
+                                  barMetrics:UIBarMetricsDefault]; */
 }
 
 @end

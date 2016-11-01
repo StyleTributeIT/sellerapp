@@ -1319,8 +1319,7 @@ Citilink Warehouse Complex
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
-                                <frame key="frameInset" minX="16" minY="84" width="288" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
                                 <segments>
                                     <segment title="Selling"/>
                                     <segment title="Sold"/>
@@ -1401,9 +1400,9 @@ Citilink Warehouse Complex
                             <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="RuY-Yc-7YU" secondAttribute="bottom" id="Kax-W1-v08"/>
                             <constraint firstItem="xrR-oq-fgh" firstAttribute="top" secondItem="OsQ-Wz-Vxq" secondAttribute="bottom" constant="20" id="Na4-iL-qbL"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" constant="16" id="SqC-xw-cbD"/>
-                            <constraint firstItem="xrR-oq-fgh" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" id="Upl-gw-oGg"/>
+                            <constraint firstItem="xrR-oq-fgh" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" constant="-16" id="Upl-gw-oGg"/>
                             <constraint firstItem="RuY-Yc-7YU" firstAttribute="top" secondItem="ATV-x9-siS" secondAttribute="top" id="VkE-eW-DyP"/>
-                            <constraint firstItem="xrR-oq-fgh" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" id="YHn-9D-5LU"/>
+                            <constraint firstItem="xrR-oq-fgh" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" constant="16" id="YHn-9D-5LU"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" constant="-16" id="dlT-qK-qZg"/>
                             <constraint firstItem="RuY-Yc-7YU" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leading" id="eIA-r1-uOK"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="top" secondItem="xrR-oq-fgh" secondAttribute="bottom" constant="20" id="hwB-BX-xhi"/>
@@ -1424,7 +1423,7 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0O-si-xHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2850" y="-1435"/>
+            <point key="canvasLocation" x="2848.8000000000002" y="-1435.2323838080961"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="5D6-10-5KI">
@@ -2767,8 +2766,8 @@ Citilink Warehouse Complex
         <image name="shop" width="22" height="22"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
-        <image name="wardrobe" width="50" height="30"/>
-        <image name="wardrobe-pink" width="50" height="30"/>
+        <image name="wardrobe" width="37" height="22"/>
+        <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dPg-nh-fPh"/>
