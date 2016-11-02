@@ -1379,6 +1379,12 @@ Citilink Warehouse Complex
                                     <action selector="wardrobeTypeChanged:" destination="gWl-q7-vZa" eventType="valueChanged" id="ebm-6t-lTm"/>
                                 </connections>
                             </segmentedControl>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <connections>
+                                    <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
+                                </connections>
+                            </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
                                 <rect key="frame" x="0.0" y="132" width="320" height="377"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1392,49 +1398,37 @@ Citilink Warehouse Complex
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
-                                                    <rect key="frame" x="16" y="4" width="66" height="66"/>
+                                                    <rect key="frame" x="16" y="4" width="66" height="65"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="66" id="w2Q-gH-c4y"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="90" y="22" width="155" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
+                                                    <rect key="frame" x="229" y="29" width="83" height="15"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
-                                                    <rect key="frame" x="90" y="4" width="146" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
+                                                    <rect key="frame" x="90" y="4" width="146" height="65"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="18" id="L5w-qT-ZbS"/>
+                                                        <constraint firstAttribute="height" constant="65" id="L5w-qT-ZbS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="16"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5Q-aO-vix">
-                                                    <rect key="frame" x="253" y="26" width="59" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="jcL-0Z-Zo9"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="b5Q-aO-vix" firstAttribute="trailing" secondItem="KIm-Or-0xq" secondAttribute="trailingMargin" id="07E-hH-huu"/>
                                                 <constraint firstItem="dBz-kO-QAU" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="4" id="9Y9-Pu-RCy"/>
-                                                <constraint firstItem="b5Q-aO-vix" firstAttribute="leading" secondItem="7Wf-il-BAC" secondAttribute="trailing" constant="8" symbolic="YES" id="9tv-cT-icL"/>
-                                                <constraint firstItem="b5Q-aO-vix" firstAttribute="centerY" secondItem="dBz-kO-QAU" secondAttribute="centerY" id="JsO-NJ-9CK"/>
-                                                <constraint firstAttribute="trailing" secondItem="7Wf-il-BAC" secondAttribute="trailing" constant="75" id="Klj-lb-kNx"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Wf-il-BAC" secondAttribute="trailing" constant="8" id="Klj-lb-kNx"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cbt-pm-K7d" secondAttribute="trailing" constant="84" id="U3M-Ps-fm3"/>
                                                 <constraint firstItem="dBz-kO-QAU" firstAttribute="leading" secondItem="KIm-Or-0xq" secondAttribute="leading" constant="16" id="V9l-CZ-tWC"/>
-                                                <constraint firstItem="7Wf-il-BAC" firstAttribute="top" secondItem="Cbt-pm-K7d" secondAttribute="bottom" id="Vdx-Vg-4Ok"/>
+                                                <constraint firstItem="7Wf-il-BAC" firstAttribute="top" secondItem="Cbt-pm-K7d" secondAttribute="bottom" constant="-40" id="Vdx-Vg-4Ok"/>
                                                 <constraint firstItem="Cbt-pm-K7d" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="4" id="WsK-DY-FAU"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7Wf-il-BAC" secondAttribute="bottom" constant="4" id="ZqM-VV-eMH"/>
-                                                <constraint firstItem="7Wf-il-BAC" firstAttribute="leading" secondItem="dBz-kO-QAU" secondAttribute="trailing" constant="8" id="mGN-J2-gdS"/>
+                                                <constraint firstItem="7Wf-il-BAC" firstAttribute="leading" secondItem="dBz-kO-QAU" secondAttribute="trailing" constant="147" id="mGN-J2-gdS"/>
                                                 <constraint firstItem="Cbt-pm-K7d" firstAttribute="leading" secondItem="dBz-kO-QAU" secondAttribute="trailing" constant="8" id="qMX-z4-sbR"/>
                                                 <constraint firstAttribute="bottom" secondItem="dBz-kO-QAU" secondAttribute="bottom" constant="4" id="v1L-LD-vaT"/>
                                             </constraints>
@@ -1442,7 +1436,6 @@ Citilink Warehouse Complex
                                         <connections>
                                             <outlet property="displayState" destination="7Wf-il-BAC" id="oVl-CZ-mT0"/>
                                             <outlet property="image" destination="dBz-kO-QAU" id="Vt5-Vc-jzY"/>
-                                            <outlet property="status" destination="b5Q-aO-vix" id="a3B-AI-6gX"/>
                                             <outlet property="title" destination="Cbt-pm-K7d" id="4w8-gV-3XO"/>
                                         </connections>
                                     </tableViewCell>
@@ -1452,12 +1445,6 @@ Citilink Warehouse Complex
                                     <outlet property="delegate" destination="gWl-q7-vZa" id="hlh-P6-NRt"/>
                                 </connections>
                             </tableView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <connections>
-                                    <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

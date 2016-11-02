@@ -220,6 +220,16 @@
     return ProductTypeNonVisible;
 }
 
+-(NSString*)getProductStatus
+{
+    NSString *res = @"Incompleted";
+    if ([_processStatus isEqualToString:@"in_review"])
+        res = @"In review";
+    if ([_processStatus isEqualToString:@"in_review_add"])
+        res = @"In review add";
+    return res;
+}
+
 -(EditingType)getEditingType {
     if([self.processStatus isEqualToString:@"in_review"] ||
        [self.processStatus isEqualToString:@"in_review_add"] ||

@@ -54,5 +54,6 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 
 -(ProductType)getProductType;
 -(EditingType)getEditingType;
+-(NSString*)getProductStatus;
 
 @end
