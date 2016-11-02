@@ -207,7 +207,7 @@
     cell.title.text = p.name;
     cell.displayState.text = p.processStatusDisplay;
     [cell.displayState sizeToFit];
-    
+    cell.status.text = p.processStatus;
     cell.rightButtons = [self rightButtonsForProduct:p];
     cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
     cell.allowsButtonsWithDifferentWidth = YES;

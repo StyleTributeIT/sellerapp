@@ -14,5 +14,6 @@
 @property IBOutlet UIImageView* image;
 @property IBOutlet UILabel* title;
 @property IBOutlet UILabel* displayState;
+@property (strong, nonatomic) IBOutlet UILabel *status;
 
 @end
