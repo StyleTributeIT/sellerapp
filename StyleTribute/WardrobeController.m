@@ -428,16 +428,16 @@
 {
     CALayer *upperBorder = [CALayer layer];
     upperBorder.backgroundColor = [[UIColor grayColor] CGColor];
-    upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.wardrobeType.frame), 1.0f);
+    upperBorder.frame = CGRectMake(-1, 0, CGRectGetWidth(self.wardrobeType.frame), 0.5f);
     [self.wardrobeType.layer addSublayer:upperBorder];
     
     CALayer *bottomBorder = [CALayer layer];
     bottomBorder.backgroundColor = [[UIColor grayColor] CGColor];
-    bottomBorder.frame = CGRectMake(0, self.wardrobeType.frame.size.height + 1, CGRectGetWidth(self.wardrobeType.frame), 1.0f);
+    bottomBorder.frame = CGRectMake(0, self.wardrobeType.frame.size.height + 1, CGRectGetWidth(self.wardrobeType.frame), 0.5f);
     [self.wardrobeType.layer addSublayer:bottomBorder];
     
     
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, self.wardrobeType.frame.size.height), NO, 0.0);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, self.wardrobeType.frame.size.height - 1), NO, 2.0);
     UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [self.wardrobeType setDividerImage:blank
