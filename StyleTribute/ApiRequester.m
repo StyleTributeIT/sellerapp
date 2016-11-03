@@ -221,6 +221,21 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }];
 }
 
+-(void)getSubCategories:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    [self.sessionManager GET:@"filterOptions" parameters:@{@"category_id":@"4"} success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+        NSMutableArray* categories = [NSMutableArray new];
+        for (NSDictionary* categoryDict in responseObject) {
+            [categories addObject:[STCategory parseFromJson:categoryDict]];
+        }
+        success(categories);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"getCategories error"];
+        failure(DefGeneralErrMsg);
+    }];
+}
+
 -(void)getCategories:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     

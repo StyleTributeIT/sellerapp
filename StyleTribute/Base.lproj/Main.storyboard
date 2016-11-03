@@ -2438,7 +2438,7 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="5302" y="-416"/>
         </scene>
-        <!--Top Categories View Controller-->
+        <!--Choose Category-->
         <scene sceneID="rkz-Ux-0bw">
             <objects>
                 <viewController id="Uhv-D1-LhM" customClass="TopCategoriesViewController" sceneMemberID="viewController">
@@ -2507,6 +2507,9 @@ Citilink Warehouse Complex
                             <constraint firstItem="d0o-gp-tXj" firstAttribute="leading" secondItem="mVF-X2-l4c" secondAttribute="leading" id="miq-jj-J0a"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Choose Category" id="VrL-gj-hHz">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="o2u-KV-Vt3"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionCategories" destination="d0o-gp-tXj" id="OcM-0e-gvh"/>
                         <segue destination="Ynw-yW-7bJ" kind="unwind" identifier="unwindToAddItem" unwindAction="unwindToAddItem:" id="yhN-rr-Vwz"/>
@@ -2692,10 +2695,10 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="3766" y="-416"/>
         </scene>
-        <!--Title-->
+        <!--Choose Brand-->
         <scene sceneID="mtX-Ps-w7n">
             <objects>
-                <viewController id="jT0-Up-6a5" customClass="ChooseBrandController" sceneMemberID="viewController">
+                <viewController id="jT0-Up-6a5" userLabel="Choose Brand" customClass="ChooseBrandController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bBh-uR-Dk6"/>
                         <viewControllerLayoutGuide type="bottom" id="Q22-RC-n9e"/>

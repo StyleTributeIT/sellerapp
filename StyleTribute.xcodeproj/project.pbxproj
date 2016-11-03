@@ -84,6 +84,8 @@
 		E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */; };
 		E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */; };
 		E1B059E71DCB4F1A00D14D91 /* CategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E61DCB4F1A00D14D91 /* CategoryViewCell.m */; };
+		E1B059EB1DCBCE6400D14D91 /* AddBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */; };
+		E1B059EC1DCBCE6400D14D91 /* AddBrandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B059EA1DCBCE6400D14D91 /* AddBrandTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +239,9 @@
 		E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCategoriesViewController.m; sourceTree = "<group>"; };
 		E1B059E51DCB4F1A00D14D91 /* CategoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewCell.h; sourceTree = "<group>"; };
 		E1B059E61DCB4F1A00D14D91 /* CategoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewCell.m; sourceTree = "<group>"; };
+		E1B059E81DCBCE6400D14D91 /* AddBrandTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBrandTableViewCell.h; sourceTree = "<group>"; };
+		E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBrandTableViewCell.m; sourceTree = "<group>"; };
+		E1B059EA1DCBCE6400D14D91 /* AddBrandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBrandTableViewCell.xib; sourceTree = "<group>"; };
 		E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA21526F6B1CFAEF28B1A2B6 /* Pods-StyleTributeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -434,6 +439,9 @@
 				7AAD0F811B1889B200CE1AD2 /* PhotoCell.m */,
 				E1B059E51DCB4F1A00D14D91 /* CategoryViewCell.h */,
 				E1B059E61DCB4F1A00D14D91 /* CategoryViewCell.m */,
+				E1B059E81DCBCE6400D14D91 /* AddBrandTableViewCell.h */,
+				E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */,
+				E1B059EA1DCBCE6400D14D91 /* AddBrandTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -653,6 +661,7 @@
 				7A0EB6151AEE23D400D90001 /* Images.xcassets in Resources */,
 				67E756581B8DA7EB000C1BDD /* Montserrat-UltraLight.otf in Resources */,
 				7A600F781B0B777200CCD5F3 /* Montserrat-UltraLight.otf in Resources */,
+				E1B059EC1DCBCE6400D14D91 /* AddBrandTableViewCell.xib in Resources */,
 				67E756571B8DA7EB000C1BDD /* Montserrat-Regular.otf in Resources */,
 				67E756561B8DA7EB000C1BDD /* Montserrat-Light.otf in Resources */,
 			);
@@ -891,6 +900,7 @@
 				7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */,
 				E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */,
 				7A0EB60D1AEE23D400D90001 /* AppDelegate.m in Sources */,
+				E1B059EB1DCBCE6400D14D91 /* AddBrandTableViewCell.m in Sources */,
 				7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */,
 				7A60979E1B14848F00209340 /* Country.m in Sources */,
 				7A44696C1B61228000E3A752 /* Photo.m in Sources */,

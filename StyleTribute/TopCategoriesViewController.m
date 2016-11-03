@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [GlobalHelper addLogoToNavBar:self.navigationItem];
+  //  [GlobalHelper addLogoToNavBar:self.navigationItem];
     //self.categoriesTableView.accessibilityIdentifier = @"Choose category table";
     self.collectionCategories.accessibilityIdentifier = @"Choose category table";
     self.collectionCategories.delegate = self;

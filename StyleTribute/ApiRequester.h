@@ -47,6 +47,7 @@ typedef void (^JSONRespAppViersion)(float appVersion);
 -(void)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure;
 -(void)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(void)getCountries:(JSONRespArray)success failure:(JSONRespError)failure;
+-(void)getSubCategories:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getCategories:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getProducts:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure;
