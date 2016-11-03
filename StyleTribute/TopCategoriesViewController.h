@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Category.h"
+#import "Product.h"
 
 @interface TopCategoriesViewController : UIViewController
 @property STCategory* selectedCategory;
+@property NSString* brandField;
+@property (weak) Product* product;
 @end

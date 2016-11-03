@@ -370,6 +370,8 @@ typedef void(^ImageLoadBlock)(int);
         TopCategoriesViewController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory.name;
         self.curProduct.category = ccController.selectedCategory;
+        
+        self.brandField.text = self.curProduct.designer.name;
         [self.collectionView reloadData];
         self.curProduct.photos = [NSMutableArray arrayWithCapacity:self.curProduct.category.imageTypes.count];
         for(int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
@@ -401,6 +403,10 @@ typedef void(^ImageLoadBlock)(int);
     } else if([segue.identifier isEqualToString:@"ChooseBrandSegue2"]) {
         ChooseBrandController* brandController = segue.destinationViewController;
         brandController.product = self.curProduct;
+    } else if ([segue.identifier isEqualToString:@"chooseTopCategorySegue"])
+    {
+        TopCategoriesViewController *categories = segue.destinationViewController;
+        categories.product = self.curProduct;
     }
 }
 

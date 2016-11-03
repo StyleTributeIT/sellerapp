@@ -13,6 +13,7 @@
 #import <MRProgress.h>
 #import "DataCache.h"
 #import "CategoryViewCell.h"
+#import "ChooseBrandController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 
@@ -44,11 +45,28 @@
     }
 }
 
-
+-(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender
+{
+    if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {
+        ChooseBrandController *ccController = sender.sourceViewController;
+        self.brandField = ccController.product.designer.name;
+    }
+    [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+}
 
 #pragma mark CollectionView delegate
 
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(self.view.frame.size.width/2, (self.view.frame.size.width/2) + 50);
+}
 
+-(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -82,14 +100,17 @@
  
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"ChooseBrandSegue2"])
+    {
+        ChooseBrandController *brand = segue.destinationViewController;
+        brand.product = self.product;
+    }
 }
-*/
+
 
 @end
