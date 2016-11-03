@@ -107,6 +107,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sectionNames.count == 0)
     {
+        NamedItem *item = [NamedItem new];
+        item.name = self.searchingString;
+        self.product.designer = item;
+        [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
         return;
     }
     NSArray* curSection = [self.sections objectAtIndex:indexPath.section];
