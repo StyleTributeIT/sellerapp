@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="477"/>
+            <point key="canvasLocation" x="-1482" y="479"/>
         </scene>
         <!--loginController-->
         <scene sceneID="tqf-KH-Ftc">
@@ -361,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIu-UF-Mgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778" y="800"/>
+            <point key="canvasLocation" x="70" y="479"/>
         </scene>
         <!--My Account Controller-->
         <scene sceneID="900-3Z-7Sr">
@@ -519,7 +519,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxX-xU-RjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Th8-VD-QdL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3263" y="870"/>
+            <point key="canvasLocation" x="2770" y="1604"/>
         </scene>
         <!--Notifications View Controller-->
         <scene sceneID="0bM-4E-ufZ">
@@ -548,7 +548,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gky-oi-8sU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="3106"/>
+            <point key="canvasLocation" x="956" y="2355"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="As9-Y2-XEX">
@@ -565,7 +565,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u3U-hr-FEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="2357"/>
+            <point key="canvasLocation" x="956" y="1605"/>
         </scene>
         <!--Title-->
         <scene sceneID="WcV-1w-xQW">
@@ -709,7 +709,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1U-DA-g9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lq4-XZ-SBB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3262" y="1915"/>
+            <point key="canvasLocation" x="2431" y="2519"/>
         </scene>
         <!--Title-->
         <scene sceneID="I17-3T-zC4">
@@ -936,7 +936,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvp-lq-7KE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Pgu-pG-jKm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3999" y="1915"/>
+            <point key="canvasLocation" x="3281" y="2518"/>
         </scene>
         <!--Title-->
         <scene sceneID="Ka6-Vr-ZoQ">
@@ -1065,7 +1065,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HC4-8v-jCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3ec-lA-3IZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5478" y="691"/>
+            <point key="canvasLocation" x="5161" y="1603"/>
         </scene>
         <!--Title-->
         <scene sceneID="lC3-OS-TXm">
@@ -1224,7 +1224,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-3h-1LV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qZY-yz-hbq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6052" y="1171"/>
+            <point key="canvasLocation" x="4322" y="2010"/>
         </scene>
         <!--Contact us-->
         <scene sceneID="02h-ZL-Kac">
@@ -1351,7 +1351,7 @@ Citilink Warehouse Complex
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6052" y="121"/>
+            <point key="canvasLocation" x="4321" y="1074"/>
         </scene>
         <!--Wardrobe Controller-->
         <scene sceneID="Pip-kP-ofg">
@@ -1379,12 +1379,6 @@ Citilink Warehouse Complex
                                     <action selector="wardrobeTypeChanged:" destination="gWl-q7-vZa" eventType="valueChanged" id="ebm-6t-lTm"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <connections>
-                                    <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
-                                </connections>
-                            </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
                                 <rect key="frame" x="0.0" y="132" width="320" height="377"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1445,6 +1439,12 @@ Citilink Warehouse Complex
                                     <outlet property="delegate" destination="gWl-q7-vZa" id="hlh-P6-NRt"/>
                                 </connections>
                             </tableView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <connections>
+                                    <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1476,7 +1476,7 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0O-si-xHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2848.8000000000002" y="-1435.2323838080961"/>
+            <point key="canvasLocation" x="2049" y="-1313"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="5D6-10-5KI">
@@ -1503,7 +1503,7 @@ Citilink Warehouse Complex
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2049" y="692"/>
+            <point key="canvasLocation" x="956" y="480"/>
         </scene>
         <!--fbRegistrationController-->
         <scene sceneID="pPC-bg-00S">
@@ -1700,7 +1700,7 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12e-oN-keg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="-527"/>
+            <point key="canvasLocation" x="956" y="-527"/>
         </scene>
         <!--Registration Controller-->
         <scene sceneID="ysi-K3-hsC">
@@ -1932,7 +1932,7 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaA-Z0-fXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="1336"/>
+            <point key="canvasLocation" x="-1482" y="1370"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4PT-dv-nv1">
@@ -1950,7 +1950,7 @@ Citilink Warehouse Complex
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2b-N5-neZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-793" y="478"/>
+            <point key="canvasLocation" x="-2266" y="480"/>
         </scene>
         <!--My Wardrobe-->
         <scene sceneID="dii-Pr-ipc">
@@ -1969,12 +1969,12 @@ Citilink Warehouse Complex
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxs-xj-Y9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2771" y="-526"/>
+            <point key="canvasLocation" x="2049" y="-558"/>
         </scene>
-        <!--Title-->
+        <!--Add Wardrobe-->
         <scene sceneID="j8t-bR-Z8K">
             <objects>
-                <viewController storyboardIdentifier="AddWardrobeItemController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JCl-pv-8pa" customClass="AddWardrobeItemController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddWardrobeItemController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JCl-pv-8pa" userLabel="Add Wardrobe" customClass="AddWardrobeItemController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tFD-Zu-I0S"/>
                         <viewControllerLayoutGuide type="bottom" id="bW5-s7-tra"/>
@@ -2364,16 +2364,17 @@ Citilink Warehouse Complex
                         <outletCollection property="sfHeightConstraints" destination="Nux-RX-8JW" id="9Rd-kw-G6H"/>
                         <segue destination="lIb-3R-MAJ" kind="presentation" identifier="tutorialSegue" animates="NO" modalTransitionStyle="crossDissolve" id="rms-Fm-rAE"/>
                         <segue destination="jT0-Up-6a5" kind="show" identifier="ChooseBrandSegue2" id="1Xh-1B-7ma"/>
+                        <segue destination="Uhv-D1-LhM" kind="custom" identifier="chooseTopCategorySegue" customClass="PushNoAnimationSegue" id="6UE-jV-Acr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gi-6i-1r4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2975" y="188"/>
+            <point key="canvasLocation" x="2942" y="478"/>
         </scene>
-        <!--Title-->
+        <!--Category selection-->
         <scene sceneID="ohv-na-xxH">
             <objects>
-                <tableViewController id="kpk-cm-DsD" customClass="ChooseCategoryController" sceneMemberID="viewController">
+                <tableViewController id="kpk-cm-DsD" userLabel="Category selection" customClass="ChooseCategoryController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" id="HMG-Gc-zjG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2435,7 +2436,76 @@ Citilink Warehouse Complex
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNt-KW-ktF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tm3-rZ-94c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4705" y="-1200"/>
+            <point key="canvasLocation" x="5302" y="-416"/>
+        </scene>
+        <!--Top Categories View Controller-->
+        <scene sceneID="rkz-Ux-0bw">
+            <objects>
+                <viewController id="Uhv-D1-LhM" customClass="TopCategoriesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fzr-PC-uIn"/>
+                        <viewControllerLayoutGuide type="bottom" id="gw9-TO-kni"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mVF-X2-l4c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-gp-tXj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y9s-Jz-rDh">
+                                    <size key="itemSize" width="153" height="149"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="uJx-lN-Lu6" customClass="CategoryViewCell">
+                                        <rect key="frame" x="94" y="0.0" width="187" height="187"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tR3-W0-3gM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="144"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvG-eX-uti">
+                                                    <rect key="frame" x="8" y="152" width="179" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <size key="customSize" width="187" height="187"/>
+                                        <connections>
+                                            <outlet property="categoryImage" destination="tR3-W0-3gM" id="L59-7U-Pgs"/>
+                                            <outlet property="categoryName" destination="zvG-eX-uti" id="vJj-Xb-RHp"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d0o-gp-tXj" firstAttribute="top" secondItem="mVF-X2-l4c" secondAttribute="top" id="17e-s6-SWB"/>
+                            <constraint firstItem="gw9-TO-kni" firstAttribute="top" secondItem="d0o-gp-tXj" secondAttribute="bottom" id="7xj-lQ-z4H"/>
+                            <constraint firstAttribute="trailing" secondItem="d0o-gp-tXj" secondAttribute="trailing" id="a6V-0z-Sft"/>
+                            <constraint firstItem="d0o-gp-tXj" firstAttribute="leading" secondItem="mVF-X2-l4c" secondAttribute="leading" id="miq-jj-J0a"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionCategories" destination="d0o-gp-tXj" id="OcM-0e-gvh"/>
+                        <segue destination="Ynw-yW-7bJ" kind="unwind" identifier="unwindToAddItem" unwindAction="unwindToAddItem:" id="yhN-rr-Vwz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gyn-EN-Ax0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ynw-yW-7bJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6217" y="-240"/>
         </scene>
         <!--Title-->
         <scene sceneID="ouN-cX-hFq">
@@ -2609,7 +2679,7 @@ Citilink Warehouse Complex
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDx-b3-heL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pQR-VK-prv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3646" y="-771"/>
+            <point key="canvasLocation" x="3766" y="-416"/>
         </scene>
         <!--Title-->
         <scene sceneID="mtX-Ps-w7n">
@@ -2686,7 +2756,7 @@ Citilink Warehouse Complex
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="5478" y="-528"/>
+            <point key="canvasLocation" x="6218" y="528"/>
         </scene>
         <!--Tutorial Controller-->
         <scene sceneID="vZo-O0-RDz">
@@ -2724,7 +2794,7 @@ Citilink Warehouse Complex
                 <placeholder placeholderIdentifier="IBFirstResponder" id="170-GQ-0vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sfi-iR-J7u" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4788" y="121"/>
+            <point key="canvasLocation" x="5303" y="620"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="UO1-zx-Brl">
@@ -2753,7 +2823,7 @@ Citilink Warehouse Complex
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4W-zz-8k1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218" y="2358"/>
+            <point key="canvasLocation" x="134" y="2356"/>
         </scene>
         <!--ShopItem-->
         <scene sceneID="2TK-Bj-0EM">
@@ -2770,7 +2840,7 @@ Citilink Warehouse Complex
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbB-ZK-Mhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218" y="1610"/>
+            <point key="canvasLocation" x="134" y="1609"/>
         </scene>
         <!--My account-->
         <scene sceneID="yse-FJ-1hJ">
@@ -2789,12 +2859,12 @@ Citilink Warehouse Complex
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivv-1P-HoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2049" y="1610"/>
+            <point key="canvasLocation" x="1809" y="1605"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Add Item Nav Controller-->
         <scene sceneID="BWq-Cj-uqG">
             <objects>
-                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="camera" id="VZF-2f-aWD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
@@ -2808,7 +2878,7 @@ Citilink Warehouse Complex
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EJU-8B-GIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="-528"/>
+            <point key="canvasLocation" x="2050" y="480"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NXL-hK-0LT">
@@ -2852,7 +2922,7 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Pa-vO-6Bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3777.5999999999999" y="-1435.2323838080961"/>
+            <point key="canvasLocation" x="2899" y="-1380"/>
         </scene>
     </scenes>
     <resources>
@@ -2872,7 +2942,7 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dPg-nh-fPh"/>
-        <segue reference="Iws-61-RlG"/>
+        <segue reference="mG1-qk-ojj"/>
+        <segue reference="cSg-UA-WeG"/>
     </inferredMetricsTieBreakers>
 </document>

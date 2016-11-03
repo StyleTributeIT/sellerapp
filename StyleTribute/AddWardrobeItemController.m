@@ -23,6 +23,7 @@
 #import <NSDictionary+LinqExtensions.h>
 #import "NamedItems.h"
 #import "Photo.h"
+#import "TopCategoriesViewController.h"
 #import "WardrobeController.h"
 #import "UIFloatLabelTextField.h"
 #import "PriceEditController.h"
@@ -151,7 +152,7 @@ typedef void(^ImageLoadBlock)(int);
     }
     
     if(!self.isEditing && self.categoryField.text.length == 0) {
-        [self performSegueWithIdentifier:@"chooseCategorySegue" sender:self];
+        [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
     }
 }
 
@@ -365,8 +366,8 @@ typedef void(^ImageLoadBlock)(int);
 #pragma mark - Segues unwind handlers
 
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
-    if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
-        ChooseCategoryController* ccController = sender.sourceViewController;
+    if([sender.sourceViewController isKindOfClass:[TopCategoriesViewController class]]) {
+        TopCategoriesViewController* ccController = sender.sourceViewController;
         self.categoryField.text = ccController.selectedCategory.name;
         self.curProduct.category = ccController.selectedCategory;
         [self.collectionView reloadData];
@@ -387,7 +388,7 @@ typedef void(^ImageLoadBlock)(int);
     //    UIViewController *sourceViewController = sender.sourceViewController;
     NSLog(@"cancelUnwindToWardrobeItems");
     
-    if([sender.sourceViewController isKindOfClass:[ChooseCategoryController class]]) {
+    if([sender.sourceViewController isKindOfClass:[TopCategoriesViewController class]]) {
         [self cancel:nil];
     }
 }

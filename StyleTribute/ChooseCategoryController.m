@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "ChooseCategoryController.h"
+#import "GlobalHelper.h"
 #import "CategoryCell.h"
 #import "ApiRequester.h"
 #import <MRProgress.h>
