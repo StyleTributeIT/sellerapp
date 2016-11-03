@@ -48,11 +48,14 @@
 
 #pragma mark CollectionView delegate
 
+
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.collectionCategories deselectItemAtIndexPath:indexPath animated:NO];
     self.selectedCategory = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+   // [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+    [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:nil];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
