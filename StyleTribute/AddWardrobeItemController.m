@@ -70,9 +70,10 @@ typedef void(^ImageLoadBlock)(int);
     
     self.sizes = @[@"size 1", @"size 2", @"size 3", @"size 4", @"size 5"];
 
-    self.messageLabel.text = @"";
+    self.messageLabel.text = @"PHOTO";
     
-    [GlobalHelper addLogoToNavBar:self.navigationItem];
+   // [GlobalHelper addLogoToNavBar:self.navigationItem];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     [self.messageLabel sizeToFit];
     
     self.textViewBackground.image = [[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
@@ -99,8 +100,8 @@ typedef void(^ImageLoadBlock)(int);
         [self clearAllFields];
     } else {
         // TODO: fill in size field
-        if(self.categoryField.text.length == 0)
-            self.categoryField.text = self.curProduct.category.name;
+        if(self.curProduct.category.name.length == 0)
+            self.navigationController.title = self.curProduct.category.name;
         if(self.brandField.text.length == 0)
             self.brandField.text = self.curProduct.designer.name;
         if(self.conditionField.text.length == 0)
@@ -151,7 +152,7 @@ typedef void(^ImageLoadBlock)(int);
         [self.cantSellButton setHidden:YES];
     }
     
-    if(!self.isEditing && self.categoryField.text.length == 0) {
+    if(!self.isEditing && self.curProduct.category.name.length == 0) {
         [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
     }
 }
@@ -549,7 +550,7 @@ typedef void(^ImageLoadBlock)(int);
     self.conditionField.text = nil;
     self.descriptionView.text = nil;
     self.nameField.text = nil;
-    self.messageLabel.attributedText = nil;
+ //   self.messageLabel.attributedText = nil;
     
     self.shoeSizeField.text = nil;
     self.heelHeightField.text = nil;
