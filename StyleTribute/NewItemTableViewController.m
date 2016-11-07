@@ -18,6 +18,7 @@
 #import "PriceEditController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "DataCache.h"
+#import "PhotosTableViewCell.h"
 
 @interface NewItemTableViewController ()
 @property BOOL isTutorialPresented;
@@ -44,6 +45,9 @@
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
         }
+        if(!self.isEditing && self.curProduct.category.name.length == 0) {
+            [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
+        }
     }
     
     -(void)viewDidAppear:(BOOL)animated {
@@ -56,8 +60,12 @@
         if(self.isInitialized) {
         
         }
-        
         self.isInitialized = YES;
+    }
+    
+    -(IBAction)cancel:(id)sender {
+        NSLog(@"cancel");
+        [self dismissViewControllerAnimated:true completion:nil];
     }
     
 - (void)didReceiveMemoryWarning {
@@ -67,8 +75,18 @@
 
 #pragma mark - Table view data source
 
+    
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1)
+    {
+        return 136;
+    }
+    return 44;
+}
+    
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -77,14 +95,36 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0)
+    {
+        return [self setupMessageCell:indexPath];
+    }
+    if (indexPath.section == 1)
+    {
+        return [self setupPhotosCell:indexPath];
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
     return cell;
 }
 
+-(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
+    return cell;
+}
+    
+-(UITableViewCell*)setupPhotosCell:(NSIndexPath*)indexPath
+{
+    PhotosTableViewCell *cell = (PhotosTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"photosCell" forIndexPath:indexPath];
+    [cell setup:self.curProduct];
+    return cell;
+}
 
+-(UITableViewCell*)setupDescriptionCell:(NSIndexPath*)indexPath
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
+    return cell;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,6 +168,34 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - Segues unwind handlers
+    
+-(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
+    if([sender.sourceViewController isKindOfClass:[TopCategoriesViewController class]]) {
+        TopCategoriesViewController* ccController = sender.sourceViewController;
+        self.curProduct.category = ccController.selectedCategory;
+        
+        self.curProduct.photos = [NSMutableArray arrayWithCapacity:self.curProduct.category.imageTypes.count];
+        for(int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
+            [self.curProduct.photos addObject:[NSNull null]];
+        }
+      //  [self displaySizeFieldsByCategory:self.curProduct.category];
+    } else if([sender.sourceViewController isKindOfClass:[TutorialController class]]) {
+    } else if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {
+        //self.brandField.text = self.curProduct.designer.name;
+    }
+    
+    NSLog(@"unwindToAddItem");
+}
+    
+-(IBAction)cancelUnwindToAddItem:(UIStoryboardSegue*)sender {
+    //    UIViewController *sourceViewController = sender.sourceViewController;
+    NSLog(@"cancelUnwindToWardrobeItems");
+    
+    if([sender.sourceViewController isKindOfClass:[TopCategoriesViewController class]]) {
+      //  [self cancel:nil];
+    }
+}
     
     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
     {
