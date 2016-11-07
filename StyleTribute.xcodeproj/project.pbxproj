@@ -85,6 +85,8 @@
 		E141DEF91DD10613001693F7 /* PriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEF81DD10613001693F7 /* PriceTableViewCell.m */; };
 		E141DEFC1DD10872001693F7 /* BrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEFB1DD10872001693F7 /* BrandTableViewCell.m */; };
 		E141DEFF1DD10B8F001693F7 /* ConditionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEFE1DD10B8F001693F7 /* ConditionTableViewController.m */; };
+		E141DF021DD11672001693F7 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF011DD11672001693F7 /* QuestionViewController.m */; };
+		E141DF051DD11B2B001693F7 /* PriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF041DD11B2B001693F7 /* PriceViewController.m */; };
 		E16205D81DC9294200A916F2 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205D71DC9294200A916F2 /* ShopViewController.m */; };
 		E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */; };
 		E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */; };
@@ -246,6 +248,10 @@
 		E141DEFB1DD10872001693F7 /* BrandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandTableViewCell.m; sourceTree = "<group>"; };
 		E141DEFD1DD10B8F001693F7 /* ConditionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionTableViewController.h; sourceTree = "<group>"; };
 		E141DEFE1DD10B8F001693F7 /* ConditionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConditionTableViewController.m; sourceTree = "<group>"; };
+		E141DF001DD11672001693F7 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		E141DF011DD11672001693F7 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		E141DF031DD11B2B001693F7 /* PriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceViewController.h; sourceTree = "<group>"; };
+		E141DF041DD11B2B001693F7 /* PriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceViewController.m; sourceTree = "<group>"; };
 		E16205D61DC9294200A916F2 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
 		E16205D71DC9294200A916F2 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		E16205D91DC92D3F00A916F2 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
@@ -585,6 +591,10 @@
 				E141DEB21DD097F9001693F7 /* NewItemTableViewController.m */,
 				E141DEFD1DD10B8F001693F7 /* ConditionTableViewController.h */,
 				E141DEFE1DD10B8F001693F7 /* ConditionTableViewController.m */,
+				E141DF001DD11672001693F7 /* QuestionViewController.h */,
+				E141DF011DD11672001693F7 /* QuestionViewController.m */,
+				E141DF031DD11B2B001693F7 /* PriceViewController.h */,
+				E141DF041DD11B2B001693F7 /* PriceViewController.m */,
 			);
 			name = NewItem;
 			sourceTree = "<group>";
@@ -906,6 +916,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AAD0F821B1889B200CE1AD2 /* PhotoCell.m in Sources */,
+				E141DF021DD11672001693F7 /* QuestionViewController.m in Sources */,
 				E141DEF91DD10613001693F7 /* PriceTableViewCell.m in Sources */,
 				7ABF95F21AFBA93200E6AA52 /* BankDetailsController.m in Sources */,
 				7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */,
@@ -918,6 +929,7 @@
 				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
 				7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */,
 				E1B059E71DCB4F1A00D14D91 /* CategoryViewCell.m in Sources */,
+				E141DF051DD11B2B001693F7 /* PriceViewController.m in Sources */,
 				7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */,
 				7A66FDDE1B04E04800961709 /* DataCache.m in Sources */,
 				7A526C6E1BA6EDAC007A6186 /* UIImage+FixOrientation.m in Sources */,

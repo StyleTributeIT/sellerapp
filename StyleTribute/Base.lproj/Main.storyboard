@@ -2903,7 +2903,7 @@ Citilink Warehouse Complex
         <!--Question View Controller-->
         <scene sceneID="9ef-Sf-lk1">
             <objects>
-                <viewController id="ra0-eK-bhh" userLabel="Question View Controller" sceneMemberID="viewController">
+                <viewController id="ra0-eK-bhh" userLabel="Question View Controller" customClass="QuestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ydf-F0-PKM"/>
                         <viewControllerLayoutGuide type="bottom" id="CDv-Tb-Heh"/>
@@ -2913,7 +2913,7 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you know your item's original price?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhX-Rm-ID8">
-                                <rect key="frame" x="16" y="81" width="343" height="50.5"/>
+                                <rect key="frame" x="16" y="81" width="343" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50.5" id="cE1-kv-9HK"/>
                                 </constraints>
@@ -2921,12 +2921,9 @@ Citilink Warehouse Complex
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpU-5z-dYj">
-                                <rect key="frame" x="69" y="166" width="103" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="103" id="4jp-sb-EI0"/>
-                                    <constraint firstAttribute="height" constant="44" id="6N5-vm-q0A"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpU-5z-dYj">
+                                <rect key="frame" x="79" y="166" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="YES">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -2935,9 +2932,22 @@ Citilink Warehouse Complex
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="yesPressed:" destination="ra0-eK-bhh" eventType="touchUpInside" id="Hy8-Ge-NMv"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK8-If-sBb">
-                                <rect key="frame" x="191" y="173" width="103" height="30"/>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Original Price (SGD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xlp-Ov-yju">
+                                <rect key="frame" x="16" y="218" width="343" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="q66-zZ-KZa"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK8-If-sBb">
+                                <rect key="frame" x="199" y="166" width="93" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="NO">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -2954,19 +2964,28 @@ Citilink Warehouse Complex
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yhX-Rm-ID8" firstAttribute="top" secondItem="Ydf-F0-PKM" secondAttribute="bottom" constant="17" id="A5w-k8-Itw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VK8-If-sBb" secondAttribute="trailing" constant="65" id="FgD-VV-CLv"/>
-                            <constraint firstItem="FpU-5z-dYj" firstAttribute="centerX" secondItem="ueT-H6-d5a" secondAttribute="centerX" id="OxR-CE-t9U"/>
-                            <constraint firstItem="FpU-5z-dYj" firstAttribute="top" secondItem="yhX-Rm-ID8" secondAttribute="bottom" constant="34.5" id="XiL-wY-2p3"/>
-                            <constraint firstItem="VK8-If-sBb" firstAttribute="top" secondItem="yhX-Rm-ID8" secondAttribute="bottom" constant="41.5" id="ZFm-nR-WNZ"/>
+                            <constraint firstItem="Xlp-Ov-yju" firstAttribute="leading" secondItem="ueT-H6-d5a" secondAttribute="leadingMargin" id="ASy-Oc-Zq6"/>
+                            <constraint firstItem="Xlp-Ov-yju" firstAttribute="trailing" secondItem="ueT-H6-d5a" secondAttribute="trailingMargin" id="HNJ-vD-gdq"/>
+                            <constraint firstItem="Xlp-Ov-yju" firstAttribute="top" secondItem="yhX-Rm-ID8" secondAttribute="bottom" constant="86" id="HZI-pw-Dkp"/>
                             <constraint firstItem="yhX-Rm-ID8" firstAttribute="leading" secondItem="ueT-H6-d5a" secondAttribute="leadingMargin" id="aP0-UH-5BV"/>
                             <constraint firstItem="yhX-Rm-ID8" firstAttribute="trailing" secondItem="ueT-H6-d5a" secondAttribute="trailingMargin" id="mIt-G0-MAe"/>
-                            <constraint firstItem="VK8-If-sBb" firstAttribute="centerX" secondItem="ueT-H6-d5a" secondAttribute="centerX" id="uKC-4c-a18"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="Z7L-xx-XLc">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="St9-Bd-nAD"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="yaI-sg-Xnt"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="St9-Bd-nAD">
+                            <connections>
+                                <action selector="backPressed:" destination="ra0-eK-bhh" id="SCj-ZN-v2F"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="yaI-sg-Xnt">
+                            <connections>
+                                <action selector="nextPressed:" destination="ra0-eK-bhh" id="mdy-Og-b8V"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="priceField" destination="Xlp-Ov-yju" id="DEh-Sv-zwK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kd5-3x-CoS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2975,7 +2994,7 @@ Citilink Warehouse Complex
         <!--Price-->
         <scene sceneID="nEW-js-FVx">
             <objects>
-                <viewController id="v1r-YF-g72" sceneMemberID="viewController">
+                <viewController id="v1r-YF-g72" customClass="PriceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kl9-Yx-h1k"/>
                         <viewControllerLayoutGuide type="bottom" id="Am6-N3-ycg"/>
@@ -2999,7 +3018,21 @@ Citilink Warehouse Complex
                                         <rect key="frame" x="201" y="8" width="174" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.99215686274509807" green="0.11764705882352941" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Jg-mC-Emg">
+                                        <rect key="frame" x="17" y="35" width="129" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wro-k5-w7h">
+                                        <rect key="frame" x="201" y="58" width="137" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                        <color key="textColor" red="0.99215686270000003" green="0.1176470588" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3009,13 +3042,48 @@ Citilink Warehouse Complex
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="cWy-6h-bl6">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="xQb-QY-d0B"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="Mn3-Oj-kDA"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="xQb-QY-d0B">
+                            <connections>
+                                <action selector="backPressed:" destination="v1r-YF-g72" id="C0n-We-ADA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Mn3-Oj-kDA">
+                            <connections>
+                                <action selector="goNext:" destination="v1r-YF-g72" id="UdT-Tj-0Oh"/>
+                                <segue destination="k4E-eM-yaf" kind="show" id="gLD-BG-EGa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="priceEarned" destination="Wro-k5-w7h" id="8Md-Id-tlc"/>
+                        <outlet property="priceField" destination="4Jg-mC-Emg" id="6EU-WC-8q9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHt-Ru-gxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5544.8000000000002" y="1099.7001499250375"/>
+        </scene>
+        <!--Condition & Price-->
+        <scene sceneID="RLB-1p-RqM">
+            <objects>
+                <viewController id="k4E-eM-yaf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XlH-bz-vhU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bts-Mb-hX2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ykm-a0-ASY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Condition &amp; Price" id="Fbq-1F-JXC">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Hhd-mk-V1M"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Do9-zf-zKo"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzq-hD-Bah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6303" y="1096"/>
         </scene>
         <!--Choose Brand-->
         <scene sceneID="mtX-Ps-w7n">
@@ -3278,8 +3346,8 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cSg-UA-WeG"/>
         <segue reference="mG1-qk-ojj"/>
+        <segue reference="cSg-UA-WeG"/>
         <segue reference="Bmg-g1-V4a"/>
         <segue reference="VrF-cV-ycO"/>
     </inferredMetricsTieBreakers>
