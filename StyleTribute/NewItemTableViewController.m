@@ -20,6 +20,8 @@
 #import "DataCache.h"
 #import "PhotosTableViewCell.h"
 #import "PriceTableViewCell.h"
+#import "BrandTableViewCell.h"
+#import "ConditionTableViewController.h"
 
 @interface NewItemTableViewController ()
 @property BOOL isTutorialPresented;
@@ -163,7 +165,8 @@
   
 -(UITableViewCell*)setupBrandCell:(NSIndexPath*)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"brandCell" forIndexPath:indexPath];
+    BrandTableViewCell *cell = (BrandTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"brandCell" forIndexPath:indexPath];
+    cell.brandTitle.text = self.curProduct.designer.name;
     return cell;
 }
 
@@ -272,6 +275,11 @@
     
     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
     {
+        if ([segue.identifier isEqualToString:@"conditionSegue"])
+        {
+            ConditionTableViewController *vc = segue.destinationViewController;
+            vc.product = self.curProduct;
+        }
         if([segue.identifier isEqualToString:@"priceSegue"]) {
             PriceEditController* priceController = segue.destinationViewController;
             priceController.product = self.curProduct;
