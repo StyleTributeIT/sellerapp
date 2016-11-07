@@ -19,6 +19,7 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "DataCache.h"
 #import "PhotosTableViewCell.h"
+#import "PriceTableViewCell.h"
 
 @interface NewItemTableViewController ()
 @property BOOL isTutorialPresented;
@@ -88,36 +89,32 @@
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 4;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
     {
         if (section == 1)
             return @"DETAILS";
+        if (section == 2)
+            return @"SIZE";
+        if (section == 3)
+            return @"BRAND";
         return @"";
     }
     
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
     {
-        if (section == 1)
-            return 50;
-        return 0.1;
+       if (section == 0)
+            return 0.1;
+        return 50;
     }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
     {
-        // Background color
-        view.tintColor = [UIColor whiteColor];
-        
-        // Text Color
-        UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-        header.textLabel.text = @"DETAILS";
-        [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
-        
-        // Another way to set the background color
-        // Note: does not preserve gradient effect of original header
-        // header.contentView.backgroundColor = [UIColor blackColor];
+            view.tintColor = [UIColor whiteColor];
+            UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+            [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
     }
     
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -146,6 +143,14 @@
         if (indexPath.row == 1)
         return [self setupPriceCell:indexPath];
     }
+    if (indexPath.section == 2)
+    {
+        return [self setupShoesSizeCell:indexPath];
+    }
+    if (indexPath.section == 3)
+    {
+        return [self setupBrandCell:indexPath];
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     return cell;
 }
@@ -153,6 +158,18 @@
 -(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath
 {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
+    return cell;
+}
+  
+-(UITableViewCell*)setupBrandCell:(NSIndexPath*)indexPath
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"brandCell" forIndexPath:indexPath];
+    return cell;
+}
+
+-(UITableViewCell*)setupShoesSizeCell:(NSIndexPath*)indexPath
+{
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"clothingSizeCell" forIndexPath:indexPath];
     return cell;
 }
     
@@ -165,7 +182,9 @@
 
 -(UITableViewCell*)setupPriceCell:(NSIndexPath*)indexPath
     {
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
+        PriceTableViewCell *cell = (PriceTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
+        if (self.curProduct.price != 0.0f)
+            cell.productPrice.text = [NSString stringWithFormat:@"$%f",self.curProduct.price];
         return cell;
     }
 
@@ -220,6 +239,11 @@
 #pragma mark - Segues unwind handlers
     
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
+    if ([sender.sourceViewController isKindOfClass:[PriceEditController class]])
+    {
+        self.curProduct.price = ((PriceEditController*)sender.sourceViewController).product.price;
+        [self.tableView reloadData];
+    }
     if([sender.sourceViewController isKindOfClass:[TopCategoriesViewController class]]) {
         TopCategoriesViewController* ccController = sender.sourceViewController;
         self.curProduct.category = ccController.selectedCategory;

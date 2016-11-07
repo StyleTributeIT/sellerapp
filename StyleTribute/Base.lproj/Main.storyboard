@@ -541,7 +541,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="priceCell" id="PsZ-Gd-4Ix" customClass="PhotosTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="priceCell" id="PsZ-Gd-4Ix" customClass="PriceTableViewCell">
                                 <rect key="frame" x="0.0" y="252" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PsZ-Gd-4Ix" id="mUa-6r-6HM">
@@ -571,6 +571,10 @@
                                         <constraint firstAttribute="bottom" secondItem="3I5-A7-QTk" secondAttribute="bottom" constant="12" id="ddK-MT-9gh"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="productPrice" destination="3I5-A7-QTk" id="xuv-EK-dma"/>
+                                    <segue destination="Jn6-xf-VI8" kind="show" identifier="priceSegue" id="8Vh-sr-XA7"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="clothingSizeCell" id="BMD-Wl-leM" customClass="PhotosTableViewCell">
                                 <rect key="frame" x="0.0" y="296" width="375" height="44"/>
@@ -2685,10 +2689,10 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="4582" y="161"/>
         </scene>
-        <!--Title-->
+        <!--Price 1st-->
         <scene sceneID="ouN-cX-hFq">
             <objects>
-                <viewController id="Jn6-xf-VI8" customClass="PriceEditController" sceneMemberID="viewController">
+                <viewController id="Jn6-xf-VI8" userLabel="Price 1st" customClass="PriceEditController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Oh-pR-7tw"/>
                         <viewControllerLayoutGuide type="bottom" id="aaH-iC-B3A"/>
@@ -3122,6 +3126,7 @@ Citilink Warehouse Complex
     <inferredMetricsTieBreakers>
         <segue reference="cSg-UA-WeG"/>
         <segue reference="mG1-qk-ojj"/>
+        <segue reference="8Vh-sr-XA7"/>
         <segue reference="Bmg-g1-V4a"/>
         <segue reference="1Xh-1B-7ma"/>
     </inferredMetricsTieBreakers>
