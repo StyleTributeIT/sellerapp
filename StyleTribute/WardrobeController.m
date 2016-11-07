@@ -17,6 +17,7 @@
 #import "MainTabBarController.h"
 #import <MRProgress.h>
 #import "AddWardrobeItemController.h"
+#import "NewItemTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <NSArray+LinqExtensions.h>
 #import "Photo.h"
@@ -276,10 +277,10 @@
 -(void)openProductDetails:(Product*)product {
     UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
     for(UIViewController * viewController in navController.viewControllers){
-        if ([viewController isKindOfClass:[AddWardrobeItemController class]]){
-            AddWardrobeItemController *vc = (AddWardrobeItemController * ) viewController;
+        if ([viewController isKindOfClass:[NewItemTableViewController class]]){
+            NewItemTableViewController *vc = (NewItemTableViewController * ) viewController;
             vc.curProduct = product;
-            vc.isEditing = YES;
+            vc.isEditingItem = YES;
             
         }
     }

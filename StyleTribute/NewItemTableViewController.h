@@ -11,4 +11,5 @@
 
 @interface NewItemTableViewController : UITableViewController
 @property Product* curProduct;
+@property BOOL isEditingItem;
 @end

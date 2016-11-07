@@ -78,9 +78,11 @@
     
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1)
+    if (indexPath.section == 0)
     {
-        return 136;
+        if (indexPath.row == 1)
+            return 136;
+        return 44;
     }
     return 44;
 }
@@ -90,6 +92,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0)
+        return 2;   // message and photos
     return 1;
 }
 
@@ -97,11 +101,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0)
     {
-        return [self setupMessageCell:indexPath];
+        if (indexPath.row == 0) {
+            return [self setupMessageCell:indexPath];
+        }
+        return [self setupPhotosCell:indexPath];
     }
     if (indexPath.section == 1)
     {
-        return [self setupPhotosCell:indexPath];
+        return [self setupDescriptionCell:indexPath];
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     return cell;

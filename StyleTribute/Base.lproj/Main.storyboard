@@ -510,6 +510,37 @@
                                     <outlet property="guideLabel" destination="sFP-45-Vbq" id="F6t-2S-MDG"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="descriptionCell" id="PB4-57-j1E" customClass="PhotosTableViewCell">
+                                <rect key="frame" x="0.0" y="208" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PB4-57-j1E" id="bh5-uP-05b">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sY7-n5-7ei">
+                                            <rect key="frame" x="8" y="11" width="158" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About your product" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpZ-2u-MfF">
+                                            <rect key="frame" x="193" y="10" width="149" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="149" id="BYg-8e-fAf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="13"/>
+                                            <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="QpZ-2u-MfF" secondAttribute="bottom" constant="12" id="QQU-f0-F9k"/>
+                                        <constraint firstAttribute="trailing" secondItem="QpZ-2u-MfF" secondAttribute="trailing" id="SXm-EM-gH4"/>
+                                        <constraint firstItem="QpZ-2u-MfF" firstAttribute="top" secondItem="bh5-uP-05b" secondAttribute="top" constant="10" id="WV8-Bg-7uN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="MPN-KR-ZHS" id="2Q4-yz-obe"/>
