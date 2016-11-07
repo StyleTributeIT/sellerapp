@@ -91,9 +91,42 @@
     return 2;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+    {
+        if (section == 1)
+            return @"DETAILS";
+        return @"";
+    }
+    
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+    {
+        if (section == 1)
+            return 50;
+        return 0.1;
+    }
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+    {
+        // Background color
+        view.tintColor = [UIColor whiteColor];
+        
+        // Text Color
+        UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+        header.textLabel.text = @"DETAILS";
+        [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
+        
+        // Another way to set the background color
+        // Note: does not preserve gradient effect of original header
+        // header.contentView.backgroundColor = [UIColor blackColor];
+    }
+    
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
         return 2;   // message and photos
+    if (section == 1)
+    {
+        return 2;
+    }
     return 1;
 }
 
@@ -108,7 +141,10 @@
     }
     if (indexPath.section == 1)
     {
-        return [self setupDescriptionCell:indexPath];
+        if (indexPath.row == 0)
+            return [self setupDescriptionCell:indexPath];
+        if (indexPath.row == 1)
+        return [self setupPriceCell:indexPath];
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     return cell;
@@ -126,6 +162,12 @@
     [cell setup:self.curProduct];
     return cell;
 }
+
+-(UITableViewCell*)setupPriceCell:(NSIndexPath*)indexPath
+    {
+        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
+        return cell;
+    }
 
 -(UITableViewCell*)setupDescriptionCell:(NSIndexPath*)indexPath
 {
