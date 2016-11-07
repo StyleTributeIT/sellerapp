@@ -80,6 +80,7 @@
 		7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */; };
 		7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */; };
 		A2EFAC48A62AB8E6BC1BEC61 /* libPods-StyleTributeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */; };
+		E141DEB31DD097FA001693F7 /* NewItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEB21DD097F9001693F7 /* NewItemTableViewController.m */; };
 		E16205D81DC9294200A916F2 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205D71DC9294200A916F2 /* ShopViewController.m */; };
 		E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */; };
 		E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */; };
@@ -231,6 +232,8 @@
 		7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBrandController.m; sourceTree = "<group>"; };
 		D10E0F606CBC8A31C08A85A9 /* libPods-StyleTribute.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTribute.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED3510CF8368A99375B0A7A /* Pods-StyleTribute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTribute.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute.release.xcconfig"; sourceTree = "<group>"; };
+		E141DEB11DD097F9001693F7 /* NewItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemTableViewController.h; sourceTree = "<group>"; };
+		E141DEB21DD097F9001693F7 /* NewItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemTableViewController.m; sourceTree = "<group>"; };
 		E16205D61DC9294200A916F2 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
 		E16205D71DC9294200A916F2 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		E16205D91DC92D3F00A916F2 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
@@ -489,6 +492,7 @@
 		7AA5EADA1AEE73D600CAB83B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E141DEB01DD097C1001693F7 /* NewItem */,
 				7AA5EADB1AEE740500CAB83B /* LoginController.h */,
 				7AA5EADC1AEE740500CAB83B /* LoginController.m */,
 				7A3FA4941AEF7B8E0050803C /* RegistrationController.h */,
@@ -559,6 +563,15 @@
 				E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E141DEB01DD097C1001693F7 /* NewItem */ = {
+			isa = PBXGroup;
+			children = (
+				E141DEB11DD097F9001693F7 /* NewItemTableViewController.h */,
+				E141DEB21DD097F9001693F7 /* NewItemTableViewController.m */,
+			);
+			name = NewItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -903,6 +916,7 @@
 				E1B059EB1DCBCE6400D14D91 /* AddBrandTableViewCell.m in Sources */,
 				7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */,
 				7A60979E1B14848F00209340 /* Country.m in Sources */,
+				E141DEB31DD097FA001693F7 /* NewItemTableViewController.m in Sources */,
 				7A44696C1B61228000E3A752 /* Photo.m in Sources */,
 				E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */,
 				7A60FCD11B15EEAE00731F6E /* Category.m in Sources */,

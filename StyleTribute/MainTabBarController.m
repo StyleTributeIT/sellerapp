@@ -7,7 +7,6 @@
 //
 
 #import "MainTabBarController.h"
-#import "AddWardrobeItemController.h"
 #import <CoreGraphics/CoreGraphics.h>
 
 @interface MainTabBarController () <UITabBarControllerDelegate>
