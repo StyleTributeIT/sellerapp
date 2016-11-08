@@ -25,6 +25,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+    
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.product = [DataCache getSelectedItem];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -50,6 +55,8 @@
     
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     {
+        self.product.condition = [[DataCache sharedInstance].conditions objectAtIndex:indexPath.row];
+        [DataCache setSelectedItem:self.product];
         [self performSegueWithIdentifier:@"questionSegue" sender:self];
     }
 

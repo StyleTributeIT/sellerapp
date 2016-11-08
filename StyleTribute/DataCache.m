@@ -7,9 +7,11 @@
 //
 
 #import "DataCache.h"
+#import "Product.h"
 
 @implementation DataCache
-
+static Product* selectedItem;
+    
 +(DataCache*)sharedInstance
 {
     static dispatch_once_t once;
@@ -24,6 +26,16 @@
     return sharedInstance;
 }
 
++(Product*)getSelectedItem
+{
+    return selectedItem;
+}
+    
++(void)setSelectedItem:(Product*)item
+{
+    selectedItem = item;
+}
+    
 -(NSString*)getPathInDocuments:(NSString*)relPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;

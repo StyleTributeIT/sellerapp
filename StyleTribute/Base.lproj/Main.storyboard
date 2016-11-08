@@ -541,7 +541,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="tYf-Gj-vMU" kind="show" id="b88-Mc-ot6"/>
+                                    <segue destination="tYf-Gj-vMU" kind="show" identifier="descriptionSegue" id="b88-Mc-ot6"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="priceCell" id="PsZ-Gd-4Ix" customClass="PriceTableViewCell">
@@ -1739,17 +1739,32 @@ Citilink Warehouse Complex
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysD-20-ewZ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item description tips goes here try to include lorem ipsun dolor sit amet, consectetuer adipiscing..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDm-9V-MIC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item description tips goes here try to include lorem ipsun dolor sit amet, consectetuer adipiscing..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDm-9V-MIC">
                                         <rect key="frame" x="40" y="8" width="327" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mUq-B8-AZJ">
+                                        <rect key="frame" x="8" y="10" width="29" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="29" id="5A0-ky-9Zj"/>
+                                            <constraint firstAttribute="height" constant="29" id="ubd-fI-uuJ"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.94901960784313721" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="leading" secondItem="mUq-B8-AZJ" secondAttribute="trailing" constant="3" id="1c4-Dm-WFy"/>
+                                    <constraint firstAttribute="width" secondItem="ysD-20-ewZ" secondAttribute="height" multiplier="15:2" id="6Ay-2A-kXV"/>
+                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="centerY" secondItem="hDm-9V-MIC" secondAttribute="centerY" id="PDL-km-xWc"/>
+                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="leading" secondItem="ysD-20-ewZ" secondAttribute="leading" constant="8" id="QZa-Jr-QAy"/>
                                     <constraint firstAttribute="height" constant="50" id="TFO-Qr-fhd"/>
+                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="centerY" secondItem="ysD-20-ewZ" secondAttribute="centerY" id="Vmo-Y1-tZh"/>
+                                    <constraint firstAttribute="trailing" secondItem="hDm-9V-MIC" secondAttribute="trailing" constant="8" id="Wfr-eh-eS3"/>
+                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="leading" secondItem="mUq-B8-AZJ" secondAttribute="trailing" constant="3" id="gAf-TQ-nXr"/>
+                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="top" constant="8" id="oNp-uE-lEX"/>
+                                    <constraint firstAttribute="bottom" secondItem="hDm-9V-MIC" secondAttribute="bottom" constant="8" id="sZs-js-9PR"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of your item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-MA-p6e">
@@ -1785,11 +1800,25 @@ Citilink Warehouse Complex
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Item description" id="cs0-YE-o23">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Cqi-nj-1LH"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="WuP-Wn-EiG"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Cqi-nj-1LH">
+                            <connections>
+                                <action selector="goBack:" destination="tYf-Gj-vMU" id="tev-IY-lO6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="WuP-Wn-EiG">
+                            <connections>
+                                <action selector="save:" destination="tYf-Gj-vMU" id="10Z-ML-vwg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descriptionField" destination="bzU-fj-XAa" id="fdj-Va-7Pg"/>
+                        <outlet property="nameField" destination="OH1-MA-p6e" id="hLg-Pn-omG"/>
+                        <segue destination="pHf-rJ-oYt" kind="unwind" unwindAction="unwindToAddItem:" id="fpF-0F-Lms"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8c5-l1-Kqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pHf-rJ-oYt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2941.5999999999999" y="1513.4932533733136"/>
         </scene>

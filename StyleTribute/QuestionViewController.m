@@ -7,6 +7,8 @@
 //
 
 #import "QuestionViewController.h"
+#import "Product.h"
+#import "DataCache.h"
 
 @interface QuestionViewController ()
     @property (strong, nonatomic) IBOutlet UITextField *priceField;
@@ -18,18 +20,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CALayer *bottomBorder = [CALayer layer];
-    
     bottomBorder.frame = CGRectMake(0.0f, self.priceField.frame.size.height - 1, self.priceField.frame.size.width, 1.0f);
-    
     bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
                                                      alpha:1.0f].CGColor;
-    
     [self.priceField.layer addSublayer:bottomBorder];
 }
 - (IBAction)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)nextPressed:(id)sender {
+    if (self.priceField.text.length != 0)
+    {
+        Product *product = [DataCache getSelectedItem];
+        product.price = [self.priceField.text floatValue];
+        [DataCache setSelectedItem:product];
+    }
     [self performSegueWithIdentifier:@"priceSegue" sender:self];
 }
     

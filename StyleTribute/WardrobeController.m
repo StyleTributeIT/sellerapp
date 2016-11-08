@@ -16,6 +16,7 @@
 #import "DataCache.h"
 #import "MainTabBarController.h"
 #import <MRProgress.h>
+#import "DataCache.h"
 #import "AddWardrobeItemController.h"
 #import "NewItemTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -281,7 +282,7 @@
             NewItemTableViewController *vc = (NewItemTableViewController * ) viewController;
             vc.curProduct = product;
             vc.isEditingItem = YES;
-            
+            [DataCache setSelectedItem:product];
         }
     }
     [self presentViewController:navController animated:YES completion:nil] ;

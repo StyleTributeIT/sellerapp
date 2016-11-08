@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "UserProfile.h"
+#import "Product.h"
 
 @interface DataCache : NSObject
 
 +(DataCache*)sharedInstance;
-
++(Product*)getSelectedItem;
++(void)setSelectedItem:(Product*)item;
+    
 @property NSMutableArray* products;
 @property UserProfile* userProfile;
 @property NSArray* countries;
@@ -27,5 +30,5 @@
 
 -(NSMutableArray*)loadProducts;
 -(void)saveProducts:(NSArray*)items;
-
+    
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Product.h"
 
 @interface ItemDescriptionViewController : UIViewController
-
+    @property Product *selectedProduct;
 @end

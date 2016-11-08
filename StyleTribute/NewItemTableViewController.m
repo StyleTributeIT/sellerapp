@@ -25,6 +25,7 @@
 #import "BagSizeTableViewCell.h"
 #import "ShoesSizeTableViewCell.h"
 #import "ConditionTableViewController.h"
+#import "ItemDescriptionViewController.h"
 #import "UIImage+FixOrientation.h"
 
 typedef void(^ImageLoadBlock)(int);
@@ -59,7 +60,10 @@ int sectionOffset = 0;
         [super viewWillAppear:animated];
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
+            [DataCache setSelectedItem:self.curProduct];
         }
+        self.curProduct = [DataCache getSelectedItem];
+        [self.tableView reloadData];
         if(!self.isEditing && self.curProduct.category.name.length == 0) {
             [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
         }
@@ -291,6 +295,10 @@ int sectionOffset = 0;
 #pragma mark - Segues unwind handlers
     
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
+    if ([sender.sourceViewController isKindOfClass:[ItemDescriptionViewController class]])
+    {
+        self.curProduct = ((ItemDescriptionViewController*)sender.sourceViewController).selectedProduct;
+    }
     if ([sender.sourceViewController isKindOfClass:[PriceEditController class]])
     {
         self.curProduct.price = ((PriceEditController*)sender.sourceViewController).product.price;
