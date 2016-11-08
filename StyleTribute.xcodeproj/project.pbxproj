@@ -87,6 +87,10 @@
 		E141DEFF1DD10B8F001693F7 /* ConditionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEFE1DD10B8F001693F7 /* ConditionTableViewController.m */; };
 		E141DF021DD11672001693F7 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF011DD11672001693F7 /* QuestionViewController.m */; };
 		E141DF051DD11B2B001693F7 /* PriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF041DD11B2B001693F7 /* PriceViewController.m */; };
+		E141DF081DD13B9B001693F7 /* ClothingSizeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF071DD13B9B001693F7 /* ClothingSizeTableViewCell.m */; };
+		E141DF0B1DD13BCA001693F7 /* BagSizeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF0A1DD13BCA001693F7 /* BagSizeTableViewCell.m */; };
+		E141DF0E1DD13CC7001693F7 /* ShoesSizeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF0D1DD13CC7001693F7 /* ShoesSizeTableViewCell.m */; };
+		E141DF111DD1488C001693F7 /* ItemDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF101DD1488C001693F7 /* ItemDescriptionViewController.m */; };
 		E16205D81DC9294200A916F2 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205D71DC9294200A916F2 /* ShopViewController.m */; };
 		E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */; };
 		E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */; };
@@ -252,6 +256,14 @@
 		E141DF011DD11672001693F7 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		E141DF031DD11B2B001693F7 /* PriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceViewController.h; sourceTree = "<group>"; };
 		E141DF041DD11B2B001693F7 /* PriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceViewController.m; sourceTree = "<group>"; };
+		E141DF061DD13B9B001693F7 /* ClothingSizeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothingSizeTableViewCell.h; sourceTree = "<group>"; };
+		E141DF071DD13B9B001693F7 /* ClothingSizeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothingSizeTableViewCell.m; sourceTree = "<group>"; };
+		E141DF091DD13BCA001693F7 /* BagSizeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BagSizeTableViewCell.h; sourceTree = "<group>"; };
+		E141DF0A1DD13BCA001693F7 /* BagSizeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BagSizeTableViewCell.m; sourceTree = "<group>"; };
+		E141DF0C1DD13CC7001693F7 /* ShoesSizeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoesSizeTableViewCell.h; sourceTree = "<group>"; };
+		E141DF0D1DD13CC7001693F7 /* ShoesSizeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoesSizeTableViewCell.m; sourceTree = "<group>"; };
+		E141DF0F1DD1488C001693F7 /* ItemDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDescriptionViewController.h; sourceTree = "<group>"; };
+		E141DF101DD1488C001693F7 /* ItemDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDescriptionViewController.m; sourceTree = "<group>"; };
 		E16205D61DC9294200A916F2 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
 		E16205D71DC9294200A916F2 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		E16205D91DC92D3F00A916F2 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
@@ -595,6 +607,8 @@
 				E141DF011DD11672001693F7 /* QuestionViewController.m */,
 				E141DF031DD11B2B001693F7 /* PriceViewController.h */,
 				E141DF041DD11B2B001693F7 /* PriceViewController.m */,
+				E141DF0F1DD1488C001693F7 /* ItemDescriptionViewController.h */,
+				E141DF101DD1488C001693F7 /* ItemDescriptionViewController.m */,
 			);
 			name = NewItem;
 			sourceTree = "<group>";
@@ -608,6 +622,12 @@
 				E141DEF81DD10613001693F7 /* PriceTableViewCell.m */,
 				E141DEFA1DD10872001693F7 /* BrandTableViewCell.h */,
 				E141DEFB1DD10872001693F7 /* BrandTableViewCell.m */,
+				E141DF061DD13B9B001693F7 /* ClothingSizeTableViewCell.h */,
+				E141DF071DD13B9B001693F7 /* ClothingSizeTableViewCell.m */,
+				E141DF091DD13BCA001693F7 /* BagSizeTableViewCell.h */,
+				E141DF0A1DD13BCA001693F7 /* BagSizeTableViewCell.m */,
+				E141DF0C1DD13CC7001693F7 /* ShoesSizeTableViewCell.h */,
+				E141DF0D1DD13CC7001693F7 /* ShoesSizeTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -940,6 +960,7 @@
 				7A6427111AF8E7E10051466E /* PriceEditController.m in Sources */,
 				7A05074D1B0E220F00438D64 /* MyAccountCell.m in Sources */,
 				7A6097981B133BA000209340 /* UserProfile.m in Sources */,
+				E141DF0B1DD13BCA001693F7 /* BagSizeTableViewCell.m in Sources */,
 				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */,
@@ -951,6 +972,7 @@
 				7A07364E1B6B75D300B1FB7D /* MGSwipeButton.m in Sources */,
 				7A60979B1B13402600209340 /* BaseModel.m in Sources */,
 				7AE6C7171B3AD10000EB2B5F /* NamedItems.m in Sources */,
+				E141DF0E1DD13CC7001693F7 /* ShoesSizeTableViewCell.m in Sources */,
 				7AF59F1B1B68E70B007DBAB5 /* UIFloatLabelTextField.m in Sources */,
 				7A6427141AF901CF0051466E /* ChooseCategoryController.m in Sources */,
 				E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */,
@@ -972,8 +994,10 @@
 				7AC4D1021B0F0C5C007724E2 /* CategoryCell.m in Sources */,
 				7AD54BFA1BAAA26F009EFFA6 /* Address.m in Sources */,
 				7A197AFC1BAC290B000812D9 /* UITextView+Placeholder.m in Sources */,
+				E141DF081DD13B9B001693F7 /* ClothingSizeTableViewCell.m in Sources */,
 				7A1E44AF1B296CD000063F17 /* ProductPhoto.m in Sources */,
 				7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */,
+				E141DF111DD1488C001693F7 /* ItemDescriptionViewController.m in Sources */,
 				7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */,
 				7A60FCD51B160F7800731F6E /* RFPasswordGenerator.m in Sources */,
 				7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */,

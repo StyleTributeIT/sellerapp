@@ -21,13 +21,23 @@
 #import "PhotosTableViewCell.h"
 #import "PriceTableViewCell.h"
 #import "BrandTableViewCell.h"
+#import "ClothingSizeTableViewCell.h"
+#import "BagSizeTableViewCell.h"
+#import "ShoesSizeTableViewCell.h"
 #import "ConditionTableViewController.h"
+#import "UIImage+FixOrientation.h"
 
-@interface NewItemTableViewController ()
+typedef void(^ImageLoadBlock)(int);
+
+@interface NewItemTableViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
 @property BOOL isTutorialPresented;
     @property BOOL isInitialized;
     @property BOOL isProductUpdated;
+    @property UIPickerView* picker;
+    @property (copy) ImageLoadBlock imgLoadBlock;
 @end
+
+int sectionOffset = 0;
 
 @implementation NewItemTableViewController
 
@@ -35,6 +45,7 @@
     [super viewDidLoad];
     self.isInitialized = NO;
     self.isTutorialPresented = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -44,6 +55,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
     {
+        sectionOffset = 0;
         [super viewWillAppear:animated];
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
@@ -67,7 +79,7 @@
     }
     
     -(IBAction)cancel:(id)sender {
-        NSLog(@"cancel");
+        sectionOffset = 0;
         [self dismissViewControllerAnimated:true completion:nil];
     }
     
@@ -91,16 +103,27 @@
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    NSInteger initialSection = 4;
+    STCategory *category = self.curProduct.category;
+    NSString* firstSize = [category.sizeFields firstObject];
+    sectionOffset = 0;
+    if([firstSize isEqualToString:@"size"]) {
+    } else if([firstSize isEqualToString:@"shoesize"]) {
+    } else if([firstSize isEqualToString:@"dimensions"]) {
+    } else {
+        initialSection--;
+        sectionOffset = 1;
+    }
+    return initialSection;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
     {
         if (section == 1)
             return @"DETAILS";
-        if (section == 2)
+        if (section == 2-sectionOffset)
             return @"SIZE";
-        if (section == 3)
+        if (section == 3 - sectionOffset)
             return @"BRAND";
         return @"";
     }
@@ -147,9 +170,18 @@
     }
     if (indexPath.section == 2)
     {
-        return [self setupShoesSizeCell:indexPath];
+        STCategory *category = self.curProduct.category;
+        NSString* firstSize = [category.sizeFields firstObject];
+        if([firstSize isEqualToString:@"size"]) {
+            return [self setupClothingSizeCell:indexPath];
+        } else if([firstSize isEqualToString:@"shoesize"]) {
+            return [self setupShoesSizeCell:indexPath];
+        } else if([firstSize isEqualToString:@"dimensions"]) {
+            return [self setupBagsSizeCell:indexPath];
+        }
+        
     }
-    if (indexPath.section == 3)
+    if (indexPath.section == 3 - sectionOffset)
     {
         return [self setupBrandCell:indexPath];
     }
@@ -170,11 +202,28 @@
     return cell;
 }
 
--(UITableViewCell*)setupShoesSizeCell:(NSIndexPath*)indexPath
+-(UITableViewCell*)setupClothingSizeCell:(NSIndexPath*)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"clothingSizeCell" forIndexPath:indexPath];
+    ClothingSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"clothingSizeCell" forIndexPath:indexPath];
     return cell;
 }
+    
+-(UITableViewCell*)setupShoesSizeCell:(NSIndexPath*)indexPath
+    {
+        ShoesSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"shoesSizeCell" forIndexPath:indexPath];
+        return cell;
+    }
+    
+    -(UITableViewCell*)setupBagsSizeCell:(NSIndexPath*)indexPath
+    {
+        BagSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"bagsSizeCell" forIndexPath:indexPath];
+        if(self.curProduct.dimensions) {
+            cell.bagWidth.text = [self.curProduct.dimensions objectAtIndex:0];
+            cell.bagHeight.text = [self.curProduct.dimensions objectAtIndex:1];
+            cell.bagDepth.text = [self.curProduct.dimensions objectAtIndex:2];
+        }
+        return cell;
+    }
     
 -(UITableViewCell*)setupPhotosCell:(NSIndexPath*)indexPath
 {
@@ -293,4 +342,10 @@
         }
     }
 
+#pragma mark UIPicker delegates
+
+- (void)setPickerData:(NSNotification*)aNotification {
+    [self.picker reloadAllComponents];
+}
+    
 @end
