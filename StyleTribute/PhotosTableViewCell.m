@@ -96,7 +96,7 @@
     
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat itemSize = collectionView.frame.size.width/PHOTOS_PER_ROW;
-    return CGSizeMake(itemSize, itemSize);
+    return CGSizeMake(itemSize, itemSize + 15);
 }
     
     

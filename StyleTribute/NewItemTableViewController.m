@@ -100,7 +100,7 @@ int sectionOffset = 0;
     if (indexPath.section == 0)
     {
         if (indexPath.row == 1)
-            return 136;
+            return 140;
         return 44;
     }
     return 44;
