@@ -7,6 +7,7 @@
 //
 
 #import "PriceViewController.h"
+#import "DataCache.h"
 
 @interface PriceViewController ()
     @property (strong, nonatomic) IBOutlet UILabel *priceEarned;
@@ -20,6 +21,11 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    if ([DataCache getSelectedItem].price != 0.0f)
+        self.priceField.text = [NSString stringWithFormat:@"%f", [DataCache getSelectedItem].price];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -29,6 +35,7 @@
 }
 
 - (IBAction)goNext:(id)sender {
+    
 }
     
     

@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "Product.h"
 
+@protocol PhotoCellDelegate
+
+-(void)selectedImageIndex:(NSUInteger)selectedImageIndex;
+
+@end
+
 @interface PhotosTableViewCell : UITableViewCell<UICollectionViewDelegate, UICollectionViewDataSource>
     @property (strong, nonatomic) IBOutlet UILabel *guideLabel;
     @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) id<PhotoCellDelegate> delegate;
     @property Product* curProduct;
     
     -(void)setup:(Product*)product;

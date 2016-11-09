@@ -37,7 +37,15 @@
         self.curProduct = product;
         [self.collectionView reloadData];
     }
-    
+
+#pragma mark - Gestures delegate
+- (void) handleTapFrom: (UITapGestureRecognizer *)recognizer {
+    if (self.delegate)
+    {
+        [self.delegate selectedImageIndex:recognizer.view.tag];
+    }
+}
+
 #pragma mark - Photo collection
     
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
@@ -58,10 +66,12 @@
     if(indexPath.row == self.curProduct.photos.count) {
         newCell.photoView.image = [UIImage imageNamed:@"plus"];
         [newCell.photoTypeLabel setHidden:YES];
+        newCell.plusLabel.hidden = YES;
     } else {
         ImageType* imgType = nil;
         if(indexPath.row >= self.curProduct.category.imageTypes.count) {
             imgType = [ImageType new];
+            newCell.plusLabel.hidden = YES;
             imgType.name = [NSString stringWithFormat:@"%zd", indexPath.row - self.curProduct.category.imageTypes.count + 1];
         } else {
             imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
@@ -75,7 +85,9 @@
             if(photo != nil && [photo isKindOfClass:[Photo class]]) {
                 if(photo.image != nil) {
                     newCell.photoView.image = photo.image;
+                    newCell.plusLabel.hidden = YES;
                 } else {
+                    newCell.plusLabel.hidden = YES;
                     [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
                 }
             } else {

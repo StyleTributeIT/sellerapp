@@ -12,5 +12,7 @@
 
 @property IBOutlet UIImageView* photoView;
 @property IBOutlet UILabel* photoTypeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *plusLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *bigPhotoCell;
 
 @end

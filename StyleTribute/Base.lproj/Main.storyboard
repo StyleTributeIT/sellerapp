@@ -494,8 +494,10 @@
                                                         <constraint firstItem="age-Ak-wKo" firstAttribute="centerX" secondItem="0h5-4l-kyd" secondAttribute="centerX" id="xri-L3-Zjl"/>
                                                     </constraints>
                                                     <connections>
+                                                        <outlet property="bigPhotoCell" destination="age-Ak-wKo" id="ioW-8z-23w"/>
                                                         <outlet property="photoTypeLabel" destination="0h5-4l-kyd" id="Qkg-bw-6yW"/>
                                                         <outlet property="photoView" destination="3p6-81-ezs" id="0Rd-J1-F5C"/>
+                                                        <outlet property="plusLabel" destination="WHT-qo-kGa" id="fZP-Gd-3q3"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
@@ -602,21 +604,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Unit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-1F-qXu">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Unit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-1F-qXu">
                                             <rect key="frame" x="8" y="0.0" width="178" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="178" id="K9k-SN-5QV"/>
+                                            </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51k-7L-qBR">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51k-7L-qBR">
                                             <rect key="frame" x="184" y="0.0" width="183" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="183" id="OmX-OJ-vSR"/>
+                                            </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="top" secondItem="M38-60-gSS" secondAttribute="top" id="Elz-yf-wpf"/>
+                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="baseline" secondItem="51k-7L-qBR" secondAttribute="baseline" id="HR3-k5-OAV"/>
+                                        <constraint firstAttribute="bottom" secondItem="s6J-1F-qXu" secondAttribute="bottom" id="Kj0-16-Dig"/>
+                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="bottom" secondItem="51k-7L-qBR" secondAttribute="bottom" id="Oe5-RL-JL2"/>
+                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="leading" secondItem="M38-60-gSS" secondAttribute="leadingMargin" id="jBr-pw-pBU"/>
+                                        <constraint firstItem="51k-7L-qBR" firstAttribute="trailing" secondItem="M38-60-gSS" secondAttribute="trailingMargin" id="kYJ-5t-8GQ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cloathSize" destination="51k-7L-qBR" id="6QH-0O-SY6"/>
@@ -716,7 +730,7 @@
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Shoe size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-xE-Vxa">
                                             <rect key="frame" x="8" y="0.0" width="178" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -740,7 +754,11 @@
                                 <action selector="cancel:" destination="MPN-KR-ZHS" id="0Ar-hh-Dkv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="u0c-rU-lQL"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="u0c-rU-lQL">
+                            <connections>
+                                <action selector="done:" destination="MPN-KR-ZHS" id="End-mx-SeD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Uhv-D1-LhM" kind="custom" identifier="chooseTopCategorySegue" customClass="PushNoAnimationSegue" id="Bmg-g1-V4a"/>
@@ -3231,7 +3249,7 @@ Citilink Warehouse Complex
                     </navigationItem>
                     <connections>
                         <outlet property="priceEarned" destination="Wro-k5-w7h" id="8Md-Id-tlc"/>
-                        <outlet property="priceField" destination="4Jg-mC-Emg" id="6EU-WC-8q9"/>
+                        <outlet property="priceField" destination="4Jg-mC-Emg" id="UdQ-Qc-d3m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHt-Ru-gxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3522,9 +3540,9 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="1Xh-1B-7ma"/>
         <segue reference="mG1-qk-ojj"/>
         <segue reference="cSg-UA-WeG"/>
         <segue reference="Bmg-g1-V4a"/>
-        <segue reference="1Xh-1B-7ma"/>
     </inferredMetricsTieBreakers>
 </document>

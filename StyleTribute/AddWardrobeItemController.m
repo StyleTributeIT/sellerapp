@@ -836,9 +836,6 @@ typedef void(^ImageLoadBlock)(int);
 }
 
 - (void) handleTapFrom: (UITapGestureRecognizer *)recognizer {
-//    NSIndexPath* path = [NSIndexPath indexPathForRow:recognizer.view.tag inSection:0];
-//    PhotoCell* cell = (PhotoCell*)[self.collectionView cellForItemAtIndexPath:path];
-//    self.selectedImage = cell.photoView;
     self.selectedImageIndex = recognizer.view.tag;
     
     if(self.selectedImageIndex == self.curProduct.photos.count) {

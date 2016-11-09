@@ -7,35 +7,42 @@
 //
 
 #import "NewItemTableViewController.h"
-#import "GlobalDefs.h"
-#import "GlobalHelper.h"
-#import "ChooseCategoryController.h"
-#import "TutorialController.h"
-#import "MainTabBarController.h"
-#import "TopCategoriesViewController.h"
-#import "WardrobeController.h"
-#import "ChooseBrandController.h"
-#import "PriceEditController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <MobileCoreServices/UTCoreTypes.h>
-#import "DataCache.h"
+#import "ItemDescriptionViewController.h"
+#import "ConditionTableViewController.h"
+#import "TopCategoriesViewController.h"
+#import "ClothingSizeTableViewCell.h"
+#import "ChooseCategoryController.h"
+#import "ShoesSizeTableViewCell.h"
+#import "UIImage+FixOrientation.h"
+#import "ChooseBrandController.h"
+#import "MainTabBarController.h"
+#import "BagSizeTableViewCell.h"
+#import "PriceEditController.h"
 #import "PhotosTableViewCell.h"
 #import "PriceTableViewCell.h"
 #import "BrandTableViewCell.h"
-#import "ClothingSizeTableViewCell.h"
-#import "BagSizeTableViewCell.h"
-#import "ShoesSizeTableViewCell.h"
-#import "ConditionTableViewController.h"
-#import "ItemDescriptionViewController.h"
-#import "UIImage+FixOrientation.h"
+#import "TutorialController.h"
+#import "WardrobeController.h"
+#import "ApiRequester.h"
+#import "GlobalHelper.h"
+#import <MRProgress.h>
+#import "GlobalDefs.h"
+#import "DataCache.h"
+#import "Photo.h"
 
 typedef void(^ImageLoadBlock)(int);
 
 @interface NewItemTableViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
 @property BOOL isTutorialPresented;
-    @property BOOL isInitialized;
-    @property BOOL isProductUpdated;
-    @property UIPickerView* picker;
-    @property (copy) ImageLoadBlock imgLoadBlock;
+@property BOOL isInitialized;
+@property BOOL isProductUpdated;
+@property UIPickerView* picker;
+@property (copy) ImageLoadBlock imgLoadBlock;
+@property NSUInteger selectedImageIndex;
+@property UIActionSheet* photoActionsSheet;
+@property NSMutableArray* photosToDelete;
 @end
 
 int sectionOffset = 0;
@@ -46,7 +53,9 @@ int sectionOffset = 0;
     [super viewDidLoad];
     self.isInitialized = NO;
     self.isTutorialPresented = NO;
+    self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -86,7 +95,163 @@ int sectionOffset = 0;
         sectionOffset = 0;
         [self dismissViewControllerAnimated:true completion:nil];
     }
-    
+
+- (IBAction)done:(id)sender {
+    {
+        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        
+        if(self.isEditing && [self.curProduct.processStatus isEqualToString:@"incomplete"]) {
+            self.curProduct.processStatus = @"in_review_add";
+        }
+        
+        [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            //            self.curProduct.identifier = product.identifier;
+            //            self.curProduct.processStatus = product.processStatus;
+            NSArray* oldPhotos = product.photos;
+            NSArray* oldImageTypes = product.category.imageTypes;
+            product.photos = self.curProduct.photos;
+            self.curProduct = product;
+            
+            for (int i = 0; i < product.category.imageTypes.count; ++i) {
+                Photo* pOld = [oldPhotos objectAtIndex:i];
+                Photo* pNew = [self.curProduct.photos objectAtIndex:i];
+                
+                if(![pOld isKindOfClass:[NSNull class]] && ![pNew isKindOfClass:[NSNull class]]) {
+                    pNew.imageUrl = pOld.imageUrl;
+                    pNew.identifier = pOld.identifier;
+                }
+            }
+            
+            dispatch_group_t group = dispatch_group_create();
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            
+            MRProgressOverlayView * progressView =[MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Uploading images" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
+            
+            if(self.curProduct.photos != nil && self.curProduct.category != nil) {
+                
+                NSInteger count = MAX(self.curProduct.photos.count, oldPhotos.count);
+                self.imgLoadBlock = ^(int i){
+                    
+                    if(i >= count)
+                        return;
+                    
+                    Photo* photo = (i < self.curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
+                    
+                    if(i < self.curProduct.category.imageTypes.count) {
+                        Photo* oldPhoto = [oldPhotos objectAtIndex:i];
+                        ImageType* imageType = [/*self.curProduct.category.imageTypes*/ oldImageTypes objectAtIndex:i];
+                        
+                        // If we have new or modified images, then we should upload them
+                        if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateNew) {
+                            dispatch_group_enter(group);
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
+                                imageType.state = ImageStateNormal;
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } progress:^(float progress) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [progressView setProgress:progress animated:YES];
+                                    NSLog(@"progress: %f", progress);
+                                });
+                            }];
+                        } else if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateModified) {
+                            dispatch_group_enter(group);
+                            imageType.state = ImageStateNew;
+                            [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            }];
+                        } else if(imageType.state == ImageStateDeleted) {
+                            dispatch_group_enter(group);
+                            imageType.state = ImageStateNormal;
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            [progressView setProgress:1.0f animated:YES];
+                            [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            }];
+                        } else {
+                            self.imgLoadBlock(i + 1);
+                        }
+                    } else {
+                        // remove images marked for deletion
+                        if(self.photosToDelete.count > 0) {
+                            Photo* toDelete = [self.photosToDelete firstObject];
+                            [self.photosToDelete removeObject:toDelete];
+                            dispatch_group_enter(group);
+                            [[ApiRequester sharedInstance] deleteImage:toDelete.identifier fromProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i);
+                                dispatch_group_leave(group);
+                            }];
+                            return;
+                        }
+                        
+                        // Additional images
+                        if(photo != nil && photo.image != nil) {
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            dispatch_group_enter(group);
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:@"custom" toProduct:self.curProduct.identifier success:^{
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } failure:^(NSString *error) {
+                                self.imgLoadBlock(i + 1);
+                                dispatch_group_leave(group);
+                            } progress:^(float progress) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [progressView setProgress:progress animated:YES];
+                                    NSLog(@"progress: %f", progress);
+                                });
+                            }];
+                        } else {
+                            self.imgLoadBlock(i + 1);
+                        }
+                    }
+                };
+                self.imgLoadBlock(0);
+            }
+            
+            dispatch_group_notify(group, queue, ^{
+                NSLog(@"All tasks done");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+                    WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
+                    
+                    if(!self.isEditing) {
+                        [wc addNewProduct:self.curProduct];
+                    } else {
+                        [wc updateProductsList];
+                    }
+                    
+                    self.curProduct = nil;
+                    self.isEditingItem = NO;
+                    [tabController setSelectedIndex:0];
+                    [self dismissViewControllerAnimated:true completion:nil];
+                });
+            });
+            
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [GlobalHelper showMessage:error withTitle:@"error"];
+        }];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -233,6 +398,7 @@ int sectionOffset = 0;
 {
     PhotosTableViewCell *cell = (PhotosTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"photosCell" forIndexPath:indexPath];
     [cell setup:self.curProduct];
+    cell.delegate = self;
     return cell;
 }
 
@@ -292,6 +458,25 @@ int sectionOffset = 0;
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark Self delegates
+
+-(void)selectedImageIndex:(NSUInteger)selectedImageIndex
+{
+    self.selectedImageIndex = selectedImageIndex;
+    if(self.selectedImageIndex == self.curProduct.photos.count) {
+        [self displayActionSheet:NO];
+    } else {
+        if(self.selectedImageIndex >= self.curProduct.category.imageTypes.count) {
+            [self displayActionSheet:YES];
+        } else {
+            [self displayActionSheet:NO];
+        }
+    }
+    
+    [self.photoActionsSheet showInView:self.view];
+}
+
 #pragma mark - Segues unwind handlers
     
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
@@ -350,10 +535,173 @@ int sectionOffset = 0;
         }
     }
 
+#pragma mark - Action sheet
+
+-(void)displayActionSheet:(BOOL)displayDestructiveButton {
+    self.photoActionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"Cancel" destructiveButtonTitle:(displayDestructiveButton ? @"Delete picture" : nil) otherButtonTitles:@"Take new picture", @"Pick from gallery", nil];
+    self.photoActionsSheet.delegate = self;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSInteger index = (actionSheet.destructiveButtonIndex == -1 ? (buttonIndex + 1) : buttonIndex);
+    switch (index) {
+        case 0: {  // Delete
+            Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+            if(self.selectedImageIndex >= self.curProduct.category.imageTypes.count) {
+                [self.curProduct.photos removeObject:photo];
+                if(photo.identifier != 0) {
+                    [self.photosToDelete addObject:photo];
+                }
+            } else {
+                ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+                if(imgType.state != ImageStateDeleted) {
+                    if(imgType.state == ImageStateModified || (imgType.state == ImageStateNormal && ![[self.curProduct.photos objectAtIndex:self.selectedImageIndex] isKindOfClass:[NSNull class]]))
+                        imgType.state = ImageStateDeleted;
+                    else if(imgType.state == ImageStateNew)
+                        imgType.state = ImageStateNormal;
+                }
+            }
+            photo.image = nil;
+            photo.thumbnailUrl = photo.imageUrl = @"";
+            [self.tableView reloadData];
+            break;
+        }
+        case 1: { // take new picture
+            /* tutorial disabled:
+             NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+             if([defs objectForKey:@"displayTutorial"] == nil) {
+             [self performSegueWithIdentifier:@"tutorialSegue" sender:self];
+             [defs setBool:NO forKey:@"displayTutorial"];
+             self.isTutorialPresented = YES;
+             } else*/ {
+                 [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+             }
+            break;
+        }
+        case 2: // pick from gallery
+            [self presentCameraController: UIImagePickerControllerSourceTypePhotoLibrary];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - Camera
+
+-(void)presentCameraController:(UIImagePickerControllerSourceType)type {
+    if([UIImagePickerController isSourceTypeAvailable:type]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.sourceType = type;
+        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
+        
+        if(type == UIImagePickerControllerSourceTypeCamera) {
+            CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+            CGRect cameraViewRect = [[UIScreen mainScreen] bounds];
+            if(screenSize.height/screenSize.width > 1.5) {
+                cameraViewRect = CGRectMake(0, 40, screenSize.width, screenSize.width*4.0/3.0);
+            }
+            
+            ImageType* imgType = nil;
+            if(self.selectedImageIndex < self.curProduct.category.imageTypes.count) {
+                imgType = [self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+            }
+            
+            if(imgType && imgType.outline.length > 0) {
+                [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:imgType.outline] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                } completed:^(UIImage *outline, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                    if(error != nil) {
+                        NSLog(@"error loading outline image: %@", [error description]);
+                    } else {
+                        CGSize oSize = CGSizeMake(outline.size.width, outline.size.height);
+                        if(outline.size.width > screenSize.width) {
+                            CGFloat m = screenSize.width/outline.size.width;
+                            oSize.width *= m;
+                            oSize.height *= m;
+                        }
+                        
+                        UIImageView* overlay = [[UIImageView alloc] initWithFrame:CGRectMake((cameraViewRect.size.width - oSize.width)/2, (cameraViewRect.size.height - oSize.height)/2 + cameraViewRect.origin.y, oSize.width, oSize.height)];
+                        overlay.image = outline;
+                        picker.cameraOverlayView = overlay;
+                    }
+                    
+                    [self presentViewController:picker animated:YES completion:^{
+                    }];
+                }];
+            } else {
+                [self presentViewController:picker animated:YES completion:^{
+                }];
+            }
+        } else {
+            [self presentViewController:picker animated:YES completion:^{
+            }];
+        }
+    } else {
+        NSLog(@"camera or photo library are not available on this device");
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
+    
+    Photo* photo = [Photo new];
+    photo.image = finalImage;
+    
+    // if we pressed on "plus", we should add photo instead of replace.
+    if(self.selectedImageIndex == self.curProduct.photos.count) {
+        [self.curProduct.photos addObject:photo];
+    } else {
+        Photo* oldPhoto = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+        [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
+        
+        if(self.selectedImageIndex < self.curProduct.category.imageTypes.count) {
+            ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
+            imgType.state = (imgType.state == ImageStateNormal ? ImageStateNew : ImageStateModified);
+            
+            if(oldPhoto && ![oldPhoto isKindOfClass:[NSNull class]] && oldPhoto.imageUrl.length > 0)
+                imgType.state = ImageStateModified;
+        } else {
+            // if we going to replace previosly uploaded photo, then add them to deletion list
+            if(oldPhoto.identifier != 0) {
+                [self.photosToDelete addObject:oldPhoto];
+            }
+        }
+    }
+    
+    [self.tableView reloadData];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
 #pragma mark UIPicker delegates
 
 - (void)setPickerData:(NSNotification*)aNotification {
     [self.picker reloadAllComponents];
 }
+
+#pragma mark Data validation
+
+-(BOOL)imagesAreFilled {
+    BOOL result = YES;
+    
+    // TODO: check only required images
+    for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
+        Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
+        ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
+        
+        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && ([curPhoto isKindOfClass:[NSNull class]] || (curPhoto.imageUrl.length == 0 && curPhoto.image == nil)))
+            result = NO;
+    }
+    
+    return result;
+}
+
+
     
 @end
