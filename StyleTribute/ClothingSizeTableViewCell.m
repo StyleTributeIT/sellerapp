@@ -17,7 +17,8 @@
 
 -(void) setup
 {
-    
+    self.cloathUnits.frame = CGRectMake(4, 0, (self.frame.size.width - 8)/2, self.frame.size.height);
+    self.cloathSize.frame = CGRectMake((self.frame.size.width - 8)/2 + 2, 0, (self.frame.size.width - 8)/2, self.frame.size.height);
 }
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

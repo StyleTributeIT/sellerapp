@@ -374,12 +374,14 @@ int sectionOffset = 0;
 -(UITableViewCell*)setupClothingSizeCell:(NSIndexPath*)indexPath
 {
     ClothingSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"clothingSizeCell" forIndexPath:indexPath];
+    [cell setup];
     return cell;
 }
     
 -(UITableViewCell*)setupShoesSizeCell:(NSIndexPath*)indexPath
     {
         ShoesSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"shoesSizeCell" forIndexPath:indexPath];
+        [cell setup];
         return cell;
     }
     
@@ -391,6 +393,7 @@ int sectionOffset = 0;
             cell.bagHeight.text = [self.curProduct.dimensions objectAtIndex:1];
             cell.bagDepth.text = [self.curProduct.dimensions objectAtIndex:2];
         }
+        [cell setup];
         return cell;
     }
     

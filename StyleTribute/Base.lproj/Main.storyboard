@@ -604,33 +604,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Unit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-1F-qXu">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Unit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-1F-qXu">
                                             <rect key="frame" x="8" y="0.0" width="178" height="43"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="178" id="K9k-SN-5QV"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51k-7L-qBR">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51k-7L-qBR">
                                             <rect key="frame" x="184" y="0.0" width="183" height="43"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="183" id="OmX-OJ-vSR"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="top" secondItem="M38-60-gSS" secondAttribute="top" id="Elz-yf-wpf"/>
-                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="baseline" secondItem="51k-7L-qBR" secondAttribute="baseline" id="HR3-k5-OAV"/>
-                                        <constraint firstAttribute="bottom" secondItem="s6J-1F-qXu" secondAttribute="bottom" id="Kj0-16-Dig"/>
-                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="bottom" secondItem="51k-7L-qBR" secondAttribute="bottom" id="Oe5-RL-JL2"/>
-                                        <constraint firstItem="s6J-1F-qXu" firstAttribute="leading" secondItem="M38-60-gSS" secondAttribute="leadingMargin" id="jBr-pw-pBU"/>
-                                        <constraint firstItem="51k-7L-qBR" firstAttribute="trailing" secondItem="M38-60-gSS" secondAttribute="trailingMargin" id="kYJ-5t-8GQ"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cloathSize" destination="51k-7L-qBR" id="6QH-0O-SY6"/>
