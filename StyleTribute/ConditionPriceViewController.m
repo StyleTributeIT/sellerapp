@@ -42,6 +42,7 @@
 }
 
 - (IBAction)done:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
