@@ -3234,10 +3234,10 @@ Citilink Warehouse Complex
                                 <action selector="backPressed:" destination="v1r-YF-g72" id="C0n-We-ADA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Mn3-Oj-kDA">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="Mn3-Oj-kDA">
                             <connections>
                                 <action selector="goNext:" destination="v1r-YF-g72" id="UdT-Tj-0Oh"/>
-                                <segue destination="bT4-hX-ckh" kind="show" id="fmu-64-m3f"/>
+                                <segue destination="bT4-hX-ckh" kind="show" identifier="showResult" id="fmu-64-m3f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3331,7 +3331,7 @@ Citilink Warehouse Complex
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzc-PP-o2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6409" y="1061"/>
+            <point key="canvasLocation" x="6398" y="964"/>
         </scene>
         <!--Choose Brand-->
         <scene sceneID="mtX-Ps-w7n">
@@ -3597,10 +3597,10 @@ Citilink Warehouse Complex
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1Xh-1B-7ma"/>
-        <segue reference="vNq-eJ-roa"/>
-        <segue reference="UyE-iw-xpi"/>
+        <segue reference="6UE-jV-Acr"/>
+        <segue reference="pbY-uP-Iqk"/>
         <segue reference="mG1-qk-ojj"/>
         <segue reference="cSg-UA-WeG"/>
-        <segue reference="Bmg-g1-V4a"/>
+        <segue reference="fmu-64-m3f"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,7 +42,7 @@
 }
 
 - (IBAction)done:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -63,13 +63,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
+    if (self.isEditingItem)
     {
-        [self performSegueWithIdentifier:@"segueEditCondition" sender:nil];
-    }
-    if (indexPath.row == 1)
-    {
-        
+        if (indexPath.row == 0)
+        {
+            [self performSegueWithIdentifier:@"segueEditCondition" sender:nil];
+        }
+        if (indexPath.row == 1)
+        {
+            
+        }
     }
 }
 

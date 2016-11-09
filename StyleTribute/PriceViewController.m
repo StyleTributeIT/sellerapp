@@ -23,19 +23,26 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    if ([DataCache sharedInstance].isEditingItem)
+    {
+        self.navigationItem.rightBarButtonItem.title = @"Done";
+    } else
+    {
+        self.navigationItem.rightBarButtonItem.title = @"Next";
+    }
     if ([DataCache getSelectedItem].price != 0.0f)
         self.priceField.text = [NSString stringWithFormat:@"%f", [DataCache getSelectedItem].price];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 - (IBAction)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)goNext:(id)sender {
-    
+    [self performSegueWithIdentifier:@"showResult" sender:nil];
 }
     
     

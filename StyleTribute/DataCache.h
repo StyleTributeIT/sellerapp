@@ -27,6 +27,7 @@
 @property NSDictionary* units;
 //remove: @property NSArray* sizes;
 @property NSArray* shoeSizes;
+@property BOOL isEditingItem;
 
 -(NSMutableArray*)loadProducts;
 -(void)saveProducts:(NSArray*)items;

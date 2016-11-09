@@ -51,6 +51,8 @@ int sectionOffset = 0;
 
 @implementation NewItemTableViewController
 
+@synthesize curProduct = _curProduct;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isInitialized = NO;
@@ -65,6 +67,17 @@ int sectionOffset = 0;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(Product*)curProduct
+{
+    return _curProduct;
+}
+
+-(void)setCurProduct:(Product *)product
+{
+    _curProduct = product;
+    [DataCache sharedInstance].isEditingItem = YES;
+}
+
 -(void)viewWillAppear:(BOOL)animated
     {
         sectionOffset = 0;
@@ -72,6 +85,7 @@ int sectionOffset = 0;
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
             [DataCache setSelectedItem:self.curProduct];
+            [DataCache sharedInstance].isEditingItem = NO;
         }
         self.curProduct = [DataCache getSelectedItem];
         [self.tableView reloadData];
