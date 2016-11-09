@@ -13,6 +13,7 @@
 #import "ConditionTableViewController.h"
 #import "TopCategoriesViewController.h"
 #import "ClothingSizeTableViewCell.h"
+#import "MessageTableViewCell.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
 #import "UIImage+FixOrientation.h"
@@ -364,8 +365,8 @@ int sectionOffset = 0;
 
 -(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
-    
+    MessageTableViewCell *cell = (MessageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
+    cell.messageLabel.text = self.curProduct.processComment;
     return cell;
 }
   
