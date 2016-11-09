@@ -365,6 +365,7 @@ int sectionOffset = 0;
 -(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath
 {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
+    
     return cell;
 }
   
