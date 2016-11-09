@@ -1764,50 +1764,47 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysD-20-ewZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item description tips goes here try to include lorem ipsun dolor sit amet, consectetuer adipiscing..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDm-9V-MIC">
-                                        <rect key="frame" x="52" y="8" width="315" height="34"/>
+                                        <rect key="frame" x="52" y="13" width="315" height="34"/>
                                         <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light-bulb" translatesAutoresizingMaskIntoConstraints="NO" id="mUq-B8-AZJ">
-                                        <rect key="frame" x="8" y="10" width="29" height="29"/>
+                                        <rect key="frame" x="8" y="15" width="29" height="29"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="29" id="5A0-ky-9Zj"/>
-                                            <constraint firstAttribute="height" constant="29" id="ubd-fI-uuJ"/>
+                                            <constraint firstAttribute="height" constant="29" id="4Dw-LC-kin"/>
+                                            <constraint firstAttribute="width" constant="29" id="qkA-jg-PXj"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.94901960784313721" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="leading" secondItem="mUq-B8-AZJ" secondAttribute="trailing" constant="15" id="1c4-Dm-WFy"/>
-                                    <constraint firstAttribute="width" secondItem="ysD-20-ewZ" secondAttribute="height" multiplier="15:2" id="6Ay-2A-kXV"/>
-                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="centerY" secondItem="hDm-9V-MIC" secondAttribute="centerY" id="PDL-km-xWc"/>
-                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="leading" secondItem="ysD-20-ewZ" secondAttribute="leading" constant="8" id="QZa-Jr-QAy"/>
-                                    <constraint firstAttribute="height" constant="50" id="TFO-Qr-fhd"/>
-                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="centerY" secondItem="ysD-20-ewZ" secondAttribute="centerY" id="Vmo-Y1-tZh"/>
-                                    <constraint firstAttribute="trailing" secondItem="hDm-9V-MIC" secondAttribute="trailing" constant="8" id="Wfr-eh-eS3"/>
-                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="leading" secondItem="mUq-B8-AZJ" secondAttribute="trailing" constant="15" id="gAf-TQ-nXr"/>
-                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="top" constant="8" id="oNp-uE-lEX"/>
-                                    <constraint firstAttribute="bottom" secondItem="hDm-9V-MIC" secondAttribute="bottom" constant="8" id="sZs-js-9PR"/>
+                                    <constraint firstAttribute="trailing" secondItem="hDm-9V-MIC" secondAttribute="trailing" constant="8" id="Hrh-5Y-ZWG"/>
+                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="top" constant="15" id="M2b-cU-kjw"/>
+                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="top" constant="13" id="NHv-cU-sIB"/>
+                                    <constraint firstAttribute="bottom" secondItem="hDm-9V-MIC" secondAttribute="bottom" constant="12" id="WXf-Re-nhQ"/>
+                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="leading" secondItem="mUq-B8-AZJ" secondAttribute="trailing" constant="15" id="b6m-O1-15s"/>
+                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="leading" secondItem="ysD-20-ewZ" secondAttribute="leading" constant="8" id="mQP-0Q-IBR"/>
+                                    <constraint firstAttribute="height" constant="59" id="mvz-SV-PjY"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of your item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-MA-p6e">
-                                <rect key="frame" x="16" y="115" width="343" height="47"/>
+                                <rect key="frame" x="16" y="129" width="343" height="47"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="xgv-tg-w2K"/>
+                                    <constraint firstAttribute="height" constant="47" id="ibA-WU-mjD"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bzU-fj-XAa">
-                                <rect key="frame" x="16" y="170" width="343" height="277"/>
+                                <rect key="frame" x="16" y="184" width="343" height="263"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="277" id="0Cu-Qo-qqw"/>
+                                    <constraint firstAttribute="height" constant="263" id="boV-Av-jVK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1815,15 +1812,15 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bzU-fj-XAa" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" id="A02-HA-NWR"/>
-                            <constraint firstItem="ysD-20-ewZ" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leading" id="E9C-Wa-Aue"/>
-                            <constraint firstItem="OH1-MA-p6e" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" id="Evt-9n-45V"/>
-                            <constraint firstItem="bzU-fj-XAa" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" id="H9M-Eb-8qd"/>
-                            <constraint firstAttribute="trailing" secondItem="ysD-20-ewZ" secondAttribute="trailing" id="HrT-jL-noS"/>
-                            <constraint firstItem="OH1-MA-p6e" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="bottom" constant="1" id="SgL-p5-OMS"/>
-                            <constraint firstItem="bzU-fj-XAa" firstAttribute="top" secondItem="OH1-MA-p6e" secondAttribute="bottom" constant="8" id="e3N-4O-3Gn"/>
-                            <constraint firstItem="ysD-20-ewZ" firstAttribute="top" secondItem="ptu-PD-HNR" secondAttribute="bottom" id="eWw-qS-BAg"/>
-                            <constraint firstItem="OH1-MA-p6e" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" id="uSJ-9y-Zzt"/>
+                            <constraint firstItem="OH1-MA-p6e" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" id="DBE-ST-P3C"/>
+                            <constraint firstItem="OH1-MA-p6e" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="bottom" constant="6" id="Esv-TV-Dvj"/>
+                            <constraint firstItem="bzU-fj-XAa" firstAttribute="top" secondItem="OH1-MA-p6e" secondAttribute="bottom" constant="8" id="IV4-26-0MU"/>
+                            <constraint firstItem="bzU-fj-XAa" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" id="IlC-O5-c9j"/>
+                            <constraint firstAttribute="trailing" secondItem="ysD-20-ewZ" secondAttribute="trailing" id="MGd-Iu-gN9"/>
+                            <constraint firstItem="ysD-20-ewZ" firstAttribute="top" secondItem="ptu-PD-HNR" secondAttribute="bottom" id="Pbi-dm-GyX"/>
+                            <constraint firstItem="ysD-20-ewZ" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leading" id="SUi-9w-cVz"/>
+                            <constraint firstItem="OH1-MA-p6e" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" id="WbI-qu-pmd"/>
+                            <constraint firstItem="bzU-fj-XAa" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" id="o2n-Od-Wfj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Item description" id="cs0-YE-o23">

@@ -8,6 +8,7 @@
 
 #import "ItemDescriptionViewController.h"
 #import "DataCache.h"
+#import "UITextView+Placeholder.h"
 
 @interface ItemDescriptionViewController ()
     @property (strong, nonatomic) IBOutlet UITextField *nameField;
@@ -18,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.descriptionField.placeholder = @"Description";
     CALayer *bottomBorder = [CALayer layer];
     bottomBorder.frame = CGRectMake(0.0f, self.nameField.frame.size.height - 1, self.nameField.frame.size.width, 1.0f);
     bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
