@@ -3071,7 +3071,11 @@ Citilink Warehouse Complex
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Condition" id="e4w-XL-5Js">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Gue-Hb-hKB"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Gue-Hb-hKB">
+                            <connections>
+                                <action selector="back:" destination="cnl-CW-F7R" id="AK5-2W-YUq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="ra0-eK-bhh" kind="show" identifier="questionSegue" id="TZH-KF-ZFh"/>

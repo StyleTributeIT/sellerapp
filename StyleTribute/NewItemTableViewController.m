@@ -264,7 +264,7 @@ int sectionOffset = 0;
 {
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 1)
+        if ((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) || indexPath.row == 1)
             return 140;
         return 44;
     }
@@ -313,7 +313,11 @@ int sectionOffset = 0;
     
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
-        return 2;   // message and photos
+    {
+        if (self.curProduct.processComment != nil && self.curProduct.processComment.length > 0)
+            return 2;   // message and photos
+        return 1;
+    }
     if (section == 1)
     {
         return 2;
@@ -325,7 +329,7 @@ int sectionOffset = 0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 0) {
+        if (indexPath.row == 0 && self.curProduct.processComment != nil && self.curProduct.processComment.length > 0) {
             return [self setupMessageCell:indexPath];
         }
         return [self setupPhotosCell:indexPath];

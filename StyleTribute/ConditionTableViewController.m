@@ -60,6 +60,9 @@
         [self performSegueWithIdentifier:@"questionSegue" sender:self];
     }
 
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.
