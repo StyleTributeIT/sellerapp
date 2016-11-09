@@ -598,7 +598,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="productPrice" destination="3I5-A7-QTk" id="xuv-EK-dma"/>
-                                    <segue destination="cnl-CW-F7R" kind="show" identifier="conditionSegue" id="562-nr-zEG"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="clothingSizeCell" id="BMD-Wl-leM" customClass="ClothingSizeTableViewCell">
@@ -754,6 +753,8 @@
                     </navigationItem>
                     <connections>
                         <segue destination="Uhv-D1-LhM" kind="custom" identifier="chooseTopCategorySegue" customClass="PushNoAnimationSegue" id="Bmg-g1-V4a"/>
+                        <segue destination="bT4-hX-ckh" kind="show" identifier="priceConditionSegue" id="UyE-iw-xpi"/>
+                        <segue destination="cnl-CW-F7R" kind="show" identifier="condition" id="pbY-uP-Iqk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytL-aP-dMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3087,7 +3088,7 @@ Citilink Warehouse Complex
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WuC-rI-kfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3999" y="1104"/>
+            <point key="canvasLocation" x="3974" y="1300"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="9ef-Sf-lk1">
@@ -3178,7 +3179,7 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kd5-3x-CoS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4789.6000000000004" y="1099.7001499250375"/>
+            <point key="canvasLocation" x="4782" y="1301"/>
         </scene>
         <!--Price-->
         <scene sceneID="nEW-js-FVx">
@@ -3239,7 +3240,7 @@ Citilink Warehouse Complex
                         <barButtonItem key="rightBarButtonItem" title="Done" id="Mn3-Oj-kDA">
                             <connections>
                                 <action selector="goNext:" destination="v1r-YF-g72" id="UdT-Tj-0Oh"/>
-                                <segue destination="k4E-eM-yaf" kind="show" id="gLD-BG-EGa"/>
+                                <segue destination="bT4-hX-ckh" kind="show" id="fmu-64-m3f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3250,29 +3251,90 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHt-Ru-gxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5544.8000000000002" y="1099.7001499250375"/>
+            <point key="canvasLocation" x="5590" y="1300"/>
         </scene>
         <!--Condition & Price-->
-        <scene sceneID="RLB-1p-RqM">
+        <scene sceneID="Dea-x8-CM2">
             <objects>
-                <viewController id="k4E-eM-yaf" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XlH-bz-vhU"/>
-                        <viewControllerLayoutGuide type="bottom" id="Bts-Mb-hX2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ykm-a0-ASY">
+                <tableViewController id="bT4-hX-ckh" customClass="ConditionPriceViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yMq-fb-6qM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Condition &amp; Price" id="Fbq-1F-JXC">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Hhd-mk-V1M"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Do9-zf-zKo"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="DVL-wM-m1A" customClass="PriceConditionTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DVL-wM-m1A" id="azN-5L-10e">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXN-83-eCH">
+                                            <rect key="frame" x="8" y="11" width="175" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="175" id="eOc-eL-klY"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gently Loved" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlL-1v-vCq">
+                                            <rect key="frame" x="215" y="11" width="117" height="21"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wzc-yV-N90">
+                                            <rect key="frame" x="340" y="8" width="27" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="27" id="E11-gO-EXk"/>
+                                                <constraint firstAttribute="height" constant="27" id="Hmx-NV-wCL"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vlL-1v-vCq" firstAttribute="top" secondItem="nXN-83-eCH" secondAttribute="top" id="2rI-lV-qQI"/>
+                                        <constraint firstItem="wzc-yV-N90" firstAttribute="trailing" secondItem="azN-5L-10e" secondAttribute="trailingMargin" id="3nr-vW-rTs"/>
+                                        <constraint firstItem="vlL-1v-vCq" firstAttribute="leading" secondItem="nXN-83-eCH" secondAttribute="trailing" constant="32" id="7fV-vb-1aZ"/>
+                                        <constraint firstItem="vlL-1v-vCq" firstAttribute="bottom" secondItem="nXN-83-eCH" secondAttribute="bottom" id="88N-8f-P38"/>
+                                        <constraint firstItem="wzc-yV-N90" firstAttribute="centerY" secondItem="nXN-83-eCH" secondAttribute="centerY" id="RVU-h4-cff"/>
+                                        <constraint firstItem="nXN-83-eCH" firstAttribute="leading" secondItem="azN-5L-10e" secondAttribute="leadingMargin" id="Vb8-gk-TEa"/>
+                                        <constraint firstItem="wzc-yV-N90" firstAttribute="leading" secondItem="vlL-1v-vCq" secondAttribute="trailing" constant="8" id="Y1e-Gn-NMo"/>
+                                        <constraint firstItem="wzc-yV-N90" firstAttribute="top" secondItem="azN-5L-10e" secondAttribute="topMargin" id="y6n-2d-fAr"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="statusImage" destination="wzc-yV-N90" id="4ql-8n-2rz"/>
+                                    <outlet property="subtitle" destination="vlL-1v-vCq" id="6BQ-WC-QiE"/>
+                                    <outlet property="title" destination="nXN-83-eCH" id="ZM1-8D-dQA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bT4-hX-ckh" id="6LD-LQ-b1Y"/>
+                            <outlet property="delegate" destination="bT4-hX-ckh" id="DFU-fx-Pn0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Condition &amp; Price" id="DMW-Gl-cwl">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="tIm-79-7t1">
+                            <connections>
+                                <action selector="back:" destination="bT4-hX-ckh" id="7Jf-98-jnv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="0Xq-HU-9tw">
+                            <connections>
+                                <action selector="done:" destination="bT4-hX-ckh" id="IKg-Fd-a3w"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gzq-hD-Bah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="doneBtn" destination="0Xq-HU-9tw" id="RYI-Z5-T9r"/>
+                        <segue destination="cnl-CW-F7R" kind="show" identifier="segueEditCondition" id="vNq-eJ-roa"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzc-PP-o2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6303" y="1096"/>
+            <point key="canvasLocation" x="6409" y="1061"/>
         </scene>
         <!--Choose Brand-->
         <scene sceneID="mtX-Ps-w7n">
@@ -3537,6 +3599,8 @@ Citilink Warehouse Complex
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1Xh-1B-7ma"/>
+        <segue reference="vNq-eJ-roa"/>
+        <segue reference="UyE-iw-xpi"/>
         <segue reference="mG1-qk-ojj"/>
         <segue reference="cSg-UA-WeG"/>
         <segue reference="Bmg-g1-V4a"/>

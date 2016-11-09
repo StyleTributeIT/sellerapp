@@ -11,4 +11,8 @@
 
 @interface ConditionTableViewController : UITableViewController
     @property Product *product;
+@property (nonatomic) BOOL isEditingItem;
+
+-(void)setEditingCondition;
+
 @end

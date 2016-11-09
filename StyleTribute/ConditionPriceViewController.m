@@ -1,35 +1,49 @@
 //
-//  ConditionTableViewController.m
+//  ConditionPriceViewController.m
 //  StyleTribute
 //
-//  Created by Mcuser on 11/7/16.
+//  Created by Mcuser on 11/9/16.
 //  Copyright © 2016 Selim Mustafaev. All rights reserved.
 //
 
+#import "ConditionPriceViewController.h"
+#import "PriceConditionTableViewCell.h"
 #import "ConditionTableViewController.h"
 #import "DataCache.h"
-#import "NamedItems.h"
+#import "Product.h"
 
-@interface ConditionTableViewController ()
+@interface ConditionPriceViewController ()
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneBtn;
 
 @end
 
-@implementation ConditionTableViewController
+@implementation ConditionPriceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if (self.isEditing)
+    {
+        
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-    
+
 -(void)viewDidAppear:(BOOL)animated
 {
-    self.product = [DataCache getSelectedItem];
+    [self.tableView reloadData];
 }
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)done:(id)sender {
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -43,34 +57,36 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [DataCache sharedInstance].conditions.count;
+    return 2;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        [self performSegueWithIdentifier:@"segueEditCondition" sender:nil];
+    }
+    if (indexPath.row == 1)
+    {
+        
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conditionCell" forIndexPath:indexPath];
-    cell.textLabel.text = ((NamedItem*)[[DataCache sharedInstance].conditions objectAtIndex:indexPath.row]).name;
+    PriceConditionTableViewCell *cell = (PriceConditionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    Product *product = [DataCache getSelectedItem];
+    if (indexPath.row == 0)
+    {
+        cell.title.text = @"Set codition";
+        cell.subtitle.text = product.condition.name;
+    } else {
+        cell.title.text = @"Set price";
+        cell.subtitle.text = [NSString stringWithFormat:@"%f",product.price];
+    }
     return cell;
 }
-    
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-    {
-        self.product.condition = [[DataCache sharedInstance].conditions objectAtIndex:indexPath.row];
-        [DataCache setSelectedItem:self.product];
-     if (!self.isEditingItem)
-        [self performSegueWithIdentifier:@"questionSegue" sender:self];
-    else
-        [self.navigationController popViewControllerAnimated:YES];
-    }
 
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
--(void)setEditingCondition
-{
-    self.isEditingItem = YES;
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -105,14 +121,17 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueEditCondition"])
+    {
+        ((ConditionTableViewController*)segue.destinationViewController).isEditingItem = self.isEditing;
+        [((ConditionTableViewController*)segue.destinationViewController) setEditingCondition];
+    }
 }
-*/
+
 
 @end

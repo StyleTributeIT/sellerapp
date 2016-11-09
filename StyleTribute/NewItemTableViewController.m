@@ -13,6 +13,7 @@
 #import "ConditionTableViewController.h"
 #import "TopCategoriesViewController.h"
 #import "ClothingSizeTableViewCell.h"
+#import "ConditionPriceViewController.h"
 #import "MessageTableViewCell.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
@@ -326,6 +327,19 @@ int sectionOffset = 0;
     return 1;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[PriceTableViewCell class]])
+    {
+        if (self.isEditingItem)
+        {
+            [self performSegueWithIdentifier:@"priceConditionSegue" sender:nil];
+        } else
+        {
+            [self performSegueWithIdentifier:@"condition" sender:nil];
+        }
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0)
@@ -526,6 +540,11 @@ int sectionOffset = 0;
     
     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
     {
+        if ([segue.identifier isEqualToString:@"priceConditionSegue"])
+        {
+            ConditionPriceViewController *vc = segue.destinationViewController;
+            vc.isEditingItem = self.isEditingItem;
+        }
         if ([segue.identifier isEqualToString:@"conditionSegue"])
         {
             ConditionTableViewController *vc = segue.destinationViewController;
