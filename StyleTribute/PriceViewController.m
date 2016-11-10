@@ -48,6 +48,11 @@
   //  [self performSegueWithIdentifier:@"enterOwnPriceSegue" sender:nil];
 }
 
+-(void)editForOwnPrice
+{
+    self.priceField.enabled = YES;
+    self.priceField.text = @"";
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {

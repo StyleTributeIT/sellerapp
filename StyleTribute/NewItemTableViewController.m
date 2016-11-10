@@ -103,6 +103,11 @@ int sectionOffset = 0;
 
 - (IBAction)done:(id)sender {
     {
+        if (![self productIsValid])
+        {
+            [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+            return;
+        }
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         
         if(self.isEditing && [self.curProduct.processStatus isEqualToString:@"incomplete"]) {
@@ -717,6 +722,13 @@ int sectionOffset = 0;
 }
 
 #pragma mark Data validation
+
+-(BOOL)productIsValid{
+    BOOL result = YES;
+    if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
+        result = NO;
+    return result;
+}
 
 -(BOOL)imagesAreFilled {
     BOOL result = YES;
