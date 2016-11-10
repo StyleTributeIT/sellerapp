@@ -103,6 +103,21 @@ int sectionOffset = 0;
 
 - (IBAction)done:(id)sender {
     {
+        STCategory *category = self.curProduct.category;
+        NSString* firstSize = [category.sizeFields firstObject];
+        if([firstSize isEqualToString:@"size"]) {
+            
+        } else if([firstSize isEqualToString:@"shoesize"]) {
+             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+            ShoesSizeTableViewCell * cell = (ShoesSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+          //  self.curProduct.shoeSize = cell.shoeSize.text;
+            self.curProduct.heelHeight = cell.heelHeight.text;
+        } else if([firstSize isEqualToString:@"dimensions"]) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+            BagSizeTableViewCell * cell = (BagSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
+        }
+        
         if (![self productIsValid])
         {
             [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
