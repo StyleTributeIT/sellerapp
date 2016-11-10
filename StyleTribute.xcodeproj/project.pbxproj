@@ -97,6 +97,7 @@
 		E18060BD1DD328A200B4056F /* ConditionPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BC1DD328A200B4056F /* ConditionPriceViewController.m */; };
 		E18060C01DD32A4C00B4056F /* PriceConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */; };
 		E18060C21DD3327400B4056F /* PriceFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18060C11DD3327400B4056F /* PriceFlow.storyboard */; };
+		E18060C51DD3F70100B4056F /* EnterPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060C41DD3F70100B4056F /* EnterPriceViewController.m */; };
 		E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */; };
 		E1B059E71DCB4F1A00D14D91 /* CategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E61DCB4F1A00D14D91 /* CategoryViewCell.m */; };
 		E1B059EB1DCBCE6400D14D91 /* AddBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */; };
@@ -279,6 +280,8 @@
 		E18060BE1DD32A4C00B4056F /* PriceConditionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceConditionTableViewCell.h; sourceTree = "<group>"; };
 		E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceConditionTableViewCell.m; sourceTree = "<group>"; };
 		E18060C11DD3327400B4056F /* PriceFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PriceFlow.storyboard; sourceTree = "<group>"; };
+		E18060C31DD3F70000B4056F /* EnterPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterPriceViewController.h; sourceTree = "<group>"; };
+		E18060C41DD3F70100B4056F /* EnterPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterPriceViewController.m; sourceTree = "<group>"; };
 		E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCategoriesViewController.h; sourceTree = "<group>"; };
 		E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCategoriesViewController.m; sourceTree = "<group>"; };
 		E1B059E51DCB4F1A00D14D91 /* CategoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewCell.h; sourceTree = "<group>"; };
@@ -623,6 +626,8 @@
 				E141DF101DD1488C001693F7 /* ItemDescriptionViewController.m */,
 				E18060BB1DD328A200B4056F /* ConditionPriceViewController.h */,
 				E18060BC1DD328A200B4056F /* ConditionPriceViewController.m */,
+				E18060C31DD3F70000B4056F /* EnterPriceViewController.h */,
+				E18060C41DD3F70100B4056F /* EnterPriceViewController.m */,
 			);
 			name = NewItem;
 			sourceTree = "<group>";
@@ -967,6 +972,7 @@
 				E141DEFC1DD10872001693F7 /* BrandTableViewCell.m in Sources */,
 				7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */,
 				7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */,
+				E18060C51DD3F70100B4056F /* EnterPriceViewController.m in Sources */,
 				E1B059E71DCB4F1A00D14D91 /* CategoryViewCell.m in Sources */,
 				E141DF051DD11B2B001693F7 /* PriceViewController.m in Sources */,
 				7AA5EADD1AEE740500CAB83B /* LoginController.m in Sources */,

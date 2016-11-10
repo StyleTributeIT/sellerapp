@@ -18,7 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if ([DataCache sharedInstance].isEditingItem)
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

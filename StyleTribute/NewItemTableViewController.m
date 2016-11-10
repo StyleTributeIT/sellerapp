@@ -51,7 +51,6 @@ int sectionOffset = 0;
 
 @implementation NewItemTableViewController
 
-@synthesize curProduct = _curProduct;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,16 +66,6 @@ int sectionOffset = 0;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
--(Product*)curProduct
-{
-    return _curProduct;
-}
-
--(void)setCurProduct:(Product *)product
-{
-    _curProduct = product;
-    [DataCache sharedInstance].isEditingItem = YES;
-}
 
 -(void)viewWillAppear:(BOOL)animated
     {
@@ -443,7 +432,7 @@ int sectionOffset = 0;
     {
         PriceTableViewCell *cell = (PriceTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
         if (self.curProduct.price != 0.0f)
-            cell.productPrice.text = [NSString stringWithFormat:@"$%f",self.curProduct.price];
+            cell.productPrice.text = [NSString stringWithFormat:@"$%.2f",self.curProduct.price];
         return cell;
     }
 

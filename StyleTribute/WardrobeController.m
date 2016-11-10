@@ -283,6 +283,7 @@
             vc.curProduct = product;
             vc.isEditingItem = YES;
             [DataCache setSelectedItem:product];
+            [DataCache sharedInstance].isEditingItem = YES;
         }
     }
     [self presentViewController:navController animated:YES completion:nil] ;

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "PriceEditController.h"
+#import "GlobalHelper.h"
 #import "ApiRequester.h"
 #import <MRProgress.h>
 

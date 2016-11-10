@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseInputController.h"
 
-@interface PriceViewController : UIViewController
+@interface PriceViewController : BaseInputController
     @property (strong, nonatomic) IBOutlet UITextField *priceField;
-
+-(IBAction)textFieldDidChange :(UITextField *)theTextField;
 @end

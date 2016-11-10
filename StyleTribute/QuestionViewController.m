@@ -8,6 +8,8 @@
 
 #import "QuestionViewController.h"
 #import "Product.h"
+#import "GlobalDefs.h"
+#import "GlobalHelper.h"
 #import "DataCache.h"
 
 @interface QuestionViewController ()
@@ -29,13 +31,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)nextPressed:(id)sender {
-    if (self.priceField.text.length != 0)
+    if (!self.priceField.hidden)
     {
-        Product *product = [DataCache getSelectedItem];
-        product.price = [self.priceField.text floatValue];
-        [DataCache setSelectedItem:product];
-    }
-    [self performSegueWithIdentifier:@"priceSegue" sender:self];
+        if (self.priceField.text.length != 0)
+        {
+            Product *product = [DataCache getSelectedItem];
+            product.originalPrice = [self.priceField.text floatValue];
+            [DataCache setSelectedItem:product];
+        } else
+        {
+            [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+            return;
+        }
+        self.priceField.hidden = YES;
+        [self performSegueWithIdentifier:@"yesSegue" sender:nil];
+    } else
+        [self performSegueWithIdentifier:@"priceSegue" sender:self];
 }
     
 - (IBAction)yesPressed:(id)sender {
