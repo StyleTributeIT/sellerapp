@@ -85,7 +85,7 @@
         cell.subtitle.text = product.condition.name;
     } else {
         cell.title.text = @"Set price";
-        cell.subtitle.text = [NSString stringWithFormat:@"%f",product.price];
+        cell.subtitle.text = [NSString stringWithFormat:@"$%.2f",product.price];
     }
     return cell;
 }

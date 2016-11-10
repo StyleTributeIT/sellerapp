@@ -27,17 +27,21 @@
     bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
                                                      alpha:1.0f].CGColor;
     [self.priceField.layer addSublayer:bottomBorder];
+    Product *product = [DataCache getSelectedItem];
+    product.originalPrice = 0;
+    [DataCache setSelectedItem:product];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    [self.priceField resignFirstResponder];
+    
 }
 
 - (IBAction)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)nextPressed:(id)sender {
+    [self.priceField resignFirstResponder];
     if (!self.priceField.hidden)
     {
         if (self.priceField.text.length != 0)
@@ -53,9 +57,16 @@
         self.priceField.hidden = YES;
         [self performSegueWithIdentifier:@"yesSegue" sender:nil];
     } else
+    {
+        Product *product = [DataCache getSelectedItem];
+        product.originalPrice = 0;
+        [DataCache setSelectedItem:product];
+        self.priceField.text = @"";
+        [self.priceField resignFirstResponder];
         [self performSegueWithIdentifier:@"priceSegue" sender:self];
+    }
 }
-    
+
 - (IBAction)yesPressed:(id)sender {
     self.priceField.hidden = NO;
 }
@@ -70,6 +81,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.priceField.text = @"";
     if ([segue.identifier isEqualToString:@"priceSegue"])
     {
         [((PriceViewController*)segue.destinationViewController) editForOwnPrice];

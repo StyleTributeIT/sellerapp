@@ -48,7 +48,10 @@
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
-                
+                Product *p = [DataCache getSelectedItem];
+                p.price = [self.priceField.text floatValue];
+                p.suggestedPrice = priceSuggestion;
+                [DataCache setSelectedItem:p];
                 self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             } failure:^(NSString *error) {
