@@ -28,6 +28,12 @@
                                                      alpha:1.0f].CGColor;
     [self.priceField.layer addSublayer:bottomBorder];
 }
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.priceField resignFirstResponder];
+}
+
 - (IBAction)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

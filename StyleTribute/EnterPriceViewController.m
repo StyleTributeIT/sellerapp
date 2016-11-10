@@ -7,9 +7,15 @@
 //
 
 #import "EnterPriceViewController.h"
+#import "DataCache.h"
+#import "GlobalHelper.h"
+#import "ApiRequester.h"
+#import <MRProgress.h>
 
 @interface EnterPriceViewController ()
-
+@property (strong, nonatomic) IBOutlet UITextField *priceField;
+@property (strong, nonatomic) IBOutlet UITextField *priceEarned;
+@property BOOL isInProgress;
 @end
 
 @implementation EnterPriceViewController
@@ -28,6 +34,30 @@
 }
 - (IBAction)next:(id)sender {
     [self performSegueWithIdentifier:@"showResult" sender:self];
+}
+
+-(IBAction)textFieldDidChange :(UITextField *)theTextField{
+    
+}
+
+-(void)inputDone {
+    {
+        [self.priceField resignFirstResponder];
+        if(self.priceField.text.length > 0 && !self.isInProgress) {
+            self.isInProgress = YES;
+            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
+                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
+                
+                self.isInProgress = NO;
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            } failure:^(NSString *error) {
+                self.isInProgress = NO;
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            }];
+        }
+    }
+    
 }
 
 /*

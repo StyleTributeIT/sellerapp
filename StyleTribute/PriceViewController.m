@@ -15,6 +15,7 @@
 @interface PriceViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *priceEarned;
 @property BOOL isInProgress;
+@property BOOL isOwnPrice;
 @property (strong, nonatomic) IBOutlet UIView *additionalButtons;
 @end
 
@@ -23,13 +24,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isInProgress = NO;
-    self.priceEarned.enabled = NO;
-    self.priceField.enabled = NO;
+    if (!self.isOwnPrice)
+    {
+        self.priceEarned.enabled = NO;
+        self.priceField.enabled = NO;
+    } else {
+        self.navigationItem.rightBarButtonItem.title = @"Done";
+    }
     if([DataCache getSelectedItem].originalPrice > 0) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[DataCache getSelectedItem].originalPrice success:^(float priceSuggestion) {
             self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
-            self.additionalButtons.hidden = NO;
+            if (!self.isOwnPrice)
+                self.additionalButtons.hidden = NO;
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -40,18 +47,21 @@
 
 - (IBAction)acceptPrice:(id)sender {
     self.additionalButtons.hidden = YES;
-    [self performSegueWithIdentifier:@"showResult2" sender:nil];
+    [self performSegueWithIdentifier:@"showResult" sender:nil];
 }
 
 - (IBAction)enterPrice:(id)sender {
-    [self.priceField becomeFirstResponder];
+    //[self.priceField becomeFirstResponder];
   //  [self performSegueWithIdentifier:@"enterOwnPriceSegue" sender:nil];
 }
 
 -(void)editForOwnPrice
 {
+    self.isOwnPrice = YES;
     self.priceField.enabled = YES;
     self.priceField.text = @"";
+    
+    [self.priceField becomeFirstResponder];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -63,6 +73,7 @@
     {
         self.navigationItem.rightBarButtonItem.title = @"Next";
     }
+    if (!self.isOwnPrice)
     if ([DataCache getSelectedItem].price != 0.0f)
         self.priceField.text = [NSString stringWithFormat:@" $%.2f", [DataCache getSelectedItem].price];
 }

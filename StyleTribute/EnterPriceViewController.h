@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseInputController.h"
 
-@interface EnterPriceViewController : UIViewController
-
+@interface EnterPriceViewController : BaseInputController
+-(IBAction)textFieldDidChange :(UITextField *)theTextField;
 @end

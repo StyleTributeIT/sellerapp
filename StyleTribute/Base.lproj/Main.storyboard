@@ -3394,6 +3394,8 @@ Citilink Warehouse Complex
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="priceEarned" destination="bdS-h6-mcI" id="1Sd-8n-LbQ"/>
+                        <outlet property="priceField" destination="515-FD-6lv" id="NVX-1j-Gum"/>
                         <segue destination="bT4-hX-ckh" kind="show" identifier="showResult" id="L07-Vx-gEM"/>
                     </connections>
                 </viewController>
@@ -3837,7 +3839,7 @@ Citilink Warehouse Complex
                         <outlet property="additionalButtons" destination="BX6-5g-dsP" id="sCr-yi-cWJ"/>
                         <outlet property="priceEarned" destination="r4C-OT-t41" id="IJy-dq-FnA"/>
                         <outlet property="priceField" destination="bRj-3u-kD6" id="Ge7-tf-uLg"/>
-                        <segue destination="bT4-hX-ckh" kind="show" identifier="showResult2" id="8s7-DO-FUi"/>
+                        <segue destination="bT4-hX-ckh" kind="show" identifier="showResult" id="8s7-DO-FUi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0r-33-GCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3868,7 +3870,7 @@ Citilink Warehouse Complex
         <segue reference="1Xh-1B-7ma"/>
         <segue reference="6UE-jV-Acr"/>
         <segue reference="vNq-eJ-roa"/>
-        <segue reference="fmu-64-m3f"/>
+        <segue reference="L07-Vx-gEM"/>
         <segue reference="7un-pZ-Pi9"/>
         <segue reference="mG1-qk-ojj"/>
         <segue reference="cSg-UA-WeG"/>
