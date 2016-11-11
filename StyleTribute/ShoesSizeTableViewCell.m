@@ -10,10 +10,6 @@
 #import "DataCache.h"
 #import "GlobalDefs.h"
 #import "GlobalHelper.h"
-#import <NSArray+LinqExtensions.h>
-#import <NSDictionary+LinqExtensions.h>
-#import <MRProgress.h>
-#import "AppDelegate.h"
 #import <ActionSheetStringPicker.h>
 
 @implementation ShoesSizeTableViewCell

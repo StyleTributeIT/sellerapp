@@ -7,12 +7,17 @@
 //
 
 #import "ClothingSizeTableViewCell.h"
+#import "DataCache.h"
+#import "GlobalDefs.h"
+#import "GlobalHelper.h"
+#import <ActionSheetStringPicker.h>
 
 @implementation ClothingSizeTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.cloathSize.delegate = self;
+    self.cloathUnits.delegate = self;
 }
 
 -(void) setup
@@ -25,6 +30,43 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+#pragma mark UITextField delegates
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    if (textField == self.cloathSize)
+    {
+        NSArray *sizes = [NSArray arrayWithArray:[[[DataCache sharedInstance].units valueForKey:@"Universal"] valueForKey:@"name"]];
+        
+        [ActionSheetStringPicker showPickerWithTitle:@""
+                                                rows:sizes
+                                    initialSelection:0
+                                           doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                               self.selectedSize = [[DataCache sharedInstance].shoeSizes objectAtIndex:selectedIndex];
+                                               self.cloathSize.text = sizes[selectedIndex];
+                                           }
+                                         cancelBlock:nil
+                                              origin:self];
+    } else if (textField == self.cloathUnits)
+    {
+        
+        NSArray *sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].units.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString* unit1, NSString* unit2) {
+            return [unit1 compare: unit2];
+        }]];
+        
+        [ActionSheetStringPicker showPickerWithTitle:@""
+                                                rows:sizes
+                                    initialSelection:0
+                                           doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                               self.selectedUnit = [[DataCache sharedInstance].shoeSizes objectAtIndex:selectedIndex];
+                                               self.cloathSize.text = sizes[selectedIndex];
+                                           }
+                                         cancelBlock:nil
+                                              origin:self];
+    }
 }
 
 @end

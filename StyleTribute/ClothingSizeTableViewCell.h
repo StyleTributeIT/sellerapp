@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NamedItems.h"
 
-@interface ClothingSizeTableViewCell : UITableViewCell
-    @property (strong, nonatomic) IBOutlet UITextField *cloathUnits;
-    @property (strong, nonatomic) IBOutlet UITextField *cloathSize;
+@interface ClothingSizeTableViewCell : UITableViewCell<UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *cloathUnits;
+@property (strong, nonatomic) IBOutlet UITextField *cloathSize;
+@property NamedItem *selectedSize;
+@property NamedItem *selectedUnit;
 -(void) setup;
 @end
