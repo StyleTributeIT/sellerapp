@@ -14,6 +14,7 @@
 #import <NSDictionary+LinqExtensions.h>
 #import <MRProgress.h>
 #import "AppDelegate.h"
+#import <ActionSheetStringPicker.h>
 
 @implementation ShoesSizeTableViewCell
 UIPickerView* picker;
@@ -64,38 +65,21 @@ UIPickerView* picker;
 {
     if ([textField isEqual:self.shoeSize])
     {
-        [self.heelHeight resignFirstResponder];
-        picker  = [GlobalHelper createPickerForFields:@[self.shoeSize]];
-        picker.dataSource = self;
-        picker.delegate = self;
-        [picker reloadAllComponents];
-        NSLog(@"Show picker for shoes");
-        [picker selectRow:0 inComponent:0 animated:NO];
-        [textField resignFirstResponder];
-      /*  if([MRProgressOverlayView overlayForView:picker] == nil) {
-            [MRProgressOverlayView showOverlayAddedTo:picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
-        } */
+        NSArray *sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].shoeSizes valueForKey:@"name"]];
         
-       // [[[[UIApplication sharedApplication] delegate] window] addSubview:picker];
-     //   [self showPicker];
+        [ActionSheetStringPicker showPickerWithTitle:@""
+                                                rows:sizes
+                                    initialSelection:0
+                                           doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                               self.selectedSize = [[DataCache sharedInstance].shoeSizes objectAtIndex:selectedIndex];
+                                               self.shoeSize.text = sizes[selectedIndex];
+                                           }
+                                         cancelBlock:nil
+                                              origin:self];
+        
+        [self.heelHeight resignFirstResponder];
+        [textField resignFirstResponder];
     }
-}
-
-- (IBAction)hidePicker {
-    
-    float pvHeight = 350;//pickerView.frame.size.height;
-    float y = [UIScreen mainScreen].bounds.size.height - (pvHeight * -2); // the root view of view controller
-    [UIView animateWithDuration:0.5f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        picker.frame = CGRectMake(0 , y, picker.frame.size.width, pvHeight);
-    } completion:nil];
-}
-
-- (IBAction)showPicker {
-    float pvHeight = 350;//pickerView.frame.size.height;
-    float y = [UIScreen mainScreen].bounds.size.height - (pvHeight); // the root view of view controller
-    [UIView animateWithDuration:0.5f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        picker.frame = CGRectMake(0 , y, picker.frame.size.width, pvHeight);
-    } completion:nil];
 }
 
 @end

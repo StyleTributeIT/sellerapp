@@ -4,6 +4,7 @@ target 'StyleTribute' do
 	pod 'TestFairy'
 	pod 'Reachability'
 	pod 'KASlideShow', '= 2.2'
+	pod 'ActionSheetPicker-3.0', '~> 2.2.0'
 	pod 'LinqToObjectiveC'
 	pod 'SDWebImage'
 	pod 'UIActivityIndicator-for-SDWebImage'
