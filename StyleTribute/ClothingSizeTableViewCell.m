@@ -10,6 +10,8 @@
 #import "DataCache.h"
 #import "GlobalDefs.h"
 #import "GlobalHelper.h"
+#import <NSArray+LinqExtensions.h>
+#import <NSDictionary+LinqExtensions.h>
 #import <ActionSheetStringPicker.h>
 
 @implementation ClothingSizeTableViewCell
@@ -39,7 +41,7 @@
     [textField resignFirstResponder];
     if (textField == self.cloathSize)
     {
-        NSArray *sizes = [NSArray arrayWithArray:[[[DataCache sharedInstance].units valueForKey:@"Universal"] valueForKey:@"name"]];
+        NSArray *sizes = [NSArray arrayWithArray:[[[DataCache sharedInstance].units valueForKey:self.cloathUnits.text] valueForKey:@"name"]];
         
         [ActionSheetStringPicker showPickerWithTitle:@""
                                                 rows:sizes
@@ -62,7 +64,8 @@
                                     initialSelection:0
                                            doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
                                                self.selectedUnit = [[DataCache sharedInstance].shoeSizes objectAtIndex:selectedIndex];
-                                               self.cloathSize.text = sizes[selectedIndex];
+                                               self.cloathUnits.text = sizes[selectedIndex];
+                                               self.cloathSize.text = @"";
                                            }
                                          cancelBlock:nil
                                               origin:self];
