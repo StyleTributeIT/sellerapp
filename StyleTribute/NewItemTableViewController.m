@@ -46,6 +46,7 @@ typedef void(^ImageLoadBlock)(int);
 @property (copy) ImageLoadBlock imgLoadBlock;
 @property NSUInteger selectedImageIndex;
 @property UIActionSheet* photoActionsSheet;
+@property Product *productCopy;
 @property NSMutableArray* photosToDelete;
 @end
 
@@ -60,7 +61,7 @@ int sectionOffset = 0;
     self.isTutorialPresented = NO;
     self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-    
+    self.productCopy = [self.curProduct copy];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -139,7 +140,13 @@ int sectionOffset = 0;
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             //            self.curProduct.identifier = product.identifier;
             //            self.curProduct.processStatus = product.processStatus;
-            NSArray* oldPhotos = product.photos;
+            NSMutableArray *tempImages = [NSMutableArray new];
+            for (Photo * ph in product.photos) {
+                if (![ph isKindOfClass:[NSNull class]])
+                    [tempImages addObject:ph];
+            }
+            product.photos = [NSArray arrayWithArray:tempImages];
+            NSArray* oldPhotos = [NSArray arrayWithArray:product.photos];
             NSArray* oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;
             self.curProduct = product;
@@ -167,7 +174,7 @@ int sectionOffset = 0;
                     if(i >= count)
                         return;
                     
-                    Photo* photo = (i < self.curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
+                    Photo* photo = (i < _curProduct.photos.count ? [_curProduct.photos objectAtIndex:i] : nil);
                     
                     if(i < self.curProduct.category.imageTypes.count) {
                         Photo* oldPhoto = [oldPhotos objectAtIndex:i];
