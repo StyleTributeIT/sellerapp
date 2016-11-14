@@ -21,7 +21,7 @@
 
 @implementation MainTabBarController
 
--(id)initWithCoder:(NSCoder *)aDecoder {
+/*-(id)initWithCoder:(NSCoder *)aDecoder {
     self=  [super initWithCoder:aDecoder];
     
     if(self) {
@@ -53,7 +53,7 @@
         [self.myWardrobeButton addTarget:self action:@selector(shopButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //Add Item Tab Button created
-        self.addItemButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 2,backgroundImage.size.height - (backgroundImage.size.height * 0.8333333333) , itemWidth, backgroundImage.size.height) icon:[[UIImage imageNamed:@"camera"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Sell" andTopOffset: -16];
+        self.addItemButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 2,backgroundImage.size.height - (backgroundImage.size.height * 0.7333333333) , itemWidth, backgroundImage.size.height) icon:[[UIImage imageNamed:@"camera"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Sell" andTopOffset: -16];
         [self.addItemButton addTarget:self action:@selector(addItemButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //My Account Butoon Created
@@ -84,7 +84,7 @@
 //- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
 //    NSLog(@"QWE!!!!!!!!!!!!");
 //}
-
+*/
 -(void)selectPreviousTab {
     [self setSelectedIndex:self.previousTabIndex];
 }
@@ -172,7 +172,7 @@
 - (void) addItemButtonPressed{
     [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"] animated:YES completion:nil] ;
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe"] forState: UIControlStateNormal];
-    [self.myAccountButton setImage:[UIImage imageNamed:@"account"] forState: UIControlStateNormal];
+    [self.myAccountButton setImage:[UIImage imageNamed:@"profile"] forState: UIControlStateNormal];
     [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
     [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
 }

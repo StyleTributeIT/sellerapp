@@ -367,7 +367,7 @@
         <scene sceneID="7XW-T5-pIx">
             <objects>
                 <tableViewController storyboardIdentifier="AddWardrobeItemController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MPN-KR-ZHS" userLabel="New Product" customClass="NewItemTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7GT-TY-qoB" userLabel="Add Wardrobe">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7GT-TY-qoB" userLabel="Add Wardrobe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -407,6 +407,7 @@
                                         <constraint firstItem="uWi-q6-nMn" firstAttribute="leading" secondItem="2p0-Xu-HOp" secondAttribute="leading" constant="8" id="rON-a4-xSj"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="messageFrom" destination="2PQ-gP-Sg7" id="6FA-Tz-Y8D"/>
                                     <outlet property="messageLabel" destination="1xX-ml-xrv" id="paB-Sc-Agi"/>
@@ -429,14 +430,21 @@
                                             <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guide" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-45-Vbq">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-45-Vbq">
                                             <rect key="frame" x="302" y="8" width="65" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="AqO-wI-It1"/>
                                                 <constraint firstAttribute="height" constant="21" id="wpL-2M-GVw"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="StencilStd" family="Stencil Std" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Guide">
+                                                    <attributes>
+                                                        <font key="NSFont" size="13" name="HelveticaNeue-Medium"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d0W-bF-HuX">
@@ -505,11 +513,6 @@
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                    <integer key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <outlet property="dataSource" destination="JCl-pv-8pa" id="b9k-Cc-EUB"/>
                                                 <outlet property="delegate" destination="JCl-pv-8pa" id="CWB-wA-0yd"/>
@@ -527,6 +530,7 @@
                                         <constraint firstItem="d0W-bF-HuX" firstAttribute="leading" secondItem="VDi-MV-xzM" secondAttribute="leadingMargin" id="yLN-dZ-agm"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="collectionView" destination="d0W-bF-HuX" id="Njw-Q7-k8M"/>
                                     <outlet property="guideLabel" destination="sFP-45-Vbq" id="F6t-2S-MDG"/>
@@ -562,6 +566,7 @@
                                         <constraint firstItem="QpZ-2u-MfF" firstAttribute="top" secondItem="bh5-uP-05b" secondAttribute="top" constant="10" id="WV8-Bg-7uN"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <segue destination="tYf-Gj-vMU" kind="show" identifier="descriptionSegue" id="b88-Mc-ot6"/>
                                 </connections>
@@ -596,25 +601,26 @@
                                         <constraint firstAttribute="bottom" secondItem="3I5-A7-QTk" secondAttribute="bottom" constant="12" id="ddK-MT-9gh"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="productPrice" destination="3I5-A7-QTk" id="xuv-EK-dma"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="clothingSizeCell" id="BMD-Wl-leM" customClass="ClothingSizeTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="clothingSizeCell" focusStyle="custom" id="BMD-Wl-leM" customClass="ClothingSizeTableViewCell">
                                 <rect key="frame" x="0.0" y="300" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BMD-Wl-leM" id="M38-60-gSS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Unit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-1F-qXu">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Unit" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-1F-qXu">
                                             <rect key="frame" x="8" y="0.0" width="178" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51k-7L-qBR">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51k-7L-qBR">
                                             <rect key="frame" x="184" y="0.0" width="183" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
@@ -623,6 +629,7 @@
                                         </textField>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="cloathSize" destination="51k-7L-qBR" id="6QH-0O-SY6"/>
                                     <outlet property="cloathUnits" destination="s6J-1F-qXu" id="hgh-HS-rOz"/>
@@ -635,13 +642,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Width (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHb-8V-aGL">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Width (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHb-8V-aGL">
                                             <rect key="frame" x="8" y="0.0" width="127" height="43"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Height (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5q-mK-Oym">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5q-mK-Oym">
                                             <rect key="frame" x="134" y="0.0" width="108" height="43"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="108" id="U2f-mO-gOD"/>
@@ -650,7 +657,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Depth (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-Vo-OcC">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Depth (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-Vo-OcC">
                                             <rect key="frame" x="240" y="0.0" width="127" height="43"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -672,13 +679,14 @@
                                         <constraint firstAttribute="bottom" secondItem="Y5q-mK-Oym" secondAttribute="bottom" id="zsV-vS-MtE"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="bagDepth" destination="aTN-Vo-OcC" id="8HZ-eX-d3h"/>
                                     <outlet property="bagHeight" destination="Y5q-mK-Oym" id="fLl-eH-NaK"/>
                                     <outlet property="bagWidth" destination="vHb-8V-aGL" id="RGa-a2-btE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="brandCell" id="Eyu-MC-oAK" customClass="BrandTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="brandCell" focusStyle="custom" id="Eyu-MC-oAK" customClass="BrandTableViewCell">
                                 <rect key="frame" x="0.0" y="388" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eyu-MC-oAK" id="i1E-f6-BLr">
@@ -686,13 +694,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGz-hQ-IOF">
-                                            <rect key="frame" x="8" y="0.0" width="359" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKh-Cz-zvu">
                                                     <rect key="frame" x="8" y="11" width="343" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -701,6 +709,7 @@
                                         </view>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="brandTitle" destination="dKh-Cz-zvu" id="7GL-KK-UBR"/>
                                 </connections>
@@ -712,14 +721,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Heel Height (cm)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1a-0h-cZX">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Heel Height (cm)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1a-0h-cZX">
                                             <rect key="frame" x="184" y="0.0" width="183" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Shoe size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-xE-Vxa">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shoe size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-xE-Vxa">
                                             <rect key="frame" x="8" y="0.0" width="178" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                             <nil key="textColor"/>
@@ -728,6 +737,7 @@
                                         </textField>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="heelHeight" destination="c1a-0h-cZX" id="rPO-uR-n6m"/>
                                     <outlet property="shoeSize" destination="WdI-xE-Vxa" id="ZSw-CS-0UZ"/>
@@ -740,7 +750,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="sTC-mZ-Ozx">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="lU7-v1-bUy">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" style="plain" id="lU7-v1-bUy">
                             <connections>
                                 <action selector="cancel:" destination="MPN-KR-ZHS" id="0Ar-hh-Dkv"/>
                             </connections>
@@ -3100,7 +3110,7 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you know your item's original price?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhX-Rm-ID8">
-                                <rect key="frame" x="16" y="37" width="343" height="51"/>
+                                <rect key="frame" x="16" y="81" width="343" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50.5" id="cE1-kv-9HK"/>
                                 </constraints>
@@ -3124,7 +3134,7 @@ Citilink Warehouse Complex
                                 </connections>
                             </button>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Original Price (SGD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xlp-Ov-yju">
-                                <rect key="frame" x="16" y="174" width="343" height="31"/>
+                                <rect key="frame" x="16" y="218" width="343" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="q66-zZ-KZa"/>
                                 </constraints>
@@ -3855,6 +3865,7 @@ Citilink Warehouse Complex
         <image name="RedButton" width="205" height="30"/>
         <image name="account" width="30" height="30"/>
         <image name="account-pink" width="30" height="30"/>
+        <image name="backBtn" width="14" height="24"/>
         <image name="borderedArea" width="639" height="170"/>
         <image name="camera" width="46" height="46"/>
         <image name="itemCell" width="117" height="117"/>
@@ -3871,11 +3882,11 @@ Citilink Warehouse Complex
     <inferredMetricsTieBreakers>
         <segue reference="mG1-qk-ojj"/>
         <segue reference="cSg-UA-WeG"/>
-        <segue reference="vNq-eJ-roa"/>
-        <segue reference="L07-Vx-gEM"/>
-        <segue reference="7un-pZ-Pi9"/>
+        <segue reference="Bmg-g1-V4a"/>
+        <segue reference="UyE-iw-xpi"/>
+        <segue reference="pbY-uP-Iqk"/>
         <segue reference="Vl5-XS-wrF"/>
-        <segue reference="6UE-jV-Acr"/>
+        <segue reference="7un-pZ-Pi9"/>
         <segue reference="1Xh-1B-7ma"/>
     </inferredMetricsTieBreakers>
 </document>
