@@ -720,7 +720,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Shoe size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WdI-xE-Vxa">
-                                            <rect key="frame" x="8" y="0.0" width="178" height="43"/>
+                                            <rect key="frame" x="8" y="0.0" width="178" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -3434,7 +3434,7 @@ Citilink Warehouse Complex
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wzc-yV-N90">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="wzc-yV-N90">
                                             <rect key="frame" x="340" y="8" width="27" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="27" id="E11-gO-EXk"/>
@@ -3480,6 +3480,7 @@ Citilink Warehouse Complex
                     <connections>
                         <outlet property="doneBtn" destination="0Xq-HU-9tw" id="RYI-Z5-T9r"/>
                         <segue destination="cnl-CW-F7R" kind="show" identifier="segueEditCondition" id="vNq-eJ-roa"/>
+                        <segue destination="ra0-eK-bhh" kind="show" identifier="segueEditPrice" id="Vl5-XS-wrF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzc-PP-o2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3863,16 +3864,18 @@ Citilink Warehouse Complex
         <image name="shop" width="22" height="22"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
+        <image name="unchecked" width="39" height="39"/>
         <image name="wardrobe" width="37" height="22"/>
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1Xh-1B-7ma"/>
-        <segue reference="6UE-jV-Acr"/>
+        <segue reference="mG1-qk-ojj"/>
+        <segue reference="cSg-UA-WeG"/>
         <segue reference="vNq-eJ-roa"/>
         <segue reference="L07-Vx-gEM"/>
         <segue reference="7un-pZ-Pi9"/>
-        <segue reference="mG1-qk-ojj"/>
-        <segue reference="cSg-UA-WeG"/>
+        <segue reference="Vl5-XS-wrF"/>
+        <segue reference="6UE-jV-Acr"/>
+        <segue reference="1Xh-1B-7ma"/>
     </inferredMetricsTieBreakers>
 </document>

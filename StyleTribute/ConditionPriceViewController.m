@@ -71,7 +71,7 @@
         }
         if (indexPath.row == 1)
         {
-            
+            [self performSegueWithIdentifier:@"segueEditPrice" sender:nil];
         }
     }
 }
@@ -83,9 +83,13 @@
     {
         cell.title.text = @"Set codition";
         cell.subtitle.text = product.condition.name;
+        if (product.condition != nil)
+            [cell.statusImage setImage:[UIImage imageNamed:@"checked"]];
     } else {
         cell.title.text = @"Set price";
         cell.subtitle.text = [NSString stringWithFormat:@"$%.2f",product.price];
+        if (product.price != 0.0f)
+            [cell.statusImage setImage:[UIImage imageNamed:@"checked"]];
     }
     return cell;
 }

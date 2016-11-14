@@ -47,7 +47,7 @@
                                                 rows:sizes
                                     initialSelection:0
                                            doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                               self.selectedSize = [[DataCache sharedInstance].shoeSizes objectAtIndex:selectedIndex];
+                                               self.selectedSize = [[[DataCache sharedInstance].units valueForKey:self.cloathUnits.text] objectAtIndex:selectedIndex];
                                                self.cloathSize.text = sizes[selectedIndex];
                                            }
                                          cancelBlock:nil

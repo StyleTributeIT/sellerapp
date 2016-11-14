@@ -14,6 +14,8 @@
 #import "TopCategoriesViewController.h"
 #import "ClothingSizeTableViewCell.h"
 #import "ConditionPriceViewController.h"
+#import <NSArray+LinqExtensions.h>
+#import <NSDictionary+LinqExtensions.h>
 #import "MessageTableViewCell.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
@@ -44,6 +46,7 @@ typedef void(^ImageLoadBlock)(int);
 @property (copy) ImageLoadBlock imgLoadBlock;
 @property NSUInteger selectedImageIndex;
 @property UIActionSheet* photoActionsSheet;
+@property Product *productCopy;
 @property NSMutableArray* photosToDelete;
 @end
 
@@ -58,7 +61,7 @@ int sectionOffset = 0;
     self.isTutorialPresented = NO;
     self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-    
+    self.productCopy = [self.curProduct copy];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -106,11 +109,15 @@ int sectionOffset = 0;
         STCategory *category = self.curProduct.category;
         NSString* firstSize = [category.sizeFields firstObject];
         if([firstSize isEqualToString:@"size"]) {
-            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+            ClothingSizeTableViewCell * cell = (ClothingSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            self.curProduct.size = cell.selectedSize.name;
+            self.curProduct.sizeId = cell.selectedSize.identifier;
+            self.curProduct.unit = cell.cloathUnits.text;
         } else if([firstSize isEqualToString:@"shoesize"]) {
              NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             ShoesSizeTableViewCell * cell = (ShoesSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-          //  self.curProduct.shoeSize = cell.shoeSize.text;
+            self.curProduct.shoeSize = cell.selectedSize;
             self.curProduct.heelHeight = cell.heelHeight.text;
         } else if([firstSize isEqualToString:@"dimensions"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
@@ -133,7 +140,13 @@ int sectionOffset = 0;
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             //            self.curProduct.identifier = product.identifier;
             //            self.curProduct.processStatus = product.processStatus;
-            NSArray* oldPhotos = product.photos;
+            NSMutableArray *tempImages = [NSMutableArray new];
+            for (Photo * ph in product.photos) {
+                if (![ph isKindOfClass:[NSNull class]])
+                    [tempImages addObject:ph];
+            }
+            product.photos = [NSArray arrayWithArray:tempImages];
+            NSArray* oldPhotos = [NSArray arrayWithArray:product.photos];
             NSArray* oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;
             self.curProduct = product;
@@ -161,7 +174,7 @@ int sectionOffset = 0;
                     if(i >= count)
                         return;
                     
-                    Photo* photo = (i < self.curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
+                    Photo* photo = (i < _curProduct.photos.count ? [_curProduct.photos objectAtIndex:i] : nil);
                     
                     if(i < self.curProduct.category.imageTypes.count) {
                         Photo* oldPhoto = [oldPhotos objectAtIndex:i];
@@ -418,6 +431,19 @@ int sectionOffset = 0;
 {
     ClothingSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"clothingSizeCell" forIndexPath:indexPath];
     [cell setup];
+    NamedItem *item = nil;
+    NSArray* sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
+        return [unit isEqualToString:self.curProduct.unit];
+    }] allValues] firstObject];
+    for (NamedItem *dc in sizes) {
+        if ([[dc valueForKey:@"name"] isEqualToString:self.curProduct.size])
+        {
+            item = dc;
+        }
+    }
+    cell.selectedSize = item;
+    cell.cloathUnits.text = self.curProduct.unit;
+    cell.cloathSize.text = self.curProduct.size;
     return cell;
 }
     
@@ -425,6 +451,9 @@ int sectionOffset = 0;
     {
         ShoesSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"shoesSizeCell" forIndexPath:indexPath];
         [cell setup];
+        cell.selectedSize = self.curProduct.shoeSize;
+        cell.shoeSize.text = self.curProduct.shoeSize.name;
+        cell.heelHeight.text = self.curProduct.heelHeight;
         return cell;
     }
     
