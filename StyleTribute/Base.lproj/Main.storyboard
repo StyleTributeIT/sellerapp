@@ -1834,7 +1834,7 @@ Citilink Warehouse Complex
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Item description" id="cs0-YE-o23">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Cqi-nj-1LH">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="Cqi-nj-1LH">
                             <connections>
                                 <action selector="goBack:" destination="tYf-Gj-vMU" id="tev-IY-lO6"/>
                             </connections>
@@ -3087,7 +3087,7 @@ Citilink Warehouse Complex
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Condition" id="e4w-XL-5Js">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Gue-Hb-hKB">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="Gue-Hb-hKB">
                             <connections>
                                 <action selector="back:" destination="cnl-CW-F7R" id="AK5-2W-YUq"/>
                             </connections>
@@ -3114,7 +3114,7 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you know your item's original price?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhX-Rm-ID8">
-                                <rect key="frame" x="16" y="81" width="343" height="51"/>
+                                <rect key="frame" x="16" y="37" width="343" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50.5" id="cE1-kv-9HK"/>
                                 </constraints>
@@ -3138,7 +3138,7 @@ Citilink Warehouse Complex
                                 </connections>
                             </button>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Original Price (SGD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xlp-Ov-yju">
-                                <rect key="frame" x="16" y="218" width="343" height="31"/>
+                                <rect key="frame" x="16" y="174" width="343" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="q66-zZ-KZa"/>
                                 </constraints>
@@ -3173,7 +3173,7 @@ Citilink Warehouse Complex
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="Z7L-xx-XLc">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="St9-Bd-nAD">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="St9-Bd-nAD">
                             <connections>
                                 <action selector="backPressed:" destination="ra0-eK-bhh" id="SCj-ZN-v2F"/>
                             </connections>
@@ -3288,7 +3288,7 @@ Citilink Warehouse Complex
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="cWy-6h-bl6">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="xQb-QY-d0B">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="xQb-QY-d0B">
                             <connections>
                                 <action selector="backPressed:" destination="v1r-YF-g72" id="C0n-We-ADA"/>
                             </connections>
@@ -3396,7 +3396,7 @@ Citilink Warehouse Complex
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="Ey7-ve-RM4">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="qhl-S8-xtM">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="qhl-S8-xtM">
                             <connections>
                                 <action selector="back:" destination="YIS-8v-VSp" id="k1E-ED-Sq4"/>
                             </connections>
@@ -3434,17 +3434,17 @@ Citilink Warehouse Complex
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXN-83-eCH">
-                                            <rect key="frame" x="8" y="11" width="175" height="21"/>
+                                            <rect key="frame" x="8" y="11.5" width="175" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="175" id="eOc-eL-klY"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gently Loved" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlL-1v-vCq">
-                                            <rect key="frame" x="215" y="11" width="117" height="21"/>
-                                            <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
+                                            <rect key="frame" x="215" y="11.5" width="117" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -3480,7 +3480,7 @@ Citilink Warehouse Complex
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Condition &amp; Price" id="DMW-Gl-cwl">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="tIm-79-7t1">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="tIm-79-7t1">
                             <connections>
                                 <action selector="back:" destination="bT4-hX-ckh" id="7Jf-98-jnv"/>
                             </connections>
@@ -3839,7 +3839,7 @@ Citilink Warehouse Complex
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="vbF-sD-Lt4">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="zkB-f8-3ei">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="zkB-f8-3ei">
                             <connections>
                                 <action selector="backPressed:" destination="QoU-qC-ILa" id="R50-Yq-9HS"/>
                             </connections>
@@ -3887,10 +3887,10 @@ Citilink Warehouse Complex
         <segue reference="mG1-qk-ojj"/>
         <segue reference="cSg-UA-WeG"/>
         <segue reference="Bmg-g1-V4a"/>
-        <segue reference="UyE-iw-xpi"/>
-        <segue reference="pbY-uP-Iqk"/>
         <segue reference="VrF-cV-ycO"/>
-        <segue reference="Vl5-XS-wrF"/>
+        <segue reference="vNq-eJ-roa"/>
+        <segue reference="L07-Vx-gEM"/>
         <segue reference="7un-pZ-Pi9"/>
+        <segue reference="TZH-KF-ZFh"/>
     </inferredMetricsTieBreakers>
 </document>

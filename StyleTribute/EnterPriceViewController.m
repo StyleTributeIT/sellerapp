@@ -50,7 +50,7 @@
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
                 Product *p = [DataCache getSelectedItem];
-                p.price = [self.priceField.text floatValue];
+               // p.price = [self.priceEarned.text floatValue];
                 p.suggestedPrice = priceSuggestion;
                 [DataCache setSelectedItem:p];
                 self.isInProgress = NO;
@@ -64,14 +64,18 @@
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showResult"])
+    {
+        Product *product = [DataCache getSelectedItem];
+        product.price = [[self.priceEarned.text stringByReplacingOccurrencesOfString:@"$" withString:@""] floatValue];
+        [DataCache setSelectedItem:product];
+    }
 }
-*/
+
 
 @end

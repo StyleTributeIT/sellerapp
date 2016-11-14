@@ -82,7 +82,7 @@
     Product *product = [DataCache getSelectedItem];
     if (indexPath.row == 0)
     {
-        cell.title.text = @"Set codition";
+        cell.title.text = @"Set condition";
         cell.subtitle.text = product.condition.name;
         if (product.condition != nil)
             [cell.statusImage setImage:[UIImage imageNamed:@"checked"]];
