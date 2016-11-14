@@ -82,7 +82,8 @@
         }
         cell.textLabel.text = [NSString stringWithFormat:@"+ Add %@?", self.searchingString];
         cell.textLabel.textColor = [UIColor whiteColor];
-        [cell setBackgroundColor:[UIColor redColor]];
+        cell.textLabel.font = [UIFont fontWithName:@"Montserrat-Regular" size:15];
+        [cell setBackgroundColor:[UIColor colorWithRed:255/255.f green:0 blue:102/255.f alpha:1.0f]];
         return cell;
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
