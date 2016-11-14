@@ -45,6 +45,11 @@
     }
 }
 
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender
 {
     if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {

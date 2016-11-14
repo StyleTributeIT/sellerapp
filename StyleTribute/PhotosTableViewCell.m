@@ -85,17 +85,18 @@
             Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
             if(photo != nil && [photo isKindOfClass:[Photo class]]) {
                 if(photo.image != nil) {
-                    newCell.photoView.image = photo.image;
+                    newCell.bigPhotoCell.image = photo.image;
                     newCell.plusLabel.hidden = YES;
                 } else {
                     newCell.plusLabel.hidden = YES;
-                    [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+                    [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
                 }
             } else {
                 [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+                newCell.photoView.alpha = 0.5f;
             }
         } else {
-            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+            [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
     }
     
@@ -109,7 +110,7 @@
     
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat itemSize = collectionView.frame.size.width/PHOTOS_PER_ROW;
-    return CGSizeMake(itemSize, itemSize + 15);
+    return CGSizeMake(itemSize, itemSize + 20);
 }
     
     

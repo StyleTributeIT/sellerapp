@@ -63,6 +63,8 @@ int sectionOffset = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
     self.productCopy = [self.curProduct copy];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
