@@ -42,7 +42,7 @@
 	[self updateWelcomeView];
     
     [GlobalHelper addLogoToNavBar:self.navigationItem];
-    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
     self.wardrobeType.tintColor = pink;
     [[UITabBar appearance] setSelectedImageTintColor:pink];

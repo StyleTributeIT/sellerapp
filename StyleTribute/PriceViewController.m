@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isInProgress = NO;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     if (!self.isOwnPrice)
     {
         self.priceEarned.enabled = NO;

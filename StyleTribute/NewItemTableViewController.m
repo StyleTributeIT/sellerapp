@@ -62,6 +62,7 @@ int sectionOffset = 0;
     self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
     self.productCopy = [self.curProduct copy];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

@@ -24,7 +24,7 @@
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     self.categoriesTableView.accessibilityIdentifier = @"Choose category table";
-    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     if([DataCache sharedInstance].categories == nil) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {

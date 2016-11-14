@@ -67,7 +67,7 @@ typedef void(^ImageLoadBlock)(int);
     self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.unitField, self.sizeField, self.shoeSizeField, self.brandField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
-    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.sizes = @[@"size 1", @"size 2", @"size 3", @"size 4", @"size 5"];
 
     self.messageLabel.text = @"PHOTO";
