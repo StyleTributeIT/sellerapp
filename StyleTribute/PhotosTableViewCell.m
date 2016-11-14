@@ -24,6 +24,7 @@
     self.collectionView.allowsMultipleSelection = NO;
     self.collectionView.accessibilityIdentifier = @"Photos collection";
     self.collectionView.accessibilityLabel = @"Photos collection";
+    
 }
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

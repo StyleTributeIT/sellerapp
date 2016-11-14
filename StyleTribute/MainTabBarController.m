@@ -21,7 +21,7 @@
 
 @implementation MainTabBarController
 
-/*-(id)initWithCoder:(NSCoder *)aDecoder {
+-(id)initWithCoder:(NSCoder *)aDecoder {
     self=  [super initWithCoder:aDecoder];
     
     if(self) {
@@ -84,7 +84,7 @@
 //- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
 //    NSLog(@"QWE!!!!!!!!!!!!");
 //}
-*/
+
 -(void)selectPreviousTab {
     [self setSelectedIndex:self.previousTabIndex];
 }

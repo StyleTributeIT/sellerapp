@@ -298,7 +298,7 @@ int sectionOffset = 0;
 
 #pragma mark - Table view data source
 
-    
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
@@ -415,10 +415,27 @@ int sectionOffset = 0;
     return cell;
 }
 
+-(void)addBordersForCell:(UITableViewCell*)cell
+{
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                cell.contentView.frame.size.height,
+                                                                cell.frame.size.width, 0.2f)];
+    
+    lineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
+    [cell.contentView addSubview:lineView];
+    
+    UIView *toplineView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                   0.0f,
+                                                                   cell.frame.size.width, 0.2f)];
+    toplineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
+    [cell.contentView addSubview:toplineView];
+}
+
 -(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath
 {
     MessageTableViewCell *cell = (MessageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     cell.messageLabel.text = self.curProduct.processComment;
+    [self addBordersForCell:cell];
     return cell;
 }
   
@@ -426,6 +443,7 @@ int sectionOffset = 0;
 {
     BrandTableViewCell *cell = (BrandTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"brandCell" forIndexPath:indexPath];
     cell.brandTitle.text = self.curProduct.designer.name;
+    [self addBordersForCell:cell];
     return cell;
 }
 
@@ -446,6 +464,10 @@ int sectionOffset = 0;
     cell.selectedSize = item;
     cell.cloathUnits.text = self.curProduct.unit;
     cell.cloathSize.text = self.curProduct.size;
+    
+    [self addBordersForCell:cell];
+    
+  //  cell.separatorInset = UIEdgeInsetsMake(1.0f, 1.0f, 1.0f, cell.bounds.size.width);
     return cell;
 }
     
@@ -456,6 +478,7 @@ int sectionOffset = 0;
         cell.selectedSize = self.curProduct.shoeSize;
         cell.shoeSize.text = self.curProduct.shoeSize.name;
         cell.heelHeight.text = self.curProduct.heelHeight;
+        [self addBordersForCell:cell];
         return cell;
     }
     
@@ -468,6 +491,7 @@ int sectionOffset = 0;
             cell.bagDepth.text = [self.curProduct.dimensions objectAtIndex:2];
         }
         [cell setup];
+        [self addBordersForCell:cell];
         return cell;
     }
     
@@ -476,6 +500,7 @@ int sectionOffset = 0;
     PhotosTableViewCell *cell = (PhotosTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"photosCell" forIndexPath:indexPath];
     [cell setup:self.curProduct];
     cell.delegate = self;
+    [self addBordersForCell:cell];
     return cell;
 }
 
@@ -484,12 +509,14 @@ int sectionOffset = 0;
         PriceTableViewCell *cell = (PriceTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
         if (self.curProduct.price != 0.0f)
             cell.productPrice.text = [NSString stringWithFormat:@"$%.2f",self.curProduct.price];
+        [self addBordersForCell:cell];
         return cell;
     }
 
 -(UITableViewCell*)setupDescriptionCell:(NSIndexPath*)indexPath
 {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
+    [self addBordersForCell:cell];
     return cell;
 }
 /*
