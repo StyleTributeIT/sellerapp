@@ -306,7 +306,7 @@ int sectionOffset = 0;
     if (indexPath.section == 0)
     {
         if ((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) || indexPath.row == 1)
-            return 140;
+            return 160;
         return 44;
     }
     return 44;
