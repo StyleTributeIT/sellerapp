@@ -3323,14 +3323,14 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OG7-L2-YOF">
-                                <rect key="frame" x="4" y="71" width="188" height="55"/>
+                                <rect key="frame" x="4" y="82" width="178" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STYLETRIBUTE PRICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roh-Ip-RLd">
-                                        <rect key="frame" x="4" y="17" width="180" height="21"/>
+                                        <rect key="frame" x="4" y="12" width="166" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3342,14 +3342,14 @@ Citilink Warehouse Complex
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5xS-Ut-SdG">
-                                <rect key="frame" x="200" y="71" width="159" height="55"/>
+                                <rect key="frame" x="198" y="82" width="159" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ENTER YOUR PRICE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ0-Bk-8Qe">
-                                        <rect key="frame" x="7" y="17" width="144" height="21"/>
+                                        <rect key="frame" x="7" y="12" width="144" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3361,11 +3361,11 @@ Citilink Warehouse Complex
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="borderedArea" translatesAutoresizingMaskIntoConstraints="NO" id="Msb-yc-U2z">
-                                <rect key="frame" x="0.0" y="134" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="134" width="375" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ENTER YOUR PRICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33I-cG-jax">
-                                <rect key="frame" x="8" y="151" width="174" height="21"/>
+                                <rect key="frame" x="17" y="151" width="165" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -3375,18 +3375,18 @@ Citilink Warehouse Complex
                                 <rect key="frame" x="201" y="151" width="174" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                <color key="textColor" red="0.99215686270000003" green="0.1176470588" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="515-FD-6lv">
-                                <rect key="frame" x="17" y="178" width="129" height="73"/>
+                                <rect key="frame" x="17" y="173" width="129" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bdS-h6-mcI">
-                                <rect key="frame" x="201" y="178" width="129" height="73"/>
+                                <rect key="frame" x="201" y="174" width="129" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
@@ -3408,8 +3408,12 @@ Citilink Warehouse Complex
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="earnLabel" destination="upL-Xp-XfE" id="NgO-cv-8SY"/>
+                        <outlet property="earnPriceView" destination="5xS-Ut-SdG" id="SVw-kG-Hsi"/>
+                        <outlet property="enterPriceLabel" destination="ZQ0-Bk-8Qe" id="hkD-rL-3ei"/>
                         <outlet property="priceEarned" destination="bdS-h6-mcI" id="1Sd-8n-LbQ"/>
                         <outlet property="priceField" destination="515-FD-6lv" id="NVX-1j-Gum"/>
+                        <outlet property="stPriceView" destination="OG7-L2-YOF" id="Us7-KF-8Er"/>
                         <segue destination="bT4-hX-ckh" kind="show" identifier="showResult" id="L07-Vx-gEM"/>
                     </connections>
                 </viewController>

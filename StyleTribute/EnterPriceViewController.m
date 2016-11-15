@@ -16,6 +16,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *priceField;
 @property (strong, nonatomic) IBOutlet UITextField *priceEarned;
 @property BOOL isInProgress;
+@property (strong, nonatomic) IBOutlet UILabel *earnLabel;
+@property (strong, nonatomic) IBOutlet UILabel *enterPriceLabel;
+@property (strong, nonatomic) IBOutlet UIView *earnPriceView;
+@property (strong, nonatomic) IBOutlet UIView *stPriceView;
+
 @end
 
 @implementation EnterPriceViewController
@@ -23,7 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view.
+    [self.priceField becomeFirstResponder];
+    self.earnPriceView.layer.borderColor = [UIColor colorWithRed:178.f/255.f green:178/255.f blue:178/255.f alpha:1.f].CGColor;
+    self.stPriceView.layer.borderColor = [UIColor colorWithRed:178.f/255.f green:178/255.f blue:178/255.f alpha:1.f].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +55,11 @@
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
+                self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
+                self.priceEarned.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 Product *p = [DataCache getSelectedItem];
                // p.price = [self.priceEarned.text floatValue];
                 p.suggestedPrice = priceSuggestion;
