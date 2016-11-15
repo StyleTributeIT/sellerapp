@@ -69,6 +69,7 @@
 }
 
 - (IBAction)yesPressed:(id)sender {
+    [self.priceField becomeFirstResponder];
     self.priceField.hidden = NO;
 }
 
