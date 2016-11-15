@@ -1777,32 +1777,32 @@ Citilink Warehouse Complex
                                 <rect key="frame" x="0.0" y="64" width="375" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item description tips goes here try to include lorem ipsun dolor sit amet, consectetuer adipiscing..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDm-9V-MIC">
-                                        <rect key="frame" x="52" y="13" width="315" height="34"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="59" y="13" width="308" height="34"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light-bulb" translatesAutoresizingMaskIntoConstraints="NO" id="mUq-B8-AZJ">
-                                        <rect key="frame" x="8" y="15" width="29" height="29"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light-bulb" translatesAutoresizingMaskIntoConstraints="NO" id="mUq-B8-AZJ">
+                                        <rect key="frame" x="17" y="19" width="24" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="4Dw-LC-kin"/>
-                                            <constraint firstAttribute="width" constant="29" id="qkA-jg-PXj"/>
+                                            <constraint firstAttribute="height" constant="24" id="4Dw-LC-kin"/>
+                                            <constraint firstAttribute="width" constant="24" id="qkA-jg-PXj"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.94901960784313721" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hDm-9V-MIC" secondAttribute="trailing" constant="8" id="Hrh-5Y-ZWG"/>
-                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="top" constant="15" id="M2b-cU-kjw"/>
+                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="top" constant="19" id="M2b-cU-kjw"/>
                                     <constraint firstItem="hDm-9V-MIC" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="top" constant="13" id="NHv-cU-sIB"/>
                                     <constraint firstAttribute="bottom" secondItem="hDm-9V-MIC" secondAttribute="bottom" constant="12" id="WXf-Re-nhQ"/>
-                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="leading" secondItem="mUq-B8-AZJ" secondAttribute="trailing" constant="15" id="b6m-O1-15s"/>
-                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="leading" secondItem="ysD-20-ewZ" secondAttribute="leading" constant="8" id="mQP-0Q-IBR"/>
+                                    <constraint firstItem="hDm-9V-MIC" firstAttribute="leading" secondItem="mUq-B8-AZJ" secondAttribute="trailing" constant="18" id="b6m-O1-15s"/>
+                                    <constraint firstItem="mUq-B8-AZJ" firstAttribute="leading" secondItem="ysD-20-ewZ" secondAttribute="leading" constant="17" id="mQP-0Q-IBR"/>
                                     <constraint firstAttribute="height" constant="59" id="mvz-SV-PjY"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of your item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-MA-p6e">
-                                <rect key="frame" x="16" y="129" width="343" height="47"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Name of your item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-MA-p6e">
+                                <rect key="frame" x="0.0" y="129" width="375" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="ibA-WU-mjD"/>
                                 </constraints>
@@ -1811,7 +1811,7 @@ Citilink Warehouse Complex
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bzU-fj-XAa">
-                                <rect key="frame" x="16" y="184" width="343" height="263"/>
+                                <rect key="frame" x="0.0" y="184" width="375" height="263"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="263" id="boV-Av-jVK"/>
@@ -1822,15 +1822,15 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OH1-MA-p6e" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" id="DBE-ST-P3C"/>
+                            <constraint firstItem="OH1-MA-p6e" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" constant="16" id="DBE-ST-P3C"/>
                             <constraint firstItem="OH1-MA-p6e" firstAttribute="top" secondItem="ysD-20-ewZ" secondAttribute="bottom" constant="6" id="Esv-TV-Dvj"/>
                             <constraint firstItem="bzU-fj-XAa" firstAttribute="top" secondItem="OH1-MA-p6e" secondAttribute="bottom" constant="8" id="IV4-26-0MU"/>
-                            <constraint firstItem="bzU-fj-XAa" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" id="IlC-O5-c9j"/>
+                            <constraint firstItem="bzU-fj-XAa" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" constant="-16" id="IlC-O5-c9j"/>
                             <constraint firstAttribute="trailing" secondItem="ysD-20-ewZ" secondAttribute="trailing" id="MGd-Iu-gN9"/>
                             <constraint firstItem="ysD-20-ewZ" firstAttribute="top" secondItem="ptu-PD-HNR" secondAttribute="bottom" id="Pbi-dm-GyX"/>
                             <constraint firstItem="ysD-20-ewZ" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leading" id="SUi-9w-cVz"/>
-                            <constraint firstItem="OH1-MA-p6e" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" id="WbI-qu-pmd"/>
-                            <constraint firstItem="bzU-fj-XAa" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" id="o2n-Od-Wfj"/>
+                            <constraint firstItem="OH1-MA-p6e" firstAttribute="leading" secondItem="aIJ-UJ-jUX" secondAttribute="leadingMargin" constant="-16" id="WbI-qu-pmd"/>
+                            <constraint firstItem="bzU-fj-XAa" firstAttribute="trailing" secondItem="aIJ-UJ-jUX" secondAttribute="trailingMargin" constant="16" id="o2n-Od-Wfj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Item description" id="cs0-YE-o23">
