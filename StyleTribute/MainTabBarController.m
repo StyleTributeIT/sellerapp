@@ -178,7 +178,7 @@
 }
 
 - (void) myAccountButtonPressed{
-    [self setSelectedIndex:2];
+    [self setSelectedIndex:3];
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe"] forState: UIControlStateNormal];
     [self.myAccountButton setImage:[UIImage imageNamed:@"profile-pink"] forState: UIControlStateNormal];
     [self.myAccountButton setTitleColor: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]forState:UIControlStateNormal];

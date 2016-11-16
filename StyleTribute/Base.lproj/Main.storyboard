@@ -3683,7 +3683,7 @@ Citilink Warehouse Complex
         <scene sceneID="yse-FJ-1hJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My account" image="account" selectedImage="account-pink" id="6Az-wg-XNO"/>
+                    <tabBarItem key="tabBarItem" title="My account" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3884,8 +3884,6 @@ Citilink Warehouse Complex
         <image name="Edit" width="205" height="30"/>
         <image name="Logo" width="64" height="64"/>
         <image name="RedButton" width="205" height="30"/>
-        <image name="account" width="30" height="30"/>
-        <image name="account-pink" width="30" height="30"/>
         <image name="backBtn" width="14" height="24"/>
         <image name="borderedArea" width="639" height="170"/>
         <image name="camera" width="46" height="46"/>
@@ -3893,6 +3891,8 @@ Citilink Warehouse Complex
         <image name="light-bulb" width="18" height="19"/>
         <image name="notifications" width="23" height="22"/>
         <image name="notifications-pink" width="23" height="22"/>
+        <image name="profile" width="22" height="22"/>
+        <image name="profile-pink" width="22" height="22"/>
         <image name="shop" width="22" height="22"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
