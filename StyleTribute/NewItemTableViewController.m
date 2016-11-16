@@ -143,12 +143,14 @@ int sectionOffset = 0;
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             //            self.curProduct.identifier = product.identifier;
             //            self.curProduct.processStatus = product.processStatus;
-            NSMutableArray *tempImages = [NSMutableArray new];
-            for (Photo * ph in product.photos) {
+           /* NSMutableArray *tempImages = [[NSMutableArray alloc] init];
+            for (int i = 0; i < product.photos.count; i++) {
+                Photo *ph = [product.photos objectAtIndex:i];
                 if (![ph isKindOfClass:[NSNull class]])
                     [tempImages addObject:ph];
             }
-            product.photos = [NSArray arrayWithArray:tempImages];
+            
+            product.photos = [NSArray arrayWithArray:tempImages];*/
             NSArray* oldPhotos = [NSArray arrayWithArray:product.photos];
             NSArray* oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;

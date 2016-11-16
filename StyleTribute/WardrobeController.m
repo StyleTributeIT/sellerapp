@@ -29,6 +29,7 @@
 @property NSMutableArray* soldItems;
 @property NSMutableArray* archivedItems;
 @property UIRefreshControl* refreshControl;
+@property (strong, nonatomic) IBOutlet UIView *tabsContainer;
 
 @end
 
@@ -433,15 +434,20 @@
 
 -(void) customizeSegment
 {
-    CALayer *upperBorder = [CALayer layer];
-    upperBorder.backgroundColor = [[UIColor grayColor] CGColor];
-    upperBorder.frame = CGRectMake(-1, 0, CGRectGetWidth(self.wardrobeType.frame), 0.5f);
-    [self.wardrobeType.layer addSublayer:upperBorder];
+    CGRect frame= self.wardrobeType.frame;
+    [self.wardrobeType setFrame:CGRectMake(0, 5, frame.size.width, 40.f)];
     
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.backgroundColor = [[UIColor grayColor] CGColor];
-    bottomBorder.frame = CGRectMake(0, self.wardrobeType.frame.size.height + 1, CGRectGetWidth(self.wardrobeType.frame), 0.5f);
-    [self.wardrobeType.layer addSublayer:bottomBorder];
+    CALayer *upperBorder = [CALayer layer];
+    upperBorder.backgroundColor = [[UIColor whiteColor] CGColor];
+    upperBorder.frame = CGRectMake(0, 0, CGRectGetWidth(self.wardrobeType.frame), 0.5f);
+    [self.tabsContainer.layer addSublayer:upperBorder];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                self.tabsContainer.frame.size.height - 1,
+                                                                self.tabsContainer.frame.size.width, 1.f)];
+    
+    lineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
+    [self.tabsContainer addSubview:lineView];
     
     
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, self.wardrobeType.frame.size.height - 1), NO, 2.0);
