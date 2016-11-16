@@ -57,9 +57,9 @@
     
     //[self updateProducts];
     
-    NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Light" size:12],
+    NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
-    NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Light" size:12],
+    NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
                                               NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
@@ -470,30 +470,6 @@
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
     
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateNormal];
-    
-    //Handle when the right segment is highlighted but the left is selected
- /*   [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentActive"]
-                         forLeftSegmentState:UIControlStateSelected
-                           rightSegmentState:UIControlStateHighlighted
-                                  barMetrics:UIBarMetricsDefault];
-    
-    //Handle when the right segment is already selected and just highlighted and the right is normal
-    [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentNormal"]
-                         forLeftSegmentState:UIControlStateHighlighted|UIControlStateSelected
-                           rightSegmentState:UIControlStateNormal
-                                  barMetrics:UIBarMetricsDefault];
-    
-    //Handle when the left segment is highlighted but the right is selected
-    [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentActive"]
-                         forLeftSegmentState:UIControlStateHighlighted
-                           rightSegmentState:UIControlStateSelected
-                                  barMetrics:UIBarMetricsDefault];
-    
-    //Handle when the left segment is already selected and just highlighted and the left is normal
-    [self.wardrobeType setDividerImage:[UIImage imageNamed:@"segmentActive"]
-                         forLeftSegmentState:UIControlStateNormal
-                           rightSegmentState:UIControlStateHighlighted|UIControlStateSelected
-                                  barMetrics:UIBarMetricsDefault]; */
-}
+   }
 
 @end
