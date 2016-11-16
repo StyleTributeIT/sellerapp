@@ -1873,6 +1873,12 @@ Citilink Warehouse Complex
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <connections>
+                                    <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
+                                </connections>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woZ-Hb-gQN">
                                 <rect key="frame" x="0.0" y="64" width="375" height="45"/>
                                 <subviews>
@@ -1898,47 +1904,46 @@ Citilink Warehouse Complex
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="wardrobeCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wardrobeCell" rowHeight="74" id="dOn-Le-vWG" customClass="WardrobeCell">
-                                        <rect key="frame" x="0.0" y="22" width="375" height="74"/>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="wardrobeCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wardrobeCell" rowHeight="104" id="dOn-Le-vWG" customClass="WardrobeCell">
+                                        <rect key="frame" x="0.0" y="22" width="375" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOn-Le-vWG" id="KIm-Or-0xq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
-                                                    <rect key="frame" x="16" y="4" width="66" height="65"/>
+                                                    <rect key="frame" x="16" y="20" width="66" height="65"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="66" id="w2Q-gH-c4y"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="229" y="29" width="138" height="15"/>
+                                                    <rect key="frame" x="229" y="45" width="138" height="15"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
-                                                    <rect key="frame" x="90" y="4" width="201" height="65"/>
+                                                    <rect key="frame" x="90" y="19" width="201" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="L5w-qT-ZbS"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="16"/>
-                                                    <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="dBz-kO-QAU" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="4" id="9Y9-Pu-RCy"/>
+                                                <constraint firstItem="dBz-kO-QAU" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="20" id="9Y9-Pu-RCy"/>
                                                 <constraint firstAttribute="trailing" secondItem="7Wf-il-BAC" secondAttribute="trailing" constant="8" id="Klj-lb-kNx"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cbt-pm-K7d" secondAttribute="trailing" constant="84" id="U3M-Ps-fm3"/>
                                                 <constraint firstItem="dBz-kO-QAU" firstAttribute="leading" secondItem="KIm-Or-0xq" secondAttribute="leading" constant="16" id="V9l-CZ-tWC"/>
-                                                <constraint firstItem="7Wf-il-BAC" firstAttribute="top" secondItem="Cbt-pm-K7d" secondAttribute="bottom" constant="-40" id="Vdx-Vg-4Ok"/>
-                                                <constraint firstItem="Cbt-pm-K7d" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="4" id="WsK-DY-FAU"/>
+                                                <constraint firstItem="7Wf-il-BAC" firstAttribute="top" secondItem="Cbt-pm-K7d" secondAttribute="bottom" constant="-39" id="Vdx-Vg-4Ok"/>
+                                                <constraint firstItem="Cbt-pm-K7d" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="19" id="WsK-DY-FAU"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="7Wf-il-BAC" secondAttribute="bottom" constant="4" id="ZqM-VV-eMH"/>
                                                 <constraint firstItem="7Wf-il-BAC" firstAttribute="leading" secondItem="dBz-kO-QAU" secondAttribute="trailing" constant="147" id="mGN-J2-gdS"/>
                                                 <constraint firstItem="Cbt-pm-K7d" firstAttribute="leading" secondItem="dBz-kO-QAU" secondAttribute="trailing" constant="8" id="qMX-z4-sbR"/>
-                                                <constraint firstAttribute="bottom" secondItem="dBz-kO-QAU" secondAttribute="bottom" constant="4" id="v1L-LD-vaT"/>
+                                                <constraint firstAttribute="bottom" secondItem="dBz-kO-QAU" secondAttribute="bottom" constant="18" id="v1L-LD-vaT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1953,12 +1958,6 @@ Citilink Warehouse Complex
                                     <outlet property="delegate" destination="gWl-q7-vZa" id="hlh-P6-NRt"/>
                                 </connections>
                             </tableView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <connections>
-                                    <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
