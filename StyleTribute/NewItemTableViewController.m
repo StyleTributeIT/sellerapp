@@ -352,7 +352,7 @@ int sectionOffset = 0;
             view.tintColor = [UIColor whiteColor];
             UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
             [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
-        header.textLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+        header.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
     }
     
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
