@@ -23,7 +23,7 @@ UIPickerView* picker;
 
 -(void)setup
 {
-    self.shoeSize.frame = CGRectMake(4, 0, (self.frame.size.width - 8)/2, self.frame.size.height);
+    self.shoeSize.frame = CGRectMake(18, 0, (self.frame.size.width - 8)/2 - 18, self.frame.size.height);
     self.heelHeight.frame = CGRectMake((self.frame.size.width - 8)/2 + 2, 0, (self.frame.size.width - 8)/2, self.frame.size.height);
 }
 
