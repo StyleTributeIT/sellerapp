@@ -65,6 +65,7 @@ int sectionOffset = 0;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -371,8 +372,10 @@ int sectionOffset = 0;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[PriceTableViewCell class]])
     {
+        
         if (self.isEditingItem)
         {
             [self performSegueWithIdentifier:@"priceConditionSegue" sender:nil];
@@ -439,6 +442,7 @@ int sectionOffset = 0;
 {
     MessageTableViewCell *cell = (MessageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     cell.messageLabel.text = self.curProduct.processComment;
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell];
     return cell;
 }
@@ -447,6 +451,7 @@ int sectionOffset = 0;
 {
     BrandTableViewCell *cell = (BrandTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"brandCell" forIndexPath:indexPath];
     cell.brandTitle.text = self.curProduct.designer.name;
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell];
     return cell;
 }
@@ -468,7 +473,7 @@ int sectionOffset = 0;
     cell.selectedSize = item;
     cell.cloathUnits.text = self.curProduct.unit;
     cell.cloathSize.text = self.curProduct.size;
-    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell];
     
   //  cell.separatorInset = UIEdgeInsetsMake(1.0f, 1.0f, 1.0f, cell.bounds.size.width);
@@ -482,6 +487,7 @@ int sectionOffset = 0;
         cell.selectedSize = self.curProduct.shoeSize;
         cell.shoeSize.text = self.curProduct.shoeSize.name;
         cell.heelHeight.text = self.curProduct.heelHeight;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self addBordersForCell:cell];
         return cell;
     }
@@ -494,6 +500,7 @@ int sectionOffset = 0;
             cell.bagHeight.text = [self.curProduct.dimensions objectAtIndex:1];
             cell.bagDepth.text = [self.curProduct.dimensions objectAtIndex:2];
         }
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setup];
         [self addBordersForCell:cell];
         return cell;
@@ -502,6 +509,7 @@ int sectionOffset = 0;
 -(UITableViewCell*)setupPhotosCell:(NSIndexPath*)indexPath
 {
     PhotosTableViewCell *cell = (PhotosTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"photosCell" forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setup:self.curProduct];
     cell.delegate = self;
     [self addBordersForCell:cell];
@@ -513,6 +521,7 @@ int sectionOffset = 0;
         PriceTableViewCell *cell = (PriceTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
         if (self.curProduct.price != 0.0f)
             cell.productPrice.text = [NSString stringWithFormat:@"$%.2f",self.curProduct.price];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self addBordersForCell:cell];
         return cell;
     }
@@ -521,6 +530,7 @@ int sectionOffset = 0;
 {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
     [self addBordersForCell:cell];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 /*
