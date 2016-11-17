@@ -472,7 +472,7 @@
                                        forState:UIControlStateSelected
                                      barMetrics:UIBarMetricsDefault];
     
-    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]} forState:UIControlStateSelected];
     
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateNormal];
    }
