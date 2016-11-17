@@ -25,7 +25,12 @@
 -(void) setup
 {
     self.cloathUnits.frame = CGRectMake(18, 0, (self.frame.size.width - 8)/2 - 18, self.frame.size.height);
-    self.cloathSize.frame = CGRectMake((self.frame.size.width - 8)/2 + 2, 0, (self.frame.size.width - 8)/2, self.frame.size.height);
+    self.cloathSize.frame = CGRectMake((self.frame.size.width - 8)/2 + 10, 0, (self.frame.size.width - 8)/2 - 8, self.frame.size.height);
+    
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(self.cloathUnits.frame.size.width - 1, 0, 1.f, self.cloathUnits.frame.size.height);
+    bottomBorder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
+    [self.cloathUnits.layer addSublayer:bottomBorder];
 }
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
