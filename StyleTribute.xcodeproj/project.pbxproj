@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		16F40E4FA68FDFB8CBF7C829 /* libPods-StyleTribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D10E0F606CBC8A31C08A85A9 /* libPods-StyleTribute.a */; };
 		5330FFAA1DDE2FF0001B0D0D /* ProductFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFA91DDE2FF0001B0D0D /* ProductFlow.storyboard */; };
+		5330FFAD1DDE425A001B0D0D /* GuidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5330FFAC1DDE425A001B0D0D /* GuidViewController.m */; };
+		5330FFB01DDE4834001B0D0D /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5330FFAF1DDE4834001B0D0D /* SwipeView.m */; };
+		5330FFB21DDE4C37001B0D0D /* Guid1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFB11DDE4C37001B0D0D /* Guid1.xib */; };
+		5330FFB41DDE5334001B0D0D /* Guid0.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFB31DDE5334001B0D0D /* Guid0.xib */; };
+		5330FFB61DDE5344001B0D0D /* Guid2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFB51DDE5344001B0D0D /* Guid2.xib */; };
 		675027A71DA4BA2300856832 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 675027A51DA4BA1800856832 /* libAFNetworking.a */; };
 		67E756561B8DA7EB000C1BDD /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E756531B8DA7EB000C1BDD /* Montserrat-Light.otf */; };
 		67E756571B8DA7EB000C1BDD /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E756541B8DA7EB000C1BDD /* Montserrat-Regular.otf */; };
@@ -118,6 +123,13 @@
 /* Begin PBXFileReference section */
 		40DD61A744D9448179AF13A3 /* Pods-StyleTributeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5330FFA91DDE2FF0001B0D0D /* ProductFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProductFlow.storyboard; sourceTree = "<group>"; };
+		5330FFAB1DDE425A001B0D0D /* GuidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidViewController.h; sourceTree = "<group>"; };
+		5330FFAC1DDE425A001B0D0D /* GuidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidViewController.m; sourceTree = "<group>"; };
+		5330FFAE1DDE4834001B0D0D /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		5330FFAF1DDE4834001B0D0D /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		5330FFB11DDE4C37001B0D0D /* Guid1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Guid1.xib; sourceTree = "<group>"; };
+		5330FFB31DDE5334001B0D0D /* Guid0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Guid0.xib; sourceTree = "<group>"; };
+		5330FFB51DDE5344001B0D0D /* Guid2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Guid2.xib; sourceTree = "<group>"; };
 		675027A51DA4BA1800856832 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../Library/Developer/Xcode/DerivedData/StyleTribute-hhmfrxpizfshrxagvhxpsvfwexpq/Build/Products/Debug-iphonesimulator/libAFNetworking.a"; sourceTree = "<group>"; };
 		67E756531B8DA7EB000C1BDD /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		67E756541B8DA7EB000C1BDD /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
@@ -329,6 +341,9 @@
 				7A0EB6111AEE23D400D90001 /* Main.storyboard */,
 				E18060C11DD3327400B4056F /* PriceFlow.storyboard */,
 				5330FFA91DDE2FF0001B0D0D /* ProductFlow.storyboard */,
+				5330FFB11DDE4C37001B0D0D /* Guid1.xib */,
+				5330FFB31DDE5334001B0D0D /* Guid0.xib */,
+				5330FFB51DDE5344001B0D0D /* Guid2.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -448,6 +463,8 @@
 		7A123F971B1869B100D52ADA /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				5330FFAE1DDE4834001B0D0D /* SwipeView.h */,
+				5330FFAF1DDE4834001B0D0D /* SwipeView.m */,
 				7A2327341B0B98700064C4B3 /* AttributedLabel.h */,
 				7A2327351B0B98700064C4B3 /* AttributedLabel.m */,
 				7AC54C7C1B25DF0900539C94 /* CustomTextField.h */,
@@ -591,6 +608,8 @@
 				E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */,
 				E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */,
 				E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */,
+				5330FFAB1DDE425A001B0D0D /* GuidViewController.h */,
+				5330FFAC1DDE425A001B0D0D /* GuidViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -761,9 +780,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A600F791B0B777500CCD5F3 /* Montserrat-Regular.otf in Resources */,
+				5330FFB61DDE5344001B0D0D /* Guid2.xib in Resources */,
 				7A0EB6131AEE23D400D90001 /* Main.storyboard in Resources */,
 				7A600F771B0B773A00CCD5F3 /* Montserrat-Light.otf in Resources */,
 				7A0EB6151AEE23D400D90001 /* Images.xcassets in Resources */,
+				5330FFB41DDE5334001B0D0D /* Guid0.xib in Resources */,
+				5330FFB21DDE4C37001B0D0D /* Guid1.xib in Resources */,
 				67E756581B8DA7EB000C1BDD /* Montserrat-UltraLight.otf in Resources */,
 				7A600F781B0B777200CCD5F3 /* Montserrat-UltraLight.otf in Resources */,
 				E18060C21DD3327400B4056F /* PriceFlow.storyboard in Resources */,
@@ -1004,6 +1026,7 @@
 				7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
+				5330FFB01DDE4834001B0D0D /* SwipeView.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,
 				7A07364F1B6B75D300B1FB7D /* MGSwipeTableCell.m in Sources */,
 				7A07364E1B6B75D300B1FB7D /* MGSwipeButton.m in Sources */,
@@ -1018,6 +1041,7 @@
 				E1B059EB1DCBCE6400D14D91 /* AddBrandTableViewCell.m in Sources */,
 				7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */,
 				7A60979E1B14848F00209340 /* Country.m in Sources */,
+				5330FFAD1DDE425A001B0D0D /* GuidViewController.m in Sources */,
 				E141DEB31DD097FA001693F7 /* NewItemTableViewController.m in Sources */,
 				7A44696C1B61228000E3A752 /* Photo.m in Sources */,
 				E18060C01DD32A4C00B4056F /* PriceConditionTableViewCell.m in Sources */,

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -565,7 +564,7 @@
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1974,7 +1973,7 @@ Citilink Warehouse Complex
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2052,7 +2051,7 @@ Citilink Warehouse Complex
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GNt-KW-ktF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tm3-rZ-94c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4812" y="-528"/>
+            <point key="canvasLocation" x="4278" y="-605"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="UO1-zx-Brl">
