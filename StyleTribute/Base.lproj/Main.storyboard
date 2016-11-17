@@ -3237,7 +3237,7 @@ Citilink Warehouse Complex
                                         <rect key="frame" x="201" y="8" width="174" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
-                                        <color key="textColor" red="0.99215686274509807" green="0.11764705882352941" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price (SGD)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Jg-mC-Emg">
@@ -3250,7 +3250,7 @@ Citilink Warehouse Complex
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pn1-45-lxN">
                                         <rect key="frame" x="201" y="35" width="129" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.91372549020000005" green="0.23137254900000001" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
@@ -3315,6 +3315,7 @@ Citilink Warehouse Complex
                     </navigationItem>
                     <connections>
                         <outlet property="additionalButtons" destination="gxn-xe-Tyu" id="wqi-VY-maq"/>
+                        <outlet property="earnTitle" destination="AiI-4y-eyg" id="jIJ-eA-Pb1"/>
                         <outlet property="priceEarned" destination="Pn1-45-lxN" id="dgM-Au-H2G"/>
                         <outlet property="priceField" destination="4Jg-mC-Emg" id="UdQ-Qc-d3m"/>
                     </connections>
@@ -3901,13 +3902,13 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mG1-qk-ojj"/>
-        <segue reference="cSg-UA-WeG"/>
-        <segue reference="UyE-iw-xpi"/>
+        <segue reference="XTf-8t-q92"/>
+        <segue reference="ReU-Ip-U3f"/>
         <segue reference="Bmg-g1-V4a"/>
         <segue reference="pbY-uP-Iqk"/>
         <segue reference="VrF-cV-ycO"/>
         <segue reference="TZH-KF-ZFh"/>
+        <segue reference="fmu-64-m3f"/>
         <segue reference="7un-pZ-Pi9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,7 @@
 @property BOOL isInProgress;
 @property BOOL isOwnPrice;
 @property (strong, nonatomic) IBOutlet UIView *additionalButtons;
+@property (strong, nonatomic) IBOutlet UILabel *earnTitle;
 @end
 
 @implementation PriceViewController
@@ -103,7 +104,7 @@
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
-                
+                self.earnTitle.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             } failure:^(NSString *error) {
