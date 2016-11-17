@@ -23,6 +23,7 @@
         self.navigationItem.rightBarButtonItem = nil;
     }
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

@@ -64,7 +64,7 @@ int sectionOffset = 0;
     self.productCopy = [self.curProduct copy];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.leftItemsSupplementBackButton = YES;
-    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
