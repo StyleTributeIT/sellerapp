@@ -835,6 +835,7 @@ int sectionOffset = 0;
     BOOL result = YES;
     if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
         result = NO;
+    
     return result;
 }
 

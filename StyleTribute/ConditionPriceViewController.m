@@ -65,7 +65,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.isEditingItem)
+    if ([DataCache sharedInstance].isEditingItem)
     {
         if (indexPath.row == 0)
         {

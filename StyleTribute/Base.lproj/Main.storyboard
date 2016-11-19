@@ -1385,7 +1385,7 @@ Citilink Warehouse Complex
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
                                         <rect key="frame" x="0.0" y="8" width="375" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Selling"/>
                                             <segment title="Sold"/>
@@ -1420,7 +1420,7 @@ Citilink Warehouse Complex
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="229" y="45" width="138" height="15"/>
+                                                    <rect key="frame" x="229" y="45" width="138" height="14"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1954,7 +1954,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cNQ-w8-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2087,7 +2087,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shop" image="shop" id="1mj-Cd-aNH"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aaO-y8-Qml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2105,7 +2105,7 @@ Citilink Warehouse Complex
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My account" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2124,7 +2124,7 @@ Citilink Warehouse Complex
                 <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="camera" id="VZF-2f-aWD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylh-HF-fxa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
