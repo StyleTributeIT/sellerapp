@@ -19,6 +19,7 @@
 #import "MessageTableViewCell.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
+#import "SharingTableViewCell.h"
 #import "UIImage+FixOrientation.h"
 #import "ChooseBrandController.h"
 #import "MainTabBarController.h"
@@ -308,9 +309,13 @@ int sectionOffset = 0;
 {
     if (indexPath.section == 0)
     {
-        if ((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) || indexPath.row == 1)
-            return 160;
-        return 44;
+        int rowHeight = 44;
+        if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
+            rowHeight = 160;
+        else
+        if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
+            rowHeight = 88;
+        return rowHeight;
     }
     return 44;
 }
@@ -359,9 +364,12 @@ int sectionOffset = 0;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
     {
+        int countOfCells = 1;
         if (self.curProduct.processComment != nil && self.curProduct.processComment.length > 0)
-            return 2;   // message and photos
-        return 1;
+            countOfCells = 2;   // message and photos
+        if ([self.curProduct.processStatus isEqualToString:@"selling"])
+            countOfCells = 2;
+        return countOfCells;
     }
     if (section == 1)
     {
@@ -391,6 +399,10 @@ int sectionOffset = 0;
     {
         if (indexPath.row == 0 && self.curProduct.processComment != nil && self.curProduct.processComment.length > 0) {
             return [self setupMessageCell:indexPath];
+        }
+        if (indexPath.row == 0 && [self.curProduct.processStatus isEqualToString:@"selling"])
+        {
+            return [self setupSharingCell:indexPath];
         }
         return [self setupPhotosCell:indexPath];
     }
@@ -437,6 +449,14 @@ int sectionOffset = 0;
     
     lineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
     [cell.contentView addSubview:lineView];
+}
+
+-(UITableViewCell*)setupSharingCell:(NSIndexPath*)indexPath
+{
+    SharingTableViewCell *cell = (SharingTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"sharingCell" forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [self addBordersForCell:cell addBottomBorder:NO];
+    return cell;
 }
 
 -(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath

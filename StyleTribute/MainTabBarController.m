@@ -50,7 +50,7 @@
         
         //Shop button
         self.shopButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"shop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Shop" andTopOffset:0];
-        [self.myWardrobeButton addTarget:self action:@selector(shopButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.shopButton addTarget:self action:@selector(shopButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //Add Item Tab Button created
         self.addItemButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 2,backgroundImage.size.height - (backgroundImage.size.height * 0.7333333333) , itemWidth, backgroundImage.size.height) icon:[[UIImage imageNamed:@"camera"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Sell" andTopOffset: -16];
@@ -61,7 +61,7 @@
         [self.myAccountButton addTarget:self action:@selector(myAccountButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         self.notificationsButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 4, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"notifications"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Notification" andTopOffset:0];
-        [self.myAccountButton addTarget:self action:@selector(notificationsButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.notificationsButton addTarget:self action:@selector(notificationsButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //Added all the button to container
         [tabbarContainer addSubview:self.myWardrobeButton];
@@ -153,12 +153,12 @@
 
 -(void) shopButtonPressed
 {
-    
+    [self setSelectedIndex:1];
 }
 
 - (void) notificationsButtonPressed
 {
-    
+    [self setSelectedIndex:4];
 }
 
 - (void) myWardrobeButtonPressed{

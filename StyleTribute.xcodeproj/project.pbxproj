@@ -86,6 +86,7 @@
 		7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */; };
 		7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */; };
 		A2EFAC48A62AB8E6BC1BEC61 /* libPods-StyleTributeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */; };
+		E133008B1DE06ACB00D798F2 /* SharingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E133008A1DE06ACB00D798F2 /* SharingTableViewCell.m */; };
 		E141DEB31DD097FA001693F7 /* NewItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEB21DD097F9001693F7 /* NewItemTableViewController.m */; };
 		E141DEB71DD0A804001693F7 /* PhotosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEB61DD0A804001693F7 /* PhotosTableViewCell.m */; };
 		E141DEF91DD10613001693F7 /* PriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEF81DD10613001693F7 /* PriceTableViewCell.m */; };
@@ -261,6 +262,8 @@
 		7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBrandController.m; sourceTree = "<group>"; };
 		D10E0F606CBC8A31C08A85A9 /* libPods-StyleTribute.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTribute.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED3510CF8368A99375B0A7A /* Pods-StyleTribute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTribute.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute.release.xcconfig"; sourceTree = "<group>"; };
+		E13300891DE06ACB00D798F2 /* SharingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharingTableViewCell.h; sourceTree = "<group>"; };
+		E133008A1DE06ACB00D798F2 /* SharingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharingTableViewCell.m; sourceTree = "<group>"; };
 		E141DEB11DD097F9001693F7 /* NewItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemTableViewController.h; sourceTree = "<group>"; };
 		E141DEB21DD097F9001693F7 /* NewItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemTableViewController.m; sourceTree = "<group>"; };
 		E141DEB51DD0A804001693F7 /* PhotosTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosTableViewCell.h; sourceTree = "<group>"; };
@@ -681,6 +684,8 @@
 				E18060B91DD3230800B4056F /* MessageTableViewCell.m */,
 				E18060BE1DD32A4C00B4056F /* PriceConditionTableViewCell.h */,
 				E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */,
+				E13300891DE06ACB00D798F2 /* SharingTableViewCell.h */,
+				E133008A1DE06ACB00D798F2 /* SharingTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -908,7 +913,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9F413971DC3E89992877B983 /* [CP] Check Pods Manifest.lock */ = {
@@ -923,7 +928,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C2DE5CB65B357F6061EB1344 /* 📦 Embed Pods Frameworks */ = {
@@ -1001,6 +1006,7 @@
 				7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */,
 				7A1E44B21B299E8F00063F17 /* ImageType.m in Sources */,
 				7A7E45DB1B0DDD0C000A7C84 /* SlideShowDataSource.m in Sources */,
+				E133008B1DE06ACB00D798F2 /* SharingTableViewCell.m in Sources */,
 				7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */,
 				E16205D81DC9294200A916F2 /* ShopViewController.m in Sources */,
 				E141DEFC1DD10872001693F7 /* BrandTableViewCell.m in Sources */,
