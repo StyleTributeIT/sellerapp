@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://styletribute.com/"]];
+    [self.webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {
