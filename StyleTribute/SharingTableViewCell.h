@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SharingTableViewCell : UITableViewCell
+@protocol SharingTableViewCellDelegate
+-(void)shareTwitt:(UIViewController*)vc;
+-(void)shareFB;
+@end
 
+@interface SharingTableViewCell : UITableViewCell
+@property (strong) id<SharingTableViewCellDelegate> delegate;
 @end

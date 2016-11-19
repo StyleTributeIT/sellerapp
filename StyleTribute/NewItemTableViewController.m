@@ -16,6 +16,7 @@
 #import "ConditionPriceViewController.h"
 #import <NSArray+LinqExtensions.h>
 #import <NSDictionary+LinqExtensions.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 #import "MessageTableViewCell.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
@@ -302,6 +303,21 @@ int sectionOffset = 0;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Custom delegates
+
+-(void)shareFB{
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:@"https://styletribute.com/"];
+    [FBSDKShareDialog showFromViewController:self
+                                 withContent:content
+                                    delegate:nil];
+}
+
+-(void)shareTwitt:(UIViewController*)vc
+{
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 
@@ -456,6 +472,7 @@ int sectionOffset = 0;
     SharingTableViewCell *cell = (SharingTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"sharingCell" forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell addBottomBorder:NO];
+    cell.delegate = self;
     return cell;
 }
 
