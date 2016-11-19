@@ -422,20 +422,21 @@ int sectionOffset = 0;
     return cell;
 }
 
--(void)addBordersForCell:(UITableViewCell*)cell
+-(void)addBordersForCell:(UITableViewCell*)cell addBottomBorder:(BOOL)addBottom
 {
+    UIView *toplineView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                   1.0f,
+                                                                   cell.frame.size.width, 0.2f)];
+    toplineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
+    [cell.contentView addSubview:toplineView];
+    if (!addBottom)
+        return;
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                cell.contentView.frame.size.height,
+                                                                cell.contentView.frame.size.height - 0.5f,
                                                                 cell.frame.size.width, 0.2f)];
     
     lineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
     [cell.contentView addSubview:lineView];
-    
-    UIView *toplineView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                   0.0f,
-                                                                   cell.frame.size.width, 0.2f)];
-    toplineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
-    [cell.contentView addSubview:toplineView];
 }
 
 -(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath
@@ -443,7 +444,7 @@ int sectionOffset = 0;
     MessageTableViewCell *cell = (MessageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     cell.messageLabel.text = self.curProduct.processComment;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [self addBordersForCell:cell];
+    [self addBordersForCell:cell addBottomBorder:YES];
     return cell;
 }
   
@@ -452,7 +453,7 @@ int sectionOffset = 0;
     BrandTableViewCell *cell = (BrandTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"brandCell" forIndexPath:indexPath];
     cell.brandTitle.text = self.curProduct.designer.name;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [self addBordersForCell:cell];
+    [self addBordersForCell:cell addBottomBorder:YES];
     return cell;
 }
 
@@ -474,7 +475,7 @@ int sectionOffset = 0;
     cell.cloathUnits.text = self.curProduct.unit;
     cell.cloathSize.text = self.curProduct.size;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [self addBordersForCell:cell];
+    [self addBordersForCell:cell addBottomBorder:YES];
     
   //  cell.separatorInset = UIEdgeInsetsMake(1.0f, 1.0f, 1.0f, cell.bounds.size.width);
     return cell;
@@ -488,7 +489,7 @@ int sectionOffset = 0;
         cell.shoeSize.text = self.curProduct.shoeSize.name;
         cell.heelHeight.text = self.curProduct.heelHeight;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [self addBordersForCell:cell];
+        [self addBordersForCell:cell addBottomBorder:YES];
         return cell;
     }
     
@@ -502,7 +503,7 @@ int sectionOffset = 0;
         }
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setup];
-        [self addBordersForCell:cell];
+        [self addBordersForCell:cell addBottomBorder:YES];
         return cell;
     }
     
@@ -512,7 +513,7 @@ int sectionOffset = 0;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setup:self.curProduct];
     cell.delegate = self;
-    [self addBordersForCell:cell];
+    [self addBordersForCell:cell addBottomBorder:YES];
     return cell;
 }
 
@@ -522,14 +523,14 @@ int sectionOffset = 0;
         if (self.curProduct.price != 0.0f)
             cell.productPrice.text = [NSString stringWithFormat:@"$%.2f",self.curProduct.price];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        [self addBordersForCell:cell];
+        [self addBordersForCell:cell addBottomBorder:YES];
         return cell;
     }
 
 -(UITableViewCell*)setupDescriptionCell:(NSIndexPath*)indexPath
 {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
-    [self addBordersForCell:cell];
+    [self addBordersForCell:cell addBottomBorder:NO];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
