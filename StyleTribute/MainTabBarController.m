@@ -141,7 +141,7 @@
     CGSize titleSize = [button.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
     button.imageEdgeInsets = UIEdgeInsetsMake(
                                                 - (titleSize.height + spacing), 0.0, 0.0, - titleSize.width);
-    [button setTitleColor:[UIColor blackColor] forState: UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState: UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:12];
     // increase the content height to avoid clipping
     CGFloat edgeOffset = fabsf(titleSize.height - imageSize.height) / 2.0;
@@ -165,15 +165,15 @@
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe-pink"] forState: UIControlStateNormal];
     [self.myAccountButton setImage:[UIImage imageNamed:@"profile"] forState: UIControlStateNormal];
     [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]forState:UIControlStateNormal];
-    [self.myAccountButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.myAccountButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
 }
 
 - (void) addItemButtonPressed{
     [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"] animated:YES completion:nil] ;
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe"] forState: UIControlStateNormal];
     [self.myAccountButton setImage:[UIImage imageNamed:@"profile"] forState: UIControlStateNormal];
-    [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
-    [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
+    [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
 }
 
 - (void) myAccountButtonPressed{
@@ -181,7 +181,7 @@
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe"] forState: UIControlStateNormal];
     [self.myAccountButton setImage:[UIImage imageNamed:@"profile-pink"] forState: UIControlStateNormal];
     [self.myAccountButton setTitleColor: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]forState:UIControlStateNormal];
-    [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
 }
 
 
