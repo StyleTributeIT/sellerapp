@@ -471,7 +471,7 @@
     [self.wardrobeType setBackgroundImage:[UIImage imageNamed:@"segmentActive"]
                                        forState:UIControlStateSelected
                                      barMetrics:UIBarMetricsDefault];
-    
+    [self.wardrobeType setBackgroundImage:[UIImage imageNamed:@"segmentActive"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]} forState:UIControlStateSelected];
     
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateNormal];
