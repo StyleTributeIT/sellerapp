@@ -325,7 +325,7 @@ int sectionOffset = 0;
 {
     if (indexPath.section == 0)
     {
-        int rowHeight = 44;
+        int rowHeight = 50;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
             rowHeight = 160;
         else
@@ -333,7 +333,7 @@ int sectionOffset = 0;
             rowHeight = 88;
         return rowHeight;
     }
-    return 44;
+    return 50;
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
