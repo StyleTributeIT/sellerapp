@@ -472,9 +472,17 @@
                                        forState:UIControlStateSelected
                                      barMetrics:UIBarMetricsDefault];
     [self.wardrobeType setBackgroundImage:[UIImage imageNamed:@"segmentActive"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    //[UIFont fontWithName:@"Montserrat-Regular" size:15]
+   // [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Montserrat Regular" size:35.0], NSFontAttributeName, [UIColor grayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIFont fontWithName:@"Montserrat-Regular" size:13], NSFontAttributeName,
+                                [UIColor grayColor], NSForegroundColorAttributeName, nil];
+    
+    [self.wardrobeType setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]} forState:UIControlStateSelected];
     
-    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateNormal];
+  //  [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateNormal];
    }
 
 @end
