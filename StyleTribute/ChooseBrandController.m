@@ -35,6 +35,11 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"AddCell"];
 }
 
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 -(void)updateSections {
     self.sectionNames = [[self.designers linq_select:^id(NamedItem* designer) {
         return [designer.name substringToIndex:1];

@@ -78,7 +78,7 @@
             imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
         }
         
-        newCell.photoTypeLabel.text = imgType.name;
+        newCell.photoTypeLabel.text = [imgType.name uppercaseString];
         [newCell.photoTypeLabel setHidden:NO];
         
         if(self.curProduct.photos != nil && self.curProduct.photos.count >= (indexPath.row + 1)) {
