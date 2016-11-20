@@ -24,20 +24,23 @@
     self.collectionView.allowsMultipleSelection = NO;
     self.collectionView.accessibilityIdentifier = @"Photos collection";
     self.collectionView.accessibilityLabel = @"Photos collection";
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, self.titleBorder.frame.size.height - 1, self.titleBorder.frame.size.width, 1.0f);
+    bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                     alpha:1.0f].CGColor;
+    [self.titleBorder.layer addSublayer:bottomBorder];
     
 }
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
 }
     
-    -(void)setup:(Product*)product
-    {
-        self.curProduct = product;
-        [self.collectionView reloadData];
-    }
+-(void)setup:(Product*)product
+{
+    self.curProduct = product;
+    [self.collectionView reloadData];
+}
 
 #pragma mark - Gestures delegate
 - (void) handleTapFrom: (UITapGestureRecognizer *)recognizer {
