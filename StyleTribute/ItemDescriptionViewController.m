@@ -12,6 +12,7 @@
 
 @interface ItemDescriptionViewController ()
     @property (strong, nonatomic) IBOutlet UITextField *nameField;
+@property (strong, nonatomic) IBOutlet UIView *borderedFrame;
     @property (strong, nonatomic) IBOutlet UITextView *descriptionField;
 @end
 
@@ -21,17 +22,18 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.descriptionField.placeholder = @"Description";
+    
     CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0.0f, self.nameField.frame.size.height - 1, self.nameField.frame.size.width, 1.0f);
+    bottomBorder.frame = CGRectMake(0.0f, self.borderedFrame.frame.size.height - 1, self.borderedFrame.frame.size.width, 1.0f);
     bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
                                                      alpha:1.0f].CGColor;
-    [self.nameField.layer addSublayer:bottomBorder];
+    [self.borderedFrame.layer addSublayer:bottomBorder];
     
     CALayer *descBorder = [CALayer layer];
-    descBorder.frame = CGRectMake(0.0f, self.descriptionField.frame.size.height - 1, self.descriptionField.frame.size.width, 1.0f);
+    descBorder.frame = CGRectMake(0.0f, 0.f, self.borderedFrame.frame.size.width, 1.0f);
     descBorder.backgroundColor = [UIColor colorWithWhite:0.8f
                                                      alpha:1.0f].CGColor;
-    [self.descriptionField.layer addSublayer:descBorder];
+    [self.borderedFrame.layer addSublayer:descBorder];
 }
 
 -(void)viewDidAppear:(BOOL)animated
