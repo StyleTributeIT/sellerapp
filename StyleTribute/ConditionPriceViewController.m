@@ -36,6 +36,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    if (![DataCache sharedInstance].isEditingItem)
+        [DataCache sharedInstance].isEditingItem = YES;
     [self.tableView reloadData];
 }
 
