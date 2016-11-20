@@ -18,6 +18,7 @@
 #import <NSDictionary+LinqExtensions.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "MessageTableViewCell.h"
+#import "DetailsTableViewCell.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
 #import "SharingTableViewCell.h"
@@ -566,9 +567,10 @@ int sectionOffset = 0;
 
 -(UITableViewCell*)setupDescriptionCell:(NSIndexPath*)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
+    DetailsTableViewCell *cell = (DetailsTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
     [self addBordersForCell:cell addBottomBorder:NO];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.detailsText.text = self.curProduct.name!=nil?self.curProduct.name:@"About your product";
     return cell;
 }
 /*
@@ -852,7 +854,8 @@ int sectionOffset = 0;
     BOOL result = YES;
     if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
         result = NO;
-    
+    if (self.curProduct.price == 0.0f )
+        result = NO;
     return result;
 }
 
