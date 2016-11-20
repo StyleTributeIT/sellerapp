@@ -131,7 +131,7 @@ int sectionOffset = 0;
             self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
         }
         
-        if (![self productIsValid])
+        if (![self productIsValid] || ![self imagesAreFilled])
         {
             [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
             return;
