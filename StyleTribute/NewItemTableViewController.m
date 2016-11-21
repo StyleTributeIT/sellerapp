@@ -16,9 +16,12 @@
 #import "ConditionPriceViewController.h"
 #import <NSArray+LinqExtensions.h>
 #import <NSDictionary+LinqExtensions.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 #import "MessageTableViewCell.h"
+#import "DetailsTableViewCell.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
+#import "SharingTableViewCell.h"
 #import "UIImage+FixOrientation.h"
 #import "ChooseBrandController.h"
 #import "MainTabBarController.h"
@@ -129,7 +132,7 @@ int sectionOffset = 0;
             self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
         }
         
-        if (![self productIsValid])
+        if (![self productIsValid] || ![self imagesAreFilled])
         {
             [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
             return;
@@ -144,14 +147,17 @@ int sectionOffset = 0;
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             //            self.curProduct.identifier = product.identifier;
             //            self.curProduct.processStatus = product.processStatus;
-           /* NSMutableArray *tempImages = [[NSMutableArray alloc] init];
-            for (int i = 0; i < product.photos.count; i++) {
-                Photo *ph = [product.photos objectAtIndex:i];
-                if (![ph isKindOfClass:[NSNull class]])
-                    [tempImages addObject:ph];
-            }
-            
-            product.photos = [NSArray arrayWithArray:tempImages];*/
+           if (self.isEditingItem)
+           {
+               NSMutableArray *tempImages = [[NSMutableArray alloc] init];
+               for (int i = 0; i < product.photos.count; i++) {
+                   Photo *ph = [product.photos objectAtIndex:i];
+                   if (![ph isKindOfClass:[NSNull class]])
+                       [tempImages addObject:ph];
+               }
+               
+               product.photos = [NSArray arrayWithArray:tempImages];
+           }
             NSArray* oldPhotos = [NSArray arrayWithArray:product.photos];
             NSArray* oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;
@@ -301,6 +307,21 @@ int sectionOffset = 0;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Custom delegates
+
+-(void)shareFB{
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:@"https://styletribute.com/"];
+    [FBSDKShareDialog showFromViewController:self
+                                 withContent:content
+                                    delegate:nil];
+}
+
+-(void)shareTwitt:(UIViewController*)vc
+{
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 
@@ -308,11 +329,15 @@ int sectionOffset = 0;
 {
     if (indexPath.section == 0)
     {
-        if ((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) || indexPath.row == 1)
-            return 160;
-        return 44;
+        int rowHeight = 50;
+        if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
+            rowHeight = 160;
+        else
+        if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
+            rowHeight = 88;
+        return rowHeight;
     }
-    return 44;
+    return 50;
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -359,9 +384,12 @@ int sectionOffset = 0;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
     {
+        int countOfCells = 1;
         if (self.curProduct.processComment != nil && self.curProduct.processComment.length > 0)
-            return 2;   // message and photos
-        return 1;
+            countOfCells = 2;   // message and photos
+        if ([self.curProduct.processStatus isEqualToString:@"selling"])
+            countOfCells = 2;
+        return countOfCells;
     }
     if (section == 1)
     {
@@ -391,6 +419,10 @@ int sectionOffset = 0;
     {
         if (indexPath.row == 0 && self.curProduct.processComment != nil && self.curProduct.processComment.length > 0) {
             return [self setupMessageCell:indexPath];
+        }
+        if (indexPath.row == 0 && [self.curProduct.processStatus isEqualToString:@"selling"])
+        {
+            return [self setupSharingCell:indexPath];
         }
         return [self setupPhotosCell:indexPath];
     }
@@ -437,6 +469,15 @@ int sectionOffset = 0;
     
     lineView.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f];
     [cell.contentView addSubview:lineView];
+}
+
+-(UITableViewCell*)setupSharingCell:(NSIndexPath*)indexPath
+{
+    SharingTableViewCell *cell = (SharingTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"sharingCell" forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [self addBordersForCell:cell addBottomBorder:NO];
+    cell.delegate = self;
+    return cell;
 }
 
 -(UITableViewCell*)setupMessageCell:(NSIndexPath*)indexPath
@@ -529,9 +570,10 @@ int sectionOffset = 0;
 
 -(UITableViewCell*)setupDescriptionCell:(NSIndexPath*)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
+    DetailsTableViewCell *cell = (DetailsTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"descriptionCell" forIndexPath:indexPath];
     [self addBordersForCell:cell addBottomBorder:NO];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.detailsText.text = self.curProduct.name!=nil?self.curProduct.name:@"About your product";
     return cell;
 }
 /*
@@ -794,7 +836,7 @@ int sectionOffset = 0;
             }
         }
     }
-    
+    [DataCache setSelectedItem:self.curProduct];
     [self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -814,6 +856,8 @@ int sectionOffset = 0;
 -(BOOL)productIsValid{
     BOOL result = YES;
     if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
+        result = NO;
+    if (self.curProduct.price == 0.0f )
         result = NO;
     return result;
 }

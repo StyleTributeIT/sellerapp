@@ -530,6 +530,35 @@
             </objects>
             <point key="canvasLocation" x="1793" y="2475"/>
         </scene>
+        <!--Shop View Controller-->
+        <scene sceneID="yuc-83-dqw">
+            <objects>
+                <viewController id="yz9-vj-pKk" customClass="ShopViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X1p-9U-qn0"/>
+                        <viewControllerLayoutGuide type="bottom" id="zZs-9s-PXs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QM0-6Z-mWE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLf-JY-i7J">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RdJ-Qd-dw8"/>
+                    <connections>
+                        <outlet property="webView" destination="qLf-JY-i7J" id="giR-yS-uzf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LV2-mO-yoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122.40000000000001" y="2348.2758620689656"/>
+        </scene>
         <!--Notifications View Controller-->
         <scene sceneID="0bM-4E-ufZ">
             <objects>
@@ -564,7 +593,7 @@
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rhq-u5-YGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1385,7 +1414,7 @@ Citilink Warehouse Complex
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
                                         <rect key="frame" x="0.0" y="8" width="375" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Selling"/>
                                             <segment title="Sold"/>
@@ -1973,7 +2002,7 @@ Citilink Warehouse Complex
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPr-LJ-R6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2053,35 +2082,6 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="4278" y="-605"/>
         </scene>
-        <!--Shop View Controller-->
-        <scene sceneID="UO1-zx-Brl">
-            <objects>
-                <tableViewController id="bnQ-Ps-jLc" userLabel="Shop View Controller" customClass="ShopViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WFs-h5-qPJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4bs-KV-qsq">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4bs-KV-qsq" id="m6j-hN-g74">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="bnQ-Ps-jLc" id="yHM-QG-qGH"/>
-                            <outlet property="delegate" destination="bnQ-Ps-jLc" id="9du-ZE-JRd"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="EWR-KV-rDB"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e4W-zz-8k1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="134" y="2356"/>
-        </scene>
         <!--ShopItem-->
         <scene sceneID="2TK-Bj-0EM">
             <objects>
@@ -2092,7 +2092,7 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="bnQ-Ps-jLc" kind="relationship" relationship="rootViewController" id="eNc-tB-M2u"/>
+                        <segue destination="yz9-vj-pKk" kind="relationship" relationship="rootViewController" id="xlt-lS-E9B"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DbB-ZK-Mhu" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -18,6 +18,7 @@
 @interface PhotosTableViewCell : UITableViewCell<UICollectionViewDelegate, UICollectionViewDataSource>
     @property (strong, nonatomic) IBOutlet UILabel *guideLabel;
     @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UIView *titleBorder;
 @property (strong, nonatomic) id<PhotoCellDelegate> delegate;
     @property Product* curProduct;
     

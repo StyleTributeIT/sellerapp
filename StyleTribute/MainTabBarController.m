@@ -22,7 +22,7 @@
 @implementation MainTabBarController
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
-    self=  [super initWithCoder:aDecoder];
+    self =  [super initWithCoder:aDecoder];
     
     if(self) {
         self.previousTabIndex = 0;
@@ -45,23 +45,23 @@
         [tabbarContainer addSubview:bgImageView];
        // return self;
         //My wardrobe Tab button created
-        self.myWardrobeButton = [self getTabbarButtonforFrame:CGRectMake(0, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"wardrobe"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Wardrobe" andTopOffset:0];
+        self.myWardrobeButton = [self getTabbarButtonforFrame:CGRectMake(0, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"wardrobe"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Wardrobe" andTopOffset:0 titleSpacing:6.0];
         [self.myWardrobeButton addTarget:self action:@selector(myWardrobeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //Shop button
-        self.shopButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"shop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Shop" andTopOffset:0];
-        [self.myWardrobeButton addTarget:self action:@selector(shopButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        self.shopButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"shop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Shop" andTopOffset:0 titleSpacing:6.0];
+        [self.shopButton addTarget:self action:@selector(shopButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //Add Item Tab Button created
-        self.addItemButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 2,backgroundImage.size.height - (backgroundImage.size.height * 0.7333333333) , itemWidth, backgroundImage.size.height) icon:[[UIImage imageNamed:@"camera"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Sell" andTopOffset: -16];
+        self.addItemButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 2,backgroundImage.size.height - (backgroundImage.size.height * 0.7833333333) , itemWidth, backgroundImage.size.height) icon:[[UIImage imageNamed:@"camera"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Sell" andTopOffset: -20 titleSpacing:2.5];
         [self.addItemButton addTarget:self action:@selector(addItemButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //My Account Butoon Created
-        self.myAccountButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 3, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"profile"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Profile" andTopOffset:0];
+        self.myAccountButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 3, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"profile"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Profile" andTopOffset:0 titleSpacing:6.0];
         [self.myAccountButton addTarget:self action:@selector(myAccountButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
-        self.notificationsButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 4, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"notifications"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Notification" andTopOffset:0];
-        [self.myAccountButton addTarget:self action:@selector(notificationsButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        self.notificationsButton = [self getTabbarButtonforFrame:CGRectMake(itemWidth * 4, backgroundImage.size.height - (backgroundImage.size.height * 0.5882352941), itemWidth, backgroundImage.size.height * 0.5882352941) icon:[[UIImage imageNamed:@"notifications"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"Notification" andTopOffset:0 titleSpacing:6.0];
+        [self.notificationsButton addTarget:self action:@selector(notificationsButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         
         //Added all the button to container
         [tabbarContainer addSubview:self.myWardrobeButton];
@@ -123,13 +123,12 @@
 
 
 //Gives the custom designed button for custom tabbar
-- (UIButton *) getTabbarButtonforFrame:(CGRect) frame icon:(UIImage *) icon title:(NSString *) title andTopOffset:(CGFloat) topOffset{
+- (UIButton *) getTabbarButtonforFrame:(CGRect) frame icon:(UIImage *) icon title:(NSString *) title andTopOffset:(CGFloat) topOffset titleSpacing:(CGFloat) spacing{
     UIButton *button = [[UIButton alloc] initWithFrame:frame];
     [button setTitle:title forState:UIControlStateNormal];
     [button setImage:icon forState:UIControlStateNormal];
     
-    // the space between the image and text
-    CGFloat spacing = 6.0;
+    
     
     // lower the text and push it left so it appears centered
     //  below the image
@@ -142,7 +141,7 @@
     CGSize titleSize = [button.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}];
     button.imageEdgeInsets = UIEdgeInsetsMake(
                                                 - (titleSize.height + spacing), 0.0, 0.0, - titleSize.width);
-    [button setTitleColor:[UIColor blackColor] forState: UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState: UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:12];
     // increase the content height to avoid clipping
     CGFloat edgeOffset = fabsf(titleSize.height - imageSize.height) / 2.0;
@@ -153,12 +152,12 @@
 
 -(void) shopButtonPressed
 {
-    
+    [self setSelectedIndex:1];
 }
 
 - (void) notificationsButtonPressed
 {
-    
+    [self setSelectedIndex:4];
 }
 
 - (void) myWardrobeButtonPressed{
@@ -166,15 +165,15 @@
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe-pink"] forState: UIControlStateNormal];
     [self.myAccountButton setImage:[UIImage imageNamed:@"profile"] forState: UIControlStateNormal];
     [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]forState:UIControlStateNormal];
-    [self.myAccountButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.myAccountButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
 }
 
 - (void) addItemButtonPressed{
     [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"] animated:YES completion:nil] ;
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe"] forState: UIControlStateNormal];
     [self.myAccountButton setImage:[UIImage imageNamed:@"profile"] forState: UIControlStateNormal];
-    [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
-    [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
+    [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
 }
 
 - (void) myAccountButtonPressed{
@@ -182,7 +181,7 @@
     [self.myWardrobeButton setImage:[UIImage imageNamed:@"wardrobe"] forState: UIControlStateNormal];
     [self.myAccountButton setImage:[UIImage imageNamed:@"profile-pink"] forState: UIControlStateNormal];
     [self.myAccountButton setTitleColor: [UIColor colorWithRed:1.0 green:0.0 blue:102.0/256 alpha:1]forState:UIControlStateNormal];
-    [self.myWardrobeButton setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
+    [self.myWardrobeButton setTitleColor: [UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState:UIControlStateNormal];
 }
 
 

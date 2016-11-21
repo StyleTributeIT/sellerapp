@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ApiRequester.h"
 #import "PhotoCell.h"
+#import "DataCache.h"
 #import "Photo.h"
 
 @implementation PhotosTableViewCell
@@ -24,20 +25,23 @@
     self.collectionView.allowsMultipleSelection = NO;
     self.collectionView.accessibilityIdentifier = @"Photos collection";
     self.collectionView.accessibilityLabel = @"Photos collection";
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.0f, self.titleBorder.frame.size.height - 1, self.titleBorder.frame.size.width, 1.0f);
+    bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f
+                                                     alpha:1.0f].CGColor;
+    [self.titleBorder.layer addSublayer:bottomBorder];
     
 }
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
 }
     
-    -(void)setup:(Product*)product
-    {
-        self.curProduct = product;
-        [self.collectionView reloadData];
-    }
+-(void)setup:(Product*)product
+{
+    self.curProduct = [DataCache getSelectedItem];
+    [self.collectionView reloadData];
+}
 
 #pragma mark - Gestures delegate
 - (void) handleTapFrom: (UITapGestureRecognizer *)recognizer {
@@ -66,8 +70,9 @@
     NSLog(@"index: %zd || %zd", indexPath.row, self.curProduct.photos.count);
     if(indexPath.row == self.curProduct.photos.count) {
         newCell.photoView.image = [UIImage imageNamed:@"plus"];
+        newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
         [newCell.photoTypeLabel setHidden:YES];
-        newCell.plusLabel.hidden = YES;
+        newCell.plusLabel.hidden = NO;
     } else {
         ImageType* imgType = nil;
         if(indexPath.row >= self.curProduct.category.imageTypes.count) {
@@ -77,8 +82,36 @@
         } else {
             imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
         }
+        newCell.photoTypeLabel.text = [imgType.name uppercaseString];
+        [newCell.photoTypeLabel setHidden:NO];
+        Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
+        if (![photo isKindOfClass:[NSNull class]])
+        {
+            if (photo.image)
+            {
+                newCell.bigPhotoCell.image = photo.image;
+                newCell.plusLabel.hidden = YES;
+                newCell.photoView.hidden = YES;
+                
+            } else {
+                [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+                newCell.photoView.alpha = 0.5f;
+            }
+        } else {
+            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+            newCell.photoView.alpha = 0.5f;
+        }
+    }/*else {
+        ImageType* imgType = nil;
+        if(indexPath.row >= self.curProduct.category.imageTypes.count) {
+            imgType = [ImageType new];
+            newCell.plusLabel.hidden = YES;
+            imgType.name = [NSString stringWithFormat:@"%zd", indexPath.row - self.curProduct.category.imageTypes.count + 1];
+        } else {
+            imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
+        }
         
-        newCell.photoTypeLabel.text = imgType.name;
+        newCell.photoTypeLabel.text = [imgType.name uppercaseString];
         [newCell.photoTypeLabel setHidden:NO];
         
         if(self.curProduct.photos != nil && self.curProduct.photos.count >= (indexPath.row + 1)) {
@@ -98,12 +131,12 @@
         } else {
             [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
-    }
+    }*/
     
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
-    [newCell.photoView addGestureRecognizer:tapRecognizer];
+    [newCell addGestureRecognizer:tapRecognizer];
     
-    newCell.photoView.tag = indexPath.row;
+    newCell.tag = indexPath.row;
     newCell.accessibilityLabel = [NSString stringWithFormat:@"Photo cell %td", indexPath.row];
     return newCell;
 }
