@@ -440,7 +440,7 @@
 -(void) customizeSegment
 {
     CGRect frame= self.wardrobeType.frame;
-    [self.wardrobeType setFrame:CGRectMake(0, 5, frame.size.width, 40.f)];
+    [self.wardrobeType setFrame:CGRectMake(0, 0, frame.size.width, 45.f)];
     
     CALayer *upperBorder = [CALayer layer];
     upperBorder.backgroundColor = [[UIColor whiteColor] CGColor];
