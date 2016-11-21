@@ -44,13 +44,22 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dots1" translatesAutoresizingMaskIntoConstraints="NO" id="BxZ-wJ-9ym">
+                    <rect key="frame" x="119" y="525" width="136" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="136" id="ohs-lL-OwL"/>
+                        <constraint firstAttribute="height" constant="28" id="rdk-Qa-ejA"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="no7-58-lRJ" firstAttribute="leading" secondItem="GlT-5B-dNx" secondAttribute="leading" id="04y-zK-eO0"/>
                 <constraint firstItem="GlT-5B-dNx" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="43" id="3cb-xh-5l3"/>
+                <constraint firstItem="BxZ-wJ-9ym" firstAttribute="centerX" secondItem="no7-58-lRJ" secondAttribute="centerX" id="9lx-OQ-EfV"/>
                 <constraint firstAttribute="trailing" secondItem="1jS-aD-A0u" secondAttribute="trailing" id="9y2-iV-amn"/>
                 <constraint firstItem="no7-58-lRJ" firstAttribute="trailing" secondItem="GlT-5B-dNx" secondAttribute="trailing" id="MAF-Lq-A8z"/>
+                <constraint firstAttribute="bottom" secondItem="BxZ-wJ-9ym" secondAttribute="bottom" constant="114" id="PzY-Sn-2wd"/>
                 <constraint firstItem="no7-58-lRJ" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="82" id="WvD-qf-5iH"/>
                 <constraint firstItem="GlT-5B-dNx" firstAttribute="centerX" secondItem="1jS-aD-A0u" secondAttribute="centerX" id="eMs-ZL-QD8"/>
                 <constraint firstItem="1jS-aD-A0u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fPk-JP-R9s"/>
@@ -59,6 +68,7 @@
         </view>
     </objects>
     <resources>
+        <image name="dots1" width="110" height="10"/>
         <image name="guid3" width="640" height="533"/>
     </resources>
 </document>
