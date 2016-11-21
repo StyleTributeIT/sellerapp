@@ -10,10 +10,11 @@
 @interface XCDFormInputAccessoryView : UIView
 
 - (id) initWithResponders:(NSArray *)responders; // Objects must be UIResponder instances
--(id) initWithTarget:(id)target doneAction:(SEL)doneAction;
+-(id) initWithTarget:(id)target  doneAction:(SEL)doneAction;
+-(id) initWithTarget:(id)target hideNavButtons:(BOOL)hideNavButtons doneAction:(SEL)doneAction;
 
 @property (nonatomic, strong) NSArray *responders;
-
+@property (nonatomic, assign) BOOL hideNavButtons;
 @property (nonatomic, assign) BOOL hasDoneButton; // Defaults to YES on iPhone, NO on iPad
 
 - (void) setHasDoneButton:(BOOL)hasDoneButton animated:(BOOL)animated;

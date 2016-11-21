@@ -23,6 +23,7 @@
 @implementation PriceViewController
 
 - (void)viewDidLoad {
+    self.hideNavButtons = YES;
     [super viewDidLoad];
     self.isInProgress = NO;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];

@@ -21,6 +21,7 @@
 @implementation QuestionViewController
 
 - (void)viewDidLoad {
+    self.hideNavButtons = YES;
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     CALayer *bottomBorder = [CALayer layer];
@@ -47,6 +48,10 @@
 
 - (IBAction)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)inputDone {
+    [self nextPressed:nil];
 }
 - (IBAction)nextPressed:(id)sender {
     [self.priceField resignFirstResponder];

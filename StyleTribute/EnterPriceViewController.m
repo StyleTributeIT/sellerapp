@@ -26,6 +26,7 @@
 @implementation EnterPriceViewController
 
 - (void)viewDidLoad {
+    self.hideNavButtons = YES;
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self.priceField becomeFirstResponder];
@@ -38,6 +39,7 @@
     [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
     self.navigationItem.leftBarButtonItem = backButton;
+    
 }
 
 - (void)didReceiveMemoryWarning {
