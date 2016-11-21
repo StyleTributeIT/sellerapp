@@ -26,16 +26,20 @@
                         <constraint firstAttribute="width" secondItem="g0m-Tl-8FE" secondAttribute="height" multiplier="640:533" id="W00-Aj-at3"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Keep to the guidelines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xm-ez-WBo">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep to the guidelines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xm-ez-WBo">
                     <rect key="frame" x="49" y="356" width="277" height="40"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="aMG-Il-BOB"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Follow the guidelines given on the camera." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-gl-PBa">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow the guidelines given on the camera." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-gl-PBa">
                     <rect key="frame" x="16" y="388" width="343" height="40"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="hfu-5z-IqG"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -43,7 +47,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="BPe-gl-PBa" firstAttribute="centerX" secondItem="2xm-ez-WBo" secondAttribute="centerX" id="0DH-tr-JIq"/>
+                <constraint firstItem="2xm-ez-WBo" firstAttribute="centerX" secondItem="g0m-Tl-8FE" secondAttribute="centerX" id="0jE-5T-2mo"/>
+                <constraint firstItem="2xm-ez-WBo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="49" id="GiK-cQ-fJx"/>
                 <constraint firstAttribute="trailing" secondItem="g0m-Tl-8FE" secondAttribute="trailing" id="HOl-aB-PAR"/>
+                <constraint firstItem="BPe-gl-PBa" firstAttribute="top" secondItem="g0m-Tl-8FE" secondAttribute="bottom" constant="75" id="JUF-k4-eyc"/>
+                <constraint firstItem="BPe-gl-PBa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="QFO-pU-F6X"/>
+                <constraint firstItem="2xm-ez-WBo" firstAttribute="top" secondItem="g0m-Tl-8FE" secondAttribute="bottom" constant="43" id="W8X-tn-wt6"/>
                 <constraint firstItem="g0m-Tl-8FE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mG1-ta-cBb"/>
                 <constraint firstItem="g0m-Tl-8FE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sfC-Fw-AvB"/>
             </constraints>

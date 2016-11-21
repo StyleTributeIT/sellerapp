@@ -26,16 +26,20 @@
                         <constraint firstAttribute="width" secondItem="1jS-aD-A0u" secondAttribute="height" multiplier="640:533" id="P1N-wa-nWT"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Find a place with good lightning" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlT-5B-dNx">
-                    <rect key="frame" x="49" y="344" width="277" height="40"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find a place with good lightning" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlT-5B-dNx">
+                    <rect key="frame" x="49" y="356" width="277" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="6Jv-H2-yfm"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How you light your product will make a big difference in your final output!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no7-58-lRJ">
-                    <rect key="frame" x="49" y="380" width="277" height="40"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How you light your product will make a big difference in your final output!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no7-58-lRJ">
+                    <rect key="frame" x="49" y="395" width="277" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="rxz-2E-0Q7"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -43,7 +47,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="no7-58-lRJ" firstAttribute="leading" secondItem="GlT-5B-dNx" secondAttribute="leading" id="04y-zK-eO0"/>
+                <constraint firstItem="GlT-5B-dNx" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="43" id="3cb-xh-5l3"/>
                 <constraint firstAttribute="trailing" secondItem="1jS-aD-A0u" secondAttribute="trailing" id="9y2-iV-amn"/>
+                <constraint firstItem="no7-58-lRJ" firstAttribute="trailing" secondItem="GlT-5B-dNx" secondAttribute="trailing" id="MAF-Lq-A8z"/>
+                <constraint firstItem="no7-58-lRJ" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="82" id="WvD-qf-5iH"/>
+                <constraint firstItem="GlT-5B-dNx" firstAttribute="centerX" secondItem="1jS-aD-A0u" secondAttribute="centerX" id="eMs-ZL-QD8"/>
                 <constraint firstItem="1jS-aD-A0u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fPk-JP-R9s"/>
                 <constraint firstItem="1jS-aD-A0u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sk0-ET-PkN"/>
             </constraints>

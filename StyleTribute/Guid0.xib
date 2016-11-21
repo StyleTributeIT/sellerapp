@@ -21,14 +21,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guid1" translatesAutoresizingMaskIntoConstraints="NO" id="rxk-8r-ipD">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="312.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="313"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="rxk-8r-ipD" secondAttribute="height" multiplier="640:533" id="h6a-hl-2Lg"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Here are some tips to help you to take the best photos of your item!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZX-L5-Dgf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here are some tips to help you to take the best photos of your item!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZX-L5-Dgf">
                     <rect key="frame" x="49" y="335" width="277" height="87"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="87" id="F9R-Nh-9Lr"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -37,7 +39,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="rxk-8r-ipD" secondAttribute="trailing" id="3Uw-qT-5hu"/>
+                <constraint firstItem="uZX-L5-Dgf" firstAttribute="top" secondItem="rxk-8r-ipD" secondAttribute="bottom" constant="22" id="5Ps-mO-he0"/>
+                <constraint firstItem="uZX-L5-Dgf" firstAttribute="centerX" secondItem="rxk-8r-ipD" secondAttribute="centerX" id="DYR-Gd-aLI"/>
                 <constraint firstItem="rxk-8r-ipD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="H5u-Gb-ZmS"/>
+                <constraint firstItem="uZX-L5-Dgf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="49" id="Mse-o1-fsa"/>
                 <constraint firstItem="rxk-8r-ipD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nD6-iG-7fH"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="136.5"/>
