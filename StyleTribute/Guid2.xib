@@ -51,10 +51,20 @@
                         <constraint firstAttribute="height" constant="28" id="rdk-Qa-ejA"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCK-Fr-dDd">
+                    <rect key="frame" x="106" y="571" width="162" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Co5-To-gOb"/>
+                        <constraint firstAttribute="width" constant="162" id="s1X-5d-dEf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title="OK! GOT IT!" backgroundImage="greebBtn"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="no7-58-lRJ" firstAttribute="leading" secondItem="GlT-5B-dNx" secondAttribute="leading" id="04y-zK-eO0"/>
+                <constraint firstItem="rCK-Fr-dDd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="106" id="2ce-Ag-2zM"/>
                 <constraint firstItem="GlT-5B-dNx" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="43" id="3cb-xh-5l3"/>
                 <constraint firstItem="BxZ-wJ-9ym" firstAttribute="centerX" secondItem="no7-58-lRJ" secondAttribute="centerX" id="9lx-OQ-EfV"/>
                 <constraint firstAttribute="trailing" secondItem="1jS-aD-A0u" secondAttribute="trailing" id="9y2-iV-amn"/>
@@ -63,12 +73,14 @@
                 <constraint firstItem="no7-58-lRJ" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="82" id="WvD-qf-5iH"/>
                 <constraint firstItem="GlT-5B-dNx" firstAttribute="centerX" secondItem="1jS-aD-A0u" secondAttribute="centerX" id="eMs-ZL-QD8"/>
                 <constraint firstItem="1jS-aD-A0u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fPk-JP-R9s"/>
+                <constraint firstAttribute="bottom" secondItem="rCK-Fr-dDd" secondAttribute="bottom" constant="51" id="rPS-fX-RXc"/>
                 <constraint firstItem="1jS-aD-A0u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sk0-ET-PkN"/>
             </constraints>
         </view>
     </objects>
     <resources>
         <image name="dots1" width="110" height="10"/>
+        <image name="greebBtn" width="277" height="62"/>
         <image name="guid3" width="640" height="533"/>
     </resources>
 </document>

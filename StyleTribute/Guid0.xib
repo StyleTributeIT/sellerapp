@@ -35,20 +35,32 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJF-KF-1I1">
+                    <rect key="frame" x="106" y="559" width="162" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="162" id="g8N-xZ-50I"/>
+                        <constraint firstAttribute="height" constant="45" id="uJv-0f-jwP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title="GET STARTED" backgroundImage="redBtn"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="eJF-KF-1I1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="106" id="2zG-Z0-jy5"/>
                 <constraint firstAttribute="trailing" secondItem="rxk-8r-ipD" secondAttribute="trailing" id="3Uw-qT-5hu"/>
                 <constraint firstItem="uZX-L5-Dgf" firstAttribute="top" secondItem="rxk-8r-ipD" secondAttribute="bottom" constant="22" id="5Ps-mO-he0"/>
                 <constraint firstItem="uZX-L5-Dgf" firstAttribute="centerX" secondItem="rxk-8r-ipD" secondAttribute="centerX" id="DYR-Gd-aLI"/>
                 <constraint firstItem="rxk-8r-ipD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="H5u-Gb-ZmS"/>
                 <constraint firstItem="uZX-L5-Dgf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="49" id="Mse-o1-fsa"/>
                 <constraint firstItem="rxk-8r-ipD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nD6-iG-7fH"/>
+                <constraint firstAttribute="bottom" secondItem="eJF-KF-1I1" secondAttribute="bottom" constant="63" id="wKe-FR-dng"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="136.5"/>
         </view>
     </objects>
     <resources>
         <image name="guid1" width="640" height="533"/>
+        <image name="redBtn" width="277" height="62"/>
     </resources>
 </document>
