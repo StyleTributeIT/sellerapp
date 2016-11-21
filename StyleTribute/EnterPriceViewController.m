@@ -31,6 +31,13 @@
     [self.priceField becomeFirstResponder];
     self.earnPriceView.layer.borderColor = [UIColor colorWithRed:178.f/255.f green:178/255.f blue:178/255.f alpha:1.f].CGColor;
     self.stPriceView.layer.borderColor = [UIColor colorWithRed:178.f/255.f green:178/255.f blue:178/255.f alpha:1.f].CGColor;
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
 - (void)didReceiveMemoryWarning {
