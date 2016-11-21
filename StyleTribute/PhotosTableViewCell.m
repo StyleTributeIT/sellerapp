@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ApiRequester.h"
 #import "PhotoCell.h"
+#import "DataCache.h"
 #import "Photo.h"
 
 @implementation PhotosTableViewCell
@@ -38,7 +39,7 @@
     
 -(void)setup:(Product*)product
 {
-    self.curProduct = product;
+    self.curProduct = [DataCache getSelectedItem];
     [self.collectionView reloadData];
 }
 
@@ -69,9 +70,38 @@
     NSLog(@"index: %zd || %zd", indexPath.row, self.curProduct.photos.count);
     if(indexPath.row == self.curProduct.photos.count) {
         newCell.photoView.image = [UIImage imageNamed:@"plus"];
+        newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
         [newCell.photoTypeLabel setHidden:YES];
-        newCell.plusLabel.hidden = YES;
+        newCell.plusLabel.hidden = NO;
     } else {
+        ImageType* imgType = nil;
+        if(indexPath.row >= self.curProduct.category.imageTypes.count) {
+            imgType = [ImageType new];
+            newCell.plusLabel.hidden = YES;
+            imgType.name = [NSString stringWithFormat:@"%zd", indexPath.row - self.curProduct.category.imageTypes.count + 1];
+        } else {
+            imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
+        }
+        newCell.photoTypeLabel.text = [imgType.name uppercaseString];
+        [newCell.photoTypeLabel setHidden:NO];
+        Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
+        if (![photo isKindOfClass:[NSNull class]])
+        {
+            if (photo.image)
+            {
+                newCell.bigPhotoCell.image = photo.image;
+                newCell.plusLabel.hidden = YES;
+                newCell.photoView.hidden = YES;
+                
+            } else {
+                [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+                newCell.photoView.alpha = 0.5f;
+            }
+        } else {
+            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+            newCell.photoView.alpha = 0.5f;
+        }
+    }/*else {
         ImageType* imgType = nil;
         if(indexPath.row >= self.curProduct.category.imageTypes.count) {
             imgType = [ImageType new];
@@ -101,12 +131,12 @@
         } else {
             [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
-    }
+    }*/
     
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
-    [newCell.photoView addGestureRecognizer:tapRecognizer];
+    [newCell addGestureRecognizer:tapRecognizer];
     
-    newCell.photoView.tag = indexPath.row;
+    newCell.tag = indexPath.row;
     newCell.accessibilityLabel = [NSString stringWithFormat:@"Photo cell %td", indexPath.row];
     return newCell;
 }

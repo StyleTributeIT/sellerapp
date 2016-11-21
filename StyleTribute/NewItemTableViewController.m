@@ -833,7 +833,7 @@ int sectionOffset = 0;
             }
         }
     }
-    
+    [DataCache setSelectedItem:self.curProduct];
     [self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
