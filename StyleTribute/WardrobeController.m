@@ -57,13 +57,13 @@
     
     //[self updateProducts];
     
-    NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
+   /* NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
     NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
                                               NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-    [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
+    [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];*/
     self.wardrobeType.accessibilityLabel = @"Wardrobe items type";
 	
 	//_itemsTable.scrollIndicatorInsets=UIEdgeInsetsMake(64.0,0.0,44.0,0.0);
@@ -472,8 +472,6 @@
                                        forState:UIControlStateSelected
                                      barMetrics:UIBarMetricsDefault];
     [self.wardrobeType setBackgroundImage:[UIImage imageNamed:@"segmentActive"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-    //[UIFont fontWithName:@"Montserrat-Regular" size:15]
-   // [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Montserrat Regular" size:35.0], NSFontAttributeName, [UIColor grayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [UIFont fontWithName:@"Montserrat-Regular" size:13], NSFontAttributeName,
                                 [UIColor grayColor], NSForegroundColorAttributeName, nil];
