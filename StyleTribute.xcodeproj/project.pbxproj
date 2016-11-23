@@ -769,7 +769,7 @@
 				TargetAttributes = {
 					7A0EB6031AEE23D400D90001 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = K7BPR6DDLM;
+						DevelopmentTeam = 6SEHKYT2JG;
 						ProvisioningStyle = Automatic;
 					};
 					7A0EB61C1AEE23D400D90001 = {
@@ -1214,7 +1214,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: StyleTribute Pte. Ltd. (6SEHKYT2JG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = K7BPR6DDLM;
+				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1237,7 +1237,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: StyleTribute Pte. Ltd. (6SEHKYT2JG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = K7BPR6DDLM;
+				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
