@@ -94,8 +94,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
-    keyWindow.rootViewController = self;
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
