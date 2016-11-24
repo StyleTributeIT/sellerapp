@@ -57,7 +57,8 @@
 #pragma mark - Actions
 
 -(IBAction)cancel:(id)sender {
-    [self performSegueWithIdentifier:@"unwindFromEditProfile" sender:self];
+    //[self performSegueWithIdentifier:@"unwindFromEditProfile" sender:self];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)save:(id)sender {

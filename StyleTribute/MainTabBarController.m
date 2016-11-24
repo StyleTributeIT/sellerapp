@@ -17,13 +17,14 @@
 @property (strong, nonatomic) UIButton *addItemButton;
 @property (strong, nonatomic) UIButton *myAccountButton;
 @property (strong, nonatomic) UIButton *notificationsButton;
+@property (strong, nonatomic) NSCoder *decoder;
 @end
 
 @implementation MainTabBarController
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self =  [super initWithCoder:aDecoder];
-    
+    self.decoder = aDecoder;
     if(self) {
         self.previousTabIndex = 0;
         self.delegate = self;
@@ -81,6 +82,8 @@
     return self;
 }
 
+
+
 //- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
 //    NSLog(@"QWE!!!!!!!!!!!!");
 //}
@@ -89,7 +92,16 @@
     [self setSelectedIndex:self.previousTabIndex];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
+    keyWindow.rootViewController = self;
+}
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
 
 -(void)setSelectedIndex:(NSUInteger)selectedIndex {
     self.previousTabIndex = self.selectedIndex;
