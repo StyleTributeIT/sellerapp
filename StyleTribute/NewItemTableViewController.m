@@ -102,7 +102,7 @@ int sectionOffset = 0;
     -(void)viewDidAppear:(BOOL)animated {
         [super viewDidAppear:animated];
         if(self.isTutorialPresented) {
-           // [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+            [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
             self.isTutorialPresented = NO;
         }
         

@@ -157,6 +157,8 @@ typedef void(^ImageLoadBlock)(int);
     }
 }
 
+
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if(self.isTutorialPresented) {

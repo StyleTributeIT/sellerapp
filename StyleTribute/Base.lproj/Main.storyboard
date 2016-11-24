@@ -588,11 +588,11 @@
             </objects>
             <point key="canvasLocation" x="956" y="2355"/>
         </scene>
-        <!--Notifications-->
+        <!--Notification-->
         <scene sceneID="As9-Y2-XEX">
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG"/>
+                    <tabBarItem key="tabBarItem" title="Notification" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1522,10 +1522,10 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="3055" y="-1315"/>
         </scene>
-        <!--Main Tab Bar Controller-->
+        <!--Tabbet View Controller-->
         <scene sceneID="5D6-10-5KI">
             <objects>
-                <tabBarController id="dua-YX-667" customClass="MainTabBarController" sceneMemberID="viewController">
+                <tabBarController id="dua-YX-667" customClass="TabbetViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="eKq-5x-BKt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2098,11 +2098,14 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="134" y="1609"/>
         </scene>
-        <!--My account-->
+        <!--Profile-->
         <scene sceneID="yse-FJ-1hJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My account" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-17"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2120,8 +2123,8 @@ Citilink Warehouse Complex
         <!--Add Item Nav Controller-->
         <scene sceneID="BWq-Cj-uqG">
             <objects>
-                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="camera" id="VZF-2f-aWD"/>
+                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="VZF-2f-aWD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2185,7 +2188,6 @@ Citilink Warehouse Complex
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
         <image name="Logo" width="64" height="64"/>
-        <image name="camera" width="46" height="46"/>
         <image name="notifications" width="23" height="22"/>
         <image name="notifications-pink" width="23" height="22"/>
         <image name="profile" width="22" height="22"/>

@@ -17,13 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-/*    self.viewControllers = [NSArray arrayWithObjects:
-                            [self viewControllerWithTabTitle:@"My warbrode" image:[UIImage imageNamed:@"wardrobe"]],
-                            [self viewControllerWithTabTitle:@"Shop" image:[UIImage imageNamed:@"shop"]],
-                            [self viewControllerWithTabTitle:@"Sell" image:nil],
-                            [self viewControllerWithTabTitle:@"Profile 2" image:[UIImage imageNamed:@"profile"]],
-                            [self viewControllerWithTabTitle:@"Notifications" image:[UIImage imageNamed:@"notifications"]], nil]; */
-    
 }
 
 - (void)didReceiveMemoryWarning {

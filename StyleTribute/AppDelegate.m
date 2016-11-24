@@ -47,10 +47,6 @@
     [[UIFloatLabelTextField appearance] setTextAlignment:NSTextAlignmentCenter];
     [[UIFloatLabelTextField appearance] setFloatLabelActiveColor:pink];
     [[UIFloatLabelTextField appearance] setFloatLabelFont:[UIFont fontWithName:@"Montserrat-Light" size:10]];
-//    [[UIFloatLabelTextField appearance] setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
-    
-    
-//    [[UILabel appearanceWhenContainedIn:[UITextField class], nil] setTextColor:[UIColor blueColor]];
     
     if([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
