@@ -54,7 +54,7 @@
         } failure:^(NSString *error) {
         }];
     }
-    
+    [self.tabBarController.navigationController.navigationBar setShadowImage:[UIImage new]];
     //[self updateProducts];
     
    /* NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],

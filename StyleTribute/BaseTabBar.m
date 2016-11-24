@@ -14,6 +14,8 @@
 
 @implementation BaseTabBar
 
+NSInteger CENTER_BTN_IDX = 3;
+
 -(void)viewDidLoad
 {
     
@@ -24,18 +26,26 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        UIImage* tabBarBackground = [self resizeBackgroundImage:[UIImage imageNamed:@"TabBar"]];
-        [[UITabBar appearance] setBackgroundImage:tabBarBackground];
-        [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
-        [UITabBarItem appearance].titlePositionAdjustment = UIOffsetMake(0, -15);
-        UIView *toplineView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                       1.0f,
-                                                                       self.view.frame.size.width, 1.f)];
-        toplineView.backgroundColor = [UIColor colorWithRed:255/255.f green:255/255.f blue:255/255.f alpha:1.0f];
-        [self.view addSubview:toplineView];
+        UIImage* tabBarBackground = [self imageWithImage:[UIImage imageNamed:@"topShadow"] scaledToSize:CGSizeMake(self.view.frame.size.width, 50)];
+        [UITabBar appearance].shadowImage = tabBarBackground;
+        for (UITabBarItem *tbi in self.tabBar.items) {
+            tbi.image = [tbi.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        }
         
     }
     return self;
+}
+
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -43,19 +53,9 @@
     
 }
 
--(UIImage*)resizeBackgroundImage:(UIImage*)image {
-    CGSize xsize = CGSizeMake(self.view.frame.size.width, image.size.height + 10.f);
-    CGFloat edgeWidth = round((xsize.width - image.size.width)/2);
-    CGImageRef edgeImage = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0, 0, edgeWidth*2, image.size.height*2));
-    UIGraphicsBeginImageContext(xsize);
-    UIImage* img = [UIImage imageWithCGImage:edgeImage];
-    [image drawInRect:CGRectMake(edgeWidth, 0, image.size.width, image.size.height)];
-    [img drawInRect:CGRectMake(0, 0, edgeWidth, image.size.height)];
-    [img drawInRect:CGRectMake(image.size.width + edgeWidth, 0, edgeWidth, image.size.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CGImageRelease(edgeImage);
-    return newImage;
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    
 }
 
 // Create a view controller and setup it's tab bar item with a title and image
@@ -63,20 +63,22 @@
 {
     UIViewController* viewController = [[UIViewController alloc] init];
     viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:0];
-    viewController.tabBarItem.imageInsets = UIEdgeInsetsMake(15, 0, -15, 0);
+    viewController.tabBarItem.imageInsets = UIEdgeInsetsMake(45, 0, -45, 0);
     return viewController;
 }
 
 - (void)viewWillLayoutSubviews {
     CGRect tabFrame = self.tabBar.frame;
-    tabFrame.size.height = 80;
-    tabFrame.origin.y = self.view.frame.size.height - 80;
+    tabFrame.size.height = 95;
+    tabFrame.origin.y = self.view.frame.size.height - 55;
     self.tabBar.frame = tabFrame;
+    
 }
 
 // Create a custom UIButton and add it to the center of our tab bar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
 {
+    
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
@@ -85,25 +87,41 @@
     [button setTitle:@"Sell" forState:UIControlStateNormal];
     CGSize imageSize = button.imageView.image.size;
     button.titleEdgeInsets = UIEdgeInsetsMake(
-                                              0.0, - imageSize.width, - (button.frame.size.height + 20), 0.0);
+                                              0.0, - imageSize.width, - (button.frame.size.height + 30), 0.0);
     [button setTitleColor:[UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState: UIControlStateNormal];
-    [button.titleLabel setFont:[UIFont fontWithName:@"Montserrat-Light" size:12]];
+    [button.titleLabel setFont:[UIFont fontWithName:@"Montserrat-Light" size:11]];
     [button addTarget:self action:@selector(addItemButtonPressed) forControlEvents:(UIControlEventTouchUpInside)];
     CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
-    if (heightDifference < 0)
+   // if (heightDifference < 0)
     {
         CGPoint center = self.tabBar.center;
         center.y = center.y - 30;
         button.center = center;
     }
-    else
+  /*  else
     {
         CGPoint center = self.tabBar.center;
         center.y = center.y - 30;
         button.center = center;
-    }
+    }*/
     
     [self.view addSubview:button];
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    if (viewController.view.tag == CENTER_BTN_IDX)
+    {
+        
+    }
+}
+
+-(void)setSelectedIndex:(NSUInteger)selectedIndex
+{
+    if (selectedIndex == CENTER_BTN_IDX)
+        [self addItemButtonPressed];
+    else
+        [super setSelectedIndex:selectedIndex];
 }
 
 - (void) addItemButtonPressed{

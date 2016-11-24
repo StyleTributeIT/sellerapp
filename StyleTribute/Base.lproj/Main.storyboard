@@ -592,7 +592,10 @@
         <scene sceneID="As9-Y2-XEX">
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notification" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG"/>
+                    <tabBarItem key="tabBarItem" title="Notification" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1526,7 +1529,7 @@ Citilink Warehouse Complex
         <scene sceneID="5D6-10-5KI">
             <objects>
                 <tabBarController id="dua-YX-667" customClass="TabbetViewController" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="eKq-5x-BKt">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBg" shadowImage="topShadow" id="eKq-5x-BKt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1995,11 +1998,14 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="-2266" y="480"/>
         </scene>
-        <!--My Wardrobe-->
+        <!--Wardrobe-->
         <scene sceneID="dii-Pr-ipc">
             <objects>
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
+                    <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2085,7 +2091,10 @@ Citilink Warehouse Complex
         <scene sceneID="2TK-Bj-0EM">
             <objects>
                 <navigationController id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shop" image="shop" id="1mj-Cd-aNH"/>
+                    <tabBarItem key="tabBarItem" title="Shop" image="shop" selectedImage="shop-pink" id="1mj-Cd-aNH">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2103,8 +2112,8 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-17"/>
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
@@ -2124,7 +2133,9 @@ Citilink Warehouse Complex
         <scene sceneID="BWq-Cj-uqG">
             <objects>
                 <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="VZF-2f-aWD"/>
+                    <tabBarItem key="tabBarItem" tag="3" enabled="NO" title="" id="VZF-2f-aWD">
+                        <inset key="imageInsets" minX="0.0" minY="-45" maxX="0.0" maxY="45"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2193,8 +2204,11 @@ Citilink Warehouse Complex
         <image name="profile" width="22" height="22"/>
         <image name="profile-pink" width="22" height="22"/>
         <image name="shop" width="22" height="22"/>
+        <image name="shop-pink" width="22" height="22"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
+        <image name="tabBg" width="640" height="91"/>
+        <image name="topShadow" width="117" height="117"/>
         <image name="wardrobe" width="37" height="22"/>
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>

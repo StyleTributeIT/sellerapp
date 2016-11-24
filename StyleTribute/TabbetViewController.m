@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+     [self addCenterButtonWithImage:[UIImage imageNamed:@"camera"] highlightImage:[UIImage imageNamed:@"camera"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,7 +25,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self addCenterButtonWithImage:[UIImage imageNamed:@"camera"] highlightImage:[UIImage imageNamed:@"camera"]];
+   
 }
 
 @end
