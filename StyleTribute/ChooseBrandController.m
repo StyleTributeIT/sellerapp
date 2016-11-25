@@ -121,13 +121,13 @@
         NamedItem *item = [NamedItem new];
         item.name = self.searchingString;
         self.product.designer = item;
-        [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+        [self performSegueWithIdentifier:@"showItemEdited" sender:self];
         return;
     }
     NSArray* curSection = [self.sections objectAtIndex:indexPath.section];
     NamedItem* designer = [curSection objectAtIndex:indexPath.row];
     self.product.designer = designer;
-    [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+    [self performSegueWithIdentifier:@"showItemEdited" sender:self];
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {

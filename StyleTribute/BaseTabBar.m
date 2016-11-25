@@ -116,6 +116,7 @@ NSInteger CENTER_BTN_IDX = 3;
 }
 
 - (void) addItemButtonPressed{
+    [DataCache setSelectedItem:nil];
     [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"] animated:YES completion:nil] ;
 }
 

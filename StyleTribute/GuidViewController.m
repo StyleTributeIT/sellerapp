@@ -58,7 +58,6 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 - (IBAction)skip:(id)sender {
@@ -66,9 +65,6 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    
-    
-    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

@@ -67,6 +67,7 @@ int sectionOffset = 0;
     [aButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
     self.navigationItem.leftBarButtonItem = backButton;
+    self.navigationItem.hidesBackButton = YES;
     
 }
 
@@ -75,21 +76,21 @@ int sectionOffset = 0;
     {
         sectionOffset = 0;
         [super viewWillAppear:animated];
+        self.curProduct = [DataCache getSelectedItem];
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
             [DataCache setSelectedItem:self.curProduct];
-            [DataCache sharedInstance].isEditingItem = NO;
+            [DataCache sharedInstance].isEditingItem = NO;            
         }
-        self.curProduct = [DataCache getSelectedItem];
-        [self.tableView reloadData];
         if(!self.isEditing && self.curProduct.category.name.length == 0) {
             [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
         } else
         {
             self.navigationItem.title = self.curProduct.category.name;
         }
+        [self.tableView reloadData];
     }
-    
+
     -(void)viewDidAppear:(BOOL)animated {
         [super viewDidAppear:animated];
         self.isInitialized = YES;
@@ -97,8 +98,10 @@ int sectionOffset = 0;
     
     -(IBAction)cancel:(id)sender {
         sectionOffset = 0;
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self dismissViewControllerAnimated:true completion:nil];
+        if (self.isEditingItem)
+            [self dismissViewControllerAnimated:true completion:nil];
+        else
+            [self.navigationController popViewControllerAnimated:YES];
     }
 
 - (IBAction)done:(id)sender {
@@ -630,30 +633,30 @@ int sectionOffset = 0;
     }
 }
     
-    - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"priceConditionSegue"])
     {
-        if ([segue.identifier isEqualToString:@"priceConditionSegue"])
-        {
-            ConditionPriceViewController *vc = segue.destinationViewController;
-            vc.isEditingItem = self.isEditingItem;
-        }
-        if ([segue.identifier isEqualToString:@"conditionSegue"])
-        {
-            ConditionTableViewController *vc = segue.destinationViewController;
-            vc.product = self.curProduct;
-        }
-        if([segue.identifier isEqualToString:@"priceSegue"]) {
-            PriceEditController* priceController = segue.destinationViewController;
-            priceController.product = self.curProduct;
-        } else if([segue.identifier isEqualToString:@"ChooseBrandSegue2"]) {
-            ChooseBrandController* brandController = segue.destinationViewController;
-            brandController.product = self.curProduct;
-        } else if ([segue.identifier isEqualToString:@"chooseTopCategorySegue"])
-        {
-            TopCategoriesViewController *categories = segue.destinationViewController;
-            categories.product = self.curProduct;
-        }
+        ConditionPriceViewController *vc = segue.destinationViewController;
+        vc.isEditingItem = self.isEditingItem;
     }
+    if ([segue.identifier isEqualToString:@"conditionSegue"])
+    {
+        ConditionTableViewController *vc = segue.destinationViewController;
+        vc.product = self.curProduct;
+    }
+    if([segue.identifier isEqualToString:@"priceSegue"]) {
+        PriceEditController* priceController = segue.destinationViewController;
+        priceController.product = self.curProduct;
+    } else if([segue.identifier isEqualToString:@"ChooseBrandSegue2"]) {
+        ChooseBrandController* brandController = segue.destinationViewController;
+        brandController.product = self.curProduct;
+    } else if ([segue.identifier isEqualToString:@"chooseTopCategorySegue"])
+    {
+        TopCategoriesViewController *categories = segue.destinationViewController;
+        categories.product = self.curProduct;
+    }
+}
 
 #pragma mark - Action sheet
 

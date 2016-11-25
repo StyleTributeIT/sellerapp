@@ -108,6 +108,7 @@
 		E173F4841DE8423E00D86141 /* GuidelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F4821DE8423E00D86141 /* GuidelineViewController.m */; };
 		E173F4851DE8423E00D86141 /* GuidelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E173F4831DE8423E00D86141 /* GuidelineViewController.xib */; };
 		E173F4881DE8D93200D86141 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F4871DE8D93200D86141 /* BaseTableViewCell.m */; };
+		E173F48F1DE8F97200D86141 /* ItemNavigationBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F48E1DE8F97200D86141 /* ItemNavigationBase.m */; };
 		E18060BA1DD3230800B4056F /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060B91DD3230800B4056F /* MessageTableViewCell.m */; };
 		E18060BD1DD328A200B4056F /* ConditionPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BC1DD328A200B4056F /* ConditionPriceViewController.m */; };
 		E18060C01DD32A4C00B4056F /* PriceConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */; };
@@ -312,6 +313,8 @@
 		E173F4861DE8D93200D86141 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		E173F4871DE8D93200D86141 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		E173F4891DE8DA6F00D86141 /* StyleTribute-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StyleTribute-Prefix.pch"; sourceTree = "<group>"; };
+		E173F48D1DE8F97200D86141 /* ItemNavigationBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemNavigationBase.h; sourceTree = "<group>"; };
+		E173F48E1DE8F97200D86141 /* ItemNavigationBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemNavigationBase.m; sourceTree = "<group>"; };
 		E18060B81DD3230800B4056F /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		E18060B91DD3230800B4056F /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		E18060BB1DD328A200B4056F /* ConditionPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionPriceViewController.h; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 				E18060BC1DD328A200B4056F /* ConditionPriceViewController.m */,
 				E18060C31DD3F70000B4056F /* EnterPriceViewController.h */,
 				E18060C41DD3F70100B4056F /* EnterPriceViewController.m */,
+				E173F48D1DE8F97200D86141 /* ItemNavigationBase.h */,
+				E173F48E1DE8F97200D86141 /* ItemNavigationBase.m */,
 			);
 			name = NewItem;
 			sourceTree = "<group>";
@@ -1101,6 +1106,7 @@
 				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */,
+				E173F48F1DE8F97200D86141 /* ItemNavigationBase.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				5330FFB01DDE4834001B0D0D /* SwipeView.m in Sources */,

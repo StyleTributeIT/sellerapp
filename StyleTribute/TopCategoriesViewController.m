@@ -72,6 +72,13 @@
     [self.collectionCategories deselectItemAtIndexPath:indexPath animated:NO];
     self.selectedCategory = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
    // [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+    Product *product = [DataCache getSelectedItem];
+    product.category = self.selectedCategory;
+    product.photos = [NSMutableArray arrayWithCapacity:product.category.imageTypes.count];
+    for(int i = 0; i < product.category.imageTypes.count; ++i) {
+        [product.photos addObject:[NSNull null]];
+    }
+    [DataCache setSelectedItem:product];
     [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:nil];
 }
 
