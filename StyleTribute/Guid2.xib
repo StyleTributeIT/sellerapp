@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -64,16 +64,17 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="no7-58-lRJ" firstAttribute="leading" secondItem="GlT-5B-dNx" secondAttribute="leading" id="04y-zK-eO0"/>
-                <constraint firstItem="rCK-Fr-dDd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="106" id="2ce-Ag-2zM"/>
                 <constraint firstItem="GlT-5B-dNx" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="43" id="3cb-xh-5l3"/>
                 <constraint firstItem="BxZ-wJ-9ym" firstAttribute="centerX" secondItem="no7-58-lRJ" secondAttribute="centerX" id="9lx-OQ-EfV"/>
                 <constraint firstAttribute="trailing" secondItem="1jS-aD-A0u" secondAttribute="trailing" id="9y2-iV-amn"/>
                 <constraint firstItem="no7-58-lRJ" firstAttribute="trailing" secondItem="GlT-5B-dNx" secondAttribute="trailing" id="MAF-Lq-A8z"/>
-                <constraint firstAttribute="bottom" secondItem="BxZ-wJ-9ym" secondAttribute="bottom" constant="114" id="PzY-Sn-2wd"/>
+                <constraint firstItem="BxZ-wJ-9ym" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WGS-oh-GVi"/>
                 <constraint firstItem="no7-58-lRJ" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="82" id="WvD-qf-5iH"/>
+                <constraint firstItem="rCK-Fr-dDd" firstAttribute="top" secondItem="BxZ-wJ-9ym" secondAttribute="bottom" constant="18" id="ZJW-iu-zSC"/>
+                <constraint firstItem="BxZ-wJ-9ym" firstAttribute="top" secondItem="no7-58-lRJ" secondAttribute="bottom" constant="90" id="b2X-L6-Eaw"/>
                 <constraint firstItem="GlT-5B-dNx" firstAttribute="centerX" secondItem="1jS-aD-A0u" secondAttribute="centerX" id="eMs-ZL-QD8"/>
                 <constraint firstItem="1jS-aD-A0u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fPk-JP-R9s"/>
-                <constraint firstAttribute="bottom" secondItem="rCK-Fr-dDd" secondAttribute="bottom" constant="51" id="rPS-fX-RXc"/>
+                <constraint firstItem="rCK-Fr-dDd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gFZ-07-0E2"/>
                 <constraint firstItem="1jS-aD-A0u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sk0-ET-PkN"/>
             </constraints>
         </view>

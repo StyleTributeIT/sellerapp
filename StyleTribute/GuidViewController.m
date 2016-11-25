@@ -18,8 +18,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    self.swipeView.currentPage = 0;
+    [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
+
+- (IBAction)back:(id)sender {
+    if (self.swipeView.currentPage == 0)
+    {
+        [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+    } else {
+        self.swipeView.currentPage = self.swipeView.currentPage--;
+    }
+}
+
+- (IBAction)skip:(id)sender {
+    if (self.swipeView.currentPage == 2)
+    {
+        [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+    } else {
+        self.swipeView.currentPage = self.swipeView.currentPage++;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

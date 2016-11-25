@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -47,14 +47,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="eJF-KF-1I1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="106" id="2zG-Z0-jy5"/>
                 <constraint firstAttribute="trailing" secondItem="rxk-8r-ipD" secondAttribute="trailing" id="3Uw-qT-5hu"/>
                 <constraint firstItem="uZX-L5-Dgf" firstAttribute="top" secondItem="rxk-8r-ipD" secondAttribute="bottom" constant="22" id="5Ps-mO-he0"/>
                 <constraint firstItem="uZX-L5-Dgf" firstAttribute="centerX" secondItem="rxk-8r-ipD" secondAttribute="centerX" id="DYR-Gd-aLI"/>
                 <constraint firstItem="rxk-8r-ipD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="H5u-Gb-ZmS"/>
+                <constraint firstItem="eJF-KF-1I1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Kab-7z-dlE"/>
                 <constraint firstItem="uZX-L5-Dgf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="49" id="Mse-o1-fsa"/>
                 <constraint firstItem="rxk-8r-ipD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nD6-iG-7fH"/>
-                <constraint firstAttribute="bottom" secondItem="eJF-KF-1I1" secondAttribute="bottom" constant="63" id="wKe-FR-dng"/>
+                <constraint firstItem="eJF-KF-1I1" firstAttribute="top" secondItem="uZX-L5-Dgf" secondAttribute="bottom" constant="137" id="ycH-C9-CTD"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="136.5"/>
         </view>

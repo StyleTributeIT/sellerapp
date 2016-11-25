@@ -102,7 +102,8 @@ int sectionOffset = 0;
     -(void)viewDidAppear:(BOOL)animated {
         [super viewDidAppear:animated];
         if(self.isTutorialPresented) {
-            [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+            //[self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+            
             self.isTutorialPresented = NO;
         }
         
@@ -645,7 +646,12 @@ int sectionOffset = 0;
 }
 
 #pragma mark - Segues unwind handlers
-    
+
+-(IBAction)unwindToCamera:(UIStoryboardSegue*)sender
+{
+    [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+}
+
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
     if ([sender.sourceViewController isKindOfClass:[ItemDescriptionViewController class]])
     {
@@ -746,7 +752,13 @@ int sectionOffset = 0;
              [defs setBool:NO forKey:@"displayTutorial"];
              self.isTutorialPresented = YES;
              } else*/ {
-                 [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+                  Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+                 if (![photo isKindOfClass:[NSNull class]])
+                 {
+                     [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+                 } else
+                     [self performSegueWithIdentifier:@"showGuide" sender:self];
+                 
              }
             break;
         }
