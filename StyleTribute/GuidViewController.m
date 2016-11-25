@@ -12,6 +12,7 @@
 
 @interface GuidViewController ()
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
+@property (strong, nonatomic) IBOutlet UIView *pagesContainer;
 
 @end
 
@@ -31,8 +32,19 @@
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
-    [[self.pageController view] setFrame:[[self view] bounds]];
+    [[self.pageController view] setFrame:[[self pagesContainer] bounds]];
     
+    GuidelineViewController *initialViewController = [self viewControllerAtIndex:0];
+    
+    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+    
+    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    [self addChildViewController:self.pageController];
+    [[self pagesContainer] addSubview:[self.pageController view]];
+    [self.pageController didMoveToParentViewController:self];
+    [UIPageControl appearance].tintColor = [UIColor blackColor];
+
 }
 
 - (IBAction)back:(id)sender {
@@ -45,12 +57,7 @@
 }
 
 - (IBAction)skip:(id)sender {
-    if (self.swipeView.currentPage == 2)
-    {
-        [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
-    } else {
-        self.swipeView.currentPage = self.swipeView.currentPage++;
-    }
+    [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
 }
 
 - (GuidelineViewController *)viewControllerAtIndex:(NSUInteger)index {
