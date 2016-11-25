@@ -595,20 +595,12 @@
 		7AA5EADA1AEE73D600CAB83B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E173F48C1DE8F06B00D86141 /* Login/Register */,
+				E173F48B1DE8F02F00D86141 /* Home */,
 				E173F4801DE8363900D86141 /* Guidelines */,
 				E141DEB01DD097C1001693F7 /* NewItem */,
-				7AA5EADB1AEE740500CAB83B /* LoginController.h */,
-				7AA5EADC1AEE740500CAB83B /* LoginController.m */,
-				7A3FA4941AEF7B8E0050803C /* RegistrationController.h */,
-				7A3FA4951AEF7B8E0050803C /* RegistrationController.m */,
 				7A3FA4971AEFA4B70050803C /* BaseInputController.h */,
 				7A3FA4981AEFA4B70050803C /* BaseInputController.m */,
-				7A3FA49D1AEFC2D00050803C /* WelcomeController.h */,
-				7A3FA49E1AEFC2D00050803C /* WelcomeController.m */,
-				7A3FA4A41AEFEAEF0050803C /* WardrobeController.h */,
-				7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */,
-				7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */,
-				7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */,
 				7AFE43611AF22935004B982B /* AddWardrobeItemController.h */,
 				7AFE43621AF22935004B982B /* AddWardrobeItemController.m */,
 				7A64270F1AF8E7E10051466E /* PriceEditController.h */,
@@ -617,8 +609,6 @@
 				7A6427131AF901CF0051466E /* ChooseCategoryController.m */,
 				7A116C8D1AFA449300A4D7D9 /* TutorialController.h */,
 				7A116C8E1AFA449300A4D7D9 /* TutorialController.m */,
-				7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */,
-				7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */,
 				7ABF95E71AFB500C00E6AA52 /* EditProfileController.h */,
 				7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */,
 				7ABF95EA1AFB68C300E6AA52 /* ResidentAddressController.h */,
@@ -631,10 +621,6 @@
 				7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */,
 				7AFF6EEC1BA2BCD40023CDD4 /* ChooseBrandController.h */,
 				7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */,
-				E16205D61DC9294200A916F2 /* ShopViewController.h */,
-				E16205D71DC9294200A916F2 /* ShopViewController.m */,
-				E16205D91DC92D3F00A916F2 /* NotificationsViewController.h */,
-				E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */,
 				E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */,
 				E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */,
 				E173F4771DE6D68500D86141 /* BaseTabBar.h */,
@@ -742,6 +728,36 @@
 			children = (
 			);
 			name = Controls;
+			sourceTree = "<group>";
+		};
+		E173F48B1DE8F02F00D86141 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7A3FA4A41AEFEAEF0050803C /* WardrobeController.h */,
+				7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */,
+				7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */,
+				7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */,
+				E16205D61DC9294200A916F2 /* ShopViewController.h */,
+				E16205D71DC9294200A916F2 /* ShopViewController.m */,
+				E16205D91DC92D3F00A916F2 /* NotificationsViewController.h */,
+				E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		E173F48C1DE8F06B00D86141 /* Login/Register */ = {
+			isa = PBXGroup;
+			children = (
+				7AA5EADB1AEE740500CAB83B /* LoginController.h */,
+				7AA5EADC1AEE740500CAB83B /* LoginController.m */,
+				7A3FA4941AEF7B8E0050803C /* RegistrationController.h */,
+				7A3FA4951AEF7B8E0050803C /* RegistrationController.m */,
+				7A3FA49D1AEFC2D00050803C /* WelcomeController.h */,
+				7A3FA49E1AEFC2D00050803C /* WelcomeController.m */,
+				7A4AA2CA1AF0F2A900190ED3 /* FBRegistrationController.h */,
+				7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */,
+			);
+			name = Login/Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -30,12 +30,12 @@
     // Override point for customization after application launch.
     
     [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
-//    [UIButton appearance].titleLabel.numberOfLines = 1;
-//    [UIButton appearance].titleLabel.adjustsFontSizeToFitWidth = YES;
-//    [UIButton appearance].titleLabel.lineBreakMode = NSLineBreakByClipping;
     UIColor* pink = [UIColor colorWithRed:218/256.0 green:0 blue:100.0/255 alpha:1];
     [[UITabBar appearance] setSelectedImageTintColor:pink];
-    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor clearColor];
     [[CustomTextField appearance] setBackground:[[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)]];
     [[CustomTextField appearance] setBorderStyle:UITextBorderStyleNone];
     [[CustomTextField appearance] setFont:[UIFont fontWithName:@"Montserrat-UltraLight" size:14]];
