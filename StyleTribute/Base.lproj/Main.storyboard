@@ -594,11 +594,11 @@
             </objects>
             <point key="canvasLocation" x="956" y="2355"/>
         </scene>
-        <!--Notification-->
+        <!--Notifications-->
         <scene sceneID="As9-Y2-XEX">
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notification" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
                         <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
                     </tabBarItem>
