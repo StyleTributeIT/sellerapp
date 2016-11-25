@@ -421,6 +421,7 @@
 		7A0EB6061AEE23D400D90001 /* StyleTribute */ = {
 			isa = PBXGroup;
 			children = (
+				E173F48A1DE8E7F900D86141 /* Controls */,
 				5330FFA81DDE2FAC001B0D0D /* Storyboards */,
 				7A526C6B1BA6ED97007A6186 /* Categories */,
 				7AFF6EE81BA1B1BA0023CDD4 /* Segues */,
@@ -734,6 +735,13 @@
 				E173F4821DE8423E00D86141 /* GuidelineViewController.m */,
 			);
 			name = Guidelines;
+			sourceTree = "<group>";
+		};
+		E173F48A1DE8E7F900D86141 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

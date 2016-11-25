@@ -30,7 +30,9 @@
     // Override point for customization after application launch.
     
     [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
-    
+//    [UIButton appearance].titleLabel.numberOfLines = 1;
+//    [UIButton appearance].titleLabel.adjustsFontSizeToFitWidth = YES;
+//    [UIButton appearance].titleLabel.lineBreakMode = NSLineBreakByClipping;
     UIColor* pink = [UIColor colorWithRed:218/256.0 green:0 blue:100.0/255 alpha:1];
     [[UITabBar appearance] setSelectedImageTintColor:pink];
     
