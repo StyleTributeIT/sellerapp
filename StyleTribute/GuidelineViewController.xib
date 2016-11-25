@@ -5,12 +5,24 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Light.otf">
+            <string>Montserrat-Light</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GuidelineViewController">
             <connections>
                 <outlet property="guidImage" destination="75F-ss-Kms" id="YfW-Xy-Jsk"/>
+                <outlet property="subtitle" destination="C65-vJ-64f" id="bET-Zm-vAf"/>
+                <outlet property="topTitle" destination="dtb-hR-TPX" id="8gB-wd-a0S"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,17 +32,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guid1" translatesAutoresizingMaskIntoConstraints="NO" id="75F-ss-Kms">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="312"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="325" id="vRQ-gq-gkU"/>
+                        <constraint firstAttribute="width" secondItem="75F-ss-Kms" secondAttribute="height" multiplier="125:104" id="Gvk-Zw-fi2"/>
+                        <constraint firstAttribute="height" constant="312" id="vRQ-gq-gkU"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here are some tips to help you take the best photos of your item!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-hR-TPX">
+                    <rect key="frame" x="8" y="363" width="359" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="65" id="PPk-ca-l6T"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow guidelines given on the camera" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-vJ-64f">
+                    <rect key="frame" x="8" y="389" width="359" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="rrj-r0-InP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="75F-ss-Kms" secondAttribute="trailing" id="IyS-lo-TQE"/>
+                <constraint firstAttribute="trailing" secondItem="C65-vJ-64f" secondAttribute="trailing" constant="8" id="aDV-Y7-yZd"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aLu-E3-z7K"/>
+                <constraint firstItem="C65-vJ-64f" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="77" id="dMf-hl-aeS"/>
+                <constraint firstItem="dtb-hR-TPX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="eaq-OM-vnQ"/>
+                <constraint firstItem="dtb-hR-TPX" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fWr-Pj-dyT"/>
+                <constraint firstItem="dtb-hR-TPX" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="51" id="jxs-t5-WBM"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oZ1-r7-fYW"/>
+                <constraint firstItem="C65-vJ-64f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="rVT-6f-1Nc"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="75.5"/>
         </view>

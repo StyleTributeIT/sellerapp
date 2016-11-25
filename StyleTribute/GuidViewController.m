@@ -10,9 +10,10 @@
 #import "GuidelineViewController.h"
 #import "SwipeView.h"
 
-@interface GuidViewController ()
+@interface GuidViewController ()<UIPageViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 @property (strong, nonatomic) IBOutlet UIView *pagesContainer;
+@property (strong, nonatomic) IBOutlet UIButton *getStartedBtn;
 
 @end
 
@@ -32,6 +33,7 @@
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pageController.dataSource = self;
+    self.pageController.delegate = self;
     [[self.pageController view] setFrame:[[self pagesContainer] bounds]];
     
     GuidelineViewController *initialViewController = [self viewControllerAtIndex:0];
@@ -67,12 +69,20 @@
     return childViewController;
 }
 
+-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    
+}
+
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSUInteger index = [(GuidelineViewController *)viewController index];
     
     if (index == 0) {
+        self.getStartedBtn.hidden = NO;
         return nil;
+    } else {
+        self.getStartedBtn.hidden = YES;
     }
     
     // Decrease the index by 1 to return

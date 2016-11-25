@@ -154,7 +154,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="459F5466-C5A0-4C10-BADA-B40FD8C86AF7" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4EDC05BF-3F45-4FBF-A017-7F09F71E59EF" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
                                                                 <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                                 <gestureRecognizers/>
                                                             </imageView>
@@ -630,7 +630,7 @@
             </objects>
             <point key="canvasLocation" x="7001" y="1606"/>
         </scene>
-        <!--Title-->
+        <!--Guid View Controller-->
         <scene sceneID="PqH-pa-P7Z">
             <objects>
                 <viewController id="QAI-zH-G4Q" customClass="GuidViewController" sceneMemberID="viewController">
@@ -643,19 +643,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sC-OB-eeX">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="534"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2sC-OB-eeX" secondAttribute="height" multiplier="125:178" id="Fh9-D7-3by"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-w9-02e">
+                                <rect key="frame" x="117" y="584" width="141" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="IjG-44-R0l"/>
+                                    <constraint firstAttribute="width" constant="141" id="edQ-mi-6NF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                                <state key="normal" title="GET STARTED" backgroundImage="redBtn"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2sC-OB-eeX" secondAttribute="trailing" id="105-Zq-YSk"/>
                             <constraint firstItem="2sC-OB-eeX" firstAttribute="leading" secondItem="H3V-7Y-360" secondAttribute="leading" id="Af6-1V-h2g"/>
+                            <constraint firstItem="xrc-w9-02e" firstAttribute="centerX" secondItem="2sC-OB-eeX" secondAttribute="centerX" id="GWK-e1-hal"/>
+                            <constraint firstItem="V28-Wf-3b6" firstAttribute="top" secondItem="xrc-w9-02e" secondAttribute="bottom" constant="37" id="UBw-7K-nuL"/>
                             <constraint firstItem="2sC-OB-eeX" firstAttribute="top" secondItem="9Y0-ij-mTg" secondAttribute="bottom" id="mNL-2q-oEo"/>
-                            <constraint firstItem="V28-Wf-3b6" firstAttribute="top" secondItem="2sC-OB-eeX" secondAttribute="bottom" id="yPl-UQ-C1i"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="nSc-a1-ZWD">
+                    <navigationItem key="navigationItem" id="nSc-a1-ZWD">
                         <barButtonItem key="leftBarButtonItem" image="backBtn" id="lqj-8H-Pyx">
                             <connections>
                                 <action selector="back:" destination="QAI-zH-G4Q" id="QvX-Yd-FZm"/>
@@ -668,6 +681,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="getStartedBtn" destination="xrc-w9-02e" id="hxV-Je-Xxl"/>
                         <outlet property="pagesContainer" destination="2sC-OB-eeX" id="ecr-g6-Nk5"/>
                         <segue destination="S2Y-g3-fVg" kind="unwind" identifier="unwindToCamera" unwindAction="unwindToCamera:" id="Xuw-IL-Z8t"/>
                     </connections>
@@ -1377,7 +1391,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6AE41DFF-3647-4C5D-A814-116AF50A3B34" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="362B41B9-0F62-4256-BBBC-EA6B54C8E888" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
                                             <rect key="frame" x="340" y="8" width="27" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="27" id="96c-NZ-Ba1"/>
@@ -1647,7 +1661,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="bI6-AO-CbM">
-                        <barButtonItem key="leftBarButtonItem" image="7E4E7FAE-2F16-4D5D-BF2E-C6580CC39C77" id="iE0-kw-zEx">
+                        <barButtonItem key="leftBarButtonItem" image="BFA2863D-B01D-4D46-827A-B2923544D209" id="iE0-kw-zEx">
                             <connections>
                                 <action selector="backPressed:" destination="sNb-r6-Kfh" id="H2o-R9-X0l"/>
                             </connections>
@@ -1673,7 +1687,135 @@
         </scene>
     </scenes>
     <resources>
-        <image name="459F5466-C5A0-4C10-BADA-B40FD8C86AF7" width="64" height="64">
+        <image name="362B41B9-0F62-4256-BBBC-EA6B54C8E888" width="39" height="39">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
+GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
+DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
+RkZSZXByZXNlbnRhdGlvboAGgAdPERq6TU0AKgAAF8z///8A////AP///wDGxsYAxcXFAMbGxgDGxsYA
+xsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGA8XFxUjGxsaNxsbGscbGxszFxcXkxsbG/8bGxuTFxcXM
+xcXFscbGxo3GxsZIxsbGA8XFxQDFxcUAxcXFAMbGxgDGxsYAxsbGAMXFxQDFxcUAxsbGAP///wD///8A
+////AP///wD///8A////AP///wDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAMbGxjzFxcWr
+xsbG8NbW1v/l5eX/7e3t//T09P/4+Pj///////n5+f/09PT/7e3t/+Xl5f/W1tb/xsbG8MXFxavGxsY8
+xcXFAMXFxQDGxsYAxsbGAMXFxQDGxsYAxcXFAP///wD///8A////AP///wD///8A////AP///wDGxsYA
+xsbGAMbGxgDFxcUAxsbGAMXFxQDGxsYqxsbGtNPT0//r6+v//Pz8////////////////////////////
+/////////////////////////////////Pz8/+vr6//T09P/xsbGtMbGxirGxsYAxsbGAMbGxgDGxsYA
+xcXFAP///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMXFxQDFxcUAxsbGBsbGxpDPz8//
+5ubm////////////////////////////////////////////////////////////////////////////
+////////////////5ubm/8/Pz//FxcWQxsbGBsXFxQDFxcUAxcXFAP///wD///8A////AP///wD///8A
+////AP///wDGxsYAxsbGAMbGxgDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
+//////////////////////////////////////////////////////////////////////7+/v/e3t7/
+xsbGwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDFxcUAxcXFAMbGxirGxsbe
+4eHh////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////4eHh/8XFxd7GxsYqxsbGAP///wD///8A
+////AP///wD///8A////AP///wDGxsYAxsbGFcbGxtvm5ub/////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////+bm5v/GxsbbxsbGFf///wD///8A////AP///wD///8A////AP///wDGxsYG
+xsbGwOLi4v//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////i4uL/
+xsbGwMXFxQb///8A////AP///wD///8A////AP///wDFxcWW3t7e////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////3t7e/8XFxZb///8A////AP///wD///8A
+////AMbGxjzT09P/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////9PT0//FxcU8////AP///wD///8A////AMbGxsnr6+v/////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////+rq6v/GxsbJ
+////AP///wD///8AxsbGRdXV1f//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////V1dX/xsbGRf///wD///8AxcXFru3t7f//////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////s7Oz/xsbGrv///wDGxsYSxsbG+f7+/v//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////+/v7/xsbG+cbGxhLGxsZU
+2NjY////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////2NjY/8XFxVTGxsaT5ubm////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+5ubm/8bGxpPGxsbA8fHx////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////8fHx/8bGxsDGxsbh9/f3////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////+Pj4/8bGxuHFxcXw/Pz8////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////Pz8/8bGxvDGxsb/
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////8bGxv/FxcXw/Pz8////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/Pz8/8bGxvPGxsbh9/f3////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////+Pj4/8bGxuHGxsbA8fHx////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////8fHx/8bGxsDGxsaT5+fn////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////5+fn/8bGxpPGxsZX
+2NjY////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////2dnZ/8bGxlfFxcUSxcXF+f7+/v//////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////+/v7/
+xcXF+cbGxhL///8AxcXFru3t7f//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////t7e3/xcXFrv///wD///8AxcXFRdXV1f//////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////V1dX/xcXFRf///wD///8A////AMXFxczq6ur/////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////+rq6v/GxsbM////AP///wD///8A
+////AMbGxjzT09P/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////9PT0//GxsY8////AP///wD///8A////AP///wDFxcWW3t7e////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////3t7e/8XFxZn///8A
+////AP///wD///8A////AP///wDGxsYGxsbGwOLi4v//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////i4uL/xsbGwMbGxgb///8A////AP///wD///8A////AP///wDGxsYA
+xcXFFcbGxt7m5ub/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////+fn5//Gxsbb
+xsbGFf///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMbGxirFxcXh4eHh////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////4eHh/8bGxuHGxsYqxsbGAP///wD///8A////AP///wD///8A
+////AP///wDGxsYAxsbGAMXFxQDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
+//////////////////////////////////////////////////////////////////////7+/v/e3t7/
+xcXFwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDFxcUA
+xsbGBsbGxpPQ0ND/6Ojo////////////////////////////////////////////////////////////
+////////////////////////////////5+fn/9DQ0P/GxsaTxsbGBsbGxgDFxcUAxsbGAP///wD///8A
+////AP///wD///8A////AP///wDFxcUAxcXFAMbGxgDGxsYAxcXFAMXFxQDGxsYtxsbGt9PT0//q6ur/
+/Pz8/////////////////////////////////////////////////////////////Pz8/+rq6v/T09P/
+xsbGt8bGxi3FxcUAxsbGAMbGxgDGxsYAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYA
+xcXFAMXFxQDFxcUAxsbGAMbGxgDGxsYAxsbGAMbGxjzGxsarxsbG8NbW1v/m5ub/7+/v//Pz8//6+vr/
+//////n5+f/z8/P/7u7u/+Xl5f/V1dX/xsbG8MbGxqvGxsY8xcXFAMXFxQDGxsYAxsbGAMbGxgDGxsYA
+xsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYA
+xsbGAMbGxgDGxsYAxsbGA8XFxUjFxcWNxsbGtMXFxczGxsbnxsbG/8bGxufFxcXMxcXFtMXFxY3FxcVI
+xsbGA8bGxgDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAP///wD///8A////AP///wAADgEA
+AAMAAAABACcAAAEBAAMAAAABACcAAAECAAMAAAAEAAAYegEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAER
+AAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABACcAAAEXAAQAAAABAAAXxAEc
+AAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAEAAAYgodzAAcAAAIwAAAYigAAAAAACAAIAAgACAAB
+AAEAAQABAAACMEFEQkUCEAAAbW50clJHQiBYWVogB88ABgADAAAAAAAAYWNzcEFQUEwAAAAAbm9uZQAA
+AAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1BREJFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAKY3BydAAAAPwAAAAyZGVzYwAAATAAAABrd3RwdAAAAZwAAAAUYmtwdAAA
+AbAAAAAUclRSQwAAAcQAAAAOZ1RSQwAAAdQAAAAOYlRSQwAAAeQAAAAOclhZWgAAAfQAAAAUZ1hZWgAA
+AggAAAAUYlhZWgAAAhwAAAAUdGV4dAAAAABDb3B5cmlnaHQgMTk5OSBBZG9iZSBTeXN0ZW1zIEluY29y
+cG9yYXRlZAAAAGRlc2MAAAAAAAAAEUFkb2JlIFJHQiAoMTk5OCkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZ
+WiAAAAAAAADzUQABAAAAARbMWFlaIAAAAAAAAAAAAAAAAAAAAABjdXJ2AAAAAAAAAAECMwAAY3VydgAA
+AAAAAAABAjMAAGN1cnYAAAAAAAAAAQIzAABYWVogAAAAAAAAnBgAAE+lAAAE/FhZWiAAAAAAAAA0jQAA
+oCwAAA+VWFlaIAAAAAAAACYxAAAQLwAAvpzSIiMkJVokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRt
+YXBJbWFnZVJlcKMkJidaTlNJbWFnZVJlcFhOU09iamVjdNIiIykqV05TQXJyYXmiKSfSIiMsLV5OU011
+dGFibGVBcnJheaMsKSfTLzAJMTIzV05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNTZXTlND
+b2xvcqI1J9IiIzg5V05TSW1hZ2WiOCdfEA9OU0tleWVkQXJjaGl2ZXLRPD1Ucm9vdIABAAgAEQAaACMA
+LQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIG4Yb
+ixuWG58bshu2G8EbyhvPG9cb2hvfG+4b8hv5HAEcDhwTHBUcFxwcHCQcJxwsHDQcNxxJHEwcUQAAAAAA
+AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
+</mutableData>
+        </image>
+        <image name="4EDC05BF-3F45-4FBF-A017-7F09F71E59EF" width="64" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1997,135 +2139,7 @@ ALsAvQDCANkA2wDdSX9JhEmPSZhJq0mvSbpJw0nISdBJ00nYSedJ60nySfpKB0oMSg5KEEoVSh1KIEol
 Si1KMEpCSkVKSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAEpMA
 </mutableData>
         </image>
-        <image name="6AE41DFF-3647-4C5D-A814-116AF50A3B34" width="39" height="39">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
-DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPERq6TU0AKgAAF8z///8A////AP///wDGxsYAxcXFAMbGxgDGxsYA
-xsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGA8XFxUjGxsaNxsbGscbGxszFxcXkxsbG/8bGxuTFxcXM
-xcXFscbGxo3GxsZIxsbGA8XFxQDFxcUAxcXFAMbGxgDGxsYAxsbGAMXFxQDFxcUAxsbGAP///wD///8A
-////AP///wD///8A////AP///wDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAMbGxjzFxcWr
-xsbG8NbW1v/l5eX/7e3t//T09P/4+Pj///////n5+f/09PT/7e3t/+Xl5f/W1tb/xsbG8MXFxavGxsY8
-xcXFAMXFxQDGxsYAxsbGAMXFxQDGxsYAxcXFAP///wD///8A////AP///wD///8A////AP///wDGxsYA
-xsbGAMbGxgDFxcUAxsbGAMXFxQDGxsYqxsbGtNPT0//r6+v//Pz8////////////////////////////
-/////////////////////////////////Pz8/+vr6//T09P/xsbGtMbGxirGxsYAxsbGAMbGxgDGxsYA
-xcXFAP///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMXFxQDFxcUAxsbGBsbGxpDPz8//
-5ubm////////////////////////////////////////////////////////////////////////////
-////////////////5ubm/8/Pz//FxcWQxsbGBsXFxQDFxcUAxcXFAP///wD///8A////AP///wD///8A
-////AP///wDGxsYAxsbGAMbGxgDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
-//////////////////////////////////////////////////////////////////////7+/v/e3t7/
-xsbGwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDFxcUAxcXFAMbGxirGxsbe
-4eHh////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////4eHh/8XFxd7GxsYqxsbGAP///wD///8A
-////AP///wD///8A////AP///wDGxsYAxsbGFcbGxtvm5ub/////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////+bm5v/GxsbbxsbGFf///wD///8A////AP///wD///8A////AP///wDGxsYG
-xsbGwOLi4v//////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////i4uL/
-xsbGwMXFxQb///8A////AP///wD///8A////AP///wDFxcWW3t7e////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////3t7e/8XFxZb///8A////AP///wD///8A
-////AMbGxjzT09P/////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////9PT0//FxcU8////AP///wD///8A////AMbGxsnr6+v/////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////+rq6v/GxsbJ
-////AP///wD///8AxsbGRdXV1f//////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////V1dX/xsbGRf///wD///8AxcXFru3t7f//////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////s7Oz/xsbGrv///wDGxsYSxsbG+f7+/v//////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////+/v7/xsbG+cbGxhLGxsZU
-2NjY////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////2NjY/8XFxVTGxsaT5ubm////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-5ubm/8bGxpPGxsbA8fHx////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////8fHx/8bGxsDGxsbh9/f3////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////+Pj4/8bGxuHFxcXw/Pz8////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////Pz8/8bGxvDGxsb/
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////8bGxv/FxcXw/Pz8////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/Pz8/8bGxvPGxsbh9/f3////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////+Pj4/8bGxuHGxsbA8fHx////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////8fHx/8bGxsDGxsaT5+fn////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////5+fn/8bGxpPGxsZX
-2NjY////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////2dnZ/8bGxlfFxcUSxcXF+f7+/v//////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////+/v7/
-xcXF+cbGxhL///8AxcXFru3t7f//////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////t7e3/xcXFrv///wD///8AxcXFRdXV1f//////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////V1dX/xcXFRf///wD///8A////AMXFxczq6ur/////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////+rq6v/GxsbM////AP///wD///8A
-////AMbGxjzT09P/////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////9PT0//GxsY8////AP///wD///8A////AP///wDFxcWW3t7e////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////3t7e/8XFxZn///8A
-////AP///wD///8A////AP///wDGxsYGxsbGwOLi4v//////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////i4uL/xsbGwMbGxgb///8A////AP///wD///8A////AP///wDGxsYA
-xcXFFcbGxt7m5ub/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////+fn5//Gxsbb
-xsbGFf///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMbGxirFxcXh4eHh////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////4eHh/8bGxuHGxsYqxsbGAP///wD///8A////AP///wD///8A
-////AP///wDGxsYAxsbGAMXFxQDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
-//////////////////////////////////////////////////////////////////////7+/v/e3t7/
-xcXFwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDFxcUA
-xsbGBsbGxpPQ0ND/6Ojo////////////////////////////////////////////////////////////
-////////////////////////////////5+fn/9DQ0P/GxsaTxsbGBsbGxgDFxcUAxsbGAP///wD///8A
-////AP///wD///8A////AP///wDFxcUAxcXFAMbGxgDGxsYAxcXFAMXFxQDGxsYtxsbGt9PT0//q6ur/
-/Pz8/////////////////////////////////////////////////////////////Pz8/+rq6v/T09P/
-xsbGt8bGxi3FxcUAxsbGAMbGxgDGxsYAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYA
-xcXFAMXFxQDFxcUAxsbGAMbGxgDGxsYAxsbGAMbGxjzGxsarxsbG8NbW1v/m5ub/7+/v//Pz8//6+vr/
-//////n5+f/z8/P/7u7u/+Xl5f/V1dX/xsbG8MbGxqvGxsY8xcXFAMXFxQDGxsYAxsbGAMbGxgDGxsYA
-xsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYA
-xsbGAMbGxgDGxsYAxsbGA8XFxUjFxcWNxsbGtMXFxczGxsbnxsbG/8bGxufFxcXMxcXFtMXFxY3FxcVI
-xsbGA8bGxgDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAP///wD///8A////AP///wAADgEA
-AAMAAAABACcAAAEBAAMAAAABACcAAAECAAMAAAAEAAAYegEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAER
-AAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABACcAAAEXAAQAAAABAAAXxAEc
-AAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAEAAAYgodzAAcAAAIwAAAYigAAAAAACAAIAAgACAAB
-AAEAAQABAAACMEFEQkUCEAAAbW50clJHQiBYWVogB88ABgADAAAAAAAAYWNzcEFQUEwAAAAAbm9uZQAA
-AAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1BREJFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAKY3BydAAAAPwAAAAyZGVzYwAAATAAAABrd3RwdAAAAZwAAAAUYmtwdAAA
-AbAAAAAUclRSQwAAAcQAAAAOZ1RSQwAAAdQAAAAOYlRSQwAAAeQAAAAOclhZWgAAAfQAAAAUZ1hZWgAA
-AggAAAAUYlhZWgAAAhwAAAAUdGV4dAAAAABDb3B5cmlnaHQgMTk5OSBBZG9iZSBTeXN0ZW1zIEluY29y
-cG9yYXRlZAAAAGRlc2MAAAAAAAAAEUFkb2JlIFJHQiAoMTk5OCkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZ
-WiAAAAAAAADzUQABAAAAARbMWFlaIAAAAAAAAAAAAAAAAAAAAABjdXJ2AAAAAAAAAAECMwAAY3VydgAA
-AAAAAAABAjMAAGN1cnYAAAAAAAAAAQIzAABYWVogAAAAAAAAnBgAAE+lAAAE/FhZWiAAAAAAAAA0jQAA
-oCwAAA+VWFlaIAAAAAAAACYxAAAQLwAAvpzSIiMkJVokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRt
-YXBJbWFnZVJlcKMkJidaTlNJbWFnZVJlcFhOU09iamVjdNIiIykqV05TQXJyYXmiKSfSIiMsLV5OU011
-dGFibGVBcnJheaMsKSfTLzAJMTIzV05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNTZXTlND
-b2xvcqI1J9IiIzg5V05TSW1hZ2WiOCdfEA9OU0tleWVkQXJjaGl2ZXLRPD1Ucm9vdIABAAgAEQAaACMA
-LQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIG4Yb
-ixuWG58bshu2G8EbyhvPG9cb2hvfG+4b8hv5HAEcDhwTHBUcFxwcHCQcJxwsHDQcNxxJHEwcUQAAAAAA
-AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
-</mutableData>
-        </image>
-        <image name="7E4E7FAE-2F16-4D5D-BF2E-C6580CC39C77" width="14" height="24">
+        <image name="BFA2863D-B01D-4D46-827A-B2923544D209" width="14" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -2180,6 +2194,7 @@ AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAAAnPA
         <image name="facebook" width="25" height="25"/>
         <image name="itemCell" width="117" height="117"/>
         <image name="light-bulb" width="18" height="19"/>
+        <image name="redBtn" width="277" height="62"/>
         <image name="twitter" width="25" height="25"/>
         <image name="whatsapp" width="25" height="25"/>
     </resources>
