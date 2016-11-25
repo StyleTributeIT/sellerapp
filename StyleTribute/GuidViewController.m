@@ -57,13 +57,8 @@
 }
 
 - (IBAction)back:(id)sender {
-    if (self.swipeView.currentPage == 0)
-    {
-        //[self performSegueWithIdentifier:@"unwindToCamera" sender:self];
         [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        self.swipeView.currentPage = self.swipeView.currentPage--;
-    }
+    
 }
 
 - (IBAction)skip:(id)sender {

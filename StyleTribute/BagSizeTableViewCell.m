@@ -18,17 +18,18 @@
 -(void) setup
 {
     CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(self.bagWidth.frame.size.width - 1, 0, 1.f, self.frame.size.height);
+    bottomBorder.frame = CGRectMake(self.bagWidth.frame.size.width - 1, 1, 1.f, self.frame.size.height);
     bottomBorder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
     [self.bagWidth.layer addSublayer:bottomBorder];
     CALayer *rightborder = [CALayer layer];
-    rightborder.frame = CGRectMake(self.bagHeight.frame.size.width - 1, 0, 1.f, self.frame.size.height);
+    rightborder.frame = CGRectMake(self.bagHeight.frame.size.width - 1, 1, 1.f, self.frame.size.height);
     rightborder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
     [self.bagHeight.layer addSublayer:rightborder];
-    rightborder = [CALayer layer];
-    rightborder.frame = CGRectMake(self.bagHeight.frame.size.width - 1, 0, 1.f, self.frame.size.height);
-    rightborder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
-    [self.bagWidth.layer addSublayer:rightborder];
+    
+    CALayer * wrightborder = [CALayer layer];
+    wrightborder.frame = CGRectMake(0, 1, 1.f, self.frame.size.height - 1);
+    wrightborder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
+    [self.bagHeight.layer addSublayer:wrightborder];
 }
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
