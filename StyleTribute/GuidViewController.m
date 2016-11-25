@@ -7,9 +7,10 @@
 //
 
 #import "GuidViewController.h"
+#import "GuidelineViewController.h"
 #import "SwipeView.h"
 
-@interface GuidViewController ()<SwipeViewDataSource, SwipeViewDelegate>
+@interface GuidViewController ()
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 
 @end
@@ -22,10 +23,16 @@
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [aButton setImage:buttonImage forState:UIControlStateNormal];
     aButton.frame = CGRectMake(0.0,0.0,14,23);
-    self.swipeView.currentPage = 0;
+   // self.swipeView.currentPage = 0;
     [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
     self.navigationItem.leftBarButtonItem = backButton;
+    
+    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    
+    self.pageController.dataSource = self;
+    [[self.pageController view] setFrame:[[self view] bounds]];
+    
 }
 
 - (IBAction)back:(id)sender {
@@ -46,6 +53,51 @@
     }
 }
 
+- (GuidelineViewController *)viewControllerAtIndex:(NSUInteger)index {
+    
+    GuidelineViewController *childViewController = [[GuidelineViewController alloc] initWithNibName:@"GuidelineViewController" bundle:nil];
+    childViewController.index = index;
+    return childViewController;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = [(GuidelineViewController *)viewController index];
+    
+    if (index == 0) {
+        return nil;
+    }
+    
+    // Decrease the index by 1 to return
+    index--;
+    
+    return [self viewControllerAtIndex:index];
+    
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = [(GuidelineViewController *)viewController index];
+    
+    index++;
+    
+    if (index == 3) {
+        return nil;
+    }
+    
+    return [self viewControllerAtIndex:index];
+    
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    // The number of items reflected in the page indicator.
+    return 3;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    // The selected item reflected in the page indicator.
+    return 0;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

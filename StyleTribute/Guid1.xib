@@ -26,7 +26,7 @@
                         <constraint firstAttribute="width" secondItem="g0m-Tl-8FE" secondAttribute="height" multiplier="640:533" id="W00-Aj-at3"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep to the guidelines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xm-ez-WBo">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep to the guidelines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2xm-ez-WBo">
                     <rect key="frame" x="49" y="356" width="277" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="aMG-Il-BOB"/>
@@ -35,7 +35,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow the guidelines given on the camera." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-gl-PBa">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow the guidelines given on the camera." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-gl-PBa">
                     <rect key="frame" x="16" y="388" width="343" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="hfu-5z-IqG"/>
@@ -57,11 +57,13 @@
                 <constraint firstItem="BPe-gl-PBa" firstAttribute="centerX" secondItem="2xm-ez-WBo" secondAttribute="centerX" id="0DH-tr-JIq"/>
                 <constraint firstItem="2xm-ez-WBo" firstAttribute="centerX" secondItem="g0m-Tl-8FE" secondAttribute="centerX" id="0jE-5T-2mo"/>
                 <constraint firstItem="XEp-ED-Bw1" firstAttribute="centerX" secondItem="BPe-gl-PBa" secondAttribute="centerX" id="5gb-3V-Ohw"/>
+                <constraint firstAttribute="trailing" secondItem="BPe-gl-PBa" secondAttribute="trailing" constant="16" id="8oc-kl-syD"/>
                 <constraint firstItem="2xm-ez-WBo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="49" id="GiK-cQ-fJx"/>
                 <constraint firstAttribute="trailing" secondItem="g0m-Tl-8FE" secondAttribute="trailing" id="HOl-aB-PAR"/>
                 <constraint firstItem="BPe-gl-PBa" firstAttribute="top" secondItem="g0m-Tl-8FE" secondAttribute="bottom" constant="75" id="JUF-k4-eyc"/>
                 <constraint firstItem="XEp-ED-Bw1" firstAttribute="top" secondItem="BPe-gl-PBa" secondAttribute="bottom" constant="97" id="Nl0-bP-8D0"/>
                 <constraint firstItem="BPe-gl-PBa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="QFO-pU-F6X"/>
+                <constraint firstAttribute="trailing" secondItem="2xm-ez-WBo" secondAttribute="trailing" constant="49" id="TjC-am-V4o"/>
                 <constraint firstItem="2xm-ez-WBo" firstAttribute="top" secondItem="g0m-Tl-8FE" secondAttribute="bottom" constant="43" id="W8X-tn-wt6"/>
                 <constraint firstItem="g0m-Tl-8FE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mG1-ta-cBb"/>
                 <constraint firstItem="g0m-Tl-8FE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sfC-Fw-AvB"/>

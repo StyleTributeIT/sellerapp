@@ -106,6 +106,7 @@
 		E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */; };
 		E173F4791DE6D68500D86141 /* BaseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F4781DE6D68500D86141 /* BaseTabBar.m */; };
 		E173F47C1DE6E67400D86141 /* TabbetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F47B1DE6E67400D86141 /* TabbetViewController.m */; };
+		E173F47F1DE8362D00D86141 /* GuidelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F47E1DE8362D00D86141 /* GuidelineViewController.m */; };
 		E18060BA1DD3230800B4056F /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060B91DD3230800B4056F /* MessageTableViewCell.m */; };
 		E18060BD1DD328A200B4056F /* ConditionPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BC1DD328A200B4056F /* ConditionPriceViewController.m */; };
 		E18060C01DD32A4C00B4056F /* PriceConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */; };
@@ -306,6 +307,8 @@
 		E173F4781DE6D68500D86141 /* BaseTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBar.m; sourceTree = "<group>"; };
 		E173F47A1DE6E67400D86141 /* TabbetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbetViewController.h; sourceTree = "<group>"; };
 		E173F47B1DE6E67400D86141 /* TabbetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbetViewController.m; sourceTree = "<group>"; };
+		E173F47D1DE8362D00D86141 /* GuidelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidelineViewController.h; sourceTree = "<group>"; };
+		E173F47E1DE8362D00D86141 /* GuidelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidelineViewController.m; sourceTree = "<group>"; };
 		E18060B81DD3230800B4056F /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		E18060B91DD3230800B4056F /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		E18060BB1DD328A200B4056F /* ConditionPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionPriceViewController.h; sourceTree = "<group>"; };
@@ -586,6 +589,7 @@
 		7AA5EADA1AEE73D600CAB83B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E173F4801DE8363900D86141 /* Guidelines */,
 				E141DEB01DD097C1001693F7 /* NewItem */,
 				7AA5EADB1AEE740500CAB83B /* LoginController.h */,
 				7AA5EADC1AEE740500CAB83B /* LoginController.m */,
@@ -629,8 +633,6 @@
 				E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */,
 				E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */,
 				E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */,
-				5330FFAB1DDE425A001B0D0D /* GuidViewController.h */,
-				5330FFAC1DDE425A001B0D0D /* GuidViewController.m */,
 				E173F4771DE6D68500D86141 /* BaseTabBar.h */,
 				E173F4781DE6D68500D86141 /* BaseTabBar.m */,
 				E173F47A1DE6E67400D86141 /* TabbetViewController.h */,
@@ -716,6 +718,17 @@
 				E13300961DE18DC800D798F2 /* DetailsTableViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		E173F4801DE8363900D86141 /* Guidelines */ = {
+			isa = PBXGroup;
+			children = (
+				5330FFAB1DDE425A001B0D0D /* GuidViewController.h */,
+				5330FFAC1DDE425A001B0D0D /* GuidViewController.m */,
+				E173F47D1DE8362D00D86141 /* GuidelineViewController.h */,
+				E173F47E1DE8362D00D86141 /* GuidelineViewController.m */,
+			);
+			name = Guidelines;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1033,6 +1046,7 @@
 				7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */,
 				7A2327361B0B98700064C4B3 /* AttributedLabel.m in Sources */,
 				7A1E44B21B299E8F00063F17 /* ImageType.m in Sources */,
+				E173F47F1DE8362D00D86141 /* GuidelineViewController.m in Sources */,
 				7A7E45DB1B0DDD0C000A7C84 /* SlideShowDataSource.m in Sources */,
 				E133008B1DE06ACB00D798F2 /* SharingTableViewCell.m in Sources */,
 				7ABF95EF1AFBA27300E6AA52 /* ChangePasswordController.m in Sources */,
