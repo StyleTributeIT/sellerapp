@@ -91,20 +91,11 @@ NSInteger CENTER_BTN_IDX = 3;
     [button setTitleColor:[UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState: UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:@"Montserrat-Light" size:11]];
     [button addTarget:self action:@selector(addItemButtonPressed) forControlEvents:(UIControlEventTouchUpInside)];
-    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
-   // if (heightDifference < 0)
     {
         CGPoint center = self.tabBar.center;
         center.y = center.y - 30;
         button.center = center;
     }
-  /*  else
-    {
-        CGPoint center = self.tabBar.center;
-        center.y = center.y - 30;
-        button.center = center;
-    }*/
-    
     [self.view addSubview:button];
 }
 

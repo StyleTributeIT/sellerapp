@@ -8,9 +8,7 @@
 
 #import "PhotosTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "ApiRequester.h"
 #import "PhotoCell.h"
-#import "DataCache.h"
 #import "Photo.h"
 
 @implementation PhotosTableViewCell

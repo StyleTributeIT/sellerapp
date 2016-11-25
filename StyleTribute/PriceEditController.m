@@ -7,9 +7,6 @@
 //
 
 #import "PriceEditController.h"
-#import "GlobalHelper.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
 
 @interface PriceEditController ()
 
@@ -133,7 +130,7 @@
     [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
 }
 
-#pragma mark - 
+#pragma mark -
 
 -(BOOL)noEmptyFields {
     return (self.userPrice.text.length > 0 &&

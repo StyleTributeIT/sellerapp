@@ -6,12 +6,7 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "BankDetailsController.h"
-#import "DataCache.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import "GlobalHelper.h"
 
 @implementation BankDetailsController
 

@@ -8,7 +8,6 @@
 
 #import "ApiRequester.h"
 #import "Product.h"
-#import "GlobalHelper.h"
 #import <Reachability.h>
 #import "UserProfile.h"
 #import "Country.h"

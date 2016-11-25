@@ -7,11 +7,6 @@
 //
 
 #import "ClothingSizeTableViewCell.h"
-#import "DataCache.h"
-#import "GlobalDefs.h"
-#import "GlobalHelper.h"
-#import <NSArray+LinqExtensions.h>
-#import <NSDictionary+LinqExtensions.h>
 #import <ActionSheetStringPicker.h>
 
 @implementation ClothingSizeTableViewCell
@@ -53,7 +48,8 @@
                                     initialSelection:0
                                            doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
                                                self.selectedSize = [[[DataCache sharedInstance].units valueForKey:self.cloathUnits.text] objectAtIndex:selectedIndex];
-                                               self.cloathSize.text = sizes[selectedIndex];
+                                               if (sizes.count > 0)
+                                                   self.cloathSize.text = sizes[selectedIndex];
                                            }
                                          cancelBlock:nil
                                               origin:self];

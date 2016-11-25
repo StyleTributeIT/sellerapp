@@ -80,7 +80,6 @@
 		7AF59F1B1B68E70B007DBAB5 /* UIFloatLabelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF59F1A1B68E70B007DBAB5 /* UIFloatLabelTextField.m */; };
 		7AFACD2E1AFBC1EA0012E2FA /* ContactUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */; };
 		7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */; };
-		7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */; };
 		7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43621AF22935004B982B /* AddWardrobeItemController.m */; };
 		7AFE43661AF22A99004B982B /* GlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE43651AF22A99004B982B /* GlobalHelper.m */; };
 		7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */; };
@@ -108,6 +107,7 @@
 		E173F47C1DE6E67400D86141 /* TabbetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F47B1DE6E67400D86141 /* TabbetViewController.m */; };
 		E173F4841DE8423E00D86141 /* GuidelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F4821DE8423E00D86141 /* GuidelineViewController.m */; };
 		E173F4851DE8423E00D86141 /* GuidelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E173F4831DE8423E00D86141 /* GuidelineViewController.xib */; };
+		E173F4881DE8D93200D86141 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F4871DE8D93200D86141 /* BaseTableViewCell.m */; };
 		E18060BA1DD3230800B4056F /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060B91DD3230800B4056F /* MessageTableViewCell.m */; };
 		E18060BD1DD328A200B4056F /* ConditionPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BC1DD328A200B4056F /* ConditionPriceViewController.m */; };
 		E18060C01DD32A4C00B4056F /* PriceConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */; };
@@ -258,8 +258,6 @@
 		7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsController.h; sourceTree = "<group>"; };
 		7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsController.m; sourceTree = "<group>"; };
 		7AFACD321AFBC7CF0012E2FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		7AFCA13C1B0C800C005BB904 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
-		7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		7AFE43611AF22935004B982B /* AddWardrobeItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWardrobeItemController.h; sourceTree = "<group>"; };
 		7AFE43621AF22935004B982B /* AddWardrobeItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWardrobeItemController.m; sourceTree = "<group>"; };
 		7AFE43641AF22A99004B982B /* GlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalHelper.h; sourceTree = "<group>"; };
@@ -311,6 +309,9 @@
 		E173F4811DE8423E00D86141 /* GuidelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidelineViewController.h; sourceTree = "<group>"; };
 		E173F4821DE8423E00D86141 /* GuidelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidelineViewController.m; sourceTree = "<group>"; };
 		E173F4831DE8423E00D86141 /* GuidelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuidelineViewController.xib; sourceTree = "<group>"; };
+		E173F4861DE8D93200D86141 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		E173F4871DE8D93200D86141 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		E173F4891DE8DA6F00D86141 /* StyleTribute-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StyleTribute-Prefix.pch"; sourceTree = "<group>"; };
 		E18060B81DD3230800B4056F /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		E18060B91DD3230800B4056F /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		E18060BB1DD328A200B4056F /* ConditionPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionPriceViewController.h; sourceTree = "<group>"; };
@@ -446,6 +447,7 @@
 			children = (
 				7A0EB6081AEE23D400D90001 /* Info.plist */,
 				7A0EB6091AEE23D400D90001 /* main.m */,
+				E173F4891DE8DA6F00D86141 /* StyleTribute-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -626,8 +628,6 @@
 				7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */,
 				7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */,
 				7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */,
-				7AFCA13C1B0C800C005BB904 /* MainTabBarController.h */,
-				7AFCA13D1B0C800C005BB904 /* MainTabBarController.m */,
 				7AFF6EEC1BA2BCD40023CDD4 /* ChooseBrandController.h */,
 				7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */,
 				E16205D61DC9294200A916F2 /* ShopViewController.h */,
@@ -719,6 +719,8 @@
 				E133008A1DE06ACB00D798F2 /* SharingTableViewCell.m */,
 				E13300951DE18DC800D798F2 /* DetailsTableViewCell.h */,
 				E13300961DE18DC800D798F2 /* DetailsTableViewCell.m */,
+				E173F4861DE8D93200D86141 /* BaseTableViewCell.h */,
+				E173F4871DE8D93200D86141 /* BaseTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1074,7 +1076,6 @@
 				E141DF0B1DD13BCA001693F7 /* BagSizeTableViewCell.m in Sources */,
 				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
-				7AFCA13E1B0C800C005BB904 /* MainTabBarController.m in Sources */,
 				7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
@@ -1104,6 +1105,7 @@
 				E13300971DE18DC800D798F2 /* DetailsTableViewCell.m in Sources */,
 				E141DEFF1DD10B8F001693F7 /* ConditionTableViewController.m in Sources */,
 				7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */,
+				E173F4881DE8D93200D86141 /* BaseTableViewCell.m in Sources */,
 				7A0EB60A1AEE23D400D90001 /* main.m in Sources */,
 				7A3FA4A61AEFEAEF0050803C /* WardrobeController.m in Sources */,
 				7A3FA4961AEF7B8E0050803C /* RegistrationController.m in Sources */,
@@ -1249,6 +1251,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/StyleTribute-Prefix.pch";
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1272,6 +1276,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/StyleTribute-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

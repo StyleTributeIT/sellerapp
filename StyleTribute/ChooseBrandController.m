@@ -7,11 +7,9 @@
 //
 
 #import "ChooseBrandController.h"
-#import "DataCache.h"
 #import "NamedItems.h"
 #import "AddBrandTableViewCell.h"
-#import <NSArray+LinqExtensions.h>
-#import "GlobalHelper.h"
+
 
 @interface ChooseBrandController ()
 

@@ -13,9 +13,7 @@
 #import "DataCache.h"
 #import "CustomTextField.h"
 #import "UIFloatLabelTextField.h"
-#import <NSArray+LinqExtensions.h>
 #import "Product.h"
-#import "GlobalHelper.h"
 #import "Photo.h"
 #import "WelcomeController.h"
 

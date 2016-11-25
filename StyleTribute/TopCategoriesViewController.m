@@ -7,11 +7,7 @@
 //
 
 #import "TopCategoriesViewController.h"
-#import "GlobalHelper.h"
 #import "CategoryCell.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 #import "CategoryViewCell.h"
 #import "ChooseBrandController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -26,8 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  //  [GlobalHelper addLogoToNavBar:self.navigationItem];
-    //self.categoriesTableView.accessibilityIdentifier = @"Choose category table";
     self.collectionCategories.accessibilityIdentifier = @"Choose category table";
     self.collectionCategories.delegate = self;
     self.collectionCategories.dataSource = self;

@@ -25,6 +25,10 @@
     rightborder.frame = CGRectMake(self.bagHeight.frame.size.width - 1, 0, 1.f, self.frame.size.height);
     rightborder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
     [self.bagHeight.layer addSublayer:rightborder];
+    rightborder = [CALayer layer];
+    rightborder.frame = CGRectMake(self.bagHeight.frame.size.width - 1, 0, 1.f, self.frame.size.height);
+    rightborder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
+    [self.bagWidth.layer addSublayer:rightborder];
 }
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -10,10 +10,12 @@
 #import "GuidelineViewController.h"
 #import "SwipeView.h"
 
-@interface GuidViewController ()<UIPageViewControllerDelegate>
+@interface GuidViewController ()<UIPageViewControllerDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 @property (strong, nonatomic) IBOutlet UIView *pagesContainer;
 @property (strong, nonatomic) IBOutlet UIButton *getStartedBtn;
+@property (assign, nonatomic) NSInteger nextIndex;
+@property (strong, nonatomic) IBOutlet UIButton *greenBtn;
 
 @end
 
@@ -46,13 +48,19 @@
     [[self pagesContainer] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
     [UIPageControl appearance].tintColor = [UIColor blackColor];
+    for (UIView *v in self.pageController.view.subviews) {
+        if ([v isKindOfClass:[UIScrollView class]]) {
+            ((UIScrollView *)v).delegate = self;
+        }
+    }
 
 }
 
 - (IBAction)back:(id)sender {
     if (self.swipeView.currentPage == 0)
     {
-        [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+        //[self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         self.swipeView.currentPage = self.swipeView.currentPage--;
     }
@@ -62,6 +70,50 @@
     [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    
+    
+    
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+}
+
+- (IBAction)getStartedClicked:(id)sender {
+    [self changePage:(UIPageViewControllerNavigationDirectionForward)];
+    self.getStartedBtn.hidden = YES;
+}
+
+- (IBAction)gotItClicked:(id)sender {
+    [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+}
+
+- (void)changePage:(UIPageViewControllerNavigationDirection)direction {
+    NSUInteger pageIndex = ((GuidelineViewController *) [self.pageController.viewControllers objectAtIndex:0]).index;
+    
+    if (direction == UIPageViewControllerNavigationDirectionForward) {
+        pageIndex++;
+    }
+    else {
+        pageIndex--;
+    }
+    
+    GuidelineViewController *viewController = [self viewControllerAtIndex:pageIndex];
+    
+    if (viewController == nil) {
+        return;
+    }
+    
+    [self.pageController setViewControllers:@[viewController]
+                                  direction:direction
+                                   animated:YES
+                                 completion:nil];
+}
+
+#pragma mark PageController data source
+
 - (GuidelineViewController *)viewControllerAtIndex:(NSUInteger)index {
     
     GuidelineViewController *childViewController = [[GuidelineViewController alloc] initWithNibName:@"GuidelineViewController" bundle:nil];
@@ -69,9 +121,28 @@
     return childViewController;
 }
 
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers{
+
+}
+
 -(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    
+    if (!completed)
+    {
+        return;
+    }
+    NSUInteger currentIndex = [[self.pageController.viewControllers lastObject] index];
+    if (currentIndex == 0) {
+        self.getStartedBtn.hidden = NO;
+    } else {
+        self.getStartedBtn.hidden = YES;
+    }
+    if (currentIndex == 2)
+    {
+        self.greenBtn.hidden = NO;
+    } else {
+        self.greenBtn.hidden = YES;
+    }
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -79,12 +150,9 @@
     NSUInteger index = [(GuidelineViewController *)viewController index];
     
     if (index == 0) {
-        self.getStartedBtn.hidden = NO;
+        
         return nil;
-    } else {
-        self.getStartedBtn.hidden = YES;
     }
-    
     // Decrease the index by 1 to return
     index--;
     

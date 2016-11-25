@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "ChangePasswordController.h"
 
 @implementation ChangePasswordController

@@ -7,11 +7,6 @@
 //
 
 #import "LoginController.h"
-#import "GlobalDefs.h"
-#import "GlobalHelper.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 #import "FBRegistrationController.h"
 
 @interface LoginController () <UIAlertViewDelegate>

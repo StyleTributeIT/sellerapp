@@ -7,11 +7,7 @@
 //
 
 #import "ChooseCategoryController.h"
-#import "GlobalHelper.h"
 #import "CategoryCell.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ChooseCategoryController ()

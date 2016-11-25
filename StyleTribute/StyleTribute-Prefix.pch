@@ -1,0 +1,26 @@
+//
+//  StyleTribute-Prefix.pch
+//  StyleTribute
+//
+//  Created by Mcuser on 11/25/16.
+//  Copyright © 2016 Selim Mustafaev. All rights reserved.
+//
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "ApiRequester.h"
+#import <MRProgress.h>
+#import <NSArray+LinqExtensions.h>
+#import <NSDictionary+LinqExtensions.h>
+#import "GlobalDefs.h"
+#import "GlobalHelper.h"
+#import "DataCache.h"
+#endif
+
+#ifndef StyleTribute_Prefix_pch
+#define StyleTribute_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* StyleTribute_Prefix_pch */

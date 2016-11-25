@@ -9,9 +9,6 @@
 #import "QuestionViewController.h"
 #import "PriceViewController.h"
 #import "Product.h"
-#import "GlobalDefs.h"
-#import "GlobalHelper.h"
-#import "DataCache.h"
 
 @interface QuestionViewController ()
     @property (strong, nonatomic) IBOutlet UITextField *priceField;

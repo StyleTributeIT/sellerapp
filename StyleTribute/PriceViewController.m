@@ -7,10 +7,7 @@
 //
 
 #import "PriceViewController.h"
-#import "DataCache.h"
-#import "GlobalHelper.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
+
 
 @interface PriceViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *priceEarned;

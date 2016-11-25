@@ -8,8 +8,6 @@
 
 #import "Product.h"
 #import "Photo.h"
-#import "DataCache.h"
-#import <NSArray+LinqExtensions.h>
 
 @implementation Product
 

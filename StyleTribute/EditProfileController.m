@@ -6,14 +6,8 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "EditProfileController.h"
-#import "DataCache.h"
-#import "GlobalDefs.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
 #import "Country.h"
-#import <NSArray+LinqExtensions.h>
 
 @interface EditProfileController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -95,7 +89,7 @@
     return (self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
             self.emailField.text.length > 0 /* &&
-            self.countryField.text.length > 0*/);
+                                             self.countryField.text.length > 0*/);
 }
 
 -(void)updateCurCountry {

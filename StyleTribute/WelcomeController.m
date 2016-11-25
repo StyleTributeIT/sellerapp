@@ -9,10 +9,6 @@
 #import "WelcomeController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <MRProgress.h>
-#import "GlobalHelper.h"
-#import "ApiRequester.h"
-#import "DataCache.h"
 #import "FBRegistrationController.h"
 
 @interface WelcomeController () <UIAlertViewDelegate>

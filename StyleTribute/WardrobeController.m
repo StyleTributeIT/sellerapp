@@ -7,20 +7,12 @@
 //
 
 #import "MGSwipeButton.h"
-
-#import "GlobalHelper.h"
 #import "Product.h"
 #import "WardrobeCell.h"
 #import "WardrobeController.h"
-#import "ApiRequester.h"
-#import "DataCache.h"
-#import "MainTabBarController.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 #import "AddWardrobeItemController.h"
 #import "NewItemTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <NSArray+LinqExtensions.h>
 #import "Photo.h"
 
 @interface WardrobeController()

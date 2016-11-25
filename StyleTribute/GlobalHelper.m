@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "SlideShowDataSource.h"
 #import <CRToast.h>
 #import <SDWebImageDownloader.h>
