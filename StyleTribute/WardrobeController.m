@@ -183,7 +183,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self getCurrentItemsArray].count;
+    NSMutableArray *arr = [self getCurrentItemsArray];
+    return arr!=nil?arr.count:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -411,6 +412,7 @@
 }
 
 - (void)updateWelcomeView {
+    _itemsTable.hidden = !(self.sellingItems.count || self.soldItems.count || self.archivedItems.count);
 	_welcomView.hidden = self.sellingItems.count || self.soldItems.count || self.archivedItems.count;
 }
 
