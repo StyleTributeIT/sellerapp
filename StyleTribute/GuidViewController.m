@@ -109,7 +109,18 @@
     
     GuidelineViewController *childViewController = [[GuidelineViewController alloc] initWithNibName:@"GuidelineViewController" bundle:nil];
     childViewController.index = index;
+    if (index == 2)
+    {
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeTutorial)];
+        
+        [childViewController.view addGestureRecognizer:tapGesture];
+    }
     return childViewController;
+}
+
+-(void)closeTutorial
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers{
