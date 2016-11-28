@@ -697,6 +697,13 @@ int sectionOffset = 0;
              [defs setBool:NO forKey:@"displayTutorial"];
              self.isTutorialPresented = YES;
              } else*/ {
+                 
+                 
+                 // if we pressed on "plus", we should add photo instead of replace.
+                 if(self.selectedImageIndex == self.curProduct.photos.count) {
+                     Photo* photo = [Photo new];
+                     [self.curProduct.photos addObject:photo];
+                 }
                   Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
                  if (![photo isKindOfClass:[NSNull class]] || self.isTutorialPresented)
                  {

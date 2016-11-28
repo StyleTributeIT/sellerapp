@@ -2214,7 +2214,7 @@ Citilink Warehouse Complex
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
         <image name="tabBg" width="640" height="91"/>
-        <image name="topShadow" width="640" height="533"/>
+        <image name="topShadow" width="168" height="168"/>
         <image name="wardrobe" width="37" height="22"/>
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>

@@ -92,7 +92,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PF-fo-Mnd">
-                                                    <rect key="frame" x="308" y="15" width="65" height="21"/>
+                                                    <rect key="frame" x="301" y="15" width="65" height="21"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="F9R-e9-24U"/>
@@ -119,11 +119,11 @@
                                                 <constraint firstItem="3PF-fo-Mnd" firstAttribute="top" secondItem="W59-12-Yav" secondAttribute="topMargin" constant="7" id="PqJ-4H-tPk"/>
                                                 <constraint firstItem="mHI-po-jmG" firstAttribute="top" secondItem="W59-12-Yav" secondAttribute="topMargin" constant="7" id="QpE-n3-sQz"/>
                                                 <constraint firstAttribute="height" constant="50" id="ROl-oQ-OFB"/>
-                                                <constraint firstItem="3PF-fo-Mnd" firstAttribute="trailing" secondItem="W59-12-Yav" secondAttribute="trailingMargin" constant="6" id="iOp-wO-iBz"/>
+                                                <constraint firstItem="3PF-fo-Mnd" firstAttribute="trailing" secondItem="W59-12-Yav" secondAttribute="trailingMargin" constant="-1" id="iOp-wO-iBz"/>
                                             </constraints>
                                         </view>
                                         <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-Am-XdQ">
-                                            <rect key="frame" x="14" y="44" width="353" height="132"/>
+                                            <rect key="frame" x="14" y="44" width="353" height="131"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="UjS-UT-mqz">
                                                 <size key="itemSize" width="60" height="77"/>
@@ -133,7 +133,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="32D-jc-iAq" customClass="PhotoCell">
-                                                    <rect key="frame" x="0.0" y="27.5" width="60" height="77"/>
+                                                    <rect key="frame" x="0.0" y="27" width="60" height="77"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="77"/>
@@ -154,7 +154,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FA9E566C-C5B5-4BF6-827A-734F90E30906" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="D49E5140-76E3-4FEA-9166-8B612261B327" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
                                                                 <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                                 <gestureRecognizers/>
                                                             </imageView>
@@ -538,7 +538,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm0-tg-PTc">
-                                <rect key="frame" x="0.0" y="20" width="375" height="59"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item description tips goes here try to include lorem ipsun dolor sit amet, consectetuer adipiscing..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYP-3I-2lb">
                                         <rect key="frame" x="59" y="13" width="308" height="34"/>
@@ -566,7 +566,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of your item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwq-yJ-15i">
-                                <rect key="frame" x="16" y="85" width="343" height="47"/>
+                                <rect key="frame" x="16" y="65" width="343" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="fqc-lL-7IK"/>
                                 </constraints>
@@ -575,7 +575,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-hf-N9E">
-                                <rect key="frame" x="0.0" y="131" width="375" height="283"/>
+                                <rect key="frame" x="0.0" y="111" width="375" height="283"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MDS-Bk-weq">
                                         <rect key="frame" x="11" y="8" width="356" height="275"/>
@@ -1034,7 +1034,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you know your item's original price?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="3La-n0-cnV">
-                                <rect key="frame" x="16" y="37" width="343" height="51"/>
+                                <rect key="frame" x="16" y="17" width="343" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50.5" id="hDt-uL-oyb"/>
                                 </constraints>
@@ -1043,7 +1043,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Original Price (SGD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59h-55-Mlz">
-                                <rect key="frame" x="16" y="174" width="343" height="31"/>
+                                <rect key="frame" x="16" y="154" width="343" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="ZO2-Q8-JhG"/>
                                 </constraints>
@@ -1392,7 +1392,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1E0E8637-1D49-4B62-BF60-A3468E7EE48C" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4EE7E792-0272-4DE0-B27E-30590473478A" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
                                             <rect key="frame" x="340" y="8" width="27" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="27" id="96c-NZ-Ba1"/>
@@ -1626,7 +1626,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="bI6-AO-CbM">
-                        <barButtonItem key="leftBarButtonItem" image="75483644-4F0F-41BA-8CE4-A295DA6AE541" id="iE0-kw-zEx">
+                        <barButtonItem key="leftBarButtonItem" image="A3946E39-85FE-43EE-8DC2-17ECF8852F50" id="iE0-kw-zEx">
                             <connections>
                                 <action selector="backPressed:" destination="sNb-r6-Kfh" id="H2o-R9-X0l"/>
                             </connections>
@@ -1652,7 +1652,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1E0E8637-1D49-4B62-BF60-A3468E7EE48C" width="39" height="39">
+        <image name="4EE7E792-0272-4DE0-B27E-30590473478A" width="39" height="39">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1780,7 +1780,7 @@ ixuWG58bshu2G8EbyhvPG9cb2hvfG+4b8hv5HAEcDhwTHBUcFxwcHCQcJxwsHDQcNxxJHEwcUQAAAAAA
 AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
 </mutableData>
         </image>
-        <image name="75483644-4F0F-41BA-8CE4-A295DA6AE541" width="14" height="24">
+        <image name="A3946E39-85FE-43EE-8DC2-17ECF8852F50" width="14" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1829,7 +1829,7 @@ BwkSCRsJLgkyCT0JRglLCVMJVglbCWoJbgl1CX0JigmPCZEJkwmYCaAJowmoCbAJswnFCcgJzQAAAAAA
 AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAAAnPA
 </mutableData>
         </image>
-        <image name="FA9E566C-C5B5-4BF6-827A-734F90E30906" width="64" height="64">
+        <image name="D49E5140-76E3-4FEA-9166-8B612261B327" width="64" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
