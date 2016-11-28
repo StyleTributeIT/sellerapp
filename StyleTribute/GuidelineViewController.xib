@@ -48,7 +48,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow guidelines given on the camera" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-vJ-64f">
-                    <rect key="frame" x="8" y="389" width="359" height="20"/>
+                    <rect key="frame" x="24" y="389" width="322" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="rrj-r0-InP"/>
                     </constraints>
@@ -60,14 +60,14 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="75F-ss-Kms" secondAttribute="trailing" id="IyS-lo-TQE"/>
-                <constraint firstAttribute="trailing" secondItem="C65-vJ-64f" secondAttribute="trailing" constant="8" id="aDV-Y7-yZd"/>
+                <constraint firstAttribute="trailing" secondItem="C65-vJ-64f" secondAttribute="trailing" constant="29" id="aDV-Y7-yZd"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aLu-E3-z7K"/>
                 <constraint firstItem="C65-vJ-64f" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="77" id="dMf-hl-aeS"/>
                 <constraint firstItem="dtb-hR-TPX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="eaq-OM-vnQ"/>
                 <constraint firstItem="dtb-hR-TPX" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fWr-Pj-dyT"/>
                 <constraint firstItem="dtb-hR-TPX" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="51" id="jxs-t5-WBM"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oZ1-r7-fYW"/>
-                <constraint firstItem="C65-vJ-64f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="rVT-6f-1Nc"/>
+                <constraint firstItem="C65-vJ-64f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="rVT-6f-1Nc"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="75.5"/>
         </view>
