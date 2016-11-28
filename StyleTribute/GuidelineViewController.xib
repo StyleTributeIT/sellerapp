@@ -38,21 +38,21 @@
                         <constraint firstAttribute="height" constant="312" id="vRQ-gq-gkU"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here are some tips to help you take the best photos of your item!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-hR-TPX">
-                    <rect key="frame" x="8" y="363" width="359" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Here are some tips to help you take the best photos of your item!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-hR-TPX">
+                    <rect key="frame" x="8" y="350" width="359" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="65" id="PPk-ca-l6T"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow guidelines given on the camera" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-vJ-64f">
-                    <rect key="frame" x="24" y="389" width="322" height="20"/>
+                    <rect key="frame" x="24" y="375" width="322" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="rrj-r0-InP"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -62,10 +62,10 @@
                 <constraint firstAttribute="trailing" secondItem="75F-ss-Kms" secondAttribute="trailing" id="IyS-lo-TQE"/>
                 <constraint firstAttribute="trailing" secondItem="C65-vJ-64f" secondAttribute="trailing" constant="29" id="aDV-Y7-yZd"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aLu-E3-z7K"/>
-                <constraint firstItem="C65-vJ-64f" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="77" id="dMf-hl-aeS"/>
-                <constraint firstItem="dtb-hR-TPX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="eaq-OM-vnQ"/>
-                <constraint firstItem="dtb-hR-TPX" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="fWr-Pj-dyT"/>
-                <constraint firstItem="dtb-hR-TPX" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="51" id="jxs-t5-WBM"/>
+                <constraint firstItem="C65-vJ-64f" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="63" id="dMf-hl-aeS"/>
+                <constraint firstItem="dtb-hR-TPX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="-8" id="eaq-OM-vnQ"/>
+                <constraint firstItem="dtb-hR-TPX" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" constant="8" id="fWr-Pj-dyT"/>
+                <constraint firstItem="dtb-hR-TPX" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="38" id="jxs-t5-WBM"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oZ1-r7-fYW"/>
                 <constraint firstItem="C65-vJ-64f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="rVT-6f-1Nc"/>
             </constraints>
