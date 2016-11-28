@@ -81,19 +81,19 @@ NSInteger CENTER_BTN_IDX = 3;
     
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-    button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width + 5, buttonImage.size.height + 5);
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     [button setTitle:@"Sell" forState:UIControlStateNormal];
     CGSize imageSize = button.imageView.image.size;
     button.titleEdgeInsets = UIEdgeInsetsMake(
-                                              0.0, - imageSize.width, - (button.frame.size.height + 30), 0.0);
+                                              0.0, - imageSize.width, - (button.frame.size.height + 27), 0.0);
     [button setTitleColor:[UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState: UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:@"Montserrat-Light" size:11]];
     [button addTarget:self action:@selector(addItemButtonPressed) forControlEvents:(UIControlEventTouchUpInside)];
     {
         CGPoint center = self.tabBar.center;
-        center.y = center.y - 30;
+        center.y = center.y - 32;
         button.center = center;
     }
     [self.view addSubview:button];
