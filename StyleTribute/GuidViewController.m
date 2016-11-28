@@ -83,7 +83,10 @@
 }
 
 - (IBAction)gotItClicked:(id)sender {
-    [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+    if (!self.hideSkipButton)
+        [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+    else
+        [self back:nil];
 }
 
 - (void)changePage:(UIPageViewControllerNavigationDirection)direction {
