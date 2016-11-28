@@ -9,6 +9,7 @@
 #import "ConditionPriceViewController.h"
 #import "PriceConditionTableViewCell.h"
 #import "ConditionTableViewController.h"
+#import "NewItemTableViewController.h"
 #import "DataCache.h"
 #import "Product.h"
 
@@ -43,8 +44,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if (![DataCache sharedInstance].isEditingItem)
-        [DataCache sharedInstance].isEditingItem = YES;
+    //if (![DataCache sharedInstance].isEditingItem)
+      //  [DataCache sharedInstance].isEditingItem = YES;
     [self.tableView reloadData];
 }
 
@@ -53,6 +54,16 @@
 }
 
 - (IBAction)done:(id)sender {
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        
+        //Do not forget to import AnOldViewController.h
+        if ([controller isKindOfClass:[NewItemTableViewController class]]) {
+            
+            [self.navigationController popToViewController:controller
+                                                  animated:YES];
+            break;
+        }
+    }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

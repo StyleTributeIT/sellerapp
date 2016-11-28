@@ -82,6 +82,7 @@ int sectionOffset = 0;
             [DataCache setSelectedItem:self.curProduct];
             [DataCache sharedInstance].isEditingItem = NO;            
         }
+        
         if(!self.isEditing && self.curProduct.category.name.length == 0) {
             [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
         } else
@@ -93,15 +94,57 @@ int sectionOffset = 0;
 
     -(void)viewDidAppear:(BOOL)animated {
         [super viewDidAppear:animated];
+        if (!self.isInitialized)
+        {
+            NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+            NSMutableArray *copyViewControllers = [NSMutableArray new];
+            for (int i = 0; i < allViewControllers.count; i++) {
+                if ([allViewControllers[i] isKindOfClass:[TopCategoriesViewController class]])
+                {
+                    [copyViewControllers insertObject:allViewControllers[i] atIndex:0];
+                } else
+                    if ([allViewControllers[i] isKindOfClass:[ChooseBrandController class]])
+                    {
+                        [copyViewControllers insertObject:allViewControllers[i] atIndex:1];
+                    } else
+                    {
+                        if (![self containsSelfClass:copyViewControllers] && i != 0)
+                            [copyViewControllers addObject:allViewControllers[i]];
+                    }
+                self.navigationController.viewControllers = copyViewControllers;
+            }
+        }
         self.isInitialized = YES;
     }
-    
+
+-(BOOL) containsSelfClass:(NSMutableArray*)controllers
+{
+    BOOL result = false;
+    for (UIViewController *vc in controllers) {
+        if ([vc isKindOfClass:[self class]])
+        {
+            result = YES;
+            break;
+        }
+    }
+    return result;
+}
+
     -(IBAction)cancel:(id)sender {
         sectionOffset = 0;
         if (self.isEditingItem)
             [self dismissViewControllerAnimated:true completion:nil];
         else
+        {
+          /*  NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+            
+            for (UIViewController *aViewController in allViewControllers) {
+                if ([aViewController isKindOfClass:[ChooseBrandController class]]) {
+                    [self.navigationController popToViewController:aViewController animated:YES];
+                }
+            }*/
             [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 
 - (IBAction)done:(id)sender {
@@ -122,7 +165,10 @@ int sectionOffset = 0;
         } else if([firstSize isEqualToString:@"dimensions"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             BagSizeTableViewCell * cell = (BagSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
+            if (cell.bagWidth.text.length != 0)
+            {
+                self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
+            }
         }
         
         if (![self productIsValid] || ![self imagesAreFilled])
