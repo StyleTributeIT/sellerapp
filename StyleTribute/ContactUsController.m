@@ -77,22 +77,29 @@ static NSString* stMessage = @"Hello!";
 #pragma mark - Send whatsapp message
 
 -(IBAction)whatsappUs:(id)sender {
-    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://app"]]) {
-        [self requestAccessToAddressBookWithAllow:^{
-            ABRecordID contactId = [self getContactIDByPhoneNumber:stPhoneNumber];
-            if(contactId != kABRecordInvalidID) {
-                NSString *escapedString = [stMessage stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-                NSURL *whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=%@&abid=%d", escapedString, contactId]];
-                [[UIApplication sharedApplication] openURL: whatsappURL];
-            } else {
-                [self createContactWithName:@"StyleTribute" andPhoneNumber:stPhoneNumber];
-            }
-        } deny:^{
-            NSLog(@"You should allow access to contacts for StyleTribute in setting");
-        }];
-    } else {
-        NSLog(@"whatsapp not installed");
+    @try {
+        if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://app"]]) {
+            [self requestAccessToAddressBookWithAllow:^{
+                ABRecordID contactId = [self getContactIDByPhoneNumber:stPhoneNumber];
+                if(contactId != kABRecordInvalidID) {
+                    NSString *escapedString = [stMessage stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+                    NSURL *whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=%@&abid=%d", escapedString, contactId]];
+                    [[UIApplication sharedApplication] openURL: whatsappURL];
+                } else {
+                    [self createContactWithName:@"StyleTribute" andPhoneNumber:stPhoneNumber];
+                }
+            } deny:^{
+                NSLog(@"You should allow access to contacts for StyleTribute in setting");
+            }];
+        } else {
+            NSLog(@"whatsapp not installed");
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"whatsapp sharing problem");
+    } @finally {
+        NSLog(@"whatsapp sharing problem");
     }
+    
 }
 
 -(void)requestAccessToAddressBookWithAllow:(void(^)())allow deny:(void(^)())deny {
