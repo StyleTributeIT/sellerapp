@@ -17,6 +17,7 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "MessageTableViewCell.h"
 #import "DetailsTableViewCell.h"
+#import "GuidViewController.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
 #import "SharingTableViewCell.h"
@@ -37,6 +38,7 @@ typedef void(^ImageLoadBlock)(int);
 @property BOOL isTutorialPresented;
 @property BOOL isInitialized;
 @property BOOL isProductUpdated;
+@property BOOL hideSkipInGuide;
 @property UIPickerView* picker;
 @property (copy) ImageLoadBlock imgLoadBlock;
 @property NSUInteger selectedImageIndex;
@@ -53,6 +55,7 @@ int sectionOffset = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isInitialized = NO;
+    self.hideSkipInGuide = NO;
     self.isTutorialPresented = NO;
     self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
@@ -94,6 +97,7 @@ int sectionOffset = 0;
 
     -(void)viewDidAppear:(BOOL)animated {
         [super viewDidAppear:animated];
+        self.hideSkipInGuide = NO;
         if (!self.isInitialized)
         {
             NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
@@ -595,7 +599,15 @@ int sectionOffset = 0;
     [cell setup:self.curProduct];
     cell.delegate = self;
     [self addBordersForCell:cell addBottomBorder:YES];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGuide)];
+    [cell.guideLabel addGestureRecognizer:tap];
     return cell;
+}
+
+-(void)showGuide
+{
+    self.hideSkipInGuide = YES;
+    [self performSegueWithIdentifier:@"showGuide" sender:self];
 }
 
 -(UITableViewCell*)setupPriceCell:(NSIndexPath*)indexPath
@@ -685,6 +697,11 @@ int sectionOffset = 0;
     {
         ConditionPriceViewController *vc = segue.destinationViewController;
         vc.isEditingItem = self.isEditingItem;
+    }
+    if ([segue.identifier isEqualToString:@"showGuide"])
+    {
+        GuidViewController *guide = segue.destinationViewController;
+        guide.hideSkipButton = self.hideSkipInGuide;
     }
     if ([segue.identifier isEqualToString:@"conditionSegue"])
     {

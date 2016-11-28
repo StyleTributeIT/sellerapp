@@ -56,6 +56,11 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (self.hideSkipButton)
+        self.navigationItem.rightBarButtonItem = nil;
+}
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
