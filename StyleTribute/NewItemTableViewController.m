@@ -114,6 +114,9 @@ int sectionOffset = 0;
                     {
                         if (![self containsSelfClass:copyViewControllers] && i != 0)
                             [copyViewControllers addObject:allViewControllers[i]];
+                        else if (![self containsSelfClass:copyViewControllers] && i == 0)
+                            [copyViewControllers addObject:allViewControllers[i]];
+                            
                     }
                 self.navigationController.viewControllers = copyViewControllers;
             }
