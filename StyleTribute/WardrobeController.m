@@ -76,6 +76,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [self updateProducts];
+    self.itemsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 //-(void)viewDidAppear:(BOOL)animated{

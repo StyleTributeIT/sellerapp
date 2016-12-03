@@ -114,12 +114,14 @@ int sectionOffset = 0;
                     {
                         if (![self containsSelfClass:copyViewControllers] && i != 0)
                             [copyViewControllers addObject:allViewControllers[i]];
-                        else if (![self containsSelfClass:copyViewControllers] && i == 0)
-                            [copyViewControllers addObject:allViewControllers[i]];
                             
                     }
-                self.navigationController.viewControllers = copyViewControllers;
             }
+            if (copyViewControllers.count == 0)
+            {
+                [copyViewControllers addObject:self];
+            }
+            self.navigationController.viewControllers = copyViewControllers;
         }
         self.isInitialized = YES;
     }
@@ -378,7 +380,7 @@ int sectionOffset = 0;
     {
         int rowHeight = 50;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
-            rowHeight = 185;
+            rowHeight = 210;
         else
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
