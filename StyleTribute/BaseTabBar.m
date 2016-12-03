@@ -30,6 +30,7 @@ NSInteger CENTER_BTN_IDX = 3;
         [UITabBar appearance].shadowImage = tabBarBackground;
         for (UITabBarItem *tbi in self.tabBar.items) {
             tbi.image = [tbi.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
         }
         
     }
@@ -64,6 +65,7 @@ NSInteger CENTER_BTN_IDX = 3;
     UIViewController* viewController = [[UIViewController alloc] init];
     viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:0];
     viewController.tabBarItem.imageInsets = UIEdgeInsetsMake(45, 0, -45, 0);
+    
     return viewController;
 }
 
@@ -89,7 +91,7 @@ NSInteger CENTER_BTN_IDX = 3;
     button.titleEdgeInsets = UIEdgeInsetsMake(
                                               0.0, - imageSize.width, - (button.frame.size.height + 27), 0.0);
     [button setTitleColor:[UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState: UIControlStateNormal];
-    [button.titleLabel setFont:[UIFont fontWithName:@"Montserrat-Light" size:11]];
+    [button.titleLabel setFont:[UIFont fontWithName:@"Montserrat-Regular" size:11]];
     [button addTarget:self action:@selector(addItemButtonPressed) forControlEvents:(UIControlEventTouchUpInside)];
     {
         CGPoint center = self.tabBar.center;
