@@ -95,7 +95,7 @@ static NSString* stMessage = @"Hello!";
             NSLog(@"whatsapp not installed");
         }
     } @catch (NSException *exception) {
-        NSLog(@"whatsapp sharing problem");
+        NSLog(@"whatsapp sharing exception");
     } @finally {
         NSLog(@"whatsapp sharing problem");
     }
