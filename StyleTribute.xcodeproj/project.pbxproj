@@ -331,6 +331,7 @@
 		E1B059E81DCBCE6400D14D91 /* AddBrandTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBrandTableViewCell.h; sourceTree = "<group>"; };
 		E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBrandTableViewCell.m; sourceTree = "<group>"; };
 		E1B059EA1DCBCE6400D14D91 /* AddBrandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBrandTableViewCell.xib; sourceTree = "<group>"; };
+		E1BC25441DF571CE00DF2FB2 /* StyleTribute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StyleTribute.entitlements; sourceTree = "<group>"; };
 		E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA21526F6B1CFAEF28B1A2B6 /* Pods-StyleTributeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -424,6 +425,7 @@
 		7A0EB6061AEE23D400D90001 /* StyleTribute */ = {
 			isa = PBXGroup;
 			children = (
+				E1BC25441DF571CE00DF2FB2 /* StyleTribute.entitlements */,
 				E173F48A1DE8E7F900D86141 /* Controls */,
 				5330FFA81DDE2FAC001B0D0D /* Storyboards */,
 				7A526C6B1BA6ED97007A6186 /* Categories */,
@@ -828,6 +830,11 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 6SEHKYT2JG;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					7A0EB61C1AEE23D400D90001 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1274,6 +1281,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: StyleTribute Pte. Ltd. (6SEHKYT2JG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6SEHKYT2JG;
@@ -1299,6 +1307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: StyleTribute Pte. Ltd. (6SEHKYT2JG)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6SEHKYT2JG;

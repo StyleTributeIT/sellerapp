@@ -14,6 +14,10 @@
 #import "Category.h"
 #import "DataCache.h"
 #import "NamedItems.h"
+#import <FBSDKLoginKit/FBSDKLoginManager.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginManagerLoginResult.h>
 #import "Address.h"
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
@@ -184,6 +188,12 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
             [defs removeObjectForKey:@"apiToken"];
             [defs synchronize];
+            if ([FBSDKAccessToken currentAccessToken])
+            {
+                
+                FBSDKLoginManager *manager = [[FBSDKLoginManager alloc] init];
+                [manager logOut];
+            }
             success();
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
