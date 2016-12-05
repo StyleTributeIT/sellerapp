@@ -88,7 +88,7 @@
 //    }
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    login.loginBehavior = FBSDKLoginBehaviorNative;
+    login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
 	[login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
