@@ -30,6 +30,7 @@
 #import "BrandTableViewCell.h"
 #import "TutorialController.h"
 #import "WardrobeController.h"
+#import "XCDFormInputAccessoryView.h"
 #import "Photo.h"
 
 typedef void(^ImageLoadBlock)(int);
@@ -45,9 +46,11 @@ typedef void(^ImageLoadBlock)(int);
 @property UIActionSheet* photoActionsSheet;
 @property Product *productCopy;
 @property NSMutableArray* photosToDelete;
+@property XCDFormInputAccessoryView* inputAccessoryView;
 @end
 
 int sectionOffset = 0;
+
 
 @implementation NewItemTableViewController
 
@@ -71,9 +74,13 @@ int sectionOffset = 0;
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
     self.navigationItem.leftBarButtonItem = backButton;
     self.navigationItem.hidesBackButton = YES;
+    self.inputAccessoryView = [[XCDFormInputAccessoryView alloc] initWithTarget:self hideNavButtons:YES doneAction:@selector(inputDone)];
     
 }
 
+-(void)inputDone {
+    [self.view endEditing:YES];
+}
 
 -(void)viewWillAppear:(BOOL)animated
     {
