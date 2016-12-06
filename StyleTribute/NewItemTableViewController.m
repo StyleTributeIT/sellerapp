@@ -387,7 +387,7 @@ int sectionOffset = 0;
     {
         int rowHeight = 50;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
-            rowHeight = 210;
+            rowHeight = 190;
         else
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
@@ -429,14 +429,48 @@ int sectionOffset = 0;
         return 50;
     }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+-(void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    view.tintColor = [UIColor whiteColor];
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
+    header.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    CGRect newFrame = header.textLabel.frame;
+    newFrame.origin.y = newFrame.origin.y + 30.f;
+    header.textLabel.frame = newFrame;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), section==0?0.1:50)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 200, 25)];
+    if (section == 1)
+        label.text = @"DETAILS";
+    else
+    if (section == 2-sectionOffset)
+        label.text  = @"SIZE";
+    else
+    if (section == 3 - sectionOffset)
+        label.text = @"BRAND";
+    else
+    label.text = @"";
+    label.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    [label setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
+    [view addSubview: label];
+    return view;
+}
+
+/*- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
     {
-            view.tintColor = [UIColor whiteColor];
-            UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-            [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
+        view.tintColor = [UIColor whiteColor];
+        UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+        [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
         header.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    }
-    
+        CGRect newFrame = header.textLabel.frame;
+        newFrame.origin.y = newFrame.origin.y + 30.f;
+        header.textLabel.frame = newFrame;
+    }*/
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
     {
