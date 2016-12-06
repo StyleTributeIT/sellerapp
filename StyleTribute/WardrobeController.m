@@ -343,7 +343,7 @@
         p.processStatus = product.processStatus;
         p.processStatusDisplay = product.processStatusDisplay;
         [self storeProductsInGroups:[DataCache sharedInstance].products];
-        [self.itemsTable reloadData];
+        [self updateProducts];
         [self updateWelcomeView];
     } failure:^(NSString *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
