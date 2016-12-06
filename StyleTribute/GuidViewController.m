@@ -19,6 +19,8 @@
 
 @end
 
+UIPageControl *thisControl = nil;
+
 @implementation GuidViewController
 
 - (void)viewDidLoad {
@@ -53,6 +55,15 @@
             ((UIScrollView *)v).delegate = self;
         }
     }
+    
+    NSArray *subviews = self.pageController.view.subviews;
+    for (int i=0; i<[subviews count]; i++) {
+        if ([[subviews objectAtIndex:i] isKindOfClass:[UIPageControl class]]) {
+            thisControl = (UIPageControl *)[subviews objectAtIndex:i];
+        }
+    }
+    if (thisControl)
+        thisControl.hidden = YES;
 
 }
 
@@ -78,8 +89,12 @@
 }
 
 - (IBAction)getStartedClicked:(id)sender {
+    
     [self changePage:(UIPageViewControllerNavigationDirectionForward)];
     self.getStartedBtn.hidden = YES;
+    thisControl.currentPage = 1;
+    if (thisControl)
+        thisControl.hidden = NO;
 }
 
 - (IBAction)gotItClicked:(id)sender {
@@ -90,6 +105,7 @@
 }
 
 - (void)changePage:(UIPageViewControllerNavigationDirection)direction {
+    
     NSUInteger pageIndex = ((GuidelineViewController *) [self.pageController.viewControllers objectAtIndex:0]).index;
     
     if (direction == UIPageViewControllerNavigationDirectionForward) {
@@ -119,10 +135,12 @@
     childViewController.index = index;
     if (index == 2)
     {
+        
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeTutorial)];
         
         [childViewController.view addGestureRecognizer:tapGesture];
     }
+    
     return childViewController;
 }
 
@@ -152,6 +170,14 @@
         self.greenBtn.hidden = NO;
     } else {
         self.greenBtn.hidden = YES;
+    }
+    if (currentIndex == 0)
+    {
+        if (thisControl)
+            thisControl.hidden = YES;
+    } else {
+        if (thisControl)
+            thisControl.hidden = NO;
     }
 }
 
