@@ -92,6 +92,7 @@ UIPageControl *thisControl = nil;
     
     [self changePage:(UIPageViewControllerNavigationDirectionForward)];
     self.getStartedBtn.hidden = YES;
+    thisControl.currentPage = 1;
     if (thisControl)
         thisControl.hidden = NO;
 }
@@ -104,6 +105,7 @@ UIPageControl *thisControl = nil;
 }
 
 - (void)changePage:(UIPageViewControllerNavigationDirection)direction {
+    
     NSUInteger pageIndex = ((GuidelineViewController *) [self.pageController.viewControllers objectAtIndex:0]).index;
     
     if (direction == UIPageViewControllerNavigationDirectionForward) {
