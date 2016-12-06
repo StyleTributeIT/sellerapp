@@ -151,7 +151,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="764EC422-359A-4E04-8C4A-F1BC6D0B9628" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="419C1F09-2836-4D0F-807A-12F5A4880B20" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
                                                                 <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                                 <gestureRecognizers/>
                                                             </imageView>
@@ -645,9 +645,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-w9-02e">
-                                <rect key="frame" x="103" y="587" width="169" height="38"/>
+                                <rect key="frame" x="103" y="587" width="169" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="IjG-44-R0l"/>
+                                    <constraint firstAttribute="height" constant="37" id="IjG-44-R0l"/>
                                     <constraint firstAttribute="width" constant="169" id="edQ-mi-6NF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
@@ -657,10 +657,10 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLq-cC-iYZ">
-                                <rect key="frame" x="103" y="587" width="169" height="38"/>
+                                <rect key="frame" x="103" y="587" width="169" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="169" id="3p0-Ap-p60"/>
-                                    <constraint firstAttribute="height" constant="38" id="OwF-K4-vRy"/>
+                                    <constraint firstAttribute="height" constant="37" id="OwF-K4-vRy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                                 <state key="normal" title="OK! GOT IT!" backgroundImage="greebBtn"/>
@@ -672,11 +672,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2sC-OB-eeX" secondAttribute="trailing" id="105-Zq-YSk"/>
-                            <constraint firstItem="V28-Wf-3b6" firstAttribute="top" secondItem="vLq-cC-iYZ" secondAttribute="bottom" constant="42" id="6kJ-cP-WyP"/>
+                            <constraint firstItem="V28-Wf-3b6" firstAttribute="top" secondItem="vLq-cC-iYZ" secondAttribute="bottom" constant="43" id="6kJ-cP-WyP"/>
                             <constraint firstItem="2sC-OB-eeX" firstAttribute="leading" secondItem="H3V-7Y-360" secondAttribute="leading" id="Af6-1V-h2g"/>
                             <constraint firstItem="vLq-cC-iYZ" firstAttribute="top" secondItem="2sC-OB-eeX" secondAttribute="bottom" constant="8" id="ENm-1x-DF9"/>
                             <constraint firstItem="xrc-w9-02e" firstAttribute="centerX" secondItem="2sC-OB-eeX" secondAttribute="centerX" id="GWK-e1-hal"/>
-                            <constraint firstItem="V28-Wf-3b6" firstAttribute="top" secondItem="xrc-w9-02e" secondAttribute="bottom" constant="42" id="UBw-7K-nuL"/>
+                            <constraint firstItem="V28-Wf-3b6" firstAttribute="top" secondItem="xrc-w9-02e" secondAttribute="bottom" constant="43" id="UBw-7K-nuL"/>
                             <constraint firstItem="vLq-cC-iYZ" firstAttribute="baseline" secondItem="xrc-w9-02e" secondAttribute="baseline" id="XRC-Nq-2pN"/>
                             <constraint firstItem="2sC-OB-eeX" firstAttribute="top" secondItem="9Y0-ij-mTg" secondAttribute="bottom" id="mNL-2q-oEo"/>
                             <constraint firstItem="vLq-cC-iYZ" firstAttribute="leading" secondItem="xrc-w9-02e" secondAttribute="leading" id="s7h-ja-MIS"/>
@@ -1388,7 +1388,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8230C4BC-D073-458A-970B-51161965E8E0" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="92F1E651-DC51-4A1C-B4D2-F13741E791A7" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
                                             <rect key="frame" x="340" y="8" width="27" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="27" id="96c-NZ-Ba1"/>
@@ -1622,7 +1622,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="bI6-AO-CbM">
-                        <barButtonItem key="leftBarButtonItem" image="9A96E509-7501-4FA1-B55B-77E0D34CF5F1" id="iE0-kw-zEx">
+                        <barButtonItem key="leftBarButtonItem" image="A982F305-505F-4ACB-A80D-307C6B6B9899" id="iE0-kw-zEx">
                             <connections>
                                 <action selector="backPressed:" destination="sNb-r6-Kfh" id="H2o-R9-X0l"/>
                             </connections>
@@ -1648,7 +1648,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="764EC422-359A-4E04-8C4A-F1BC6D0B9628" width="64" height="64">
+        <image name="419C1F09-2836-4D0F-807A-12F5A4880B20" width="64" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1972,7 +1972,7 @@ ALsAvQDCANkA2wDdSX9JhEmPSZhJq0mvSbpJw0nISdBJ00nYSedJ60nySfpKB0oMSg5KEEoVSh1KIEol
 Si1KMEpCSkVKSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAEpMA
 </mutableData>
         </image>
-        <image name="8230C4BC-D073-458A-970B-51161965E8E0" width="39" height="39">
+        <image name="92F1E651-DC51-4A1C-B4D2-F13741E791A7" width="39" height="39">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -2100,7 +2100,7 @@ ixuWG58bshu2G8EbyhvPG9cb2hvfG+4b8hv5HAEcDhwTHBUcFxwcHCQcJxwsHDQcNxxJHEwcUQAAAAAA
 AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
 </mutableData>
         </image>
-        <image name="9A96E509-7501-4FA1-B55B-77E0D34CF5F1" width="14" height="24">
+        <image name="A982F305-505F-4ACB-A80D-307C6B6B9899" width="14" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
