@@ -453,7 +453,7 @@ int sectionOffset = 0;
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[PriceTableViewCell class]])
     {
         
-        if (self.isEditingItem)
+        if (self.isEditingItem || [DataCache sharedInstance].isEditingItem)
         {
             [self performSegueWithIdentifier:@"priceConditionSegue" sender:nil];
         } else
