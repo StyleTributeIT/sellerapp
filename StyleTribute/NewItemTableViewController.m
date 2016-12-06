@@ -50,7 +50,7 @@ typedef void(^ImageLoadBlock)(int);
 @end
 
 int sectionOffset = 0;
-float messageCellHeight = 0;
+
 
 @implementation NewItemTableViewController
 
@@ -385,16 +385,12 @@ float messageCellHeight = 0;
 {
     if (indexPath.section == 0)
     {
-        int rowHeight = 50 + messageCellHeight;
+        int rowHeight = 50;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
             rowHeight = 180;
         else
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
-        if (self.curProduct.processComment.length != 0)
-        {
-            rowHeight = 50 + messageCellHeight;
-        }
         return rowHeight;
     }
     return 50;
@@ -559,9 +555,6 @@ float messageCellHeight = 0;
     cell.messageLabel.text = self.curProduct.processComment;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell addBottomBorder:YES];
-    messageCellHeight = cell.messageLabel.contentSize.height;
-    if (messageCellHeight < 20)
-        messageCellHeight = 0.f;
     return cell;
 }
   
