@@ -50,7 +50,7 @@ typedef void(^ImageLoadBlock)(int);
 @end
 
 int sectionOffset = 0;
-
+float messageCellHeight = 0;
 
 @implementation NewItemTableViewController
 
@@ -385,12 +385,16 @@ int sectionOffset = 0;
 {
     if (indexPath.section == 0)
     {
-        int rowHeight = 50;
+        int rowHeight = 50 + messageCellHeight;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
             rowHeight = 180;
         else
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
+        if (self.curProduct.processComment.length != 0)
+        {
+            rowHeight = 50 + messageCellHeight;
+        }
         return rowHeight;
     }
     return 50;
@@ -429,16 +433,6 @@ int sectionOffset = 0;
         return 50;
     }
 
--(void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section
-{
-    view.tintColor = [UIColor whiteColor];
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
-    header.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    CGRect newFrame = header.textLabel.frame;
-    newFrame.origin.y = newFrame.origin.y + 30.f;
-    header.textLabel.frame = newFrame;
-}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -459,17 +453,6 @@ int sectionOffset = 0;
     [view addSubview: label];
     return view;
 }
-
-/*- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-    {
-        view.tintColor = [UIColor whiteColor];
-        UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-        [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
-        header.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-        CGRect newFrame = header.textLabel.frame;
-        newFrame.origin.y = newFrame.origin.y + 30.f;
-        header.textLabel.frame = newFrame;
-    }*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
@@ -576,6 +559,9 @@ int sectionOffset = 0;
     cell.messageLabel.text = self.curProduct.processComment;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell addBottomBorder:YES];
+    messageCellHeight = cell.messageLabel.contentSize.height;
+    if (messageCellHeight < 20)
+        messageCellHeight = 0.f;
     return cell;
 }
   
