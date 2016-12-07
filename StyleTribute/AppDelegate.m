@@ -16,6 +16,9 @@
 #import "Product.h"
 #import "Photo.h"
 #import "WelcomeController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate ()
 
@@ -27,6 +30,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Fabric with:@[[Crashlytics class]]];
+
     // Override point for customization after application launch.
     
     [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
@@ -68,6 +73,7 @@
     }
 	
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+
     
     return YES;
 }

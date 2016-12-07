@@ -21,10 +21,10 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
   - CRToast (0.0.9)
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
+  - Fabric (1.6.11)
   - KASlideShow (2.2)
   - KIF (3.4.2):
     - KIF/Core (= 3.4.2)
@@ -69,8 +69,9 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 2.2.0)
   - AFNetworking (~> 2.6)
+  - Crashlytics
   - CRToast
-  - FMDB (~> 2.6)
+  - Fabric
   - KASlideShow (= 2.2)
   - KIF
   - LinqToObjectiveC
@@ -83,8 +84,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
   KIF: b518c9831453abea5afdbbde3908ec47832d6d56
   LinqToObjectiveC: f0e40c137a458b6b9725c4c7b6a575c0c72e3aec
@@ -94,6 +96,6 @@ SPEC CHECKSUMS:
   TestFairy: 2c8949075dd7ccc7783fc75c24390266d2c6a77f
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
 
-PODFILE CHECKSUM: e1dc9043bfca55def511abdd9a5bc363ea8f2271
+PODFILE CHECKSUM: 72f809a46cee65b0363c0670af72c9b1d8a72598
 
 COCOAPODS: 1.0.1
