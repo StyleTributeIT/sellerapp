@@ -26,24 +26,27 @@ NSInteger CENTER_BTN_IDX = 3;
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        UIImage* tabBarBackground = [self imageWithImage:[UIImage imageNamed:@"topShadow"] scaledToSize:CGSizeMake(self.view.frame.size.width, 50)];
-        [UITabBar appearance].shadowImage = tabBarBackground;
+      //  UIImage* tabBarBackground = [self imageWithImage:[UIImage imageNamed:@"topShadow"] scaledToSize:CGSizeMake(self.view.frame.size.width, self.tabBar.frame.size.height * 1.111f)];
+        [UITabBar appearance].shadowImage = [self imageWithImage:[UIImage imageNamed:@"topShadow"] scaledToSize:self.view.frame.size.width];
         for (UITabBarItem *tbi in self.tabBar.items) {
             tbi.image = [tbi.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
         }
-        
     }
     return self;
 }
 
 
-- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
-    // Pass 1.0 to force exact pixel size.
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+- (UIImage *)imageWithImage:(UIImage *)sourceImage scaledToSize: (float) i_width
+{
+    float oldWidth = sourceImage.size.width;
+    float scaleFactor = i_width / oldWidth;
+    
+    float newHeight = sourceImage.size.height * scaleFactor;
+    float newWidth = oldWidth * scaleFactor;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [sourceImage drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
@@ -71,7 +74,7 @@ NSInteger CENTER_BTN_IDX = 3;
 
 - (void)viewWillLayoutSubviews {
     CGRect tabFrame = self.tabBar.frame;
-    tabFrame.size.height = 95;
+    tabFrame.size.height = 95 ;
     tabFrame.origin.y = self.view.frame.size.height - 55;
     self.tabBar.frame = tabFrame;
     
