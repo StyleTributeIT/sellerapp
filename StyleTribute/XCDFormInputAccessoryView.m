@@ -60,16 +60,20 @@ static NSArray * EditableTextInputsInView(UIView *view)
     _toolbar.barStyle = UIBarStyleDefault; //UIBarStyleBlack;
 	_toolbar.translucent = YES;
 	_toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
 	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[ UIKitLocalizedString(@"Previous"), UIKitLocalizedString(@"Next") ]];
 	[segmentedControl addTarget:self action:@selector(selectAdjacentResponder:) forControlEvents:UIControlEventValueChanged];
 //	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	segmentedControl.momentary = YES;
 	UIBarButtonItem *segmentedControlBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:segmentedControl];
 	UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-	_toolbar.items = @[ segmentedControlBarButtonItem, flexibleSpace ];
+    if (!self.hideNavButtons)
+        _toolbar.items = @[ segmentedControlBarButtonItem, flexibleSpace ];
+    else
+        _toolbar.items = @[flexibleSpace];
 	self.hasDoneButton = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone;
 	
-	[self addSubview:_toolbar];
+        [self addSubview:_toolbar];
 	
 	self.frame = _toolbar.frame = (CGRect){CGPointZero, [_toolbar sizeThatFits:CGSizeZero]};
 	
@@ -77,6 +81,19 @@ static NSArray * EditableTextInputsInView(UIView *view)
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
 	
 	return self;
+}
+
+-(id) initWithTarget:(id)target hideNavButtons:(BOOL)hideNavButtons doneAction:(SEL)doneAction
+{
+    self.hideNavButtons = hideNavButtons;
+    self = [self initWithResponders:nil];
+    if(self) {
+        self.target = target;
+        self.doneAction = doneAction;
+        self.hideNavButtons = hideNavButtons;
+    }
+    
+    return self;
 }
 
 -(id) initWithTarget:(id)target doneAction:(SEL)doneAction {

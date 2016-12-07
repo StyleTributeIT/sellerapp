@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GuidViewController : UIViewController
-
+@interface GuidViewController : UIViewController<UIPageViewControllerDataSource>
+@property (strong, nonatomic) UIPageViewController *pageController;
+@property BOOL hideSkipButton;
 @end

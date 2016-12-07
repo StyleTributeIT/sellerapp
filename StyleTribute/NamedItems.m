@@ -44,7 +44,7 @@
 }
 
 - (NSString*)description {
-	return [NSString stringWithFormat:@"id: %u, name: %@", self.identifier, self.name];
+	return [NSString stringWithFormat:@"id: %lu, name: %@", (unsigned long)self.identifier, self.name];
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {

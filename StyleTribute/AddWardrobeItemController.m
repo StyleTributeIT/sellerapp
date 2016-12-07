@@ -6,21 +6,12 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalDefs.h"
-#import "GlobalHelper.h"
 #import "AddWardrobeItemController.h"
 #import "ChooseCategoryController.h"
 #import "TutorialController.h"
-#import "MainTabBarController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
-#import "DataCache.h"
 #import "Category.h"
 #import "PhotoCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import <NSArray+LinqExtensions.h>
-#import <NSDictionary+LinqExtensions.h>
 #import "NamedItems.h"
 #import "Photo.h"
 #import "TopCategoriesViewController.h"
@@ -156,6 +147,8 @@ typedef void(^ImageLoadBlock)(int);
         [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
     }
 }
+
+
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -637,7 +630,7 @@ typedef void(^ImageLoadBlock)(int);
                     if(i >= count)
                         return;
                     
-                    Photo* photo = (i < self.curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
+                    Photo* photo = (i < self.curProduct.photos.count ? [_curProduct.photos objectAtIndex:i] : nil);
                     
                     if(i < self.curProduct.category.imageTypes.count) {
                         Photo* oldPhoto = [oldPhotos objectAtIndex:i];
@@ -730,18 +723,10 @@ typedef void(^ImageLoadBlock)(int);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     [self clearAllFields];
-                    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-                    WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
-                    
-                    if(!self.isEditing) {
-                        [wc addNewProduct:self.curProduct];
-                    } else {
-                        [wc updateProductsList];
-                    }
                     
                     self.curProduct = nil;
                     self.isEditing = NO;
-                    [tabController setSelectedIndex:0];
+                   // [tabController setSelectedIndex:0];
                     [self dismissViewControllerAnimated:true completion:nil];
                 });
             });
@@ -754,7 +739,7 @@ typedef void(^ImageLoadBlock)(int);
 }
 
 -(IBAction)cantSellProduct:(id)sender {
-    [GlobalHelper askConfirmationWithTitle:@"" message:DefCantSellWarning yes:^{
+   /* [GlobalHelper askConfirmationWithTitle:@"" message:DefCantSellWarning yes:^{
         MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
         WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
         
@@ -771,7 +756,7 @@ typedef void(^ImageLoadBlock)(int);
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [GlobalHelper showMessage:error withTitle:@"error"];
         }];
-    } no:nil];
+    } no:nil]; */
 }
 
 #pragma mark - Photo collection

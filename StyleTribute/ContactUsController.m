@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "ContactUsController.h"
 #import <MessageUI/MFMailComposeViewController.h>
 #import <MapKit/MapKit.h>
@@ -31,8 +30,8 @@ static NSString* stMessage = @"Hello!";
     if([self isExistsContactWithPhoneNumber:stPhoneNumber]) {
         [self.whatsappButton setTitle:@"Whatsapp us" forState:UIControlStateNormal];
     }
-	
-	[self addPinToMap];
+    
+    [self addPinToMap];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -43,14 +42,14 @@ static NSString* stMessage = @"Hello!";
 #pragma mark - Call phone
 
 - (IBAction)callUs:(id)sender {
-	NSURL *url = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:stPhoneNumber]];
-	[[UIApplication sharedApplication] openURL:url];
+    NSURL *url = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:stPhoneNumber]];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 #pragma mark - Send mail
 
 -(IBAction)emailUs:(id)sender {
-	[self sendMailTo:@"info@styletribute.com" subject:@"Hello!" body:@"Hello!"];
+    [self sendMailTo:@"info@styletribute.com" subject:@"Hello!" body:@"Hello!"];
 }
 
 -(void)sendMailTo:(NSString*)toStr subject:(NSString*)subject body:(NSString*)body
@@ -78,22 +77,29 @@ static NSString* stMessage = @"Hello!";
 #pragma mark - Send whatsapp message
 
 -(IBAction)whatsappUs:(id)sender {
-    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://app"]]) {
-        [self requestAccessToAddressBookWithAllow:^{
-            ABRecordID contactId = [self getContactIDByPhoneNumber:stPhoneNumber];
-            if(contactId != kABRecordInvalidID) {
-                NSString *escapedString = [stMessage stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-                NSURL *whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=%@&abid=%d", escapedString, contactId]];
-                [[UIApplication sharedApplication] openURL: whatsappURL];
-            } else {
-                [self createContactWithName:@"StyleTribute" andPhoneNumber:stPhoneNumber];
-            }
-        } deny:^{
-            NSLog(@"You should allow access to contacts for StyleTribute in setting");
-        }];
-    } else {
-        NSLog(@"whatsapp not installed");
+    @try {
+        if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"whatsapp://app"]]) {
+            [self requestAccessToAddressBookWithAllow:^{
+                ABRecordID contactId = [self getContactIDByPhoneNumber:stPhoneNumber];
+                if(contactId != kABRecordInvalidID) {
+                    NSString *escapedString = [stMessage stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+                    NSURL *whatsappURL = [NSURL URLWithString:[NSString stringWithFormat:@"whatsapp://send?text=%@&abid=%d", escapedString, contactId]];
+                    [[UIApplication sharedApplication] openURL: whatsappURL];
+                } else {
+                    [self createContactWithName:@"StyleTribute" andPhoneNumber:stPhoneNumber];
+                }
+            } deny:^{
+                NSLog(@"You should allow access to contacts for StyleTribute in setting");
+            }];
+        } else {
+            NSLog(@"whatsapp not installed");
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"whatsapp sharing exception");
+    } @finally {
+        NSLog(@"whatsapp sharing problem");
     }
+    
 }
 
 -(void)requestAccessToAddressBookWithAllow:(void(^)())allow deny:(void(^)())deny {
@@ -185,36 +191,36 @@ static NSString* stMessage = @"Hello!";
 #pragma mark - Map
 
 - (IBAction)mapTapped:(UITapGestureRecognizer *)sender {
-	if(_placemark) {
-		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"comgooglemaps://?center=%f,%f", _placemark.location.coordinate.latitude, _placemark.location.coordinate.longitude]];
-		if (![[UIApplication sharedApplication] canOpenURL:url]) {
-			CLLocationCoordinate2D rdOfficeLocation = _placemark.location.coordinate; //DEL CLLocationCoordinate2DMake(stLat, stLon);
-			MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:rdOfficeLocation addressDictionary:nil];
-			MKMapItem *item = [[MKMapItem alloc] initWithPlacemark:placemark];
-			item.name = @"StyleTribute";
-			[item openInMapsWithLaunchOptions:nil];
-		} else {
-			[[UIApplication sharedApplication] openURL:url];
-		}
-	}
+    if(_placemark) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"comgooglemaps://?center=%f,%f", _placemark.location.coordinate.latitude, _placemark.location.coordinate.longitude]];
+        if (![[UIApplication sharedApplication] canOpenURL:url]) {
+            CLLocationCoordinate2D rdOfficeLocation = _placemark.location.coordinate; //DEL CLLocationCoordinate2DMake(stLat, stLon);
+            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:rdOfficeLocation addressDictionary:nil];
+            MKMapItem *item = [[MKMapItem alloc] initWithPlacemark:placemark];
+            item.name = @"StyleTribute";
+            [item openInMapsWithLaunchOptions:nil];
+        } else {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
 }
 
 - (void)addPinToMap {
-	NSString *location = @"102F Pasir Panjang Rd, Singapore 118530";
-	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-	[geocoder geocodeAddressString:location
-				 completionHandler:^(NSArray* placemarks, NSError* error){
-					 if (placemarks && placemarks.count > 0) {
-						 CLPlacemark *topResult = [placemarks objectAtIndex:0];
-						 _placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
-						 
-						 MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(_placemark.coordinate, 5000, 5000);
-						 
-						 [self.mapView setRegion:region animated:YES];
-						 [self.mapView addAnnotation:_placemark];
-					 }
-				 }
-	 ];
+    NSString *location = @"102F Pasir Panjang Rd, Singapore 118530";
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     if (placemarks && placemarks.count > 0) {
+                         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                         _placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+                         
+                         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(_placemark.coordinate, 5000, 5000);
+                         
+                         [self.mapView setRegion:region animated:YES];
+                         [self.mapView addAnnotation:_placemark];
+                     }
+                 }
+     ];
 }
 
 @end

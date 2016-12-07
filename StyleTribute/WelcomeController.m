@@ -9,10 +9,6 @@
 #import "WelcomeController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <MRProgress.h>
-#import "GlobalHelper.h"
-#import "ApiRequester.h"
-#import "DataCache.h"
 #import "FBRegistrationController.h"
 
 @interface WelcomeController () <UIAlertViewDelegate>
@@ -92,7 +88,7 @@
 //    }
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    login.loginBehavior = FBSDKLoginBehaviorNative;
+    login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
 	[login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];

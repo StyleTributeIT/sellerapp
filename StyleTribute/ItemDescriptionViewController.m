@@ -34,6 +34,13 @@
     descBorder.backgroundColor = [UIColor colorWithWhite:0.8f
                                                      alpha:1.0f].CGColor;
     [self.borderedFrame.layer addSublayer:descBorder];
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    [aButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
 -(void)viewDidAppear:(BOOL)animated

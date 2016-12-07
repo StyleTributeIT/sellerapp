@@ -1,19 +1,17 @@
 //
-//  MainTabBarController.h
+//  BaseTabBar.h
 //  StyleTribute
 //
-//  Created by Selim Mustafaev on 20/05/15.
-//  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
+//  Created by Mcuser on 11/24/16.
+//  Copyright © 2016 Selim Mustafaev. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface MainTabBarController : UITabBarController
-
--(void)selectPreviousTab;
+@interface BaseTabBar : UITabBarController<UITabBarControllerDelegate, UITabBarDelegate>
 // Create a view controller and setup it's tab bar item with a title and image
 -(UIViewController*) viewControllerWithTabTitle:(NSString*)title image:(UIImage*)image;
+
 // Create a custom UIButton and add it to the center of our tab bar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage;
-
 @end

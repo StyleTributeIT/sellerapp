@@ -6,13 +6,8 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "ResidentAddressController.h"
-#import "ApiRequester.h"
-#import "DataCache.h"
 #import "Country.h"
-#import <NSArray+LinqExtensions.h>
-#import <MRProgress.h>
 
 @interface ResidentAddressController ()
 
@@ -31,7 +26,7 @@
     
     self.curCountryIndex = -1;
     self.curStateIndex = -1;
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -146,7 +141,7 @@
 
 -(void)inputDone {
     NSInteger index = [self.picker selectedRowInComponent:0];
-
+    
     if(self.activeField == self.countryField) {
         Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
         if(index != self.curCountryIndex) {
@@ -169,16 +164,16 @@
 #pragma mark -
 
 -(BOOL)noEmptyFields {
-//    BOOL isStateFilled = (self.stateField.isEnabled ? (self.stateField.text.length > 0) : YES);
+    //    BOOL isStateFilled = (self.stateField.isEnabled ? (self.stateField.text.length > 0) : YES);
     
     return (self.firstNameField.text.length > 0 &&
             self.lastNameField.text.length > 0 &&
-//            self.companyField.text.length > 0 &&
+            //            self.companyField.text.length > 0 &&
             self.cityField.text.length > 0 &&
-//            isStateFilled &&
+            //            isStateFilled &&
             self.postalCodeField.text.length > 0 &&
             self.countryField.text.length > 0 &&
-//            self.phoneNumberField.text.length > 0 &&
+            //            self.phoneNumberField.text.length > 0 &&
             self.addressField.text.length > 0);
 }
 

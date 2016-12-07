@@ -14,17 +14,15 @@
 #import "TopCategoriesViewController.h"
 #import "ClothingSizeTableViewCell.h"
 #import "ConditionPriceViewController.h"
-#import <NSArray+LinqExtensions.h>
-#import <NSDictionary+LinqExtensions.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "MessageTableViewCell.h"
 #import "DetailsTableViewCell.h"
+#import "GuidViewController.h"
 #import "ChooseCategoryController.h"
 #import "ShoesSizeTableViewCell.h"
 #import "SharingTableViewCell.h"
 #import "UIImage+FixOrientation.h"
 #import "ChooseBrandController.h"
-#import "MainTabBarController.h"
 #import "BagSizeTableViewCell.h"
 #import "PriceEditController.h"
 #import "PhotosTableViewCell.h"
@@ -32,28 +30,27 @@
 #import "BrandTableViewCell.h"
 #import "TutorialController.h"
 #import "WardrobeController.h"
-#import "ApiRequester.h"
-#import "GlobalHelper.h"
-#import <MRProgress.h>
-#import "GlobalDefs.h"
-#import "DataCache.h"
+#import "XCDFormInputAccessoryView.h"
 #import "Photo.h"
 
 typedef void(^ImageLoadBlock)(int);
 
-@interface NewItemTableViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
+@interface NewItemTableViewController ()< UIActionSheetDelegate>
 @property BOOL isTutorialPresented;
 @property BOOL isInitialized;
 @property BOOL isProductUpdated;
+@property BOOL hideSkipInGuide;
 @property UIPickerView* picker;
 @property (copy) ImageLoadBlock imgLoadBlock;
 @property NSUInteger selectedImageIndex;
 @property UIActionSheet* photoActionsSheet;
 @property Product *productCopy;
 @property NSMutableArray* photosToDelete;
+@property XCDFormInputAccessoryView* inputAccessoryView;
 @end
 
 int sectionOffset = 0;
+
 
 @implementation NewItemTableViewController
 
@@ -61,6 +58,7 @@ int sectionOffset = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isInitialized = NO;
+    self.hideSkipInGuide = NO;
     self.isTutorialPresented = NO;
     self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
@@ -68,47 +66,101 @@ int sectionOffset = 0;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    [aButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
+    self.navigationItem.hidesBackButton = YES;
+    self.inputAccessoryView = [[XCDFormInputAccessoryView alloc] initWithTarget:self hideNavButtons:YES doneAction:@selector(inputDone)];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)inputDone {
+    [self.view endEditing:YES];
+}
 
 -(void)viewWillAppear:(BOOL)animated
     {
         sectionOffset = 0;
         [super viewWillAppear:animated];
+        self.curProduct = [DataCache getSelectedItem];
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
             [DataCache setSelectedItem:self.curProduct];
-            [DataCache sharedInstance].isEditingItem = NO;
+            [DataCache sharedInstance].isEditingItem = NO;            
         }
-        self.curProduct = [DataCache getSelectedItem];
-        [self.tableView reloadData];
+        
         if(!self.isEditing && self.curProduct.category.name.length == 0) {
             [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
+        } else
+        {
+            self.navigationItem.title = self.curProduct.category.name;
         }
+        [self.tableView reloadData];
     }
-    
+
     -(void)viewDidAppear:(BOOL)animated {
         [super viewDidAppear:animated];
-        if(self.isTutorialPresented) {
-           // [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
-            self.isTutorialPresented = NO;
-        }
-        
-        if(self.isInitialized) {
-        
+        self.hideSkipInGuide = NO;
+        if (!self.isInitialized)
+        {
+            NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+            NSMutableArray *copyViewControllers = [NSMutableArray new];
+            for (int i = 0; i < allViewControllers.count; i++) {
+                if ([allViewControllers[i] isKindOfClass:[TopCategoriesViewController class]])
+                {
+                    [copyViewControllers insertObject:allViewControllers[i] atIndex:0];
+                } else
+                    if ([allViewControllers[i] isKindOfClass:[ChooseBrandController class]])
+                    {
+                        [copyViewControllers insertObject:allViewControllers[i] atIndex:1];
+                    } else
+                    {
+                        if (![self containsSelfClass:copyViewControllers] && i != 0)
+                            [copyViewControllers addObject:allViewControllers[i]];
+                            
+                    }
+            }
+            if (copyViewControllers.count == 0)
+            {
+                [copyViewControllers addObject:self];
+            }
+            self.navigationController.viewControllers = copyViewControllers;
         }
         self.isInitialized = YES;
     }
-    
+
+-(BOOL) containsSelfClass:(NSMutableArray*)controllers
+{
+    BOOL result = false;
+    for (UIViewController *vc in controllers) {
+        if ([vc isKindOfClass:[self class]])
+        {
+            result = YES;
+            break;
+        }
+    }
+    return result;
+}
+
     -(IBAction)cancel:(id)sender {
         sectionOffset = 0;
-        [self dismissViewControllerAnimated:true completion:nil];
+        if (self.isEditingItem)
+            [self dismissViewControllerAnimated:true completion:nil];
+        else
+        {
+          /*  NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+            
+            for (UIViewController *aViewController in allViewControllers) {
+                if ([aViewController isKindOfClass:[ChooseBrandController class]]) {
+                    [self.navigationController popToViewController:aViewController animated:YES];
+                }
+            }*/
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 
 - (IBAction)done:(id)sender {
@@ -129,7 +181,10 @@ int sectionOffset = 0;
         } else if([firstSize isEqualToString:@"dimensions"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             BagSizeTableViewCell * cell = (BagSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
+            if (cell.bagWidth.text.length != 0)
+            {
+                self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
+            }
         }
         
         if (![self productIsValid] || ![self imagesAreFilled])
@@ -186,7 +241,7 @@ int sectionOffset = 0;
                     if(i >= count)
                         return;
                     
-                    Photo* photo = (i < _curProduct.photos.count ? [_curProduct.photos objectAtIndex:i] : nil);
+                    Photo* photo = (i < _curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
                     
                     if(i < self.curProduct.category.imageTypes.count) {
                         Photo* oldPhoto = [oldPhotos objectAtIndex:i];
@@ -278,7 +333,7 @@ int sectionOffset = 0;
                 NSLog(@"All tasks done");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+                  /*  MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
                     WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
                     
                     if(!self.isEditing) {
@@ -286,10 +341,11 @@ int sectionOffset = 0;
                     } else {
                         [wc updateProductsList];
                     }
+                   */
                     
                     self.curProduct = nil;
                     self.isEditingItem = NO;
-                    [tabController setSelectedIndex:0];
+                  //  [tabController setSelectedIndex:0];
                     [self dismissViewControllerAnimated:true completion:nil];
                 });
             });
@@ -331,7 +387,7 @@ int sectionOffset = 0;
     {
         int rowHeight = 50;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
-            rowHeight = 160;
+            rowHeight = 180;
         else
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
@@ -373,14 +429,27 @@ int sectionOffset = 0;
         return 50;
     }
 
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-    {
-            view.tintColor = [UIColor whiteColor];
-            UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-            [header.textLabel setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
-        header.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    }
-    
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), section==0?0.1:50)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 200, 25)];
+    if (section == 1)
+        label.text = @"DETAILS";
+    else
+    if (section == 2-sectionOffset)
+        label.text  = @"SIZE";
+    else
+    if (section == 3 - sectionOffset)
+        label.text = @"BRAND";
+    else
+    label.text = @"";
+    label.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    [label setTextColor:[UIColor colorWithRed:162.f/255 green:162.f/255 blue:162.f/255 alpha:1.0f]];
+    [view addSubview: label];
+    return view;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
     {
@@ -404,7 +473,7 @@ int sectionOffset = 0;
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[PriceTableViewCell class]])
     {
         
-        if (self.isEditingItem)
+        if (self.isEditingItem || [DataCache sharedInstance].isEditingItem)
         {
             [self performSegueWithIdentifier:@"priceConditionSegue" sender:nil];
         } else
@@ -555,7 +624,15 @@ int sectionOffset = 0;
     [cell setup:self.curProduct];
     cell.delegate = self;
     [self addBordersForCell:cell addBottomBorder:YES];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGuide)];
+    [cell.guideLabel addGestureRecognizer:tap];
     return cell;
+}
+
+-(void)showGuide
+{
+    self.hideSkipInGuide = YES;
+    [self performSegueWithIdentifier:@"showGuide" sender:self];
 }
 
 -(UITableViewCell*)setupPriceCell:(NSIndexPath*)indexPath
@@ -576,49 +653,7 @@ int sectionOffset = 0;
     cell.detailsText.text = self.curProduct.name!=nil?self.curProduct.name:@"About your product";
     return cell;
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark Self delegates
 
@@ -634,12 +669,17 @@ int sectionOffset = 0;
             [self displayActionSheet:NO];
         }
     }
-    
     [self.photoActionsSheet showInView:self.view];
 }
 
 #pragma mark - Segues unwind handlers
-    
+
+-(IBAction)unwindToCamera:(UIStoryboardSegue*)sender
+{
+    self.isTutorialPresented = YES;
+    [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+}
+
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
     if ([sender.sourceViewController isKindOfClass:[ItemDescriptionViewController class]])
     {
@@ -676,30 +716,35 @@ int sectionOffset = 0;
     }
 }
     
-    - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"priceConditionSegue"])
     {
-        if ([segue.identifier isEqualToString:@"priceConditionSegue"])
-        {
-            ConditionPriceViewController *vc = segue.destinationViewController;
-            vc.isEditingItem = self.isEditingItem;
-        }
-        if ([segue.identifier isEqualToString:@"conditionSegue"])
-        {
-            ConditionTableViewController *vc = segue.destinationViewController;
-            vc.product = self.curProduct;
-        }
-        if([segue.identifier isEqualToString:@"priceSegue"]) {
-            PriceEditController* priceController = segue.destinationViewController;
-            priceController.product = self.curProduct;
-        } else if([segue.identifier isEqualToString:@"ChooseBrandSegue2"]) {
-            ChooseBrandController* brandController = segue.destinationViewController;
-            brandController.product = self.curProduct;
-        } else if ([segue.identifier isEqualToString:@"chooseTopCategorySegue"])
-        {
-            TopCategoriesViewController *categories = segue.destinationViewController;
-            categories.product = self.curProduct;
-        }
+        ConditionPriceViewController *vc = segue.destinationViewController;
+        vc.isEditingItem = self.isEditingItem;
     }
+    if ([segue.identifier isEqualToString:@"showGuide"])
+    {
+        GuidViewController *guide = segue.destinationViewController;
+        guide.hideSkipButton = self.hideSkipInGuide;
+    }
+    if ([segue.identifier isEqualToString:@"conditionSegue"])
+    {
+        ConditionTableViewController *vc = segue.destinationViewController;
+        vc.product = self.curProduct;
+    }
+    if([segue.identifier isEqualToString:@"priceSegue"]) {
+        PriceEditController* priceController = segue.destinationViewController;
+        priceController.product = self.curProduct;
+    } else if([segue.identifier isEqualToString:@"ChooseBrandSegue2"]) {
+        ChooseBrandController* brandController = segue.destinationViewController;
+        brandController.product = self.curProduct;
+    } else if ([segue.identifier isEqualToString:@"chooseTopCategorySegue"])
+    {
+        TopCategoriesViewController *categories = segue.destinationViewController;
+        categories.product = self.curProduct;
+    }
+}
 
 #pragma mark - Action sheet
 
@@ -740,7 +785,22 @@ int sectionOffset = 0;
              [defs setBool:NO forKey:@"displayTutorial"];
              self.isTutorialPresented = YES;
              } else*/ {
-                 [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+                 
+                 
+                 // if we pressed on "plus", we should add photo instead of replace.
+                 if(self.selectedImageIndex == self.curProduct.photos.count) {
+                     Photo* photo = [Photo new];
+                     [self.curProduct.photos addObject:photo];
+                 }
+                  Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+                 if (![photo isKindOfClass:[NSNull class]] || self.isTutorialPresented)
+                 {
+                     [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+                 } else
+                 {
+                     [self performSegueWithIdentifier:@"showGuide" sender:self];
+                 }
+                 
              }
             break;
         }

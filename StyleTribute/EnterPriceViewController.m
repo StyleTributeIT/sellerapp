@@ -7,10 +7,6 @@
 //
 
 #import "EnterPriceViewController.h"
-#import "DataCache.h"
-#import "GlobalHelper.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
 
 @interface EnterPriceViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *priceField;
@@ -26,17 +22,31 @@
 @implementation EnterPriceViewController
 
 - (void)viewDidLoad {
+    self.hideNavButtons = YES;
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self.priceField becomeFirstResponder];
-    self.earnPriceView.layer.borderColor = [UIColor colorWithRed:178.f/255.f green:178/255.f blue:178/255.f alpha:1.f].CGColor;
+    //self.earnPriceView.layer.borderColor = [UIColor colorWithRed:178.f/255.f green:178/255.f blue:178/255.f alpha:1.f].CGColor;
     self.stPriceView.layer.borderColor = [UIColor colorWithRed:178.f/255.f green:178/255.f blue:178/255.f alpha:1.f].CGColor;
+    self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+    self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+    self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

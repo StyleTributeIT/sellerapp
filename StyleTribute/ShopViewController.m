@@ -7,7 +7,6 @@
 //
 
 #import "ShopViewController.h"
-#import "GlobalHelper.h"
 
 @interface ShopViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webView;

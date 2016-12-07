@@ -8,9 +8,7 @@
 
 #import "PhotosTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "ApiRequester.h"
 #import "PhotoCell.h"
-#import "DataCache.h"
 #import "Photo.h"
 
 @implementation PhotosTableViewCell
@@ -69,7 +67,7 @@
     // Handle "plus" item
     NSLog(@"index: %zd || %zd", indexPath.row, self.curProduct.photos.count);
     if(indexPath.row == self.curProduct.photos.count) {
-        newCell.photoView.image = [UIImage imageNamed:@"plus"];
+       // newCell.photoView.image = [UIImage imageNamed:@"plus"];
         newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
         [newCell.photoTypeLabel setHidden:YES];
         newCell.plusLabel.hidden = NO;
@@ -94,6 +92,7 @@
                 newCell.photoView.hidden = YES;
                 
             } else {
+                NSLog(@"+ Photo %@",photo.thumbnailUrl);
                 [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
                 newCell.photoView.alpha = 0.5f;
             }

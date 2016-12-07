@@ -7,10 +7,8 @@
 //
 
 #import "ShoesSizeTableViewCell.h"
-#import "DataCache.h"
-#import "GlobalDefs.h"
-#import "GlobalHelper.h"
 #import <ActionSheetStringPicker.h>
+#import "XCDFormInputAccessoryView.h"
 
 @implementation ShoesSizeTableViewCell
 UIPickerView* picker;
@@ -24,12 +22,16 @@ UIPickerView* picker;
 -(void)setup
 {
     self.shoeSize.frame = CGRectMake(18, 0, (self.frame.size.width - 8)/2 - 18, self.frame.size.height);
-    self.heelHeight.frame = CGRectMake((self.frame.size.width - 8)/2 + 10, 0, (self.frame.size.width - 8)/2 - 8, self.frame.size.height);
+    self.heelHeight.frame = CGRectMake((self.frame.size.width - 8)/2 + 10, 1, (self.frame.size.width - 8)/2 - 8, self.frame.size.height - 1);
     CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(self.shoeSize.frame.size.width - 1, 0, 1.f, self.shoeSize.frame.size.height);
+    bottomBorder.frame = CGRectMake(self.shoeSize.frame.size.width - 1, 1, 1.f, self.shoeSize.frame.size.height - 1);
     bottomBorder.backgroundColor = [UIColor colorWithRed:219/255.f green:219/255.f blue:219/255.f alpha:1.0f].CGColor;
     [self.shoeSize.layer addSublayer:bottomBorder];
+}
 
+-(void)inputDone
+{
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

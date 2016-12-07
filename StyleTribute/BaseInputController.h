@@ -13,6 +13,7 @@
 @property IBOutlet UIScrollView* scrollView;
 @property IBOutlet UIView* contentView;
 @property IBOutlet NSLayoutConstraint* widthConstraint;
+@property (nonatomic, assign) BOOL hideNavButtons;
 
 @property UIView* activeField;
 

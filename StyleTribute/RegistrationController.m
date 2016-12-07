@@ -7,13 +7,7 @@
 //
 
 #import "RegistrationController.h"
-#import "GlobalHelper.h"
-#import "GlobalDefs.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 #import "Country.h"
-#import <NSArray+LinqExtensions.h>
 
 @interface RegistrationController () <UIPickerViewDelegate, UIPickerViewDataSource>
 

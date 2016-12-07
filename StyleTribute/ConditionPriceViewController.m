@@ -9,6 +9,7 @@
 #import "ConditionPriceViewController.h"
 #import "PriceConditionTableViewCell.h"
 #import "ConditionTableViewController.h"
+#import "NewItemTableViewController.h"
 #import "DataCache.h"
 #import "Product.h"
 
@@ -27,6 +28,13 @@
         
     }
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -35,6 +43,11 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated
+{
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
 {
     if (![DataCache sharedInstance].isEditingItem)
         [DataCache sharedInstance].isEditingItem = YES;
@@ -46,6 +59,16 @@
 }
 
 - (IBAction)done:(id)sender {
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        
+        //Do not forget to import AnOldViewController.h
+        if ([controller isKindOfClass:[NewItemTableViewController class]]) {
+            
+            [self.navigationController popToViewController:controller
+                                                  animated:YES];
+            break;
+        }
+    }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

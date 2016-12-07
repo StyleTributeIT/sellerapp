@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,21 +20,64 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guid3" translatesAutoresizingMaskIntoConstraints="NO" id="1jS-aD-A0u">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="312.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="313"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find a place with good lightning" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlT-5B-dNx">
+                    <rect key="frame" x="49" y="356" width="277" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="1jS-aD-A0u" secondAttribute="height" multiplier="640:533" id="P1N-wa-nWT"/>
+                        <constraint firstAttribute="height" constant="40" id="z7l-eX-v60"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How you light your product will make a big difference in your final output!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no7-58-lRJ">
+                    <rect key="frame" x="49" y="395" width="277" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="cnt-Ty-eHA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dots1" translatesAutoresizingMaskIntoConstraints="NO" id="BxZ-wJ-9ym">
+                    <rect key="frame" x="119" y="525" width="136" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="8tv-5L-nOt"/>
+                        <constraint firstAttribute="width" constant="136" id="fX5-mK-zPX"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCK-Fr-dDd">
+                    <rect key="frame" x="106" y="571" width="162" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="162" id="kSb-je-7VA"/>
+                        <constraint firstAttribute="height" constant="45" id="riZ-4U-WXp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title="OK! GOT IT!" backgroundImage="greebBtn"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="1jS-aD-A0u" secondAttribute="trailing" id="9y2-iV-amn"/>
-                <constraint firstItem="1jS-aD-A0u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fPk-JP-R9s"/>
-                <constraint firstItem="1jS-aD-A0u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sk0-ET-PkN"/>
+                <constraint firstItem="no7-58-lRJ" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="82" id="3H3-Zg-3UC"/>
+                <constraint firstItem="BxZ-wJ-9ym" firstAttribute="top" secondItem="no7-58-lRJ" secondAttribute="bottom" constant="90" id="QGQ-kV-NDk"/>
+                <constraint firstItem="1jS-aD-A0u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QnS-KE-aUM"/>
+                <constraint firstItem="GlT-5B-dNx" firstAttribute="trailing" secondItem="no7-58-lRJ" secondAttribute="trailing" id="Vrx-5x-V3W"/>
+                <constraint firstItem="GlT-5B-dNx" firstAttribute="leading" secondItem="no7-58-lRJ" secondAttribute="leading" id="YlE-1w-es4"/>
+                <constraint firstItem="BxZ-wJ-9ym" firstAttribute="centerX" secondItem="rCK-Fr-dDd" secondAttribute="centerX" id="gxw-E8-Ds1"/>
+                <constraint firstItem="1jS-aD-A0u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="l5M-Ep-8iW"/>
+                <constraint firstItem="1jS-aD-A0u" firstAttribute="centerX" secondItem="GlT-5B-dNx" secondAttribute="centerX" id="meQ-Hc-Swc"/>
+                <constraint firstItem="GlT-5B-dNx" firstAttribute="top" secondItem="1jS-aD-A0u" secondAttribute="bottom" constant="43" id="nYo-2o-9H9"/>
+                <constraint firstItem="rCK-Fr-dDd" firstAttribute="top" secondItem="BxZ-wJ-9ym" secondAttribute="bottom" constant="18" id="sOK-De-J0M"/>
+                <constraint firstItem="no7-58-lRJ" firstAttribute="centerX" secondItem="BxZ-wJ-9ym" secondAttribute="centerX" id="uoe-eN-NMm"/>
+                <constraint firstAttribute="bottom" secondItem="rCK-Fr-dDd" secondAttribute="bottom" constant="51" id="vZl-x5-qa1"/>
+                <constraint firstAttribute="trailing" secondItem="1jS-aD-A0u" secondAttribute="trailing" id="zH2-Vp-vPu"/>
             </constraints>
         </view>
     </objects>
     <resources>
+        <image name="dots1" width="110" height="10"/>
+        <image name="greebBtn" width="277" height="62"/>
         <image name="guid3" width="640" height="533"/>
     </resources>
 </document>

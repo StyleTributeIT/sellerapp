@@ -7,11 +7,7 @@
 //
 
 #import "TopCategoriesViewController.h"
-#import "GlobalHelper.h"
 #import "CategoryCell.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 #import "CategoryViewCell.h"
 #import "ChooseBrandController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -26,8 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  //  [GlobalHelper addLogoToNavBar:self.navigationItem];
-    //self.categoriesTableView.accessibilityIdentifier = @"Choose category table";
     self.collectionCategories.accessibilityIdentifier = @"Choose category table";
     self.collectionCategories.delegate = self;
     self.collectionCategories.dataSource = self;
@@ -78,6 +72,13 @@
     [self.collectionCategories deselectItemAtIndexPath:indexPath animated:NO];
     self.selectedCategory = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
    // [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+    Product *product = [DataCache getSelectedItem];
+    product.category = self.selectedCategory;
+    product.photos = [NSMutableArray arrayWithCapacity:product.category.imageTypes.count];
+    for(int i = 0; i < product.category.imageTypes.count; ++i) {
+        [product.photos addObject:[NSNull null]];
+    }
+    [DataCache setSelectedItem:product];
     [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:nil];
 }
 

@@ -6,12 +6,8 @@
 //  Copyright (c) 2015 Selim Mustafaev. All rights reserved.
 //
 
-#import "GlobalHelper.h"
 #import "MyAccountController.h"
 #import "MyAccountCell.h"
-#import "ApiRequester.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 
 @interface MyAccountController ()
 

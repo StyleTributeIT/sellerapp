@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -542,13 +542,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLf-JY-i7J">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <webView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLf-JY-i7J">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zZs-9s-PXs" firstAttribute="top" secondItem="qLf-JY-i7J" secondAttribute="bottom" constant="8" id="91s-R7-nug"/>
+                            <constraint firstItem="qLf-JY-i7J" firstAttribute="leading" secondItem="QM0-6Z-mWE" secondAttribute="leading" id="MoP-Qc-RaY"/>
+                            <constraint firstAttribute="trailing" secondItem="qLf-JY-i7J" secondAttribute="trailing" id="s37-2o-aP5"/>
+                            <constraint firstItem="qLf-JY-i7J" firstAttribute="top" secondItem="QM0-6Z-mWE" secondAttribute="top" id="sEL-g9-r2w"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RdJ-Qd-dw8"/>
                     <connections>
@@ -592,7 +598,10 @@
         <scene sceneID="As9-Y2-XEX">
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -608,7 +617,7 @@
         <!--Title-->
         <scene sceneID="WcV-1w-xQW">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="tr0-6J-Wdp" customClass="EditProfileController" sceneMemberID="viewController">
+                <viewController id="tr0-6J-Wdp" customClass="EditProfileController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VFk-ZX-bPf"/>
                         <viewControllerLayoutGuide type="bottom" id="mXA-dE-vCM"/>
@@ -752,7 +761,7 @@
         <!--Title-->
         <scene sceneID="I17-3T-zC4">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="grn-Wi-nkv" customClass="ResidentAddressController" sceneMemberID="viewController">
+                <viewController id="grn-Wi-nkv" customClass="ResidentAddressController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6B3-1b-f4T"/>
                         <viewControllerLayoutGuide type="bottom" id="I32-7y-dRe"/>
@@ -979,7 +988,7 @@
         <!--Title-->
         <scene sceneID="Ka6-Vr-ZoQ">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="HNe-sU-zJZ" customClass="ChangePasswordController" sceneMemberID="viewController">
+                <viewController id="HNe-sU-zJZ" customClass="ChangePasswordController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UdZ-qp-W7b"/>
                         <viewControllerLayoutGuide type="bottom" id="5ap-DL-IQY"/>
@@ -1108,7 +1117,7 @@
         <!--Title-->
         <scene sceneID="lC3-OS-TXm">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="4Gf-0K-49B" customClass="BankDetailsController" sceneMemberID="viewController">
+                <viewController id="4Gf-0K-49B" customClass="BankDetailsController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HOk-8K-ci3"/>
                         <viewControllerLayoutGuide type="bottom" id="sCn-LU-a3h"/>
@@ -1267,7 +1276,7 @@
         <!--Contact us-->
         <scene sceneID="02h-ZL-Kac">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="dMc-TR-sjB" customClass="ContactUsController" sceneMemberID="viewController">
+                <viewController id="dMc-TR-sjB" customClass="ContactUsController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hTy-nb-eoF"/>
                         <viewControllerLayoutGuide type="bottom" id="s2r-bA-qPV"/>
@@ -1522,12 +1531,11 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="3055" y="-1315"/>
         </scene>
-        <!--Main Tab Bar Controller-->
+        <!--Tabbet View Controller-->
         <scene sceneID="5D6-10-5KI">
             <objects>
-                <tabBarController id="dua-YX-667" customClass="MainTabBarController" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="eKq-5x-BKt">
+                <tabBarController id="dua-YX-667" customClass="TabbetViewController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBg" shadowImage="topShadow" id="eKq-5x-BKt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1996,11 +2004,14 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="-2266" y="480"/>
         </scene>
-        <!--My Wardrobe-->
+        <!--Wardrobe-->
         <scene sceneID="dii-Pr-ipc">
             <objects>
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
+                    <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2086,7 +2097,10 @@ Citilink Warehouse Complex
         <scene sceneID="2TK-Bj-0EM">
             <objects>
                 <navigationController id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shop" image="shop" id="1mj-Cd-aNH"/>
+                    <tabBarItem key="tabBarItem" title="Shop" image="shop" selectedImage="shop-pink" id="1mj-Cd-aNH">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2099,11 +2113,14 @@ Citilink Warehouse Complex
             </objects>
             <point key="canvasLocation" x="134" y="1609"/>
         </scene>
-        <!--My account-->
+        <!--Profile-->
         <scene sceneID="yse-FJ-1hJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My account" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO">
+                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2121,8 +2138,10 @@ Citilink Warehouse Complex
         <!--Add Item Nav Controller-->
         <scene sceneID="BWq-Cj-uqG">
             <objects>
-                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="camera" selectedImage="camera" id="VZF-2f-aWD"/>
+                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="3" enabled="NO" title="" id="VZF-2f-aWD">
+                        <inset key="imageInsets" minX="0.0" minY="-45" maxX="0.0" maxY="45"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2186,14 +2205,16 @@ Citilink Warehouse Complex
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
         <image name="Logo" width="64" height="64"/>
-        <image name="camera" width="46" height="46"/>
         <image name="notifications" width="23" height="22"/>
         <image name="notifications-pink" width="23" height="22"/>
         <image name="profile" width="22" height="22"/>
         <image name="profile-pink" width="22" height="22"/>
         <image name="shop" width="22" height="22"/>
+        <image name="shop-pink" width="22" height="22"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
+        <image name="tabBg" width="640" height="91"/>
+        <image name="topShadow" width="168" height="168"/>
         <image name="wardrobe" width="37" height="22"/>
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>

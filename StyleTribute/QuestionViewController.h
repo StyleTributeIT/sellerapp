@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseInputController.h"
 
-@interface QuestionViewController : UIViewController
+@interface QuestionViewController : BaseInputController
 
 @end

@@ -27,7 +27,8 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     
-    self.inputAccessoryView = [[XCDFormInputAccessoryView alloc] initWithTarget:self doneAction:@selector(inputDone)];
+    self.inputAccessoryView = [[XCDFormInputAccessoryView alloc] initWithTarget:self hideNavButtons:self.hideNavButtons doneAction:@selector(inputDone)];
+    self.inputAccessoryView.hideNavButtons = self.hideNavButtons;
 }
 
 -(void)viewWillAppear:(BOOL)animated {

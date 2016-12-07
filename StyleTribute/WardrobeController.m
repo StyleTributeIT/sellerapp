@@ -7,20 +7,12 @@
 //
 
 #import "MGSwipeButton.h"
-
-#import "GlobalHelper.h"
 #import "Product.h"
 #import "WardrobeCell.h"
 #import "WardrobeController.h"
-#import "ApiRequester.h"
-#import "DataCache.h"
-#import "MainTabBarController.h"
-#import <MRProgress.h>
-#import "DataCache.h"
 #import "AddWardrobeItemController.h"
 #import "NewItemTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <NSArray+LinqExtensions.h>
 #import "Photo.h"
 
 @interface WardrobeController()
@@ -54,16 +46,16 @@
         } failure:^(NSString *error) {
         }];
     }
-    
+    [self.tabBarController.navigationController.navigationBar setShadowImage:[UIImage new]];
     //[self updateProducts];
     
-    NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
+   /* NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
     NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
                                               NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-    [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];
+    [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];*/
     self.wardrobeType.accessibilityLabel = @"Wardrobe items type";
 	
 	//_itemsTable.scrollIndicatorInsets=UIEdgeInsetsMake(64.0,0.0,44.0,0.0);
@@ -78,7 +70,13 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
     [self updateProducts];
+    self.itemsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 //-(void)viewDidAppear:(BOOL)animated{
@@ -191,7 +189,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self getCurrentItemsArray].count;
+    NSMutableArray *arr = [self getCurrentItemsArray];
+    return arr!=nil?arr.count:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -344,7 +343,7 @@
         p.processStatus = product.processStatus;
         p.processStatusDisplay = product.processStatusDisplay;
         [self storeProductsInGroups:[DataCache sharedInstance].products];
-        [self.itemsTable reloadData];
+        [self updateProducts];
         [self updateWelcomeView];
     } failure:^(NSString *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -419,6 +418,7 @@
 }
 
 - (void)updateWelcomeView {
+    _itemsTable.hidden = !(self.sellingItems.count || self.soldItems.count || self.archivedItems.count);
 	_welcomView.hidden = self.sellingItems.count || self.soldItems.count || self.archivedItems.count;
 }
 
@@ -440,7 +440,7 @@
 -(void) customizeSegment
 {
     CGRect frame= self.wardrobeType.frame;
-    [self.wardrobeType setFrame:CGRectMake(0, 5, frame.size.width, 40.f)];
+    [self.wardrobeType setFrame:CGRectMake(0, 0, frame.size.width, 45.f)];
     
     CALayer *upperBorder = [CALayer layer];
     upperBorder.backgroundColor = [[UIColor whiteColor] CGColor];
@@ -472,8 +472,6 @@
                                        forState:UIControlStateSelected
                                      barMetrics:UIBarMetricsDefault];
     [self.wardrobeType setBackgroundImage:[UIImage imageNamed:@"segmentActive"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-    //[UIFont fontWithName:@"Montserrat-Regular" size:15]
-   // [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Montserrat Regular" size:35.0], NSFontAttributeName, [UIColor grayColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [UIFont fontWithName:@"Montserrat-Regular" size:13], NSFontAttributeName,
                                 [UIColor grayColor], NSForegroundColorAttributeName, nil];

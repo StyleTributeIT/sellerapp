@@ -7,11 +7,9 @@
 //
 
 #import "ChooseBrandController.h"
-#import "DataCache.h"
 #import "NamedItems.h"
 #import "AddBrandTableViewCell.h"
-#import <NSArray+LinqExtensions.h>
-#import "GlobalHelper.h"
+
 
 @interface ChooseBrandController ()
 
@@ -28,6 +26,13 @@
     self.designers = [DataCache sharedInstance].designers;
     [self registerCells];
     [self updateSections];
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
 - (void) registerCells{
@@ -116,13 +121,13 @@
         NamedItem *item = [NamedItem new];
         item.name = self.searchingString;
         self.product.designer = item;
-        [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+        [self performSegueWithIdentifier:@"showItemEdited" sender:self];
         return;
     }
     NSArray* curSection = [self.sections objectAtIndex:indexPath.section];
     NamedItem* designer = [curSection objectAtIndex:indexPath.row];
     self.product.designer = designer;
-    [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+    [self performSegueWithIdentifier:@"showItemEdited" sender:self];
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {

@@ -7,6 +7,8 @@
 //
 
 #import "ReplaceSegue.h"
+#import "ChooseBrandController.h"
+#import "TopCategoriesViewController.h"
 
 @implementation ReplaceSegue
 - (void)perform {
@@ -18,7 +20,7 @@
     
     for (int i = 0; i < controllerStack.count; i++) {
         UIViewController *vc = [controllerStack objectAtIndex:i];
-        if ([vc isKindOfClass:[destinationController class]])
+        if ([vc isKindOfClass:[destinationController class]] && (![vc isKindOfClass:[ChooseBrandController class]] && ![vc isKindOfClass:[TopCategoriesViewController class]]))
             [controllerStack removeObject:vc];
     }
     [controllerStack addObject:destinationController];

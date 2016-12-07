@@ -9,9 +9,6 @@
 #import "QuestionViewController.h"
 #import "PriceViewController.h"
 #import "Product.h"
-#import "GlobalDefs.h"
-#import "GlobalHelper.h"
-#import "DataCache.h"
 
 @interface QuestionViewController ()
     @property (strong, nonatomic) IBOutlet UITextField *priceField;
@@ -21,6 +18,7 @@
 @implementation QuestionViewController
 
 - (void)viewDidLoad {
+    self.hideNavButtons = YES;
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     CALayer *bottomBorder = [CALayer layer];
@@ -31,6 +29,13 @@
     Product *product = [DataCache getSelectedItem];
     product.originalPrice = 0;
     [DataCache setSelectedItem:product];
+    UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
+    UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [aButton setImage:buttonImage forState:UIControlStateNormal];
+    aButton.frame = CGRectMake(0.0,0.0,14,23);
+    [aButton addTarget:self action:@selector(backPressed:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+    self.navigationItem.leftBarButtonItem = backButton;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -40,6 +45,10 @@
 
 - (IBAction)backPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)inputDone {
+    [self nextPressed:nil];
 }
 - (IBAction)nextPressed:(id)sender {
     [self.priceField resignFirstResponder];
