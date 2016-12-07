@@ -45,13 +45,14 @@
     NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notificationCell" forIndexPath:indexPath];
     if([DataCache sharedInstance].products != nil) {
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
-            return (p.identifier == [[self.prods objectAtIndex:indexPath.row] integerValue]);
+            return (p.identifier == [[[self.prods objectAtIndex:indexPath.row] objectForKey:@"pid"] integerValue]);
         }] firstObject];
         cell.title.text = product.name;
+        cell.message.text = [[self.prods objectAtIndex:indexPath.row] objectForKey:@"alert"];
         if(product != nil) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 Photo* photo = [product.photos firstObject];
-                
+                [cell.imageView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
             });
         }
     }
