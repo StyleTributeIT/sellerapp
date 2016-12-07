@@ -7,9 +7,11 @@
 //
 
 #import "NotificationsViewController.h"
+#import "NotificationTableViewCell.h"
+#import "Photo.h"
 
 @interface NotificationsViewController ()
-
+@property NSMutableArray *prods;
 @end
 
 @implementation NotificationsViewController
@@ -18,6 +20,9 @@
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    self.prods = [defs objectForKey:@"notifications"];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,22 +33,31 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.prods?self.prods.count:0;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"notificationCell" forIndexPath:indexPath];
+    if([DataCache sharedInstance].products != nil) {
+        Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
+            return (p.identifier == [[self.prods objectAtIndex:indexPath.row] integerValue]);
+        }] firstObject];
+        cell.title.text = product.name;
+        if(product != nil) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                Photo* photo = [product.photos firstObject];
+                
+            });
+        }
+    }
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

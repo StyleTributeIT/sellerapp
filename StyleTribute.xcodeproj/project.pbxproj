@@ -118,6 +118,8 @@
 		E1B059E71DCB4F1A00D14D91 /* CategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E61DCB4F1A00D14D91 /* CategoryViewCell.m */; };
 		E1B059EB1DCBCE6400D14D91 /* AddBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */; };
 		E1B059EC1DCBCE6400D14D91 /* AddBrandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B059EA1DCBCE6400D14D91 /* AddBrandTableViewCell.xib */; };
+		E1BC25461DF861C400DF2FB2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BC25451DF861C400DF2FB2 /* libsqlite3.tbd */; };
+		E1BC254A1DF867B400DF2FB2 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC25491DF867B400DF2FB2 /* NotificationTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,6 +334,9 @@
 		E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBrandTableViewCell.m; sourceTree = "<group>"; };
 		E1B059EA1DCBCE6400D14D91 /* AddBrandTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBrandTableViewCell.xib; sourceTree = "<group>"; };
 		E1BC25441DF571CE00DF2FB2 /* StyleTribute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StyleTribute.entitlements; sourceTree = "<group>"; };
+		E1BC25451DF861C400DF2FB2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		E1BC25481DF867B400DF2FB2 /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
+		E1BC25491DF867B400DF2FB2 /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
 		E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA21526F6B1CFAEF28B1A2B6 /* Pods-StyleTributeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -341,6 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BC25461DF861C400DF2FB2 /* libsqlite3.tbd in Frameworks */,
 				7A8A174D1B2F2439006489C8 /* CoreGraphics.framework in Frameworks */,
 				7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */,
 				E13300921DE0FBC000D798F2 /* FBSDKShareKit.framework in Frameworks */,
@@ -650,6 +656,7 @@
 		D358717626AA9718DD7716CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1BC25451DF861C400DF2FB2 /* libsqlite3.tbd */,
 				E13300931DE0FCBC00D798F2 /* Bolts.framework */,
 				E13300911DE0FBC000D798F2 /* FBSDKShareKit.framework */,
 				675027A51DA4BA1800856832 /* libAFNetworking.a */,
@@ -740,6 +747,7 @@
 		E173F48B1DE8F02F00D86141 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E1BC25471DF8679800DF2FB2 /* Cells */,
 				7A3FA4A41AEFEAEF0050803C /* WardrobeController.h */,
 				7A3FA4A51AEFEAEF0050803C /* WardrobeController.m */,
 				7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */,
@@ -765,6 +773,15 @@
 				7A4AA2CB1AF0F2A900190ED3 /* FBRegistrationController.m */,
 			);
 			name = Login/Register;
+			sourceTree = "<group>";
+		};
+		E1BC25471DF8679800DF2FB2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E1BC25481DF867B400DF2FB2 /* NotificationTableViewCell.h */,
+				E1BC25491DF867B400DF2FB2 /* NotificationTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1116,6 +1133,7 @@
 				7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */,
 				7A3FA4991AEFA4B70050803C /* BaseInputController.m in Sources */,
 				7AC54C7E1B25DF0900539C94 /* CustomTextField.m in Sources */,
+				E1BC254A1DF867B400DF2FB2 /* NotificationTableViewCell.m in Sources */,
 				E173F48F1DE8F97200D86141 /* ItemNavigationBase.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,

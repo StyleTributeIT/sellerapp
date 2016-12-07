@@ -135,7 +135,13 @@
     NSDictionary* aps = [userInfo objectForKey:@"aps"];
     NSString* alert = [aps objectForKey:@"alert"];
     NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
-    
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *prods = [defs objectForKey:@"notifications"];
+    if (!prods)
+        prods = [NSMutableArray new];
+    [prods addObject:@{@"alert":alert,@"pid":[aps objectForKey:@"pid"]}];
+    [defs setObject:prods forKey:@"notifications"];
+    [defs synchronize];
     // get product name from id
     if([DataCache sharedInstance].products != nil) {
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
