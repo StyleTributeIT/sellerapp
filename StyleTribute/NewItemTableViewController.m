@@ -433,7 +433,7 @@ int sectionOffset = 0;
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), section==0?0.1:50)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 200, 25)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 25, 200, 25)];
     if (section == 1)
         label.text = @"DETAILS";
     else
