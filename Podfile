@@ -10,6 +10,9 @@ target 'StyleTribute' do
 	pod 'UIActivityIndicator-for-SDWebImage'
 	pod 'MRProgress'
 	pod 'CRToast'
+#	pod 'FMDB', '~> 2.6'
+pod 'Fabric'
+pod 'Crashlytics'
 end
 
 target 'StyleTributeTests' do
