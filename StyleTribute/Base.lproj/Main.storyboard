@@ -29,7 +29,7 @@
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -206,7 +206,7 @@
                         <viewControllerLayoutGuide type="top" id="KeO-l6-gRQ"/>
                         <viewControllerLayoutGuide type="bottom" id="jNw-e3-dRw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="NY5-ro-TzI">
+                    <view key="view" contentMode="scaleToFill" id="NY5-ro-TzI">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -653,8 +653,8 @@
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
-                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1619,7 +1619,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="top" id="acp-WF-Stg"/>
                         <viewControllerLayoutGuide type="bottom" id="UFY-tf-2Fn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="J5N-YH-Eaa">
+                    <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1816,7 +1816,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="top" id="y6t-Ec-MNt"/>
                         <viewControllerLayoutGuide type="bottom" id="ouI-7M-v2j"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="hM7-JS-bIu">
+                    <view key="view" contentMode="scaleToFill" id="hM7-JS-bIu">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2045,7 +2045,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cNQ-w8-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2063,11 +2063,11 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw">
-                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2152,8 +2152,8 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shop" image="shop" selectedImage="shop-pink" id="1mj-Cd-aNH">
-                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2172,11 +2172,11 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO">
-                        <inset key="imageInsets" minX="0.0" minY="-25" maxX="0.0" maxY="25"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-50"/>
+                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2268,7 +2268,7 @@ Citilink Warehouse Complex
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
         <image name="tabBg" width="640" height="91"/>
-        <image name="topShadow" width="168" height="168"/>
+        <image name="topShadow" width="660" height="95"/>
         <image name="wardrobe" width="37" height="22"/>
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
