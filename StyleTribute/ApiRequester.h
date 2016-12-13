@@ -83,5 +83,4 @@ typedef void (^JSONRespAppViersion)(float appVersion);
 -(void)getRegionsByCountry:(NSString*)country success:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)setShippingAddress:(Address*)address success:(JSONRespEmpty)success failure:(JSONRespError)failure;
 -(void)getMinimumAppVersionWithSuccess:(JSONRespAppViersion)success failure:(JSONRespError)failure;
-
 @end

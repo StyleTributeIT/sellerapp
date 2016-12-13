@@ -235,6 +235,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     [self.sessionManager GET:@"filterOptions" parameters:@{@"category_id":@"4"} success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* categories = [NSMutableArray new];
+        NSLog(@"%@", responseObject);
         for (NSDictionary* categoryDict in responseObject) {
             [categories addObject:[STCategory parseFromJson:categoryDict]];
         }
@@ -249,6 +250,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"seller/categories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
+        NSLog(@"%@",responseObject);
         NSMutableArray* categories = [NSMutableArray new];
         for (NSDictionary* categoryDict in responseObject) {
             [categories addObject:[STCategory parseFromJson:categoryDict]];
@@ -275,6 +277,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         failure(DefGeneralErrMsg);
     }];
 }
+
 
 -(void)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;

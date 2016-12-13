@@ -45,6 +45,7 @@
         [[ApiRequester sharedInstance] setDeviceToken:deviceToken success:^{
         } failure:^(NSString *error) {
         }];
+        
     }
     [self.tabBarController.navigationController.navigationBar setShadowImage:[UIImage new]];
     //[self updateProducts];
@@ -93,7 +94,7 @@
     
     if([DataCache sharedInstance].categories == nil) {
         dispatch_group_enter(group);
-     /*   [[ApiRequester sharedInstance] getSubCategories:^(NSArray *products) {
+        /*[[ApiRequester sharedInstance] getSubCategories:^(NSArray *products) {
             
         } failure:^(NSString *error) {
             
