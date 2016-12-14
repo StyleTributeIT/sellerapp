@@ -67,7 +67,7 @@ NSInteger CENTER_BTN_IDX = 3;
 {
     UIViewController* viewController = [[UIViewController alloc] init];
     viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:0];
-    viewController.tabBarItem.imageInsets = UIEdgeInsetsMake(45, 0, -45, 0);
+    viewController.tabBarItem.imageInsets = UIEdgeInsetsMake(57, 0, -57, 0);
     
     return viewController;
 }

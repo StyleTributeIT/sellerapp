@@ -41,6 +41,7 @@ typedef void(^ImageLoadBlock)(int);
 @property BOOL isProductUpdated;
 @property BOOL hideSkipInGuide;
 @property UIPickerView* picker;
+@property Photo* lastPhoto;
 @property (copy) ImageLoadBlock imgLoadBlock;
 @property NSUInteger selectedImageIndex;
 @property UIActionSheet* photoActionsSheet;
@@ -62,7 +63,7 @@ int sectionOffset = 0;
     self.isTutorialPresented = NO;
     self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-    self.productCopy = [self.curProduct copy];
+    //self.productCopy = [self.curProduct copy];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -89,6 +90,7 @@ int sectionOffset = 0;
         self.curProduct = [DataCache getSelectedItem];
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
+            self.productCopy = self.curProduct;
             [DataCache setSelectedItem:self.curProduct];
             [DataCache sharedInstance].isEditingItem = NO;            
         }
@@ -99,7 +101,7 @@ int sectionOffset = 0;
         {
             self.navigationItem.title = self.curProduct.category.name;
         }
-        [self.tableView reloadData];
+       // [self.tableView reloadData];
     }
 
     -(void)viewDidAppear:(BOOL)animated {
@@ -120,8 +122,12 @@ int sectionOffset = 0;
                     } else
                     {
                         if (![self containsSelfClass:copyViewControllers] && i != 0)
+                        {
+                            if ([allViewControllers[i] isKindOfClass:[self class]])
+                                ((NewItemTableViewController*)allViewControllers[i]).productCopy = self.productCopy;
                             [copyViewControllers addObject:allViewControllers[i]];
-                            
+                        }
+                        
                     }
             }
             if (copyViewControllers.count == 0)
@@ -554,7 +560,7 @@ int sectionOffset = 0;
     MessageTableViewCell *cell = (MessageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
     cell.messageLabel.text = self.curProduct.processComment;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [self addBordersForCell:cell addBottomBorder:YES];
+ //   [self addBordersForCell:cell addBottomBorder:YES];
     return cell;
 }
   
@@ -703,7 +709,7 @@ int sectionOffset = 0;
     } else if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {
         //self.brandField.text = self.curProduct.designer.name;
     }
-    
+    self.productCopy = self.curProduct;
     NSLog(@"unwindToAddItem");
 }
     
@@ -758,6 +764,7 @@ int sectionOffset = 0;
     switch (index) {
         case 0: {  // Delete
             Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+            self.lastPhoto = photo;
             if(self.selectedImageIndex >= self.curProduct.category.imageTypes.count) {
                 [self.curProduct.photos removeObject:photo];
                 if(photo.identifier != 0) {
@@ -784,15 +791,13 @@ int sectionOffset = 0;
              [self performSegueWithIdentifier:@"tutorialSegue" sender:self];
              [defs setBool:NO forKey:@"displayTutorial"];
              self.isTutorialPresented = YES;
-             } else*/ {
+             } else*/
+            {
                  
                  
                  // if we pressed on "plus", we should add photo instead of replace.
-                 if(self.selectedImageIndex == self.curProduct.photos.count) {
-                     Photo* photo = [Photo new];
-                     [self.curProduct.photos addObject:photo];
-                 }
-                  Photo* photo = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
+                
+                Photo* photo = self.selectedImageIndex>=self.curProduct.photos.count?NULL:[self.curProduct.photos objectAtIndex:self.selectedImageIndex];
                  if (![photo isKindOfClass:[NSNull class]] || self.isTutorialPresented)
                  {
                      [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
@@ -870,6 +875,10 @@ int sectionOffset = 0;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    if(self.selectedImageIndex == self.curProduct.photos.count) {
+        Photo* photo = [Photo new];
+        [self.curProduct.photos addObject:photo];
+    }
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     UIImage *finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
     
@@ -896,13 +905,18 @@ int sectionOffset = 0;
             }
         }
     }
+    self.productCopy.photos = self.curProduct.photos;
+    self.productCopy.category.imageTypes =self.curProduct.category.imageTypes;
     [DataCache setSelectedItem:self.curProduct];
     [self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+  //  [self.tableView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
+  //  self.curProduct.photos = self.productCopy.photos;
+//    self.curProduct.category.imageTypes = self.productCopy.category.imageTypes;
 }
 
 #pragma mark UIPicker delegates

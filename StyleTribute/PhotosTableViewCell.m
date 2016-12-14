@@ -30,6 +30,12 @@
     [self.titleBorder.layer addSublayer:bottomBorder];
     
 }
+
+-(void)prepareForReuse
+{
+    [self.collectionView reloadData];
+    [super prepareForReuse];
+}
     
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -39,6 +45,7 @@
 {
     self.curProduct = [DataCache getSelectedItem];
     [self.collectionView reloadData];
+    //[self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForSelectedItems];
 }
 
 #pragma mark - Gestures delegate
@@ -60,19 +67,20 @@
 }
     
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    //    NSString* reuseId = [NSString stringWithFormat:@"reuse%zd", indexPath.row];
-    __block PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
-    //    PhotoCell* newCell = [PhotoCell new];
-    
+    PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
+    newCell.photoView.hidden = YES;
+    newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
     // Handle "plus" item
     NSLog(@"index: %zd || %zd", indexPath.row, self.curProduct.photos.count);
     if(indexPath.row == self.curProduct.photos.count) {
-       // newCell.photoView.image = [UIImage imageNamed:@"plus"];
+     //   newCell.photoView.hidden = YES;
         newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
         [newCell.photoTypeLabel setHidden:YES];
         newCell.plusLabel.hidden = NO;
+        newCell.tag = 111;
     } else {
         ImageType* imgType = nil;
+        newCell.photoView.hidden = NO;
         if(indexPath.row >= self.curProduct.category.imageTypes.count) {
             imgType = [ImageType new];
             newCell.plusLabel.hidden = YES;
