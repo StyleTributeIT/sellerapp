@@ -464,6 +464,15 @@
                                                     <action selector="logout:" destination="tSN-ez-241" eventType="touchUpInside" id="Mim-FF-ath"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVW-5M-sY6">
+                                                <rect key="frame" x="8" y="403" width="312" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="8yu-zt-447"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -472,9 +481,12 @@
                                             <constraint firstAttribute="height" constant="432" id="KVX-gD-t98"/>
                                             <constraint firstAttribute="width" constant="320" id="Oxw-4v-Ev8"/>
                                             <constraint firstAttribute="trailing" secondItem="9Cl-eb-aQj" secondAttribute="trailing" constant="10" id="aAJ-6W-1gH"/>
+                                            <constraint firstAttribute="bottom" secondItem="HVW-5M-sY6" secondAttribute="bottom" constant="8" id="dMn-y8-6Nk"/>
+                                            <constraint firstItem="HVW-5M-sY6" firstAttribute="leading" secondItem="7xF-vN-mHu" secondAttribute="leading" constant="8" id="eVJ-99-L6H"/>
                                             <constraint firstItem="9Cl-eb-aQj" firstAttribute="top" secondItem="b1K-gw-wKD" secondAttribute="bottom" constant="8" id="hSL-RM-bbQ"/>
                                             <constraint firstItem="9Cl-eb-aQj" firstAttribute="leading" secondItem="7xF-vN-mHu" secondAttribute="leading" constant="10" id="itx-dS-hJF"/>
                                             <constraint firstItem="SRr-8i-PRe" firstAttribute="top" secondItem="rNJ-vz-aMo" secondAttribute="bottom" constant="8" id="jum-EK-ib7"/>
+                                            <constraint firstAttribute="trailing" secondItem="HVW-5M-sY6" secondAttribute="trailing" id="nzk-am-Ltx"/>
                                             <constraint firstItem="rNJ-vz-aMo" firstAttribute="leading" secondItem="7xF-vN-mHu" secondAttribute="leading" constant="8" id="pnd-1A-JA8"/>
                                             <constraint firstAttribute="trailing" secondItem="b1K-gw-wKD" secondAttribute="trailing" constant="8" id="rDI-lA-098"/>
                                             <constraint firstItem="b1K-gw-wKD" firstAttribute="leading" secondItem="7xF-vN-mHu" secondAttribute="leading" constant="8" id="rVE-8D-Zsa"/>
@@ -516,6 +528,7 @@
                         <outlet property="contentView" destination="7xF-vN-mHu" id="T0q-bg-G7I"/>
                         <outlet property="scrollView" destination="Cfr-uw-wMs" id="6sa-h0-J3t"/>
                         <outlet property="userNameLabel" destination="b1K-gw-wKD" id="s7M-Vs-ihC"/>
+                        <outlet property="versionLabel" destination="HVW-5M-sY6" id="yS3-Rq-6YA"/>
                         <outlet property="widthConstraint" destination="Oxw-4v-Ev8" id="z7r-Mt-8w7"/>
                         <segue destination="tr0-6J-Wdp" kind="show" identifier="editProfileSegue" id="w6Z-kg-Ydb"/>
                         <segue destination="grn-Wi-nkv" kind="show" identifier="residentAddressSegue" id="9cY-71-45b"/>
@@ -528,7 +541,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxX-xU-RjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Th8-VD-QdL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="2475"/>
+            <point key="canvasLocation" x="1792.8" y="2474.2128935532237"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="yuc-83-dqw">
@@ -2045,7 +2058,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cNQ-w8-3DE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2067,7 +2080,7 @@ Citilink Warehouse Complex
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPr-LJ-R6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2176,7 +2189,7 @@ Citilink Warehouse Complex
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FPs-3n-4n4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
