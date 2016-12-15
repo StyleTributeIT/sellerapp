@@ -28,6 +28,7 @@
 
 @implementation AppDelegate
 
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Fabric with:@[[Crashlytics class]]];
@@ -53,7 +54,15 @@
     [[UIFloatLabelTextField appearance] setTextAlignment:NSTextAlignmentCenter];
     [[UIFloatLabelTextField appearance] setFloatLabelActiveColor:pink];
     [[UIFloatLabelTextField appearance] setFloatLabelFont:[UIFont fontWithName:@"Montserrat-Light" size:10]];
-    
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if( !error ){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];  
+    }
     if([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
                                                                                              | UIUserNotificationTypeBadge
@@ -123,11 +132,28 @@
 
 #pragma mark - Push notifications
 
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    
+    //Called when a notification is delivered to a foreground app.
+    
+    NSLog(@"Userinfo %@",notification.request.content.userInfo);
+    
+    completionHandler(UNNotificationPresentationOptionAlert);
+}
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler{
+    
+    //Called to let your app know which action was selected by the user for a given notification.
+    
+    NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
+    
+}
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     NSString *newToken = [deviceToken description];
     newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
 //    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
+    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     [DataCache sharedInstance].deviceToken = newToken;
     
     NSLog(@"My token is: %@", newToken);

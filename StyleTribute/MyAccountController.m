@@ -12,6 +12,7 @@
 @interface MyAccountController ()
 
 @property NSArray* accountSettings;
+@property (strong, nonatomic) IBOutlet UILabel *versionLabel;
 
 @end
 
@@ -22,6 +23,10 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.accountSettings = @[@"EDIT PROFILE", @"RESIDENT ADDRESS", /* @"CHANGE MY PASSWORD", */ @"MY BANK DETAILS", @"CONTACT & FIND US"];
+    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString * appBuildString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+    NSString * versionBuildString = [NSString stringWithFormat:@"Version: %@ (%@)", appVersionString, appBuildString];
+    self.versionLabel.text = versionBuildString;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
