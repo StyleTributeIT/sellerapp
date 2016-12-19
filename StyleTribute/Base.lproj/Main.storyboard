@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -667,7 +667,7 @@
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
                         <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2077,7 +2077,7 @@ Citilink Warehouse Complex
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw">
                         <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
@@ -2166,9 +2166,9 @@ Citilink Warehouse Complex
                 <navigationController id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shop" image="shop" selectedImage="shop-pink" id="1mj-Cd-aNH">
                         <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aaO-y8-Qml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2186,10 +2186,10 @@ Citilink Warehouse Complex
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO">
                         <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-54"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FPs-3n-4n4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
