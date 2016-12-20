@@ -15,7 +15,7 @@
 
 @interface TopCategoriesViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionCategories;
-
+@property NSMutableArray *categories;
 @end
 
 @implementation TopCategoriesViewController
@@ -25,18 +25,33 @@
     self.collectionCategories.accessibilityIdentifier = @"Choose category table";
     self.collectionCategories.delegate = self;
     self.collectionCategories.dataSource = self;
-    if([DataCache sharedInstance].categories == nil) {
+    if([DataCache sharedInstance].categories == nil)
+    {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].categories = categories;
-            
+            _categories = [NSMutableArray arrayWithArray:categories];
             [self.collectionCategories reloadData];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [GlobalHelper showMessage:error withTitle:@"error"];
         }];
+    } else
+    {
+        if (!self.categories)
+            self.categories = [NSMutableArray arrayWithArray:[DataCache sharedInstance].categories];
     }
+}
+
+-(void)loadWithChildrens:(NSArray*)childrens
+{
+    NSMutableArray* categories = [NSMutableArray new];
+    for (NSDictionary* categoryDict in childrens) {
+        [categories addObject:[STCategory parseFromJson:categoryDict]];
+    }
+    self.categories = categories;
+    [self.collectionCategories reloadData];
 }
 
 - (IBAction)cancel:(id)sender {
@@ -70,8 +85,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.collectionCategories deselectItemAtIndexPath:indexPath animated:NO];
-    self.selectedCategory = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
-   // [self performSegueWithIdentifier:@"unwindToAddItem" sender:self];
+    self.selectedCategory = [self.categories objectAtIndex:indexPath.row];
     Product *product = [DataCache getSelectedItem];
     product.category = self.selectedCategory;
     product.photos = [NSMutableArray arrayWithCapacity:product.category.imageTypes.count];
@@ -79,18 +93,25 @@
         [product.photos addObject:[NSNull null]];
     }
     [DataCache setSelectedItem:product];
-    [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:nil];
+    //TopCategoriesViewController *categoris = [[TopCategoriesViewController alloc] init];
+    if (((STCategory*)[self.categories objectAtIndex:indexPath.row]).children.count != 0)
+    {
+        TopCategoriesViewController *viewController = [[UIStoryboard storyboardWithName:@"ProductFlow" bundle:nil] instantiateViewControllerWithIdentifier:@"categorySelection"];
+        [viewController loadWithChildrens:((STCategory*)[self.categories objectAtIndex:indexPath.row]).children];
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else
+        [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:nil];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [DataCache sharedInstance].categories.count;
+    return self.categories.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CategoryViewCell *cell = (CategoryViewCell*)[_collectionCategories dequeueReusableCellWithReuseIdentifier:@"categoryCell" forIndexPath:indexPath];
-    STCategory* category = [[DataCache sharedInstance].categories objectAtIndex:indexPath.row];
+    STCategory* category = [self.categories objectAtIndex:indexPath.row];
     
     cell.tag = indexPath.row;
     cell.categoryName.text = category.name;
