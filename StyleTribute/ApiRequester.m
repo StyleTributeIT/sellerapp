@@ -250,7 +250,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     [self.sessionManager GET:@"seller/categories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
-        NSLog(@"%@",responseObject);
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",jsonString);
         NSMutableArray* categories = [NSMutableArray new];
         for (NSDictionary* categoryDict in responseObject) {
             [categories addObject:[STCategory parseFromJson:categoryDict]];
