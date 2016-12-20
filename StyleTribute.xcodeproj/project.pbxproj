@@ -114,6 +114,7 @@
 		E18060C01DD32A4C00B4056F /* PriceConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */; };
 		E18060C21DD3327400B4056F /* PriceFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18060C11DD3327400B4056F /* PriceFlow.storyboard */; };
 		E18060C51DD3F70100B4056F /* EnterPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060C41DD3F70100B4056F /* EnterPriceViewController.m */; };
+		E1A091AB1E09458800CBC1C8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A091AA1E09458800CBC1C8 /* Parse.framework */; };
 		E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */; };
 		E1B059E71DCB4F1A00D14D91 /* CategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E61DCB4F1A00D14D91 /* CategoryViewCell.m */; };
 		E1B059EB1DCBCE6400D14D91 /* AddBrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E91DCBCE6400D14D91 /* AddBrandTableViewCell.m */; };
@@ -327,6 +328,7 @@
 		E18060C11DD3327400B4056F /* PriceFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PriceFlow.storyboard; sourceTree = "<group>"; };
 		E18060C31DD3F70000B4056F /* EnterPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterPriceViewController.h; sourceTree = "<group>"; };
 		E18060C41DD3F70100B4056F /* EnterPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterPriceViewController.m; sourceTree = "<group>"; };
+		E1A091AA1E09458800CBC1C8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCategoriesViewController.h; sourceTree = "<group>"; };
 		E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCategoriesViewController.m; sourceTree = "<group>"; };
 		E1B059E51DCB4F1A00D14D91 /* CategoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewCell.h; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */,
 				7AB78D931B0223C500C13D13 /* FBSDKLoginKit.framework in Frameworks */,
 				7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */,
+				E1A091AB1E09458800CBC1C8 /* Parse.framework in Frameworks */,
 				E13300941DE0FCBC00D798F2 /* Bolts.framework in Frameworks */,
 				675027A71DA4BA2300856832 /* libAFNetworking.a in Frameworks */,
 				16F40E4FA68FDFB8CBF7C829 /* libPods-StyleTribute.a in Frameworks */,
@@ -659,6 +662,7 @@
 		D358717626AA9718DD7716CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1A091AA1E09458800CBC1C8 /* Parse.framework */,
 				E1BC254B1DF9E1D100DF2FB2 /* UserNotifications.framework */,
 				E1BC25451DF861C400DF2FB2 /* libsqlite3.tbd */,
 				E13300931DE0FCBC00D798F2 /* Bolts.framework */,
@@ -1253,6 +1257,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1321,7 +1326,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: StyleTribute Pte. Ltd. (6SEHKYT2JG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Claudio Mettler (5WWJWK2LQB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1348,7 +1353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: StyleTribute Pte. Ltd. (6SEHKYT2JG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Claudio Mettler (5WWJWK2LQB)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (

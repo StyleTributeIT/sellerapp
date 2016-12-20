@@ -15,6 +15,7 @@
 #import "UIFloatLabelTextField.h"
 #import "Product.h"
 #import "Photo.h"
+#import <Parse/Parse.h>
 #import "WelcomeController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -27,8 +28,6 @@
 @end
 
 @implementation AppDelegate
-
-#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Fabric with:@[[Crashlytics class]]];
@@ -54,15 +53,7 @@
     [[UIFloatLabelTextField appearance] setTextAlignment:NSTextAlignmentCenter];
     [[UIFloatLabelTextField appearance] setFloatLabelActiveColor:pink];
     [[UIFloatLabelTextField appearance] setFloatLabelFont:[UIFont fontWithName:@"Montserrat-Light" size:10]];
-    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
-            if( !error ){
-                [[UIApplication sharedApplication] registerForRemoteNotifications];
-            }
-        }];  
-    }
+    
     if([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
                                                                                              | UIUserNotificationTypeBadge
@@ -83,6 +74,7 @@
 	
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
 
+    
     
     return YES;
 }
@@ -131,6 +123,8 @@
 }
 
 #pragma mark - Push notifications
+
+
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
     
@@ -189,8 +183,6 @@
         }
     }
 }
-
-
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
     [application registerForRemoteNotifications];

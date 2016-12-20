@@ -49,6 +49,7 @@ UIPageControl *thisControl = nil;
     [self addChildViewController:self.pageController];
     [[self pagesContainer] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
+    
     [UIPageControl appearance].tintColor = [UIColor blackColor];
     for (UIView *v in self.pageController.view.subviews) {
         if ([v isKindOfClass:[UIScrollView class]]) {
