@@ -66,11 +66,11 @@
     
     
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
-    NSMutableArray* categories = [NSMutableArray new];
+    /*NSMutableArray* categories = [NSMutableArray new];
     for (NSDictionary* categoryDict in childrens) {
         [categories addObject:[STCategory parseFromJson:categoryDict]];
-    }
-    self.categories = categories;
+    }*/
+    self.categories = [NSMutableArray arrayWithArray:childrens];
     [self.collectionCategories reloadData];
 }
 
