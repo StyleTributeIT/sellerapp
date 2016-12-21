@@ -44,8 +44,28 @@
     }
 }
 
--(void)loadWithChildrens:(NSArray*)childrens
+-(void)backButtonTapped
 {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)loadWithChildrens:(NSArray*)childrens andPrevCategorie:(STCategory*)categorie
+{
+    self.navigationItem.title = categorie.name;
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(0, 0, 15, 24);
+    [backButton addTarget:self action:@selector(backButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    backButton.showsTouchWhenHighlighted = YES;
+    
+    UIImage *backButtonImage = [UIImage imageNamed:@"backBtn"];
+    [backButton setImage:backButtonImage forState:UIControlStateNormal];
+    
+    backButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    
+    self.navigationItem.leftBarButtonItem = backBarButtonItem;
     NSMutableArray* categories = [NSMutableArray new];
     for (NSDictionary* categoryDict in childrens) {
         [categories addObject:[STCategory parseFromJson:categoryDict]];
@@ -97,7 +117,7 @@
     if (((STCategory*)[self.categories objectAtIndex:indexPath.row]).children.count != 0)
     {
         TopCategoriesViewController *viewController = [[UIStoryboard storyboardWithName:@"ProductFlow" bundle:nil] instantiateViewControllerWithIdentifier:@"categorySelection"];
-        [viewController loadWithChildrens:((STCategory*)[self.categories objectAtIndex:indexPath.row]).children];
+        [viewController loadWithChildrens:((STCategory*)[self.categories objectAtIndex:indexPath.row]).children andPrevCategorie:self.selectedCategory];
         [self.navigationController pushViewController:viewController animated:YES];
     } else
         [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:nil];

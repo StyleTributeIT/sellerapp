@@ -15,6 +15,6 @@
 @property NSString* brandField;
 @property (weak) Product* product;
 
--(void)loadWithChildrens:(NSArray*)childrens;
+-(void)loadWithChildrens:(NSArray*)childrens andPrevCategorie:(STCategory*)categorie;
 
 @end
