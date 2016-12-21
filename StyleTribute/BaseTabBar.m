@@ -92,7 +92,7 @@ NSInteger CENTER_BTN_IDX = 3;
     [button setTitle:@"Sell" forState:UIControlStateNormal];
     CGSize imageSize = button.imageView.image.size;
     button.titleEdgeInsets = UIEdgeInsetsMake(
-                                              0.0, - imageSize.width, - (button.frame.size.height + 27), 0.0);
+                                              0.0, - imageSize.width, - (button.frame.size.height + 23), 0.0);
     [button setTitleColor:[UIColor colorWithRed:141.f/255 green:141.f/255 blue:141.f/255 alpha:1.f] forState: UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:@"Montserrat-Regular" size:11]];
     [button addTarget:self action:@selector(addItemButtonPressed) forControlEvents:(UIControlEventTouchUpInside)];
