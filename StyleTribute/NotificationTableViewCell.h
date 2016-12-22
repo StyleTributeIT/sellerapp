@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NotificationTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *title;
 @property (strong, nonatomic) IBOutlet UILabel *message;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *photoView;
 
 @end

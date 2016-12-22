@@ -33,6 +33,11 @@
 
 #pragma mark - Table view data source
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -46,7 +51,7 @@
             for(UIViewController * viewController in navController.viewControllers){
                 if ([viewController isKindOfClass:[ProductNavigationViewController class]]){
                     ProductNavigationViewController *vc = (ProductNavigationViewController * ) viewController;
-                    vc.curProduct = product;                    
+                    vc.curProduct = product;
                     [DataCache setSelectedItem:product];
                     [DataCache sharedInstance].isEditingItem = YES;
                 }
@@ -75,7 +80,7 @@
         cell.message.text = [[self.prods objectAtIndex:indexPath.row] objectForKey:@"alert"];
         if(product != nil) {
             Photo* photo = [product.photos firstObject];
-            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:photo.imageUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+            [cell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.imageUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
     }
     return cell;

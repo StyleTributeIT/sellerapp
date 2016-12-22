@@ -26,6 +26,7 @@
 @property BOOL isInBackground;
 
 @end
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @implementation AppDelegate
 
@@ -73,10 +74,30 @@
     }
 	
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-
+[self registerForRemoteNotifications];
     
+    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        configuration.applicationId = @"pxww8LIhtJ2v4TZDU4LDWHhoaze3d1fOMop2NtA5";
+        configuration.clientKey = @"OwbIej5eI9ZStORMhlLdaQiM4J8QhzJnEtLzKybR";
+        configuration.server = @"https://parseapi.back4app.com/";
+    }]];
     
     return YES;
+}
+
+- (void)registerForRemoteNotifications {
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if(!error){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];
+    }
+    else {
+        // Code for old versions
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -149,7 +170,11 @@
 //    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     [DataCache sharedInstance].deviceToken = newToken;
-    
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceToken:newToken];
+    [currentInstallation setDeviceTokenFromData:deviceToken]; //[newToken dataUsingEncoding:NSUTF8StringEncoding]
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
     NSLog(@"My token is: %@", newToken);
 }
 
