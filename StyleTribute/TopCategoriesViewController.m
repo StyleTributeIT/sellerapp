@@ -163,7 +163,7 @@
     if ([segue.identifier isEqualToString:@"ChooseBrandSegue2"])
     {
         ChooseBrandController *brand = segue.destinationViewController;
-        brand.navigationItem.title = self.selected_title;
+        brand.navigationItem.title = @"Brand";
         brand.product = self.product;
     }
 }
