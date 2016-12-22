@@ -75,10 +75,8 @@
         cell.title.text = product.name;
         cell.message.text = [[self.prods objectAtIndex:indexPath.row] objectForKey:@"alert"];
         if(product != nil) {
-            //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                Photo* photo = [product.photos firstObject];
-                [cell.imageView sd_setImageWithURL:[NSURL URLWithString:photo.imageUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
-            
+            Photo* photo = [product.photos firstObject];
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:photo.imageUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
     }
     return cell;

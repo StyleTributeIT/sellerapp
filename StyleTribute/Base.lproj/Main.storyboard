@@ -622,6 +622,15 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-7k-M4I">
+                                                    <rect key="frame" x="82" y="56" width="285" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="sU3-ot-Jtn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -629,10 +638,13 @@
                                                 <constraint firstItem="TLJ-A8-Xxf" firstAttribute="top" secondItem="DmP-3Z-erA" secondAttribute="top" constant="8" id="1aZ-ze-Hxe"/>
                                                 <constraint firstItem="8gu-k6-LOP" firstAttribute="top" secondItem="TLJ-A8-Xxf" secondAttribute="bottom" id="9KI-Qa-Uy1"/>
                                                 <constraint firstAttribute="trailing" secondItem="TLJ-A8-Xxf" secondAttribute="trailing" constant="8" id="9ai-7Y-i6e"/>
+                                                <constraint firstAttribute="trailing" secondItem="VnK-7k-M4I" secondAttribute="trailing" constant="8" id="A9z-ZG-vjv"/>
                                                 <constraint firstItem="8gu-k6-LOP" firstAttribute="leading" secondItem="nlG-Fq-cpY" secondAttribute="trailing" constant="11" id="Bef-ta-lQo"/>
+                                                <constraint firstItem="VnK-7k-M4I" firstAttribute="leading" secondItem="nlG-Fq-cpY" secondAttribute="trailing" constant="11" id="IeX-KA-6Vu"/>
                                                 <constraint firstItem="TLJ-A8-Xxf" firstAttribute="leading" secondItem="nlG-Fq-cpY" secondAttribute="trailing" constant="11" id="Jra-Lz-vgC"/>
                                                 <constraint firstAttribute="trailing" secondItem="8gu-k6-LOP" secondAttribute="trailing" constant="8" id="d0V-uv-X3D"/>
                                                 <constraint firstAttribute="bottom" secondItem="nlG-Fq-cpY" secondAttribute="bottom" constant="8" id="hHC-OQ-BVC"/>
+                                                <constraint firstItem="VnK-7k-M4I" firstAttribute="top" secondItem="TLJ-A8-Xxf" secondAttribute="bottom" constant="27" id="w3Y-cg-t41"/>
                                                 <constraint firstItem="nlG-Fq-cpY" firstAttribute="leading" secondItem="DmP-3Z-erA" secondAttribute="leading" constant="8" id="xBv-t8-z3t"/>
                                             </constraints>
                                         </view>
@@ -645,6 +657,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="dateLabel" destination="VnK-7k-M4I" id="7Os-yM-5Zn"/>
                                     <outlet property="imageView" destination="nlG-Fq-cpY" id="GC1-w2-bQu"/>
                                     <outlet property="message" destination="8gu-k6-LOP" id="AaC-XF-jqr"/>
                                     <outlet property="title" destination="TLJ-A8-Xxf" id="hbN-EV-w8N"/>
@@ -2059,7 +2072,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cNQ-w8-3DE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
