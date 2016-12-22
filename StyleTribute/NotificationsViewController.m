@@ -8,6 +8,7 @@
 
 #import "NotificationsViewController.h"
 #import "NotificationTableViewCell.h"
+#import "NewItemTableViewController.h"
 #import "Photo.h"
 
 @interface NotificationsViewController ()
@@ -32,6 +33,30 @@
 
 #pragma mark - Table view data source
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if([DataCache sharedInstance].products != nil) {
+        Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
+            return (p.identifier == [[[self.prods objectAtIndex:indexPath.row] objectForKey:@"pid"] integerValue]);
+        }] firstObject];
+        if(product != nil) {
+            
+            UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
+            for(UIViewController * viewController in navController.viewControllers){
+                if ([viewController isKindOfClass:[NewItemTableViewController class]]){
+                    NewItemTableViewController *vc = (NewItemTableViewController * ) viewController;
+                    vc.curProduct = product;
+                    vc.isEditingItem = YES;
+                    [DataCache setSelectedItem:product];
+                    [DataCache sharedInstance].isEditingItem = YES;
+                }
+            }
+            [self presentViewController:navController animated:YES completion:nil] ;
+        }
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -50,10 +75,8 @@
         cell.title.text = product.name;
         cell.message.text = [[self.prods objectAtIndex:indexPath.row] objectForKey:@"alert"];
         if(product != nil) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                Photo* photo = [product.photos firstObject];
-                [cell.imageView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
-            });
+            Photo* photo = [product.photos firstObject];
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:photo.imageUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
     }
     return cell;

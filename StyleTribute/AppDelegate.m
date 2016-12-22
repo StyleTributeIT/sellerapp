@@ -162,7 +162,7 @@
     NSString* alert = [aps objectForKey:@"alert"];
     NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *prods = [defs objectForKey:@"notifications"];
+    NSMutableArray *prods = [NSMutableArray arrayWithArray:[defs objectForKey:@"notifications"]];
     if (!prods)
         prods = [NSMutableArray new];
     [prods addObject:@{@"alert":alert,@"pid":[aps objectForKey:@"pid"]}];
