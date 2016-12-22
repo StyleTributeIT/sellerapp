@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,7 +48,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow guidelines given on the camera" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-vJ-64f">
-                    <rect key="frame" x="24" y="375" width="322" height="17"/>
+                    <rect key="frame" x="26" y="394" width="322" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="rrj-r0-InP"/>
                     </constraints>
@@ -60,14 +60,14 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="75F-ss-Kms" secondAttribute="trailing" id="IyS-lo-TQE"/>
-                <constraint firstAttribute="trailing" secondItem="C65-vJ-64f" secondAttribute="trailing" constant="29" id="aDV-Y7-yZd"/>
+                <constraint firstAttribute="trailing" secondItem="C65-vJ-64f" secondAttribute="trailing" constant="27" id="aDV-Y7-yZd"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aLu-E3-z7K"/>
-                <constraint firstItem="C65-vJ-64f" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="63" id="dMf-hl-aeS"/>
+                <constraint firstItem="C65-vJ-64f" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="82" id="dMf-hl-aeS"/>
                 <constraint firstItem="dtb-hR-TPX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="-8" id="eaq-OM-vnQ"/>
                 <constraint firstItem="dtb-hR-TPX" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" constant="8" id="fWr-Pj-dyT"/>
                 <constraint firstItem="dtb-hR-TPX" firstAttribute="top" secondItem="75F-ss-Kms" secondAttribute="bottom" constant="38" id="jxs-t5-WBM"/>
                 <constraint firstItem="75F-ss-Kms" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oZ1-r7-fYW"/>
-                <constraint firstItem="C65-vJ-64f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="rVT-6f-1Nc"/>
+                <constraint firstItem="C65-vJ-64f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="rVT-6f-1Nc"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="75.5"/>
         </view>

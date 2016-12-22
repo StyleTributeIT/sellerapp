@@ -16,6 +16,7 @@
 @interface TopCategoriesViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionCategories;
 @property NSMutableArray *categories;
+@property NSString *selected_title;
 @end
 
 @implementation TopCategoriesViewController
@@ -51,7 +52,7 @@
 
 -(void)loadWithChildrens:(NSArray*)childrens andPrevCategorie:(STCategory*)categorie
 {
-    self.navigationItem.title = categorie.name;
+    self.navigationItem.title = [categorie.name capitalizedString];
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = CGRectMake(0, 0, 15, 24);
     [backButton addTarget:self action:@selector(backButtonTapped) forControlEvents:UIControlEventTouchUpInside];
@@ -119,8 +120,14 @@
         TopCategoriesViewController *viewController = [[UIStoryboard storyboardWithName:@"ProductFlow" bundle:nil] instantiateViewControllerWithIdentifier:@"categorySelection"];
         [viewController loadWithChildrens:((STCategory*)[self.categories objectAtIndex:indexPath.row]).children andPrevCategorie:self.selectedCategory];
         [self.navigationController pushViewController:viewController animated:YES];
-    } else
+    }
+    else
+    {
+        //ChooseBrandController *vc = [[UIStoryboard storyboardWithName:@"ProductFlow" bundle:nil] instantiateViewControllerWithIdentifier:@"brandSelection"];
+        //vc.title = self.selectedCategory.name;
+        self.selected_title = self.selectedCategory.name;
         [self performSegueWithIdentifier:@"ChooseBrandSegue2" sender:nil];
+    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -156,6 +163,7 @@
     if ([segue.identifier isEqualToString:@"ChooseBrandSegue2"])
     {
         ChooseBrandController *brand = segue.destinationViewController;
+        brand.navigationItem.title = self.selected_title;
         brand.product = self.product;
     }
 }

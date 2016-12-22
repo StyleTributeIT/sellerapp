@@ -16,9 +16,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *getStartedBtn;
 @property (assign, nonatomic) NSInteger nextIndex;
 @property (strong, nonatomic) IBOutlet UIButton *greenBtn;
-
 @end
 
+NSInteger num_screens = 4;
 UIPageControl *thisControl = nil;
 
 @implementation GuidViewController
@@ -134,9 +134,8 @@ UIPageControl *thisControl = nil;
     
     GuidelineViewController *childViewController = [[GuidelineViewController alloc] initWithNibName:@"GuidelineViewController" bundle:nil];
     childViewController.index = index;
-    if (index == 2)
+    if (index == num_screens - 1)
     {
-        
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeTutorial)];
         
         [childViewController.view addGestureRecognizer:tapGesture];
@@ -166,7 +165,13 @@ UIPageControl *thisControl = nil;
     } else {
         self.getStartedBtn.hidden = YES;
     }
-    if (currentIndex == 2)
+    /*if (currentIndex == 2)
+    {
+        self.greenBtn.hidden = NO;
+    } else {
+        self.greenBtn.hidden = YES;
+    }*/
+    if (currentIndex == num_screens - 1)
     {
         self.greenBtn.hidden = NO;
     } else {
@@ -203,7 +208,7 @@ UIPageControl *thisControl = nil;
     
     index++;
     
-    if (index == 3) {
+    if (index == num_screens) {
         return nil;
     }
     
@@ -213,7 +218,7 @@ UIPageControl *thisControl = nil;
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
-    return 3;
+    return num_screens;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
@@ -239,7 +244,7 @@ UIPageControl *thisControl = nil;
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
     //return the total number of items in the carousel
-    return 3;
+    return num_screens;
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view

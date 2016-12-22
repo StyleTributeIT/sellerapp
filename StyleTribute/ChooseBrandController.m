@@ -22,8 +22,13 @@
 @implementation ChooseBrandController
 
 -(void)viewDidLoad {
+//<<<<<<< HEAD
+   // [GlobalHelper addLogoToNavBar:self.navigationItem];
+    //self.navigationItem.title = self.title;
+//=======
   //  [GlobalHelper addLogoToNavBar:self.navigationItem];
-    self.navigationItem.title = @"Brand";
+  //  self.navigationItem.title = @"Brand";
+///>>>>>>> 9685cf5817e3affcfd051352f63acdb4b6e85ccc
     self.designers = [DataCache sharedInstance].designers;
     [self registerCells];
     [self updateSections];
