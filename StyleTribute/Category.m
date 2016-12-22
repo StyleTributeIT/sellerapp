@@ -30,7 +30,11 @@
     }
     category.imageTypes = imgTypes;
     category.sizeFields = [dict objectForKey:@"size_fields"];
-    category.children = [dict objectForKey:@"children"];
+    NSMutableArray* categories = [NSMutableArray new];
+    for (NSDictionary* categoryDict in [dict objectForKey:@"children"]) {
+        [categories addObject:[STCategory parseFromJson:categoryDict]];
+    }
+    category.children = [NSArray arrayWithArray:categories];
     return category;
 }
 

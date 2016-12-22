@@ -95,7 +95,7 @@ int sectionOffset = 0;
             [DataCache sharedInstance].isEditingItem = NO;            
         }
         
-        if(!self.isEditing && self.curProduct.category.name.length == 0) {
+        if(!self.isEditingItem && self.curProduct.category.name.length == 0) {
             [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
         } else
         {

@@ -94,11 +94,6 @@
     
     if([DataCache sharedInstance].categories == nil) {
         dispatch_group_enter(group);
-        /*[[ApiRequester sharedInstance] getSubCategories:^(NSArray *products) {
-            
-        } failure:^(NSString *error) {
-            
-        }];*/
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
             [DataCache sharedInstance].categories = categories;
             dispatch_group_leave(group);

@@ -24,6 +24,23 @@
     return self;
 }
 
++(STCategory*)searchCategory:(NSArray*)childrens forId:(NSUInteger)categoryId nextIndex:(int)idx
+{
+    STCategory *category = nil;
+    category = [[childrens linq_where:^BOOL(STCategory* category) {
+        return (category.idNum == categoryId);
+    }] firstObject];
+    if (category == nil)
+    {
+        idx++;
+        if ([[[childrens objectAtIndex:idx] children] count] != 0)
+        {
+            [self searchCategory:[[childrens objectAtIndex:idx] children] forId:categoryId nextIndex:idx];
+        }
+    }
+    return category;
+}
+
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     Product* product = [Product new];
     
@@ -45,16 +62,18 @@
 //    [product.allowedTransitions addObject:@"deleted"];
     
     if([DataCache sharedInstance].categories != nil) {
-    
+        NSArray * categories = [DataCache sharedInstance].categories;
         NSUInteger categoryId = (NSUInteger)[[dict objectForKey:@"category"] integerValue];
-        product.category = [[[DataCache sharedInstance].categories linq_where:^BOOL(STCategory* category) {
+        product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
+        /*product.category = [[categories linq_where:^BOOL(STCategory* category) {
             return (category.idNum == categoryId);
-        }] firstObject];
+        }] firstObject]; */
     }
     
     if([DataCache sharedInstance].conditions != nil) {
+        NSArray * categories = [DataCache sharedInstance].conditions;
         NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition"] integerValue];
-        product.condition = [[[DataCache sharedInstance].conditions linq_where:^BOOL(NamedItem* condition) {
+        product.condition = [[categories linq_where:^BOOL(NamedItem* condition) {
             return (condition.identifier == conditionId);
         }] firstObject];
     }
