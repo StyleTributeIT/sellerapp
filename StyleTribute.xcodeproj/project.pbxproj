@@ -102,7 +102,6 @@
 		E141DF0E1DD13CC7001693F7 /* ShoesSizeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF0D1DD13CC7001693F7 /* ShoesSizeTableViewCell.m */; };
 		E141DF111DD1488C001693F7 /* ItemDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DF101DD1488C001693F7 /* ItemDescriptionViewController.m */; };
 		E15389991E0C696E0019600F /* ProductNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15389981E0C696E0019600F /* ProductNavigationViewController.m */; };
-		E153899C1E0C6E8E0019600F /* ProductSolverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E153899B1E0C6E8E0019600F /* ProductSolverViewController.m */; };
 		E16205D81DC9294200A916F2 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205D71DC9294200A916F2 /* ShopViewController.m */; };
 		E16205DB1DC92D3F00A916F2 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16205DA1DC92D3F00A916F2 /* NotificationsViewController.m */; };
 		E173F4791DE6D68500D86141 /* BaseTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E173F4781DE6D68500D86141 /* BaseTabBar.m */; };
@@ -308,8 +307,6 @@
 		E141DF101DD1488C001693F7 /* ItemDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDescriptionViewController.m; sourceTree = "<group>"; };
 		E15389971E0C696E0019600F /* ProductNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductNavigationViewController.h; sourceTree = "<group>"; };
 		E15389981E0C696E0019600F /* ProductNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductNavigationViewController.m; sourceTree = "<group>"; };
-		E153899A1E0C6E8E0019600F /* ProductSolverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSolverViewController.h; sourceTree = "<group>"; };
-		E153899B1E0C6E8E0019600F /* ProductSolverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSolverViewController.m; sourceTree = "<group>"; };
 		E16205D61DC9294200A916F2 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
 		E16205D71DC9294200A916F2 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		E16205D91DC92D3F00A916F2 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
@@ -714,8 +711,6 @@
 				E173F48E1DE8F97200D86141 /* ItemNavigationBase.m */,
 				E15389971E0C696E0019600F /* ProductNavigationViewController.h */,
 				E15389981E0C696E0019600F /* ProductNavigationViewController.m */,
-				E153899A1E0C6E8E0019600F /* ProductSolverViewController.h */,
-				E153899B1E0C6E8E0019600F /* ProductSolverViewController.m */,
 			);
 			name = NewItem;
 			sourceTree = "<group>";
@@ -1200,7 +1195,6 @@
 				7A60FCD11B15EEAE00731F6E /* Category.m in Sources */,
 				7AEAC52E1BB2D776004D5C76 /* UIAlertView+Blocks.m in Sources */,
 				E13300971DE18DC800D798F2 /* DetailsTableViewCell.m in Sources */,
-				E153899C1E0C6E8E0019600F /* ProductSolverViewController.m in Sources */,
 				E141DEFF1DD10B8F001693F7 /* ConditionTableViewController.m in Sources */,
 				7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */,
 				E173F4881DE8D93200D86141 /* BaseTableViewCell.m in Sources */,

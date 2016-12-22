@@ -8,7 +8,7 @@
 
 #import "NotificationsViewController.h"
 #import "NotificationTableViewCell.h"
-#import "NewItemTableViewController.h"
+#import "ProductNavigationViewController.h"
 #import "Photo.h"
 
 @interface NotificationsViewController ()
@@ -44,10 +44,9 @@
             
             UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
             for(UIViewController * viewController in navController.viewControllers){
-                if ([viewController isKindOfClass:[NewItemTableViewController class]]){
-                    NewItemTableViewController *vc = (NewItemTableViewController * ) viewController;
-                    vc.curProduct = product;
-                    vc.isEditingItem = YES;
+                if ([viewController isKindOfClass:[ProductNavigationViewController class]]){
+                    ProductNavigationViewController *vc = (ProductNavigationViewController * ) viewController;
+                    vc.curProduct = product;                    
                     [DataCache setSelectedItem:product];
                     [DataCache sharedInstance].isEditingItem = YES;
                 }
