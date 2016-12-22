@@ -341,6 +341,7 @@
 		E1BC25481DF867B400DF2FB2 /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
 		E1BC25491DF867B400DF2FB2 /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
 		E1BC254B1DF9E1D100DF2FB2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		E1FEE4B61E0B30A700C09448 /* WatchNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = WatchNotificationPayload.apns; sourceTree = "<group>"; };
 		E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA21526F6B1CFAEF28B1A2B6 /* Pods-StyleTributeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -456,6 +457,7 @@
 				7A0EB6141AEE23D400D90001 /* Images.xcassets */,
 				7A0EB6071AEE23D400D90001 /* Supporting Files */,
 				7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */,
+				E1FEE4B61E0B30A700C09448 /* WatchNotificationPayload.apns */,
 			);
 			path = StyleTribute;
 			sourceTree = "<group>";
