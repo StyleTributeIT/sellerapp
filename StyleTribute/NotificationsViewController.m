@@ -8,6 +8,7 @@
 
 #import "NotificationsViewController.h"
 #import "NotificationTableViewCell.h"
+#import "NewItemTableViewController.h"
 #import "Photo.h"
 
 @interface NotificationsViewController ()
@@ -34,7 +35,26 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if([DataCache sharedInstance].products != nil) {
+        Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
+            return (p.identifier == [[[self.prods objectAtIndex:indexPath.row] objectForKey:@"pid"] integerValue]);
+        }] firstObject];
+        if(product != nil) {
+            
+            UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
+            for(UIViewController * viewController in navController.viewControllers){
+                if ([viewController isKindOfClass:[NewItemTableViewController class]]){
+                    NewItemTableViewController *vc = (NewItemTableViewController * ) viewController;
+                    vc.curProduct = product;
+                    vc.isEditingItem = YES;
+                    [DataCache setSelectedItem:product];
+                    [DataCache sharedInstance].isEditingItem = YES;
+                }
+            }
+            [self presentViewController:navController animated:YES completion:nil] ;
+        }
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

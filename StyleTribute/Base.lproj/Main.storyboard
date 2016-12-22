@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -587,7 +587,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notificationCell" rowHeight="80" id="ufD-n1-fKf" customClass="NotificationTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="notificationCell" rowHeight="80" id="ufD-n1-fKf" customClass="NotificationTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ufD-n1-fKf" id="feW-ez-2gs">
@@ -598,9 +598,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nlG-Fq-cpY">
-                                                    <rect key="frame" x="21" y="8" width="53" height="63"/>
+                                                    <rect key="frame" x="8" y="8" width="63" height="63"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="53" id="BO7-V1-1CL"/>
+                                                        <constraint firstAttribute="width" constant="63" id="BO7-V1-1CL"/>
+                                                        <constraint firstAttribute="height" constant="63" id="Cvn-jB-znR"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLJ-A8-Xxf">
@@ -628,11 +629,11 @@
                                                 <constraint firstItem="TLJ-A8-Xxf" firstAttribute="top" secondItem="DmP-3Z-erA" secondAttribute="top" constant="8" id="1aZ-ze-Hxe"/>
                                                 <constraint firstItem="8gu-k6-LOP" firstAttribute="top" secondItem="TLJ-A8-Xxf" secondAttribute="bottom" id="9KI-Qa-Uy1"/>
                                                 <constraint firstAttribute="trailing" secondItem="TLJ-A8-Xxf" secondAttribute="trailing" constant="8" id="9ai-7Y-i6e"/>
-                                                <constraint firstItem="8gu-k6-LOP" firstAttribute="leading" secondItem="nlG-Fq-cpY" secondAttribute="trailing" constant="8" id="Bef-ta-lQo"/>
-                                                <constraint firstItem="TLJ-A8-Xxf" firstAttribute="leading" secondItem="nlG-Fq-cpY" secondAttribute="trailing" constant="8" id="Jra-Lz-vgC"/>
+                                                <constraint firstItem="8gu-k6-LOP" firstAttribute="leading" secondItem="nlG-Fq-cpY" secondAttribute="trailing" constant="11" id="Bef-ta-lQo"/>
+                                                <constraint firstItem="TLJ-A8-Xxf" firstAttribute="leading" secondItem="nlG-Fq-cpY" secondAttribute="trailing" constant="11" id="Jra-Lz-vgC"/>
                                                 <constraint firstAttribute="trailing" secondItem="8gu-k6-LOP" secondAttribute="trailing" constant="8" id="d0V-uv-X3D"/>
                                                 <constraint firstAttribute="bottom" secondItem="nlG-Fq-cpY" secondAttribute="bottom" constant="8" id="hHC-OQ-BVC"/>
-                                                <constraint firstItem="nlG-Fq-cpY" firstAttribute="leading" secondItem="DmP-3Z-erA" secondAttribute="leading" constant="21" id="xBv-t8-z3t"/>
+                                                <constraint firstItem="nlG-Fq-cpY" firstAttribute="leading" secondItem="DmP-3Z-erA" secondAttribute="leading" constant="8" id="xBv-t8-z3t"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -2058,7 +2059,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cNQ-w8-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
