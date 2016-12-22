@@ -279,10 +279,10 @@
 -(void)openProductDetails:(Product*)product {
     UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
     for(UIViewController * viewController in navController.viewControllers){
-        if ([viewController isKindOfClass:[NewItemTableViewController class]]){
-            NewItemTableViewController *vc = (NewItemTableViewController * ) viewController;
+        if ([viewController isKindOfClass:[ProductNavigationViewController class]]){
+            ProductNavigationViewController *vc = (ProductNavigationViewController * ) viewController;
             vc.curProduct = product;
-            vc.isEditingItem = YES;
+           // vc.isEditingItem = YES;            
             [DataCache setSelectedItem:product];
             [DataCache sharedInstance].isEditingItem = YES;
         }

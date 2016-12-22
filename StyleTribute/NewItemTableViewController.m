@@ -109,7 +109,7 @@ int sectionOffset = 0;
         self.hideSkipInGuide = NO;
         if (!self.isInitialized)
         {
-            NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
+           /* NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
             NSMutableArray *copyViewControllers = [NSMutableArray new];
             for (int i = 0; i < allViewControllers.count; i++) {
                 if ([allViewControllers[i] isKindOfClass:[TopCategoriesViewController class]])
@@ -134,7 +134,7 @@ int sectionOffset = 0;
             {
                 [copyViewControllers addObject:self];
             }
-            self.navigationController.viewControllers = copyViewControllers;
+            self.navigationController.viewControllers = copyViewControllers;*/
         }
         self.isInitialized = YES;
     }

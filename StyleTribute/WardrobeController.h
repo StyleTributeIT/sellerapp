@@ -8,6 +8,7 @@
 
 #import "Product.h"
 #import "MGSwipeTableCell.h"
+#import "ProductNavigationViewController.h"
 #import <UIKit/UIKit.h>
 
 @interface WardrobeController : UIViewController<UITableViewDataSource,UITableViewDelegate,MGSwipeTableCellDelegate>
