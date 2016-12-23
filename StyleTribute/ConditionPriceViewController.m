@@ -10,6 +10,7 @@
 #import "PriceConditionTableViewCell.h"
 #import "ConditionTableViewController.h"
 #import "NewItemTableViewController.h"
+#import "ProductNavigationViewController.h"
 #import "DataCache.h"
 #import "Product.h"
 
@@ -59,17 +60,23 @@
 }
 
 - (IBAction)done:(id)sender {
+    NSArray *vc = self.navigationController.viewControllers;
+    UINavigationController * navController;
     for (UIViewController *controller in self.navigationController.viewControllers) {
         
-        //Do not forget to import AnOldViewController.h
+        if ([controller isKindOfClass:[ProductNavigationViewController class]])
+        {
+            navController = (ProductNavigationViewController*)controller;
+        } else
         if ([controller isKindOfClass:[NewItemTableViewController class]]) {
             
             [self.navigationController popToViewController:controller
                                                   animated:YES];
+         //   [self.navigationController popToRootViewControllerAnimated:YES];
             break;
         }
     }
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

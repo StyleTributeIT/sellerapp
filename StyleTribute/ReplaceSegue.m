@@ -9,21 +9,28 @@
 #import "ReplaceSegue.h"
 #import "ChooseBrandController.h"
 #import "TopCategoriesViewController.h"
+#import "ProductNavigationViewController.h"
 
 @implementation ReplaceSegue
 - (void)perform {
+    
     UIViewController *sourceViewController = (UIViewController*)[self sourceViewController];
     UIViewController *destinationController = (UIViewController*)[self destinationViewController];
     UINavigationController *navigationController = sourceViewController.navigationController;
-    // Get a changeable copy of the stack
-    NSMutableArray *controllerStack = [NSMutableArray arrayWithObject:navigationController];
+    
+    NSMutableArray *controllerStack = [NSMutableArray arrayWithArray:navigationController.viewControllers];
     
     for (int i = 0; i < controllerStack.count; i++) {
         UIViewController *vc = [controllerStack objectAtIndex:i];
-        if ([vc isKindOfClass:[destinationController class]] && (![vc isKindOfClass:[ChooseBrandController class]] && ![vc isKindOfClass:[TopCategoriesViewController class]]))
+        if ([vc isKindOfClass:[ProductNavigationViewController class]])
+        {
+            navigationController = (ProductNavigationViewController*)vc;
+            [controllerStack removeObject:vc];
+        }
+        if ([vc isKindOfClass:[destinationController class]])
             [controllerStack removeObject:vc];
     }
     [controllerStack addObject:destinationController];
-    [destinationController.navigationController setViewControllers:controllerStack animated:YES];
+    [sourceViewController.navigationController setViewControllers:controllerStack animated:YES];
 }
 @end
