@@ -41,6 +41,11 @@
     self.navigationItem.leftBarButtonItem = backButton;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.product = [DataCache getSelectedItem];
+}
+
 - (void) registerCells{
     UINib *nib = [UINib nibWithNibName:@"AddBrandTableViewCell" bundle:[NSBundle mainBundle]];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"AddCell"];
@@ -133,6 +138,7 @@
     NSArray* curSection = [self.sections objectAtIndex:indexPath.section];
     NamedItem* designer = [curSection objectAtIndex:indexPath.row];
     self.product.designer = designer;
+    [DataCache setSelectedItem:self.product];
     [self performSegueWithIdentifier:@"showItemEdited" sender:self];
 }
 
