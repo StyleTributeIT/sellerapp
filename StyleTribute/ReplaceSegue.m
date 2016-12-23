@@ -16,7 +16,7 @@
     UIViewController *destinationController = (UIViewController*)[self destinationViewController];
     UINavigationController *navigationController = sourceViewController.navigationController;
     // Get a changeable copy of the stack
-    NSMutableArray *controllerStack = [NSMutableArray arrayWithArray:navigationController.viewControllers];
+    NSMutableArray *controllerStack = [NSMutableArray arrayWithObject:navigationController];
     
     for (int i = 0; i < controllerStack.count; i++) {
         UIViewController *vc = [controllerStack objectAtIndex:i];
@@ -24,6 +24,6 @@
             [controllerStack removeObject:vc];
     }
     [controllerStack addObject:destinationController];
-    [navigationController setViewControllers:controllerStack animated:YES];
+    [destinationController.navigationController setViewControllers:controllerStack animated:YES];
 }
 @end
