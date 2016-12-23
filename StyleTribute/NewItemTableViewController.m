@@ -710,13 +710,9 @@ int sectionOffset = 0;
         //self.brandField.text = self.curProduct.designer.name;
     }
     self.productCopy = self.curProduct;
-    NSLog(@"unwindToAddItem");
 }
     
 -(IBAction)cancelUnwindToAddItem:(UIStoryboardSegue*)sender {
-    //    UIViewController *sourceViewController = sender.sourceViewController;
-    NSLog(@"cancelUnwindToWardrobeItems");
-    
     if([sender.sourceViewController isKindOfClass:[TopCategoriesViewController class]]) {
       //  [self cancel:nil];
     }

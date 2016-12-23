@@ -70,10 +70,7 @@
     PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
     newCell.photoView.hidden = YES;
     newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
-    // Handle "plus" item
-    NSLog(@"index: %zd || %zd", indexPath.row, self.curProduct.photos.count);
     if(indexPath.row == self.curProduct.photos.count) {
-     //   newCell.photoView.hidden = YES;
         newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
         [newCell.photoTypeLabel setHidden:YES];
         newCell.plusLabel.hidden = NO;

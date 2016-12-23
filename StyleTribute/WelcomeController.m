@@ -122,7 +122,7 @@
 }
 
 -(IBAction)unwindToWelcomeController:(UIStoryboardSegue*)sender {
-    NSLog(@"unwindToWelcomeController");
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

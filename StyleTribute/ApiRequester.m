@@ -89,7 +89,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 }
 
 -(void)logError:(NSError*)error withCaption:(NSString*)caption {
-    NSLog(@"=============== %@", caption);
     
     if(error != nil && error.userInfo != nil) {
         for(id key in error.userInfo) {
@@ -236,7 +235,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     [self.sessionManager GET:@"filterOptions" parameters:@{@"category_id":@"4"} success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSMutableArray* categories = [NSMutableArray new];
-        NSLog(@"%@", responseObject);
         for (NSDictionary* categoryDict in responseObject) {
             [categories addObject:[STCategory parseFromJson:categoryDict]];
         }
@@ -253,7 +251,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     [self.sessionManager GET:@"seller/categories" parameters:nil success:^(NSURLSessionDataTask *task, NSArray* responseObject) {
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",jsonString);
         NSMutableArray* categories = [NSMutableArray new];
         for (NSDictionary* categoryDict in responseObject) {
             [categories addObject:[STCategory parseFromJson:categoryDict]];

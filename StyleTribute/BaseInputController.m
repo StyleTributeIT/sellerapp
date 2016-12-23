@@ -114,8 +114,6 @@
 }
 
 -(void)moveContentToTop {
-    NSLog(@"scrollbar height: %f", self.view.bounds.size.height);
-
     self.scrollView.contentInset = UIEdgeInsetsZero;
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
     self.bottomInset = 0;

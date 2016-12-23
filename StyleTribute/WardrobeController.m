@@ -367,12 +367,10 @@
 
 -(IBAction)unwindToWardrobeItems:(UIStoryboardSegue*)sender {
 //    UIViewController *sourceViewController = sender.sourceViewController;
-    NSLog(@"unwindToWardrobeItems");
 }
 
 -(IBAction)cancelUnwindToWardrobeItems:(UIStoryboardSegue*)sender {
     //    UIViewController *sourceViewController = sender.sourceViewController;
-    NSLog(@"cancelUnwindToWardrobeItems");
 }
 
 -(void)addNewProduct:(Product*)product {

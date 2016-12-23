@@ -376,14 +376,9 @@ typedef void(^ImageLoadBlock)(int);
     } else if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {
         self.brandField.text = self.curProduct.designer.name;
     }
-    
-    NSLog(@"unwindToAddItem");
 }
 
 -(IBAction)cancelUnwindToAddItem:(UIStoryboardSegue*)sender {
-    //    UIViewController *sourceViewController = sender.sourceViewController;
-    NSLog(@"cancelUnwindToWardrobeItems");
-    
     if([sender.sourceViewController isKindOfClass:[TopCategoriesViewController class]]) {
         [self cancel:nil];
     }
@@ -561,23 +556,10 @@ typedef void(^ImageLoadBlock)(int);
 }
 
 -(IBAction)cancel:(id)sender {
-    NSLog(@"cancel");
     [self dismissViewControllerAnimated:true completion:nil];
-//    if(self.activeField) {
-//        [self.activeField resignFirstResponder];
-//    }
-//    
-//    [self clearAllFields];
-//    self.curProduct = nil;
-//    self.isEditing = NO;
-//    
-//    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-//    [tabController selectPreviousTab];
 }
 
 -(IBAction)done:(id)sender {
-    NSLog(@"done");
-    
     if(![self noEmptyFields] || ![self imagesAreFilled]) {
         [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
         return;
