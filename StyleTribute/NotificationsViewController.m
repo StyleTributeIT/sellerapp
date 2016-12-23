@@ -21,6 +21,10 @@
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
     self.prods = [defs objectForKey:@"notifications"];
     [self.tableView reloadData];

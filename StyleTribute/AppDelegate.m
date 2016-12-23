@@ -145,14 +145,39 @@
 
 #pragma mark - Push notifications
 
-
+-(void)ParsePush:(NSDictionary *)userInfo {
+    NSDictionary* aps = [userInfo objectForKey:@"aps"];
+    NSString* alert = [aps objectForKey:@"alert"];
+    NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *prods = [NSMutableArray arrayWithArray:[defs objectForKey:@"notifications"]];
+    if (!prods)
+        prods = [NSMutableArray new];
+    [prods addObject:@{@"alert":alert,@"pid":[aps objectForKey:@"pid"]}];
+    [defs setObject:prods forKey:@"notifications"];
+    [defs synchronize];
+    // get product name from id
+    if([DataCache sharedInstance].products != nil) {
+        Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
+            return (p.identifier == productId);
+        }] firstObject];
+        
+        if(product != nil) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //                [GlobalHelper showMessage:alert withTitle:product.name];
+                Photo* photo = [product.photos firstObject];
+                [GlobalHelper showToastNotificationWithTitle:product.name subtitle:alert imageUrl:(photo ? photo.imageUrl : nil)];
+            });
+        }
+    }
+}
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
     
     //Called when a notification is delivered to a foreground app.
     
     NSLog(@"Userinfo %@",notification.request.content.userInfo);
-    
+    [self ParsePush:notification.request.content.userInfo];
     completionHandler(UNNotificationPresentationOptionAlert);
 }
 
@@ -162,14 +187,16 @@
     
     NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
     
+    completionHandler();
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     NSString *newToken = [deviceToken description];
-    newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    
 //    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     [DataCache sharedInstance].deviceToken = newToken;
+    newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceToken:newToken];
     [currentInstallation setDeviceTokenFromData:deviceToken]; //[newToken dataUsingEncoding:NSUTF8StringEncoding]
