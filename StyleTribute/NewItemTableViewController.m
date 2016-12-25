@@ -525,8 +525,8 @@ int sectionOffset = 0;
     {
         return [self setupBrandCell:indexPath];
     }
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
-    return cell;
+   
+    return [self setupShoesSizeCell:indexPath];
 }
 
 -(void)addBordersForCell:(UITableViewCell*)cell addBottomBorder:(BOOL)addBottom
