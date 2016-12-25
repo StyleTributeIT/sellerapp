@@ -680,10 +680,15 @@ int sectionOffset = 0;
 
 #pragma mark - Segues unwind handlers
 
--(IBAction)unwindToCamera:(UIStoryboardSegue*)sender
+-(void)showCamera
 {
     self.isTutorialPresented = YES;
-    [self presentCameraController: UIImagePickerControllerSourceTypeCamera];
+    [self presentCameraController:UIImagePickerControllerSourceTypeCamera];
+}
+
+-(IBAction)unwindToCamera:(UIStoryboardSegue*)sender
+{
+    
 }
 
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender {
@@ -728,6 +733,7 @@ int sectionOffset = 0;
     if ([segue.identifier isEqualToString:@"showGuide"])
     {
         GuidViewController *guide = segue.destinationViewController;
+        guide.delegate = self;
         guide.hideSkipButton = self.hideSkipInGuide;
     }
     if ([segue.identifier isEqualToString:@"conditionSegue"])

@@ -78,7 +78,11 @@ UIPageControl *thisControl = nil;
 }
 
 - (IBAction)skip:(id)sender {
-    [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+    
+    if (self.delegate)
+        [_delegate showCamera];
+    [self.navigationController popViewControllerAnimated:NO];
+    //[self performSegueWithIdentifier:@"unwindToCamera" sender:self];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -100,7 +104,12 @@ UIPageControl *thisControl = nil;
 
 - (IBAction)gotItClicked:(id)sender {
     if (!self.hideSkipButton)
-        [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+    {
+        if (self.delegate)
+            [_delegate showCamera];
+        [self.navigationController popViewControllerAnimated:NO];
+     ///   [self performSegueWithIdentifier:@"unwindToCamera" sender:self];
+    }
     else
         [self back:nil];
 }

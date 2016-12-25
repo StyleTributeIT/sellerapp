@@ -757,7 +757,6 @@ typedef void(^ImageLoadBlock)(int);
 //    PhotoCell* newCell = [PhotoCell new];
     
     // Handle "plus" item
-    NSLog(@"index: %zd || %zd", indexPath.row, self.curProduct.photos.count);
     if(indexPath.row == self.curProduct.photos.count) {
         newCell.photoView.image = [UIImage imageNamed:@"plus"];
         [newCell.photoTypeLabel setHidden:YES];

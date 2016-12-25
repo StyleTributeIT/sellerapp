@@ -164,7 +164,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F029B227-FB82-450A-854B-3FE3C7C5105B" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FE7F211C-B2F0-494B-AFCA-6DB78491713B" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
                                                                 <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                                 <gestureRecognizers/>
                                                             </imageView>
@@ -1401,7 +1401,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8F20C1C2-FA1B-4386-839C-43528A621DBE" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9B4873DF-3ECF-4058-BF91-E6C923BED1AA" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
                                             <rect key="frame" x="340" y="8" width="27" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="27" id="96c-NZ-Ba1"/>
@@ -1635,7 +1635,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="bI6-AO-CbM">
-                        <barButtonItem key="leftBarButtonItem" image="DB675BA6-7061-4EDC-8D8B-16F304D0A8AC" id="iE0-kw-zEx">
+                        <barButtonItem key="leftBarButtonItem" image="BDC3746A-A0B9-43E4-8ACF-F575852AEAAD" id="iE0-kw-zEx">
                             <connections>
                                 <action selector="backPressed:" destination="sNb-r6-Kfh" id="H2o-R9-X0l"/>
                             </connections>
@@ -1661,7 +1661,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8F20C1C2-FA1B-4386-839C-43528A621DBE" width="39" height="39">
+        <image name="9B4873DF-3ECF-4058-BF91-E6C923BED1AA" width="39" height="39">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1789,7 +1789,7 @@ ixuWG58bshu2G8EbyhvPG9cb2hvfG+4b8hv5HAEcDhwTHBUcFxwcHCQcJxwsHDQcNxxJHEwcUQAAAAAA
 AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
 </mutableData>
         </image>
-        <image name="DB675BA6-7061-4EDC-8D8B-16F304D0A8AC" width="14" height="24">
+        <image name="BDC3746A-A0B9-43E4-8ACF-F575852AEAAD" width="14" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1838,7 +1838,7 @@ BwkSCRsJLgkyCT0JRglLCVMJVglbCWoJbgl1CX0JigmPCZEJkwmYCaAJowmoCbAJswnFCcgJzQAAAAAA
 AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAAAnPA
 </mutableData>
         </image>
-        <image name="F029B227-FB82-450A-854B-3FE3C7C5105B" width="64" height="64">
+        <image name="FE7F211C-B2F0-494B-AFCA-6DB78491713B" width="64" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2176,7 +2176,7 @@ Si1KMEpCSkVKSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAEpMA
     <inferredMetricsTieBreakers>
         <segue reference="deF-6c-laT"/>
         <segue reference="xms-ox-tR1"/>
+        <segue reference="xSy-rx-lNh"/>
         <segue reference="vxI-uo-w8w"/>
-        <segue reference="UiL-Tr-kkL"/>
     </inferredMetricsTieBreakers>
 </document>

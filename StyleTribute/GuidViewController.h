@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GuidViewControllerDelegate
+
+-(void)showCamera;
+
+@end
+
 @interface GuidViewController : UIViewController<UIPageViewControllerDataSource>
 @property (strong, nonatomic) UIPageViewController *pageController;
+@property id<GuidViewControllerDelegate> delegate;
 @property BOOL hideSkipButton;
 @end

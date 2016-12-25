@@ -97,7 +97,6 @@
                 newCell.photoView.hidden = YES;
                 
             } else {
-                NSLog(@"+ Photo %@",photo.thumbnailUrl);
                 [newCell.bigPhotoCell sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
                 newCell.photoView.alpha = 0.5f;
             }
