@@ -26,7 +26,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-    self.prods = [defs objectForKey:@"notifications"];
+    self.prods = [NSMutableArray arrayWithArray:[defs objectForKey:@"notifications"]];
     [self.tableView reloadData];
 }
 
@@ -44,6 +44,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSMutableDictionary *d = [[self.prods objectAtIndex:indexPath.row] mutableCopy];
+    [d setValue:@1 forKey:@"seen"];
+    [self.prods replaceObjectAtIndex:indexPath.row withObject:d];
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    [defs setObject:self.prods forKey:@"notifications"];
+    [defs synchronize];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if([DataCache sharedInstance].products != nil) {
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
@@ -63,6 +70,7 @@
             [self presentViewController:navController animated:YES completion:nil] ;
         }
     }
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -80,6 +88,28 @@
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
             return (p.identifier == [[[self.prods objectAtIndex:indexPath.row] objectForKey:@"pid"] integerValue]);
         }] firstObject];
+        if ([[self.prods objectAtIndex:indexPath.row] valueForKey:@"date"] != nil)
+        {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+            NSDate *notificationDate = [[NSDate alloc] init];
+            notificationDate = [dateFormatter dateFromString:[[self.prods objectAtIndex:indexPath.row] valueForKey:@"date"]];
+            NSDate *currentDate = [NSDate date];
+            cell.dateLabel.hidden = NO;
+            cell.dateLabel.text = [self remaningTime:notificationDate endDate:currentDate];
+            
+        } else
+        {
+            cell.dateLabel.hidden = YES;
+        }
+        if ([[self.prods objectAtIndex:indexPath.row] valueForKey:@"seen"] != nil)
+        {
+            BOOL seen = [[[self.prods objectAtIndex:indexPath.row] valueForKey:@"seen"] boolValue];
+            if (!seen)
+                [cell setBackgroundColor:[UIColor colorWithRed:246/255.f green:244/255.f blue:244/255.f alpha:1.f]];
+            else
+                [cell setBackgroundColor:[UIColor whiteColor]];
+        }
         cell.title.text = product.name;
         cell.message.text = [[self.prods objectAtIndex:indexPath.row] objectForKey:@"alert"];
         if(product != nil) {
@@ -90,6 +120,56 @@
     return cell;
 }
 
+-(NSString*)remaningTime:(NSDate*)startDate endDate:(NSDate*)endDate
+{
+    NSDateComponents *components;
+    NSInteger days;
+    NSInteger hour;
+    NSInteger minutes;
+    NSString *durationString;
+    
+    components = [[NSCalendar currentCalendar] components: NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate: startDate toDate: endDate options: 0];
+    
+    days = [components day];
+    hour = [components hour];
+    minutes = [components minute];
+    
+    if(days>0)
+    {
+        if(days>1)
+        {
+            if (days < 3)
+                durationString=[NSString stringWithFormat:@"%ld days ago",(long)days];
+            else
+            {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat: @"dd MMMM yyyy"];
+                durationString = [formatter stringFromDate:startDate];
+            }
+        }
+        else
+            durationString=[NSString stringWithFormat:@"%ld day ago",(long)days];
+        return durationString;
+    }
+    if(hour>0 && hour < 24)
+    {
+        if(hour>1)
+            durationString=[NSString stringWithFormat:@"%ld hours ago",(long)hour];
+        else
+            durationString=[NSString stringWithFormat:@"%ld hour ago",(long)hour];
+        return durationString;
+    }
+    if(minutes>0)
+    {
+        if(minutes>1)
+            durationString = [NSString stringWithFormat:@"%ld minutes ago",(long)minutes];
+        else
+            durationString = @"Just Now";//[NSString stringWithFormat:@"%ld minute ago",(long)minutes];
+        
+        return durationString;
+    }
+    return @""; 
+}
 
 /*
 // Override to support conditional editing of the table view.

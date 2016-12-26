@@ -153,7 +153,11 @@
     NSMutableArray *prods = [NSMutableArray arrayWithArray:[defs objectForKey:@"notifications"]];
     if (!prods)
         prods = [NSMutableArray new];
-    [prods addObject:@{@"alert":alert,@"pid":[aps objectForKey:@"pid"]}];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
+    NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+    [prods addObject:@{@"alert":alert,@"pid":[aps objectForKey:@"pid"], @"seen":@false, @"date":stringFromDate}];
     [defs setObject:prods forKey:@"notifications"];
     [defs synchronize];
     // get product name from id
@@ -164,7 +168,6 @@
         
         if(product != nil) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                //                [GlobalHelper showMessage:alert withTitle:product.name];
                 Photo* photo = [product.photos firstObject];
                 [GlobalHelper showToastNotificationWithTitle:product.name subtitle:alert imageUrl:(photo ? photo.imageUrl : nil)];
             });
@@ -210,7 +213,8 @@
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSDictionary* aps = [userInfo objectForKey:@"aps"];
+    [self ParsePush:userInfo];
+/*    NSDictionary* aps = [userInfo objectForKey:@"aps"];
     NSString* alert = [aps objectForKey:@"alert"];
     NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
@@ -233,7 +237,7 @@
                 [GlobalHelper showToastNotificationWithTitle:product.name subtitle:alert imageUrl:(photo ? photo.imageUrl : nil)];
             });
         }
-    }
+    }*/
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
