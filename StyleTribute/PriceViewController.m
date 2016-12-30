@@ -33,7 +33,8 @@
     }
     if([DataCache getSelectedItem].originalPrice > 0) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[DataCache getSelectedItem].originalPrice success:^(float priceSuggestion) {
+        Product *p = [DataCache getSelectedItem];
+        [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:p.originalPrice success:^(float priceSuggestion) {
             self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
             if (!self.isOwnPrice)
                 self.additionalButtons.hidden = NO;

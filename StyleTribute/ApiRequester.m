@@ -560,6 +560,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     NSString* url = [NSString stringWithFormat:@"seller/priceSuggestion/designer/%zd/condition/%zd/category/%zd/original/%f",
                      product.designer.identifier, product.condition.identifier, product.category.idNum, price];
+    NSLog(@"%@", url);
     [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
         success([responseObject floatValue]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

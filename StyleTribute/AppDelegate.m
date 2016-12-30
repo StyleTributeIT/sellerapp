@@ -195,9 +195,12 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
     NSString *newToken = [deviceToken description];
+    NSLog(@"device token = %@", deviceToken);
     
 //    newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    newToken = [newToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    newToken = [newToken stringByReplacingOccurrencesOfString:@">" withString:@""];
     [DataCache sharedInstance].deviceToken = newToken;
     newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
