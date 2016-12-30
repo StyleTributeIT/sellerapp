@@ -35,7 +35,7 @@
 
 typedef void(^ImageLoadBlock)(int);
 
-@interface NewItemTableViewController ()< UIActionSheetDelegate>
+@interface NewItemTableViewController ()< UIActionSheetDelegate, PhotoCellDelegate, SharingTableViewCellDelegate, GuidViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property BOOL isTutorialPresented;
 @property BOOL isInitialized;
 @property BOOL isProductUpdated;
@@ -211,13 +211,14 @@ int sectionOffset = 0;
            if (self.isEditingItem)
            {
                NSMutableArray *tempImages = [[NSMutableArray alloc] init];
-               for (int i = 0; i < product.photos.count; i++) {
+               int count = (int) product.photos.count;
+               NSLog(@"There are %d photos now", count);
+               for (int i = 0; i < count; i++) {
                    Photo *ph = [product.photos objectAtIndex:i];
                    if (![ph isKindOfClass:[NSNull class]])
                        [tempImages addObject:ph];
                }
-               
-               product.photos = [NSArray arrayWithArray:tempImages];
+               product.photos = [[NSArray arrayWithArray:tempImages] mutableCopy];
            }
             NSArray* oldPhotos = [NSArray arrayWithArray:product.photos];
             NSArray* oldImageTypes = product.category.imageTypes;
@@ -239,15 +240,19 @@ int sectionOffset = 0;
             
             MRProgressOverlayView * progressView =[MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Uploading images" mode:MRProgressOverlayViewModeDeterminateCircular animated:YES];
             
-            if(self.curProduct.photos != nil && self.curProduct.category != nil) {
-                
+            if(self.curProduct.photos != nil)// && self.curProduct.category != nil)
+            {
+                __block Product *cur_product = self.curProduct;
+                //__block ImageLoadBlock *img_load_block = self.imgLoadBlock;
+                __block NSMutableArray *photos_to_delete = self.photosToDelete;
                 NSInteger count = MAX(self.curProduct.photos.count, oldPhotos.count);
                 self.imgLoadBlock = ^(int i){
                     
                     if(i >= count)
                         return;
                     
-                    Photo* photo = (i < _curProduct.photos.count ? [self.curProduct.photos objectAtIndex:i] : nil);
+
+                    Photo* photo = (i < _curProduct.photos.count ? [cur_product.photos objectAtIndex:i] : nil);
                     
                     if(i < self.curProduct.category.imageTypes.count) {
                         Photo* oldPhoto = [oldPhotos objectAtIndex:i];
@@ -256,8 +261,8 @@ int sectionOffset = 0;
                         // If we have new or modified images, then we should upload them
                         if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateNew) {
                             dispatch_group_enter(group);
-                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
-                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.curProduct.identifier success:^{
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, cur_product.photos.count]];
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:cur_product.identifier success:^{
                                 imageType.state = ImageStateNormal;
                                 self.imgLoadBlock(i + 1);
                                 dispatch_group_leave(group);
@@ -273,7 +278,7 @@ int sectionOffset = 0;
                         } else if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateModified) {
                             dispatch_group_enter(group);
                             imageType.state = ImageStateNew;
-                            [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:self.curProduct.identifier success:^{
+                            [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:cur_product.identifier success:^{
                                 self.imgLoadBlock(i);
                                 dispatch_group_leave(group);
                             } failure:^(NSString *error) {
@@ -283,9 +288,9 @@ int sectionOffset = 0;
                         } else if(imageType.state == ImageStateDeleted) {
                             dispatch_group_enter(group);
                             imageType.state = ImageStateNormal;
-                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Deleting image %d/%zd", i + 1, cur_product.photos.count]];
                             [progressView setProgress:1.0f animated:YES];
-                            [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:self.curProduct.identifier success:^{
+                            [[ApiRequester sharedInstance] deleteImage:photo.identifier fromProduct:cur_product.identifier success:^{
                                 self.imgLoadBlock(i + 1);
                                 dispatch_group_leave(group);
                             } failure:^(NSString *error) {
@@ -298,10 +303,10 @@ int sectionOffset = 0;
                     } else {
                         // remove images marked for deletion
                         if(self.photosToDelete.count > 0) {
-                            Photo* toDelete = [self.photosToDelete firstObject];
-                            [self.photosToDelete removeObject:toDelete];
+                            Photo* toDelete = [photos_to_delete firstObject];
+                            [photos_to_delete removeObject:toDelete];
                             dispatch_group_enter(group);
-                            [[ApiRequester sharedInstance] deleteImage:toDelete.identifier fromProduct:self.curProduct.identifier success:^{
+                            [[ApiRequester sharedInstance] deleteImage:toDelete.identifier fromProduct:cur_product.identifier success:^{
                                 self.imgLoadBlock(i);
                                 dispatch_group_leave(group);
                             } failure:^(NSString *error) {
@@ -313,9 +318,9 @@ int sectionOffset = 0;
                         
                         // Additional images
                         if(photo != nil && photo.image != nil) {
-                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, self.curProduct.photos.count]];
+                            [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, cur_product.photos.count]];
                             dispatch_group_enter(group);
-                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:@"custom" toProduct:self.curProduct.identifier success:^{
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:@"custom" toProduct:cur_product.identifier success:^{
                                 self.imgLoadBlock(i + 1);
                                 dispatch_group_leave(group);
                             } failure:^(NSString *error) {
@@ -931,9 +936,12 @@ int sectionOffset = 0;
 
 -(BOOL)productIsValid{
     BOOL result = YES;
+
     if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
         result = NO;
     if (self.curProduct.price == 0.0f )
+        result = NO;
+    if (self.curProduct.size == nil)
         result = NO;
     return result;
 }

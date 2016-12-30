@@ -33,14 +33,31 @@
     }
     if([DataCache getSelectedItem].originalPrice > 0) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[DataCache getSelectedItem].originalPrice success:^(float priceSuggestion) {
+        Product *p = [DataCache getSelectedItem];
+        int original_price = p.originalPrice;
+        
+        if (self.isOwnPrice == false){
+            self.additionalButtons.hidden = NO;
+            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:original_price success:^(float price) {
+                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", price];
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            }];
+        }
+        else{
+            self.additionalButtons.hidden = YES;
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        }
+        /*
+        [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:original_price success:^(float priceSuggestion) {
             self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
             if (!self.isOwnPrice)
                 self.additionalButtons.hidden = NO;
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        }];
+        }];*/
     }
     self.priceField.text = [DataCache getSelectedItem].originalPrice > 0 ? [NSString stringWithFormat:@" $%.2f", [DataCache getSelectedItem].originalPrice] : @"";
     UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
@@ -107,6 +124,7 @@
         if(self.priceField.text.length > 0 && !self.isInProgress) {
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            /*
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
                 self.earnTitle.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
@@ -115,7 +133,18 @@
             } failure:^(NSString *error) {
                 self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            }];*/
+            Product *p = [DataCache getSelectedItem];
+            NSUInteger price = [self.priceField.text integerValue];
+            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float price) {
+                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", price];
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                self.isInProgress = NO;
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                self.isInProgress = NO;
             }];
+
         }
     }
     

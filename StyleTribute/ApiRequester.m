@@ -555,11 +555,27 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 	}];
 }
 
+-(void)getSellerPayoutForProduct:(NSUInteger)category price:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    category = 1;
+    NSString* url = [NSString stringWithFormat:@"/seller/payout/category/%lu/price/%f",
+                     (unsigned long)category, price];
+    NSLog(@"%@", url);
+    [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
+        success([responseObject floatValue]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"getSellerPayoutForProduct error"];
+        failure(DefGeneralErrMsg);
+    }];
+}
+
 -(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     NSString* url = [NSString stringWithFormat:@"seller/priceSuggestion/designer/%zd/condition/%zd/category/%zd/original/%f",
                      product.designer.identifier, product.condition.identifier, product.category.idNum, price];
+    NSLog(@"%@", url);
     [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
         success([responseObject floatValue]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

@@ -80,6 +80,7 @@ typedef void (^JSONRespAppViersion)(float appVersion);
 -(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getUnitAndSizeValues:(NSString*)attrName success:(JSONRespDictionary)success failure:(JSONRespError)failure;
 -(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure;
+-(void)getSellerPayoutForProduct:(NSUInteger)category price:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure;
 -(void)getRegionsByCountry:(NSString*)country success:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)setShippingAddress:(Address*)address success:(JSONRespEmpty)success failure:(JSONRespError)failure;
 -(void)getMinimumAppVersionWithSuccess:(JSONRespAppViersion)success failure:(JSONRespError)failure;
