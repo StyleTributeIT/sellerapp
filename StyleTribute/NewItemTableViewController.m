@@ -936,9 +936,12 @@ int sectionOffset = 0;
 
 -(BOOL)productIsValid{
     BOOL result = YES;
+
     if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
         result = NO;
     if (self.curProduct.price == 0.0f )
+        result = NO;
+    if (self.curProduct.size == nil)
         result = NO;
     return result;
 }
