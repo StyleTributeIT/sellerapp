@@ -13,6 +13,7 @@
 @interface UserProfile : BaseModel
 
 @property BOOL isActive;
+@property NSString* entity_id;
 @property NSString* email;
 @property NSString* phone;
 @property NSString* gender;

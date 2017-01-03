@@ -26,7 +26,12 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-    self.prods = [NSMutableArray arrayWithArray:[defs objectForKey:@"notifications"]];
+    if ([DataCache sharedInstance].userProfile.entity_id.length != 0)
+        self.prods = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];
+    else
+    {
+        self.prods = [[NSMutableArray alloc] init];
+    }
     [self.tableView reloadData];
 }
 
@@ -48,7 +53,7 @@
     [d setValue:@1 forKey:@"seen"];
     [self.prods replaceObjectAtIndex:indexPath.row withObject:d];
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-    [defs setObject:self.prods forKey:@"notifications"];
+    [defs setObject:self.prods forKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]];
     [defs synchronize];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

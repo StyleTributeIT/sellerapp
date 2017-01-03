@@ -22,6 +22,7 @@
     UserProfile* profile = [UserProfile new];
     
     profile.isActive = [[self class] parseBool:@"is_active" fromDict:dict];
+    profile.entity_id = [[self class] parseString:@"entity_id" fromDict:dict];
     profile.email = [[self class] parseString:@"email" fromDict:dict];
     profile.phone = [[self class] parseString:@"phone" fromDict:dict];
     profile.gender = [[self class] parseString:@"gender" fromDict:dict];

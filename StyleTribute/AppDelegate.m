@@ -146,20 +146,11 @@
 #pragma mark - Push notifications
 
 -(void)ParsePush:(NSDictionary *)userInfo {
+    if ([DataCache sharedInstance].userProfile.entity_id.length == 0)
+        return;
     NSDictionary* aps = [userInfo objectForKey:@"aps"];
-    NSString* alert = [aps objectForKey:@"alert"];
     NSUInteger productId = (NSUInteger)[[aps objectForKey:@"pid"] intValue];
-    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *prods = [NSMutableArray arrayWithArray:[defs objectForKey:@"notifications"]];
-    if (!prods)
-        prods = [NSMutableArray new];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
-    NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
-    [prods addObject:@{@"alert":alert,@"pid":[aps objectForKey:@"pid"], @"seen":@false, @"date":stringFromDate}];
-    [defs setObject:prods forKey:@"notifications"];
-    [defs synchronize];
     // get product name from id
     if([DataCache sharedInstance].products != nil) {
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
@@ -167,6 +158,20 @@
         }] firstObject];
         
         if(product != nil) {
+            
+            NSString* alert = [aps objectForKey:@"alert"];
+            NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+            NSMutableArray *prods = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];
+            if (!prods)
+                prods = [NSMutableArray new];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
+            NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+            [prods addObject:@{@"alert":alert,@"pid":[aps objectForKey:@"pid"], @"seen":@false, @"date":stringFromDate}];
+            [defs setObject:prods forKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]];
+            [defs synchronize];
+            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 Photo* photo = [product.photos firstObject];
                 [GlobalHelper showToastNotificationWithTitle:product.name subtitle:alert imageUrl:(photo ? photo.imageUrl : nil)];
