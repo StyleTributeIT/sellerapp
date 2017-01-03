@@ -187,6 +187,8 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             [self.sessionManager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
             NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
             [defs removeObjectForKey:@"apiToken"];
+            [DataCache sharedInstance].products = nil;
+            [DataCache sharedInstance].userProfile = nil;
             [defs synchronize];
             if ([FBSDKAccessToken currentAccessToken])
             {
