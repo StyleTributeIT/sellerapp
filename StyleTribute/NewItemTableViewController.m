@@ -77,6 +77,18 @@ int sectionOffset = 0;
     self.navigationItem.hidesBackButton = YES;
     self.inputAccessoryView = [[XCDFormInputAccessoryView alloc] initWithTarget:self hideNavButtons:YES doneAction:@selector(inputDone)];
     
+    self.curProduct = [DataCache getSelectedItem];
+    if(self.curProduct == nil) {
+        self.curProduct = [Product new];
+        self.productCopy = self.curProduct;
+        [DataCache setSelectedItem:self.curProduct];
+        [DataCache sharedInstance].isEditingItem = NO;
+    }
+    for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
+        ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
+        curImgType.state = ImageStateNormal;
+    }
+
 }
 
 -(void)inputDone {
@@ -193,7 +205,9 @@ int sectionOffset = 0;
             }
         }
         
-        if (![self productIsValid] || ![self imagesAreFilled])
+        bool product_valid = [self productIsValid];
+        bool images_filled = [self imagesAreFilled];
+        if (!product_valid || !images_filled)
         {
             [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
             return;
@@ -353,7 +367,12 @@ int sectionOffset = 0;
                         [wc updateProductsList];
                     }
                    */
-                    
+                    for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
+                        Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
+                        ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
+                        //[self.curProduct.category.imageTypes removeAllObject];
+                    }
+                    self.curProduct.category.imageTypes = nil;
                     self.curProduct = nil;
                     self.isEditingItem = NO;
                   //  [tabController setSelectedIndex:0];
