@@ -670,7 +670,7 @@ int sectionOffset = 0;
     {
         PriceTableViewCell *cell = (PriceTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
         if (self.curProduct.price != 0.0f)
-            cell.productPrice.text = [NSString stringWithFormat:@"$%.2f",self.curProduct.price];
+            cell.productPrice.text = [NSString stringWithFormat:@"S$%.2f",self.curProduct.price];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self addBordersForCell:cell addBottomBorder:YES];
         return cell;

@@ -36,16 +36,23 @@
         Product *p = [DataCache getSelectedItem];
         //int original_price = p.originalPrice;
         
-        NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
-                                                                              withString:@""];
-        int price = [new_price intValue];
+        //NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$" withString:@""];
+        //int price = [new_price intValue];
         
         if (self.isOwnPrice == false){
             self.additionalButtons.hidden = NO;
-            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
-                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                self.isInProgress = NO;
+            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:p.originalPrice success:^(float priceSuggestion) {
+                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+                
+                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:priceSuggestion success:^(float price) {
+                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", price];
+                    self.isInProgress = NO;
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                } failure:^(NSString *error) {
+                    self.isInProgress = NO;
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                }];
+                //[MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 self.isInProgress = NO;
@@ -63,7 +70,7 @@
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         }
     }
-    self.priceField.text = [DataCache getSelectedItem].originalPrice > 0 ? [NSString stringWithFormat:@" $%.2f", [DataCache getSelectedItem].originalPrice] : @"";
+    self.priceField.text = [DataCache getSelectedItem].originalPrice > 0 ? [NSString stringWithFormat:@"%.2f", [DataCache getSelectedItem].originalPrice] : @"";
     self.priceField.delegate = self;
     UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -104,7 +111,7 @@
     }
     if (!self.isOwnPrice)
     if ([DataCache getSelectedItem].price != 0.0f)
-        self.priceField.text = [NSString stringWithFormat:@" $%.2f", [DataCache getSelectedItem].price];
+        self.priceField.text = [NSString stringWithFormat:@"%.2f", [DataCache getSelectedItem].price];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -142,7 +149,7 @@
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             
              [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
-                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
+                 self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
                  [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                  self.isInProgress = NO;
              } failure:^(NSString *error) {
@@ -161,26 +168,6 @@
 
         }
     }
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField.text.length  == 0)
-    {
-        textField.text = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
-    }
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
-    // Make sure that the currency symbol is always at the beginning of the string:
-    if (![newText hasPrefix:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol]])
-    {
-        return NO;
-    }
-    
-    // Default:
-    return YES;
 }
 
 #pragma mark - Navigation

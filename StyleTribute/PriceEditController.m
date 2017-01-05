@@ -24,24 +24,13 @@
     
     if(self.product.originalPrice > 0) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        
-        Product *p = [DataCache getSelectedItem];
-        
-        [[ApiRequester sharedInstance] getSellerPayoutForProduct:self.product.category.idNum price:self.product.originalPrice success:^(float priceSuggestion) {
+        [[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:self.product.originalPrice success:^(float priceSuggestion) {
             self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
             [self updateAdvice];
-            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];        
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         } failure:^(NSString *error) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            self.isInProgress = NO;
         }];
-        /*[[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:self.product.originalPrice success:^(float priceSuggestion) {
-            self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
-            [self updateAdvice];
-            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        } failure:^(NSString *error) {
-            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        }];*/
     }
     
     self.originalPrice.text = self.product.originalPrice > 0 ? [NSString stringWithFormat:@"%.2f", self.product.originalPrice] : @"";
@@ -60,24 +49,7 @@
         if(self.originalPrice.text.length > 0 && !self.isInProgress) {
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-            
-            Product *p = [DataCache getSelectedItem];
-            NSString *new_price = [self.originalPrice.text stringByReplacingOccurrencesOfString:@"$"
-                                                                                  withString:@""];
-            int price = [new_price intValue];
-            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float price) {
-                self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", price];
-                if(self.userPrice.text.length == 0) {
-                    self.userPrice.text = [NSString stringWithFormat:@"%.2f", price];
-                }
-                [self updateAdvice];
-                [self updateTakeback];
-                self.isInProgress = NO;
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            } failure:^(NSString *error) {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            }];
-            /*[[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:[self.originalPrice.text floatValue] success:^(float priceSuggestion) {
+            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:[self.originalPrice.text floatValue] success:^(float priceSuggestion) {
                 self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
                 if(self.userPrice.text.length == 0) {
                     self.userPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
@@ -89,7 +61,7 @@
             } failure:^(NSString *error) {
                 self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            }];*/
+            }];
         }
     } else if(self.activeField == self.userPrice) {
         if(self.suggestedPrice.text.length > 0 && self.userPrice.text.length > 0) {

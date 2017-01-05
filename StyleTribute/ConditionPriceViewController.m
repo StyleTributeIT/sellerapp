@@ -121,7 +121,7 @@
             [cell.statusImage setImage:[UIImage imageNamed:@"checked"]];
     } else {
         cell.title.text = @"Set price";
-        cell.subtitle.text = [NSString stringWithFormat:@"$%.2f",product.price];
+        cell.subtitle.text = [NSString stringWithFormat:@"S$%.2f",product.price];
         if (product.price != 0.0f)
             [cell.statusImage setImage:[UIImage imageNamed:@"checked"]];
     }

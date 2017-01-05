@@ -560,7 +560,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getSellerPayoutForProduct:(NSUInteger)category price:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    category = 1;
     NSString* url = [NSString stringWithFormat:@"/seller/payout/category/%lu/price/%f",
                      (unsigned long)category, price];
     NSLog(@"%@", url);
