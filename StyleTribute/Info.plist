@@ -94,6 +94,8 @@
 	<string>Allow StyleTribute to use your camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow StyleTribute to use your photo library.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Allow StyleTribute to access your contacts.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
