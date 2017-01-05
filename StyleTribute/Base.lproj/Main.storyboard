@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-xd-dpw" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="316" width="320" height="188"/>
+                                <rect key="frame" x="0.0" y="316" width="375" height="287"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FoV-xd-dpw" secondAttribute="height" multiplier="641:507" id="Xua-zg-CtR"/>
@@ -46,14 +46,14 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Rte-X5-A1W">
-                                <rect key="frame" x="128" y="20" width="64" height="64"/>
+                                <rect key="frame" x="156" y="20" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="3WV-6i-nwb"/>
                                     <constraint firstAttribute="width" constant="64" id="C11-eY-VwG"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzk-qV-fOS">
-                                <rect key="frame" x="58" y="167" width="205" height="30"/>
+                                <rect key="frame" x="85" y="167" width="205" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="Sign up"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="01c-RZ-boE"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dig-Q9-QwW">
-                                <rect key="frame" x="16" y="131" width="288" height="21"/>
+                                <rect key="frame" x="16" y="131" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fuO-yP-G6e"/>
                                 </constraints>
@@ -77,7 +77,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn8-Cb-f8A">
-                                <rect key="frame" x="58" y="205" width="205" height="30"/>
+                                <rect key="frame" x="85" y="205" width="205" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="TTi-k1-zec"/>
                                     <constraint firstAttribute="height" constant="30" id="ZI5-14-XhI"/>
@@ -92,7 +92,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oc-gx-i8R" customClass="AttributedLabel">
-                                <rect key="frame" x="16" y="92" width="288" height="21"/>
+                                <rect key="frame" x="16" y="92" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1NZ-HN-4yl"/>
                                 </constraints>
@@ -111,7 +111,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clY-Sy-ZP3">
-                                <rect key="frame" x="16" y="249" width="288" height="21"/>
+                                <rect key="frame" x="16" y="249" width="343" height="21"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="kTh-dJ-JH2"/>
@@ -121,7 +121,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="336-qA-KE7">
-                                <rect key="frame" x="58" y="278" width="205" height="30"/>
+                                <rect key="frame" x="85" y="278" width="205" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="Already have account"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KyZ-1o-ur3"/>
@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-aZ-Jzd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-dn-4dR">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="326"/>
@@ -876,7 +876,7 @@
                                                     <outlet property="delegate" destination="grn-Wi-nkv" id="NL3-ID-2Ao"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second Name *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuD-Wk-V9e" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name *" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuD-Wk-V9e" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="91" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="To2-e9-Fkc"/>
@@ -1639,7 +1639,7 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-SH-YtR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-KE-yG7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
@@ -1836,10 +1836,10 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQp-DS-sci">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="490"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="444"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Aqx-VT-Mf3">
                                                 <rect key="frame" x="128" y="15" width="64" height="64"/>
@@ -1968,7 +1968,7 @@ Citilink Warehouse Complex
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="DHb-RS-aJg" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="398" width="240" height="0.0"/>
+                                                <rect key="frame" x="40" y="352" width="240" height="0.0"/>
                                                 <accessibility key="accessibilityConfiguration" label="Country"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="CWN-FF-Eyg"/>
