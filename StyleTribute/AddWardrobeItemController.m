@@ -21,6 +21,8 @@
 #import "UIImage+FixOrientation.h"
 #import "ChooseBrandController.h"
 #import "UITextView+Placeholder.h"
+#import <AVFoundation/AVFoundation.h>
+#import <Photos/Photos.h>
 
 #define PHOTOS_PER_ROW 3.5f
 
@@ -447,6 +449,26 @@ typedef void(^ImageLoadBlock)(int);
         picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
         
         if(type == UIImagePickerControllerSourceTypeCamera) {
+            NSString *mediaType = AVMediaTypeVideo;
+            AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+            if(authStatus == AVAuthorizationStatusAuthorized) {
+                // do your logic
+                NSLog(@"AVAuthorizationStatusAuthorized");
+            } else if(authStatus == AVAuthorizationStatusDenied){
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enable camera and photos access in your Settings" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                return;
+            } else if(authStatus == AVAuthorizationStatusRestricted){
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enable camera and photos access in your Settings" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                return;
+            } else if(authStatus == AVAuthorizationStatusNotDetermined){
+                // not determined?!
+                NSLog(@"AVAuthorizationStatusNotDetermined");
+            } else {
+                // impossible, unknown authorization status
+            }
+
             CGSize screenSize = [[UIScreen mainScreen] bounds].size;
             CGRect cameraViewRect = [[UIScreen mainScreen] bounds];
             if(screenSize.height/screenSize.width > 1.5) {
@@ -478,15 +500,45 @@ typedef void(^ImageLoadBlock)(int);
 					
 					[self presentViewController:picker animated:YES completion:^{
 					}];
+                    [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
+                        if(granted){
+                            NSLog(@"Granted access to %@", mediaType);
+                        } else {
+                            NSLog(@"Not granted access to %@", mediaType);
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self dismissViewControllerAnimated:YES completion:^ {
+                                    //Add dispatch_async as i am dismissing not on the main thread due to callback
+                                }];
+                            });
+                        }
+                    }];
                 }];
             } else {
                 [self presentViewController:picker animated:YES completion:^{
                 }];
             }
         } else {
+            NSLog(@"accessing the photo album");
+            [self presentViewController:picker animated:YES completion:^{
+            }];
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus authorizationStatus) {
+                if (authorizationStatus == PHAuthorizationStatusAuthorized) {
+                    // Add your custom logic here
+                     NSLog(@"Authorised to see photos");
+                }
+                else if (authorizationStatus == PHAuthorizationStatusNotDetermined) {
+                    NSLog(@"NOT Authorised to see photos");
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self dismissViewControllerAnimated:YES completion:^ {
+                            //Add dispatch_async as i am dismissing not on the main thread due to callback
+                        }];
+                    });
+                }
+            }];
             [self presentViewController:picker animated:YES completion:^{
             }];
         }
+        
     } else {
         NSLog(@"camera or photo library are not available on this device");
     }
