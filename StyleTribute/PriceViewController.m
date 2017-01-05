@@ -9,7 +9,7 @@
 #import "PriceViewController.h"
 
 
-@interface PriceViewController ()
+@interface PriceViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *priceEarned;
 @property BOOL isInProgress;
 @property BOOL isOwnPrice;
@@ -34,18 +34,29 @@
     if([DataCache getSelectedItem].originalPrice > 0) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         Product *p = [DataCache getSelectedItem];
-        int original_price = p.originalPrice;
+        //int original_price = p.originalPrice;
         
-
+        NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
+                                                                              withString:@""];
+        int price = [new_price intValue];
         
         if (self.isOwnPrice == false){
             self.additionalButtons.hidden = NO;
+            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
+                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                self.isInProgress = NO;
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                self.isInProgress = NO;
+            }];
+            /*
             [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:original_price success:^(float price) {
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", price];
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            }];
+            }];*/
         }
         else{
             self.additionalButtons.hidden = YES;
@@ -53,6 +64,7 @@
         }
     }
     self.priceField.text = [DataCache getSelectedItem].originalPrice > 0 ? [NSString stringWithFormat:@" $%.2f", [DataCache getSelectedItem].originalPrice] : @"";
+    self.priceField.delegate = self;
     UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [aButton setImage:buttonImage forState:UIControlStateNormal];
@@ -116,22 +128,28 @@
         [self.priceField resignFirstResponder];
         if(self.priceField.text.length > 0 && !self.isInProgress) {
             Product *p = [DataCache getSelectedItem];
-            int price = [self.priceField.text intValue];
-            if (price > p.price)
+            NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
+                                                                       withString:@""];
+            int price = [new_price intValue];
+            if (price > p.price && p.price != 0)
             {
-                NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of %.02f", p.price];
+                NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
                 UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:str delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-                return;
-            }
-            else if (price == 0){
-                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"New price cannot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
                 return;
             }
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             
+             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
+                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
+                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                 self.isInProgress = NO;
+             } failure:^(NSString *error) {
+                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                 self.isInProgress = NO;
+             }];
+/*
             [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float price) {
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", price];
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -139,11 +157,30 @@
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 self.isInProgress = NO;
-            }];
+            }];*/
 
         }
     }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField.text.length  == 0)
+    {
+        textField.text = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
+    // Make sure that the currency symbol is always at the beginning of the string:
+    if (![newText hasPrefix:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol]])
+    {
+        return NO;
+    }
+    
+    // Default:
+    return YES;
 }
 
 #pragma mark - Navigation

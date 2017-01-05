@@ -214,6 +214,7 @@
     currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
     NSLog(@"My token is: %@", newToken);
+    return;
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

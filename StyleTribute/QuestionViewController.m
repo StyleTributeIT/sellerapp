@@ -10,7 +10,7 @@
 #import "PriceViewController.h"
 #import "Product.h"
 
-@interface QuestionViewController ()
+@interface QuestionViewController () <UITextFieldDelegate>
     @property (strong, nonatomic) IBOutlet UITextField *priceField;
 
 @end
@@ -36,6 +36,7 @@
     [aButton addTarget:self action:@selector(backPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
     self.navigationItem.leftBarButtonItem = backButton;
+    self.priceField.delegate = self;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -49,21 +50,41 @@
 
 -(void)inputDone {
     Product *p = [DataCache getSelectedItem];
-    int new_price = [self.priceField.text intValue];
-    if (new_price > p.price)
+    NSString *str_new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
+                                                                          withString:@""];
+
+    int new_price = [str_new_price intValue];
+    if (new_price > p.price && p.price != 0)
     {
-        NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of %.02f", p.price];
+        NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:str delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
-    else if (new_price == 0){
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"New price cannot be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
+    
     [self nextPressed:nil];
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField.text.length  == 0)
+    {
+        textField.text = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    // Make sure that the currency symbol is always at the beginning of the string:
+    if (![newText hasPrefix:[[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol]])
+    {
+        return NO;
+    }
+    
+    // Default:
+    return YES;
+}
+
 - (IBAction)nextPressed:(id)sender {
     [self.priceField resignFirstResponder];
     if (!self.priceField.hidden)

@@ -64,6 +64,30 @@
         if(self.priceField.text.length > 0 && !self.isInProgress) {
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            Product *p = [DataCache getSelectedItem];
+            
+            NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
+                                                                                  withString:@""];
+            int price = [new_price intValue];
+            
+            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float priceSuggestion) {
+                self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
+                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", priceSuggestion];
+                self.priceEarned.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                Product *p = [DataCache getSelectedItem];
+                // p.price = [self.priceEarned.text floatValue];
+                p.suggestedPrice = priceSuggestion;
+                [DataCache setSelectedItem:p];
+                self.isInProgress = NO;
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                self.isInProgress = NO;
+            }];
+            /*
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
                 self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
@@ -79,7 +103,7 @@
             } failure:^(NSString *error) {
                 self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            }];
+            }];*/
         }
     }
     

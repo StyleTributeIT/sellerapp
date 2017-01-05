@@ -26,8 +26,12 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-    if ([DataCache sharedInstance].userProfile.entity_id.length != 0)
+    if ([DataCache sharedInstance].userProfile.entity_id.length != 0){
         self.prods = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];
+        
+        //reverse the array as the array stores push notification objects in a first in sequence
+        self.prods = [[[self.prods reverseObjectEnumerator] allObjects] mutableCopy];
+    }
     else
     {
         self.prods = [[NSMutableArray alloc] init];
