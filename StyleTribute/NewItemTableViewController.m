@@ -114,7 +114,7 @@ int sectionOffset = 0;
         {
             self.navigationItem.title = self.curProduct.category.name;
         }
-       // [self.tableView reloadData];
+        [self.tableView reloadData];
     }
 
     -(void)viewDidAppear:(BOOL)animated {
@@ -202,7 +202,7 @@ int sectionOffset = 0;
             BagSizeTableViewCell * cell = (BagSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             if (cell.bagWidth.text.length != 0)
             {
-                self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth];
+                self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth.text];
             }
         }
         
@@ -1003,15 +1003,36 @@ int sectionOffset = 0;
 #pragma mark Data validation
 
 -(BOOL)productIsValid{
-    BOOL result = YES;
-
     if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
-        result = NO;
+        return NO;
     if (self.curProduct.price == 0.0f )
-        result = NO;
-    if (self.curProduct.size == nil)
-        result = NO;
-    return result;
+        return NO;
+    
+    STCategory *category = self.curProduct.category;
+    NSString* firstSize = [category.sizeFields firstObject];
+    if([firstSize isEqualToString:@"size"]) {
+        if (self.curProduct.size == nil)
+            return NO;
+    } else if([firstSize isEqualToString:@"shoesize"]) {
+        if (self.curProduct.shoeSize == nil)
+            return NO;
+        if (self.curProduct.shoeSize.name.length == 0)
+            return NO;
+        if (self.curProduct.heelHeight == nil)
+            return NO;
+    } else if([firstSize isEqualToString:@"dimensions"]) {
+        int count = (int) self.curProduct.dimensions.count;
+        for(int i = 0; i < count; i++)
+        {
+            NSString *str = [self.curProduct.dimensions objectAtIndex:i];
+            if ([str isEqualToString:@""]){
+                return NO;
+            }
+        }
+    }
+
+
+    return YES;
 }
 
 -(BOOL)imagesAreFilled {
