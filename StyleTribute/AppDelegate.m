@@ -74,7 +74,7 @@
     }
 	
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-[self registerForRemoteNotifications];
+    [self registerForRemoteNotifications];
     
     [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         configuration.applicationId = @"pxww8LIhtJ2v4TZDU4LDWHhoaze3d1fOMop2NtA5";
@@ -184,18 +184,26 @@
     
     //Called when a notification is delivered to a foreground app.
     
-    NSLog(@"Userinfo %@",notification.request.content.userInfo);
-    [self ParsePush:notification.request.content.userInfo];
+  /*  NSLog(@"Userinfo %@",notification.request.content.userInfo);
+    [self ParsePush:notification.request.content.userInfo];*/
     completionHandler(UNNotificationPresentationOptionAlert);
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"Userinfo %@",userInfo);
+    //if (self.isInBackground)
+        [self ParsePush:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler{
     
     //Called to let your app know which action was selected by the user for a given notification.
     
-    NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
+   /* NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
     if (self.isInBackground)
-        [self ParsePush:response.notification.request.content.userInfo];
+        [self ParsePush:response.notification.request.content.userInfo];*/
     completionHandler();
 }
 
