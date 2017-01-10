@@ -26,8 +26,21 @@
 
 +(STCategory*)searchCategory:(NSArray*)childrens forId:(NSUInteger)categoryId nextIndex:(int)idx
 {
+    
     STCategory *category = nil;
-    category = [[childrens linq_where:^BOOL(STCategory* category) {
+    for(int i = 0; i < childrens.count; i++){
+        STCategory *st = [childrens objectAtIndex:i];
+        if (st.idNum == categoryId){
+            category = st;
+            break;
+        }
+    }
+    if (category == nil)
+    {
+        
+    }
+    
+    /*category = [[childrens linq_where:^BOOL(STCategory* category) {
         return (category.idNum == categoryId);
     }] firstObject];
     if (category == nil)
@@ -37,7 +50,7 @@
         {
             [self searchCategory:[[childrens objectAtIndex:idx] children] forId:categoryId nextIndex:idx];
         }
-    }
+    }*/
     return category;
 }
 
@@ -50,6 +63,8 @@
     product.originalPrice = [self parseFloat:@"original_price" fromDict:dict];
     product.price = [self parseFloat:@"price" fromDict:dict];
     product.descriptionText = [self parseString:@"description" fromDict:dict];
+    product.url = [self parseString:@"url" fromDict:dict];
+    product.share_text = [self parseString:@"share_text" fromDict:dict];
     
     product.allowedTransitions = [NSMutableArray new];
     NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
@@ -138,7 +153,7 @@
     product.processComment = [self parseString:@"process_comment" fromDict:dict];
     product.processStatusDisplay = [self parseString:@"process_status_display" fromDict:dict];
     
-    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoesize" fromDict:dict] integerValue];
+    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoe_size" fromDict:dict] integerValue];
     if([DataCache sharedInstance].shoeSizes) {
         product.shoeSize = [[[DataCache sharedInstance].shoeSizes linq_where:^BOOL(NamedItem* item) {
             return (item.identifier == shoesizeId);
@@ -171,7 +186,7 @@
     self.descriptionText = [decoder decodeObjectForKey:@"descriptionText"];
 	self.unit = [decoder decodeObjectForKey:@"unit"];
     self.size = [decoder decodeObjectForKey:@"size"];
-    self.shoeSize = [decoder decodeObjectForKey:@"shoeSize"];
+    self.shoeSize = [decoder decodeObjectForKey:@"shoe_size"];
     self.heelHeight = [decoder decodeObjectForKey:@"heelHeight"];
     self.dimensions = [decoder decodeObjectForKey:@"dimensions"];
     
@@ -194,7 +209,7 @@
     [encoder encodeObject:self.descriptionText forKey:@"descriptionText"];
 	[encoder encodeObject:self.unit forKey:@"unit"];
     [encoder encodeObject:self.size forKey:@"size"];
-    [encoder encodeObject:self.shoeSize forKey:@"shoeSize"];
+    [encoder encodeObject:self.shoeSize forKey:@"shoe_size"];
     [encoder encodeObject:self.heelHeight forKey:@"heelHeight"];
     [encoder encodeObject:self.dimensions forKey:@"dimensions"];
 }

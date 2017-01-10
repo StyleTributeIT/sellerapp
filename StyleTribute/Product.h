@@ -44,6 +44,8 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 @property NSString* descriptionText;
 @property NSString* unit;
 @property NSString* size;
+@property NSString* url;
+@property NSString* share_text;
 @property NSUInteger sizeId;
 @property NamedItem* shoeSize;
 @property NSString* heelHeight;

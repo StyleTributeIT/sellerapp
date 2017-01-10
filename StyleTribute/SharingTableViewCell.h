@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Product.h"
 
 @protocol SharingTableViewCellDelegate
 -(void)shareTwitt:(UIViewController*)vc;
@@ -15,4 +16,5 @@
 
 @interface SharingTableViewCell : UITableViewCell
 @property (strong) id<SharingTableViewCellDelegate> delegate;
+@property Product *product;
 @end

@@ -134,7 +134,7 @@
     
     if([DataCache sharedInstance].shoeSizes == nil) {
         dispatch_group_enter(group);
-        [[ApiRequester sharedInstance] getSizeValues:@"shoesize" success:^(NSArray *sizes) {
+        [[ApiRequester sharedInstance] getSizeValues:@"shoe_size" success:^(NSArray *sizes) {
             [DataCache sharedInstance].shoeSizes = sizes;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
@@ -273,7 +273,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self openProductDetails:[[self getCurrentItemsArray] objectAtIndex:indexPath.row]];
+    NSMutableArray *arr = [self getCurrentItemsArray];
+    int idx = (int) indexPath.row;
+    [self openProductDetails:[arr objectAtIndex:idx]];
 }
 
 -(void)openProductDetails:(Product*)product {
@@ -393,7 +395,6 @@
     
     for (Product* product in products) {
         ProductType type = [product getProductType];
-        
         switch (type) {
             case ProductTypeSelling:
                 [self.sellingItems addObject:product];

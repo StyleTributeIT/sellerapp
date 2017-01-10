@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.product = [DataCache getSelectedItem];
     // Initialization code
 }
 
@@ -21,8 +22,8 @@
 }
 
 - (IBAction)postToTwitter:(id)sender {
-    NSString *text = @"How to add Facebook and Twitter sharing to an iOS app";
-    NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
+    NSString *text = [NSString stringWithFormat:@"%@ %@", self.product.share_text, self.product.url];//@"How to add Facebook and Twitter sharing to an iOS app";
+    NSURL *url = [NSURL URLWithString:self.product.url];//@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
     
     UIActivityViewController *controller =
     [[UIActivityViewController alloc]
@@ -34,7 +35,7 @@
 }
 
 - (IBAction)postToWhatsapp:(id)sender {
-    NSURL *whatsappURL = [NSURL URLWithString:@"whatsapp://send?text=Hello%2C%20World!"];
+    NSURL *whatsappURL = [NSURL URLWithString:@"whatsapp://send"];
     if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
         [[UIApplication sharedApplication] openURL: whatsappURL];
     }
