@@ -194,7 +194,8 @@
     //Called to let your app know which action was selected by the user for a given notification.
     
     NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
-    
+    if (self.isInBackground)
+        [self ParsePush:response.notification.request.content.userInfo];
     completionHandler();
 }
 
