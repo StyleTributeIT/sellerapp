@@ -85,9 +85,6 @@ int sectionOffset = 0;
         [DataCache setSelectedItem:self.curProduct];
         [DataCache sharedInstance].isEditingItem = NO;
     }
-    else{
-        //if (self.curProduct.shoeSize)
-    }
     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
         curImgType.state = ImageStateNormal;
@@ -400,10 +397,8 @@ int sectionOffset = 0;
 #pragma mark Custom delegates
 
 -(void)shareFB{
-    
-    NSString *url = self.curProduct.url;
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:url];//@"https://styletribute.com/"];
+    content.contentURL = [NSURL URLWithString:@"https://styletribute.com/"];
     [FBSDKShareDialog showFromViewController:self
                                  withContent:content
                                     delegate:nil];
@@ -438,7 +433,7 @@ int sectionOffset = 0;
     NSString* firstSize = [category.sizeFields firstObject];
     sectionOffset = 0;
     if([firstSize isEqualToString:@"size"]) {
-    } else if([firstSize isEqualToString:@"shoe_size"]) {
+    } else if([firstSize isEqualToString:@"shoesize"]) {
     } else if([firstSize isEqualToString:@"dimensions"]) {
     } else {
         initialSection--;

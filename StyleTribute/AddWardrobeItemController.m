@@ -898,7 +898,7 @@ typedef void(^ImageLoadBlock)(int);
         [self.widthField setHidden:YES];
         [self.heightField setHidden:YES];
         [self.deepField setHidden:YES];
-    } else if([firstSize isEqualToString:@"shoe_size"]) {
+    } else if([firstSize isEqualToString:@"shoesize"]) {
 		[self.unitField setHidden:YES];
         [self.sizeField setHidden:YES];
         [self.shoeSizeField setHidden:NO];
@@ -922,7 +922,7 @@ typedef void(^ImageLoadBlock)(int);
     BOOL isSizeFilled = NO;
     if([firstSize isEqualToString:@"size"]) {
         isSizeFilled = (self.sizeField.text.length > 0);
-    } else if([firstSize isEqualToString:@"shoe_size"]) {
+    } else if([firstSize isEqualToString:@"shoesize"]) {
         isSizeFilled = (self.shoeSizeField.text.length > 0 /*&& self.heelHeightField.text.length > 0*/);
     } else if([firstSize isEqualToString:@"dimensions"]) {
         isSizeFilled = (self.widthField.text.length > 0 && self.heightField.text.length > 0 && self.deepField.text.length > 0);
