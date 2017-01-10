@@ -23,8 +23,93 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
+-(void)updateProducts {
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    
+    if([DataCache sharedInstance].categories == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
+            [DataCache sharedInstance].categories = categories;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].designers == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getDesigners:^(NSArray *designers) {
+            [DataCache sharedInstance].designers = designers;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].conditions == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
+            [DataCache sharedInstance].conditions = conditions;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].countries == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getCountries:^(NSArray *countries) {
+            [DataCache sharedInstance].countries = countries;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].shoeSizes == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getSizeValues:@"shoesize" success:^(NSArray *sizes) {
+            [DataCache sharedInstance].shoeSizes = sizes;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if([DataCache sharedInstance].units == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
+            [DataCache sharedInstance].units = units;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    dispatch_group_notify(group, queue, ^{
+        [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [DataCache sharedInstance].products = [products mutableCopy];
+            
+            if([DataCache sharedInstance].openProductOnstart > 0) {
+                Product* p = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* item) {
+                    return (item.identifier == [DataCache sharedInstance].openProductOnstart);
+                }] firstObject];
+                
+            }
+        } failure:^(NSString *error) {
+            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [GlobalHelper showMessage:error withTitle:@"error"];
+        }];
+    });
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
+    [self updateProducts];
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
     if ([DataCache sharedInstance].userProfile.entity_id.length != 0){
         self.prods = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];
@@ -65,8 +150,7 @@
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
             return (p.identifier == [[[self.prods objectAtIndex:indexPath.row] objectForKey:@"pid"] integerValue]);
         }] firstObject];
-        if(product != nil) {
-            
+        if(product != nil) {            
             UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
             for(UIViewController * viewController in navController.viewControllers){
                 if ([viewController isKindOfClass:[ProductNavigationViewController class]]){
