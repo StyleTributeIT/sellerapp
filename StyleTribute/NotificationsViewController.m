@@ -150,7 +150,7 @@
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
             return (p.identifier == [[[self.prods objectAtIndex:indexPath.row] objectForKey:@"pid"] integerValue]);
         }] firstObject];
-        if(product != nil) {            
+        if(product != nil) {
             UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddItemNavController"];
             for(UIViewController * viewController in navController.viewControllers){
                 if ([viewController isKindOfClass:[ProductNavigationViewController class]]){
