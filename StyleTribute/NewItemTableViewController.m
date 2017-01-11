@@ -114,6 +114,7 @@ int sectionOffset = 0;
         {
             self.navigationItem.title = self.curProduct.category.name;
         }
+        
         [self.tableView reloadData];
     }
 
@@ -631,6 +632,7 @@ int sectionOffset = 0;
     cell.selectedSize = item;
     cell.cloathUnits.text = self.curProduct.unit;
     cell.cloathSize.text = self.curProduct.size;
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell addBottomBorder:YES];
     
@@ -645,6 +647,18 @@ int sectionOffset = 0;
         cell.selectedSize = self.curProduct.shoeSize;
         cell.shoeSize.text = self.curProduct.shoeSize.name;
         cell.heelHeight.text = self.curProduct.heelHeight;
+        
+        STCategory *st = _curProduct.category;
+        NSArray *arr = st.sizeFields;
+        int count = (int) [arr count];
+        if (count > 1){
+            [cell.heelHeight setHidden:false];
+        }
+        else{
+            [cell.heelHeight setHidden:true];
+            cell.heelHeight.text = 0;
+        }
+        
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self addBordersForCell:cell addBottomBorder:YES];
         return cell;
@@ -1029,7 +1043,7 @@ int sectionOffset = 0;
             return NO;
         if (self.curProduct.shoeSize.name.length == 0)
             return NO;
-        if (self.curProduct.heelHeight == nil)
+        if ([self.curProduct.heelHeight isEqualToString:@""])
             return NO;
     } else if([firstSize isEqualToString:@"dimensions"]) {
         int count = (int) self.curProduct.dimensions.count;
