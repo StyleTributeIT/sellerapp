@@ -50,8 +50,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (![DataCache sharedInstance].isEditingItem)
-        [DataCache sharedInstance].isEditingItem = YES;
+   // if (![DataCache sharedInstance].isEditingItem)
+  //      [DataCache sharedInstance].isEditingItem = YES;
     [self.tableView reloadData];
 }
 
@@ -97,8 +97,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([DataCache sharedInstance].isEditingItem)
-    {
+   // if ([DataCache sharedInstance].isEditingItem)
+  //  {
         if (indexPath.row == 0)
         {
             [self performSegueWithIdentifier:@"segueEditCondition" sender:nil];
@@ -107,7 +107,7 @@
         {
             [self performSegueWithIdentifier:@"segueEditPrice" sender:nil];
         }
-    }
+  //  }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
