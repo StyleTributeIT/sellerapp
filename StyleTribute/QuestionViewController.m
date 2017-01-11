@@ -50,17 +50,22 @@
 -(void)inputDone {
     Product *p = [DataCache getSelectedItem];
     int new_price = [self.priceField.text intValue];
-    if (new_price > p.price && p.price != 0)
-    {
-        NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of %.02f", p.price];
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:str delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    else if (new_price == 0){
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"New price cannot be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
+    
+    bool is_editing = [DataCache sharedInstance].isEditingItem;
+    
+    if (is_editing == true){
+        if (new_price > p.price && p.price != 0)
+        {
+            NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of %.02f", p.price];
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:str delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+        else if (new_price == 0){
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"New price cannot be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
     }
     [self nextPressed:nil];
 }

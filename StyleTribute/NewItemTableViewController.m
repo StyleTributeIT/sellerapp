@@ -503,8 +503,10 @@ int sectionOffset = 0;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if ([[tableView cellForRowAtIndexPath:indexPath] isKindOfClass:[PriceTableViewCell class]])
     {
+        [DataCache sharedInstance].isEditingItem = self.isEditingItem;
+        DataCache *dc = [DataCache sharedInstance];
         
-        if (self.isEditingItem || [DataCache sharedInstance].isEditingItem)
+        if (self.isEditingItem || dc.isEditingItem)
         {
             [self performSegueWithIdentifier:@"priceConditionSegue" sender:nil];
         } else
