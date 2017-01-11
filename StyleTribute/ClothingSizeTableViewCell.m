@@ -42,6 +42,11 @@
     if (textField == self.cloathSize)
     {
         NSArray *sizes = [NSArray arrayWithArray:[[[DataCache sharedInstance].units valueForKey:self.cloathUnits.text] valueForKey:@"name"]];
+        if (sizes.count == 0){
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Select a unit of measurement first" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
         
         [ActionSheetStringPicker showPickerWithTitle:@""
                                                 rows:sizes
