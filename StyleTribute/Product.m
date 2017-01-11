@@ -153,7 +153,7 @@
     product.processComment = [self parseString:@"process_comment" fromDict:dict];
     product.processStatusDisplay = [self parseString:@"process_status_display" fromDict:dict];
     
-    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoe_size" fromDict:dict] integerValue];
+    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoesize" fromDict:dict] integerValue];
     if([DataCache sharedInstance].shoeSizes) {
         product.shoeSize = [[[DataCache sharedInstance].shoeSizes linq_where:^BOOL(NamedItem* item) {
             return (item.identifier == shoesizeId);
@@ -186,7 +186,7 @@
     self.descriptionText = [decoder decodeObjectForKey:@"descriptionText"];
 	self.unit = [decoder decodeObjectForKey:@"unit"];
     self.size = [decoder decodeObjectForKey:@"size"];
-    self.shoeSize = [decoder decodeObjectForKey:@"shoe_size"];
+    self.shoeSize = [decoder decodeObjectForKey:@"shoesize"];
     self.heelHeight = [decoder decodeObjectForKey:@"heelHeight"];
     self.dimensions = [decoder decodeObjectForKey:@"dimensions"];
     
@@ -209,7 +209,7 @@
     [encoder encodeObject:self.descriptionText forKey:@"descriptionText"];
 	[encoder encodeObject:self.unit forKey:@"unit"];
     [encoder encodeObject:self.size forKey:@"size"];
-    [encoder encodeObject:self.shoeSize forKey:@"shoe_size"];
+    [encoder encodeObject:self.shoeSize forKey:@"shoesize"];
     [encoder encodeObject:self.heelHeight forKey:@"heelHeight"];
     [encoder encodeObject:self.dimensions forKey:@"dimensions"];
 }

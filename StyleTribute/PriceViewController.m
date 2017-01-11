@@ -42,9 +42,12 @@
         if (self.isOwnPrice == false){
             self.additionalButtons.hidden = NO;
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:p.originalPrice success:^(float priceSuggestion) {
-                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+                //self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+                //product.originalPrice > 0 ? [NSString stringWithFormat:@"%.2f", product.originalPrice] : @"";
                 
                 [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:priceSuggestion success:^(float price) {
+                    
+                    self.priceField.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
                     self.priceEarned.text = [NSString stringWithFormat:@"%.2f", price];
                     self.isInProgress = NO;
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -70,7 +73,8 @@
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         }
     }
-    self.priceField.text = [DataCache getSelectedItem].originalPrice > 0 ? [NSString stringWithFormat:@"%.2f", [DataCache getSelectedItem].originalPrice] : @"";
+    //Product *product = [DataCache getSelectedItem];
+   // self.priceField.text = product.originalPrice > 0 ? [NSString stringWithFormat:@"%.2f", product.originalPrice] : @"";
     self.priceField.delegate = self;
     UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -111,7 +115,7 @@
     }
     if (!self.isOwnPrice)
     if ([DataCache getSelectedItem].price != 0.0f)
-        self.priceField.text = [NSString stringWithFormat:@"%.2f", [DataCache getSelectedItem].price];
+        ;//  self.priceField.text = [NSString stringWithFormat:@"%.2f", [DataCache getSelectedItem].price];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
