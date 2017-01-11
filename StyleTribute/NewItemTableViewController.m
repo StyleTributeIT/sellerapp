@@ -192,7 +192,7 @@ int sectionOffset = 0;
             self.curProduct.size = cell.selectedSize.name;
             self.curProduct.sizeId = cell.selectedSize.identifier;
             self.curProduct.unit = cell.cloathUnits.text;
-        } else if([firstSize isEqualToString:@"shoe_size"]) {
+        } else if([firstSize isEqualToString:@"shoesize"]) {
              NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             ShoesSizeTableViewCell * cell = (ShoesSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             self.curProduct.shoeSize = cell.selectedSize;
@@ -535,16 +535,30 @@ int sectionOffset = 0;
     }
     if (indexPath.section == 2)
     {
-        STCategory *category = self.curProduct.category;
-        NSString* firstSize = [category.sizeFields firstObject];
-        if([firstSize isEqualToString:@"size"]) {
-            return [self setupClothingSizeCell:indexPath];
-        } else if([firstSize isEqualToString:@"shoe_size"]) {
-            return [self setupShoesSizeCell:indexPath];
-        } else if([firstSize isEqualToString:@"dimensions"]) {
-            return [self setupBagsSizeCell:indexPath];
+        if (self.isEditingItem == true){
+            if (self.curProduct.size != nil){
+                return [self setupClothingSizeCell:indexPath];
+            }
+            else if (_curProduct.shoeSize != nil)
+            {
+                return [self setupShoesSizeCell:indexPath];
+            }
+            else if (self.curProduct.dimensions != nil)
+            {
+                return [self setupBagsSizeCell:indexPath];
+            }
         }
-        
+        else{
+            STCategory *category = self.curProduct.category;
+            NSString* firstSize = [category.sizeFields firstObject];
+            if([firstSize isEqualToString:@"size"]) {
+                return [self setupClothingSizeCell:indexPath];
+            } else if([firstSize isEqualToString:@"shoesize"]) {
+                return [self setupShoesSizeCell:indexPath];
+            } else if([firstSize isEqualToString:@"dimensions"]) {
+                return [self setupBagsSizeCell:indexPath];
+            }
+        }
     }
     if (indexPath.section == 3 - sectionOffset)
     {
@@ -1003,17 +1017,12 @@ int sectionOffset = 0;
 #pragma mark Data validation
 
 -(BOOL)productIsValid{
-    if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
-        return NO;
-    if (self.curProduct.price == 0.0f )
-        return NO;
-    
     STCategory *category = self.curProduct.category;
     NSString* firstSize = [category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {
         if (self.curProduct.size == nil)
             return NO;
-    } else if([firstSize isEqualToString:@"shoe_size"]) {
+    } else if([firstSize isEqualToString:@"shoesize"]) {
         if (self.curProduct.shoeSize == nil)
             return NO;
         if (self.curProduct.shoeSize.name.length == 0)
