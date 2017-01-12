@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 @property float suggestedPrice;
 @property float price;
 @property NSMutableArray* allowedTransitions;
+
 @property NSString* descriptionText;
 @property NSString* unit;
 @property NSString* size;

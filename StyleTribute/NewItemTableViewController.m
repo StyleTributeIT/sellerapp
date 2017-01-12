@@ -1045,7 +1045,7 @@ int sectionOffset = 0;
 -(BOOL)productIsValid{
     STCategory *category = self.curProduct.category;
     NSString* firstSize = [category.sizeFields firstObject];
-    if (self.curProduct.name.length == 0 || self.curProduct.description.length == 0)
+    if (self.curProduct.name.length == 0 || self.curProduct.descriptionText.length == 0)
     {
         return NO;
     }
