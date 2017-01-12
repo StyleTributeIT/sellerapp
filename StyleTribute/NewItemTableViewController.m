@@ -220,10 +220,12 @@ int sectionOffset = 0;
             return;
         }
         if (pushToServer)
+        {
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         
-        if(self.isEditing && [self.curProduct.processStatus isEqualToString:@"incomplete"]) {
-            self.curProduct.processStatus = @"in_review_add";
+            if(self.isEditingItem && [self.curProduct.processStatus isEqualToString:@"incomplete"]) {
+                self.curProduct.processStatus = @"in_review_add";
+            }
         }
         if (!pushToServer)
             return;
