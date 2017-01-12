@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BagSizeTableViewCell : UITableViewCell
+@interface BagSizeTableViewCell : UITableViewCell<UITextFieldDelegate>
     @property (strong, nonatomic) IBOutlet UITextField *bagWidth;
     @property (strong, nonatomic) IBOutlet UITextField *bagHeight;
     @property (strong, nonatomic) IBOutlet UITextField *bagDepth;
