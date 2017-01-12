@@ -131,7 +131,7 @@
     {
         NamedItem *item = [NamedItem new];
         item.name = self.searchingString;
-        self.product.designer = item;
+        self.product.other_designer = item;
         [self performSegueWithIdentifier:@"showItemEdited" sender:self];
         return;
     }

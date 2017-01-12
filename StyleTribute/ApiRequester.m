@@ -407,9 +407,15 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                      @"short_description": @"",
                                      @"category": @(product.category.idNum),
                                      @"condition": @(product.condition.identifier),
-                                     @"designer": @(product.designer.identifier),
                                      @"original_price": @(product.originalPrice),
                                      @"price": @(product.price)} mutableCopy];
+    
+    if (product.other_designer != nil)
+    {
+        [params setObject:product.other_designer.name forKey:@"other_designer"];
+    } else {
+        [params setValue:@(product.designer.identifier) forKey:@"designer"];
+    }
     
     NSString* firstSize = [product.category.sizeFields firstObject];
     if([firstSize isEqualToString:@"size"]) {

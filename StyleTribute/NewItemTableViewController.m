@@ -617,7 +617,12 @@ int sectionOffset = 0;
 -(UITableViewCell*)setupBrandCell:(NSIndexPath*)indexPath
 {
     BrandTableViewCell *cell = (BrandTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"brandCell" forIndexPath:indexPath];
-    cell.brandTitle.text = self.curProduct.designer.name;
+    if (self.curProduct.other_designer != nil)
+    {
+        cell.brandTitle.text = self.curProduct.other_designer.name;
+    } else {
+        cell.brandTitle.text = self.curProduct.designer.name;
+    }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell addBottomBorder:YES];
     return cell;
