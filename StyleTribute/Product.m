@@ -10,6 +10,7 @@
 #import "Photo.h"
 
 @implementation Product
+STCategory *pCategory = nil;
 
 -(instancetype)init {
     self = [super init];
@@ -24,10 +25,50 @@
     return self;
 }
 
++ (STCategory*)visitNode:(STCategory *)node forId:(NSUInteger)categoryId {
+    STCategory *category = nil;
+    NSArray *childrenToVisit = [node children];
+    unsigned i, count = (int)childrenToVisit.count;
+    
+    // visit the current node:
+    if ([self printData:node forId:categoryId] != nil)
+        category = [self printData:node forId:categoryId];
+    if (category != nil)
+        return category;
+    
+    // if there are no children, then recursion ends:
+    for (i = 0; i < count; i++)    // make recursive call:
+        category = [self visitNode:[childrenToVisit objectAtIndex:i] forId:categoryId];
+    return category;
+}
+
++ (STCategory*)printData:(STCategory *)node forId:(NSUInteger)categoryId {
+    // this is just an example - in reality you might do something useful!
+    if (node.idNum == categoryId)
+        pCategory = node;
+    return nil;
+        //NSLog(@"%lu", (unsigned long)node.idNum);
+}
+
 +(STCategory*)searchCategory:(NSArray*)childrens forId:(NSUInteger)categoryId nextIndex:(int)idx
 {
     
-    STCategory *category = nil;
+    for (STCategory *cat in childrens) {
+        [self visitNode:cat forId:categoryId];
+    }
+    
+   /* category = [[childrens linq_where:^BOOL(STCategory* category) {
+        return (category.idNum == categoryId);
+    }] firstObject];
+    if (category == nil)
+    {
+        idx++;
+        if ([[[childrens objectAtIndex:idx] children] count] != 0)
+        {
+            [self searchCategory:[[childrens objectAtIndex:idx] children] forId:categoryId nextIndex:idx];
+        }
+    }*/
+    /*STCategory *category = nil;
     for(int i = 0; i < childrens.count; i++){
         STCategory *st = [childrens objectAtIndex:i];
         if (st.idNum == categoryId){
@@ -51,7 +92,11 @@
             [self searchCategory:[[childrens objectAtIndex:idx] children] forId:categoryId nextIndex:idx];
         }
     }*/
-    return category;
+    if (pCategory == nil)
+    {
+        NSLog(@"Category is NIL");
+    }
+    return pCategory;
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
