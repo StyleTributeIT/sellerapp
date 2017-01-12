@@ -86,8 +86,29 @@
 }
 
 - (IBAction)acceptPrice:(id)sender {
-    self.additionalButtons.hidden = YES;
-    [self performSegueWithIdentifier:@"showResult" sender:nil];
+    Product *p = [DataCache getSelectedItem];
+    NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
+                                                                          withString:@""];
+    int price = [new_price intValue];
+    self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
+    if (price > p.price && p.price != 0)
+    {
+        NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"error"
+                                      message:str
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        }];
+        [alert addAction:okAction];
+        //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else{
+        self.additionalButtons.hidden = YES;
+        [self performSegueWithIdentifier:@"showResult" sender:nil];
+    }
 }
 
 - (IBAction)enterPrice:(id)sender {
@@ -131,7 +152,7 @@
     
 -(IBAction)textFieldDidChange :(UITextField *)theTextField
 {
-    
+
 }
 
 -(void)inputDone {
@@ -142,25 +163,48 @@
             NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
                                                                        withString:@""];
             int price = [new_price intValue];
+            self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
             if (price > p.price && p.price != 0)
             {
                 NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
-                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:str delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-                return;
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@"error"
+                                              message:str
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                }];
+                [alert addAction:okAction];
+                //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+                [self presentViewController:alert animated:YES completion:nil];
             }
-            self.isInProgress = YES;
-            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-            
-             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
-                 self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
-                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                 self.isInProgress = NO;
-             } failure:^(NSString *error) {
-                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                 self.isInProgress = NO;
-             }];
-/*
+            else if (price == 0){
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@"Error"
+                                              message:@"Price cannot be 0"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                }];
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            else{
+                self.isInProgress = YES;
+                [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+                
+                [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
+                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    self.isInProgress = NO;
+                } failure:^(NSString *error) {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    self.isInProgress = NO;
+                }];
+
+            }
+
+            /*
             [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float price) {
                 self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", price];
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -181,7 +225,7 @@
     if ([segue.identifier isEqualToString:@"showResult"])
     {
         Product *product = [DataCache getSelectedItem];
-        product.price = [[self.priceEarned.text stringByReplacingOccurrencesOfString:@"$" withString:@""] floatValue];
+        product.price = [[self.priceField.text stringByReplacingOccurrencesOfString:@"$" withString:@""] floatValue];
         [DataCache setSelectedItem:product];
     }
 }

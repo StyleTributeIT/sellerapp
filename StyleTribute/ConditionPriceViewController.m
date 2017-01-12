@@ -45,7 +45,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
+    Product *product = [DataCache getSelectedItem];
+    ;
 }
 
 -(void)viewWillAppear:(BOOL)animated

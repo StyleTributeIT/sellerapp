@@ -53,7 +53,7 @@
     
     bool is_editing = [DataCache sharedInstance].isEditingItem;
     
-    if (is_editing == true){
+    /*if (is_editing == true){
         if (new_price > p.price && p.price != 0)
         {
             NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of %.02f", p.price];
@@ -66,6 +66,11 @@
             [alert show];
             return;
         }
+    }*/
+    if (new_price == 0){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
     }
     [self nextPressed:nil];
 }
