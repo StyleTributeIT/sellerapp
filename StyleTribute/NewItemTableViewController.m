@@ -183,6 +183,11 @@ int sectionOffset = 0;
     }
 
 - (IBAction)done:(id)sender {
+    [self saveProduct:YES];
+}
+
+-(void)saveProduct:(BOOL)pushToServer
+{
     {
         STCategory *category = self.curProduct.category;
         NSString* firstSize = [category.sizeFields firstObject];
@@ -193,7 +198,7 @@ int sectionOffset = 0;
             self.curProduct.sizeId = cell.selectedSize.identifier;
             self.curProduct.unit = cell.cloathUnits.text;
         } else if([firstSize isEqualToString:@"shoesize"]) {
-             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             ShoesSizeTableViewCell * cell = (ShoesSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             self.curProduct.shoeSize = cell.selectedSize;
             self.curProduct.heelHeight = cell.heelHeight.text;
@@ -208,33 +213,35 @@ int sectionOffset = 0;
         
         bool product_valid = [self productIsValid];
         bool images_filled = [self imagesAreFilled];
-        if (!product_valid || !images_filled)
+        if ((!product_valid || !images_filled) && pushToServer)
         {
             [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
             return;
         }
-        [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        if (pushToServer)
+            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         
         if(self.isEditing && [self.curProduct.processStatus isEqualToString:@"incomplete"]) {
             self.curProduct.processStatus = @"in_review_add";
         }
-        
+        if (!pushToServer)
+            return;
         [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             //            self.curProduct.identifier = product.identifier;
             //            self.curProduct.processStatus = product.processStatus;
-           if (self.isEditingItem)
-           {
-               NSMutableArray *tempImages = [[NSMutableArray alloc] init];
-               int count = (int) product.photos.count;
-               NSLog(@"There are %d photos now", count);
-               for (int i = 0; i < count; i++) {
-                   Photo *ph = [product.photos objectAtIndex:i];
-                   if (![ph isKindOfClass:[NSNull class]])
-                       [tempImages addObject:ph];
-               }
-               product.photos = [[NSArray arrayWithArray:tempImages] mutableCopy];
-           }
+            if (self.isEditingItem)
+            {
+                NSMutableArray *tempImages = [[NSMutableArray alloc] init];
+                int count = (int) product.photos.count;
+                NSLog(@"There are %d photos now", count);
+                for (int i = 0; i < count; i++) {
+                    Photo *ph = [product.photos objectAtIndex:i];
+                    if (![ph isKindOfClass:[NSNull class]])
+                        [tempImages addObject:ph];
+                }
+                product.photos = [[NSArray arrayWithArray:tempImages] mutableCopy];
+            }
             NSArray* oldPhotos = [NSArray arrayWithArray:product.photos];
             NSArray* oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;
@@ -266,7 +273,7 @@ int sectionOffset = 0;
                     if(i >= count)
                         return;
                     
-
+                    
                     Photo* photo = (i < _curProduct.photos.count ? [cur_product.photos objectAtIndex:i] : nil);
                     
                     if(i < self.curProduct.category.imageTypes.count) {
@@ -359,15 +366,15 @@ int sectionOffset = 0;
                 NSLog(@"All tasks done");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                  /*  MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-                    WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
-                    
-                    if(!self.isEditing) {
-                        [wc addNewProduct:self.curProduct];
-                    } else {
-                        [wc updateProductsList];
-                    }
-                   */
+                    /*  MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
+                     WardrobeController* wc = (WardrobeController*)[[tabController.viewControllers objectAtIndex:0] visibleViewController];
+                     
+                     if(!self.isEditing) {
+                     [wc addNewProduct:self.curProduct];
+                     } else {
+                     [wc updateProductsList];
+                     }
+                     */
                     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
                         Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
                         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
@@ -376,7 +383,7 @@ int sectionOffset = 0;
                     self.curProduct.category.imageTypes = nil;
                     self.curProduct = nil;
                     self.isEditingItem = NO;
-                  //  [tabController setSelectedIndex:0];
+                    //  [tabController setSelectedIndex:0];
                     [self dismissViewControllerAnimated:true completion:nil];
                 });
             });
@@ -387,7 +394,6 @@ int sectionOffset = 0;
         }];
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -766,6 +772,7 @@ int sectionOffset = 0;
     
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [self saveProduct:NO];
     if ([segue.identifier isEqualToString:@"priceConditionSegue"])
     {
         ConditionPriceViewController *vc = segue.destinationViewController;
@@ -803,6 +810,7 @@ int sectionOffset = 0;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self saveProduct:NO];
     NSInteger index = (actionSheet.destructiveButtonIndex == -1 ? (buttonIndex + 1) : buttonIndex);
     switch (index) {
         case 0: {  // Delete
