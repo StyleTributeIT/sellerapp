@@ -206,8 +206,16 @@
         cell.title.text = product.name;
         cell.message.text = [[self.prods objectAtIndex:indexPath.row] objectForKey:@"alert"];
         if(product != nil) {
-            Photo* photo = [product.photos firstObject];
-            [cell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.imageUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
+            Photo* photo = nil;//[product.photos  firstObject];
+            for (Photo *ph in product.photos) {
+                if (![ph isEqual:[NSNull null]])
+                {
+                    photo = ph;
+                    break;
+                }
+            }
+            if (photo != nil)
+                [cell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.imageUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
         }
     }
     return cell;
