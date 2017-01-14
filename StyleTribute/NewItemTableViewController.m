@@ -214,7 +214,12 @@ int sectionOffset = 0;
         
         bool product_valid = [self productIsValid];
         bool images_filled = [self imagesAreFilled];
-        if ((!product_valid || !images_filled) && pushToServer)
+        
+        if (images_filled == false && pushToServer){
+            [GlobalHelper showMessage:@"Please add all required images." withTitle:@"error"];
+            return;
+        }
+        if (!product_valid && pushToServer)
         {
             [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
             return;
@@ -669,7 +674,6 @@ int sectionOffset = 0;
         }
         else{
             [cell.heelHeight setHidden:true];
-            cell.heelHeight.text = 0;
         }
         
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -1004,7 +1008,7 @@ int sectionOffset = 0;
     
     Photo* photo = [Photo new];
     photo.image = finalImage;
-    
+
     // if we pressed on "plus", we should add photo instead of replace.
     if(self.selectedImageIndex == self.curProduct.photos.count) {
         [self.curProduct.photos addObject:photo];
@@ -1062,8 +1066,14 @@ int sectionOffset = 0;
             return NO;
         if (self.curProduct.shoeSize.name.length == 0)
             return NO;
-        if ([self.curProduct.heelHeight isEqualToString:@""])
-            return NO;
+        
+        NSArray *arr = category.sizeFields;
+        int count = (int) [arr count];
+        if (count > 1){
+            if ([self.curProduct.heelHeight isEqualToString:@""])
+                return NO;
+        }
+
     } else if([firstSize isEqualToString:@"dimensions"]) {
         int count = (int) self.curProduct.dimensions.count;
         for(int i = 0; i < count; i++)

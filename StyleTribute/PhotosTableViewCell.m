@@ -69,6 +69,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCell* newCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
     newCell.photoView.hidden = YES;
+    newCell.bigPhotoCell.contentMode = UIViewContentModeScaleAspectFit;
     newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
     if(indexPath.row == self.curProduct.photos.count) {
         newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
