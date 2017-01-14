@@ -671,7 +671,7 @@
                         <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1532,8 +1532,8 @@ Citilink Warehouse Complex
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
-                                                    <rect key="frame" x="90" y="19" width="201" height="65"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
+                                                    <rect key="frame" x="90" y="19" width="131" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="L5w-qT-ZbS"/>
                                                     </constraints>
@@ -1544,7 +1544,7 @@ Citilink Warehouse Complex
                                             <constraints>
                                                 <constraint firstItem="dBz-kO-QAU" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="20" id="9Y9-Pu-RCy"/>
                                                 <constraint firstAttribute="trailing" secondItem="7Wf-il-BAC" secondAttribute="trailing" constant="8" id="Klj-lb-kNx"/>
-                                                <constraint firstAttribute="trailing" secondItem="Cbt-pm-K7d" secondAttribute="trailing" constant="84" id="U3M-Ps-fm3"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cbt-pm-K7d" secondAttribute="trailing" constant="154" id="U3M-Ps-fm3"/>
                                                 <constraint firstItem="dBz-kO-QAU" firstAttribute="leading" secondItem="KIm-Or-0xq" secondAttribute="leading" constant="16" id="V9l-CZ-tWC"/>
                                                 <constraint firstItem="7Wf-il-BAC" firstAttribute="top" secondItem="Cbt-pm-K7d" secondAttribute="bottom" constant="-39" id="Vdx-Vg-4Ok"/>
                                                 <constraint firstItem="Cbt-pm-K7d" firstAttribute="top" secondItem="KIm-Or-0xq" secondAttribute="top" constant="19" id="WsK-DY-FAU"/>
@@ -1598,7 +1598,7 @@ Citilink Warehouse Complex
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0O-si-xHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3055" y="-1315"/>
+            <point key="canvasLocation" x="3053.5999999999999" y="-1315.5922038980511"/>
         </scene>
         <!--Tabbet View Controller-->
         <scene sceneID="5D6-10-5KI">
@@ -2060,7 +2060,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cNQ-w8-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2082,7 +2082,7 @@ Citilink Warehouse Complex
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
