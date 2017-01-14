@@ -173,8 +173,16 @@
             [defs synchronize];
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                Photo* photo = [product.photos firstObject];
-                [GlobalHelper showToastNotificationWithTitle:product.name subtitle:alert imageUrl:(photo ? photo.imageUrl : nil)];
+                Photo* photo = nil;//[product.photos  firstObject];
+                for (Photo *ph in product.photos) {
+                    if (![ph isEqual:[NSNull null]])
+                    {
+                        photo = ph;
+                        break;
+                    }
+                }
+                if (photo != nil)
+                    [GlobalHelper showToastNotificationWithTitle:product.name subtitle:alert imageUrl:(photo ? photo.imageUrl : nil)];
             });
         }
     }
@@ -184,8 +192,9 @@
     
     //Called when a notification is delivered to a foreground app.
     
-  /*  NSLog(@"Userinfo %@",notification.request.content.userInfo);
-    [self ParsePush:notification.request.content.userInfo];*/
+  /*  NSLog(@"Userinfo %@",notification.request.content.userInfo);*/
+    if (!self.isInBackground)
+        [self ParsePush:notification.request.content.userInfo];
     completionHandler(UNNotificationPresentationOptionAlert);
 }
 
