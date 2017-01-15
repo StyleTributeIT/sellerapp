@@ -671,7 +671,7 @@
                         <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rhq-u5-YGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2060,7 +2060,7 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cNQ-w8-3DE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2082,7 +2082,7 @@ Citilink Warehouse Complex
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPr-LJ-R6v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

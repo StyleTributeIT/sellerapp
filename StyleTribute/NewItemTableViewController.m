@@ -388,7 +388,7 @@ int sectionOffset = 0;
                         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
                         //[self.curProduct.category.imageTypes removeAllObject];
                     }
-                    self.curProduct.category.imageTypes = nil;
+                    //self.curProduct.category.imageTypes = nil;
                     self.curProduct = nil;
                     self.isEditingItem = NO;
                     //  [tabController setSelectedIndex:0];
