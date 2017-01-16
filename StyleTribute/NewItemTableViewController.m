@@ -646,6 +646,8 @@ int sectionOffset = 0;
 -(UITableViewCell*)setupKidzSizeCell:(NSIndexPath*)indexPath
 {
     SingleUnitTableViewCell *cell = (SingleUnitTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"singleSizeCell" forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [self addBordersForCell:cell addBottomBorder:YES];
     return cell;
 }
 
