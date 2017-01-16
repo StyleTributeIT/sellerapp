@@ -17,6 +17,7 @@
 +(void)setSelectedItem:(Product*)item;
     
 @property NSMutableArray* products;
+@property NSArray* kidzSizes;
 @property UserProfile* userProfile;
 @property NSArray* countries;
 @property NSArray* categories;

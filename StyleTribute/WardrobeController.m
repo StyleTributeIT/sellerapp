@@ -141,6 +141,18 @@
             dispatch_group_leave(group);
         }];
     }
+    
+    if ([DataCache sharedInstance].kidzSizes == nil)
+    {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getSizeValues:@"kidzsize" success:^(NSArray *sizes) {
+            [DataCache sharedInstance].kidzSizes = sizes;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+    }
+    
 	
 	if([DataCache sharedInstance].units == nil) {
 		dispatch_group_enter(group);

@@ -12,6 +12,7 @@
 @interface ClothingSizeTableViewCell : UITableViewCell<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *cloathUnits;
 @property (strong, nonatomic) IBOutlet UITextField *cloathSize;
+@property NSString* sizesKey;
 @property NamedItem *selectedSize;
 @property NamedItem *selectedUnit;
 -(void) setup;

@@ -115,6 +115,7 @@
 		E18060C01DD32A4C00B4056F /* PriceConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060BF1DD32A4C00B4056F /* PriceConditionTableViewCell.m */; };
 		E18060C21DD3327400B4056F /* PriceFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18060C11DD3327400B4056F /* PriceFlow.storyboard */; };
 		E18060C51DD3F70100B4056F /* EnterPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18060C41DD3F70100B4056F /* EnterPriceViewController.m */; };
+		E18442731E2CF8490052C50C /* SingleUnitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E18442721E2CF8490052C50C /* SingleUnitTableViewCell.m */; };
 		E1A091AB1E09458800CBC1C8 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A091AA1E09458800CBC1C8 /* Parse.framework */; };
 		E1B059E41DCB313900D14D91 /* TopCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */; };
 		E1B059E71DCB4F1A00D14D91 /* CategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B059E61DCB4F1A00D14D91 /* CategoryViewCell.m */; };
@@ -332,6 +333,8 @@
 		E18060C11DD3327400B4056F /* PriceFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PriceFlow.storyboard; sourceTree = "<group>"; };
 		E18060C31DD3F70000B4056F /* EnterPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterPriceViewController.h; sourceTree = "<group>"; };
 		E18060C41DD3F70100B4056F /* EnterPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterPriceViewController.m; sourceTree = "<group>"; };
+		E18442711E2CF8490052C50C /* SingleUnitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleUnitTableViewCell.h; sourceTree = "<group>"; };
+		E18442721E2CF8490052C50C /* SingleUnitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleUnitTableViewCell.m; sourceTree = "<group>"; };
 		E1A091AA1E09458800CBC1C8 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCategoriesViewController.h; sourceTree = "<group>"; };
 		E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCategoriesViewController.m; sourceTree = "<group>"; };
@@ -740,6 +743,8 @@
 				E13300961DE18DC800D798F2 /* DetailsTableViewCell.m */,
 				E173F4861DE8D93200D86141 /* BaseTableViewCell.h */,
 				E173F4871DE8D93200D86141 /* BaseTableViewCell.m */,
+				E18442711E2CF8490052C50C /* SingleUnitTableViewCell.h */,
+				E18442721E2CF8490052C50C /* SingleUnitTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1052,7 +1057,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9F413971DC3E89992877B983 /* [CP] Check Pods Manifest.lock */ = {
@@ -1067,7 +1072,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C2DE5CB65B357F6061EB1344 /* 📦 Embed Pods Frameworks */ = {
@@ -1172,6 +1177,7 @@
 				E1BC254A1DF867B400DF2FB2 /* NotificationTableViewCell.m in Sources */,
 				E173F48F1DE8F97200D86141 /* ItemNavigationBase.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
+				E18442731E2CF8490052C50C /* SingleUnitTableViewCell.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				5330FFB01DDE4834001B0D0D /* SwipeView.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,

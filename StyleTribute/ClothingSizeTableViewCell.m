@@ -41,7 +41,14 @@
     [textField resignFirstResponder];
     if (textField == self.cloathSize)
     {
-        NSArray *sizes = [NSArray arrayWithArray:[[[DataCache sharedInstance].units valueForKey:self.cloathUnits.text] valueForKey:@"name"]];
+        NSArray *sizes = nil;
+        if (![_sizesKey isEqualToString:@"kidzsize"])
+        {
+            sizes = [NSArray arrayWithArray:[[[DataCache sharedInstance].units valueForKey:self.cloathUnits.text] valueForKey:@"name"]];
+        } else
+        {
+            sizes = [NSArray arrayWithArray:[[[DataCache sharedInstance].kidzSizes valueForKey:self.cloathUnits.text] valueForKey:@"name"]];
+        }
         if (sizes.count == 0){
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Select a unit of measurement first" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
@@ -61,9 +68,19 @@
     } else if (textField == self.cloathUnits)
     {
         
-        NSArray *sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].units.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString* unit1, NSString* unit2) {
-            return [unit1 compare: unit2];
-        }]];
+        NSArray *sizes = nil;
+        if (![_sizesKey isEqualToString:@"kidzsize"])
+        {
+            sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].units.allKeys sortedArrayUsingComparator:^NSComparisonResult(NSString* unit1, NSString* unit2) {
+                return [unit1 compare: unit2];
+            }]];
+        } else {
+            NSMutableArray* arr = [NSMutableArray new];
+            for (NamedItem *dc in [DataCache sharedInstance].kidzSizes) {
+                [arr addObject:dc.name];
+            }
+            sizes = [NSArray arrayWithArray:arr];
+        }
         
         [ActionSheetStringPicker showPickerWithTitle:@""
                                                 rows:sizes

@@ -14,6 +14,7 @@
 #import "ClothingSizeTableViewCell.h"
 #import "ConditionPriceViewController.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import "SingleUnitTableViewCell.h"
 #import "MessageTableViewCell.h"
 #import "DetailsTableViewCell.h"
 #import "GuidViewController.h"
@@ -89,7 +90,6 @@ int sectionOffset = 0;
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
         curImgType.state = ImageStateNormal;
     }
-
 }
 
 -(void)inputDone {
@@ -192,7 +192,7 @@ int sectionOffset = 0;
     {
         STCategory *category = self.curProduct.category;
         NSString* firstSize = [category.sizeFields firstObject];
-        if([firstSize isEqualToString:@"size"]) {
+        if([firstSize isEqualToString:@"size"] || [firstSize isEqualToString:@"kidzsize"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             ClothingSizeTableViewCell * cell = (ClothingSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             self.curProduct.size = cell.selectedSize.name;
@@ -553,7 +553,7 @@ int sectionOffset = 0;
     {
         if (self.isEditingItem == true){
             if (self.curProduct.size != nil){
-                return [self setupClothingSizeCell:indexPath];
+                return [self setupClothingSizeCell:indexPath forKey:@"size"];
             }
             else if (_curProduct.shoeSize != nil)
             {
@@ -567,8 +567,12 @@ int sectionOffset = 0;
         else{
             STCategory *category = self.curProduct.category;
             NSString* firstSize = [category.sizeFields firstObject];
+            if ([firstSize isEqualToString:@"kidzsize"])
+            {
+                return [self setupKidzSizeCell:indexPath];
+            } else
             if([firstSize isEqualToString:@"size"]) {
-                return [self setupClothingSizeCell:indexPath];
+                return [self setupClothingSizeCell:indexPath forKey:@"size"];
             } else if([firstSize isEqualToString:@"shoesize"]) {
                 return [self setupShoesSizeCell:indexPath];
             } else if([firstSize isEqualToString:@"dimensions"]) {
@@ -633,14 +637,27 @@ int sectionOffset = 0;
     return cell;
 }
 
--(UITableViewCell*)setupClothingSizeCell:(NSIndexPath*)indexPath
+-(UITableViewCell*)setupKidzSizeCell:(NSIndexPath*)indexPath
+{
+    SingleUnitTableViewCell *cell = (SingleUnitTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"singleSizeCell" forIndexPath:indexPath];
+    return cell;
+}
+
+-(UITableViewCell*)setupClothingSizeCell:(NSIndexPath*)indexPath forKey:(NSString*)key
 {
     ClothingSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"clothingSizeCell" forIndexPath:indexPath];
+    cell.sizesKey = key;
     [cell setup];
     NamedItem *item = nil;
-    NSArray* sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
-        return [unit isEqualToString:self.curProduct.unit];
-    }] allValues] firstObject];
+    NSArray* sizes = nil;
+    if ([key isEqualToString:@"kidzsize"])
+    {
+        sizes = [DataCache sharedInstance].kidzSizes;
+    } else {
+        sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
+            return [unit isEqualToString:self.curProduct.unit];
+        }] allValues] firstObject];
+    }
     for (NamedItem *dc in sizes) {
         if ([[dc valueForKey:@"name"] isEqualToString:self.curProduct.size])
         {
