@@ -68,7 +68,7 @@
                 <constraint firstItem="g0m-Tl-8FE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mG1-ta-cBb"/>
                 <constraint firstItem="g0m-Tl-8FE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sfC-Fw-AvB"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="33" y="53"/>
         </view>
     </objects>
     <resources>

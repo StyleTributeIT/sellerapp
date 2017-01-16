@@ -36,7 +36,7 @@
             self.topTitle.text = @"Keep to the frame";
             break;
         case 2:
-            self.subtitle.text = @"Put the item on a white background and take it out of its box and/ or dust bag.Put the item on a white background and take it out of its box and/ or dust bag.";
+            self.subtitle.text = @"Put the item on a white background and take it out of its box and/ or dust bag.";
             self.topTitle.text = @"Have a white background";
             break;
         case 3:

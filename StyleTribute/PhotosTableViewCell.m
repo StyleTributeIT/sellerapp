@@ -71,7 +71,8 @@
     newCell.photoView.hidden = YES;
     newCell.bigPhotoCell.contentMode = UIViewContentModeScaleAspectFit;
     newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
-    if(indexPath.row == self.curProduct.photos.count) {
+    int row = (int) indexPath.row;
+    if(row == self.curProduct.photos.count) {
         newCell.bigPhotoCell.image = [UIImage imageNamed:@"itemCell"];
         [newCell.photoTypeLabel setHidden:YES];
         newCell.plusLabel.hidden = NO;
@@ -79,16 +80,16 @@
     } else {
         ImageType* imgType = nil;
         newCell.photoView.hidden = NO;
-        if(indexPath.row >= self.curProduct.category.imageTypes.count) {
+        if(row >= self.curProduct.category.imageTypes.count) {
             imgType = [ImageType new];
             newCell.plusLabel.hidden = YES;
             imgType.name = [NSString stringWithFormat:@"%zd", indexPath.row - self.curProduct.category.imageTypes.count + 1];
         } else {
-            imgType = [self.curProduct.category.imageTypes objectAtIndex:indexPath.row];
+            imgType = [self.curProduct.category.imageTypes objectAtIndex:row];
         }
         newCell.photoTypeLabel.text = [imgType.name uppercaseString];
         [newCell.photoTypeLabel setHidden:NO];
-        Photo* photo = [self.curProduct.photos objectAtIndex:indexPath.row];
+        Photo* photo = [self.curProduct.photos objectAtIndex:row];
         if (![photo isKindOfClass:[NSNull class]])
         {
             if (photo.image)

@@ -384,8 +384,8 @@ int sectionOffset = 0;
                      }
                      */
                     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
-                        Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
-                        ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
+                        //Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
+                        [self.curProduct.category.imageTypes objectAtIndex:i];
                         //[self.curProduct.category.imageTypes removeAllObject];
                     }
                     //self.curProduct.category.imageTypes = nil;
