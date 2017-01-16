@@ -192,7 +192,13 @@ int sectionOffset = 0;
     {
         STCategory *category = self.curProduct.category;
         NSString* firstSize = [category.sizeFields firstObject];
-        if([firstSize isEqualToString:@"size"] || [firstSize isEqualToString:@"kidzsize"]) {
+        if ([firstSize isEqualToString:@"kidzsize"])
+        {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+            SingleUnitTableViewCell * cell = (SingleUnitTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            self.curProduct.kidzsize = cell.selectedUnit.name;
+        } else
+        if([firstSize isEqualToString:@"size"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             ClothingSizeTableViewCell * cell = (ClothingSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             self.curProduct.size = cell.selectedSize.name;
@@ -1075,6 +1081,11 @@ int sectionOffset = 0;
     {
         return NO;
     }
+    if ([firstSize isEqualToString:@"kidzsize"])
+    {
+        if (self.curProduct.kidzsize == nil)
+            return NO;
+    } else
     if([firstSize isEqualToString:@"size"]) {
         if (self.curProduct.size == nil)
             return NO;

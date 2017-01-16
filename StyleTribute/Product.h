@@ -46,6 +46,7 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 @property NSString* descriptionText;
 @property NSString* unit;
 @property NSString* size;
+@property NSString* kidzsize;
 @property NSString* url;
 @property NSString* share_text;
 @property NSUInteger sizeId;
