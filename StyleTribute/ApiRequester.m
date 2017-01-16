@@ -247,6 +247,8 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }];
 }
 
+
+
 -(void)getCategories:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
