@@ -193,7 +193,7 @@
                 self.isInProgress = YES;
                 [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
                 
-                [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
+                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float priceSuggestion) {
                     self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     self.isInProgress = NO;
