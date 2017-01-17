@@ -420,9 +420,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }
     
     NSString* firstSize = [product.category.sizeFields firstObject];
-    if ([firstSize isEqualToString:@"kidzsize"])
+    if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
     {
-        [params setObject:product.kidzsize forKey:@"kidzsize"];
+        [params setObject:product.kidzsize forKey:firstSize];
     } else
     if([firstSize isEqualToString:@"size"]) {
         [params setObject:@[product.unit, product.size] forKey:@"size"];
