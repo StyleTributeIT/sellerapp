@@ -192,7 +192,7 @@ int sectionOffset = 0;
     {
         STCategory *category = self.curProduct.category;
         NSString* firstSize = [category.sizeFields firstObject];
-        if ([firstSize isEqualToString:@"kidzsize"])
+        if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
         {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             SingleUnitTableViewCell * cell = (SingleUnitTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
@@ -452,7 +452,7 @@ int sectionOffset = 0;
     STCategory *category = self.curProduct.category;
     NSString* firstSize = [category.sizeFields firstObject];
     sectionOffset = 0;
-    if([firstSize isEqualToString:@"size"]) {
+    if([firstSize containsString:@"size"] || [firstSize isEqualToString:@"kidzshoes"]) {
     } else if([firstSize isEqualToString:@"shoesize"]) {
     } else if([firstSize isEqualToString:@"dimensions"]) {
     } else {
@@ -555,6 +555,10 @@ int sectionOffset = 0;
         if (indexPath.row == 1)
         return [self setupPriceCell:indexPath];
     }
+    if (indexPath.section == 3 - sectionOffset)
+    {
+        return [self setupBrandCell:indexPath];
+    }
     if (indexPath.section == 2)
     {
         if (self.isEditingItem == true){
@@ -573,7 +577,7 @@ int sectionOffset = 0;
         else{
             STCategory *category = self.curProduct.category;
             NSString* firstSize = [category.sizeFields firstObject];
-            if ([firstSize isEqualToString:@"kidzsize"])
+            if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
             {
                 return [self setupKidzSizeCell:indexPath];
             } else
@@ -586,10 +590,7 @@ int sectionOffset = 0;
             }
         }
     }
-    if (indexPath.section == 3 - sectionOffset)
-    {
-        return [self setupBrandCell:indexPath];
-    }
+    
    
     return [self setupShoesSizeCell:indexPath];
 }
@@ -658,7 +659,7 @@ int sectionOffset = 0;
     [cell setup];
     NamedItem *item = nil;
     NSArray* sizes = nil;
-    if ([key isEqualToString:@"kidzsize"])
+    if ([key isEqualToString:@"kidzsize"] || [key isEqualToString:@"kidzshoes"])
     {
         sizes = [DataCache sharedInstance].kidzSizes;
     } else {
@@ -1083,7 +1084,7 @@ int sectionOffset = 0;
     {
         return NO;
     }
-    if ([firstSize isEqualToString:@"kidzsize"])
+    if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
     {
         if (self.curProduct.kidzsize == nil)
             return NO;
