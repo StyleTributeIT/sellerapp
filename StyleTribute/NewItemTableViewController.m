@@ -107,15 +107,43 @@ int sectionOffset = 0;
             [DataCache setSelectedItem:self.curProduct];
             [DataCache sharedInstance].isEditingItem = NO;            
         }
-        
-        if(!self.isEditingItem && self.curProduct.category.name.length == 0) {
-            [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
+        STCategory *category = self.curProduct.category;
+        NSString* firstSize = [category.sizeFields firstObject];
+        if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
+        {
+            dispatch_group_t group = dispatch_group_create();
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            
+            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            dispatch_group_enter(group);
+            [[ApiRequester sharedInstance] getSizeValues:firstSize success:^(NSArray *sizes) {
+                [DataCache sharedInstance].kidzSizes = sizes;
+                dispatch_group_leave(group);
+            } failure:^(NSString *error) {
+                dispatch_group_leave(group);
+            }];
+            dispatch_group_notify(group, queue, ^{
+                [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
+                    [self.tableView reloadData];
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                } failure:^(NSString *error) {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    [GlobalHelper showMessage:error withTitle:@"error"];
+                }];
+            });
         } else
         {
-            self.navigationItem.title = self.curProduct.category.name;
+            if(!self.isEditingItem && self.curProduct.category.name.length == 0) {
+                [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
+            } else
+            {
+                self.navigationItem.title = self.curProduct.category.name;
+            }
+            
+            [self.tableView reloadData];
         }
         
-        [self.tableView reloadData];
+        
     }
 
     -(void)viewDidAppear:(BOOL)animated {
