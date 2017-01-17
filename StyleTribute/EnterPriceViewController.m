@@ -66,7 +66,7 @@
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             Product *p = [DataCache getSelectedItem];
             float price = [self.priceField.text floatValue];
-             [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float priceSuggestion) {
+             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:price success:^(float priceSuggestion) {
           //  [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
                 self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
