@@ -24,10 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    if (self.isEditing)
+   /* if (self.isEditing)
     {
         
-    }
+    }*/
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];

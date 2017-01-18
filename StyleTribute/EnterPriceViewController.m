@@ -61,10 +61,29 @@
 -(void)inputDone {
     {
         [self.priceField resignFirstResponder];
+        
+        bool is_editing = [DataCache sharedInstance].isEditingItem;
+        float price = [self.priceField.text floatValue];
+        Product *p = [DataCache getSelectedItem];
+        
+        if (is_editing == true){
+            if (price > p.price){
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@"Error"
+                                              message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.price]
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                }];
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:nil];
+                return;
+            }
+        }
         if(self.priceField.text.length > 0 && !self.isInProgress) {
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-            Product *p = [DataCache getSelectedItem];
+
             float price = [self.priceField.text floatValue];
             [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float priceSuggestion) {
                 //  [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {

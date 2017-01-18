@@ -91,10 +91,10 @@
                                                                           withString:@""];
     int price = [new_price intValue];
     self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
-    bool is_editing = self.isEditing;
+    bool is_editing = [DataCache sharedInstance].isEditingItem;
     if (price > p.price && p.price != 0 && is_editing == true)
     {
-        NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
+        NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.price];
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"error"
                                       message:str
@@ -166,11 +166,11 @@
             int price = [new_price intValue];
             self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
             
-            bool is_editing = self.isEditing;
+            bool is_editing = [DataCache sharedInstance].isEditingItem;
 
             if (price > p.price && p.price != 0 && is_editing == true)
             {
-                NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
+                NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.price];
                 UIAlertController * alert=   [UIAlertController
                                               alertControllerWithTitle:@"error"
                                               message:str
