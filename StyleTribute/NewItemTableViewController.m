@@ -1141,6 +1141,8 @@ int sectionOffset = 0;
 
     } else if([firstSize isEqualToString:@"dimensions"]) {
         int count = (int) self.curProduct.dimensions.count;
+        if (count == 0)
+            return NO;
         for(int i = 0; i < count; i++)
         {
             NSString *str = [self.curProduct.dimensions objectAtIndex:i];
