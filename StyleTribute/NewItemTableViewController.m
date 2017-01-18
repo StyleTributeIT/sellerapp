@@ -445,8 +445,9 @@ int sectionOffset = 0;
 #pragma mark Custom delegates
 
 -(void)shareFB{
+    Product *p = [DataCache getSelectedItem];
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:@"https://styletribute.com/"];
+    content.contentURL = [NSURL URLWithString:p.url];
     [FBSDKShareDialog showFromViewController:self
                                  withContent:content
                                     delegate:nil];
