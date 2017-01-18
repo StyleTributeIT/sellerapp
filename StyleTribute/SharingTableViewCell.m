@@ -23,14 +23,14 @@
 
 - (IBAction)postToTwitter:(id)sender {
     NSString *text = [NSString stringWithFormat:@"%@ %@", self.product.share_text, self.product.url];//@"How to add Facebook and Twitter sharing to an iOS app";
-    NSURL *url = [NSURL URLWithString:self.product.url];//@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
+  //  NSURL *url = [NSURL URLWithString:self.product.url];//@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
     
-    UIActivityViewController *controller =
+   /* UIActivityViewController *controller =
     [[UIActivityViewController alloc]
      initWithActivityItems:@[text, url]
      applicationActivities:nil];
     if (_delegate)
-        [_delegate shareTwitt:controller];
+        [_delegate shareTwitt:controller];*/
     //[self presentViewController:controller animated:YES completion:nil];
 }
 

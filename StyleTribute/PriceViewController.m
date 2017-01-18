@@ -91,7 +91,8 @@
                                                                           withString:@""];
     int price = [new_price intValue];
     self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
-    if (price > p.price && p.price != 0)
+    bool is_editing = self.isEditing;
+    if (price > p.price && p.price != 0 && is_editing == true)
     {
         NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
         UIAlertController * alert=   [UIAlertController
@@ -164,7 +165,10 @@
                                                                        withString:@""];
             int price = [new_price intValue];
             self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
-            if (price > p.price && p.price != 0)
+            
+            bool is_editing = self.isEditing;
+
+            if (price > p.price && p.price != 0 && is_editing == true)
             {
                 NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
                 UIAlertController * alert=   [UIAlertController
