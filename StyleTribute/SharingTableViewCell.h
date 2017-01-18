@@ -11,6 +11,7 @@
 
 @protocol SharingTableViewCellDelegate
 -(void)shareTwitt:(UIViewController*)vc;
+-(void)shareUIActivity:(UIViewController*)vc;
 -(void)shareFB;
 @end
 

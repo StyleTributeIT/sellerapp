@@ -457,6 +457,11 @@ int sectionOffset = 0;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+-(void)shareUIActivity:(UIViewController*)vc
+{
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 
