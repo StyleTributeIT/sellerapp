@@ -225,8 +225,8 @@ int sectionOffset = 0;
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             SingleUnitTableViewCell * cell = (SingleUnitTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             self.curProduct.kidzsize = cell.selectedUnit.name;
-        } else
-        if([firstSize isEqualToString:@"size"]) {
+        }
+        else if([firstSize isEqualToString:@"size"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             ClothingSizeTableViewCell * cell = (ClothingSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             self.curProduct.size = cell.selectedSize.name;
@@ -445,14 +445,20 @@ int sectionOffset = 0;
 #pragma mark Custom delegates
 
 -(void)shareFB{
+    Product *p = [DataCache getSelectedItem];
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:@"https://styletribute.com/"];
+    content.contentURL = [NSURL URLWithString:p.url];
     [FBSDKShareDialog showFromViewController:self
                                  withContent:content
                                     delegate:nil];
 }
 
 -(void)shareTwitt:(UIViewController*)vc
+{
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)shareUIActivity:(UIViewController*)vc
 {
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -589,6 +595,7 @@ int sectionOffset = 0;
     }
     if (indexPath.section == 2)
     {
+        STCategory *category = self.curProduct.category;
         if (self.isEditingItem == true){
             if (self.curProduct.size != nil){
                 return [self setupClothingSizeCell:indexPath forKey:@"size"];
@@ -601,9 +608,22 @@ int sectionOffset = 0;
             {
                 return [self setupBagsSizeCell:indexPath];
             }
+            else{
+                NSString* firstSize = [category.sizeFields firstObject];
+                if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
+                {
+                    return [self setupKidzSizeCell:indexPath];
+                }
+                else if([firstSize isEqualToString:@"size"]) {
+                    return [self setupClothingSizeCell:indexPath forKey:@"size"];
+                } else if([firstSize isEqualToString:@"shoesize"]) {
+                    return [self setupShoesSizeCell:indexPath];
+                } else if([firstSize isEqualToString:@"dimensions"]) {
+                    return [self setupBagsSizeCell:indexPath];
+                }
+            }
         }
         else{
-            STCategory *category = self.curProduct.category;
             NSString* firstSize = [category.sizeFields firstObject];
             if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
             {
@@ -1135,6 +1155,8 @@ int sectionOffset = 0;
 
     } else if([firstSize isEqualToString:@"dimensions"]) {
         int count = (int) self.curProduct.dimensions.count;
+        if (count == 0)
+            return NO;
         for(int i = 0; i < count; i++)
         {
             NSString *str = [self.curProduct.dimensions objectAtIndex:i];
