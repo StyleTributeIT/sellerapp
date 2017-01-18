@@ -201,7 +201,7 @@
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     NSLog(@"Userinfo %@",userInfo);
-    //if (self.isInBackground)
+    if (self.isInBackground)
         [self ParsePush:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 }
