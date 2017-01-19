@@ -115,7 +115,7 @@
         self.prods = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];
         
         //reverse the array as the array stores push notification objects in a first in sequence
-        self.prods = [[[self.prods reverseObjectEnumerator] allObjects] mutableCopy];
+      //  self.prods = [[[self.prods reverseObjectEnumerator] allObjects] mutableCopy];
     }
     else
     {
@@ -141,6 +141,18 @@
     NSMutableDictionary *d = [[self.prods objectAtIndex:indexPath.row] mutableCopy];
     [d setValue:@1 forKey:@"seen"];
     [self.prods replaceObjectAtIndex:indexPath.row withObject:d];
+    NSArray *arr = [self.prods sortedArrayUsingComparator:^NSComparisonResult(id unit1, id unit2) {
+        NSDictionary *obj1 = unit1;
+        NSDictionary *obj2 = unit2;
+        
+        if ( [[obj1 valueForKey:@"seen"] intValue] < [[obj2 valueForKey:@"seen"] intValue] ) {
+            return (NSComparisonResult)NSOrderedAscending;
+        } else if ( [[obj1 valueForKey:@"seen"] intValue] < [[obj2 valueForKey:@"seen"] intValue] ) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    }];
+    self.prods = [NSMutableArray arrayWithArray:arr];
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
     [defs setObject:self.prods forKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]];
     [defs synchronize];
