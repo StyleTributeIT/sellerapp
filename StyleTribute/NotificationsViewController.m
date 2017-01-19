@@ -107,12 +107,42 @@
     });
 }
 
+-(NSMutableArray*)getSortedNotifications
+{
+    NSMutableArray *result = [NSMutableArray new];
+    NSMutableArray *seen = [NSMutableArray new];
+    NSMutableArray *nonseen = [NSMutableArray new];
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    if ([DataCache sharedInstance].userProfile.entity_id.length != 0){
+        NSMutableArray *temp = [NSMutableArray new];
+        temp = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];
+        for (NSDictionary *dc in temp) {
+            if ([[dc valueForKey:@"seen"] intValue] == 1)
+            {
+                [seen addObject:dc];
+            } else
+            {
+                [nonseen addObject:dc];
+            }
+        }
+        result = [NSMutableArray arrayWithArray:nonseen];
+        [result addObjectsFromArray:seen];
+        //reverse the array as the array stores push notification objects in a first in sequence
+        //  self.prods = [[[self.prods reverseObjectEnumerator] allObjects] mutableCopy];
+    }
+    else
+    {
+        result = [[NSMutableArray alloc] init];
+    }
+    return result;
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [self updateProducts];
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
     if ([DataCache sharedInstance].userProfile.entity_id.length != 0){
-        self.prods = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];
+        self.prods = [self getSortedNotifications];
         
         //reverse the array as the array stores push notification objects in a first in sequence
       //  self.prods = [[[self.prods reverseObjectEnumerator] allObjects] mutableCopy];
@@ -141,22 +171,11 @@
     NSMutableDictionary *d = [[self.prods objectAtIndex:indexPath.row] mutableCopy];
     [d setValue:@1 forKey:@"seen"];
     [self.prods replaceObjectAtIndex:indexPath.row withObject:d];
-    NSArray *arr = [self.prods sortedArrayUsingComparator:^NSComparisonResult(id unit1, id unit2) {
-        NSDictionary *obj1 = unit1;
-        NSDictionary *obj2 = unit2;
-        
-        if ( [[obj1 valueForKey:@"seen"] intValue] < [[obj2 valueForKey:@"seen"] intValue] ) {
-            return (NSComparisonResult)NSOrderedAscending;
-        } else if ( [[obj1 valueForKey:@"seen"] intValue] < [[obj2 valueForKey:@"seen"] intValue] ) {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        return (NSComparisonResult)NSOrderedSame;
-    }];
-    self.prods = [NSMutableArray arrayWithArray:arr];
+    
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
     [defs setObject:self.prods forKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]];
     [defs synchronize];
-    
+    self.prods = [self getSortedNotifications];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if([DataCache sharedInstance].products != nil) {
         Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
