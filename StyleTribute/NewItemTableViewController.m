@@ -48,6 +48,7 @@ typedef void(^ImageLoadBlock)(int);
 @property NSUInteger selectedImageIndex;
 @property UIActionSheet* photoActionsSheet;
 @property Product *productCopy;
+@property Product *originalCopy;
 @property NSMutableArray* photosToDelete;
 @property XCDFormInputAccessoryView* inputAccessoryView;
 @end
@@ -83,8 +84,12 @@ int sectionOffset = 0;
     if(self.curProduct == nil) {
         self.curProduct = [Product new];
         self.productCopy = self.curProduct;
+        self.originalCopy = [self.curProduct copy];
         [DataCache setSelectedItem:self.curProduct];
         [DataCache sharedInstance].isEditingItem = NO;
+    } else
+    {
+        self.originalCopy = [self.curProduct copy];
     }
     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
@@ -104,6 +109,7 @@ int sectionOffset = 0;
         if(self.curProduct == nil) {
             self.curProduct = [Product new];
             self.productCopy = self.curProduct;
+            self.originalCopy = [self.productCopy copy];
             [DataCache setSelectedItem:self.curProduct];
             [DataCache sharedInstance].isEditingItem = NO;            
         }
@@ -212,7 +218,13 @@ int sectionOffset = 0;
     }
 
 - (IBAction)done:(id)sender {
-    [self saveProduct:YES];
+    if (self.originalCopy == self.curProduct)
+    {
+        [self dismissViewControllerAnimated:true completion:nil];
+        return;
+    }
+    [self saveProduct:![self.originalCopy isEqual:self.curProduct]?YES:NO];
+
 }
 
 -(void)saveProduct:(BOOL)pushToServer
@@ -267,7 +279,9 @@ int sectionOffset = 0;
             }
         }
         if (!pushToServer)
+        {
             return;
+        }
         [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             //            self.curProduct.identifier = product.identifier;

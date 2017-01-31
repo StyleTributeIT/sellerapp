@@ -294,6 +294,7 @@
         if ([viewController isKindOfClass:[ProductNavigationViewController class]]){
             ProductNavigationViewController *vc = (ProductNavigationViewController * ) viewController;
             vc.curProduct = product;
+            
            // vc.isEditingItem = YES;            
             [DataCache setSelectedItem:product];
             [DataCache sharedInstance].isEditingItem = YES;
