@@ -178,7 +178,8 @@
         return true;
     if (self.countryField.text.length == 0)
         return true;
-    
+    if (self.phoneNumberField.text.length == 0)
+        return true;
     return false;
 }
 
