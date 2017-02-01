@@ -236,7 +236,7 @@ int sectionOffset = 0;
         {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
             SingleUnitTableViewCell * cell = (SingleUnitTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            self.curProduct.kidzsize = cell.selectedUnit.name;
+            self.curProduct.kidzsize = [NSString stringWithFormat:@"%lu",(unsigned long)cell.selectedUnit.identifier];
         }
         else if([firstSize isEqualToString:@"size"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
