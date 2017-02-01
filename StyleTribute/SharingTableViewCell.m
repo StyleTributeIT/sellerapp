@@ -23,7 +23,16 @@
 
 - (IBAction)postToTwitter:(id)sender {
     NSString *text = [NSString stringWithFormat:@"%@ %@", self.product.share_text, self.product.url];//@"How to add Facebook and Twitter sharing to an iOS app";
-  //  NSURL *url = [NSURL URLWithString:self.product.url];//@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
+    NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
+    text = [text stringByAddingPercentEncodingWithAllowedCharacters:set];
+
+    
+    NSString *str = [NSString stringWithFormat:@"twitter://post?message=%@", text];
+    NSURL *twitterURL = [NSURL URLWithString:str];
+    if ([[UIApplication sharedApplication] canOpenURL: twitterURL]) {
+        [[UIApplication sharedApplication] openURL: twitterURL];
+    }
+
     
    /* UIActivityViewController *controller =
     [[UIActivityViewController alloc]
