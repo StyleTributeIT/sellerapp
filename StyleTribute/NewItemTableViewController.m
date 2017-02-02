@@ -218,7 +218,20 @@ int sectionOffset = 0;
     }
 
 - (IBAction)done:(id)sender {
-    if (self.originalCopy == self.curProduct)
+    if (self.isEditingItem)
+    if (self.curProduct.price > self.originalCopy.price){
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Error"
+                                      message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", self.originalCopy.price]
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if ([self.originalCopy isEqual:self.curProduct])
     {
         [self dismissViewControllerAnimated:true completion:nil];
         return;
@@ -711,6 +724,14 @@ int sectionOffset = 0;
     SingleUnitTableViewCell *cell = (SingleUnitTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"singleSizeCell" forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [self addBordersForCell:cell addBottomBorder:YES];
+    NamedItem *item = nil;
+    for (NamedItem *dc in [DataCache sharedInstance].kidzSizes) {
+        if ([[[dc valueForKey:@"identifier"] stringValue] isEqualToString:self.curProduct.kidzsize])
+        {
+            item = dc;
+        }
+    }
+    cell.selectedUnit = item;
     return cell;
 }
 

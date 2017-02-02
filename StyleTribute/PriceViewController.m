@@ -92,7 +92,7 @@
     int price = [new_price intValue];
     self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
     bool is_editing = [DataCache sharedInstance].isEditingItem;
-    if (price > p.price && p.price != 0 && is_editing == true)
+   /* if (price > p.price && p.price != 0 && is_editing == true)
     {
         NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.price];
         UIAlertController * alert=   [UIAlertController
@@ -106,7 +106,7 @@
         //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
         [self presentViewController:alert animated:YES completion:nil];
     }
-    else{
+    else*/{
         self.additionalButtons.hidden = YES;
         [self performSegueWithIdentifier:@"showResult" sender:nil];
     }
@@ -168,7 +168,7 @@
             
             bool is_editing = [DataCache sharedInstance].isEditingItem;
 
-            if (price > p.price && p.price != 0 && is_editing == true)
+           /* if (price > p.price && p.price != 0 && is_editing == true)
             {
                 NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.price];
                 UIAlertController * alert=   [UIAlertController
@@ -182,7 +182,7 @@
                 //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
                 [self presentViewController:alert animated:YES completion:nil];
             }
-            else if (price == 0){
+            else*/ if (price == 0){
                 UIAlertController * alert=   [UIAlertController
                                               alertControllerWithTitle:@"Error"
                                               message:@"Price cannot be 0"

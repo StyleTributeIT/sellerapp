@@ -66,7 +66,7 @@
         float price = [self.priceField.text floatValue];
         Product *p = [DataCache getSelectedItem];
         
-        if (is_editing == true){
+       /* if (is_editing == true){
             if (price > p.price){
                 UIAlertController * alert=   [UIAlertController
                                               alertControllerWithTitle:@"Error"
@@ -79,7 +79,7 @@
                 [self presentViewController:alert animated:YES completion:nil];
                 return;
             }
-        }
+        }*/
         if(self.priceField.text.length > 0 && !self.isInProgress) {
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
