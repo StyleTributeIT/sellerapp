@@ -10,7 +10,6 @@
 #define StyleTribute_GlobalDefs_h
 
 #import <Foundation/Foundation.h>
-#import <TestFairy.h>
 
  static NSString* const DefApiHost		= @"https://api2.styletribute.com/";//@"https://testapi.styletribute.com/";
 //static NSString* const DefApiHost		= @"http://magentolocal.ctrlm.sg/Magento-on-Angular/api/public/";
