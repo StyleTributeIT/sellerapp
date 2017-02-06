@@ -1,7 +1,7 @@
 platform :ios, '7.0'
 target 'StyleTribute' do
 	pod 'AFNetworking', '~> 2.6'
-	pod 'TestFairy'
+	#pod 'TestFairy'
 	pod 'Reachability'
 	pod 'KASlideShow', '= 2.2'
 	pod 'ActionSheetPicker-3.0', '~> 2.2.0'

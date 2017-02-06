@@ -62,7 +62,6 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - TestFairy (1.8.1)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
 
@@ -78,7 +77,6 @@ DEPENDENCIES:
   - MRProgress
   - Reachability
   - SDWebImage
-  - TestFairy
   - UIActivityIndicator-for-SDWebImage
 
 SPEC CHECKSUMS:
@@ -93,9 +91,8 @@ SPEC CHECKSUMS:
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  TestFairy: 13df5b14eb7b179f81cf99ab41ea1e0bb0288a0a
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
 
-PODFILE CHECKSUM: 72f809a46cee65b0363c0670af72c9b1d8a72598
+PODFILE CHECKSUM: be060e329be727a120be0d05329813ae0862a45b
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.0.1
