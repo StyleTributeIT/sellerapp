@@ -231,7 +231,7 @@ int sectionOffset = 0;
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    if ([self.originalCopy isEqual:self.curProduct])
+    if (self.originalCopy == self.curProduct)
     {
         [self dismissViewControllerAnimated:true completion:nil];
         return;
