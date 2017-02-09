@@ -218,7 +218,7 @@ int sectionOffset = 0;
     }
 
 - (IBAction)done:(id)sender {
-    if (self.isEditingItem)
+   // if (self.isEditingItem)
    /* if (self.curProduct.price > self.originalCopy.price){
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"Error"
