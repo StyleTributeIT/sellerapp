@@ -176,7 +176,12 @@ STCategory *pCategory = nil;
         NSString* depth = [self parseString:@"depth" fromDict:dimensions];
         product.dimensions = @[width, height, depth];
     }
-	
+	if ([dict valueForKey:@"kidzsize"] != nil)
+    {
+        NSLog(@"kidsize");
+        product.kidzsize = [dict valueForKey:@"kidzsize"];
+    }
+    
 	product.sizeId = [self parseInt:@"size" fromDict:dict];
     product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
 	
@@ -347,6 +352,7 @@ STCategory *pCategory = nil;
     newProduct.unit = [_unit copy];
     newProduct.size = [_size copy];
     newProduct.sizeId = _sizeId;
+    newProduct.kidzsize = _kidzsize;
     newProduct.shoeSize = [_shoeSize copy];
     newProduct.heelHeight = [_heelHeight copy];
     newProduct.dimensions = [_dimensions copy];
@@ -453,6 +459,12 @@ STCategory *pCategory = nil;
         
         if (!(product.size && _size && [product.size isEqualToString:_size])){
             if (!(!product.size && !_size)) {
+                return NO;
+            }
+        }
+        
+        if (!(product.kidzsize && _kidzsize && [product.kidzsize isEqualToString:_kidzsize])){
+            if (!(!product.kidzsize && !_kidzsize)) {
                 return NO;
             }
         }

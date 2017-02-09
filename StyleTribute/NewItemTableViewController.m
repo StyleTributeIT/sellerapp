@@ -231,45 +231,46 @@ int sectionOffset = 0;
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
-    if (self.originalCopy == self.curProduct)
+    STCategory *category = self.curProduct.category;
+    NSString* firstSize = [category.sizeFields firstObject];
+    if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        SingleUnitTableViewCell * cell = (SingleUnitTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+        self.curProduct.kidzsize = [NSString stringWithFormat:@"%lu",(unsigned long)cell.selectedUnit.identifier];
+    }
+    else if([firstSize isEqualToString:@"size"]) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        ClothingSizeTableViewCell * cell = (ClothingSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+        self.curProduct.size = cell.selectedSize.name;
+        self.curProduct.sizeId = cell.selectedSize.identifier;
+        self.curProduct.unit = cell.cloathUnits.text;
+    } else if([firstSize isEqualToString:@"shoesize"]) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        ShoesSizeTableViewCell * cell = (ShoesSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+        self.curProduct.shoeSize = cell.selectedSize;
+        self.curProduct.heelHeight = cell.heelHeight.text;
+    } else if([firstSize isEqualToString:@"dimensions"]) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        BagSizeTableViewCell * cell = (BagSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell.bagWidth.text.length != 0)
+        {
+            self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth.text];
+        }
+    }
+    if ([self.originalCopy isEqual:self.curProduct ])
     {
         [self dismissViewControllerAnimated:true completion:nil];
         return;
     }
-    [self saveProduct:![self.originalCopy isEqual:self.curProduct]?YES:NO];
+    [self saveProduct:![self.originalCopy isEqual:self.curProduct]];
 
 }
 
 -(void)saveProduct:(BOOL)pushToServer
 {
     {
-        STCategory *category = self.curProduct.category;
-        NSString* firstSize = [category.sizeFields firstObject];
-        if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
-        {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-            SingleUnitTableViewCell * cell = (SingleUnitTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            self.curProduct.kidzsize = [NSString stringWithFormat:@"%lu",(unsigned long)cell.selectedUnit.identifier];
-        }
-        else if([firstSize isEqualToString:@"size"]) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-            ClothingSizeTableViewCell * cell = (ClothingSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            self.curProduct.size = cell.selectedSize.name;
-            self.curProduct.sizeId = cell.selectedSize.identifier;
-            self.curProduct.unit = cell.cloathUnits.text;
-        } else if([firstSize isEqualToString:@"shoesize"]) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-            ShoesSizeTableViewCell * cell = (ShoesSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            self.curProduct.shoeSize = cell.selectedSize;
-            self.curProduct.heelHeight = cell.heelHeight.text;
-        } else if([firstSize isEqualToString:@"dimensions"]) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-            BagSizeTableViewCell * cell = (BagSizeTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-            if (cell.bagWidth.text.length != 0)
-            {
-                self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth.text];
-            }
-        }
+        
         
         bool product_valid = [self productIsValid];
         bool images_filled = [self imagesAreFilled];
@@ -731,6 +732,7 @@ int sectionOffset = 0;
             item = dc;
         }
     }
+    cell.unitField.text = item.name;
     cell.selectedUnit = item;
     return cell;
 }
