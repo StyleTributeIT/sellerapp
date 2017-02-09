@@ -50,6 +50,7 @@
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (IBAction)next:(id)sender {
     bool is_editing = [DataCache sharedInstance].isEditingItem;
     float price = [self.priceField.text floatValue];
@@ -69,6 +70,7 @@
             return;
         }
     }
+    [self performSegueWithIdentifier:@"showResult" sender:nil];
 }
 
 -(IBAction)textFieldDidChange :(UITextField *)theTextField{
