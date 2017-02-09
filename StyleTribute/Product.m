@@ -106,7 +106,7 @@ STCategory *pCategory = nil;
     product.name = [self parseString:@"name" fromDict:dict];
     product.processStatus = [self parseString:@"process_status" fromDict:dict];
     product.originalPrice = [self parseFloat:@"original_price" fromDict:dict];
-    product.price = [self parseFloat:@"price" fromDict:dict];
+    product.price = product.savedPrice = [self parseFloat:@"price" fromDict:dict];
     product.descriptionText = [self parseString:@"description" fromDict:dict];
     product.url = [self parseString:@"url" fromDict:dict];
     product.share_text = [self parseString:@"share_text" fromDict:dict];

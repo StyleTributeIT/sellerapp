@@ -219,7 +219,7 @@ int sectionOffset = 0;
 
 - (IBAction)done:(id)sender {
     if (self.isEditingItem)
-    if (self.curProduct.price > self.originalCopy.price){
+   /* if (self.curProduct.price > self.originalCopy.price){
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"Error"
                                       message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", self.originalCopy.price]
@@ -230,7 +230,7 @@ int sectionOffset = 0;
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
         return;
-    }
+    }*/
     STCategory *category = self.curProduct.category;
     NSString* firstSize = [category.sizeFields firstObject];
     if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])

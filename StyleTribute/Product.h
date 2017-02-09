@@ -40,6 +40,7 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 @property NamedItem* condition;
 @property float originalPrice;
 @property float suggestedPrice;
+@property float savedPrice;
 @property float price;
 @property NSMutableArray* allowedTransitions;
 

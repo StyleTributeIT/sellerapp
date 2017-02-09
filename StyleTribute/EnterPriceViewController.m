@@ -51,7 +51,24 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)next:(id)sender {
-    [self performSegueWithIdentifier:@"showResult" sender:self];
+    bool is_editing = [DataCache sharedInstance].isEditingItem;
+    float price = [self.priceField.text floatValue];
+    Product *p = [DataCache getSelectedItem];
+    
+    if (is_editing == true){
+        if (price > p.savedPrice){
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"Error"
+                                          message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice]
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            }];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+    }
 }
 
 -(IBAction)textFieldDidChange :(UITextField *)theTextField{
@@ -66,11 +83,11 @@
         float price = [self.priceField.text floatValue];
         Product *p = [DataCache getSelectedItem];
         
-       /* if (is_editing == true){
-            if (price > p.price){
+        if (is_editing == true){
+            if (price > p.savedPrice){
                 UIAlertController * alert=   [UIAlertController
                                               alertControllerWithTitle:@"Error"
-                                              message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.price]
+                                              message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice]
                                               preferredStyle:UIAlertControllerStyleAlert];
                 
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
@@ -79,7 +96,7 @@
                 [self presentViewController:alert animated:YES completion:nil];
                 return;
             }
-        }*/
+        }
         if(self.priceField.text.length > 0 && !self.isInProgress) {
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
