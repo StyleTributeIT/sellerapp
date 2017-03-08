@@ -11,8 +11,10 @@ target 'StyleTribute' do
 	pod 'MRProgress'
 	pod 'CRToast'
 #	pod 'FMDB', '~> 2.6'
-pod 'Fabric'
-pod 'Crashlytics'
+    pod 'Fabric'
+    pod 'Crashlytics'
+    pod 'ZDCChat'
+    
 end
 
 target 'StyleTributeTests' do
