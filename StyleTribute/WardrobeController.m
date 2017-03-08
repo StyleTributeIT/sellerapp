@@ -14,7 +14,7 @@
 #import "NewItemTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Photo.h"
-
+#import <ZDCChat/ZDCChat.h>
 @interface WardrobeController()
 
 @property NSMutableArray* sellingItems;
@@ -48,7 +48,19 @@
         
     }
     [self.tabBarController.navigationController.navigationBar setShadowImage:[UIImage new]];
+    
+    UIBarButtonItem *supportBtn =[[UIBarButtonItem alloc]initWithTitle:@"Support" style:UIBarButtonItemStyleDone target:self action:@selector(popToSupport)];
+    supportBtn.title = @"Support";
+    [supportBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [UIFont fontWithName:@"Montserrat-Light" size:14], NSFontAttributeName,
+                                        pink, NSForegroundColorAttributeName,
+                                        nil]
+                              forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = supportBtn;
+    
+    
     //[self updateProducts];
+    
     
    /* NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
@@ -72,6 +84,19 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+}
+
+- (void) popToSupport{
+    [ZDCChat initializeWithAccountKey:@"4dkfRL5ABzKB60Xu4VEW7jV65zynqc3T"];
+    
+    // start a chat in a new modal
+    [ZDCChat startChatIn:self.navigationController withConfig:^(ZDCConfig *config) {
+        config.preChatDataRequirements.name = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.email = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.phone = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.department = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.message = ZDCPreChatDataOptionalEditable;
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated

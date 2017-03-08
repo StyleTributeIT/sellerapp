@@ -64,6 +64,14 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
+  - ZDCChat (1.3.2.1):
+    - ZDCChat/API (= 1.3.2.1)
+    - ZDCChat/Localization (= 1.3.2.1)
+    - ZDCChat/UI (= 1.3.2.1)
+  - ZDCChat/API (1.3.2.1)
+  - ZDCChat/Localization (1.3.2.1)
+  - ZDCChat/UI (1.3.2.1):
+    - ZDCChat/API
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 2.2.0)
@@ -78,6 +86,7 @@ DEPENDENCIES:
   - Reachability
   - SDWebImage
   - UIActivityIndicator-for-SDWebImage
+  - ZDCChat
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
@@ -92,7 +101,8 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
+  ZDCChat: 307dca4b10abe5c133ccc0c7355fbb36d4207ce5
 
-PODFILE CHECKSUM: be060e329be727a120be0d05329813ae0862a45b
+PODFILE CHECKSUM: a396edfe079f7d442584794cb35b8cfe94f4b35f
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0

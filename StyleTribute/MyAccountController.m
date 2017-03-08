@@ -8,6 +8,7 @@
 
 #import "MyAccountController.h"
 #import "MyAccountCell.h"
+#import <ZDCChat/ZDCChat.h>
 
 @interface MyAccountController ()
 
@@ -27,6 +28,16 @@
     NSString * appBuildString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
     NSString * versionBuildString = [NSString stringWithFormat:@"Version: %@ (%@)", appVersionString, appBuildString];
     self.versionLabel.text = versionBuildString;
+    
+    UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
+    UIBarButtonItem *supportBtn =[[UIBarButtonItem alloc]initWithTitle:@"Support" style:UIBarButtonItemStyleDone target:self action:@selector(popToSupport)];
+    supportBtn.title = @"Support";
+    [supportBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [UIFont fontWithName:@"Montserrat-Light" size:14], NSFontAttributeName,
+                                        pink, NSForegroundColorAttributeName,
+                                        nil]
+                              forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = supportBtn;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -35,6 +46,21 @@
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     self.userNameLabel.text = [NSString stringWithFormat:@"Hi %@!", [DataCache sharedInstance].userProfile.firstName];
 }
+
+
+- (void) popToSupport{
+    [ZDCChat initializeWithAccountKey:@"4dkfRL5ABzKB60Xu4VEW7jV65zynqc3T"];
+    
+    // start a chat in a new modal
+    [ZDCChat startChatIn:self.navigationController withConfig:^(ZDCConfig *config) {
+        config.preChatDataRequirements.name = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.email = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.phone = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.department = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.message = ZDCPreChatDataOptionalEditable;
+    }];
+}
+
 
 #pragma mark - UITableView
 
