@@ -1118,17 +1118,9 @@ int sectionOffset = 0;
         Photo* photo = [Photo new];
         [self.curProduct.photos addObject:photo];
     }
-    UIImage *chosenImage = [[UIImage alloc] init];
-    UIImage *finalImage = [[UIImage alloc] init];
-    
-    if (info == nil){
-        chosenImage = [UIImage imageNamed:@"stub"];
-        finalImage = [UIImage imageNamed:@"stub"];
-    }
-    else{
-        chosenImage = info[UIImagePickerControllerOriginalImage];
-        finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
-    }
+
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
     
     Photo* photo = [Photo new];
     photo.image = finalImage;
