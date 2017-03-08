@@ -312,8 +312,12 @@ int sectionOffset = 0;
                 }
                 product.photos = [[NSArray arrayWithArray:tempImages] mutableCopy];
             }
-            NSArray* oldPhotos = [NSArray arrayWithArray:product.photos];
-            NSArray* oldImageTypes = product.category.imageTypes;
+            
+            NSArray *oldImageTypes = [[NSArray alloc] init];
+            NSArray *oldPhotos = [[NSArray alloc] init];
+            
+            oldPhotos = [NSArray arrayWithArray:product.photos];
+            oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;
             self.curProduct = product;
             
