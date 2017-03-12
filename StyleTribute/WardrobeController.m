@@ -38,6 +38,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     UIColor* pink = [UIColor colorWithRed:1 green:0 blue:102.0/255 alpha:1];
     self.wardrobeType.tintColor = pink;
+    
     [[UITabBar appearance] setSelectedImageTintColor:pink];
     
     NSString* deviceToken = [DataCache sharedInstance].deviceToken;
@@ -45,7 +46,6 @@
         [[ApiRequester sharedInstance] setDeviceToken:deviceToken success:^{
         } failure:^(NSString *error) {
         }];
-        
     }
     [self.tabBarController.navigationController.navigationBar setShadowImage:[UIImage new]];
     
@@ -57,7 +57,6 @@
                                         nil]
                               forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = supportBtn;
-    
     
     //[self updateProducts];
     
@@ -214,7 +213,7 @@
     });
 }
 
-#pragma mark - UITableView
+#pragma mark - UITableView Delegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -246,7 +245,6 @@
                 [cell.image setImage:photo.image];
         }
     }
-    
     cell.tag = indexPath.row;
     cell.delegate = self;
     cell.title.text = p.name;

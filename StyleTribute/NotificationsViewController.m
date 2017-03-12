@@ -31,14 +31,12 @@
                                         nil]
                               forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = supportBtn;
-    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void) popToSupport{
     [ZDCChat initializeWithAccountKey:@"4dkfRL5ABzKB60Xu4VEW7jV65zynqc3T"];
     
-    // start a chat in a new modal
     [ZDCChat startChatIn:self.navigationController withConfig:^(ZDCConfig *config) {
         config.preChatDataRequirements.name = ZDCPreChatDataOptionalEditable;
         config.preChatDataRequirements.email = ZDCPreChatDataOptionalEditable;
@@ -246,7 +244,7 @@
             NSDate *currentDate = [NSDate date];
             cell.dateLabel.hidden = NO;
             cell.dateLabel.text = [self remaningTime:notificationDate endDate:currentDate];
-            
+           
         } else
         {
             cell.dateLabel.hidden = YES;

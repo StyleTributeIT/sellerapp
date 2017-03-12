@@ -73,9 +73,7 @@
     }
 	
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    [self registerForRemoteNotifications];
-    
-    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+    [self registerForRemoteNotifications];    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         configuration.applicationId = @"pxww8LIhtJ2v4TZDU4LDWHhoaze3d1fOMop2NtA5";
         configuration.clientKey = @"OwbIej5eI9ZStORMhlLdaQiM4J8QhzJnEtLzKybR";
         configuration.server = @"https://parseapi.back4app.com/";
@@ -157,7 +155,6 @@
         }] firstObject];
         
         if(product != nil) {
-            
             NSString* alert = [aps objectForKey:@"alert"];
             NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
             NSMutableArray *prods = [NSMutableArray arrayWithArray:[defs objectForKey:[NSString stringWithFormat:@"notifications_%@", [DataCache sharedInstance].userProfile.entity_id]]];

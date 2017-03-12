@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -206,7 +206,7 @@
                         <viewControllerLayoutGuide type="top" id="KeO-l6-gRQ"/>
                         <viewControllerLayoutGuide type="bottom" id="jNw-e3-dRw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="NY5-ro-TzI">
+                    <view key="view" contentMode="scaleToFill" id="NY5-ro-TzI">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -541,7 +541,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxX-xU-RjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Th8-VD-QdL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1792.8" y="2474.2128935532237"/>
+            <point key="canvasLocation" x="1809" y="2473"/>
         </scene>
         <!--Shop View Controller-->
         <scene sceneID="yuc-83-dqw">
@@ -576,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LV2-mO-yoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122.40000000000001" y="2348.2758620689656"/>
+            <point key="canvasLocation" x="134" y="2473"/>
         </scene>
         <!--Notifications View Controller-->
         <scene sceneID="0bM-4E-ufZ">
@@ -657,11 +657,11 @@
                             <outlet property="delegate" destination="qaw-2c-nim" id="p2l-qQ-BN6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="yum-yA-RN0"/>
+                    <navigationItem key="navigationItem" id="yum-yA-RN0"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gky-oi-8sU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="956" y="2354.5727136431788"/>
+            <point key="canvasLocation" x="956" y="2473"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="As9-Y2-XEX">
@@ -1634,7 +1634,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="top" id="acp-WF-Stg"/>
                         <viewControllerLayoutGuide type="bottom" id="UFY-tf-2Fn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="J5N-YH-Eaa">
+                    <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1831,7 +1831,7 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="top" id="y6t-Ec-MNt"/>
                         <viewControllerLayoutGuide type="bottom" id="ouI-7M-v2j"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="hM7-JS-bIu">
+                    <view key="view" contentMode="scaleToFill" id="hM7-JS-bIu">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2288,7 +2288,7 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XTf-8t-q92"/>
+        <segue reference="mG1-qk-ojj"/>
         <segue reference="ReU-Ip-U3f"/>
     </inferredMetricsTieBreakers>
 </document>

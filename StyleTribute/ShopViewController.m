@@ -29,8 +29,8 @@
                                         pink, NSForegroundColorAttributeName,
                                         nil]
                               forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = supportBtn;
     
+    self.navigationItem.rightBarButtonItem = supportBtn;
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.shop_url]];
     self.webView.delegate = self;
     [self.webView loadRequest:request];
@@ -80,7 +80,6 @@
                                    //}
                                    //return YES;
                                }];
-    
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];

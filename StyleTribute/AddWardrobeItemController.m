@@ -547,7 +547,6 @@ typedef void(^ImageLoadBlock)(int);
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     UIImage *finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
-    
     Photo* photo = [Photo new];
     photo.image = finalImage;
     
@@ -557,11 +556,9 @@ typedef void(^ImageLoadBlock)(int);
     } else {
         Photo* oldPhoto = [self.curProduct.photos objectAtIndex:self.selectedImageIndex];
         [self.curProduct.photos replaceObjectAtIndex:self.selectedImageIndex withObject:photo];
-        
         if(self.selectedImageIndex < self.curProduct.category.imageTypes.count) {
             ImageType* imgType = (ImageType*)[self.curProduct.category.imageTypes objectAtIndex:self.selectedImageIndex];
             imgType.state = (imgType.state == ImageStateNormal ? ImageStateNew : ImageStateModified);
-
             if(oldPhoto && ![oldPhoto isKindOfClass:[NSNull class]] && oldPhoto.imageUrl.length > 0)
                 imgType.state = ImageStateModified;
         } else {
@@ -571,7 +568,7 @@ typedef void(^ImageLoadBlock)(int);
             }
         }
     }
-    
+
     [self.collectionView reloadData];
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }

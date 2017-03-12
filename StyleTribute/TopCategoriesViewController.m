@@ -120,6 +120,7 @@
         TopCategoriesViewController *viewController = [[UIStoryboard storyboardWithName:@"ProductFlow" bundle:nil] instantiateViewControllerWithIdentifier:@"categorySelection"];
         [viewController loadWithChildrens:((STCategory*)[self.categories objectAtIndex:indexPath.row]).children andPrevCategorie:self.selectedCategory];
         [self.navigationController pushViewController:viewController animated:YES];
+        
     }
     else
     {
@@ -147,6 +148,7 @@
     }
     cell.layer.borderWidth = 0.5f;
     cell.layer.borderColor = [UIColor colorWithRed:219/255.0f green:219/255.0f blue:219/255.0f alpha:1.0f].CGColor;
+    
     return cell;
 }
 

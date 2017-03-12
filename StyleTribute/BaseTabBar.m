@@ -30,7 +30,6 @@ NSInteger CENTER_BTN_IDX = 3;
         [UITabBar appearance].shadowImage = [self imageWithImage:[UIImage imageNamed:@"topShadow"] scaledToSize:self.view.frame.size.width];
         for (UITabBarItem *tbi in self.tabBar.items) {
             tbi.image = [tbi.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        
         }
     }
     return self;
