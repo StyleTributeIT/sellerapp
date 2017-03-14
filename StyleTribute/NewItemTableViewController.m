@@ -318,12 +318,14 @@ int sectionOffset = 0;
             self.curProduct = product;
             
             for (int i = 0; i < product.category.imageTypes.count; ++i) {
-                Photo* pOld = [oldPhotos objectAtIndex:i];
-                Photo* pNew = [self.curProduct.photos objectAtIndex:i];
-                
-                if(![pOld isKindOfClass:[NSNull class]] && ![pNew isKindOfClass:[NSNull class]]) {
-                    pNew.imageUrl = pOld.imageUrl;
-                    pNew.identifier = pOld.identifier;
+                if(i < oldPhotos.count){
+                    Photo* pOld = [oldPhotos objectAtIndex:i];
+                    Photo* pNew = [self.curProduct.photos objectAtIndex:i];
+                    
+                    if(![pOld isKindOfClass:[NSNull class]] && ![pNew isKindOfClass:[NSNull class]]) {
+                        pNew.imageUrl = pOld.imageUrl;
+                        pNew.identifier = pOld.identifier;
+                    }
                 }
             }
             
@@ -347,7 +349,6 @@ int sectionOffset = 0;
                     Photo* photo = (i < _curProduct.photos.count ? [cur_product.photos objectAtIndex:i] : nil);
                     
                     if(i < self.curProduct.category.imageTypes.count) {
-                        Photo* oldPhoto = [oldPhotos objectAtIndex:i];
                         ImageType* imageType = [/*self.curProduct.category.imageTypes*/ oldImageTypes objectAtIndex:i];
                         
                         // If we have new or modified images, then we should upload them
@@ -370,13 +371,17 @@ int sectionOffset = 0;
                         } else if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateModified) {
                             dispatch_group_enter(group);
                             imageType.state = ImageStateNew;
-                            [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:cur_product.identifier success:^{
-                                self.imgLoadBlock(i);
-                                dispatch_group_leave(group);
-                            } failure:^(NSString *error) {
-                                self.imgLoadBlock(i);
-                                dispatch_group_leave(group);
-                            }];
+                            if(oldPhotos.count > i){
+                                Photo* oldPhoto = [oldPhotos objectAtIndex:i];
+                                
+                                [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:cur_product.identifier success:^{
+                                    self.imgLoadBlock(i);
+                                    dispatch_group_leave(group);
+                                } failure:^(NSString *error) {
+                                    self.imgLoadBlock(i);
+                                    dispatch_group_leave(group);
+                                }];
+                            }
                         } else if(imageType.state == ImageStateDeleted) {
                             dispatch_group_enter(group);
                             imageType.state = ImageStateNormal;
