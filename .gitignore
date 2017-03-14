@@ -2,3 +2,8 @@
 *.xcuserstate
 *.xcbkptlist
 build
+*.cer
+*.mobileprovision
+StyleTribute.app.dSYM.zip
+StyleTribute.ipa
+fastlane/report.xml

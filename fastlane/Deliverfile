@@ -8,4 +8,4 @@
 
 app_identifier "com.styletribute.seller" # The bundle identifier of your app
 username "it@styletribute.com" # your Apple ID user
-app_version "1.02"
+app_version "1.3.1"
