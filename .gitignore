@@ -1,6 +1,4 @@
 .DS_Store
 *.xcuserstate
 *.xcbkptlist
-Pods
 build
-StyleTribute.xcworkspace
