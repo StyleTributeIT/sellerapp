@@ -21,7 +21,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Crashlytics (3.8.3):
+  - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - CRToast (0.0.9)
   - Fabric (1.6.11)
@@ -91,7 +91,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
