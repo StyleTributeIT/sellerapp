@@ -11,10 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
- static NSString* const DefApiHost		= /*@"https://api2.styletribute.com/";/*/@"https://testapi.styletribute.com/";
-//static NSString* const DefApiHost		= @"http://magentolocal.ctrlm.sg/Magento-on-Angular/api/public/";
-//static NSString* const DefApiHost       = @"http://magapi.evgeniy.lara/";
-//static NSString* const DefApiHost		= @"https://api.styletribute.com/";
+static NSString* const DefApiHost		= @"https://testapi.styletribute.com/";
+static NSString* const DefZendeskKey    = @"4ESfRZZCFkTFeyuNML1TA3qTOljfAxI2";
+//static NSString* const DefApiHost		= @"https://api2.styletribute.com/";
 
 
 static NSString* const DefGeneralErrMsg	= @"Oops! Something has gone wrong.Please try again later.";

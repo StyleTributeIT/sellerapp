@@ -14,6 +14,7 @@
 #import "NewItemTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "Photo.h"
+#import <ZDCChat/ZDCChat.h>
 
 @interface WardrobeController()
 
@@ -48,6 +49,17 @@
         
     }
     [self.tabBarController.navigationController.navigationBar setShadowImage:[UIImage new]];
+
+    UIBarButtonItem *supportBtn =[[UIBarButtonItem alloc]initWithTitle:@"Support" style:UIBarButtonItemStyleDone target:self action:@selector(popToSupport)];
+    supportBtn.title = @"Support";
+    [supportBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [UIFont fontWithName:@"Montserrat-Light" size:14], NSFontAttributeName,
+                                        pink, NSForegroundColorAttributeName,
+                                        nil]
+                              forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = supportBtn;
+
+    
     //[self updateProducts];
     
    /* NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
@@ -85,6 +97,27 @@
 //        [GlobalHelper showToastNotificationWithTitle:@"Test product" subtitle:@"Test message" imageUrl:/*@"http://image.made-in-china.com/2f0j00dvBQaODhfNkr/2011-Fashion-Women-High-Heel-Shoes-J85-.jpg"*/nil];
 //    });
 //}
+
+- (void) popToSupport{
+    [ZDCChat initializeWithAccountKey:DefZendeskKey];
+
+    UserProfile* profile = [DataCache sharedInstance].userProfile;
+    
+    [ZDCChat updateVisitor:^(ZDCVisitorInfo *user) {
+        user.phone = profile.phone;
+        user.name = [NSString stringWithFormat:@"%@ %@", profile.firstName, profile.lastName];
+        user.email = profile.email;
+    }];
+    
+    // start a chat in a new modal
+    [ZDCChat startChatIn:self.navigationController withConfig:^(ZDCConfig *config) {
+        config.preChatDataRequirements.name = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.email = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.phone = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.department = ZDCPreChatDataOptionalEditable;
+        config.preChatDataRequirements.message = ZDCPreChatDataOptionalEditable;
+    }];
+}
 
 -(void)updateProducts {
     dispatch_group_t group = dispatch_group_create();
