@@ -38,6 +38,16 @@
                ReferencedContainer = "container:StyleTribute.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F564B1061E7E349E00BB8F57"
+               BuildableName = "StyleTributeUITests.xctest"
+               BlueprintName = "StyleTributeUITests"
+               ReferencedContainer = "container:StyleTribute.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
