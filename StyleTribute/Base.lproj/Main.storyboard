@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,8 +30,8 @@
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-xd-dpw" customClass="KASlideShow">
@@ -206,8 +207,8 @@
                         <viewControllerLayoutGuide type="top" id="KeO-l6-gRQ"/>
                         <viewControllerLayoutGuide type="bottom" id="jNw-e3-dRw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="NY5-ro-TzI">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <view key="view" contentMode="scaleToFill" id="NY5-ro-TzI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-aZ-Jzd">
@@ -262,9 +263,6 @@
                                                 <state key="normal" title="Sign in" backgroundImage="Button">
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="login:" destination="W2W-9d-Wfs" eventType="touchUpInside" id="hQq-xZ-L0d"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kV-EV-Gpy" customClass="AttributedLabel">
                                                 <rect key="frame" x="16" y="80" width="288" height="21"/>
@@ -347,6 +345,13 @@
                             <constraint firstAttribute="trailing" secondItem="HhL-aZ-Jzd" secondAttribute="trailing" id="wdo-U6-2Co"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="xeH-kI-7yt">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="weP-BM-Ica">
+                            <connections>
+                                <segue destination="YHb-BN-Oeq" kind="unwind" unwindAction="unwindToWelcomeController:" id="3gI-6x-kqh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="W9L-dn-4dR" id="qfS-bA-ddH"/>
                         <outlet property="forgotPasswordButton" destination="BkA-xw-gUD" id="i7L-4z-3JC"/>
@@ -359,6 +364,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIu-UF-Mgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="YHb-BN-Oeq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-740" y="480"/>
         </scene>
@@ -555,28 +561,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLf-JY-i7J">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGR-Yf-wzr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="yz9-vj-pKk" id="dZl-hm-KPe"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zZs-9s-PXs" firstAttribute="top" secondItem="qLf-JY-i7J" secondAttribute="bottom" constant="8" id="91s-R7-nug"/>
-                            <constraint firstItem="qLf-JY-i7J" firstAttribute="leading" secondItem="QM0-6Z-mWE" secondAttribute="leading" id="MoP-Qc-RaY"/>
-                            <constraint firstAttribute="trailing" secondItem="qLf-JY-i7J" secondAttribute="trailing" id="s37-2o-aP5"/>
-                            <constraint firstItem="qLf-JY-i7J" firstAttribute="top" secondItem="QM0-6Z-mWE" secondAttribute="top" id="sEL-g9-r2w"/>
+                            <constraint firstItem="kGR-Yf-wzr" firstAttribute="top" secondItem="QM0-6Z-mWE" secondAttribute="top" id="DhP-TM-zyP"/>
+                            <constraint firstItem="zZs-9s-PXs" firstAttribute="top" secondItem="kGR-Yf-wzr" secondAttribute="bottom" constant="8" id="MFL-CP-At7"/>
+                            <constraint firstAttribute="trailing" secondItem="kGR-Yf-wzr" secondAttribute="trailing" id="jst-SO-1k4"/>
+                            <constraint firstItem="kGR-Yf-wzr" firstAttribute="leading" secondItem="QM0-6Z-mWE" secondAttribute="leading" id="ubg-I6-far"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RdJ-Qd-dw8"/>
                     <connections>
-                        <outlet property="webView" destination="qLf-JY-i7J" id="giR-yS-uzf"/>
+                        <outlet property="webView" destination="kGR-Yf-wzr" id="leZ-Q4-oWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LV2-mO-yoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122.40000000000001" y="2348.2758620689656"/>
+            <point key="canvasLocation" x="121.5" y="2347.5"/>
         </scene>
         <!--Notifications View Controller-->
         <scene sceneID="0bM-4E-ufZ">
@@ -591,18 +599,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ufD-n1-fKf" id="feW-ez-2gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="nlG-Fq-cpY">
-                                            <rect key="frame" x="17" y="8" width="63" height="63"/>
+                                            <rect key="frame" x="25" y="11" width="63" height="63"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="63" id="jrm-tb-Eqq"/>
                                                 <constraint firstAttribute="width" constant="63" id="vPB-in-dsM"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLJ-A8-Xxf">
-                                            <rect key="frame" x="88" y="5" width="279" height="21"/>
+                                            <rect key="frame" x="96" y="8" width="263" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Npr-Sz-sVu"/>
                                             </constraints>
@@ -611,7 +619,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-7k-M4I">
-                                            <rect key="frame" x="88" y="50" width="280" height="21"/>
+                                            <rect key="frame" x="96" y="53" width="272" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="N9a-IM-Ybp"/>
                                             </constraints>
@@ -620,7 +628,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label kfjdngkjfdngkjfdngkjdfngkjndfjkgkjfndkjgdf" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8gu-k6-LOP">
-                                            <rect key="frame" x="88" y="22" width="279" height="29"/>
+                                            <rect key="frame" x="96" y="25" width="263" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="29" id="Mq2-Kz-8Be"/>
                                             </constraints>
@@ -672,7 +680,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1516,7 +1524,7 @@ Citilink Warehouse Complex
                                         <rect key="frame" x="0.0" y="22" width="375" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOn-Le-vWG" id="KIm-Or-0xq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
@@ -1527,7 +1535,7 @@ Citilink Warehouse Complex
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="229" y="45" width="138" height="15"/>
+                                                    <rect key="frame" x="229" y="45" width="138" height="14"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1634,8 +1642,8 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="top" id="acp-WF-Stg"/>
                         <viewControllerLayoutGuide type="bottom" id="UFY-tf-2Fn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="J5N-YH-Eaa">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-SH-YtR">
@@ -1831,8 +1839,8 @@ Citilink Warehouse Complex
                         <viewControllerLayoutGuide type="top" id="y6t-Ec-MNt"/>
                         <viewControllerLayoutGuide type="bottom" id="ouI-7M-v2j"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="hM7-JS-bIu">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <view key="view" contentMode="scaleToFill" id="hM7-JS-bIu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
@@ -2038,6 +2046,13 @@ Citilink Warehouse Complex
                             <constraint firstItem="8Bi-CW-Ped" firstAttribute="leading" secondItem="hM7-JS-bIu" secondAttribute="leading" id="oMl-tM-nKP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ewn-O1-hgZ">
+                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="cZ5-bb-M8X">
+                            <connections>
+                                <segue destination="Amj-M6-GpZ" kind="unwind" unwindAction="unwindToWelcomeController:" id="ZkL-2d-14i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="qQp-DS-sci" id="d3M-iw-6Vg"/>
                         <outlet property="countryField" destination="DHb-RS-aJg" id="XF4-2P-V9o"/>
@@ -2052,6 +2067,7 @@ Citilink Warehouse Complex
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaA-Z0-fXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Amj-M6-GpZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1482" y="1370"/>
         </scene>
@@ -2061,8 +2077,12 @@ Citilink Warehouse Complex
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2071,7 +2091,7 @@ Citilink Warehouse Complex
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2b-N5-neZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2266" y="480"/>
+            <point key="canvasLocation" x="-2308" y="-701"/>
         </scene>
         <!--Wardrobe-->
         <scene sceneID="dii-Pr-ipc">
@@ -2083,7 +2103,7 @@ Citilink Warehouse Complex
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2109,11 +2129,11 @@ Citilink Warehouse Complex
                                 <rect key="frame" x="0.0" y="22" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EF3-7w-xOt" id="CGq-z7-XlJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="28B-eB-BtK">
-                                            <rect key="frame" x="8" y="8" width="79" height="79"/>
+                                            <rect key="frame" x="16" y="11" width="74" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="28B-eB-BtK" secondAttribute="height" multiplier="1:1" id="edp-oU-oNK"/>
                                             </constraints>
@@ -2171,7 +2191,7 @@ Citilink Warehouse Complex
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2192,7 +2212,7 @@ Citilink Warehouse Complex
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2213,7 +2233,7 @@ Citilink Warehouse Complex
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2238,10 +2258,10 @@ Citilink Warehouse Complex
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="s3p-LN-sHj">
-                                <rect key="frame" x="0.0" y="39" width="375" height="544"/>
+                                <rect key="frame" x="0.0" y="59" width="375" height="524"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start_selling" translatesAutoresizingMaskIntoConstraints="NO" id="kPA-K8-Owj">
-                                        <rect key="frame" x="97" y="250" width="181" height="277"/>
+                                        <rect key="frame" x="97" y="230" width="181" height="277"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="181" id="8au-PL-dJO"/>
                                             <constraint firstAttribute="height" constant="277" id="IUX-n1-paj"/>
@@ -2274,6 +2294,7 @@ Citilink Warehouse Complex
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
         <image name="Logo" width="64" height="64"/>
+        <image name="backBtn" width="19" height="32"/>
         <image name="notifications" width="23" height="22"/>
         <image name="notifications-pink" width="23" height="22"/>
         <image name="profile" width="22" height="22"/>
@@ -2288,7 +2309,7 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="37" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XTf-8t-q92"/>
         <segue reference="ReU-Ip-U3f"/>
+        <segue reference="1dd-Ww-h8O"/>
     </inferredMetricsTieBreakers>
 </document>

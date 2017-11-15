@@ -274,6 +274,7 @@ STCategory *pCategory = nil;
        [self.processStatus isEqualToString:@"image_processing"] ||
        [self.processStatus isEqualToString:@"selling"] ||
        [self.processStatus isEqualToString:@"rejected"] ||
+       [self.processStatus isEqualToString:@"declined"] ||
        [self.processStatus isEqualToString:@"sold"] ||
        [self.processStatus isEqualToString:@"suspended"])
     {

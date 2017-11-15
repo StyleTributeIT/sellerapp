@@ -14,7 +14,6 @@
 		5330FFB21DDE4C37001B0D0D /* Guid1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFB11DDE4C37001B0D0D /* Guid1.xib */; };
 		5330FFB41DDE5334001B0D0D /* Guid0.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFB31DDE5334001B0D0D /* Guid0.xib */; };
 		5330FFB61DDE5344001B0D0D /* Guid2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFB51DDE5344001B0D0D /* Guid2.xib */; };
-		675027A71DA4BA2300856832 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 675027A51DA4BA1800856832 /* libAFNetworking.a */; };
 		67E756561B8DA7EB000C1BDD /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E756531B8DA7EB000C1BDD /* Montserrat-Light.otf */; };
 		67E756571B8DA7EB000C1BDD /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E756541B8DA7EB000C1BDD /* Montserrat-Regular.otf */; };
 		67E756581B8DA7EB000C1BDD /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67E756551B8DA7EB000C1BDD /* Montserrat-UltraLight.otf */; };
@@ -65,8 +64,6 @@
 		7AAA8A711B0CF37B00BDE617 /* LoginTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A6F1B0CF37B00BDE617 /* LoginTest.m */; };
 		7AAA8A721B0CF37B00BDE617 /* RegistrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */; };
 		7AAD0F821B1889B200CE1AD2 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAD0F811B1889B200CE1AD2 /* PhotoCell.m */; };
-		7AB78D911B02200100C13D13 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */; };
-		7AB78D931B0223C500C13D13 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */; };
 		7ABF95E61AFB48AE00E6AA52 /* MyAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */; };
 		7ABF95E91AFB500C00E6AA52 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */; };
 		7ABF95EC1AFB68C300E6AA52 /* ResidentAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */; };
@@ -87,8 +84,6 @@
 		A2EFAC48A62AB8E6BC1BEC61 /* libPods-StyleTributeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */; };
 		E133008B1DE06ACB00D798F2 /* SharingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E133008A1DE06ACB00D798F2 /* SharingTableViewCell.m */; };
 		E133008E1DE0DE0500D798F2 /* ReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E133008D1DE0DE0500D798F2 /* ReplaceSegue.m */; };
-		E13300921DE0FBC000D798F2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13300911DE0FBC000D798F2 /* FBSDKShareKit.framework */; };
-		E13300941DE0FCBC00D798F2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13300931DE0FCBC00D798F2 /* Bolts.framework */; };
 		E13300971DE18DC800D798F2 /* DetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E13300961DE18DC800D798F2 /* DetailsTableViewCell.m */; };
 		E141DEB31DD097FA001693F7 /* NewItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEB21DD097F9001693F7 /* NewItemTableViewController.m */; };
 		E141DEB71DD0A804001693F7 /* PhotosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E141DEB61DD0A804001693F7 /* PhotosTableViewCell.m */; };
@@ -147,7 +142,6 @@
 		5330FFB11DDE4C37001B0D0D /* Guid1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Guid1.xib; sourceTree = "<group>"; };
 		5330FFB31DDE5334001B0D0D /* Guid0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Guid0.xib; sourceTree = "<group>"; };
 		5330FFB51DDE5344001B0D0D /* Guid2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Guid2.xib; sourceTree = "<group>"; };
-		675027A51DA4BA1800856832 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../Library/Developer/Xcode/DerivedData/StyleTribute-hhmfrxpizfshrxagvhxpsvfwexpq/Build/Products/Debug-iphonesimulator/libAFNetworking.a"; sourceTree = "<group>"; };
 		67E756531B8DA7EB000C1BDD /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
 		67E756541B8DA7EB000C1BDD /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		67E756551B8DA7EB000C1BDD /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
@@ -239,8 +233,6 @@
 		7AAA8A701B0CF37B00BDE617 /* RegistrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationTest.m; sourceTree = "<group>"; };
 		7AAD0F801B1889B200CE1AD2 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		7AAD0F811B1889B200CE1AD2 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
-		7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		7ABF95E41AFB48AE00E6AA52 /* MyAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountController.h; sourceTree = "<group>"; };
 		7ABF95E51AFB48AE00E6AA52 /* MyAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountController.m; sourceTree = "<group>"; };
 		7ABF95E71AFB500C00E6AA52 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
@@ -280,7 +272,6 @@
 		E133008A1DE06ACB00D798F2 /* SharingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharingTableViewCell.m; sourceTree = "<group>"; };
 		E133008C1DE0DE0500D798F2 /* ReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplaceSegue.h; sourceTree = "<group>"; };
 		E133008D1DE0DE0500D798F2 /* ReplaceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplaceSegue.m; sourceTree = "<group>"; };
-		E13300911DE0FBC000D798F2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		E13300931DE0FCBC00D798F2 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E13300951DE18DC800D798F2 /* DetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsTableViewCell.h; sourceTree = "<group>"; };
 		E13300961DE18DC800D798F2 /* DetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewCell.m; sourceTree = "<group>"; };
@@ -363,15 +354,10 @@
 				E1BC25461DF861C400DF2FB2 /* libsqlite3.tbd in Frameworks */,
 				7A8A174D1B2F2439006489C8 /* CoreGraphics.framework in Frameworks */,
 				7A237C5F1AFCD3FD0031C629 /* AddressBookUI.framework in Frameworks */,
-				E13300921DE0FBC000D798F2 /* FBSDKShareKit.framework in Frameworks */,
-				7AB78D911B02200100C13D13 /* FBSDKCoreKit.framework in Frameworks */,
 				7A237C5D1AFCD3F70031C629 /* AddressBook.framework in Frameworks */,
 				7A237C5B1AFCCF010031C629 /* MapKit.framework in Frameworks */,
-				7AB78D931B0223C500C13D13 /* FBSDKLoginKit.framework in Frameworks */,
 				7AFACD331AFBC7D00012E2FA /* MessageUI.framework in Frameworks */,
 				E1A091AB1E09458800CBC1C8 /* Parse.framework in Frameworks */,
-				E13300941DE0FCBC00D798F2 /* Bolts.framework in Frameworks */,
-				675027A71DA4BA2300856832 /* libAFNetworking.a in Frameworks */,
 				16F40E4FA68FDFB8CBF7C829 /* libPods-StyleTribute.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,38 +609,38 @@
 		7AA5EADA1AEE73D600CAB83B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E173F48C1DE8F06B00D86141 /* Login/Register */,
-				E173F48B1DE8F02F00D86141 /* Home */,
-				E173F4801DE8363900D86141 /* Guidelines */,
-				E141DEB01DD097C1001693F7 /* NewItem */,
-				7A3FA4971AEFA4B70050803C /* BaseInputController.h */,
-				7A3FA4981AEFA4B70050803C /* BaseInputController.m */,
 				7AFE43611AF22935004B982B /* AddWardrobeItemController.h */,
 				7AFE43621AF22935004B982B /* AddWardrobeItemController.m */,
-				7A64270F1AF8E7E10051466E /* PriceEditController.h */,
-				7A6427101AF8E7E10051466E /* PriceEditController.m */,
-				7A6427121AF901CF0051466E /* ChooseCategoryController.h */,
-				7A6427131AF901CF0051466E /* ChooseCategoryController.m */,
-				7A116C8D1AFA449300A4D7D9 /* TutorialController.h */,
-				7A116C8E1AFA449300A4D7D9 /* TutorialController.m */,
-				7ABF95E71AFB500C00E6AA52 /* EditProfileController.h */,
-				7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */,
-				7ABF95EA1AFB68C300E6AA52 /* ResidentAddressController.h */,
-				7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */,
-				7ABF95ED1AFBA27300E6AA52 /* ChangePasswordController.h */,
-				7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */,
 				7ABF95F01AFBA93200E6AA52 /* BankDetailsController.h */,
 				7ABF95F11AFBA93200E6AA52 /* BankDetailsController.m */,
-				7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */,
-				7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */,
-				7AFF6EEC1BA2BCD40023CDD4 /* ChooseBrandController.h */,
-				7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */,
-				E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */,
-				E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */,
+				7A3FA4971AEFA4B70050803C /* BaseInputController.h */,
+				7A3FA4981AEFA4B70050803C /* BaseInputController.m */,
 				E173F4771DE6D68500D86141 /* BaseTabBar.h */,
 				E173F4781DE6D68500D86141 /* BaseTabBar.m */,
+				7ABF95ED1AFBA27300E6AA52 /* ChangePasswordController.h */,
+				7ABF95EE1AFBA27300E6AA52 /* ChangePasswordController.m */,
+				7AFF6EEC1BA2BCD40023CDD4 /* ChooseBrandController.h */,
+				7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */,
+				7A6427121AF901CF0051466E /* ChooseCategoryController.h */,
+				7A6427131AF901CF0051466E /* ChooseCategoryController.m */,
+				7AFACD2C1AFBC1EA0012E2FA /* ContactUsController.h */,
+				7AFACD2D1AFBC1EA0012E2FA /* ContactUsController.m */,
+				7ABF95E71AFB500C00E6AA52 /* EditProfileController.h */,
+				7ABF95E81AFB500C00E6AA52 /* EditProfileController.m */,
+				E173F4801DE8363900D86141 /* Guidelines */,
+				E173F48B1DE8F02F00D86141 /* Home */,
+				E173F48C1DE8F06B00D86141 /* Login/Register */,
+				E141DEB01DD097C1001693F7 /* NewItem */,
+				7A64270F1AF8E7E10051466E /* PriceEditController.h */,
+				7A6427101AF8E7E10051466E /* PriceEditController.m */,
+				7ABF95EA1AFB68C300E6AA52 /* ResidentAddressController.h */,
+				7ABF95EB1AFB68C300E6AA52 /* ResidentAddressController.m */,
 				E173F47A1DE6E67400D86141 /* TabbetViewController.h */,
 				E173F47B1DE6E67400D86141 /* TabbetViewController.m */,
+				E1B059E21DCB313900D14D91 /* TopCategoriesViewController.h */,
+				E1B059E31DCB313900D14D91 /* TopCategoriesViewController.m */,
+				7A116C8D1AFA449300A4D7D9 /* TutorialController.h */,
+				7A116C8E1AFA449300A4D7D9 /* TutorialController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -677,11 +663,7 @@
 				E1BC254B1DF9E1D100DF2FB2 /* UserNotifications.framework */,
 				E1BC25451DF861C400DF2FB2 /* libsqlite3.tbd */,
 				E13300931DE0FCBC00D798F2 /* Bolts.framework */,
-				E13300911DE0FBC000D798F2 /* FBSDKShareKit.framework */,
-				675027A51DA4BA1800856832 /* libAFNetworking.a */,
 				7A8A174C1B2F2439006489C8 /* CoreGraphics.framework */,
-				7AB78D921B0223C500C13D13 /* FBSDKLoginKit.framework */,
-				7AB78D901B02200100C13D13 /* FBSDKCoreKit.framework */,
 				7A237C5E1AFCD3FD0031C629 /* AddressBookUI.framework */,
 				7A237C5C1AFCD3F70031C629 /* AddressBook.framework */,
 				7A237C5A1AFCCF010031C629 /* MapKit.framework */,
@@ -948,9 +930,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/ZDCChat/ZDCChatStrings.bundle",
+				"${PODS_ROOT}/ZDCChat/ZDCChat.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1051,13 +1038,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StyleTribute-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9F413971DC3E89992877B983 /* [CP] Check Pods Manifest.lock */ = {
@@ -1066,13 +1056,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StyleTributeTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C2DE5CB65B357F6061EB1344 /* 📦 Embed Pods Frameworks */ = {
@@ -1297,7 +1290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1334,7 +1327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

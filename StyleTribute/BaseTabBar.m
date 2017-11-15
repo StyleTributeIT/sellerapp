@@ -52,16 +52,6 @@ NSInteger CENTER_BTN_IDX = 3;
     return newImage;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    
-}
-
--(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    
-}
-
 // Create a view controller and setup it's tab bar item with a title and image
 -(UIViewController*) viewControllerWithTabTitle:(NSString*) title image:(UIImage*)image
 {
@@ -72,18 +62,16 @@ NSInteger CENTER_BTN_IDX = 3;
     return viewController;
 }
 
-- (void)viewWillLayoutSubviews {
+- (void) viewWillLayoutSubviews {
     CGRect tabFrame = self.tabBar.frame;
     tabFrame.size.height = 95 ;
     tabFrame.origin.y = self.view.frame.size.height - 55;
     self.tabBar.frame = tabFrame;
-    
 }
 
 // Create a custom UIButton and add it to the center of our tab bar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
 {
-    
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width + 5, buttonImage.size.height + 5);
@@ -102,14 +90,6 @@ NSInteger CENTER_BTN_IDX = 3;
         button.center = center;
     }
     [self.view addSubview:button];
-}
-
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-    if (viewController.view.tag == CENTER_BTN_IDX)
-    {
-        
-    }
 }
 
 -(void)setSelectedIndex:(NSUInteger)selectedIndex

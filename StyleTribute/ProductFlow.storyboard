@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="udb-zc-OlS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="udb-zc-OlS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
         <array key="Montserrat-Light.otf">
             <string>Montserrat-Light</string>
         </array>
@@ -26,7 +33,7 @@
             <objects>
                 <navigationController id="udb-zc-OlS" customClass="ProductNavigationViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1ai-EO-jSm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
@@ -133,7 +140,7 @@
                                             </constraints>
                                         </view>
                                         <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-Am-XdQ">
-                                            <rect key="frame" x="14" y="61" width="353" height="119"/>
+                                            <rect key="frame" x="22" y="64" width="337" height="113"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="UjS-UT-mqz">
                                                 <size key="itemSize" width="60" height="77"/>
@@ -143,7 +150,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="32D-jc-iAq" customClass="PhotoCell">
-                                                    <rect key="frame" x="0.0" y="21" width="60" height="77"/>
+                                                    <rect key="frame" x="0.0" y="18" width="60" height="77"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="77"/>
@@ -164,7 +171,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2E685D0F-3753-470D-8B90-8831FD939D86" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
+                                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:UyR-dS-vO0:image" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-dS-vO0">
                                                                 <rect key="frame" x="15" y="15" width="30" height="30"/>
                                                                 <gestureRecognizers/>
                                                             </imageView>
@@ -226,11 +233,11 @@
                                 <rect key="frame" x="0.0" y="257" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bR3-aV-GMw" id="NFd-9D-5py">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEN-1c-3zJ">
-                                            <rect key="frame" x="16" y="12" width="150" height="21"/>
+                                            <rect key="frame" x="24" y="12" width="150" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="BoV-93-O7v"/>
                                                 <constraint firstAttribute="width" constant="150" id="o8P-kg-JKb"/>
@@ -268,11 +275,11 @@
                                 <rect key="frame" x="0.0" y="301" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="unW-hA-rEa" id="Cca-Sd-Wtw">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price &amp; Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ti-qf-9M4">
-                                            <rect key="frame" x="16" y="12" width="150" height="21"/>
+                                            <rect key="frame" x="24" y="12" width="150" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="150" id="MMb-NB-NkJ"/>
                                                 <constraint firstAttribute="height" constant="21" id="QyZ-vx-oFc"/>
@@ -282,7 +289,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwA-d6-JrV">
-                                            <rect key="frame" x="193" y="13" width="149" height="16"/>
+                                            <rect key="frame" x="192" y="13" width="149" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="149" id="xNq-nF-Xst"/>
                                             </constraints>
@@ -340,13 +347,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Width (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JaJ-PZ-DoQ">
-                                            <rect key="frame" x="8" y="0.0" width="127" height="44"/>
+                                            <rect key="frame" x="8" y="0.0" width="126.5" height="44"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="db7-v7-ovR">
-                                            <rect key="frame" x="134" y="0.0" width="108" height="44"/>
+                                            <rect key="frame" x="133.5" y="0.0" width="108" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="108" id="ukM-xc-vzR"/>
                                             </constraints>
@@ -355,7 +362,7 @@
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Depth (cm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w55-tA-pAc">
-                                            <rect key="frame" x="240" y="0.0" width="127" height="44"/>
+                                            <rect key="frame" x="239.5" y="0.0" width="127.5" height="44"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -569,7 +576,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm0-tg-PTc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start with the name color &amp; be as detailed as possible!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYP-3I-2lb">
                                         <rect key="frame" x="59" y="13" width="308" height="34"/>
@@ -597,7 +604,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of your item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwq-yJ-15i">
-                                <rect key="frame" x="16" y="65" width="343" height="47"/>
+                                <rect key="frame" x="16" y="85" width="343" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="fqc-lL-7IK"/>
                                 </constraints>
@@ -606,7 +613,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EG-hf-N9E">
-                                <rect key="frame" x="0.0" y="111" width="375" height="283"/>
+                                <rect key="frame" x="0.0" y="131" width="375" height="283"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MDS-Bk-weq">
                                         <rect key="frame" x="11" y="8" width="356" height="275"/>
@@ -639,7 +646,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Item description" id="GNZ-PD-O6h">
-                        <barButtonItem key="leftBarButtonItem" image="backBtn" id="FXg-xf-AUl">
+                        <barButtonItem key="leftBarButtonItem" image="Edit" id="FXg-xf-AUl">
                             <connections>
                                 <action selector="goBack:" destination="ZbE-Al-N9g" id="UBU-uZ-U15"/>
                             </connections>
@@ -1024,7 +1031,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nx2-UP-pzw" id="ioW-gl-Rjd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1064,7 +1071,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you know your item's original price?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="3La-n0-cnV">
-                                <rect key="frame" x="16" y="17" width="343" height="51"/>
+                                <rect key="frame" x="16" y="37" width="343" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50.5" id="hDt-uL-oyb"/>
                                 </constraints>
@@ -1073,7 +1080,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Original Price (SGD)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59h-55-Mlz">
-                                <rect key="frame" x="16" y="154" width="343" height="31"/>
+                                <rect key="frame" x="16" y="174" width="343" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="ZO2-Q8-JhG"/>
                                 </constraints>
@@ -1354,7 +1361,6 @@
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5N5-gX-iZq">
                                 <rect key="frame" x="201" y="174" width="129" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -1402,11 +1408,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wQy-wv-HuA" id="f9B-UY-to2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQN-AZ-aRo">
-                                            <rect key="frame" x="8" y="12" width="116" height="20"/>
+                                            <rect key="frame" x="16" y="15" width="116" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="116" id="y84-of-cRj"/>
                                             </constraints>
@@ -1415,13 +1421,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gently Loved" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eu-8p-X2v">
-                                            <rect key="frame" x="140" y="12" width="192" height="20"/>
+                                            <rect key="frame" x="148" y="15" width="176" height="20"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="930C840F-441C-417F-84DC-A7642F6D2437" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
-                                            <rect key="frame" x="340" y="8" width="27" height="27"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:Rnd-dI-J0Z:image" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-dI-J0Z">
+                                            <rect key="frame" x="332" y="11" width="27" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="27" id="96c-NZ-Ba1"/>
                                                 <constraint firstAttribute="width" constant="27" id="QT6-Q9-Co7"/>
@@ -1490,8 +1496,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqP-yd-to5">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qqP-yd-to5">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0kX-l9-vDJ"/>
                                 </constraints>
@@ -1500,8 +1506,8 @@
                                     <outlet property="delegate" destination="M15-aF-f5M" id="OzX-Iw-IRr"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g7o-IR-Poj">
-                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g7o-IR-Poj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="M15-aF-f5M" id="SYQ-dV-cw3"/>
@@ -1654,7 +1660,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Price" id="bI6-AO-CbM">
-                        <barButtonItem key="leftBarButtonItem" image="040CD0DE-CDE9-409B-91E8-6D6FD303437A" id="iE0-kw-zEx">
+                        <barButtonItem key="leftBarButtonItem" image="barButtonItem:iE0-kw-zEx:image" id="iE0-kw-zEx">
                             <connections>
                                 <action selector="backPressed:" destination="sNb-r6-Kfh" id="H2o-R9-X0l"/>
                             </connections>
@@ -1680,7 +1686,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="040CD0DE-CDE9-409B-91E8-6D6FD303437A" width="14" height="24">
+        <image name="Edit" width="205" height="30"/>
+        <image name="backBtn" width="6" height="10"/>
+        <image name="barButtonItem:iE0-kw-zEx:image" width="14" height="24">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1711,11 +1719,11 @@ RHn7AER5+wBEePsARHn8AER4+wBEefwARHj7AEN4+wBEePsARHj7AER4+x5EePvbRHj7dUR5/AAADgEA
 AAMAAAABAA4AAAEBAAMAAAABABgAAAECAAMAAAAEAAAF9gEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAER
 AAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABABgAAAEXAAQAAAABAAAFQAEc
 AAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAEAAAF/odzAAcAAAIwAAAGBgAAAAAACAAIAAgACAAB
-AAEAAQABAAACMEFEQkUCEAAAbW50clJHQiBYWVogB88ABgADAAAAAAAAYWNzcEFQUEwAAAAAbm9uZQAA
+AAEAAQABAAACMEFEQkUCEAAAbW50clJHQiBYWVogB9AACAALABMAMwA7YWNzcEFQUEwAAAAAbm9uZQAA
 AAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1BREJFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAKY3BydAAAAPwAAAAyZGVzYwAAATAAAABrd3RwdAAAAZwAAAAUYmtwdAAA
 AbAAAAAUclRSQwAAAcQAAAAOZ1RSQwAAAdQAAAAOYlRSQwAAAeQAAAAOclhZWgAAAfQAAAAUZ1hZWgAA
-AggAAAAUYlhZWgAAAhwAAAAUdGV4dAAAAABDb3B5cmlnaHQgMTk5OSBBZG9iZSBTeXN0ZW1zIEluY29y
+AggAAAAUYlhZWgAAAhwAAAAUdGV4dAAAAABDb3B5cmlnaHQgMjAwMCBBZG9iZSBTeXN0ZW1zIEluY29y
 cG9yYXRlZAAAAGRlc2MAAAAAAAAAEUFkb2JlIFJHQiAoMTk5OCkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZ
 WiAAAAAAAADzUQABAAAAARbMWFlaIAAAAAAAAAAAAAAAAAAAAABjdXJ2AAAAAAAAAAECMwAAY3VydgAA
@@ -1729,7 +1737,139 @@ BwkSCRsJLgkyCT0JRglLCVMJVglbCWoJbgl1CX0JigmPCZEJkwmYCaAJowmoCbAJswnFCcgJzQAAAAAA
 AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAAAnPA
 </mutableData>
         </image>
-        <image name="2E685D0F-3753-470D-8B90-8831FD939D86" width="64" height="64">
+        <image name="borderedArea" width="639" height="170"/>
+        <image name="copy" width="25" height="25"/>
+        <image name="facebook" width="25" height="25"/>
+        <image name="greebBtn" width="277" height="62"/>
+        <image name="imageView:Rnd-dI-J0Z:image" width="39" height="39">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
+GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
+DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
+RkZSZXByZXNlbnRhdGlvboAGgAdPERq6TU0AKgAAF8z///8A////AP///wDGxsYAxcXFAMbGxgDGxsYA
+xsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGA8XFxUjGxsaNxsbGscbGxszFxcXkxsbG/8bGxuTFxcXM
+xcXFscbGxo3GxsZIxsbGA8XFxQDFxcUAxcXFAMbGxgDGxsYAxsbGAMXFxQDFxcUAxsbGAP///wD///8A
+////AP///wD///8A////AP///wDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAMbGxjzFxcWr
+xsbG8NbW1v/l5eX/7e3t//T09P/4+Pj///////n5+f/09PT/7e3t/+Xl5f/W1tb/xsbG8MXFxavGxsY8
+xcXFAMXFxQDGxsYAxsbGAMXFxQDGxsYAxcXFAP///wD///8A////AP///wD///8A////AP///wDGxsYA
+xsbGAMbGxgDFxcUAxsbGAMXFxQDGxsYqxsbGtNPT0//r6+v//Pz8////////////////////////////
+/////////////////////////////////Pz8/+vr6//T09P/xsbGtMbGxirGxsYAxsbGAMbGxgDGxsYA
+xcXFAP///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMXFxQDFxcUAxsbGBsbGxpDPz8//
+5ubm////////////////////////////////////////////////////////////////////////////
+////////////////5ubm/8/Pz//FxcWQxsbGBsXFxQDFxcUAxcXFAP///wD///8A////AP///wD///8A
+////AP///wDGxsYAxsbGAMbGxgDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
+//////////////////////////////////////////////////////////////////////7+/v/e3t7/
+xsbGwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDFxcUAxcXFAMbGxirGxsbe
+4eHh////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////4eHh/8XFxd7GxsYqxsbGAP///wD///8A
+////AP///wD///8A////AP///wDGxsYAxsbGFcbGxtvm5ub/////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////+bm5v/GxsbbxsbGFf///wD///8A////AP///wD///8A////AP///wDGxsYG
+xsbGwOLi4v//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////i4uL/
+xsbGwMXFxQb///8A////AP///wD///8A////AP///wDFxcWW3t7e////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////3t7e/8XFxZb///8A////AP///wD///8A
+////AMbGxjzT09P/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////9PT0//FxcU8////AP///wD///8A////AMbGxsnr6+v/////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////+rq6v/GxsbJ
+////AP///wD///8AxsbGRdXV1f//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////V1dX/xsbGRf///wD///8AxcXFru3t7f//////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////s7Oz/xsbGrv///wDGxsYSxsbG+f7+/v//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////+/v7/xsbG+cbGxhLGxsZU
+2NjY////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////2NjY/8XFxVTGxsaT5ubm////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+5ubm/8bGxpPGxsbA8fHx////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////8fHx/8bGxsDGxsbh9/f3////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////+Pj4/8bGxuHFxcXw/Pz8////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////Pz8/8bGxvDGxsb/
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////8bGxv/FxcXw/Pz8////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/Pz8/8bGxvPGxsbh9/f3////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////+Pj4/8bGxuHGxsbA8fHx////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////8fHx/8bGxsDGxsaT5+fn////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////5+fn/8bGxpPGxsZX
+2NjY////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////2dnZ/8bGxlfFxcUSxcXF+f7+/v//////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////+/v7/
+xcXF+cbGxhL///8AxcXFru3t7f//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////t7e3/xcXFrv///wD///8AxcXFRdXV1f//////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////V1dX/xcXFRf///wD///8A////AMXFxczq6ur/////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////+rq6v/GxsbM////AP///wD///8A
+////AMbGxjzT09P/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////9PT0//GxsY8////AP///wD///8A////AP///wDFxcWW3t7e////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////3t7e/8XFxZn///8A
+////AP///wD///8A////AP///wDGxsYGxsbGwOLi4v//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////i4uL/xsbGwMbGxgb///8A////AP///wD///8A////AP///wDGxsYA
+xcXFFcbGxt7m5ub/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////+fn5//Gxsbb
+xsbGFf///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMbGxirFxcXh4eHh////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////4eHh/8bGxuHGxsYqxsbGAP///wD///8A////AP///wD///8A
+////AP///wDGxsYAxsbGAMXFxQDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
+//////////////////////////////////////////////////////////////////////7+/v/e3t7/
+xcXFwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDFxcUA
+xsbGBsbGxpPQ0ND/6Ojo////////////////////////////////////////////////////////////
+////////////////////////////////5+fn/9DQ0P/GxsaTxsbGBsbGxgDFxcUAxsbGAP///wD///8A
+////AP///wD///8A////AP///wDFxcUAxcXFAMbGxgDGxsYAxcXFAMXFxQDGxsYtxsbGt9PT0//q6ur/
+/Pz8/////////////////////////////////////////////////////////////Pz8/+rq6v/T09P/
+xsbGt8bGxi3FxcUAxsbGAMbGxgDGxsYAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYA
+xcXFAMXFxQDFxcUAxsbGAMbGxgDGxsYAxsbGAMbGxjzGxsarxsbG8NbW1v/m5ub/7+/v//Pz8//6+vr/
+//////n5+f/z8/P/7u7u/+Xl5f/V1dX/xsbG8MbGxqvGxsY8xcXFAMXFxQDGxsYAxsbGAMbGxgDGxsYA
+xsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYA
+xsbGAMbGxgDGxsYAxsbGA8XFxUjFxcWNxsbGtMXFxczGxsbnxsbG/8bGxufFxcXMxcXFtMXFxY3FxcVI
+xsbGA8bGxgDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAP///wD///8A////AP///wAADgEA
+AAMAAAABACcAAAEBAAMAAAABACcAAAECAAMAAAAEAAAYegEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAER
+AAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABACcAAAEXAAQAAAABAAAXxAEc
+AAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAEAAAYgodzAAcAAAIwAAAYigAAAAAACAAIAAgACAAB
+AAEAAQABAAACMEFEQkUCEAAAbW50clJHQiBYWVogB9AACAALABMAMwA7YWNzcEFQUEwAAAAAbm9uZQAA
+AAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1BREJFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAKY3BydAAAAPwAAAAyZGVzYwAAATAAAABrd3RwdAAAAZwAAAAUYmtwdAAA
+AbAAAAAUclRSQwAAAcQAAAAOZ1RSQwAAAdQAAAAOYlRSQwAAAeQAAAAOclhZWgAAAfQAAAAUZ1hZWgAA
+AggAAAAUYlhZWgAAAhwAAAAUdGV4dAAAAABDb3B5cmlnaHQgMjAwMCBBZG9iZSBTeXN0ZW1zIEluY29y
+cG9yYXRlZAAAAGRlc2MAAAAAAAAAEUFkb2JlIFJHQiAoMTk5OCkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZ
+WiAAAAAAAADzUQABAAAAARbMWFlaIAAAAAAAAAAAAAAAAAAAAABjdXJ2AAAAAAAAAAECMwAAY3VydgAA
+AAAAAAABAjMAAGN1cnYAAAAAAAAAAQIzAABYWVogAAAAAAAAnBgAAE+lAAAE/FhZWiAAAAAAAAA0jQAA
+oCwAAA+VWFlaIAAAAAAAACYxAAAQLwAAvpzSIiMkJVokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRt
+YXBJbWFnZVJlcKMkJidaTlNJbWFnZVJlcFhOU09iamVjdNIiIykqV05TQXJyYXmiKSfSIiMsLV5OU011
+dGFibGVBcnJheaMsKSfTLzAJMTIzV05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNTZXTlND
+b2xvcqI1J9IiIzg5V05TSW1hZ2WiOCdfEA9OU0tleWVkQXJjaGl2ZXLRPD1Ucm9vdIABAAgAEQAaACMA
+LQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIG4Yb
+ixuWG58bshu2G8EbyhvPG9cb2hvfG+4b8hv5HAEcDhwTHBUcFxwcHCQcJxwsHDQcNxxJHEwcUQAAAAAA
+AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
+</mutableData>
+        </image>
+        <image name="imageView:UyR-dS-vO0:image" width="64" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -2053,139 +2193,6 @@ ALsAvQDCANkA2wDdSX9JhEmPSZhJq0mvSbpJw0nISdBJ00nYSedJ60nySfpKB0oMSg5KEEoVSh1KIEol
 Si1KMEpCSkVKSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAEpMA
 </mutableData>
         </image>
-        <image name="930C840F-441C-417F-84DC-A7642F6D2437" width="39" height="39">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
-DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPERq6TU0AKgAAF8z///8A////AP///wDGxsYAxcXFAMbGxgDGxsYA
-xsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGA8XFxUjGxsaNxsbGscbGxszFxcXkxsbG/8bGxuTFxcXM
-xcXFscbGxo3GxsZIxsbGA8XFxQDFxcUAxcXFAMbGxgDGxsYAxsbGAMXFxQDFxcUAxsbGAP///wD///8A
-////AP///wD///8A////AP///wDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAMbGxjzFxcWr
-xsbG8NbW1v/l5eX/7e3t//T09P/4+Pj///////n5+f/09PT/7e3t/+Xl5f/W1tb/xsbG8MXFxavGxsY8
-xcXFAMXFxQDGxsYAxsbGAMXFxQDGxsYAxcXFAP///wD///8A////AP///wD///8A////AP///wDGxsYA
-xsbGAMbGxgDFxcUAxsbGAMXFxQDGxsYqxsbGtNPT0//r6+v//Pz8////////////////////////////
-/////////////////////////////////Pz8/+vr6//T09P/xsbGtMbGxirGxsYAxsbGAMbGxgDGxsYA
-xcXFAP///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMXFxQDFxcUAxsbGBsbGxpDPz8//
-5ubm////////////////////////////////////////////////////////////////////////////
-////////////////5ubm/8/Pz//FxcWQxsbGBsXFxQDFxcUAxcXFAP///wD///8A////AP///wD///8A
-////AP///wDGxsYAxsbGAMbGxgDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
-//////////////////////////////////////////////////////////////////////7+/v/e3t7/
-xsbGwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDFxcUAxcXFAMbGxirGxsbe
-4eHh////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////4eHh/8XFxd7GxsYqxsbGAP///wD///8A
-////AP///wD///8A////AP///wDGxsYAxsbGFcbGxtvm5ub/////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////+bm5v/GxsbbxsbGFf///wD///8A////AP///wD///8A////AP///wDGxsYG
-xsbGwOLi4v//////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////i4uL/
-xsbGwMXFxQb///8A////AP///wD///8A////AP///wDFxcWW3t7e////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////3t7e/8XFxZb///8A////AP///wD///8A
-////AMbGxjzT09P/////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////9PT0//FxcU8////AP///wD///8A////AMbGxsnr6+v/////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////+rq6v/GxsbJ
-////AP///wD///8AxsbGRdXV1f//////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////V1dX/xsbGRf///wD///8AxcXFru3t7f//////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////s7Oz/xsbGrv///wDGxsYSxsbG+f7+/v//////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////+/v7/xsbG+cbGxhLGxsZU
-2NjY////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////2NjY/8XFxVTGxsaT5ubm////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-5ubm/8bGxpPGxsbA8fHx////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////8fHx/8bGxsDGxsbh9/f3////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////+Pj4/8bGxuHFxcXw/Pz8////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////Pz8/8bGxvDGxsb/
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////8bGxv/FxcXw/Pz8////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/Pz8/8bGxvPGxsbh9/f3////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////+Pj4/8bGxuHGxsbA8fHx////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////8fHx/8bGxsDGxsaT5+fn////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////5+fn/8bGxpPGxsZX
-2NjY////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////2dnZ/8bGxlfFxcUSxcXF+f7+/v//////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////+/v7/
-xcXF+cbGxhL///8AxcXFru3t7f//////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////t7e3/xcXFrv///wD///8AxcXFRdXV1f//////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////V1dX/xcXFRf///wD///8A////AMXFxczq6ur/////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////+rq6v/GxsbM////AP///wD///8A
-////AMbGxjzT09P/////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-/////////////////////9PT0//GxsY8////AP///wD///8A////AP///wDFxcWW3t7e////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////3t7e/8XFxZn///8A
-////AP///wD///8A////AP///wDGxsYGxsbGwOLi4v//////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-///////////////////////////i4uL/xsbGwMbGxgb///8A////AP///wD///8A////AP///wDGxsYA
-xcXFFcbGxt7m5ub/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////+fn5//Gxsbb
-xsbGFf///wD///8A////AP///wD///8A////AP///wDFxcUAxsbGAMbGxirFxcXh4eHh////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////4eHh/8bGxuHGxsYqxsbGAP///wD///8A////AP///wD///8A
-////AP///wDGxsYAxsbGAMXFxQDGxsYSxsbGwN7e3v/+/v7/////////////////////////////////
-//////////////////////////////////////////////////////////////////////7+/v/e3t7/
-xcXFwMbGxhLFxcUAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDFxcUA
-xsbGBsbGxpPQ0ND/6Ojo////////////////////////////////////////////////////////////
-////////////////////////////////5+fn/9DQ0P/GxsaTxsbGBsbGxgDFxcUAxsbGAP///wD///8A
-////AP///wD///8A////AP///wDFxcUAxcXFAMbGxgDGxsYAxcXFAMXFxQDGxsYtxsbGt9PT0//q6ur/
-/Pz8/////////////////////////////////////////////////////////////Pz8/+rq6v/T09P/
-xsbGt8bGxi3FxcUAxsbGAMbGxgDGxsYAxsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYA
-xcXFAMXFxQDFxcUAxsbGAMbGxgDGxsYAxsbGAMbGxjzGxsarxsbG8NbW1v/m5ub/7+/v//Pz8//6+vr/
-//////n5+f/z8/P/7u7u/+Xl5f/V1dX/xsbG8MbGxqvGxsY8xcXFAMXFxQDGxsYAxsbGAMbGxgDGxsYA
-xsbGAP///wD///8A////AP///wD///8A////AP///wDGxsYAxsbGAMbGxgDGxsYAxsbGAMXFxQDGxsYA
-xsbGAMbGxgDGxsYAxsbGA8XFxUjFxcWNxsbGtMXFxczGxsbnxsbG/8bGxufFxcXMxcXFtMXFxY3FxcVI
-xsbGA8bGxgDGxsYAxcXFAMbGxgDGxsYAxsbGAMXFxQDGxsYAxsbGAP///wD///8A////AP///wAADgEA
-AAMAAAABACcAAAEBAAMAAAABACcAAAECAAMAAAAEAAAYegEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAER
-AAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABACcAAAEXAAQAAAABAAAXxAEc
-AAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAEAAAYgodzAAcAAAIwAAAYigAAAAAACAAIAAgACAAB
-AAEAAQABAAACMEFEQkUCEAAAbW50clJHQiBYWVogB88ABgADAAAAAAAAYWNzcEFQUEwAAAAAbm9uZQAA
-AAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1BREJFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAKY3BydAAAAPwAAAAyZGVzYwAAATAAAABrd3RwdAAAAZwAAAAUYmtwdAAA
-AbAAAAAUclRSQwAAAcQAAAAOZ1RSQwAAAdQAAAAOYlRSQwAAAeQAAAAOclhZWgAAAfQAAAAUZ1hZWgAA
-AggAAAAUYlhZWgAAAhwAAAAUdGV4dAAAAABDb3B5cmlnaHQgMTk5OSBBZG9iZSBTeXN0ZW1zIEluY29y
-cG9yYXRlZAAAAGRlc2MAAAAAAAAAEUFkb2JlIFJHQiAoMTk5OCkAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZ
-WiAAAAAAAADzUQABAAAAARbMWFlaIAAAAAAAAAAAAAAAAAAAAABjdXJ2AAAAAAAAAAECMwAAY3VydgAA
-AAAAAAABAjMAAGN1cnYAAAAAAAAAAQIzAABYWVogAAAAAAAAnBgAAE+lAAAE/FhZWiAAAAAAAAA0jQAA
-oCwAAA+VWFlaIAAAAAAAACYxAAAQLwAAvpzSIiMkJVokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRt
-YXBJbWFnZVJlcKMkJidaTlNJbWFnZVJlcFhOU09iamVjdNIiIykqV05TQXJyYXmiKSfSIiMsLV5OU011
-dGFibGVBcnJheaMsKSfTLzAJMTIzV05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNTZXTlND
-b2xvcqI1J9IiIzg5V05TSW1hZ2WiOCdfEA9OU0tleWVkQXJjaGl2ZXLRPD1Ucm9vdIABAAgAEQAaACMA
-LQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCkAKYAqACtAMQAxgDIG4Yb
-ixuWG58bshu2G8EbyhvPG9cb2hvfG+4b8hv5HAEcDhwTHBUcFxwcHCQcJxwsHDQcNxxJHEwcUQAAAAAA
-AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
-</mutableData>
-        </image>
-        <image name="backBtn" width="340" height="560"/>
-        <image name="borderedArea" width="639" height="170"/>
-        <image name="copy" width="25" height="25"/>
-        <image name="facebook" width="25" height="25"/>
-        <image name="greebBtn" width="277" height="62"/>
         <image name="itemCell" width="117" height="117"/>
         <image name="light-bulb" width="18" height="19"/>
         <image name="redBtn" width="277" height="62"/>
@@ -2193,9 +2200,10 @@ AAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAABxTA
         <image name="whatsapp" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xms-ox-tR1"/>
-        <segue reference="deF-6c-laT"/>
+        <segue reference="Kxr-40-Hie"/>
+        <segue reference="1pN-dY-0wd"/>
         <segue reference="vxI-uo-w8w"/>
-        <segue reference="UiL-Tr-kkL"/>
+        <segue reference="deF-6c-laT"/>
+        <segue reference="xms-ox-tR1"/>
     </inferredMetricsTieBreakers>
 </document>

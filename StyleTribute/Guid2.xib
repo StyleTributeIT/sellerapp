@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guid3" translatesAutoresizingMaskIntoConstraints="NO" id="g0m-Tl-8FE">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="345.33333333333331"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="344.66666666666669"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="g0m-Tl-8FE" secondAttribute="height" multiplier="640:533" id="W00-Aj-at3"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a white background" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2xm-ez-WBo">
-                    <rect key="frame" x="49" y="388.33333333333331" width="316" height="40"/>
+                    <rect key="frame" x="49" y="387.66666666666669" width="316" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="aMG-Il-BOB"/>
                     </constraints>
@@ -36,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put the item on a white background and take it out of its box and/ or dust bag." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-gl-PBa">
-                    <rect key="frame" x="16" y="427.33333333333331" width="382" height="40"/>
+                    <rect key="frame" x="16" y="426.66666666666669" width="382" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="hfu-5z-IqG"/>
                     </constraints>
@@ -45,7 +46,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dots0" translatesAutoresizingMaskIntoConstraints="NO" id="XEp-ED-Bw1">
-                    <rect key="frame" x="139" y="557.33333333333337" width="136" height="28"/>
+                    <rect key="frame" x="139" y="556.66666666666663" width="136" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="NCe-Lb-Xih"/>
                         <constraint firstAttribute="width" constant="136" id="c56-Ep-Hhk"/>

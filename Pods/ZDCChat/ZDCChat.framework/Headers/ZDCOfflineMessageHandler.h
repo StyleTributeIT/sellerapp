@@ -7,21 +7,14 @@
  *
  *  Copyright (c) 2016 Zendesk. All rights reserved.
  *
- *  By downloading or using the Zopim Chat SDK, You agree to the Zendesk Terms
- *  of Service https://www.zendesk.com/company/terms and Application Developer and API License
- *  Agreement https://www.zendesk.com/company/application-developer-and-api-license-agreement and
- *  acknowledge that such terms govern Your use of and access to the Chat SDK.
+ *  By downloading or using the Zendesk Mobile SDK, You agree to the Zendesk Master
+ *  Subscription Agreement https://www.zendesk.com/company/customers-partners/#master-subscription-agreement and Application Developer and API License
+ *  Agreement https://www.zendesk.com/company/customers-partners/#application-developer-api-license-agreement and
+ *  acknowledge that such terms govern Your use of and access to the Mobile SDK.
  *
  */
 
 #import <Foundation/Foundation.h>
-
-
-/**
- * Offline message handler block.
- * @param chatViewController reference to the chat view controller
- */
-typedef void (^ZDCOfflineMessageAction) (UIViewController *chatViewController);
 
 
 /**
@@ -49,7 +42,6 @@ typedef void (^ZDCOfflineMessageAction) (UIViewController *chatViewController);
  * Create a new offline message override with the defined parameters.
  * @param noAgentsMessage the message body on the 'No agents available' screen
  * @param noAgentsButtonText button text on the 'No agents available' screen
- * @param action block executed when the user taps the button on the 'No agents available' screen
  */
 + (instancetype) offlineHandlerWithMessage:(NSString*)noAgentsMessage
                                 buttonText:(NSString*)noAgentsButtonText;

@@ -1,6 +1,6 @@
 :warning: *Use of this software is subject to important terms and conditions as set forth in the License file* :warning:
 
-# Zopim Mobile SDK for iOS 1.3.2.1
+# Zopim Mobile SDK for iOS 1.3.7.1
 
 Zopim SDK for mobile is a quick, convenient way to get live chat into your mobile apps. With just a few lines of code, you can provide your end users with an easy way to get in touch from any mobile app.
 
@@ -22,7 +22,7 @@ pod 'ZDCChat'
 ## Documentation
 
 * [Introduction](https://developer.zendesk.com/embeddables/docs/ios-chat-sdk/introduction)
-* [Getting started](https://developer.zendesk.com/embeddables/docs/ios-chat-sdk/gettingstarted)
+* [Getting Started](https://developer.zendesk.com/embeddables/docs/ios-chat-sdk/chat)
 * [Release notes](https://developer.zendesk.com/embeddables/docs/ios-chat-sdk/releasenotes) 
 
 If you are migrating to version 1.3.x.x, then this [migration guide](https://developer.zendesk.com/embeddables/docs/ios-chat-sdk/migration) is available.
@@ -35,9 +35,7 @@ All enhancement, improvement, and feature request suggestions are welcomed. Plea
 
 Copyright 2016 Zendesk
 
-By dowloading or using the Zendesk Mobile SDK, You agree to the Zendesk Terms of Service
-(https://www.zendesk.com/company/terms) and Application Developer and API License Agreement (https://www.zendesk.com/company/application-developer-and-api-license-agreement) and
-acknowledge that such terms govern Your use of and access to the Mobile SDK.
+By downloading or accessing this software, You agree to the Zendesk Master Subscription Agreement (https://www.zendesk.com/company/customers-partners/#master-subscription-agreement) and Application Developer and API License Agreement (https://www.zendesk.com/company/customers-partners/#application-developer-api-license-agreement) and acknowledge that such terms govern Your use of and access to the software.
 
 If You make any Contributions (defined below) to the Zendesk Mobile SDK,
 You hereby grant Zendesk a royalty-free, worldwide, transferable, sub-licensable,

@@ -1,7 +1,6 @@
-platform :ios, '7.0'
+platform :ios, '9.0'
 target 'StyleTribute' do
 	pod 'AFNetworking', '~> 2.6'
-	#pod 'TestFairy'
 	pod 'Reachability'
 	pod 'KASlideShow', '= 2.2'
 	pod 'ActionSheetPicker-3.0', '~> 2.2.0'
@@ -10,10 +9,12 @@ target 'StyleTribute' do
 	pod 'UIActivityIndicator-for-SDWebImage'
 	pod 'MRProgress'
 	pod 'CRToast'
-#	pod 'FMDB', '~> 2.6'
 	pod 'Fabric'
 	pod 'Crashlytics'
 	pod 'ZDCChat'
+    pod 'FBSDKCoreKit', '~>4.22.0'
+    pod 'FBSDKLoginKit', '~>4.22.0'
+    pod 'FBSDKShareKit', '~>4.22.0'
 end
 
 target 'StyleTributeTests' do

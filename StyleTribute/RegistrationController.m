@@ -9,7 +9,7 @@
 #import "RegistrationController.h"
 #import "Country.h"
 
-@interface RegistrationController () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface RegistrationController () <UIPickerViewDelegate>
 
 @property UIPickerView* picker;
 

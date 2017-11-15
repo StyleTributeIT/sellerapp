@@ -33,7 +33,7 @@
     [Fabric with:@[[Crashlytics class]]];
 
     // Override point for customization after application launch.
-    
+    NSLog( @"### running FB sdk version: %@", [FBSDKSettings sdkVersion] );
   //  [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
     UIColor* pink = [UIColor colorWithRed:218/256.0 green:0 blue:100.0/255 alpha:1];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Montserrat-Regular" size:11.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];

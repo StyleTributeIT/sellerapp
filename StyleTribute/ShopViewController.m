@@ -9,8 +9,10 @@
 #import "ShopViewController.h"
 
 @interface ShopViewController ()
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property NSString *shop_url;
+
 @end
 
 @implementation ShopViewController

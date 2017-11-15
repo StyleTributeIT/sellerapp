@@ -143,6 +143,7 @@ int sectionOffset = 0;
                 [self performSegueWithIdentifier:@"chooseTopCategorySegue" sender:self];
             } else
             {
+                self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
                 self.navigationItem.title = self.curProduct.category.name;
             }
             
@@ -374,13 +375,16 @@ int sectionOffset = 0;
                             if(oldPhotos.count > i){
                                 Photo* oldPhoto = [oldPhotos objectAtIndex:i];
                                 
-                                [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:cur_product.identifier success:^{
-                                    self.imgLoadBlock(i);
-                                    dispatch_group_leave(group);
-                                } failure:^(NSString *error) {
-                                    self.imgLoadBlock(i);
-                                    dispatch_group_leave(group);
-                                }];
+                                if (cur_product && oldPhoto)
+                                {
+                                    [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:cur_product.identifier success:^{
+                                        self.imgLoadBlock(i);
+                                        dispatch_group_leave(group);
+                                    } failure:^(NSString *error) {
+                                        self.imgLoadBlock(i);
+                                        dispatch_group_leave(group);
+                                    }];
+                                }
                             }
                         } else if(imageType.state == ImageStateDeleted) {
                             dispatch_group_enter(group);

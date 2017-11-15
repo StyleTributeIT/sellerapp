@@ -72,7 +72,8 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         errCallback(DefGeneralErrMsg);
         return NO;
     }
-    
+    NSLog(@"resp : %@", resp);
+
     if([[resp objectForKey:@"success"] boolValue]) {
         return YES;
     } else {

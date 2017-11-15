@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString* const DefApiHost		= @"https://testapi.styletribute.com/";
+static NSString* const DefApiHost		= @"https://testapi.styletribute.com";//@"https://test.styletribute.com/";
 static NSString* const DefZendeskKey    = @"4ESfRZZCFkTFeyuNML1TA3qTOljfAxI2";
 //static NSString* const DefApiHost		= @"https://api2.styletribute.com/";
 

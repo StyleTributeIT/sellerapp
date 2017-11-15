@@ -16,12 +16,16 @@
 @property BOOL loadedFirstTime;
 @property BOOL needUpdate;
 
+@property (atomic) BOOL _screen_lock;
+
 @end
 
 @implementation WelcomeController
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    
+    self._screen_lock = NO;
     
     self.loadedFirstTime = YES;
     self.needUpdate = NO;
@@ -87,42 +91,53 @@
 //        return;
 //    }
     
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
-    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-	[login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        if (error) {
-            NSLog(@"FB login error: %@", [error description]);
-        } else if (result.isCancelled) {
-            NSLog(@"FB login cancelled");
-        } else {
-//            [defs setObject:result.token.tokenString forKey:@"fbToken"];
-            
-            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-            [[ApiRequester sharedInstance] loginWithFBToken:result.token.tokenString success:^(BOOL loggedIn, UserProfile* fbProfile) {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-				
-				[DataCache sharedInstance].userProfile = fbProfile;
-				if(loggedIn) {
-					if([fbProfile isFilled]) {
-						[self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-					} else {
-						[self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
-					}
-				} else {
-					[self performSegueWithIdentifier:@"FBRegistrationSegue" sender:self];
-				}
-            } failure:^(NSString *error) {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                [GlobalHelper showMessage:error withTitle:@"Login error"];
-            }];
-        }
-    }];
+    if ([self tryLock])
+    {
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
+
+        __weak WelcomeController* reference = self;
+
+        [login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            if (error) {
+                NSLog(@"FB login error: %@", [error description]);
+            } else if (result.isCancelled) {
+                NSLog(@"FB login cancelled");
+            } else {
+    //            [defs setObject:result.token.tokenString forKey:@"fbToken"];
+                
+                [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+                [[ApiRequester sharedInstance] loginWithFBToken:result.token.tokenString success:^(BOOL loggedIn, UserProfile* fbProfile) {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    
+                    [DataCache sharedInstance].userProfile = fbProfile;
+                    if(loggedIn) {
+                        if([fbProfile isFilled]) {
+                            [reference performSegueWithIdentifier:@"showMainScreenSegue" sender:reference];
+                        } else {
+                            [reference performSegueWithIdentifier:@"moreDetailsSegue" sender:reference];
+                        }
+                    } else {
+                        [reference performSegueWithIdentifier:@"FBRegistrationSegue" sender:reference];
+                    }
+                } failure:^(NSString *error) {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    [GlobalHelper showMessage:error withTitle:@"Login error"];
+                    
+                    [reference releaseLock];
+                }];
+            }
+        }];
+    }
 }
 
 -(IBAction)unwindToWelcomeController:(UIStoryboardSegue*)sender {
-    
+    NSLog(@"unwindToWelcomeController");
+}
+
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    return [self tryLock];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -130,6 +145,8 @@
         FBRegistrationController* controller = segue.destinationViewController;
         controller.updatingProfile = YES;
     }
+    
+    [self releaseLockWDelay];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -153,4 +170,28 @@
     [self.signUpFBButton setEnabled:enabled];
 }
 
+#pragma Lock
+- (BOOL) tryLock
+{
+    if (self._screen_lock)
+    {
+        return NO;
+    }
+    else
+    {
+        self._screen_lock = YES;
+        
+        return YES;
+    }
+}
+
+- (void) releaseLockWDelay
+{
+    [self performSelector:@selector(releaseLock) withObject:nil afterDelay:0.5];
+}
+
+- (void) releaseLock
+{
+    self._screen_lock = NO;
+}
 @end
