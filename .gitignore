@@ -7,3 +7,4 @@ build
 StyleTribute.app.dSYM.zip
 StyleTribute.ipa
 fastlane/report.xml
+Pods/
