@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aU1-hE-138">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,16 +28,12 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" userLabel="welcomeController" customClass="WelcomeController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-xd-dpw" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="316" width="375" height="287"/>
+                                <rect key="frame" x="0.0" y="316" width="375" height="374"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FoV-xd-dpw" secondAttribute="height" multiplier="641:507" id="Xua-zg-CtR"/>
@@ -47,7 +45,7 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Rte-X5-A1W">
-                                <rect key="frame" x="156" y="20" width="64" height="64"/>
+                                <rect key="frame" x="155.66666666666666" y="20" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="3WV-6i-nwb"/>
                                     <constraint firstAttribute="width" constant="64" id="C11-eY-VwG"/>
@@ -146,26 +144,26 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dig-Q9-QwW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="1GK-fC-h1q"/>
-                            <constraint firstItem="Rte-X5-A1W" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="3BK-dn-aA8"/>
+                            <constraint firstItem="Rte-X5-A1W" firstAttribute="top" secondItem="l8W-G9-nnD" secondAttribute="top" constant="20" id="3BK-dn-aA8"/>
                             <constraint firstItem="mzk-qV-fOS" firstAttribute="top" secondItem="dig-Q9-QwW" secondAttribute="bottom" constant="15" id="5G9-wB-fx2"/>
                             <constraint firstItem="pn8-Cb-f8A" firstAttribute="top" secondItem="mzk-qV-fOS" secondAttribute="bottom" constant="8" id="6BD-M1-quW"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="FoV-xd-dpw" secondAttribute="bottom" id="9Ea-L2-hBV"/>
-                            <constraint firstAttribute="centerX" secondItem="Rte-X5-A1W" secondAttribute="centerX" id="AFx-mU-nDl"/>
-                            <constraint firstAttribute="trailing" secondItem="FoV-xd-dpw" secondAttribute="trailing" id="C98-WH-ozF"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="bottom" secondItem="FoV-xd-dpw" secondAttribute="bottom" id="9Ea-L2-hBV"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="centerX" secondItem="Rte-X5-A1W" secondAttribute="centerX" id="AFx-mU-nDl"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="trailing" secondItem="FoV-xd-dpw" secondAttribute="trailing" id="C98-WH-ozF"/>
                             <constraint firstItem="FoV-xd-dpw" firstAttribute="top" secondItem="336-qA-KE7" secondAttribute="bottom" constant="8" id="E8V-Ff-4El"/>
                             <constraint firstItem="clY-Sy-ZP3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="KG6-X3-ypn"/>
                             <constraint firstItem="7oc-gx-i8R" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="NY0-jb-Zch"/>
                             <constraint firstItem="336-qA-KE7" firstAttribute="top" secondItem="clY-Sy-ZP3" secondAttribute="bottom" constant="8" id="QBe-wR-Ik3"/>
-                            <constraint firstItem="FoV-xd-dpw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="QGa-mD-byI"/>
+                            <constraint firstItem="FoV-xd-dpw" firstAttribute="leading" secondItem="l8W-G9-nnD" secondAttribute="leading" id="QGa-mD-byI"/>
                             <constraint firstItem="7oc-gx-i8R" firstAttribute="top" secondItem="Rte-X5-A1W" secondAttribute="bottom" constant="8" id="VpS-3E-c1j"/>
-                            <constraint firstAttribute="centerX" secondItem="mzk-qV-fOS" secondAttribute="centerX" id="c6t-9c-TH1"/>
-                            <constraint firstItem="FoV-xd-dpw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="c8C-89-rWc"/>
-                            <constraint firstAttribute="trailing" secondItem="FoV-xd-dpw" secondAttribute="trailing" id="e2a-Jh-q2m"/>
-                            <constraint firstAttribute="centerX" secondItem="pn8-Cb-f8A" secondAttribute="centerX" id="hLA-BM-9xD"/>
-                            <constraint firstAttribute="centerX" secondItem="FoV-xd-dpw" secondAttribute="centerX" id="iMb-lc-Rzu"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="centerX" secondItem="mzk-qV-fOS" secondAttribute="centerX" id="c6t-9c-TH1"/>
+                            <constraint firstItem="FoV-xd-dpw" firstAttribute="leading" secondItem="l8W-G9-nnD" secondAttribute="leading" id="c8C-89-rWc"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="trailing" secondItem="FoV-xd-dpw" secondAttribute="trailing" id="e2a-Jh-q2m"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="centerX" secondItem="pn8-Cb-f8A" secondAttribute="centerX" id="hLA-BM-9xD"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="centerX" secondItem="FoV-xd-dpw" secondAttribute="centerX" id="iMb-lc-Rzu"/>
                             <constraint firstItem="FoV-xd-dpw" firstAttribute="top" secondItem="pn8-Cb-f8A" secondAttribute="bottom" constant="78" id="jU8-K1-sjy"/>
-                            <constraint firstAttribute="centerX" secondItem="FoV-xd-dpw" secondAttribute="centerX" id="pIP-NT-hMa"/>
-                            <constraint firstAttribute="centerX" secondItem="336-qA-KE7" secondAttribute="centerX" id="q88-t1-BV2"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="centerX" secondItem="FoV-xd-dpw" secondAttribute="centerX" id="pIP-NT-hMa"/>
+                            <constraint firstItem="l8W-G9-nnD" firstAttribute="centerX" secondItem="336-qA-KE7" secondAttribute="centerX" id="q88-t1-BV2"/>
                             <constraint firstItem="clY-Sy-ZP3" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="qxo-OR-20M"/>
                             <constraint firstItem="7oc-gx-i8R" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="rXb-sw-qTy"/>
                             <constraint firstItem="FoV-xd-dpw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pn8-Cb-f8A" secondAttribute="bottom" constant="24" id="rdq-EI-tOm"/>
@@ -173,6 +171,7 @@
                             <constraint firstItem="clY-Sy-ZP3" firstAttribute="top" secondItem="pn8-Cb-f8A" secondAttribute="bottom" constant="14" id="wvv-Ly-yeO"/>
                             <constraint firstItem="dig-Q9-QwW" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="ykh-wd-Cji"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="l8W-G9-nnD"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="C98-WH-ozF"/>
@@ -203,25 +202,21 @@
         <scene sceneID="tqf-KH-Ftc">
             <objects>
                 <viewController id="W2W-9d-Wfs" userLabel="loginController" customClass="LoginController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KeO-l6-gRQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="jNw-e3-dRw"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NY5-ro-TzI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-aZ-Jzd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-dn-4dR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="326"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="347"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-jq-QA3">
-                                                <rect key="frame" x="128" y="8" width="64" height="64"/>
+                                                <rect key="frame" x="117.66666666666669" y="8" width="85" height="85"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyO-9Y-oef" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="154" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="175" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your email"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sVs-KJ-a1f"/>
@@ -233,7 +228,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="200" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="221" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="fFH-Aq-LfI"/>
@@ -245,7 +240,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please log in to proceed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-tQ-Hms">
-                                                <rect key="frame" x="16" y="114" width="288" height="25"/>
+                                                <rect key="frame" x="16" y="135" width="288" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="fHy-pP-I9a"/>
                                                 </constraints>
@@ -254,7 +249,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJM-Um-52Y">
-                                                <rect key="frame" x="40" y="246" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="267" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Sign in"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JpL-78-iKv"/>
@@ -265,7 +260,7 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kV-EV-Gpy" customClass="AttributedLabel">
-                                                <rect key="frame" x="16" y="80" width="288" height="21"/>
+                                                <rect key="frame" x="16" y="101" width="288" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="dgZ-Uh-32N"/>
                                                 </constraints>
@@ -284,7 +279,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-xw-gUD">
-                                                <rect key="frame" x="40" y="290" width="240" height="28"/>
+                                                <rect key="frame" x="40" y="311" width="240" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="f3m-Vk-SCL"/>
                                                 </constraints>
@@ -339,11 +334,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jNw-e3-dRw" firstAttribute="top" secondItem="HhL-aZ-Jzd" secondAttribute="bottom" id="6Et-4r-kci"/>
-                            <constraint firstItem="HhL-aZ-Jzd" firstAttribute="leading" secondItem="NY5-ro-TzI" secondAttribute="leading" id="ET3-mz-zck"/>
-                            <constraint firstItem="HhL-aZ-Jzd" firstAttribute="top" secondItem="KeO-l6-gRQ" secondAttribute="bottom" id="M7z-O3-cyX"/>
-                            <constraint firstAttribute="trailing" secondItem="HhL-aZ-Jzd" secondAttribute="trailing" id="wdo-U6-2Co"/>
+                            <constraint firstItem="dzZ-Im-Dty" firstAttribute="bottom" secondItem="HhL-aZ-Jzd" secondAttribute="bottom" id="6Et-4r-kci"/>
+                            <constraint firstItem="HhL-aZ-Jzd" firstAttribute="leading" secondItem="dzZ-Im-Dty" secondAttribute="leading" id="ET3-mz-zck"/>
+                            <constraint firstItem="HhL-aZ-Jzd" firstAttribute="top" secondItem="dzZ-Im-Dty" secondAttribute="top" id="M7z-O3-cyX"/>
+                            <constraint firstItem="dzZ-Im-Dty" firstAttribute="trailing" secondItem="HhL-aZ-Jzd" secondAttribute="trailing" id="wdo-U6-2Co"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dzZ-Im-Dty"/>
                     </view>
                     <navigationItem key="navigationItem" id="xeH-kI-7yt">
                         <barButtonItem key="leftBarButtonItem" image="backBtn" id="weP-BM-Ica">
@@ -382,12 +378,8 @@
         <scene sceneID="900-3Z-7Sr">
             <objects>
                 <viewController id="tSN-ez-241" customClass="MyAccountController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5b2-9C-mSv"/>
-                        <viewControllerLayoutGuide type="bottom" id="6My-v9-w5w"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YQq-a8-tND">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfr-uw-wMs">
@@ -515,13 +507,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Cfr-uw-wMs" firstAttribute="top" secondItem="6My-v9-w5w" secondAttribute="bottom" id="48w-wj-O49"/>
-                            <constraint firstAttribute="trailing" secondItem="Cfr-uw-wMs" secondAttribute="trailing" id="Bgx-vx-ktS"/>
+                            <constraint firstItem="Cfr-uw-wMs" firstAttribute="top" secondItem="gVW-L3-Q8E" secondAttribute="top" id="48w-wj-O49"/>
+                            <constraint firstItem="gVW-L3-Q8E" firstAttribute="trailing" secondItem="Cfr-uw-wMs" secondAttribute="trailing" id="Bgx-vx-ktS"/>
                             <constraint firstItem="Cfr-uw-wMs" firstAttribute="top" secondItem="YQq-a8-tND" secondAttribute="topMargin" id="NU9-6O-BTD"/>
-                            <constraint firstItem="Cfr-uw-wMs" firstAttribute="leading" secondItem="YQq-a8-tND" secondAttribute="leading" id="PFg-sP-FDr"/>
-                            <constraint firstItem="Cfr-uw-wMs" firstAttribute="top" secondItem="6My-v9-w5w" secondAttribute="top" id="s0j-zc-vAR"/>
+                            <constraint firstItem="Cfr-uw-wMs" firstAttribute="leading" secondItem="gVW-L3-Q8E" secondAttribute="leading" id="PFg-sP-FDr"/>
+                            <constraint firstItem="Cfr-uw-wMs" firstAttribute="top" secondItem="gVW-L3-Q8E" secondAttribute="bottom" id="s0j-zc-vAR"/>
                             <constraint firstAttribute="bottom" secondItem="Cfr-uw-wMs" secondAttribute="bottom" id="xi4-lh-Is2"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="gVW-L3-Q8E"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="48w-wj-O49"/>
@@ -553,16 +546,12 @@
         <scene sceneID="yuc-83-dqw">
             <objects>
                 <viewController id="yz9-vj-pKk" customClass="ShopViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="X1p-9U-qn0"/>
-                        <viewControllerLayoutGuide type="bottom" id="zZs-9s-PXs"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QM0-6Z-mWE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGR-Yf-wzr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="721"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="yz9-vj-pKk" id="dZl-hm-KPe"/>
@@ -572,10 +561,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kGR-Yf-wzr" firstAttribute="top" secondItem="QM0-6Z-mWE" secondAttribute="top" id="DhP-TM-zyP"/>
-                            <constraint firstItem="zZs-9s-PXs" firstAttribute="top" secondItem="kGR-Yf-wzr" secondAttribute="bottom" constant="8" id="MFL-CP-At7"/>
-                            <constraint firstAttribute="trailing" secondItem="kGR-Yf-wzr" secondAttribute="trailing" id="jst-SO-1k4"/>
-                            <constraint firstItem="kGR-Yf-wzr" firstAttribute="leading" secondItem="QM0-6Z-mWE" secondAttribute="leading" id="ubg-I6-far"/>
+                            <constraint firstItem="GrN-Ny-Fda" firstAttribute="bottom" secondItem="kGR-Yf-wzr" secondAttribute="bottom" constant="8" id="MFL-CP-At7"/>
+                            <constraint firstItem="GrN-Ny-Fda" firstAttribute="trailing" secondItem="kGR-Yf-wzr" secondAttribute="trailing" id="jst-SO-1k4"/>
+                            <constraint firstItem="kGR-Yf-wzr" firstAttribute="leading" secondItem="GrN-Ny-Fda" secondAttribute="leading" id="ubg-I6-far"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="GrN-Ny-Fda"/>
                     </view>
                     <navigationItem key="navigationItem" id="RdJ-Qd-dw8"/>
                     <connections>
@@ -591,7 +581,7 @@
             <objects>
                 <tableViewController id="qaw-2c-nim" userLabel="Notifications View Controller" customClass="NotificationsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="mIe-WV-bZ6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -599,7 +589,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ufD-n1-fKf" id="feW-ez-2gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="nlG-Fq-cpY">
@@ -676,11 +666,10 @@
             <objects>
                 <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
-                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -695,12 +684,8 @@
         <scene sceneID="WcV-1w-xQW">
             <objects>
                 <viewController id="tr0-6J-Wdp" customClass="EditProfileController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VFk-ZX-bPf"/>
-                        <viewControllerLayoutGuide type="bottom" id="mXA-dE-vCM"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xap-Yh-O5U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-lQ-8nh">
@@ -803,9 +788,10 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="HKR-lQ-8nh" secondAttribute="bottom" id="1Fm-p7-jRa"/>
                             <constraint firstItem="HKR-lQ-8nh" firstAttribute="top" secondItem="Xap-Yh-O5U" secondAttribute="top" id="Vc1-8l-yze"/>
-                            <constraint firstItem="HKR-lQ-8nh" firstAttribute="leading" secondItem="Xap-Yh-O5U" secondAttribute="leading" id="aQ7-X1-hT8"/>
-                            <constraint firstAttribute="trailing" secondItem="HKR-lQ-8nh" secondAttribute="trailing" id="fy4-PL-6ML"/>
+                            <constraint firstItem="HKR-lQ-8nh" firstAttribute="leading" secondItem="oMq-Tm-969" secondAttribute="leading" id="aQ7-X1-hT8"/>
+                            <constraint firstItem="oMq-Tm-969" firstAttribute="trailing" secondItem="HKR-lQ-8nh" secondAttribute="trailing" id="fy4-PL-6ML"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="oMq-Tm-969"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="o1V-lw-V4c">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="doN-Cb-uw0">
@@ -839,12 +825,8 @@
         <scene sceneID="I17-3T-zC4">
             <objects>
                 <viewController id="grn-Wi-nkv" customClass="ResidentAddressController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6B3-1b-f4T"/>
-                        <viewControllerLayoutGuide type="bottom" id="I32-7y-dRe"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ocD-tc-kDY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dW-zY-9H1">
@@ -1023,11 +1005,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8dW-zY-9H1" firstAttribute="leading" secondItem="ocD-tc-kDY" secondAttribute="leading" id="Yei-au-5HN"/>
-                            <constraint firstAttribute="trailing" secondItem="8dW-zY-9H1" secondAttribute="trailing" id="ftu-LF-Cgk"/>
+                            <constraint firstItem="8dW-zY-9H1" firstAttribute="leading" secondItem="Tgr-vR-mI1" secondAttribute="leading" id="Yei-au-5HN"/>
+                            <constraint firstItem="Tgr-vR-mI1" firstAttribute="trailing" secondItem="8dW-zY-9H1" secondAttribute="trailing" id="ftu-LF-Cgk"/>
                             <constraint firstItem="8dW-zY-9H1" firstAttribute="top" secondItem="ocD-tc-kDY" secondAttribute="top" id="uDH-1p-qln"/>
                             <constraint firstAttribute="bottom" secondItem="8dW-zY-9H1" secondAttribute="bottom" id="ujw-Zz-bfz"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tgr-vR-mI1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="s71-3g-mfX">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dkH-XY-YyZ">
@@ -1066,12 +1049,8 @@
         <scene sceneID="Ka6-Vr-ZoQ">
             <objects>
                 <viewController id="HNe-sU-zJZ" customClass="ChangePasswordController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UdZ-qp-W7b"/>
-                        <viewControllerLayoutGuide type="bottom" id="5ap-DL-IQY"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FWT-D0-ePX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3o-Zo-hmg">
@@ -1158,11 +1137,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="w3o-Zo-hmg" firstAttribute="leading" secondItem="FWT-D0-ePX" secondAttribute="leading" id="LXT-QJ-zGN"/>
+                            <constraint firstItem="w3o-Zo-hmg" firstAttribute="leading" secondItem="Hs2-MG-RxS" secondAttribute="leading" id="LXT-QJ-zGN"/>
                             <constraint firstItem="w3o-Zo-hmg" firstAttribute="top" secondItem="FWT-D0-ePX" secondAttribute="top" id="UrL-1i-s8X"/>
-                            <constraint firstAttribute="trailing" secondItem="w3o-Zo-hmg" secondAttribute="trailing" id="bKU-rC-xSK"/>
+                            <constraint firstItem="Hs2-MG-RxS" firstAttribute="trailing" secondItem="w3o-Zo-hmg" secondAttribute="trailing" id="bKU-rC-xSK"/>
                             <constraint firstAttribute="bottom" secondItem="w3o-Zo-hmg" secondAttribute="bottom" id="y0X-hM-Mmf"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hs2-MG-RxS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="KOC-6q-FgA">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qol-JV-aYT">
@@ -1195,12 +1175,8 @@
         <scene sceneID="lC3-OS-TXm">
             <objects>
                 <viewController id="4Gf-0K-49B" customClass="BankDetailsController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HOk-8K-ci3"/>
-                        <viewControllerLayoutGuide type="bottom" id="sCn-LU-a3h"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gPf-No-Oyh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-bQ-LId">
@@ -1316,10 +1292,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lfS-bQ-LId" firstAttribute="top" secondItem="gPf-No-Oyh" secondAttribute="top" id="79X-eV-T5j"/>
-                            <constraint firstItem="lfS-bQ-LId" firstAttribute="leading" secondItem="gPf-No-Oyh" secondAttribute="leading" id="ERE-LK-IC5"/>
-                            <constraint firstAttribute="trailing" secondItem="lfS-bQ-LId" secondAttribute="trailing" id="Jbk-03-Kov"/>
+                            <constraint firstItem="lfS-bQ-LId" firstAttribute="leading" secondItem="Cna-lh-iIx" secondAttribute="leading" id="ERE-LK-IC5"/>
+                            <constraint firstItem="Cna-lh-iIx" firstAttribute="trailing" secondItem="lfS-bQ-LId" secondAttribute="trailing" id="Jbk-03-Kov"/>
                             <constraint firstAttribute="bottom" secondItem="lfS-bQ-LId" secondAttribute="bottom" id="dIV-JY-dgg"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cna-lh-iIx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="jBj-Vw-oxf">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kT6-kv-gIK">
@@ -1354,12 +1331,8 @@
         <scene sceneID="02h-ZL-Kac">
             <objects>
                 <viewController id="dMc-TR-sjB" customClass="ContactUsController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hTy-nb-eoF"/>
-                        <viewControllerLayoutGuide type="bottom" id="s2r-bA-qPV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iic-X1-5Hj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Mkg-Kr-FY6">
@@ -1437,23 +1410,24 @@ Citilink Warehouse Complex
                         <constraints>
                             <constraint firstItem="qAc-Nn-EhL" firstAttribute="trailing" secondItem="iic-X1-5Hj" secondAttribute="trailingMargin" id="3ZT-TU-gez"/>
                             <constraint firstItem="Obv-BD-aqT" firstAttribute="top" secondItem="qAc-Nn-EhL" secondAttribute="bottom" priority="750" constant="8" id="ATA-QK-8VN"/>
-                            <constraint firstAttribute="trailing" secondItem="ScH-LV-MYk" secondAttribute="trailing" constant="40" id="ETz-Jf-RUf"/>
-                            <constraint firstItem="Fm2-Z9-7Ee" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leading" constant="40" id="HiD-5c-Nv0"/>
+                            <constraint firstItem="2yY-vJ-dK1" firstAttribute="trailing" secondItem="ScH-LV-MYk" secondAttribute="trailing" constant="40" id="ETz-Jf-RUf"/>
+                            <constraint firstItem="Fm2-Z9-7Ee" firstAttribute="leading" secondItem="2yY-vJ-dK1" secondAttribute="leading" constant="40" id="HiD-5c-Nv0"/>
                             <constraint firstItem="Mkg-Kr-FY6" firstAttribute="trailing" secondItem="iic-X1-5Hj" secondAttribute="trailingMargin" id="RIG-7k-vgz"/>
                             <constraint firstItem="Fm2-Z9-7Ee" firstAttribute="top" secondItem="ScH-LV-MYk" secondAttribute="bottom" constant="8" id="TKG-hY-DTu"/>
                             <constraint firstItem="Obv-BD-aqT" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leadingMargin" id="UBJ-3z-rPi"/>
                             <constraint firstItem="ScH-LV-MYk" firstAttribute="top" secondItem="Obv-BD-aqT" secondAttribute="bottom" constant="8" id="Vvr-LH-PJS"/>
                             <constraint firstItem="qAc-Nn-EhL" firstAttribute="top" secondItem="Mkg-Kr-FY6" secondAttribute="bottom" constant="8" id="WjW-Ri-OET"/>
                             <constraint firstItem="qAc-Nn-EhL" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leadingMargin" id="Z5E-fC-gRq"/>
-                            <constraint firstItem="Wic-WM-Ph2" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leading" constant="40" id="bVF-Ya-Thn"/>
+                            <constraint firstItem="Wic-WM-Ph2" firstAttribute="leading" secondItem="2yY-vJ-dK1" secondAttribute="leading" constant="40" id="bVF-Ya-Thn"/>
                             <constraint firstItem="Mkg-Kr-FY6" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leadingMargin" id="dKx-Me-GvJ"/>
-                            <constraint firstItem="Mkg-Kr-FY6" firstAttribute="top" secondItem="hTy-nb-eoF" secondAttribute="bottom" constant="16" id="fKY-Py-h4b"/>
+                            <constraint firstItem="Mkg-Kr-FY6" firstAttribute="top" secondItem="2yY-vJ-dK1" secondAttribute="top" constant="16" id="fKY-Py-h4b"/>
                             <constraint firstItem="Wic-WM-Ph2" firstAttribute="top" secondItem="Fm2-Z9-7Ee" secondAttribute="bottom" constant="8" id="ggo-Xz-2o1"/>
-                            <constraint firstAttribute="trailing" secondItem="Fm2-Z9-7Ee" secondAttribute="trailing" constant="40" id="nBo-jD-2AE"/>
-                            <constraint firstAttribute="trailing" secondItem="Wic-WM-Ph2" secondAttribute="trailing" constant="40" id="oKm-lm-3lS"/>
+                            <constraint firstItem="2yY-vJ-dK1" firstAttribute="trailing" secondItem="Fm2-Z9-7Ee" secondAttribute="trailing" constant="40" id="nBo-jD-2AE"/>
+                            <constraint firstItem="2yY-vJ-dK1" firstAttribute="trailing" secondItem="Wic-WM-Ph2" secondAttribute="trailing" constant="40" id="oKm-lm-3lS"/>
                             <constraint firstItem="Obv-BD-aqT" firstAttribute="trailing" secondItem="iic-X1-5Hj" secondAttribute="trailingMargin" id="vvW-97-tXB"/>
-                            <constraint firstItem="ScH-LV-MYk" firstAttribute="leading" secondItem="iic-X1-5Hj" secondAttribute="leading" constant="40" id="ycy-Iq-2Sq"/>
+                            <constraint firstItem="ScH-LV-MYk" firstAttribute="leading" secondItem="2yY-vJ-dK1" secondAttribute="leading" constant="40" id="ycy-Iq-2Sq"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="2yY-vJ-dK1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contact us" id="uuM-De-mvz">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cGo-Vd-Qca">
@@ -1481,22 +1455,18 @@ Citilink Warehouse Complex
         <scene sceneID="Pip-kP-ofg">
             <objects>
                 <viewController id="gWl-q7-vZa" customClass="WardrobeController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OsQ-Wz-Vxq"/>
-                        <viewControllerLayoutGuide type="bottom" id="NMy-RC-vS5"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ATV-x9-siS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <connections>
                                     <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woZ-Hb-gQN">
-                                <rect key="frame" x="0.0" y="64" width="375" height="45"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="45"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
                                         <rect key="frame" x="0.0" y="8" width="375" height="29"/>
@@ -1516,7 +1486,7 @@ Citilink Warehouse Complex
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
-                                <rect key="frame" x="0.0" y="112" width="375" height="496"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="583"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1524,7 +1494,7 @@ Citilink Warehouse Complex
                                         <rect key="frame" x="0.0" y="22" width="375" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOn-Le-vWG" id="KIm-Or-0xq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
@@ -1577,19 +1547,20 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="woZ-Hb-gQN" secondAttribute="trailing" id="1FT-9a-j8I"/>
-                            <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="ydo-Bi-8mJ" secondAttribute="bottom" constant="10" id="4B8-ls-3Kq"/>
+                            <constraint firstItem="R8U-Mj-I8o" firstAttribute="trailing" secondItem="woZ-Hb-gQN" secondAttribute="trailing" id="1FT-9a-j8I"/>
+                            <constraint firstItem="R8U-Mj-I8o" firstAttribute="bottom" secondItem="ydo-Bi-8mJ" secondAttribute="bottom" constant="10" id="4B8-ls-3Kq"/>
                             <constraint firstItem="woZ-Hb-gQN" firstAttribute="leading" secondItem="ydo-Bi-8mJ" secondAttribute="leading" id="7NB-9V-umM"/>
-                            <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="ydo-Bi-8mJ" secondAttribute="bottom" id="HMd-SZ-BBK"/>
-                            <constraint firstItem="NMy-RC-vS5" firstAttribute="top" secondItem="RuY-Yc-7YU" secondAttribute="bottom" id="Kax-W1-v08"/>
+                            <constraint firstItem="R8U-Mj-I8o" firstAttribute="bottom" secondItem="ydo-Bi-8mJ" secondAttribute="bottom" id="HMd-SZ-BBK"/>
+                            <constraint firstItem="R8U-Mj-I8o" firstAttribute="bottom" secondItem="RuY-Yc-7YU" secondAttribute="bottom" id="Kax-W1-v08"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="trailing" secondItem="ATV-x9-siS" secondAttribute="trailingMargin" constant="16" id="SqC-xw-cbD"/>
-                            <constraint firstItem="woZ-Hb-gQN" firstAttribute="top" secondItem="OsQ-Wz-Vxq" secondAttribute="bottom" id="UGZ-45-5Rr"/>
+                            <constraint firstItem="woZ-Hb-gQN" firstAttribute="top" secondItem="R8U-Mj-I8o" secondAttribute="top" id="UGZ-45-5Rr"/>
                             <constraint firstItem="RuY-Yc-7YU" firstAttribute="top" secondItem="ATV-x9-siS" secondAttribute="top" id="VkE-eW-DyP"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="top" secondItem="woZ-Hb-gQN" secondAttribute="bottom" constant="3" id="Z3p-TQ-eXM"/>
                             <constraint firstItem="ydo-Bi-8mJ" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leadingMargin" constant="-16" id="dlT-qK-qZg"/>
-                            <constraint firstItem="RuY-Yc-7YU" firstAttribute="leading" secondItem="ATV-x9-siS" secondAttribute="leading" id="eIA-r1-uOK"/>
-                            <constraint firstAttribute="trailing" secondItem="RuY-Yc-7YU" secondAttribute="trailing" id="zPy-du-EcV"/>
+                            <constraint firstItem="RuY-Yc-7YU" firstAttribute="leading" secondItem="R8U-Mj-I8o" secondAttribute="leading" id="eIA-r1-uOK"/>
+                            <constraint firstItem="R8U-Mj-I8o" firstAttribute="trailing" secondItem="RuY-Yc-7YU" secondAttribute="trailing" id="zPy-du-EcV"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="R8U-Mj-I8o"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="HMd-SZ-BBK"/>
@@ -1612,7 +1583,7 @@ Citilink Warehouse Complex
         <scene sceneID="5D6-10-5KI">
             <objects>
                 <tabBarController id="dua-YX-667" customClass="TabbetViewController" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBg" shadowImage="topShadow" id="eKq-5x-BKt">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBg" id="eKq-5x-BKt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1630,6 +1601,7 @@ Citilink Warehouse Complex
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="jSo-mp-uSb"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="956" y="480"/>
@@ -1638,16 +1610,12 @@ Citilink Warehouse Complex
         <scene sceneID="pPC-bg-00S">
             <objects>
                 <viewController id="sjP-DD-tuF" userLabel="fbRegistrationController" customClass="FBRegistrationController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="acp-WF-Stg"/>
-                        <viewControllerLayoutGuide type="bottom" id="UFY-tf-2Fn"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-SH-YtR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-KE-yG7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
@@ -1809,11 +1777,12 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jyP-SH-YtR" secondAttribute="trailing" id="aL1-Jd-Dv7"/>
-                            <constraint firstItem="jyP-SH-YtR" firstAttribute="leading" secondItem="J5N-YH-Eaa" secondAttribute="leading" id="fwm-MN-JfL"/>
-                            <constraint firstItem="UFY-tf-2Fn" firstAttribute="top" secondItem="jyP-SH-YtR" secondAttribute="bottom" id="lD2-v3-HD1"/>
-                            <constraint firstItem="jyP-SH-YtR" firstAttribute="top" secondItem="acp-WF-Stg" secondAttribute="bottom" id="lad-7d-rI2"/>
+                            <constraint firstItem="KZS-mh-YiU" firstAttribute="trailing" secondItem="jyP-SH-YtR" secondAttribute="trailing" id="aL1-Jd-Dv7"/>
+                            <constraint firstItem="jyP-SH-YtR" firstAttribute="leading" secondItem="KZS-mh-YiU" secondAttribute="leading" id="fwm-MN-JfL"/>
+                            <constraint firstItem="KZS-mh-YiU" firstAttribute="bottom" secondItem="jyP-SH-YtR" secondAttribute="bottom" id="lD2-v3-HD1"/>
+                            <constraint firstItem="jyP-SH-YtR" firstAttribute="top" secondItem="KZS-mh-YiU" secondAttribute="top" id="lad-7d-rI2"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="KZS-mh-YiU"/>
                     </view>
                     <connections>
                         <outlet property="accountButton" destination="WlM-xJ-Wjc" id="buV-Yf-oj0"/>
@@ -1835,16 +1804,12 @@ Citilink Warehouse Complex
         <scene sceneID="ysi-K3-hsC">
             <objects>
                 <viewController id="lMP-mB-1Ki" customClass="RegistrationController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y6t-Ec-MNt"/>
-                        <viewControllerLayoutGuide type="bottom" id="ouI-7M-v2j"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hM7-JS-bIu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQp-DS-sci">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="444"/>
@@ -2040,11 +2005,12 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8Bi-CW-Ped" secondAttribute="trailing" id="VRD-Bc-bQg"/>
-                            <constraint firstItem="ouI-7M-v2j" firstAttribute="top" secondItem="8Bi-CW-Ped" secondAttribute="bottom" id="ZEg-1N-9CN"/>
-                            <constraint firstItem="8Bi-CW-Ped" firstAttribute="top" secondItem="y6t-Ec-MNt" secondAttribute="bottom" id="ZoY-fx-uws"/>
-                            <constraint firstItem="8Bi-CW-Ped" firstAttribute="leading" secondItem="hM7-JS-bIu" secondAttribute="leading" id="oMl-tM-nKP"/>
+                            <constraint firstItem="N3R-mP-HSn" firstAttribute="trailing" secondItem="8Bi-CW-Ped" secondAttribute="trailing" id="VRD-Bc-bQg"/>
+                            <constraint firstItem="N3R-mP-HSn" firstAttribute="bottom" secondItem="8Bi-CW-Ped" secondAttribute="bottom" id="ZEg-1N-9CN"/>
+                            <constraint firstItem="8Bi-CW-Ped" firstAttribute="top" secondItem="N3R-mP-HSn" secondAttribute="top" id="ZoY-fx-uws"/>
+                            <constraint firstItem="8Bi-CW-Ped" firstAttribute="leading" secondItem="N3R-mP-HSn" secondAttribute="leading" id="oMl-tM-nKP"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="N3R-mP-HSn"/>
                     </view>
                     <navigationItem key="navigationItem" id="ewn-O1-hgZ">
                         <barButtonItem key="leftBarButtonItem" image="backBtn" id="cZ5-bb-M8X">
@@ -2077,7 +2043,7 @@ Citilink Warehouse Complex
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
@@ -2097,13 +2063,10 @@ Citilink Warehouse Complex
         <scene sceneID="dii-Pr-ipc">
             <objects>
                 <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw">
-                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2120,7 +2083,7 @@ Citilink Warehouse Complex
             <objects>
                 <tableViewController id="kpk-cm-DsD" userLabel="Category selection" customClass="ChooseCategoryController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" id="HMG-Gc-zjG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -2129,7 +2092,7 @@ Citilink Warehouse Complex
                                 <rect key="frame" x="0.0" y="22" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EF3-7w-xOt" id="CGq-z7-XlJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="28B-eB-BtK">
@@ -2187,11 +2150,10 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shop" image="shop" selectedImage="shop-pink" id="1mj-Cd-aNH">
-                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2207,12 +2169,11 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO">
-                        <inset key="imageInsets" minX="0.0" minY="-29" maxX="0.0" maxY="29"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-52"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2229,11 +2190,11 @@ Citilink Warehouse Complex
             <objects>
                 <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" enabled="NO" title="" id="VZF-2f-aWD">
-                        <inset key="imageInsets" minX="0.0" minY="-45" maxX="0.0" maxY="45"/>
+                        <inset key="imageInsets" minX="0.0" minY="-45" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2249,19 +2210,15 @@ Citilink Warehouse Complex
         <scene sceneID="NXL-hK-0LT">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="iP8-pg-fu8" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TyN-7o-3Gb"/>
-                        <viewControllerLayoutGuide type="bottom" id="yCq-FD-tf5"/>
-                    </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZZ2-j3-YMt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="s3p-LN-sHj">
-                                <rect key="frame" x="0.0" y="59" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="83" width="375" height="577"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start_selling" translatesAutoresizingMaskIntoConstraints="NO" id="kPA-K8-Owj">
-                                        <rect key="frame" x="97" y="230" width="181" height="277"/>
+                                        <rect key="frame" x="97.333333333333314" y="283" width="181" height="277"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="181" id="8au-PL-dJO"/>
                                             <constraint firstAttribute="height" constant="277" id="IUX-n1-paj"/>
@@ -2277,11 +2234,12 @@ Citilink Warehouse Complex
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="s3p-LN-sHj" firstAttribute="top" secondItem="TyN-7o-3Gb" secondAttribute="bottom" constant="39" id="3jm-em-5LH"/>
-                            <constraint firstItem="s3p-LN-sHj" firstAttribute="leading" secondItem="ZZ2-j3-YMt" secondAttribute="leading" id="DWw-cG-Z7D"/>
-                            <constraint firstAttribute="trailing" secondItem="s3p-LN-sHj" secondAttribute="trailing" id="cch-2F-Nve"/>
-                            <constraint firstItem="yCq-FD-tf5" firstAttribute="top" secondItem="s3p-LN-sHj" secondAttribute="bottom" constant="35" id="jyL-xa-LsG"/>
+                            <constraint firstItem="s3p-LN-sHj" firstAttribute="top" secondItem="laJ-Mq-1bo" secondAttribute="top" constant="39" id="3jm-em-5LH"/>
+                            <constraint firstItem="s3p-LN-sHj" firstAttribute="leading" secondItem="laJ-Mq-1bo" secondAttribute="leading" id="DWw-cG-Z7D"/>
+                            <constraint firstItem="laJ-Mq-1bo" firstAttribute="trailing" secondItem="s3p-LN-sHj" secondAttribute="trailing" id="cch-2F-Nve"/>
+                            <constraint firstItem="laJ-Mq-1bo" firstAttribute="bottom" secondItem="s3p-LN-sHj" secondAttribute="bottom" constant="35" id="jyL-xa-LsG"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="laJ-Mq-1bo"/>
                     </view>
                     <toolbarItems/>
                 </viewController>
@@ -2293,23 +2251,22 @@ Citilink Warehouse Complex
     <resources>
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
-        <image name="Logo" width="64" height="64"/>
+        <image name="Logo" width="85" height="85"/>
         <image name="backBtn" width="19" height="32"/>
-        <image name="notifications" width="23" height="22"/>
-        <image name="notifications-pink" width="23" height="22"/>
-        <image name="profile" width="22" height="22"/>
-        <image name="profile-pink" width="22" height="22"/>
-        <image name="shop" width="22" height="22"/>
-        <image name="shop-pink" width="22" height="22"/>
+        <image name="notifications" width="31" height="30"/>
+        <image name="notifications-pink" width="31" height="30"/>
+        <image name="profile" width="30" height="30"/>
+        <image name="profile-pink" width="30" height="30"/>
+        <image name="shop" width="30" height="30"/>
+        <image name="shop-pink" width="30" height="30"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
-        <image name="tabBg" width="640" height="91"/>
-        <image name="topShadow" width="660" height="95"/>
-        <image name="wardrobe" width="37" height="22"/>
-        <image name="wardrobe-pink" width="37" height="22"/>
+        <image name="tabBg" width="316" height="45"/>
+        <image name="wardrobe" width="25" height="25"/>
+        <image name="wardrobe-pink" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ReU-Ip-U3f"/>
-        <segue reference="1dd-Ww-h8O"/>
+        <segue reference="dPg-nh-fPh"/>
+        <segue reference="Iws-61-RlG"/>
     </inferredMetricsTieBreakers>
 </document>

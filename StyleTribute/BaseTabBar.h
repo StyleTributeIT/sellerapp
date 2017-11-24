@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseTabBar : UITabBarController<UITabBarControllerDelegate, UITabBarDelegate>
-// Create a view controller and setup it's tab bar item with a title and image
--(UIViewController*) viewControllerWithTabTitle:(NSString*)title image:(UIImage*)image;
+
+@property (nonnull, nonatomic, strong) UIButton* _button_sell;
 
 // Create a custom UIButton and add it to the center of our tab bar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage;
+
+- (void) adjustPositionSellButton;
 @end

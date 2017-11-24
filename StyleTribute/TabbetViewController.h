@@ -10,4 +10,6 @@
 
 @interface TabbetViewController : BaseTabBar
 
+@property (nonatomic) BOOL _layoued_out;
+
 @end
