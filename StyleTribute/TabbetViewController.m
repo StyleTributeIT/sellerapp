@@ -14,18 +14,29 @@
 
 @implementation TabbetViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
+    self._layoued_out = NO;
+
     [self addCenterButtonWithImage:[UIImage imageNamed:@"camera"] highlightImage:[UIImage imageNamed:@"camera"]];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (!self._layoued_out)
+    {
+        self._layoued_out = YES;
+
+        [self adjustPositionSellButton];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    
 }
 
 @end
