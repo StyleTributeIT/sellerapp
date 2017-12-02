@@ -19,6 +19,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
+@import Firebase;
 
 @interface AppDelegate ()
 
@@ -30,6 +31,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FIRApp configure];
     [Fabric with:@[[Crashlytics class]]];
 
     // Override point for customization after application launch.
