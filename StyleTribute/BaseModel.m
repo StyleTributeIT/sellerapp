@@ -11,46 +11,84 @@
 @implementation BaseModel
 
 +(BOOL)parseBool:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSNumber* val = [dict objectForKey:param];
-    if(val) {
-        return [val boolValue];
-    } else {
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        NSNumber* val = [dict objectForKey:param];
+        if(val) {
+            return [val boolValue];
+        } else {
+            return NO;
+        }
+    }
+    else
+    {
         return NO;
     }
 }
 
 +(NSString*)parseString:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSString* val = [dict objectForKey:param];
-    if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        NSString* val = [dict objectForKey:param];
+        if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
+            return nil;
+        } else {
+            return val;
+        }
+    }
+    else
+    {
         return nil;
-    } else {
-        return val;
     }
 }
 
 +(long)parseInt:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSNumber* val = [dict objectForKey:param];
-    if(val) {
-        return [val intValue];
-    } else {
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        NSNumber* val = [dict objectForKey:param];
+        if(val)
+        {
+            return [val intValue];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    else
+    {
         return 0;
     }
 }
 
 +(BOOL)parseUInteger:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSNumber* val = [dict objectForKey:param];
-    if(val) {
-        return [val unsignedIntegerValue];
-    } else {
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        NSNumber* val = [dict objectForKey:param];
+        if(val) {
+            return [val unsignedIntegerValue];
+        } else {
+            return 0;
+        }
+    }
+    else
+    {
         return 0;
     }
 }
 
 +(long)parseLong:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSNumber* val = [dict objectForKey:param];
-    if(val) {
-        return [val longValue];
-    } else {
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        NSNumber* val = [dict objectForKey:param];
+        if(val) {
+            return [val longValue];
+        } else {
+            return 0;
+        }
+    }
+    else
+    {
         return 0;
     }
 }
