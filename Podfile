@@ -16,6 +16,7 @@ target 'StyleTribute' do
 	pod 'FBSDKCoreKit', '~>4.22.0'
 	pod 'FBSDKLoginKit', '~>4.22.0'
 	pod 'FBSDKShareKit', '~>4.22.0'
+	pod 'CleverTap-iOS-SDK'
 end
 
 target 'StyleTributeTests' do

@@ -18,6 +18,7 @@
 #import "WelcomeController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <CleverTapSDK/CleverTap.h>
 
 @import Firebase;
 
@@ -34,6 +35,8 @@
     [FIRApp configure];
     [Fabric with:@[[Crashlytics class]]];
 
+    [CleverTap autoIntegrate];
+    
     // Override point for customization after application launch.
     NSLog( @"### running FB sdk version: %@", [FBSDKSettings sdkVersion] );
   //  [TestFairy begin:@"8aecdb789c2b51a840eafed3b8acc3d0aa49373c"];
