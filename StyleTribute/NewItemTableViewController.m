@@ -377,13 +377,16 @@ int sectionOffset = 0;
                                 
                                 if (cur_product && oldPhoto)
                                 {
-                                    [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:cur_product.identifier success:^{
-                                        self.imgLoadBlock(i);
-                                        dispatch_group_leave(group);
-                                    } failure:^(NSString *error) {
-                                        self.imgLoadBlock(i);
-                                        dispatch_group_leave(group);
-                                    }];
+                                    if (![cur_product isEqual:[NSNull null]] && ![oldPhoto isEqual:[NSNull null]])
+                                    {
+                                        [[ApiRequester sharedInstance] deleteImage:oldPhoto.identifier fromProduct:cur_product.identifier success:^{
+                                            self.imgLoadBlock(i);
+                                            dispatch_group_leave(group);
+                                        } failure:^(NSString *error) {
+                                            self.imgLoadBlock(i);
+                                            dispatch_group_leave(group);
+                                        }];
+                                    }
                                 }
                             }
                         } else if(imageType.state == ImageStateDeleted) {

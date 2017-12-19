@@ -113,8 +113,17 @@
     }
     
     NSArray* curSection = [self.sections objectAtIndex:indexPath.section];
-    NamedItem* designer = [curSection objectAtIndex:indexPath.row];
-    cell.textLabel.text = designer.name;
+    if (curSection)
+    {
+        if (curSection.count > indexPath.row)
+        {
+            NamedItem* designer = [curSection objectAtIndex:indexPath.row];
+            if (designer.name)
+            {
+                cell.textLabel.text = designer.name;
+            }
+        }
+    }
     return cell;
 }
 
