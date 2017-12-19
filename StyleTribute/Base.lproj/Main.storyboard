@@ -257,6 +257,9 @@
                                                 <state key="normal" title="Sign in" backgroundImage="Button">
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="login:" destination="W2W-9d-Wfs" eventType="touchUpInside" id="r20-pN-5So"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kV-EV-Gpy" customClass="AttributedLabel">
                                                 <rect key="frame" x="16" y="101" width="288" height="21"/>
@@ -2265,7 +2268,7 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dPg-nh-fPh"/>
-        <segue reference="Iws-61-RlG"/>
+        <segue reference="ReU-Ip-U3f"/>
+        <segue reference="XTf-8t-q92"/>
     </inferredMetricsTieBreakers>
 </document>

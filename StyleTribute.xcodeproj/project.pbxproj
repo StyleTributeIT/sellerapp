@@ -119,6 +119,7 @@
 		E1BC25461DF861C400DF2FB2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BC25451DF861C400DF2FB2 /* libsqlite3.tbd */; };
 		E1BC254A1DF867B400DF2FB2 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BC25491DF867B400DF2FB2 /* NotificationTableViewCell.m */; };
 		E1BC254C1DF9E1D100DF2FB2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BC254B1DF9E1D100DF2FB2 /* UserNotifications.framework */; };
+		EC7A82DA1FD263540095A761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC7A82D91FD263530095A761 /* GoogleService-Info.plist */; };
 		F9CD11991E0AF6C20021A7A1 /* Guid3.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9CD11981E0AF6C20021A7A1 /* Guid3.xib */; };
 /* End PBXBuildFile section */
 
@@ -342,6 +343,7 @@
 		E1FEE4B61E0B30A700C09448 /* WatchNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = WatchNotificationPayload.apns; sourceTree = "<group>"; };
 		E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTributeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA21526F6B1CFAEF28B1A2B6 /* Pods-StyleTributeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC7A82D91FD263530095A761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9CD11981E0AF6C20021A7A1 /* Guid3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Guid3.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -453,6 +455,7 @@
 				7A0EB6071AEE23D400D90001 /* Supporting Files */,
 				7AA5EAD91AEE322900CAB83B /* GlobalDefs.h */,
 				E1FEE4B61E0B30A700C09448 /* WatchNotificationPayload.apns */,
+				EC7A82D91FD263530095A761 /* GoogleService-Info.plist */,
 			);
 			path = StyleTribute;
 			sourceTree = "<group>";
@@ -907,6 +910,7 @@
 				7A600F781B0B777200CCD5F3 /* Montserrat-UltraLight.otf in Resources */,
 				E18060C21DD3327400B4056F /* PriceFlow.storyboard in Resources */,
 				E1B059EC1DCBCE6400D14D91 /* AddBrandTableViewCell.xib in Resources */,
+				EC7A82DA1FD263540095A761 /* GoogleService-Info.plist in Resources */,
 				67E756571B8DA7EB000C1BDD /* Montserrat-Regular.otf in Resources */,
 				5330FFAA1DDE2FF0001B0D0D /* ProductFlow.storyboard in Resources */,
 				67E756561B8DA7EB000C1BDD /* Montserrat-Light.otf in Resources */,

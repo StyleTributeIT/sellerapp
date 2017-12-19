@@ -1,5 +1,6 @@
 platform :ios, '9.0'
 target 'StyleTribute' do
+	pod 'Firebase/Core'
 	pod 'AFNetworking', '~> 2.6'
 	pod 'Reachability'
 	pod 'KASlideShow', '= 2.2'
@@ -10,11 +11,11 @@ target 'StyleTribute' do
 	pod 'MRProgress'
 	pod 'CRToast'
 	pod 'Fabric'
-	pod 'Crashlytics'
+	pod 'Crashlytics', '~> 3.9'
 	pod 'ZDCChat'
-    pod 'FBSDKCoreKit', '~>4.22.0'
-    pod 'FBSDKLoginKit', '~>4.22.0'
-    pod 'FBSDKShareKit', '~>4.22.0'
+	pod 'FBSDKCoreKit', '~>4.22.0'
+	pod 'FBSDKLoginKit', '~>4.22.0'
+	pod 'FBSDKShareKit', '~>4.22.0'
 end
 
 target 'StyleTributeTests' do
