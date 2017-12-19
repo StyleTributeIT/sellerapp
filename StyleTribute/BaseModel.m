@@ -29,10 +29,20 @@
 }
 
 +(long)parseInt:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSNumber* val = [dict objectForKey:param];
-    if(val) {
-        return [val intValue];
-    } else {
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        NSNumber* val = [dict objectForKey:param];
+        if(val)
+        {
+            return [val intValue];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    else
+    {
         return 0;
     }
 }

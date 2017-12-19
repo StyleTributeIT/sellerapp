@@ -107,12 +107,12 @@
     //            [defs setObject:result.token.tokenString forKey:@"fbToken"];
                 
                 [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-                [[ApiRequester sharedInstance] loginWithFBToken:result.token.tokenString success:^(BOOL loggedIn, UserProfile* fbProfile) {
+                [[ApiRequester sharedInstance] loginWithFBToken:result.token.tokenString success:^(BOOL loggedIn, UserProfile* profile) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     
-                    [DataCache sharedInstance].userProfile = fbProfile;
+                    [DataCache sharedInstance].userProfile = profile;
                     if(loggedIn) {
-                        if([fbProfile isFilled]) {
+                        if([profile isFilled]) {
                             [reference performSegueWithIdentifier:@"showMainScreenSegue" sender:reference];
                         } else {
                             [reference performSegueWithIdentifier:@"moreDetailsSegue" sender:reference];

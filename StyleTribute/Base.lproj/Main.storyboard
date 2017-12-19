@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -175,10 +174,10 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="C98-WH-ozF"/>
-                                <exclude reference="QGa-mD-byI"/>
                                 <exclude reference="iMb-lc-Rzu"/>
-                                <exclude reference="jU8-K1-sjy"/>
                                 <exclude reference="pIP-NT-hMa"/>
+                                <exclude reference="QGa-mD-byI"/>
+                                <exclude reference="jU8-K1-sjy"/>
                                 <exclude reference="rdq-EI-tOm"/>
                             </mask>
                         </variation>
@@ -1169,7 +1168,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HC4-8v-jCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3ec-lA-3IZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4185" y="2474"/>
+            <point key="canvasLocation" x="4001" y="2504"/>
         </scene>
         <!--Title-->
         <scene sceneID="lC3-OS-TXm">
@@ -1325,7 +1324,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-3h-1LV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qZY-yz-hbq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3362" y="3000"/>
+            <point key="canvasLocation" x="3270" y="2933"/>
         </scene>
         <!--Contact us-->
         <scene sceneID="02h-ZL-Kac">
@@ -1449,7 +1448,7 @@ Citilink Warehouse Complex
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3361" y="2327"/>
+            <point key="canvasLocation" x="3321" y="2070"/>
         </scene>
         <!--Wardrobe Controller-->
         <scene sceneID="Pip-kP-ofg">
