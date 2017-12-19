@@ -11,7 +11,7 @@ target 'StyleTribute' do
 	pod 'MRProgress'
 	pod 'CRToast'
 	pod 'Fabric'
-	pod 'Crashlytics', '~> 3.9'
+	pod 'Crashlytics', '~> 3.9.3'
 	pod 'ZDCChat'
 	pod 'FBSDKCoreKit', '~>4.22.0'
 	pod 'FBSDKLoginKit', '~>4.22.0'
