@@ -24,12 +24,27 @@
     
     NSMutableArray* imgTypes = [NSMutableArray new];
     NSDictionary* imgTypeArray = [dict objectForKey:@"image_types"];
-    if(imgTypeArray != nil) for(NSDictionary* imgTypeDict in imgTypeArray) {
-        ImageType* imgType = [ImageType parseFromJson:imgTypeDict];
-        [imgTypes addObject:imgType];
+    if (imgTypeArray != nil)
+    {
+        if (imgTypeArray.count > 0)
+        {
+            NSLog(@"imgTypeArray: %@", imgTypeArray);
+        }
+    }
+    if(imgTypeArray != nil)
+    {
+        for(NSDictionary* imgTypeDict in imgTypeArray)
+        {
+            ImageType* imgType = [ImageType parseFromJson:imgTypeDict];
+            [imgTypes addObject:imgType];
+        }
     }
     category.imageTypes = imgTypes;
     category.sizeFields = [dict objectForKey:@"size_fields"];
+    if (category.sizeFields != nil)
+    {
+        NSLog(@"size Fields isn't null");
+    }
     NSMutableArray* categories = [NSMutableArray new];
     for (NSDictionary* categoryDict in [dict objectForKey:@"children"]) {
         [categories addObject:[STCategory parseFromJson:categoryDict]];

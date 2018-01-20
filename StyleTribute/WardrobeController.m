@@ -59,16 +59,6 @@
                               forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = supportBtn;
 
-    
-    //[self updateProducts];
-    
-   /* NSDictionary* textAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
-                                      NSForegroundColorAttributeName: [UIColor colorWithRed:132.0/255 green:132.0/255 blue:132.0/255 alpha:1] };
-    NSDictionary* selectedTextAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:12],
-                                              NSForegroundColorAttributeName: [UIColor whiteColor]};
-    
-    [self.wardrobeType setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-    [self.wardrobeType setTitleTextAttributes:selectedTextAttributes forState:UIControlStateSelected];*/
     self.wardrobeType.accessibilityLabel = @"Wardrobe items type";
 	
 	//_itemsTable.scrollIndicatorInsets=UIEdgeInsetsMake(64.0,0.0,44.0,0.0);
@@ -327,18 +317,13 @@
         if ([viewController isKindOfClass:[ProductNavigationViewController class]]){
             ProductNavigationViewController *vc = (ProductNavigationViewController * ) viewController;
             vc.curProduct = product;
-            
-           // vc.isEditingItem = YES;            
+          
             [DataCache setSelectedItem:product];
             [DataCache sharedInstance].isEditingItem = YES;
+            break;
         }
     }
     [self presentViewController:navController animated:YES completion:nil] ;
-//    MainTabBarController* tabController = (MainTabBarController*)self.tabBarController;
-//    AddWardrobeItemController* awic = (AddWardrobeItemController*)[[tabController.viewControllers objectAtIndex:1] visibleViewController];
-//    awic.curProduct = product;
-//    awic.isEditing = YES;
-//    [tabController setSelectedIndex:1];  // Go to item detail page
 }
 
 #pragma mark - MGSwipeTableCellDelegate

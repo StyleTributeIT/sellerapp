@@ -13,9 +13,9 @@ target 'StyleTribute' do
 	pod 'Fabric'
 	pod 'Crashlytics', '~> 3.9.3'
 	pod 'ZDCChat'
-	pod 'FBSDKCoreKit', '~>4.22.0'
-	pod 'FBSDKLoginKit', '~>4.22.0'
-	pod 'FBSDKShareKit', '~>4.22.0'
+	pod 'FBSDKCoreKit', '~>4.29.0'
+	pod 'FBSDKLoginKit', '~>4.29.0'
+	pod 'FBSDKShareKit', '~>4.29.0'
 end
 
 target 'StyleTributeTests' do

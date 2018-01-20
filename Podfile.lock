@@ -21,21 +21,21 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - CRToast (0.0.9)
   - Fabric (1.7.2)
-  - FBSDKCoreKit (4.22.1):
+  - FBSDKCoreKit (4.29.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.22.1):
+  - FBSDKLoginKit (4.29.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.22.1):
+  - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
   - Firebase/Core (4.8.0):
     - FirebaseAnalytics (= 4.0.5)
@@ -111,9 +111,9 @@ DEPENDENCIES:
   - Crashlytics (~> 3.9.3)
   - CRToast
   - Fabric
-  - FBSDKCoreKit (~> 4.22.0)
-  - FBSDKLoginKit (~> 4.22.0)
-  - FBSDKShareKit (~> 4.22.0)
+  - FBSDKCoreKit (~> 4.29.0)
+  - FBSDKLoginKit (~> 4.29.0)
+  - FBSDKShareKit (~> 4.29.0)
   - Firebase/Core
   - KASlideShow (= 2.2)
   - KIF
@@ -127,13 +127,13 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
-  FBSDKCoreKit: 9c2daf0162214d6d2e21cf8208a9c6c2a2e42b9c
-  FBSDKLoginKit: 00cf28916b9f0169763a3d61985d745b579fe304
-  FBSDKShareKit: 1cbd0fdc2bb3277dd3522512855dcf1f4088f734
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
   Firebase: 710decbbc6d9d48530e9a5dba3209740c3532e05
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
   FirebaseCore: 3c02ec652db3d03fdc8bc6d9154af3e20d64b6f5
@@ -149,6 +149,6 @@ SPEC CHECKSUMS:
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   ZDCChat: 022351259c723b713bc701f71a244e4416a92257
 
-PODFILE CHECKSUM: 850d08a4ff38d105b4ab3d2be4d1c4ad1b0d8ec1
+PODFILE CHECKSUM: c7bc65eab6ec68a59ea60cf17420e0a30f0bf974
 
 COCOAPODS: 1.3.1

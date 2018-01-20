@@ -276,28 +276,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
             Product* product = [Product parseFromJson:productDict];
             [products addObject:product];
         }
-       /* NSUInteger productId = 9434;
-        NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-        NSMutableArray *prods = [NSMutableArray arrayWithArray:[defs objectForKey:@"notifications"]];
-        if (!prods)
-            prods = [[NSMutableArray alloc] init];
-        [prods addObject:@{@"alert":@"Test alert",@"pid":@"9434"}];
-        [defs setObject:prods forKey:@"notifications"];
-        [defs synchronize];
-        // get product name from id
-        if([DataCache sharedInstance].products != nil) {
-            Product* product = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* p) {
-                return (p.identifier == productId);
-            }] firstObject];
-            
-            if(product != nil) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    //                [GlobalHelper showMessage:alert withTitle:product.name];
-                    Photo* photo = [product.photos firstObject];
-                    [GlobalHelper showToastNotificationWithTitle:product.name subtitle:@"Test image" imageUrl:(photo ? photo.imageUrl : nil)];
-                });
-            }
-        }*/
         success(products);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self logError:error withCaption:@"getProducts error"];
