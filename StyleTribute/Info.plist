@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5.1</string>
+	<string>1.8.4</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -93,11 +93,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow StyleTribute to use your camera.</string>
+	<string>To upload product pictures, Styletribute needs to access your camera.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Allow StyleTribute to access your contacts.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow StyleTribute to use your photo library.</string>
+	<string>To select product pictures, Styletribute needs to access your library.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

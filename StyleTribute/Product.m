@@ -171,10 +171,15 @@ STCategory *pCategory = nil;
     
     NSDictionary* dimensions = [dict objectForKey:@"dimensions"];
     if(dimensions) {
-        NSString* width = [self parseString:@"width" fromDict:dimensions];
-        NSString* height = [self parseString:@"height" fromDict:dimensions];
-        NSString* depth = [self parseString:@"depth" fromDict:dimensions];
-        product.dimensions = @[width, height, depth];
+        if([self parseString:@"width" fromDict:dimensions]
+           && [self parseString:@"height" fromDict:dimensions]
+           && [self parseString:@"depth" fromDict:dimensions]){
+            NSString* width = [self parseString:@"width" fromDict:dimensions];
+            NSString* height = [self parseString:@"height" fromDict:dimensions];
+            NSString* depth = [self parseString:@"depth" fromDict:dimensions];
+            product.dimensions = @[width, height, depth];
+        }
+        
     }
 	if ([dict valueForKey:@"kidzsize"] != nil)
     {

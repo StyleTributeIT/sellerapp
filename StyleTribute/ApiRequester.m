@@ -275,6 +275,8 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
         for (NSDictionary* productDict in responseArray) {
             Product* product = [Product parseFromJson:productDict];
             [products addObject:product];
+        
+            
         }
         success(products);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -446,6 +448,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
     NSString* url = [NSString stringWithFormat:@"%@seller/product/%zd/photos", DefApiHost, productId];
+    //NSString* url = [NSString stringWithFormat:@"%@seller/product/%zd/photos", [[[NSProcessInfo processInfo]environment]objectForKey:@"API_CONFIGURATION"], productId];
     NSDictionary* params = @{@"label": type};
     
     NSProgress *p;
