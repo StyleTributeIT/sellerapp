@@ -158,32 +158,6 @@ int sectionOffset = 0;
         self.hideSkipInGuide = NO;
         if (!self.isInitialized)
         {
-           /* NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
-            NSMutableArray *copyViewControllers = [NSMutableArray new];
-            for (int i = 0; i < allViewControllers.count; i++) {
-                if ([allViewControllers[i] isKindOfClass:[TopCategoriesViewController class]])
-                {
-                    [copyViewControllers insertObject:allViewControllers[i] atIndex:0];
-                } else
-                    if ([allViewControllers[i] isKindOfClass:[ChooseBrandController class]])
-                    {
-                        [copyViewControllers insertObject:allViewControllers[i] atIndex:1];
-                    } else
-                    {
-                        if (![self containsSelfClass:copyViewControllers] && i != 0)
-                        {
-                            if ([allViewControllers[i] isKindOfClass:[self class]])
-                                ((NewItemTableViewController*)allViewControllers[i]).productCopy = self.productCopy;
-                            [copyViewControllers addObject:allViewControllers[i]];
-                        }
-                        
-                    }
-            }
-            if (copyViewControllers.count == 0)
-            {
-                [copyViewControllers addObject:self];
-            }
-            self.navigationController.viewControllers = copyViewControllers;*/
         }
         self.isInitialized = YES;
     }
@@ -207,31 +181,11 @@ int sectionOffset = 0;
             [self dismissViewControllerAnimated:true completion:nil];
         else
         {
-          /*  NSMutableArray *allViewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
-            
-            for (UIViewController *aViewController in allViewControllers) {
-                if ([aViewController isKindOfClass:[ChooseBrandController class]]) {
-                    [self.navigationController popToViewController:aViewController animated:YES];
-                }
-            }*/
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
 
 - (IBAction)done:(id)sender {
-   // if (self.isEditingItem)
-   /* if (self.curProduct.price > self.originalCopy.price){
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Error"
-                                      message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", self.originalCopy.price]
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        }];
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
-    }*/
     STCategory *category = self.curProduct.category;
     NSString* firstSize = [category.sizeFields firstObject];
     if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
