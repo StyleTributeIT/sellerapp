@@ -46,10 +46,12 @@ typedef void(^ImageLoadBlock)(int);
 @property Photo* lastPhoto;
 @property (copy) ImageLoadBlock imgLoadBlock;
 @property NSUInteger selectedImageIndex;
+@property UIImage *imagedata;
 @property UIActionSheet* photoActionsSheet;
 @property Product *productCopy;
 @property Product *originalCopy;
 @property NSMutableArray* photosToDelete;
+@property NSInteger *productid;
 @property XCDFormInputAccessoryView* inputAccessoryView;
 @end
 
@@ -105,14 +107,14 @@ int sectionOffset = 0;
     {
         sectionOffset = 0;
         [super viewWillAppear:animated];
-        self.curProduct = [DataCache getSelectedItem];
-        if(self.curProduct == nil) {
-            self.curProduct = [Product new];
-            self.productCopy = self.curProduct;
-            self.originalCopy = [self.productCopy copy];
-            [DataCache setSelectedItem:self.curProduct];
-            [DataCache sharedInstance].isEditingItem = NO;            
-        }
+//        self.curProduct = [DataCache getSelectedItem];
+//        if(self.curProduct == nil) {
+//            self.curProduct = [Product new];
+//            self.productCopy = self.curProduct;
+//            self.originalCopy = [self.productCopy copy];
+//            [DataCache setSelectedItem:self.curProduct];
+//            [DataCache sharedInstance].isEditingItem = NO;
+//        }
         STCategory *category = self.curProduct.category;
         NSString* firstSize = [category.sizeFields firstObject];
         if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
@@ -144,7 +146,7 @@ int sectionOffset = 0;
             } else
             {
                 self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-                self.navigationItem.title = self.curProduct.category.name;
+                self.navigationItem.title = self.curProduct.name;
             }
             
             [self.tableView reloadData];
@@ -213,12 +215,13 @@ int sectionOffset = 0;
             self.curProduct.dimensions = @[cell.bagWidth.text, cell.bagHeight.text, cell.bagDepth.text];
         }
     }
-    if ([self.originalCopy isEqual:self.curProduct ])
-    {
-        [self dismissViewControllerAnimated:true completion:nil];
-        return;
-    }
-    [self saveProduct:![self.originalCopy isEqual:self.curProduct]];
+//    if ([self.originalCopy isEqual:self.curProduct ])
+//    {
+//        [self dismissViewControllerAnimated:true completion:nil];
+//        return;
+//    }
+    self.productid = self.curProduct.identifier;
+    [self saveProduct:self.curProduct];
 
 }
 
@@ -253,8 +256,6 @@ int sectionOffset = 0;
         }
         [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            //            self.curProduct.identifier = product.identifier;
-            //            self.curProduct.processStatus = product.processStatus;
             if (self.isEditingItem)
             {
                 NSMutableArray *tempImages = [[NSMutableArray alloc] init];
@@ -291,6 +292,7 @@ int sectionOffset = 0;
             
             if(self.curProduct.photos != nil)// && self.curProduct.category != nil)
             {
+                NSLog(@"%ld",self.curProduct.identifier);
                 __block Product *cur_product = self.curProduct;
                 //__block ImageLoadBlock *img_load_block = self.imgLoadBlock;
                 __block NSMutableArray *photos_to_delete = self.photosToDelete;
@@ -310,7 +312,7 @@ int sectionOffset = 0;
                         if(photo != nil && [photo isKindOfClass:[Photo class]] && imageType.state == ImageStateNew) {
                             dispatch_group_enter(group);
                             [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, cur_product.photos.count]];
-                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:cur_product.identifier success:^{
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:imageType.type toProduct:self.productid success:^{
                                 imageType.state = ImageStateNormal;
                                 self.imgLoadBlock(i + 1);
                                 dispatch_group_leave(group);
@@ -378,7 +380,7 @@ int sectionOffset = 0;
                         if(photo != nil && photo.image != nil) {
                             [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, cur_product.photos.count]];
                             dispatch_group_enter(group);
-                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:@"custom" toProduct:cur_product.identifier success:^{
+                            [[ApiRequester sharedInstance] uploadImage:photo.image ofType:@"custom" toProduct:self.productid success:^{
                                 self.imgLoadBlock(i + 1);
                                 dispatch_group_leave(group);
                             } failure:^(NSString *error) {
@@ -397,7 +399,6 @@ int sectionOffset = 0;
                 };
                 self.imgLoadBlock(0);
             }
-            
             dispatch_group_notify(group, queue, ^{
                 NSLog(@"All tasks done");
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -1080,6 +1081,7 @@ int sectionOffset = 0;
         Photo* photo = [Photo new];
         [self.curProduct.photos addObject:photo];
     }
+    _imagedata = info[UIImagePickerControllerOriginalImage];
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     UIImage *finalImage = [chosenImage fixOrientation:chosenImage.imageOrientation];
     

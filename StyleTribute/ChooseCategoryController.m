@@ -25,6 +25,7 @@
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            
             [DataCache sharedInstance].categories = categories;
             
             [self.categoriesTableView reloadData];

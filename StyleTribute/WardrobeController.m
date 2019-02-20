@@ -81,13 +81,6 @@
     [self updateProducts];
     self.itemsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
-
-//-(void)viewDidAppear:(BOOL)animated{
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [GlobalHelper showToastNotificationWithTitle:@"Test product" subtitle:@"Test message" imageUrl:/*@"http://image.made-in-china.com/2f0j00dvBQaODhfNkr/2011-Fashion-Women-High-Heel-Shoes-J85-.jpg"*/nil];
-//    });
-//}
-
 - (void) popToSupport{
     [ZDCChat initializeWithAccountKey:DefZendeskKey];
 
@@ -118,6 +111,7 @@
     if([DataCache sharedInstance].categories == nil) {
         dispatch_group_enter(group);
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
+            NSLog(@"%@",categories);
             [DataCache sharedInstance].categories = categories;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
@@ -134,7 +128,7 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if([DataCache sharedInstance].conditions == nil) {
         dispatch_group_enter(group);
         [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
@@ -144,57 +138,38 @@
             dispatch_group_leave(group);
         }];
     }
-    
+
     if([DataCache sharedInstance].countries == nil) {
         dispatch_group_enter(group);
         [[ApiRequester sharedInstance] getCountries:^(NSArray *countries) {
+
             [DataCache sharedInstance].countries = countries;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
             dispatch_group_leave(group);
         }];
     }
-    
-    if([DataCache sharedInstance].shoeSizes == nil) {
+
+   
+	
+    if([DataCache sharedInstance].units == nil) {
         dispatch_group_enter(group);
-        [[ApiRequester sharedInstance] getSizeValues:@"shoesize" success:^(NSArray *sizes) {
-            [DataCache sharedInstance].shoeSizes = sizes;
+        [[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
+            [DataCache sharedInstance].units = units;
             dispatch_group_leave(group);
         } failure:^(NSString *error) {
             dispatch_group_leave(group);
         }];
-    }
-    
-    if ([DataCache sharedInstance].kidzSizes == nil)
-    {
-        dispatch_group_enter(group);
-        [[ApiRequester sharedInstance] getSizeValues:@"kidzsize" success:^(NSArray *sizes) {
-            [DataCache sharedInstance].kidzSizes = sizes;
-            dispatch_group_leave(group);
-        } failure:^(NSString *error) {
-            dispatch_group_leave(group);
-        }];
-    }
-    
-	
-	if([DataCache sharedInstance].units == nil) {
-		dispatch_group_enter(group);
-		[[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
-			[DataCache sharedInstance].units = units;
-			dispatch_group_leave(group);
-		} failure:^(NSString *error) {
-			dispatch_group_leave(group);
-		}];
-	}
-	
+   }
+	  [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
     dispatch_group_notify(group, queue, ^{
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].products = [products mutableCopy];
             [self storeProductsInGroups:products];
-			[self.itemsTable reloadData];
-			[self updateWelcomeView];
-			
+            [self.itemsTable reloadData];
+            [self updateWelcomeView];
+            
             if([DataCache sharedInstance].openProductOnstart > 0) {
                 Product* p = [[[DataCache sharedInstance].products linq_where:^BOOL(Product* item) {
                     return (item.identifier == [DataCache sharedInstance].openProductOnstart);

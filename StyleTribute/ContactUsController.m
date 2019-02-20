@@ -31,6 +31,7 @@ static NSString* stMessage = @"Hello!";
         [self.whatsappButton setTitle:@"Whatsapp us" forState:UIControlStateNormal];
     }
     
+    
     [self addPinToMap];
 }
 

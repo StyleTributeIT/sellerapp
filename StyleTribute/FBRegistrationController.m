@@ -47,26 +47,17 @@
     if(profile.firstName.length > 0) self.firstNameField.text = profile.firstName;
     if(profile.lastName.length > 0) self.lastNameField.text = profile.lastName;
     if(profile.country.length > 0) self.countryField.text = profile.country;
-    if(profile.phone.length > 0) self.phoneField.text = profile.phone;
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pickerDidOpen:) name:UIKeyboardDidShowNotification object:nil];
-    
+   // if(profile.phone.length > 0) self.phoneField.text = profile.phone;
+
     if(self.updatingProfile) {
         [self.accountButton setTitle:@"Update account" forState:UIControlStateNormal];
     }
 }
 
-//-(void)inputDone {
-//    NSInteger index = [self.picker selectedRowInComponent:0];
-//    Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
-//    self.countryField.text = country.name;
-//    [self.activeField resignFirstResponder];
-//}
-
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [self centerContent];
+
     [self.slideShow start];
 }
 
@@ -75,13 +66,6 @@
     [super viewWillDisappear:animated];
 }
 
-//- (void)pickerDidOpen:(NSNotification*)aNotification {
-//    if(self.activeField == self.countryField && [DataCache sharedInstance].countries == nil) {
-//        if([MRProgressOverlayView overlayForView:self.picker] == nil) {
-//            [MRProgressOverlayView showOverlayAddedTo:self.picker  title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminateSmall animated:NO];
-//        }
-//    }
-//}
 
 -(IBAction)createAccount:(id)sender {
     if([self noEmptyFields]) {
@@ -93,23 +77,19 @@
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         
         if(self.updatingProfile) {
-            [[ApiRequester sharedInstance] setAccountWithUserName:nil
-                                                        firstName:self.firstNameField.text
-                                                         lastName:self.lastNameField.text
-                                                          country:country.identifier
-                                                            phone:self.phoneField.text
-                                                          success:^{
-                                                              [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                                                              UserProfile* curProfile = [DataCache sharedInstance].userProfile;
-                                                              curProfile.firstName = self.firstNameField.text;
-                                                              curProfile.lastName = self.lastNameField.text;
-                                                              curProfile.country = country.name;
-                                                              curProfile.phone = self.phoneField.text;
-                                                              [self performSegueWithIdentifier:@"fbShowMainScreen" sender:self];
-                                                          } failure:^(NSString *error) {
-                                                              [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                                                              [GlobalHelper showMessage:error withTitle:@"Update profile error"];
-                                                          }];
+            [[ApiRequester sharedInstance] changeuserprofile:self.firstNameField.text andPassword:self.lastNameField.text
+                                                     success:^(UserProfile *profile) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    UserProfile* curProfile = [DataCache sharedInstance].userProfile;
+                    curProfile.firstName = self.firstNameField.text;
+                    curProfile.lastName = self.lastNameField.text;
+                    curProfile.country = country.name;
+                    curProfile.phone = self.phoneField.text;
+                    [self performSegueWithIdentifier:@"fbShowMainScreen" sender:self];
+                } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                 [GlobalHelper showMessage:error withTitle:@"Registration error"];
+            }];
         } else {
             [[ApiRequester sharedInstance] registerWithEmail:[DataCache sharedInstance].userProfile.email
                                                     password:password

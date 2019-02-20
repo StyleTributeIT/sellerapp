@@ -29,6 +29,7 @@
 +(NSString*)parseString:(NSString*)param fromDict:(NSDictionary*)dict {
     if ([dict isKindOfClass:[NSDictionary class]])
     {
+        int a = [dict objectForKey:param];
         NSString* val = [dict objectForKey:param];
         if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
             return nil;
@@ -46,7 +47,7 @@
     if ([dict isKindOfClass:[NSDictionary class]])
     {
         NSNumber* val = [dict objectForKey:param];
-        if(val)
+        if(!val)
         {
             return [val intValue];
         }
@@ -78,11 +79,14 @@
 }
 
 +(long)parseLong:(NSString*)param fromDict:(NSDictionary*)dict {
+    
     if ([dict isKindOfClass:[NSDictionary class]])
     {
         NSNumber* val = [dict objectForKey:param];
         if(val) {
+            NSLog(@"%ld",[val longValue]);
             return [val longValue];
+            
         } else {
             return 0;
         }
@@ -102,8 +106,14 @@
 }
 
 +(float)parseFloat:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSNumber* val = [dict objectForKey:param];
-    if(val) {
+        NSNumber* val = [dict objectForKey:param];
+//    int returnval;
+//    if ([val isKindOfClass:[NSNull null]] || [val isEqual:0]) {
+//         returnval = 0;
+//    } else {
+//       returnval = val;
+//    }
+    if(!val) {
         return [val floatValue];
     } else {
         return 0;

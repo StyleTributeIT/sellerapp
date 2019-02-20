@@ -15,6 +15,7 @@
 @implementation ProductPhoto
 
 -(instancetype)initWithCoder:(NSCoder *)decoder {
+    
     self = [super init];
     if(!self) {
         return nil;

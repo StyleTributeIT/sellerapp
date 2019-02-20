@@ -22,16 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self registerForKeyboardNotifications];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
-    
     self.inputAccessoryView = [[XCDFormInputAccessoryView alloc] initWithTarget:self hideNavButtons:self.hideNavButtons doneAction:@selector(inputDone)];
     self.inputAccessoryView.hideNavButtons = self.hideNavButtons;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     self.widthConstraint.constant = [[UIScreen mainScreen] bounds].size.width;
 }

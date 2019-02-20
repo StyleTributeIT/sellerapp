@@ -808,6 +808,7 @@
 				F3F86CD94C6BC26A3298A7B3 /* 📦 Embed Pods Frameworks */,
 				5FB79EC194DF50E7DC6DCA4E /* 📦 Copy Pods Resources */,
 				53381EF61DF87004005FA857 /* ShellScript */,
+				1E77F2E107E236889F252DF0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -829,6 +830,8 @@
 				7A0EB61B1AEE23D400D90001 /* Resources */,
 				C2DE5CB65B357F6061EB1344 /* 📦 Embed Pods Frameworks */,
 				61847CC3F201108987D99C74 /* 📦 Copy Pods Resources */,
+				0B73A0E3947BE8B319D95F32 /* [CP] Embed Pods Frameworks */,
+				441B09D6EE814803E5A78441 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -924,6 +927,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0B73A0E3947BE8B319D95F32 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E77F2E107E236889F252DF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2E481DE25FCD5CC1A6E2F981 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -959,6 +992,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		441B09D6EE814803E5A78441 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		53381EF61DF87004005FA857 /* ShellScript */ = {
@@ -1300,7 +1348,8 @@
 				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6SEHKYT2JG;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L26M8UMD32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1327,7 +1376,8 @@
 				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6SEHKYT2JG;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L26M8UMD32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

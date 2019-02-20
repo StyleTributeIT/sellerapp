@@ -41,9 +41,9 @@ typedef void (^JSONRespAppViersion)(float appVersion);
                                       phone:(NSString*)phone
                                     success:(JSONRespAccount)success
                                     failure:(JSONRespError)failure;
-
 -(void)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(void)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure;
+-(void)changeuserprofile:(NSString*)first_name andPassword:(NSString*)last_name success:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(void)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure;
 -(void)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure;
 -(void)getCountries:(JSONRespArray)success failure:(JSONRespError)failure;

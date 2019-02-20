@@ -32,6 +32,7 @@
     self.designers = [DataCache sharedInstance].designers;
     [self registerCells];
     [self updateSections];
+    
     UIImage *buttonImage = [UIImage imageNamed:@"backBtn"];
     UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [aButton setImage:buttonImage forState:UIControlStateNormal];

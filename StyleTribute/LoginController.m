@@ -32,23 +32,26 @@
 }
 
 -(IBAction)login:(id)sender {
-    
-    // for testing
-//    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-//    return;
-    
+
     if([self noEmptyFields]) {
         if([self validateEmail:self.loginField.text]) {
             [self.activeField resignFirstResponder];
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
             [[ApiRequester sharedInstance] loginWithEmail:self.loginField.text andPassword:self.passwordField.text success:^(UserProfile* profile) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                [DataCache sharedInstance].userProfile = profile;
-                if([profile isFilled]) {
-                    [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
-                } else {
-                    [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+                [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile){
+                    //[DataCache sharedInstance].userProfile = profile;
+                    
+                    if([profile isFilled]) {
+                        [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
+                    } else {
+                        [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+                    }
                 }
+                failure:^(NSString *error)
+                {
+                    
+                }];
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 

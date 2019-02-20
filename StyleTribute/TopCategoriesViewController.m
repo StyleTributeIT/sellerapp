@@ -82,6 +82,7 @@
 
 -(IBAction)unwindToAddItem:(UIStoryboardSegue*)sender
 {
+    
     if([sender.sourceViewController isKindOfClass:[ChooseBrandController class]]) {
         ChooseBrandController *ccController = sender.sourceViewController;
         self.brandField = ccController.product.designer.name;

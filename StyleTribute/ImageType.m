@@ -15,12 +15,13 @@
 @implementation ImageType
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
+    
     ImageType* imgType = [ImageType new];
     
     imgType.name = [[self class] parseString:@"name" fromDict:dict];
-    imgType.type = [[self class] parseString:@"type" fromDict:dict];
-    imgType.preview = [[self class] parseString:@"preview_image" fromDict:dict];
-    imgType.outline = [[self class] parseString:@"outline_image" fromDict:dict];
+    imgType.type = [[self class] parseString:@"label" fromDict:dict];
+    imgType.preview = [[self class] parseString:@"preview_image_file" fromDict:dict];
+    imgType.outline = [[self class] parseString:@"outline_image_file" fromDict:dict];
     imgType.state = ImageStateNormal;
     
     return imgType;

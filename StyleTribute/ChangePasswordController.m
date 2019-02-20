@@ -11,6 +11,7 @@
 @implementation ChangePasswordController
 
 -(void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
 }

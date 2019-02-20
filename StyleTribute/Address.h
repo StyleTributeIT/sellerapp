@@ -10,9 +10,10 @@
 #import "NamedItems.h"
 #import "Country.h"
 
-@interface Address : BaseModel<NSCoding>
+@interface Address : BaseModel
 
 @property NSString* firstName;
+@property NSString* cusomer_id;
 @property NSString* lastName;
 @property NSString* company;
 @property NSString* address;
@@ -21,6 +22,9 @@
 @property NSString* zipCode;
 @property NSString* countryId;
 @property NSString* contactNumber;
+@property NSString* firstlineaddress;
+@property NSString* secondlineaddress;
+
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
 

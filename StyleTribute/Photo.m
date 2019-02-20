@@ -12,12 +12,12 @@
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     
-    Photo *item = [self new];
     
+    Photo *item = [self new];
     item.identifier = (NSUInteger)[[self parseString:@"id" fromDict:dict] integerValue];
     item.label = [self parseString:@"label" fromDict:dict];
     item.imageUrl = [self parseString:@"file" fromDict:dict];
-    item.thumbnailUrl = [self parseString:@"thumbnail" fromDict:dict];
+    item.thumbnailUrl = [@"https://mediatest.styletribute.com" stringByAppendingString:[self parseString:@"thumbnail_image" fromDict:dict]];
     
     return item;
 }

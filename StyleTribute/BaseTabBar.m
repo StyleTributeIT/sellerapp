@@ -86,6 +86,7 @@ NSInteger CENTER_BTN_IDX = 3;
     CGFloat buttonX = (self.tabBar.frame.size.width * 0.5) - (self._button_sell.frame.size.width * 0.5);
     CGFloat buttonY = centerTabBar.y - self._button_sell.frame.size.height - bottomAnchor;
     
+    
     self._button_sell.frame = CGRectMake(buttonX, buttonY, self._button_sell.frame.size.width, self._button_sell.frame.size.height);
 }
 

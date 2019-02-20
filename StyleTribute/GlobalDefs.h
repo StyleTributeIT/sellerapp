@@ -13,7 +13,7 @@
 
 //static NSString* const DefApiHost		= @"https://temptest.styletribute.com";
 static NSString* const DefZendeskKey    = @"4ESfRZZCFkTFeyuNML1TA3qTOljfAxI2";
-static NSString* const DefApiHost		= @"https://api2.styletribute.com/";
+static NSString* const DefApiHost		= @"https://api-dev.styletribute.com/";
 
 
 static NSString* const DefGeneralErrMsg	= @"Oops! Something has gone wrong.Please try again later.";

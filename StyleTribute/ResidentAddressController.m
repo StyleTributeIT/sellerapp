@@ -13,7 +13,7 @@
 
 @property UIPickerView* picker;
 @property NSArray* states;
-
+@property NSArray *Country;
 @property NSInteger curCountryIndex;
 @property NSInteger curStateIndex;
 
@@ -36,9 +36,14 @@
     self.picker = [GlobalHelper createPickerForFields:@[self.countryField, self.stateField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
+   
     
-    Address* curShippingAddress = [DataCache sharedInstance].userProfile.shippingAddress;
+    self.Country = [DataCache sharedInstance].countries;
+    
+
+    Address* curShippingAddress = [DataCache sharedInstance].shippingAddress;
     if(curShippingAddress) {
+        
         self.firstNameField.text = curShippingAddress.firstName;
         self.lastNameField.text = curShippingAddress.lastName;
         self.companyField.text = curShippingAddress.company;
@@ -83,10 +88,11 @@
         newAddress.company = self.companyField.text;
         newAddress.address = self.addressField.text;
         newAddress.city = self.cityField.text;
-        newAddress.state = [self.states objectAtIndex:self.curStateIndex];
+        newAddress.state = self.stateField.text;
         newAddress.zipCode = self.postalCodeField.text;
         newAddress.countryId = curCountry.identifier;
         newAddress.contactNumber = self.phoneNumberField.text;
+        newAddress.cusomer_id = [[NSUserDefaults standardUserDefaults] valueForKey:@"cust_id"];
         
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] setShippingAddress:newAddress success:^{
@@ -109,7 +115,7 @@
     
     if(self.activeField == self.countryField) {
         [self.picker reloadAllComponents];
-        [self.picker selectRow:(self.curCountryIndex >= 0 ? self.curCountryIndex : 0) inComponent:0 animated:NO];
+        [self.picker selectRow:1 inComponent:0 animated:NO];
     } else if(self.activeField == self.stateField) {
         [self.picker reloadAllComponents];
         [self.picker selectRow:(self.curStateIndex >= 0 ? self.curStateIndex : 0) inComponent:0 animated:NO];
@@ -137,6 +143,7 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+
     return [[[self getCurrentDatasource] objectAtIndex:row] name];
 }
 

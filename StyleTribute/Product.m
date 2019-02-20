@@ -100,49 +100,91 @@ STCategory *pCategory = nil;
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-    Product* product = [Product new];
+    NSLog(@"%@",dict);
     
+    Product* product = [Product new];
+    NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
     product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
     product.name = [self parseString:@"name" fromDict:dict];
-    product.processStatus = [self parseString:@"process_status" fromDict:dict];
+    product.processStatus = [self parseString:@"name" fromDict:dicttemp];
     product.originalPrice = [self parseFloat:@"original_price" fromDict:dict];
-    product.price = product.savedPrice = [self parseFloat:@"price" fromDict:dict];
+    product.price = product.savedPrice = [self parseFloat:@"price" fromDict:dict];//[[self parseString:@"price" fromDict:dict] floatValue];
     product.descriptionText = [self parseString:@"description" fromDict:dict];
-    product.url = [self parseString:@"url" fromDict:dict];
+    product.url = [self parseString:@"partner_url" fromDict:dict];
     product.share_text = [self parseString:@"share_text" fromDict:dict];
     
     product.allowedTransitions = [NSMutableArray new];
-    NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
-    if(transitionsArray != nil) for(NSString* transition in transitionsArray) {
+    
+    NSArray *transition = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW", nil];
+  
+    
+    
+    //NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
+    if(transition != nil) for(NSString* transition in transition) {
         [product.allowedTransitions addObject:transition];
     }
     
     // Uncomment this to test transitions
-//    [product.allowedTransitions addObject:@"archived"];
-//    [product.allowedTransitions addObject:@"deleted"];
+    //    [product.allowedTransitions addObject:@"archived"];
+    //    [product.allowedTransitions addObject:@"deleted"];
     
     if([DataCache sharedInstance].categories != nil) {
-        NSArray * categories = [DataCache sharedInstance].categories;
-        NSUInteger categoryId = (NSUInteger)[[dict objectForKey:@"category"] integerValue];
-        product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
-        /*product.category = [[categories linq_where:^BOOL(STCategory* category) {
-            return (category.idNum == categoryId);
-        }] firstObject]; */
+        
+        @try {
+            NSArray * categories = [DataCache sharedInstance].categories;
+            NSArray *arrcatefories = [[dict objectForKey:@"categories"] valueForKey:@"data"];
+            NSDictionary *dictcategpries = arrcatefories[0];
+            NSLog(@"%@",dictcategpries);
+            NSUInteger categoryId = (NSUInteger)[[dictcategpries objectForKey:@"id"] intValue];
+            
+            product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+            
+        }
+        @finally {
+            NSLog(@"Finally condition");
+        }
+        
+        
+       
     }
     
     if([DataCache sharedInstance].conditions != nil) {
-        NSArray * categories = [DataCache sharedInstance].conditions;
-        NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition"] integerValue];
-        product.condition = [[categories linq_where:^BOOL(NamedItem* condition) {
-            return (condition.identifier == conditionId);
-        }] firstObject];
+        @try {
+            NSArray * categories = [DataCache sharedInstance].conditions;
+            NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition_id"] intValue];
+            product.condition = [[categories linq_where:^BOOL(NamedItem* condition) {
+                return (condition.identifier == conditionId);
+            }] firstObject];
+            
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+            
+        }
+        @finally {
+            NSLog(@"Finally condition");
+        }
+       
     }
     
     if([DataCache sharedInstance].designers != nil) {
-        NSUInteger designerId = (NSUInteger)[[dict objectForKey:@"designer"] integerValue];
-        product.designer = [[[DataCache sharedInstance].designers linq_where:^BOOL(NamedItem* designer) {
-            return (designer.identifier == designerId);
-        }] firstObject];
+        @try {
+              NSUInteger designerId = (NSInteger)[[dict valueForKey:@"designer_id"] intValue];
+            product.designer = [[[DataCache sharedInstance].designers linq_where:^BOOL(NamedItem* designer) {
+                        return (designer.identifier = designerId);
+                }] firstObject];
+            
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+         
+        }
+        @finally {
+            NSLog(@"Finally condition");
+        }
     }
     
     product.photos = [[NSMutableArray alloc] initWithCapacity:product.category.imageTypes.count];
@@ -150,10 +192,9 @@ STCategory *pCategory = nil;
         [product.photos addObject:[NSNull null]];
     }
     
-    NSArray* images = [dict objectForKey:@"images"];
+    NSArray* images = [[dict objectForKey:@"media"] valueForKey:@"data"];
     if(images != nil) for(NSDictionary* imageDict in images) {
         Photo* photo = [Photo parseFromJson:imageDict];
-
         ImageType* type = [[product.category.imageTypes linq_where:^BOOL(ImageType* imgType) {
             return [imgType.type isEqualToString:photo.label];
         }] firstObject];
@@ -168,53 +209,48 @@ STCategory *pCategory = nil;
             [product.photos addObject:photo];
         }
     }
-    
-    NSDictionary* dimensions = [dict objectForKey:@"dimensions"];
+  
+    NSString* dimensions = [dict objectForKey:@"dimensions"];
     if(dimensions) {
-        if([self parseString:@"width" fromDict:dimensions]
-           && [self parseString:@"height" fromDict:dimensions]
-           && [self parseString:@"depth" fromDict:dimensions]){
-            NSString* width = [self parseString:@"width" fromDict:dimensions];
-            NSString* height = [self parseString:@"height" fromDict:dimensions];
-            NSString* depth = [self parseString:@"depth" fromDict:dimensions];
-            product.dimensions = @[width, height, depth];
-        }
-        
+       // NSArray *listItems = [list componentsSeparatedByString:@"x"];
+        NSString* width = @"35"; //listItems[0];
+        NSString* height = @"12"; //listItems[1];
+        NSString* depth = @"35";//listItems[2];
+        product.dimensions = @[width, height, depth];
     }
-	if ([dict valueForKey:@"kidzsize"] != nil)
+    if ([dict valueForKey:@"size"] != nil)
     {
-        NSLog(@"kidsize");
-        product.kidzsize = [dict valueForKey:@"kidzsize"];
+        NSLog(@"size");
+        product.kidzsize = [dict valueForKey:@"size"];
     }
     
-	product.sizeId = [self parseInt:@"size" fromDict:dict];
+   // product.sizeId = [self parseInt:@"size_id" fromDict:dict];
     product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
-	
-	// sizeId -> unit  & size
-	if(product.sizeId && [DataCache sharedInstance].units != nil) {
-		[[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
-			for(NamedItem* size in sizes) {
-				if(size.identifier == product.sizeId) {
-					product.unit = unit;
-					product.size = size.name;
-					
-					*stop = YES;
-					break;
-				}
-			}
-		}];
-	}
     
-    product.processComment = [self parseString:@"process_comment" fromDict:dict];
-    product.processStatusDisplay = [self parseString:@"process_status_display" fromDict:dict];
+    // sizeId -> unit  & size
+    if(product.sizeId && [DataCache sharedInstance].units != nil) {
+        [[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
+            for(NamedItem* size in sizes) {
+                if(size.identifier == product.sizeId) {
+                    product.unit = unit;
+                    product.size = size.name;
+                    
+                    *stop = YES;
+                    break;
+                }
+            }
+        }];
+    }
     
-    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoesize" fromDict:dict] integerValue];
+    product.processComment = [self parseString:@"process_status_comment" fromDict:dict];
+    product.processStatusDisplay = [self parseString:@"name" fromDict:[[dict valueForKey:@"process_status"] valueForKey:@"data"]];
+    
+    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoe_size" fromDict:dict] integerValue];
     if([DataCache sharedInstance].shoeSizes) {
         product.shoeSize = [[[DataCache sharedInstance].shoeSizes linq_where:^BOOL(NamedItem* item) {
             return (item.identifier == shoesizeId);
         }] firstObject];
     }
-	
     return product;
 }
 
@@ -273,34 +309,38 @@ STCategory *pCategory = nil;
 
 -(ProductType)getProductType {
     if([self.processStatus isEqualToString:@"new"] ||
-       [self.processStatus isEqualToString:@"in_review"] ||
-       [self.processStatus isEqualToString:@"in_review_add"] ||
-       [self.processStatus isEqualToString:@"incomplete"] ||
-       [self.processStatus isEqualToString:@"image_processing"] ||
-       [self.processStatus isEqualToString:@"selling"] ||
-       [self.processStatus isEqualToString:@"rejected"] ||
-       [self.processStatus isEqualToString:@"declined"] ||
-       [self.processStatus isEqualToString:@"sold"] ||
-       [self.processStatus isEqualToString:@"suspended"])
+       [self.processStatus isEqualToString:@"IN_REVIEW"] ||
+       [self.processStatus isEqualToString:@"IN_REVIEW_ADD"] ||
+       [self.processStatus isEqualToString:@"INCOMPLETE"] ||
+       [self.processStatus isEqualToString:@"IMAGE_PROCESSING"] ||
+       [self.processStatus isEqualToString:@"SELLING"] ||
+       [self.processStatus isEqualToString:@"REJECTED"] ||
+       [self.processStatus isEqualToString:@"DECLINED"] ||
+       [self.processStatus isEqualToString:@"SOLD"] ||
+       [self.processStatus isEqualToString:@"SUSPENDED"])
     {
         return ProductTypeSelling;
     }
-    else if([self.processStatus isEqualToString:@"sold_confirmed"] ||
-            [self.processStatus isEqualToString:@"received"] ||
-            [self.processStatus isEqualToString:@"authenticated"] ||
-            [self.processStatus isEqualToString:@"sent_to_buyer"] ||
-            [self.processStatus isEqualToString:@"product_not_available"] ||
-            [self.processStatus isEqualToString:@"received_by_buyer"] ||
-            [self.processStatus isEqualToString:@"payout_seller"] ||
-            [self.processStatus isEqualToString:@"payment_sent"] ||
-            [self.processStatus isEqualToString:@"reimburse_buyer"] ||
-            [self.processStatus isEqualToString:@"returned_by_buyer"] ||
-            [self.processStatus isEqualToString:@"rejected_send_back"] ||
-            [self.processStatus isEqualToString:@"complete"])
+    
+    else if([self.processStatus isEqualToString:@"SOLD_CONFIRMED"] ||
+            [self.processStatus isEqualToString:@"RECEIVED"] ||
+            [self.processStatus isEqualToString:@"AUTHENTICATED"] ||
+            [self.processStatus isEqualToString:@"SENT_TO_BUYER"] ||
+            [self.processStatus isEqualToString:@"PRODUCT_NOT_AVAILABLE"] ||
+            [self.processStatus isEqualToString:@"RECEIVED_BY_BUYER"] ||
+            [self.processStatus isEqualToString:@"PAYOUT_SELLER"] ||
+            [self.processStatus isEqualToString:@"PAYMENT_SENT"] ||
+            [self.processStatus isEqualToString:@"REIMBURSE_BUYER"] ||
+            [self.processStatus isEqualToString:@"RETURNED_BY_BUYER"] ||
+            [self.processStatus isEqualToString:@"REJECTED_SEND_BACK"] ||
+            [self.processStatus isEqualToString:@"COMPLETE"] ||
+            [self.processStatus isEqualToString:@"PAYMENT_IN_CREDITS"]||
+            [self.processStatus isEqualToString:@"PAYMENT_FAILED"])
     {
         return ProductTypeSold;
     }
-    else if([self.processStatus isEqualToString:@"archived"])
+    else if([self.processStatus isEqualToString:@"ARCHIVED"] ||
+            [self.processStatus isEqualToString:@"DELETED"])
     {
         return ProductTypeArchived;
     }

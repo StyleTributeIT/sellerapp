@@ -17,13 +17,14 @@
 
 +(instancetype)parseFromJson:(NSDictionary*)dict; {
     STCategory* category = [STCategory new];
+  //  NSLog(@"%@",dict);
 
     category.idNum = (NSUInteger)[self parseInt:@"id" fromDict:dict];
     category.name = [self parseString:@"name" fromDict:dict];
-    category.thumbnail = [self parseString:@"thumbnail" fromDict:dict];
+    category.thumbnail = [self parseString:@"thumbnail_image" fromDict:dict];
     
     NSMutableArray* imgTypes = [NSMutableArray new];
-    NSDictionary* imgTypeArray = [dict objectForKey:@"image_types"];
+    NSDictionary* imgTypeArray = [[dict objectForKey:@"media_supports"] valueForKey:@"data"];
     if (imgTypeArray != nil)
     {
         if (imgTypeArray.count > 0)
@@ -31,6 +32,7 @@
             NSLog(@"imgTypeArray: %@", imgTypeArray);
         }
     }
+    
     if(imgTypeArray != nil)
     {
         for(NSDictionary* imgTypeDict in imgTypeArray)
@@ -40,13 +42,13 @@
         }
     }
     category.imageTypes = imgTypes;
-    category.sizeFields = [dict objectForKey:@"size_fields"];
-    if (category.sizeFields != nil)
-    {
-        NSLog(@"size Fields isn't null");
-    }
+//    category.sizeFields = [dict objectForKey:@"size_fields"];
+//    if (category.sizeFields != nil)
+//    {
+//        NSLog(@"size Fields isn't null");
+//    }
     NSMutableArray* categories = [NSMutableArray new];
-    for (NSDictionary* categoryDict in [dict objectForKey:@"children"]) {
+    for (NSDictionary* categoryDict in [[dict objectForKey:@"categories"] valueForKey:@"data"]) {
         [categories addObject:[STCategory parseFromJson:categoryDict]];
     }
     category.children = [NSArray arrayWithArray:categories];

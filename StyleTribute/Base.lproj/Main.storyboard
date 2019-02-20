@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,11 +26,11 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" userLabel="welcomeController" customClass="WelcomeController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-xd-dpw" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="316" width="375" height="374"/>
+                                <rect key="frame" x="0.0" y="316" width="414" height="356"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FoV-xd-dpw" secondAttribute="height" multiplier="641:507" id="Xua-zg-CtR"/>
@@ -44,14 +42,14 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Rte-X5-A1W">
-                                <rect key="frame" x="155.66666666666666" y="20" width="64" height="64"/>
+                                <rect key="frame" x="175" y="20" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="3WV-6i-nwb"/>
                                     <constraint firstAttribute="width" constant="64" id="C11-eY-VwG"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzk-qV-fOS">
-                                <rect key="frame" x="85" y="167" width="205" height="30"/>
+                                <rect key="frame" x="104.66666666666669" y="167" width="205" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="Sign up"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="01c-RZ-boE"/>
@@ -66,7 +64,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dig-Q9-QwW">
-                                <rect key="frame" x="16" y="131" width="343" height="21"/>
+                                <rect key="frame" x="20" y="131" width="374" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fuO-yP-G6e"/>
                                 </constraints>
@@ -75,7 +73,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn8-Cb-f8A">
-                                <rect key="frame" x="85" y="205" width="205" height="30"/>
+                                <rect key="frame" x="104.66666666666669" y="205" width="205" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="TTi-k1-zec"/>
                                     <constraint firstAttribute="height" constant="30" id="ZI5-14-XhI"/>
@@ -90,7 +88,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oc-gx-i8R" customClass="AttributedLabel">
-                                <rect key="frame" x="16" y="92" width="343" height="21"/>
+                                <rect key="frame" x="20" y="92" width="374" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1NZ-HN-4yl"/>
                                 </constraints>
@@ -109,7 +107,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clY-Sy-ZP3">
-                                <rect key="frame" x="16" y="249" width="343" height="21"/>
+                                <rect key="frame" x="20" y="249" width="374" height="21"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="kTh-dJ-JH2"/>
@@ -119,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="336-qA-KE7">
-                                <rect key="frame" x="85" y="278" width="205" height="30"/>
+                                <rect key="frame" x="104.66666666666669" y="278" width="205" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="Already have account"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KyZ-1o-ur3"/>
@@ -202,20 +200,20 @@
             <objects>
                 <viewController id="W2W-9d-Wfs" userLabel="loginController" customClass="LoginController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NY5-ro-TzI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-aZ-Jzd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-dn-4dR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="347"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-jq-QA3">
-                                                <rect key="frame" x="117.66666666666669" y="8" width="85" height="85"/>
+                                                <rect key="frame" x="32" y="8" width="256" height="256"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyO-9Y-oef" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="175" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="346" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your email"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sVs-KJ-a1f"/>
@@ -227,7 +225,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="221" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="392" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="fFH-Aq-LfI"/>
@@ -239,7 +237,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please log in to proceed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-tQ-Hms">
-                                                <rect key="frame" x="16" y="135" width="288" height="25"/>
+                                                <rect key="frame" x="16" y="306" width="288" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="fHy-pP-I9a"/>
                                                 </constraints>
@@ -248,7 +246,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJM-Um-52Y">
-                                                <rect key="frame" x="40" y="267" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="438" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Sign in"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JpL-78-iKv"/>
@@ -262,7 +260,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kV-EV-Gpy" customClass="AttributedLabel">
-                                                <rect key="frame" x="16" y="101" width="288" height="21"/>
+                                                <rect key="frame" x="16" y="272" width="288" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="dgZ-Uh-32N"/>
                                                 </constraints>
@@ -281,7 +279,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-xw-gUD">
-                                                <rect key="frame" x="40" y="311" width="240" height="28"/>
+                                                <rect key="frame" x="40" y="482" width="240" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="f3m-Vk-SCL"/>
                                                 </constraints>
@@ -381,7 +379,7 @@
             <objects>
                 <viewController id="tSN-ez-241" customClass="MyAccountController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YQq-a8-tND">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfr-uw-wMs">
@@ -549,11 +547,11 @@
             <objects>
                 <viewController id="yz9-vj-pKk" customClass="ShopViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QM0-6Z-mWE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGR-Yf-wzr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="721"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="679"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="yz9-vj-pKk" id="dZl-hm-KPe"/>
@@ -583,26 +581,26 @@
             <objects>
                 <tableViewController id="qaw-2c-nim" userLabel="Notifications View Controller" customClass="NotificationsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="mIe-WV-bZ6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="notificationCell" rowHeight="80" id="ufD-n1-fKf" customClass="NotificationTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ufD-n1-fKf" id="feW-ez-2gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="nlG-Fq-cpY">
-                                            <rect key="frame" x="25" y="11" width="63" height="63"/>
+                                            <rect key="frame" x="29" y="11" width="63" height="63"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="63" id="jrm-tb-Eqq"/>
                                                 <constraint firstAttribute="width" constant="63" id="vPB-in-dsM"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLJ-A8-Xxf">
-                                            <rect key="frame" x="96" y="8" width="263" height="21"/>
+                                            <rect key="frame" x="100" y="8" width="294" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Npr-Sz-sVu"/>
                                             </constraints>
@@ -611,7 +609,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-7k-M4I">
-                                            <rect key="frame" x="96" y="53" width="272" height="21"/>
+                                            <rect key="frame" x="100" y="53" width="307" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="N9a-IM-Ybp"/>
                                             </constraints>
@@ -620,7 +618,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label kfjdngkjfdngkjfdngkjdfngkjndfjkgkjfndkjgdf" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8gu-k6-LOP">
-                                            <rect key="frame" x="96" y="25" width="263" height="29"/>
+                                            <rect key="frame" x="100" y="25" width="294" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="29" id="Mq2-Kz-8Be"/>
                                             </constraints>
@@ -671,7 +669,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -687,7 +685,7 @@
             <objects>
                 <viewController id="tr0-6J-Wdp" customClass="EditProfileController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xap-Yh-O5U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HKR-lQ-8nh">
@@ -828,7 +826,7 @@
             <objects>
                 <viewController id="grn-Wi-nkv" customClass="ResidentAddressController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ocD-tc-kDY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dW-zY-9H1">
@@ -1052,7 +1050,7 @@
             <objects>
                 <viewController id="HNe-sU-zJZ" customClass="ChangePasswordController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWT-D0-ePX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3o-Zo-hmg">
@@ -1178,7 +1176,7 @@
             <objects>
                 <viewController id="4Gf-0K-49B" customClass="BankDetailsController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gPf-No-Oyh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfS-bQ-LId">
@@ -1334,7 +1332,7 @@
             <objects>
                 <viewController id="dMc-TR-sjB" customClass="ContactUsController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iic-X1-5Hj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Mkg-Kr-FY6">
@@ -1458,20 +1456,20 @@ Citilink Warehouse Complex
             <objects>
                 <viewController id="gWl-q7-vZa" customClass="WardrobeController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ATV-x9-siS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuY-Yc-7YU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                 <connections>
                                     <segue destination="iP8-pg-fu8" kind="embed" id="bJe-lg-8GW"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woZ-Hb-gQN">
-                                <rect key="frame" x="0.0" y="88" width="375" height="45"/>
+                                <rect key="frame" x="4" y="64" width="410" height="45"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
-                                        <rect key="frame" x="0.0" y="8" width="375" height="29"/>
+                                        <rect key="frame" x="0.0" y="8" width="410" height="29"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="Selling"/>
@@ -1488,32 +1486,32 @@ Citilink Warehouse Complex
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
-                                <rect key="frame" x="0.0" y="136" width="375" height="583"/>
+                                <rect key="frame" x="4" y="112" width="406" height="565"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="wardrobeCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wardrobeCell" rowHeight="104" id="dOn-Le-vWG" customClass="WardrobeCell">
-                                        <rect key="frame" x="0.0" y="22" width="375" height="104"/>
+                                        <rect key="frame" x="0.0" y="22" width="406" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOn-Le-vWG" id="KIm-Or-0xq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="103.66666666666667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="406" height="103.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
-                                                    <rect key="frame" x="16" y="20" width="66" height="65"/>
+                                                    <rect key="frame" x="16" y="20" width="66" height="65.666666666666671"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="66" id="w2Q-gH-c4y"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="229" y="45" width="138" height="14.666666666666664"/>
+                                                    <rect key="frame" x="229" y="45" width="169" height="14.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-pm-K7d">
-                                                    <rect key="frame" x="90" y="19" width="131" height="65"/>
+                                                    <rect key="frame" x="90" y="19" width="162" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="L5w-qT-ZbS"/>
                                                     </constraints>
@@ -1613,11 +1611,11 @@ Citilink Warehouse Complex
             <objects>
                 <viewController id="sjP-DD-tuF" userLabel="fbRegistrationController" customClass="FBRegistrationController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-SH-YtR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-KE-yG7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
@@ -1807,11 +1805,11 @@ Citilink Warehouse Complex
             <objects>
                 <viewController id="lMP-mB-1Ki" customClass="RegistrationController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hM7-JS-bIu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQp-DS-sci">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="444"/>
@@ -2045,7 +2043,7 @@ Citilink Warehouse Complex
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
@@ -2068,7 +2066,7 @@ Citilink Warehouse Complex
                     <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2085,20 +2083,20 @@ Citilink Warehouse Complex
             <objects>
                 <tableViewController id="kpk-cm-DsD" userLabel="Category selection" customClass="ChooseCategoryController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" id="HMG-Gc-zjG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="96" id="EF3-7w-xOt" customClass="CategoryCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="96"/>
+                                <rect key="frame" x="0.0" y="22" width="414" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EF3-7w-xOt" id="CGq-z7-XlJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="95.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="28B-eB-BtK">
-                                            <rect key="frame" x="16" y="11" width="74" height="74"/>
+                                            <rect key="frame" x="20" y="11" width="74" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="28B-eB-BtK" secondAttribute="height" multiplier="1:1" id="edp-oU-oNK"/>
                                             </constraints>
@@ -2155,7 +2153,7 @@ Citilink Warehouse Complex
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2175,7 +2173,7 @@ Citilink Warehouse Complex
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2196,7 +2194,7 @@ Citilink Warehouse Complex
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2213,14 +2211,14 @@ Citilink Warehouse Complex
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="iP8-pg-fu8" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZZ2-j3-YMt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="s3p-LN-sHj">
-                                <rect key="frame" x="0.0" y="83" width="375" height="577"/>
+                                <rect key="frame" x="0.0" y="59" width="414" height="593"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start_selling" translatesAutoresizingMaskIntoConstraints="NO" id="kPA-K8-Owj">
-                                        <rect key="frame" x="97.333333333333314" y="283" width="181" height="277"/>
+                                        <rect key="frame" x="116.66666666666669" y="299" width="181" height="277"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="181" id="8au-PL-dJO"/>
                                             <constraint firstAttribute="height" constant="277" id="IUX-n1-paj"/>
@@ -2253,19 +2251,19 @@ Citilink Warehouse Complex
     <resources>
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
-        <image name="Logo" width="85" height="85"/>
-        <image name="backBtn" width="19" height="32"/>
-        <image name="notifications" width="31" height="30"/>
-        <image name="notifications-pink" width="31" height="30"/>
-        <image name="profile" width="30" height="30"/>
-        <image name="profile-pink" width="30" height="30"/>
-        <image name="shop" width="30" height="30"/>
-        <image name="shop-pink" width="30" height="30"/>
+        <image name="Logo" width="256" height="256"/>
+        <image name="backBtn" width="19.333333969116211" height="32"/>
+        <image name="notifications" width="94" height="90"/>
+        <image name="notifications-pink" width="94" height="90"/>
+        <image name="profile" width="90" height="90"/>
+        <image name="profile-pink" width="90" height="90"/>
+        <image name="shop" width="90" height="90"/>
+        <image name="shop-pink" width="90" height="90"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
-        <image name="tabBg" width="316" height="45"/>
-        <image name="wardrobe" width="25" height="25"/>
-        <image name="wardrobe-pink" width="25" height="25"/>
+        <image name="tabBg" width="316.66665649414062" height="45"/>
+        <image name="wardrobe" width="75" height="75"/>
+        <image name="wardrobe-pink" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ReU-Ip-U3f"/>

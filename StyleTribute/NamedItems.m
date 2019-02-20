@@ -50,8 +50,7 @@
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     
     NamedItem *item = [self new];
-    
-    item.identifier = (NSUInteger)[[self parseString:@"id" fromDict:dict] integerValue];
+    item.identifier = [[dict valueForKey:@"id"] integerValue];
     item.name = [self parseString:@"name" fromDict:dict];
     
     return item;

@@ -75,6 +75,7 @@
             Country* country = [[DataCache sharedInstance].countries objectAtIndex:index];
             
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+            
             [[ApiRequester sharedInstance] registerWithEmail:self.emailField.text
                                                     password:self.passwordField.text
                                                    firstName:self.firstNameField.text

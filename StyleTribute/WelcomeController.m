@@ -62,10 +62,11 @@
                 [self setInterfaceEnabled:NO];
                 [self showVertionAlert];
             } else {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                
                 [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                    [DataCache sharedInstance].userProfile = profile;
-                    
+                   
                     if([profile isFilled]) {
                         [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
                     } else {

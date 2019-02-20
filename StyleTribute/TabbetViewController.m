@@ -29,6 +29,7 @@
     
     if (!self._layoued_out)
     {
+        
         self._layoued_out = YES;
 
         [self adjustPositionSellButton];

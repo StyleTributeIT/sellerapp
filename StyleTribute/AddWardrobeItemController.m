@@ -290,6 +290,7 @@ typedef void(^ImageLoadBlock)(int);
         NamedItem* condition = [[DataCache sharedInstance].conditions objectAtIndex:index];
         self.curProduct.condition = condition;
         self.conditionField.text = condition.name;
+        
     } else if(self.activeField == self.nameField) {
         self.curProduct.name = self.nameField.text;
     } else if(self.activeField == self.descriptionView) {

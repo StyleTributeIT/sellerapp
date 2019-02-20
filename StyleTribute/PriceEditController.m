@@ -17,6 +17,7 @@
 @implementation PriceEditController
 
 -(void)viewDidLoad {
+    
     [super viewDidLoad];
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     [self hideAdvice];

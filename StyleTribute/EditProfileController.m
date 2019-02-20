@@ -26,6 +26,8 @@
     self.picker.delegate = self;
     self.picker.dataSource = self;
     
+    
+    
     UserProfile* profile = [DataCache sharedInstance].userProfile;
     self.emailField.text = profile.email;
     self.firstNameField.text = profile.firstName;
