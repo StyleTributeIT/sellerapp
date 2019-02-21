@@ -41,21 +41,11 @@
         
         if (self.isOwnPrice == false){
             self.additionalButtons.hidden = NO;
-            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:p.originalPrice success:^(float priceSuggestion) {
-                //self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
-                //product.originalPrice > 0 ? [NSString stringWithFormat:@"%.2f", product.originalPrice] : @"";
-                
-                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:priceSuggestion success:^(float price) {
-                    
-                    self.priceField.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
-                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", price];
-                    self.isInProgress = NO;
-                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                } failure:^(NSString *error) {
-                    self.isInProgress = NO;
-                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                }];
-                //[MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:p.originalPrice success:^(NSDictionary* priceSuggestion) {
+                NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
+                self.priceField.text = [NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"price"] doubleValue]];
+                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"earning"] doubleValue]];
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 self.isInProgress = NO;
@@ -223,8 +213,8 @@
                 self.isInProgress = YES;
                 [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
                 
-                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float priceSuggestion) {
-                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(NSDictionary* priceSuggestion) {
+                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [priceSuggestion valueForKey:@"price"]];
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     self.isInProgress = NO;
                 } failure:^(NSString *error) {

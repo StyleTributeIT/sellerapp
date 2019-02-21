@@ -25,8 +25,9 @@
     
     if(self.product.originalPrice > 0) {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        [[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:self.product.originalPrice success:^(float priceSuggestion) {
-            self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+        [[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:self.product.originalPrice success:^(NSDictionary* priceSuggestion) {
+            NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
+            self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"price"] doubleValue]];
             [self updateAdvice];
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         } failure:^(NSString *error) {
@@ -50,10 +51,12 @@
         if(self.originalPrice.text.length > 0 && !self.isInProgress) {
             self.isInProgress = YES;
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:[self.originalPrice.text floatValue] success:^(float priceSuggestion) {
-                self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:self.product andOriginalPrice:[self.originalPrice.text floatValue] success:^(NSDictionary *priceSuggestion) {
+                
+                NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
+                self.suggestedPrice.text = [NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"price"] doubleValue]];
                 if(self.userPrice.text.length == 0) {
-                    self.userPrice.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+                    self.userPrice.text =[NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"price"] doubleValue]];
                 }
                 [self updateAdvice];
                 [self updateTakeback];

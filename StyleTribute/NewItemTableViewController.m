@@ -254,7 +254,17 @@ int sectionOffset = 0;
         {
             return;
         }
-        [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
+        BOOL isedit;
+        if (self.isEditingItem)
+        {
+            isedit = false;
+        }else
+        {
+            isedit = true;
+        }
+        
+        
+        [[ApiRequester sharedInstance] setProduct:self.curProduct Tag:isedit success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             if (self.isEditingItem)
             {

@@ -30,6 +30,7 @@
     {
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] getCategories:^(NSArray *categories) {
+            NSLog(@"%@",categories);
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].categories = categories;
             _categories = [NSMutableArray arrayWithArray:categories];
@@ -143,6 +144,7 @@
     
     cell.tag = indexPath.row;
     cell.categoryName.text = category.name;
+    NSLog(@"categoryName :%@ id:%d",category.name,category.idNum);
     if(category.thumbnail.length > 0) {
         [cell.categoryImage sd_setImageWithURL:[NSURL URLWithString:category.thumbnail] placeholderImage:[UIImage imageNamed:@"stub"]];
     }

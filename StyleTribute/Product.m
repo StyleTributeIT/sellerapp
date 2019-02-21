@@ -115,12 +115,12 @@ STCategory *pCategory = nil;
     
     product.allowedTransitions = [NSMutableArray new];
     
-    NSArray *transition = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW", nil];
+    NSArray *transitions = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW", nil];
   
     
     
     //NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
-    if(transition != nil) for(NSString* transition in transition) {
+    if(transitions != nil) for(NSString* transition in transitions) {
         [product.allowedTransitions addObject:transition];
     }
     

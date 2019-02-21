@@ -13,9 +13,11 @@
 +(instancetype)parseFromJson:(NSDictionary*)dict; {
     
     Country* country = [Country new];
+    NSArray *arrdialcode = [dict valueForKey:@"callingCodes"];
+    NSString *callingCodes = [arrdialcode lastObject];
     country.identifier = [[self class] parseString:@"alpha2Code" fromDict:dict];
     country.name = [[self class] parseString:@"name" fromDict:dict];
-    
+    country.callingCodes = callingCodes;
     return country;
 }
 
@@ -29,13 +31,14 @@
     
     self.identifier = [decoder decodeObjectForKey:@"id"];
     self.name = [decoder decodeObjectForKey:@"name"];
-    
+    self.callingCodes = [decoder decodeObjectForKey:@"callingCodes"];
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:self.identifier forKey:@"id"];
     [encoder encodeObject:self.name forKey:@"name"];
+    [encoder encodeObject:self.callingCodes forKey:@"callingCodes"];
 }
 
 @end

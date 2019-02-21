@@ -104,14 +104,14 @@
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
 
             float price = [self.priceField.text floatValue];
-            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float priceSuggestion) {
+            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(NSDictionary *priceSuggestion) {
                 //  [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
 
             //[[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
                 self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
-                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", priceSuggestion];
+                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [priceSuggestion valueForKey:@"price"]];
                 self.priceEarned.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 Product *p = [DataCache getSelectedItem];
                 p.price = [self.priceField.text floatValue];

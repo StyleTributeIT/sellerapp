@@ -17,8 +17,10 @@
 @property NSString* lastName;
 @property NSString* company;
 @property NSString* address;
+@property NSString* dialcode;
 @property NSString* city;
 @property NamedItem* state;
+@property NSString* states;
 @property NSString* zipCode;
 @property NSString* countryId;
 @property NSString* contactNumber;

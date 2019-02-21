@@ -44,37 +44,40 @@
     Address* curShippingAddress = [DataCache sharedInstance].shippingAddress;
     if(curShippingAddress) {
         
+        NSLog(@"%@",curShippingAddress.firstlineaddress);
         self.firstNameField.text = curShippingAddress.firstName;
         self.lastNameField.text = curShippingAddress.lastName;
         self.companyField.text = curShippingAddress.company;
-        self.addressField.text = curShippingAddress.address;
+        self.addressField.text = curShippingAddress.firstlineaddress;
         self.cityField.text = curShippingAddress.city;
         self.postalCodeField.text = curShippingAddress.zipCode;
-        self.phoneNumberField.text = curShippingAddress.contactNumber;
-        
+        self.phoneNumberField.text = [[[@"+" stringByAppendingString:curShippingAddress.dialcode] stringByAppendingString:@"-"] stringByAppendingString:curShippingAddress.contactNumber];
+        self.countryField.text = curShippingAddress.countryId;
         Country* curCountry = [[[DataCache sharedInstance].countries linq_where:^BOOL(Country* item) {
             return [item.identifier isEqualToString:curShippingAddress.countryId];
         }] firstObject];
         self.curCountryIndex = [[DataCache sharedInstance].countries indexOfObject:curCountry];
         self.countryField.text = curCountry.name;
-        
-        if(curShippingAddress.state) {
-            self.stateField.text = curShippingAddress.state.name;
-            [[ApiRequester sharedInstance] getRegionsByCountry:curCountry.identifier success:^(NSArray *regions) {
-                self.states = regions;
-                curShippingAddress.state = [[regions linq_where:^BOOL(NamedItem* item) {
-                    return (item.identifier == curShippingAddress.state.identifier);
-                }] firstObject];
-                self.curStateIndex = [regions indexOfObject:curShippingAddress.state];
-                [self.stateField setEnabled:(regions != nil)];
-            } failure:^(NSString *error) {}];
-        }
+        self.stateField.text = curShippingAddress.states;
+        [self.stateField setEnabled:true];
+//        if(curShippingAddress.state) {
+//            self.stateField.text = curShippingAddress.state.name;
+//            [[ApiRequester sharedInstance] getRegionsByCountry:curCountry.identifier success:^(NSArray *regions) {
+//                self.states = regions;
+//                curShippingAddress.state = [[regions linq_where:^BOOL(NamedItem* item) {
+//                    return (item.identifier == curShippingAddress.state.identifier);
+//                }] firstObject];
+//                self.curStateIndex = [regions indexOfObject:curShippingAddress.state];
+//                [self.stateField setEnabled:(regions != nil)];
+//            } failure:^(NSString *error) {}];
+//        }
     }
 }
 
 #pragma mark - Actions
 
 -(IBAction)cancel:(id)sender {
+    //https://onedrive.live.com/?authkey=%21ANKw6euLTybQZuc&id=33444CEC40424AA3%213971&cid=33444CEC40424AA3
     [self performSegueWithIdentifier:@"unwindFromResidentAddress" sender:self];
 }
 
@@ -87,6 +90,7 @@
         newAddress.lastName = self.lastNameField.text;
         newAddress.company = self.companyField.text;
         newAddress.address = self.addressField.text;
+        newAddress.dialcode = curCountry.callingCodes;
         newAddress.city = self.cityField.text;
         newAddress.state = self.stateField.text;
         newAddress.zipCode = self.postalCodeField.text;
@@ -96,7 +100,6 @@
         
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] setShippingAddress:newAddress success:^{
-            [DataCache sharedInstance].userProfile.shippingAddress = newAddress;
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [self performSegueWithIdentifier:@"unwindFromResidentAddress" sender:self];
         } failure:^(NSString *error) {
@@ -117,8 +120,8 @@
         [self.picker reloadAllComponents];
         [self.picker selectRow:1 inComponent:0 animated:NO];
     } else if(self.activeField == self.stateField) {
-        [self.picker reloadAllComponents];
-        [self.picker selectRow:(self.curStateIndex >= 0 ? self.curStateIndex : 0) inComponent:0 animated:NO];
+       // [self.picker reloadAllComponents];
+       // [self.picker selectRow:(self.curStateIndex >= 0 ? self.curStateIndex : 0) inComponent:0 animated:NO];
     }
 }
 

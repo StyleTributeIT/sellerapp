@@ -21,11 +21,14 @@
     item.address = [self parseString:@"street" fromDict:dict];
     item.city = [self parseString:@"city" fromDict:dict];
     item.zipCode = [self parseString:@"zipcode" fromDict:dict];
-    item.countryId = [self parseString:@"phone_code" fromDict:dict];
+    item.countryId = [self parseString:@"country" fromDict:dict];
     item.contactNumber = [self parseString:@"phone" fromDict:dict];
     item.cusomer_id = [self parseString:@"cusomer_id" fromDict:dict];
     item.firstlineaddress =  [self parseString:@"address_1" fromDict:dict];
     item.secondlineaddress = [self parseString:@"address_2" fromDict:dict];
+    item.dialcode = [self parseString:@"phone_code" fromDict:dict];
+    item.states = [self parseString:@"state" fromDict:dict];
+    
     NSString* region = [self parseString:@"region" fromDict:dict];
     NSUInteger regionId = (NSUInteger)[[self parseString:@"region_id" fromDict:dict] integerValue];
     item.state = [[NamedItem alloc] initWithName:region andId:regionId];

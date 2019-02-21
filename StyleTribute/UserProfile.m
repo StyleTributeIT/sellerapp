@@ -22,7 +22,6 @@
     
     NSDictionary *dicttemp = [[dict valueForKey:@"customer"] valueForKey:@"data"];
     UserProfile* profile = [UserProfile new];
-    
     profile.isActive = [[self class] parseBool:@"is_active" fromDict:dicttemp];
     profile.entity_id = [[self class] parseString:@"entity_id" fromDict:dicttemp];
     profile.email = [[self class] parseString:@"email" fromDict:dict];
@@ -32,6 +31,14 @@
     profile.userName = [[self class] parseString:@"nickname" fromDict:dicttemp];
     profile.firstName = [[self class] parseString:@"first_name" fromDict:dicttemp];
     profile.lastName = [[self class] parseString:@"last_name" fromDict:dicttemp];
+   // profile.shippingAddress = [[dicttemp valueForKey:@"addresses"] valueForKey:@"data"];
+    
+    NSArray* shippingDict = [[dict objectForKey:@"addresses"] valueForKey:@"data"];
+    if (shippingDict != nil || shippingDict.count != 0)
+    {
+        NSDictionary *dictdata = [shippingDict lastObject];
+        profile.shippingAddress = [Address parseFromJson:dictdata];
+    }
     
     
     

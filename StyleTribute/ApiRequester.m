@@ -117,7 +117,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     NSDictionary* params = @{@"email":email, @"password":password, @"firstName": firstName, @"lastName": lastName};
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/auth/register";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/auth/register", DefApiHost];
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"POST";
@@ -139,7 +139,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"One of these might exist - object: %@", forJSONObject);
                                                     success([UserProfile parseFromJson:[forJSONObject objectForKey:@"model"]]);
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -152,8 +151,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
 -(void)loginWithEmail:(NSString*)email andPassword:(NSString*)password success:(JSONRespAccount)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/auth/login";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/auth/login", DefApiHost];
      NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:email,@"email",password,@"password", nil];
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
@@ -176,7 +174,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                     if (l == 200)
                     {
                             NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                            NSLog(@"One of these might exist - object: %@", forJSONObject);
                             NSUserDefaults *pref = [NSUserDefaults standardUserDefaults];
                             [pref setValue:[[forJSONObject valueForKey:@"data"] valueForKey:@"access_token"] forKey:@"Token"];
                            [pref synchronize];
@@ -204,8 +201,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     }
     
     NSLog(@"%@",token);
-    
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/users/me";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -226,23 +222,34 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                     if (l == 200)
                     {
                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                        NSLog(@"One of these might exist - object: %@", forJSONObject);
+                        NSLog(@"%@",forJSONObject);
                          [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
                          NSUserDefaults *userdefauls = [NSUserDefaults standardUserDefaults];
                         [userdefauls setValue:[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"id"] forKey:@"cust_id"];
                         [userdefauls synchronize];
                     
-                        NSDictionary *dicttme = [[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] ;
+                        NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
+                        
+                        
+                        NSArray* shippingDict = [[dicttme objectForKey:@"addresses"] valueForKey:@"data"];
+                        if (shippingDict != nil || shippingDict.count != 0)
+                        {
+                            NSDictionary *dictdata = [shippingDict lastObject];
+                            [DataCache sharedInstance].shippingAddress = [Address parseFromJson:dictdata];
+                        }
+                        
+                        
+                       
                         [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dicttme];
                         [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
                         NSDictionary *dicttemp = [[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"];
-                        NSDictionary* shippingDict = [[dicttemp objectForKey:@"addresses"] valueForKey:@"data"];
                         
-                        [DataCache sharedInstance].shippingAddress = [Address parseFromJson:shippingDict];
-                        
-                        
-                        
-                        
+                        NSArray* shippingDict1 = [[dicttemp objectForKey:@"addresses"] valueForKey:@"data"];
+                        if (shippingDict1 != nil || shippingDict1.count != 0)
+                        {
+                            NSDictionary *dictdata = [shippingDict1 lastObject];
+                             [DataCache sharedInstance].shippingAddress = [Address parseFromJson:dictdata];
+                        }
                         success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
                     }else {
                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -260,7 +267,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
     NSLog(@"%@",token);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/users/me";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"PUT";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -280,15 +287,13 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                         long l = (long)[httpResponse statusCode];
                         if (l == 200)
                         {
-                                NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                               NSLog(@"One of these might exist - object: %@", forJSONObject);
+                            NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                             NSUserDefaults *userdefauls = [NSUserDefaults standardUserDefaults];
                             [userdefauls setValue:[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"id"] forKey:@"cust_id"];
                             [userdefauls synchronize];
                             [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
                             NSDictionary *dicttemp = [[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"];
                             NSDictionary* shippingDict = [[dicttemp objectForKey:@"addresses"] valueForKey:@"data"];
-                            
                             [DataCache sharedInstance].shippingAddress = [Address parseFromJson:shippingDict];
                             success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
                         }else {
@@ -357,7 +362,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getCountries:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/countries";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/countries", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -412,7 +417,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
  
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/categories/list/outlines";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/categories/list/outlines", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -431,22 +436,15 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                     if (l == 200)
                     {
                          NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                      
-                        NSLog(@"One of these might exist - object: %@", forJSONObject);
                         NSMutableArray* categories = [NSMutableArray new];
                         for (NSDictionary* categoryDict in [forJSONObject valueForKey:@"data"]) {
-                            NSLog(@"%@",categoryDict);
                                     [categories addObject:[STCategory parseFromJson:categoryDict]];
                             }
                         success(categories);
                         
                     }else {
-//                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//                         NSLog(@"One of these might exist - object: %@", forJSONObject);
                         failure(DefGeneralErrMsg);
                     }
-                           
-                                                
                 }];
     [task resume];
 }
@@ -455,8 +453,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",token);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/products?page=1&per_page=20";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/products?page=1&per_page=20", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -477,9 +474,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                         {
                             NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                            NSMutableArray* products = [NSMutableArray new];
-                            NSLog(@"%@",forJSONObject);
                             for (NSDictionary* productDict in [forJSONObject valueForKey:@"data"]) {
-                                NSLog(@"%@",productDict);
                             Product* product = [Product parseFromJson:productDict];
                             [products addObject:product];
                             }
@@ -529,11 +524,11 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                              failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSDictionary* params = @{@"bankname":bankName, @"bankcode":bankCode, @"bankbeneficiary":beneficiary, @"bankaccountnumber":accountNumber, @"bankbranchcode":branchCode};
+    NSDictionary* params = @{@"bankname":bankName, @"bankcode":bankCode, @"bankbeneficiary":beneficiary, @"bankaccountnumber":accountNumber, @"bankbranchcode":branchCode,@"payment_method_name": @"TRANSFER"};
+    NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",params);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/users/me/payment-detail";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me/payment-detail", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"POST";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -554,7 +549,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"One of these might exist - object: %@", forJSONObject);
+                
+                                                    NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
+                                                    
+                                                    [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dicttme];
                                                     success();
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -568,7 +566,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getDesigners:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/designers/list";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/designers/list", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -588,8 +586,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                     if (l == 200)
                     {
                             NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                        NSLog(@"One of these might exist - object: %@", forJSONObject);
-                                                    
                         NSMutableArray* designers = [NSMutableArray new];
                         for (NSDictionary* designerDict in [forJSONObject valueForKey:@"data"]) {
                             [designers addObject:[NamedItem parseFromJson:designerDict]];
@@ -609,8 +605,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",token);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/conditions/list";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/conditions/list", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -657,8 +652,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:@{@"first_name":firstName,@"last_name":lastName} options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",token);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/users/me";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"PUT";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -679,15 +673,12 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                             if (l == 200)
                             {
                                 NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                NSLog(@"One of these might exist - object: %@", forJSONObject);
                                  NSUserDefaults *userdefauls = [NSUserDefaults standardUserDefaults];
                                 [userdefauls setValue:[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"id"] forKey:@"cust_id"];
                                 [userdefauls synchronize];
                                 [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
-                                
                                 NSDictionary *dicttemp = [[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"];
                                 NSDictionary* shippingDict = [[dicttemp objectForKey:@"addresses"] valueForKey:@"data"];
-                                
                                 [DataCache sharedInstance].shippingAddress = [Address parseFromJson:shippingDict];
                                 
                                 success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
@@ -702,78 +693,97 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     
     
     
-//
-//    if(![self checkInternetConnectionWithErrCallback:failure]) return;
-//
-//    NSMutableDictionary* params = [@{/* @"userName":userName, */ @"firstName": firstName, @"lastName": lastName, /* @"country": country, */} mutableCopy];
-//    if(phone != nil && ![phone isKindOfClass:[NSNull class]]) {
-//        [params setObject:phone forKey:@"phone"];
-//    }
-//
-//    [self.sessionManager POST:@"seller/account" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-//        success();
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        [self logError:error withCaption:@"setAccount error"];
-//        failure(DefGeneralErrMsg);
-//    }];
+
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+
+    NSMutableDictionary* params = [@{/* @"userName":userName, */ @"firstName": firstName, @"lastName": lastName, /* @"country": country, */} mutableCopy];
+    if(phone != nil && ![phone isKindOfClass:[NSNull class]]) {
+        [params setObject:phone forKey:@"phone"];
+    }
+
+    [self.sessionManager POST:@"seller/account" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        success();
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self logError:error withCaption:@"setAccount error"];
+        failure(DefGeneralErrMsg);
+    }];
 }
 
--(void)setProduct:(Product*)product success:(JSONRespProduct)success failure:(JSONRespError)failure {
+-(void)setProduct:(Product*)product Tag:(BOOL)setProduct success:(JSONRespProduct)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    
-    NSMutableDictionary* params = [@{@"name": product.name,
-                                     @"description": product.descriptionText,
-                                     @"condition_id": @(product.condition.identifier),
-                                     @"original_price": @(product.originalPrice),
-                                     @"price": @(product.price)} mutableCopy];
-    
-    if (product.other_designer != nil)
+    NSString *method;
+    NSMutableDictionary* params;
+    NSString* urlString1;
+    if (setProduct == true)
     {
-        [params setObject:product.other_designer.name forKey:@"other_designer"];
-    } else {
-        [params setValue:@(product.designer.identifier) forKey:@"designer_id"];
-    }
-    
-    NSString* firstSize = [product.category.sizeFields firstObject];
-    if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
+         urlString1 = [NSString stringWithFormat:@"%@api/v1/products", DefApiHost];
+        params = [@{@"name": product.name,
+                    @"description": product.descriptionText,
+                    @"condition": @(product.condition.identifier),
+                    @"designer_id": @(product.designer.identifier),
+                    @"fix_payout_amount": @(product.price),
+                    @"size":@"88",
+                    @"categories":@"[146]",
+                    @"partner_sku" :@"",
+                    @"provider_code":@"SG",@"color":@"5"} mutableCopy];
+        method = @"POST";
+    }else
     {
-        [params setObject:product.kidzsize forKey:firstSize];
-    } else
-    if([firstSize isEqualToString:@"size"]) {
-        [params setObject:@[product.unit, product.size] forKey:@"size"];
-    }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
-        NSString* width = [product.dimensions objectAtIndex:0];
-        NSString* height = [product.dimensions objectAtIndex:1];
-        NSString* depth = [product.dimensions objectAtIndex:2];
+        method = @"PUT";
+        urlString1 = [NSString stringWithFormat:@"%@api/v1/products/%d", DefApiHost, product.identifier];
+        params = [@{@"name": product.name,
+                    @"description": product.descriptionText,
+                    @"condition_id": @(product.condition.identifier),
+                    @"original_price": @(product.originalPrice),
+                    @"price": @(product.price)} mutableCopy];
+      
+        if (product.other_designer != nil)
+        {
+            [params setObject:product.other_designer.name forKey:@"other_designer"];
+        } else {
+            [params setValue:@(product.designer.identifier) forKey:@"designer_id"];
+        }
         
-        if(width)
-            [params setObject:width forKey:@"dimensions[width]"];
-        if(height)
-            [params setObject:height forKey:@"dimensions[height]"];
-        if(depth)
-            [params setObject:depth forKey:@"dimensions[depth]"];
+        NSString* firstSize = [product.category.sizeFields firstObject];
+        if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
+        {
+            [params setObject:product.kidzsize forKey:firstSize];
+        } else
+            if([firstSize isEqualToString:@"size"]) {
+                [params setObject:@[product.unit, product.size] forKey:@"size"];
+            }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
+                NSString* width = [product.dimensions objectAtIndex:0];
+                NSString* height = [product.dimensions objectAtIndex:1];
+                NSString* depth = [product.dimensions objectAtIndex:2];
+                
+                if(width)
+                    [params setObject:width forKey:@"dimensions[width]"];
+                if(height)
+                    [params setObject:height forKey:@"dimensions[height]"];
+                if(depth)
+                    [params setObject:depth forKey:@"dimensions[depth]"];
+            }
+        /*
+         else if([firstSize isEqualToString:@"shoesize"]) {
+         [params setObject:@(product.shoeSize.identifier) forKey:@"shoesize"];
+         if(product.heelHeight)
+         [params setObject:product.heelHeight forKey:@"heel_height"];
+         }
+         */
+        if(product.identifier > 0) {
+            [params setObject:@(product.identifier) forKey:@"id"];
+        }
+        if(product.processStatus.length > 0) {
+            [params setObject:product.processStatus forKey:@"process_status"];
+        }
+        
     }
-    /*
-     else if([firstSize isEqualToString:@"shoesize"]) {
-     [params setObject:@(product.shoeSize.identifier) forKey:@"shoesize"];
-     if(product.heelHeight)
-     [params setObject:product.heelHeight forKey:@"heel_height"];
-     }
-     */
-    if(product.identifier > 0) {
-        [params setObject:@(product.identifier) forKey:@"id"];
-    }
-    if(product.processStatus.length > 0) {
-        [params setObject:product.processStatus forKey:@"process_status"];
-    }
- 
+     NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",token);
-    NSString* urlString1 = [NSString stringWithFormat:@"https://api-dev.styletribute.com/api/v1/products/%d",product.identifier];
   
     NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"PUT";
+    request.HTTPMethod = method;
     [request setURL:[NSURL URLWithString:urlString1]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -792,7 +802,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"One of these might exist - object: %@", forJSONObject);
                                                     NSDictionary* productDict = [forJSONObject objectForKey:@"product"];
                                                     Product* product = [Product parseFromJson:productDict];
                                                     success(product);
@@ -804,21 +813,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 }
                                             }];
     [task resume];
-    
-    
-    
-    
-    
-//    [self.sessionManager POST:@"seller/product" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-//        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-//            NSDictionary* productDict = [responseObject objectForKey:@"product"];
-//            Product* product = [Product parseFromJson:productDict];
-//            success(product);
-//        }
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        [self logError:error withCaption:@"setProduct error"];
-//        failure(DefGeneralErrMsg);
-//    }];
 }
 
 -(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress {
@@ -865,32 +859,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     {
         
     }
-    
-    
-    
-    
-//     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
-//    NSProgress *p;
-//    NSMutableURLRequest *request = [self.sessionManager.requestSerializer  multipartFormRequestWithMethod:@"POST" URLString:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//        [formData appendPartWithFileData:imageData name:@"files" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
-//    } error:nil];
-//     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-//    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//     [request addValue:token forHTTPHeaderField:@"Authorization"];
-//    [self.sessionManager setTaskDidSendBodyDataBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
-//        progress(1.0*totalBytesSent/totalBytesExpectedToSend);
-//    }];
-//
-//    NSURLSessionUploadTask* task = [self.sessionManager uploadTaskWithStreamedRequest:request progress:&p completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-//        if(error) {
-//            [self logError:error withCaption:@"uploadImage error"];
-//            failure(DefGeneralErrMsg);
-//        } else {
-//            success();
-//        }
-//    }];
-//
-//    [task resume];
 }
 
 -(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure {
@@ -924,8 +892,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",token);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/designers/list";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/designers/list", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -945,7 +912,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                     if (l == 200)
                                     {
                                           NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                          NSLog(@"One of these might exist - object: %@", forJSONObject);
                                         NSMutableArray* sizeVaules = [NSMutableArray new];
                                         for (NSDictionary* item in [forJSONObject valueForKey:@"data"]) {
                                                     NamedItem* sizeItem = [NamedItem parseFromJson:item];
@@ -965,8 +931,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getUnitAndSizeValues:(NSString*)attrName success:(JSONRespDictionary)success failure:(JSONRespError)failure {
 	if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",token);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/sizes/list?type=SH";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/sizes/list?type=SH", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -986,7 +951,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"One of these might exist - object: %@", forJSONObject);
+                                                  
                                                     NSMutableArray* sizeVaules = [NSMutableArray new];
                                                     for (NSDictionary* item in [forJSONObject valueForKey:@"data"]) {
                                                         NamedItem* sizeItem = [NamedItem parseFromJson:item];
@@ -1006,25 +971,32 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)getSellerPayoutForProduct:(NSUInteger)category price:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSString* url = [NSString stringWithFormat:@"/seller/payout/category/%lu/price/%f",
-                     (unsigned long)category, price];
-    NSLog(@"%@", url);
-    [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
-        success([responseObject floatValue]);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self logError:error withCaption:@"getSellerPayoutForProduct error"];
-        failure(DefGeneralErrMsg);
-    }];
+    
+    
+    
+    
+    
+    
+    
+//    NSString* url = [NSString stringWithFormat:@"/seller/payout/category/%lu/price/%f",
+//                     (unsigned long)category, price];
+//    NSLog(@"%@", url);
+//    [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
+//        success([responseObject floatValue]);
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        [self logError:error withCaption:@"getSellerPayoutForProduct error"];
+//        failure(DefGeneralErrMsg);
+//    }];
 }
 
 -(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    NSDictionary* params = @{@"original_price": [NSString stringWithFormat:@"%f", price], @"category_id": [NSString stringWithFormat:@"%ld", product.category.idNum], @"designer_id":[NSString stringWithFormat:@"%ld", product.designer.identifier], @"condition_id":[NSString stringWithFormat:@"%ld", product.condition.identifier]};
-//      NSDictionary* params = @{@"original_price": [NSString stringWithFormat:@"%f", price], @"category_id": [NSString stringWithFormat:@"%d", 37], @"designer_id":[NSString stringWithFormat:@"%d", 27], @"condition_id":[NSString stringWithFormat:@"%d", 1]};
+    NSDictionary* params = @{@"original_price": [NSString stringWithFormat:@"%f", price], @"category_id": [NSString stringWithFormat:@"%d",product.category.idNum], @"designer_id":[NSString stringWithFormat:@"%d", product.designer.identifier], @"condition_id":[NSString stringWithFormat:@"%d", product.condition.identifier]};
+    
+    NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSLog(@"%@",params);
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/price/suggest";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/price/suggest", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"POST";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -1044,29 +1016,19 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 long l = (long)[httpResponse statusCode];
                                                 if (l == 200)
                                                 {
+                                                    
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"One of these might exist - object: %@", forJSONObject);
-                                                      success(250.0);
+                                                   
+                                                      success(forJSONObject);
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    success(250.0);
-                                                   // failure([forJSONObject valueForKey:@"message"]);
+                                                    failure(DefGeneralErrMsg);
+                                                   
                                                 }
                                                 
                                             }];
     [task resume];
-    
-    
-    
-//    NSString* url = [NSString stringWithFormat:@"seller/priceSuggestion/designer/%zd/condition/%zd/category/%zd/original/%f",
-//                     product.designer.identifier, product.condition.identifier, product.category.idNum, price];
-//    NSLog(@"%@", url);
-//    [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
-//        success([responseObject floatValue]);
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        [self logError:error withCaption:@"getPriceSuggestionForProduct error"];
-//        failure(DefGeneralErrMsg);
-//    }];
+
 }
 
 -(void)getRegionsByCountry:(NSString*)country success:(JSONRespArray)success failure:(JSONRespError)failure {
@@ -1092,7 +1054,17 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
 -(void)setShippingAddress:(Address*)address success:(JSONRespEmpty)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    NSMutableDictionary* Phone = [@{@"code": @"91",@"value":address.contactNumber}mutableCopy];
+    NSArray *testArray2 = [address.contactNumber componentsSeparatedByString:@"-"];
+    
+    NSMutableDictionary* Phone;
+    if (testArray2.count == 2)
+    {
+       Phone = [@{@"code": address.dialcode,@"value":testArray2[1]}mutableCopy];
+    }
+    else
+    {
+       Phone = [@{@"code": address.dialcode,@"value":testArray2[0]}mutableCopy];
+    }
     NSMutableDictionary* params = [@{@"city": address.city,
                              @"company": address.company,
                              @"customer_id": address.cusomer_id,
@@ -1107,7 +1079,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
     NSLog(@"%@",params);
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/addresses";
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/addresses", DefApiHost];
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"POST";
@@ -1131,7 +1103,13 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                 if (l == 200)
                 {
                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                        NSLog(@"One of these might exist - object: %@", forJSONObject);
+                    NSDictionary* shippingDict = [forJSONObject objectForKey:@"data"];
+                    if (shippingDict != nil || shippingDict.count != 0)
+                    {
+                        
+                        [DataCache sharedInstance].shippingAddress = [Address parseFromJson:shippingDict];
+                    }
+                    
                         success();
                 }else {
                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -1145,8 +1123,8 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
 -(void)getMinimumAppVersionWithSuccess:(JSONRespAppViersion)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    
-    NSString *urlString1 = @"https://api-dev.styletribute.com/api/v1/config/public";
+
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/config/public", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
@@ -1167,7 +1145,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"One of these might exist - object: %@", forJSONObject);
+                                                  
                                                     NSString* versionString = [[[forJSONObject objectForKey:@"data"] valueForKey:@"mobile_app"] valueForKey:@"ios"];
                                                     success([versionString floatValue]);
                                                 }else {

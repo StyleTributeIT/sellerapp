@@ -12,6 +12,7 @@
 
 @property NSString* identifier;
 @property NSString* name;
+@property NSString *callingCodes;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
 

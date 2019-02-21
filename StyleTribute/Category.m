@@ -17,9 +17,10 @@
 
 +(instancetype)parseFromJson:(NSDictionary*)dict; {
     STCategory* category = [STCategory new];
-  //  NSLog(@"%@",dict);
-
-    category.idNum = (NSUInteger)[self parseInt:@"id" fromDict:dict];
+    NSLog(@"%@",dict);
+    NSString *iDN = [dict valueForKey:@"id"];
+     NSLog(@"%@",iDN);
+    category.idNum = (NSUInteger)[iDN intValue];
     category.name = [self parseString:@"name" fromDict:dict];
     category.thumbnail = [self parseString:@"thumbnail_image" fromDict:dict];
     

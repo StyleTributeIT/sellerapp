@@ -15,17 +15,11 @@
     [GlobalHelper addLogoToNavBar:self.navigationItem];
     
     BankAccount* account = [DataCache sharedInstance].bankAccount;
-//    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-//    [[ApiRequester sharedInstance] getBankAccount:^(BankAccount* account){
-//        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        self.bankNameField.text = account.bankName;
-        self.swiftCodeField.text = account.bankCode;
-        self.holderNameField.text = account.beneficiary;
-        self.accountNumberField.text = account.accountNumber;
-        self.branchCodeField.text = account.branchCode;
-//    } failure:^(NSString *error) {
-//        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-//    }];
+    self.bankNameField.text = account.bankName;
+    self.swiftCodeField.text = account.bankCode;
+    self.holderNameField.text = account.beneficiary;
+    self.accountNumberField.text = account.accountNumber;
+    self.branchCodeField.text = account.branchCode;
 }
 
 -(IBAction)cancel:(id)sender {

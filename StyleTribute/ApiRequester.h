@@ -25,7 +25,7 @@ typedef void (^JSONRespFBLogin)(BOOL loggedIn, UserProfile* fbProfile);
 typedef void (^JSONRespId)(NSUInteger identifier);
 typedef void (^JSONRespProgress)(float progress);
 typedef void (^JSONRespProduct)(Product* product);
-typedef void (^JSONRespPrice)(float priceSuggestion);
+typedef void (^JSONRespPrice)(NSDictionary* priceSuggestion);
 typedef void (^JSONRespAppViersion)(float appVersion);
 
 @interface ApiRequester : NSObject
@@ -72,7 +72,7 @@ typedef void (^JSONRespAppViersion)(float appVersion);
                       success:(JSONRespEmpty)success
                       failure:(JSONRespError)failure;
 
--(void)setProduct:(Product*)product success:(JSONRespProduct)success failure:(JSONRespError)failure;
+-(void)setProduct:(Product*)product Tag:(BOOL)setProduct success:(JSONRespProduct)success failure:(JSONRespError)failure;
 
 -(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress;
 -(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure;

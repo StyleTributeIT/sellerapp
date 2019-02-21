@@ -633,7 +633,7 @@ typedef void(^ImageLoadBlock)(int);
             self.curProduct.processStatus = @"in_review_add";
         }
         
-        [[ApiRequester sharedInstance] setProduct:self.curProduct success:^(Product* product){
+        [[ApiRequester sharedInstance] setProduct:self.curProduct Tag:false success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
 //            self.curProduct.identifier = product.identifier;
 //            self.curProduct.processStatus = product.processStatus;
