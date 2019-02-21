@@ -716,15 +716,20 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     NSString* urlString1;
     if (setProduct == true)
     {
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        NSString *number = [NSString stringWithFormat:@"%d", product.category.idNum];
+        [arr addObject:number];
          urlString1 = [NSString stringWithFormat:@"%@api/v1/products", DefApiHost];
         params = [@{@"name": product.name,
                     @"description": product.descriptionText,
                     @"condition": @(product.condition.identifier),
                     @"designer_id": @(product.designer.identifier),
                     @"fix_payout_amount": @(product.price),
+                    @"original_price": @(product.originalPrice),
                     @"size":@"88",
-                    @"categories":@"[146]",
+                    @"categories":arr,
                     @"partner_sku" :@"",
+                    @"process_type_code":@"DIY",
                     @"provider_code":@"SG",@"color":@"5"} mutableCopy];
         method = @"POST";
     }else
