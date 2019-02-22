@@ -266,6 +266,9 @@ int sectionOffset = 0;
         
         [[ApiRequester sharedInstance] setProduct:self.curProduct Tag:isedit success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            
+            self.productid = product.identifier;
+            NSLog(@"%d",self.productid);
             if (self.isEditingItem)
             {
                 NSMutableArray *tempImages = [[NSMutableArray alloc] init];
@@ -422,6 +425,7 @@ int sectionOffset = 0;
                      [wc updateProductsList];
                      }
                      */
+                    
                     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
                         //Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
                         [self.curProduct.category.imageTypes objectAtIndex:i];
