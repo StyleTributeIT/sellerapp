@@ -1361,7 +1361,7 @@
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.styletribute.seller;
+				PRODUCT_BUNDLE_IDENTIFIER = LocalMarket.LocalMarket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = LocalMarket;
@@ -1390,7 +1390,7 @@
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.styletribute.seller;
+				PRODUCT_BUNDLE_IDENTIFIER = LocalMarket.LocalMarket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = LocalMarket;

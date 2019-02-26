@@ -471,7 +471,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                          NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                         NSMutableArray* categories = [NSMutableArray new];
                         for (NSDictionary* categoryDict in [forJSONObject valueForKey:@"data"]) {
-                                    [categories addObject:[STCategory parseFromJson:categoryDict]];
+                                [categories addObject:[STCategory parseFromJson:categoryDict]];
                             }
                         success(categories);
                         

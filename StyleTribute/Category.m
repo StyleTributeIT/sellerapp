@@ -38,16 +38,12 @@
     {
         for(NSDictionary* imgTypeDict in imgTypeArray)
         {
+            
             ImageType* imgType = [ImageType parseFromJson:imgTypeDict];
             [imgTypes addObject:imgType];
         }
     }
     category.imageTypes = imgTypes;
-//    category.sizeFields = [dict objectForKey:@"size_fields"];
-//    if (category.sizeFields != nil)
-//    {
-//        NSLog(@"size Fields isn't null");
-//    }
     NSMutableArray* categories = [NSMutableArray new];
     for (NSDictionary* categoryDict in [[dict objectForKey:@"categories"] valueForKey:@"data"]) {
         [categories addObject:[STCategory parseFromJson:categoryDict]];

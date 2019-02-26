@@ -94,6 +94,7 @@ int sectionOffset = 0;
         self.originalCopy = [self.curProduct copy];
     }
     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
+      //  NSLog(@"%@",)
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
         curImgType.state = ImageStateNormal;
     }

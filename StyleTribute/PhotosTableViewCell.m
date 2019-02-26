@@ -87,7 +87,7 @@
         } else {
             imgType = [self.curProduct.category.imageTypes objectAtIndex:row];
         }
-        newCell.photoTypeLabel.text = [imgType.name uppercaseString];
+        newCell.photoTypeLabel.text = imgType.type;
         [newCell.photoTypeLabel setHidden:NO];
         Photo* photo = [self.curProduct.photos objectAtIndex:row];
         if (![photo isKindOfClass:[NSNull class]])

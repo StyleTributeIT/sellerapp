@@ -100,16 +100,16 @@ STCategory *pCategory = nil;
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-    NSLog(@"%@",dict);
+   //NSLog(@"%@",dict);
     
     Product* product = [Product new];
     NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
-//    NSLog(@"%d",(NSUInteger)[self parseLong:@"id" fromDict:dict]);
     product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
     product.name = [self parseString:@"name" fromDict:dict];
     product.processStatus = [self parseString:@"name" fromDict:dicttemp];
     product.originalPrice = [self parseFloat:@"original_price" fromDict:dict];
-    product.price = product.savedPrice = [self parseFloat:@"price" fromDict:dict];//[[self parseString:@"price" fromDict:dict] floatValue];
+    product.price = [self parseFloatprice:@"price" fromDict:dict];
+    product.savedPrice = [self parseFloatprice:@"price" fromDict:dict];
     product.descriptionText = [self parseString:@"description" fromDict:dict];
     product.url = [self parseString:@"partner_url" fromDict:dict];
     product.share_text = [self parseString:@"share_text" fromDict:dict];
