@@ -56,32 +56,23 @@ typedef void(^ImageLoadBlock)(int);
     self.isInitialized = NO;
     self.isTutorialPresented = NO;
     self.collectionViewHeight.constant = self.collectionView.frame.size.width/PHOTOS_PER_ROW;
-    
     self.picker = [GlobalHelper createPickerForFields:@[self.conditionField, self.unitField, self.sizeField, self.shoeSizeField, self.brandField]];
     self.picker.delegate = self;
     self.picker.dataSource = self;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.sizes = @[@"size 1", @"size 2", @"size 3", @"size 4", @"size 5"];
-
     self.messageLabel.text = @"PHOTO";
-    
-   // [GlobalHelper addLogoToNavBar:self.navigationItem];
     self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     [self.messageLabel sizeToFit];
-    
     self.textViewBackground.image = [[UIImage imageNamed:@"Edit"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
     self.collectionView.allowsSelection = YES;
     self.collectionView.allowsMultipleSelection = NO;
     self.collectionView.accessibilityIdentifier = @"Photos collection";
     self.collectionView.accessibilityLabel = @"Photos collection";
-    
     self.descriptionView.placeholder = @"Description";
     self.descriptionView.placeholderColor = [UIColor lightGrayColor];
-    
     self.photosToDelete = [NSMutableArray new];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-    
     self.productCopy = [self.curProduct copy];
 }
 
@@ -129,7 +120,6 @@ typedef void(^ImageLoadBlock)(int);
                               range:NSMakeRange(0, 12)];
             self.messageLabel.attributedText = attString;
         }
-        
         [self displaySizeFieldsByCategory:self.curProduct.category];
     }
     
@@ -833,6 +823,7 @@ typedef void(^ImageLoadBlock)(int);
                 } else {
                     [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnailUrl] placeholderImage:[UIImage imageNamed:@"stub"]];
                 }
+                
             } else {
                 [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
             }

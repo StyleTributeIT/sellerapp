@@ -98,6 +98,11 @@
 	<string>Allow StyleTribute to access your contacts.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow StyleTribute to use your photo library.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>

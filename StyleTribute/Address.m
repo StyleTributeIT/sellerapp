@@ -14,7 +14,7 @@
     NSLog(@"%@",dict);
     
     Address *item = [self new];
-    
+    item.addressid =  [[dict valueForKey:@"id"] integerValue];
     item.firstName = [self parseString:@"first_name" fromDict:dict];
     item.lastName = [self parseString:@"last_name" fromDict:dict];
     item.company = [self parseString:@"company" fromDict:dict];

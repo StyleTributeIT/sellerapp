@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <UserNotifications/UserNotifications.h>
-
+//com.styletribute.seller
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

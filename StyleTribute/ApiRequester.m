@@ -231,25 +231,33 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                         NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
                         
                         
-                        NSArray* shippingDict = [[dicttme objectForKey:@"addresses"] valueForKey:@"data"];
-                        if (shippingDict != nil || shippingDict.count != 0)
+                        NSArray *shippingDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"addresses"] valueForKey:@"data"];
+                        if (shippingDict == nil || shippingDict.count == 0)
+                        {
+                           
+                        }else
                         {
                             NSDictionary *dictdata = [shippingDict lastObject];
                             [DataCache sharedInstance].shippingAddress = [Address parseFromJson:dictdata];
                         }
                         
                         
-                       
-                        [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dicttme];
-                        [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
-                        NSDictionary *dicttemp = [[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"];
+NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"payment_details"] valueForKey:@"data"];
                         
-                        NSArray* shippingDict1 = [[dicttemp objectForKey:@"addresses"] valueForKey:@"data"];
-                        if (shippingDict1 != nil || shippingDict1.count != 0)
+                       
+                        if (BANKDict == nil || BANKDict.count == 0)
                         {
-                            NSDictionary *dictdata = [shippingDict1 lastObject];
-                             [DataCache sharedInstance].shippingAddress = [Address parseFromJson:dictdata];
+               
+                        }else
+                        {
+                            NSDictionary *dictdata = [BANKDict firstObject];
+                            NSLog(@"%@",dictdata);
+                            [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dictdata];
                         }
+                        
+                       
+                        
+                        [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
                         success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
                     }else {
                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -337,26 +345,51 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    [self.sessionManager GET:@"invalidate" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-            [self.sessionManager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
-            NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-            [defs removeObjectForKey:@"apiToken"];
-            [DataCache sharedInstance].products = nil;
-            [DataCache sharedInstance].userProfile = nil;
-            [defs synchronize];
-            if ([FBSDKAccessToken currentAccessToken])
-            {
-                
-                FBSDKLoginManager *manager = [[FBSDKLoginManager alloc] init];
-                [manager logOut];
-            }
-            success();
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self logError:error withCaption:@"logout error"];
-        failure(DefGeneralErrMsg);
-    }];
+    NSDictionary *params1 = [[NSDictionary alloc] initWithObjectsAndKeys:[DataCache sharedInstance].deviceToken,@"device_token", nil];
+   NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:params1,@"data", nil];
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params1 options:kNilOptions error:nil];
+    NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
+    NSLog(@"%@",token);
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me/device", DefApiHost];
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"DELETE";
+    [request setURL:[NSURL URLWithString:urlString1]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:token forHTTPHeaderField:@"Authorization"];
+    [request setHTTPBody:jsonBodyData];
+    [request setURL:[NSURL URLWithString:urlString1]];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil  delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData * _Nullable data,
+                                                                NSURLResponse * _Nullable response,
+                                                                NSError * _Nullable error) {
+                                                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                long l = (long)[httpResponse statusCode];
+                                                if (l == 200)
+                                                {
+                                                    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+                                                    [defs removeObjectForKey:@"apiToken"];
+                                                    [DataCache sharedInstance].products = nil;
+                                                    [DataCache sharedInstance].userProfile = nil;
+                                                    [defs synchronize];
+                                                    if ([FBSDKAccessToken currentAccessToken])
+                                                    {
+                                                        
+                                                        FBSDKLoginManager *manager = [[FBSDKLoginManager alloc] init];
+                                                        [manager logOut];
+                                                    }
+                                                    success();
+                                                }else {
+                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    failure([forJSONObject valueForKey:@"message"]);
+                                                }
+                                                
+                                            }];
+    [task resume];
+   
 }
 
 -(void)getCountries:(JSONRespArray)success failure:(JSONRespError)failure {
@@ -493,15 +526,39 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
 -(void)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    NSDictionary *params1 = [[NSDictionary alloc] initWithObjectsAndKeys:[DataCache sharedInstance].deviceToken,@"device_token",@"iOS",@"os",@"7.1.5",@"os_version",@"device_brand",@"device_brand",@"6s",@"device_model", nil];
+   
+    NSDictionary* params = @{@"data":params1};
+  NSString *token1 = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params1 options:kNilOptions error:nil];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me/device", DefApiHost];
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+    [request setURL:[NSURL URLWithString:urlString1]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:token1 forHTTPHeaderField:@"Authorization"];
+    [request setHTTPBody:jsonBodyData];
+    [request setURL:[NSURL URLWithString:urlString1]];
     
-    [self.sessionManager POST:@"deviceToken" parameters:@{@"deviceToken":token} success:^(NSURLSessionDataTask *task, id responseObject) {
-        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-            success();
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self logError:error withCaption:@"setDeviceToken error"];
-        failure(DefGeneralErrMsg);
-    }];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil  delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData * _Nullable data,
+                                                                NSURLResponse * _Nullable response,
+                                                                NSError * _Nullable error) {
+                                                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                long l = (long)[httpResponse statusCode];
+                                                if (l == 200)
+                                                {
+                                                    success();
+                                                }else {
+                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    failure([forJSONObject valueForKey:@"message"]);
+                                                }
+                                                
+                                            }];
+    [task resume];
 }
 
 -(void)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure {
@@ -524,7 +581,9 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                              failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
-    NSDictionary* params = @{@"bankname":bankName, @"bankcode":bankCode, @"bankbeneficiary":beneficiary, @"bankaccountnumber":accountNumber, @"bankbranchcode":branchCode,@"payment_method_name": @"TRANSFER"};
+    NSDictionary* params1 = @{@"bank_name":bankName, @"bank_code":bankCode, @"beneficiary_name":beneficiary, @"bank_account":accountNumber, @"branch_code":branchCode};
+    
+    NSDictionary* params = @{@"data":params1,@"payment_method_name":@"TRANSFER"};
     NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
@@ -549,10 +608,11 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                
-                                                    NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
                                                     
-                                                    [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dicttme];
+                                                    NSArray *dicttme = [[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"payment_details"] valueForKey:@"data"];
+                                                    
+                                                    NSDictionary *dict = [dicttme firstObject];
+                                                    [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dict];
                                                     success();
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -673,14 +733,12 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                             if (l == 200)
                             {
                                 NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                NSLog(@"%@",forJSONObject);
                                  NSUserDefaults *userdefauls = [NSUserDefaults standardUserDefaults];
                                 [userdefauls setValue:[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"id"] forKey:@"cust_id"];
                                 [userdefauls synchronize];
                                 [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
-                                NSDictionary *dicttemp = [[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"];
-                                NSDictionary* shippingDict = [[dicttemp objectForKey:@"addresses"] valueForKey:@"data"];
-                                [DataCache sharedInstance].shippingAddress = [Address parseFromJson:shippingDict];
-                                
+                           
                                 success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
                          }else {
                             NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -688,25 +746,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                          }
                     }];
     [task resume];
-    
-    
-    
-    
-    
-
-    if(![self checkInternetConnectionWithErrCallback:failure]) return;
-
-    NSMutableDictionary* params = [@{/* @"userName":userName, */ @"firstName": firstName, @"lastName": lastName, /* @"country": country, */} mutableCopy];
-    if(phone != nil && ![phone isKindOfClass:[NSNull class]]) {
-        [params setObject:phone forKey:@"phone"];
-    }
-
-    [self.sessionManager POST:@"seller/account" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-        success();
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self logError:error withCaption:@"setAccount error"];
-        failure(DefGeneralErrMsg);
-    }];
 }
 
 -(void)setProduct:(Product*)product Tag:(BOOL)setProduct success:(JSONRespProduct)success failure:(JSONRespError)failure {
@@ -1063,17 +1102,29 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     NSArray *testArray2 = [address.contactNumber componentsSeparatedByString:@"-"];
     
     NSMutableDictionary* Phone;
+    NSString *Method;
+    NSString* urlString1;
+    Address* curShippingAddress = [DataCache sharedInstance].shippingAddress;
+    if(curShippingAddress) {
+        Method = @"PUT";
+        urlString1 = [NSString stringWithFormat:@"%@api/v1/addresses/%ld", DefApiHost,address.addressid];
+    }else
+    {
+        Method = @"POST";
+        urlString1 = [NSString stringWithFormat:@"%@api/v1/addresses", DefApiHost];
+    }
     if (testArray2.count == 2)
     {
        Phone = [@{@"code": address.dialcode,@"value":testArray2[1]}mutableCopy];
+        //Phone = testArray2[1];
     }
     else
     {
+               // Phone = testArray2[0];
        Phone = [@{@"code": address.dialcode,@"value":testArray2[0]}mutableCopy];
     }
-    NSMutableDictionary* params = [@{@"city": address.city,
+    NSMutableDictionary* params  = [@{@"city": address.city,
                              @"company": address.company,
-                             @"customer_id": address.cusomer_id,
                              @"first_name": address.firstName,
                              @"last_name": address.lastName,
                              @"zipcode": address.zipCode,
@@ -1085,10 +1136,10 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
     NSLog(@"%@",params);
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/addresses", DefApiHost];
+    
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"POST";
+    request.HTTPMethod = Method;
     [request setURL:[NSURL URLWithString:urlString1]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];

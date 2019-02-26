@@ -68,10 +68,7 @@
                                                             phone:[DataCache sharedInstance].userProfile.phone
                                                           success:^{
                                                               [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                                                              UserProfile* curProfile = [DataCache sharedInstance].userProfile;
-                                                              curProfile.firstName = self.firstNameField.text;
-                                                              curProfile.lastName = self.lastNameField.text;
-                                                              curProfile.country = self.curCountry.identifier;
+        
                                                               [self performSegueWithIdentifier:@"unwindFromEditProfile" sender:self];
                                                           } failure:^(NSString *error) {
                                                               [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];

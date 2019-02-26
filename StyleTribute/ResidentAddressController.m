@@ -37,10 +37,7 @@
     self.picker.delegate = self;
     self.picker.dataSource = self;
    
-    
     self.Country = [DataCache sharedInstance].countries;
-    
-
     Address* curShippingAddress = [DataCache sharedInstance].shippingAddress;
     if(curShippingAddress) {
         
@@ -84,6 +81,7 @@
 -(IBAction)save:(id)sender {
     bool empty_fields = [self hasEmptyFields];
     if(empty_fields == false) {
+         Address* curShippingAddress = [DataCache sharedInstance].shippingAddress;
         Country* curCountry = [[DataCache sharedInstance].countries objectAtIndex:self.curCountryIndex];
         Address* newAddress = [Address new];
         newAddress.firstName = self.firstNameField.text;
@@ -96,7 +94,7 @@
         newAddress.zipCode = self.postalCodeField.text;
         newAddress.countryId = curCountry.identifier;
         newAddress.contactNumber = self.phoneNumberField.text;
-        newAddress.cusomer_id = [[NSUserDefaults standardUserDefaults] valueForKey:@"cust_id"];
+        newAddress.addressid = curShippingAddress.addressid;
         
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
         [[ApiRequester sharedInstance] setShippingAddress:newAddress success:^{

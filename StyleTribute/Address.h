@@ -26,6 +26,7 @@
 @property NSString* contactNumber;
 @property NSString* firstlineaddress;
 @property NSString* secondlineaddress;
+@property NSInteger *addressid;
 
 
 +(instancetype)parseFromJson:(NSDictionary*)dict;
