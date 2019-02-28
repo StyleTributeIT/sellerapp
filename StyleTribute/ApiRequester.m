@@ -374,6 +374,12 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                     [defs removeObjectForKey:@"apiToken"];
                                                     [DataCache sharedInstance].products = nil;
                                                     [DataCache sharedInstance].userProfile = nil;
+                                                    [DataCache sharedInstance].shippingAddress = nil;
+                                                    [DataCache sharedInstance].bankAccount = nil;
+                                                    [DataCache sharedInstance].products = nil;
+                                                    [DataCache sharedInstance].categories = nil;
+                                                    [DataCache sharedInstance].conditions = nil;
+                                                    [DataCache sharedInstance].countries = nil;
                                                     [defs synchronize];
                                                     if ([FBSDKAccessToken currentAccessToken])
                                                     {
