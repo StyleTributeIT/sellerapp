@@ -307,7 +307,14 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                             [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
                             NSDictionary *dicttemp = [[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"];
                             NSDictionary* shippingDict = [[dicttemp objectForKey:@"addresses"] valueForKey:@"data"];
-                            [DataCache sharedInstance].shippingAddress = [Address parseFromJson:shippingDict];
+                            if (shippingDict.count == 0 || shippingDict == nil)
+                            {
+                                
+                            }else
+                            {
+                                [DataCache sharedInstance].shippingAddress = [Address parseFromJson:shippingDict];
+                            }
+                            
                             success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
                         }else {
                             NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -377,6 +384,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                 {
                                                     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
                                                     [defs removeObjectForKey:@"apiToken"];
+                                                    [defs removeObjectForKey:@"Token"];
                                                     [DataCache sharedInstance].products = nil;
                                                     [DataCache sharedInstance].userProfile = nil;
                                                     [DataCache sharedInstance].shippingAddress = nil;
@@ -385,6 +393,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                     [DataCache sharedInstance].categories = nil;
                                                     [DataCache sharedInstance].conditions = nil;
                                                     [DataCache sharedInstance].countries = nil;
+                                                   
                                                     [defs synchronize];
                                                     if ([FBSDKAccessToken currentAccessToken])
                                                     {

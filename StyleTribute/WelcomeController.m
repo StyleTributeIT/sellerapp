@@ -67,11 +67,11 @@
                 [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                    
-                    if([profile isFilled]) {
+                    //if([profile isFilled]) {
                         [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-                    } else {
-                        [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
-                    }
+                    //} else {
+                     //   [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+                   // }
                 } failure:^(NSString *error) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     NSLog(@"getAccount error: %@", [error description]);

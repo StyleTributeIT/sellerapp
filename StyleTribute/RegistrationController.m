@@ -85,9 +85,22 @@
                                                        phone:self.phoneField.text
                                                      success:^(UserProfile *profile) {
                                                          
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                [DataCache sharedInstance].userProfile = profile;
-                [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+                        [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile){
+                        [DataCache sharedInstance].userProfile = profile;
+                                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                           // if([profile isFilled]) {
+                            [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
+                            //} else {
+                              //  [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+                           // }
+                        }
+                        failure:^(NSString *error)
+                        {
+                             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                        }];
+                                                         
+                
+              
             } failure:^(NSString *error) {
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 
