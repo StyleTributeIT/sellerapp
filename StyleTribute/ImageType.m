@@ -21,7 +21,7 @@
     
     imgType.name = [[self class] parseString:@"name" fromDict:dict];
     imgType.type = [[self class] parseString:@"label" fromDict:dict];
-    imgType.preview = [[self class] parseString:@"preview_image_file" fromDict:dict];
+    imgType.preview = [dict valueForKey:@"preview_image_file"];
     imgType.outline = [[self class] parseString:@"outline_image_file" fromDict:dict];
     imgType.state = ImageStateNormal;
     

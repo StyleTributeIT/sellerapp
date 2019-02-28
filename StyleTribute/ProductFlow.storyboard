@@ -770,7 +770,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="187" height="227"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OFP-o8-hXH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OFP-o8-hXH">
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="OFP-o8-hXH" secondAttribute="height" multiplier="1:1" id="BWh-g1-G47"/>

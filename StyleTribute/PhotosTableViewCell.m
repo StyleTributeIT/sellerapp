@@ -103,7 +103,8 @@
                 newCell.photoView.alpha = 0.5f;
             }
         } else {
-            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:imgType.preview] placeholderImage:[UIImage imageNamed:@"stub"]];
+            
+            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:[@"https://mediatest.styletribute.com/" stringByAppendingString:imgType.preview]] placeholderImage:[UIImage imageNamed:@"stub"]];
             newCell.photoView.alpha = 0.5f;
         }
     }/*else {

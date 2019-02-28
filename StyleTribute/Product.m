@@ -100,7 +100,7 @@ STCategory *pCategory = nil;
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-   //NSLog(@"%@",dict);
+   NSLog(@"%@",dict);
     
     Product* product = [Product new];
     NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
@@ -188,6 +188,7 @@ STCategory *pCategory = nil;
         }
     }
     
+   
     product.photos = [[NSMutableArray alloc] initWithCapacity:product.category.imageTypes.count];
     for(int i = 0; i < product.category.imageTypes.count; ++i) {
         [product.photos addObject:[NSNull null]];
@@ -197,6 +198,7 @@ STCategory *pCategory = nil;
     if(images != nil) for(NSDictionary* imageDict in images) {
         Photo* photo = [Photo parseFromJson:imageDict];
         ImageType* type = [[product.category.imageTypes linq_where:^BOOL(ImageType* imgType) {
+            //
             return [imgType.type isEqualToString:photo.label];
         }] firstObject];
         
@@ -211,6 +213,7 @@ STCategory *pCategory = nil;
         }
     }
   
+    
     NSString* dimensions = [dict objectForKey:@"dimensions"];
     if(dimensions) {
        // NSArray *listItems = [list componentsSeparatedByString:@"x"];

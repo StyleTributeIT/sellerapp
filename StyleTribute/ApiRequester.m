@@ -842,7 +842,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         }
         
     }
-     NSLog(@"%@",params);
+    // NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
   
@@ -883,10 +883,10 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
 -(void)uploadImage:(UIImage*)image ofType:(NSString*)type toProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure progress:(JSONRespProgress)progress {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
-    NSLog(@"%@",imageData);
+   // NSLog(@"%@",imageData);
       NSLog(@"%@",type);
      NSString* url = [NSString stringWithFormat:@"%@api/v1/products/%d/pictures", DefApiHost, productId];
-    NSDictionary* params = @{@"label": @"hans",@"order":@"1",@"main":@"true"};
+    NSDictionary* params = @{@"label": type,@"order":@"1",@"main":@"true"};
     @try
     {
         NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];

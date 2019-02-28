@@ -146,7 +146,8 @@
     cell.categoryName.text = category.name;
     NSLog(@"categoryName :%@ id:%d",category.name,category.idNum);
     if(category.thumbnail.length > 0) {
-        [cell.categoryImage sd_setImageWithURL:[NSURL URLWithString:category.thumbnail] placeholderImage:[UIImage imageNamed:@"stub"]];
+       
+        [cell.categoryImage sd_setImageWithURL:[NSURL URLWithString:[@"https://mediatest.styletribute.com" stringByAppendingString:category.thumbnail]] placeholderImage:[UIImage imageNamed:@"stub"]];
     }
     cell.layer.borderWidth = 0.5f;
     cell.layer.borderColor = [UIColor colorWithRed:219/255.0f green:219/255.0f blue:219/255.0f alpha:1.0f].CGColor;
