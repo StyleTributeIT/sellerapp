@@ -139,9 +139,14 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    NSUserDefaults *pref = [NSUserDefaults standardUserDefaults];
+                                                    [pref setValue:[[forJSONObject valueForKey:@"data"] valueForKey:@"access_token"] forKey:@"Token"];
+                                                    [pref synchronize];
+                                                    NSLog(@"%@",forJSONObject);
                                                     success([UserProfile parseFromJson:[forJSONObject objectForKey:@"model"]]);
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                      NSLog(@"%@",forJSONObject);
                                                     failure([forJSONObject valueForKey:@"message"]);
                                                 }
                                                 
