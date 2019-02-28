@@ -805,10 +805,8 @@
 				7A0EB6011AEE23D400D90001 /* Frameworks */,
 				7A0EB6021AEE23D400D90001 /* Resources */,
 				2E481DE25FCD5CC1A6E2F981 /* [CP] Copy Pods Resources */,
-				F3F86CD94C6BC26A3298A7B3 /* 📦 Embed Pods Frameworks */,
 				5FB79EC194DF50E7DC6DCA4E /* 📦 Copy Pods Resources */,
 				53381EF61DF87004005FA857 /* ShellScript */,
-				1E77F2E107E236889F252DF0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -828,10 +826,6 @@
 				7A0EB6191AEE23D400D90001 /* Sources */,
 				7A0EB61A1AEE23D400D90001 /* Frameworks */,
 				7A0EB61B1AEE23D400D90001 /* Resources */,
-				C2DE5CB65B357F6061EB1344 /* 📦 Embed Pods Frameworks */,
-				61847CC3F201108987D99C74 /* 📦 Copy Pods Resources */,
-				0B73A0E3947BE8B319D95F32 /* [CP] Embed Pods Frameworks */,
-				441B09D6EE814803E5A78441 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -854,7 +848,7 @@
 				TargetAttributes = {
 					7A0EB6031AEE23D400D90001 = {
 						CreatedOnToolsVersion = 6.3.1;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -927,43 +921,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0B73A0E3947BE8B319D95F32 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1E77F2E107E236889F252DF0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2E481DE25FCD5CC1A6E2F981 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/ZDCChat/ZDCChatStrings.bundle",
 				"${PODS_ROOT}/ZDCChat/ZDCChat.bundle",
@@ -976,7 +940,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3595FD5EBB9FE8B132041D80 /* [CP] Check Pods Manifest.lock */ = {
@@ -992,21 +956,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		441B09D6EE814803E5A78441 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		53381EF61DF87004005FA857 /* ShellScript */ = {
@@ -1035,21 +984,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		61847CC3F201108987D99C74 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		99757E9823CE8349FFC96D83 /* [CP] Check Pods Manifest.lock */ = {
@@ -1088,21 +1022,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C2DE5CB65B357F6061EB1344 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CFB6DF52F70BCF3702AEA3D1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1116,21 +1035,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F3F86CD94C6BC26A3298A7B3 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1279,7 +1183,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = L26M8UMD32;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1323,7 +1226,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = L26M8UMD32;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1350,8 +1252,7 @@
 				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = L26M8UMD32;
+				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1361,10 +1262,10 @@
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LocalMarket.LocalMarket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.styletribute.seller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = LocalMarket;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
@@ -1378,8 +1279,7 @@
 				CODE_SIGN_ENTITLEMENTS = StyleTribute/StyleTribute.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = L26M8UMD32;
+				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1390,10 +1290,10 @@
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LocalMarket.LocalMarket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.styletribute.seller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = LocalMarket;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Release;
