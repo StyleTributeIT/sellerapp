@@ -21,7 +21,7 @@
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     
     NSDictionary *dicttemp = [[dict valueForKey:@"customer"] valueForKey:@"data"];
-    NSLog(@"%@",dicttemp);
+   // NSLog(@"%@",dicttemp);
     UserProfile* profile = [UserProfile new];
     profile.isActive = [[self class] parseBool:@"is_active" fromDict:dicttemp];
     profile.entity_id = [[self class] parseString:@"entity_id" fromDict:dicttemp];

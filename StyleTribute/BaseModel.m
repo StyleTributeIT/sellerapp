@@ -84,7 +84,7 @@
     {
         NSNumber* val = [dict objectForKey:param];
         if(val) {
-            NSLog(@"%ld",[val longValue]);
+           // NSLog(@"%ld",[val longValue]);
             return [val longValue];
             
         } else {
@@ -107,11 +107,11 @@
 
 +(float)parseFloat:(NSString*)param fromDict:(NSDictionary*)dict {
      NSString* val = [dict valueForKey:param];
-    NSLog(@"%@",val);
+    //NSLog(@"%@",val);
     if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
         return 0.0;
     } else {
-        NSLog(@"%f", [val floatValue]);
+      //  NSLog(@"%f", [val floatValue]);
 
         return [val floatValue];
     }
@@ -120,11 +120,11 @@
 
 +(float)parseFloatprice:(NSString*)param fromDict:(NSDictionary*)dict {
     NSString* val = [dict valueForKey:param];
-    NSLog(@"%@",val);
+   // NSLog(@"%@",val);
     if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
         return 0.0;
     } else {
-        NSLog(@"%f", [val floatValue]);
+      //  NSLog(@"%f", [val floatValue]);
         
         return [val floatValue];
     }

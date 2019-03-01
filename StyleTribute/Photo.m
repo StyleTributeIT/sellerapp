@@ -12,7 +12,7 @@
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     
-    NSLog(@"%@",dict);
+   // NSLog(@"%@",dict);
     Photo *item = [self new];
     item.identifier = (NSUInteger)[[self parseString:@"id" fromDict:dict] integerValue];
     item.label = [self parseString:@"label" fromDict:dict];

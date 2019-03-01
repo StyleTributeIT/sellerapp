@@ -17,9 +17,9 @@
 
 +(instancetype)parseFromJson:(NSDictionary*)dict; {
     STCategory* category = [STCategory new];
-    NSLog(@"%@",dict);
+   // NSLog(@"%@",dict);
     NSString *iDN = [dict valueForKey:@"id"];
-     NSLog(@"%@",iDN);
+    // NSLog(@"%@",iDN);
     category.idNum = (NSUInteger)[iDN intValue];
     category.name = [self parseString:@"name" fromDict:dict];
     category.thumbnail = [self parseString:@"thumbnail_image" fromDict:dict];
@@ -30,7 +30,7 @@
     {
         if (imgTypeArray.count > 0)
         {
-            NSLog(@"imgTypeArray: %@", imgTypeArray);
+            //NSLog(@"imgTypeArray: %@", imgTypeArray);
         }
     }
     

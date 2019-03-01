@@ -526,6 +526,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                         if (l == 200)
                         {
                             NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                      //      NSLog(@"%@",forJSONObject);
                            NSMutableArray* products = [NSMutableArray new];
                             for (NSDictionary* productDict in [forJSONObject valueForKey:@"data"]) {
                             Product* product = [Product parseFromJson:productDict];
@@ -665,7 +666,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                     long l = (long)[httpResponse statusCode];
                     if (l == 200)
                     {
-                            NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                         NSMutableArray* designers = [NSMutableArray new];
                         for (NSDictionary* designerDict in [forJSONObject valueForKey:@"data"]) {
                             [designers addObject:[NamedItem parseFromJson:designerDict]];
@@ -790,6 +791,41 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                     @"partner_sku" :@"",
                     @"process_type_code":@"DIY",
                     @"provider_code":@"SG",@"color":@"5"} mutableCopy];
+        
+        
+        if (product.other_designer != nil)
+        {
+            [params setObject:product.other_designer.name forKey:@"other_designer"];
+        } else {
+            [params setValue:@(product.designer.identifier) forKey:@"designer_id"];
+        }
+        
+        NSString* firstSize = [product.category.sizeFields firstObject];
+        if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
+        {
+            [params setObject:product.kidzsize forKey:firstSize];
+        } else
+            if([firstSize isEqualToString:@"size"]) {
+                [params setObject:@[product.unit, product.size] forKey:@"size"];
+            }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
+                NSString* width = [product.dimensions objectAtIndex:0];
+                NSString* height = [product.dimensions objectAtIndex:1];
+                NSString* depth = [product.dimensions objectAtIndex:2];
+                
+                if(width)
+                    [params setObject:width forKey:@"dimensions[width]"];
+                if(height)
+                    [params setObject:height forKey:@"dimensions[height]"];
+                if(depth)
+                    [params setObject:depth forKey:@"dimensions[depth]"];
+            }
+      
+        if(product.identifier > 0) {
+            [params setObject:@(product.identifier) forKey:@"id"];
+        }
+        if(product.processStatus.length > 0) {
+            [params setObject:product.processStatus forKey:@"process_status"];
+        }
         method = @"POST";
     }else
     {
@@ -842,7 +878,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         }
         
     }
-    // NSLog(@"%@",params);
+    NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
   
@@ -887,6 +923,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
       NSLog(@"%@",type);
      NSString* url = [NSString stringWithFormat:@"%@api/v1/products/%d/pictures", DefApiHost, productId];
     NSDictionary* params = @{@"label": type,@"order":@"1",@"main":@"true"};
+    NSLog(@"%@",params);
     @try
     {
         NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];

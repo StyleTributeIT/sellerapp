@@ -94,13 +94,13 @@ STCategory *pCategory = nil;
     }*/
     if (pCategory == nil)
     {
-        NSLog(@"Category is NIL");
+        //NSLog(@"Category is NIL");
     }
     return pCategory;
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-   NSLog(@"%@",dict);
+   //NSLog(@"%@",dict);
     
     Product* product = [Product new];
     NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
@@ -135,7 +135,6 @@ STCategory *pCategory = nil;
             NSArray * categories = [DataCache sharedInstance].categories;
             NSArray *arrcatefories = [[dict objectForKey:@"categories"] valueForKey:@"data"];
             NSDictionary *dictcategpries = arrcatefories[0];
-            NSLog(@"%@",dictcategpries);
             NSUInteger categoryId = (NSUInteger)[[dictcategpries objectForKey:@"id"] intValue];
             
             product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
@@ -155,7 +154,7 @@ STCategory *pCategory = nil;
     if([DataCache sharedInstance].conditions != nil) {
         @try {
             NSArray * categories = [DataCache sharedInstance].conditions;
-            NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition_id"] intValue];
+            NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition_id"] integerValue];
             product.condition = [[categories linq_where:^BOOL(NamedItem* condition) {
                 return (condition.identifier == conditionId);
             }] firstObject];
@@ -173,15 +172,21 @@ STCategory *pCategory = nil;
     
     if([DataCache sharedInstance].designers != nil) {
         @try {
-              NSUInteger designerId = (NSInteger)[[dict valueForKey:@"designer_id"] intValue];
-            product.designer = [[[DataCache sharedInstance].designers linq_where:^BOOL(NamedItem* designer) {
-                        return (designer.identifier = designerId);
-                }] firstObject];
-            
+
+            NSArray * designers = [DataCache sharedInstance].designers;
+          //  NSLog(@"%@",designers);
+            NSUInteger designerId = (NSInteger)[[dict valueForKey:@"designer_id"] integerValue];
+             for(int i = 0; i < designers; ++i) {
+                 NamedItem *item = [designers objectAtIndex:i];
+                 if (item.identifier == designerId)
+                 {
+                     product.designer = item;
+                 }
+            }
         }
         @catch (NSException *exception) {
             NSLog(@"%@", exception.reason);
-         
+
         }
         @finally {
             NSLog(@"Finally condition");
@@ -195,6 +200,7 @@ STCategory *pCategory = nil;
     }
     
     NSArray* images = [[dict objectForKey:@"media"] valueForKey:@"data"];
+ //   NSLog(@"%@",images);
     if(images != nil) for(NSDictionary* imageDict in images) {
         Photo* photo = [Photo parseFromJson:imageDict];
         ImageType* type = [[product.category.imageTypes linq_where:^BOOL(ImageType* imgType) {
@@ -224,7 +230,7 @@ STCategory *pCategory = nil;
     }
     if ([dict valueForKey:@"size"] != nil)
     {
-        NSLog(@"size");
+       // NSLog(@"size");
         product.kidzsize = [dict valueForKey:@"size"];
     }
     

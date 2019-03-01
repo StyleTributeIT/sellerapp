@@ -68,7 +68,7 @@ int sectionOffset = 0;
     self.isTutorialPresented = NO;
     self.photosToDelete = [NSMutableArray new];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
-    //self.productCopy = [self.curProduct copy];
+    self.productCopy = [self.curProduct copy];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -108,14 +108,14 @@ int sectionOffset = 0;
     {
         sectionOffset = 0;
         [super viewWillAppear:animated];
-//        self.curProduct = [DataCache getSelectedItem];
-//        if(self.curProduct == nil) {
-//            self.curProduct = [Product new];
-//            self.productCopy = self.curProduct;
-//            self.originalCopy = [self.productCopy copy];
-//            [DataCache setSelectedItem:self.curProduct];
-//            [DataCache sharedInstance].isEditingItem = NO;
-//        }
+        self.curProduct = [DataCache getSelectedItem];
+        if(self.curProduct == nil) {
+            self.curProduct = [Product new];
+            self.productCopy = self.curProduct;
+            self.originalCopy = [self.productCopy copy];
+            [DataCache setSelectedItem:self.curProduct];
+            [DataCache sharedInstance].isEditingItem = NO;
+        }
         STCategory *category = self.curProduct.category;
         NSString* firstSize = [category.sizeFields firstObject];
         if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])

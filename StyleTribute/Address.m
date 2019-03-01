@@ -11,7 +11,7 @@
 @implementation Address
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-    NSLog(@"%@",dict);
+   // NSLog(@"%@",dict);
     
     Address *item = [self new];
     item.addressid =  [[dict valueForKey:@"id"] integerValue];
