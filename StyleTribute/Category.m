@@ -17,7 +17,7 @@
 
 +(instancetype)parseFromJson:(NSDictionary*)dict; {
     STCategory* category = [STCategory new];
-   // NSLog(@"%@",dict);
+    NSLog(@"%@",dict);
     NSString *iDN = [dict valueForKey:@"id"];
     // NSLog(@"%@",iDN);
     category.idNum = (NSUInteger)[iDN intValue];
@@ -44,6 +44,11 @@
         }
     }
     category.imageTypes = imgTypes;
+    category.sizeFields = [dict objectForKey:@"input_fields"];
+    if (category.sizeFields != nil)
+    {
+        NSLog(@"size Fields isn't null");
+    }
     NSMutableArray* categories = [NSMutableArray new];
     for (NSDictionary* categoryDict in [[dict objectForKey:@"categories"] valueForKey:@"data"]) {
         [categories addObject:[STCategory parseFromJson:categoryDict]];

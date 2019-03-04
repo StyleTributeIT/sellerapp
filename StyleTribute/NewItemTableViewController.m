@@ -264,7 +264,6 @@ int sectionOffset = 0;
             isedit = true;
         }
         
-        
         [[ApiRequester sharedInstance] setProduct:self.curProduct Tag:isedit success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             
@@ -649,8 +648,6 @@ int sectionOffset = 0;
             }
         }
     }
-    
-   
     return [self setupShoesSizeCell:indexPath];
 }
 
@@ -731,9 +728,15 @@ int sectionOffset = 0;
     {
         sizes = [DataCache sharedInstance].kidzSizes;
     } else {
-        sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
-            return [unit isEqualToString:self.curProduct.unit];
-        }] allValues] firstObject];
+//        for (NamedItem *item in [DataCache sharedInstance].units) {
+//            NamedItem* sizeItem = [NamedItem parseFromJson:item];
+//            [sizeVaules addObject:sizeItem];
+//        }
+        sizes = [DataCache sharedInstance].Clothes;
+       // sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
+        //    return [unit isEqualToString:self.curProduct.unit];
+       // }] allValues] firstObject];
+        
     }
     for (NamedItem *dc in sizes) {
         if ([[dc valueForKey:@"name"] isEqualToString:self.curProduct.size])

@@ -17,6 +17,7 @@
     
 @property NSMutableArray* products;
 @property NSArray* kidzSizes;
+@property NSArray* Clothes;
 @property UserProfile* userProfile;
 @property BankAccount* bankAccount;
 @property Address* shippingAddress;

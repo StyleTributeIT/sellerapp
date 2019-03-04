@@ -79,6 +79,8 @@ typedef void (^JSONRespAppViersion)(float appVersion);
 -(void)setProcessStatus:(NSString*)status forProduct:(NSUInteger)productId success:(JSONRespProduct)success failure:(JSONRespError)failure;
 -(void)getSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getUnitAndSizeValues:(NSString*)attrName success:(JSONRespDictionary)success failure:(JSONRespError)failure;
+-(void)getkidsSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure;
+-(void)getshoesSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure;
 -(void)getSellerPayoutForProduct:(NSUInteger)category price:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure;
 -(void)getRegionsByCountry:(NSString*)country success:(JSONRespArray)success failure:(JSONRespError)failure;

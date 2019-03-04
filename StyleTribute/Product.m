@@ -100,8 +100,7 @@ STCategory *pCategory = nil;
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-   //NSLog(@"%@",dict);
-    
+ //   NSLog(@"%@",dict);
     Product* product = [Product new];
     NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
     product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
@@ -113,12 +112,8 @@ STCategory *pCategory = nil;
     product.descriptionText = [self parseString:@"description" fromDict:dict];
     product.url = [self parseString:@"partner_url" fromDict:dict];
     product.share_text = [self parseString:@"share_text" fromDict:dict];
-    
     product.allowedTransitions = [NSMutableArray new];
-    
     NSArray *transitions = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW", nil];
-  
-    
     
     //NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
     if(transitions != nil) for(NSString* transition in transitions) {
@@ -221,7 +216,7 @@ STCategory *pCategory = nil;
   
     
     NSString* dimensions = [dict objectForKey:@"dimensions"];
-    if(dimensions) {
+    if(!dimensions) {
        // NSArray *listItems = [list componentsSeparatedByString:@"x"];
         NSString* width = @"35"; //listItems[0];
         NSString* height = @"12"; //listItems[1];
