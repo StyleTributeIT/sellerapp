@@ -784,11 +784,10 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                     @"description": product.descriptionText,
                     @"condition": @(product.condition.identifier),
                     @"designer_id": @(product.designer.identifier),
-                    @"fix_payout_amount": @(product.price),
+                    @"price": @(product.price),
                     @"original_price": @(product.originalPrice),
                     @"size":@"88",
                     @"categories":arr,
-                    @"partner_sku" :@"",
                     @"process_type_code":@"DIY",
                     @"provider_code":@"SG",@"color":@"5"} mutableCopy];
     
