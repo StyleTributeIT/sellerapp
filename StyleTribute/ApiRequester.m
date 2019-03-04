@@ -791,8 +791,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                     @"partner_sku" :@"",
                     @"process_type_code":@"DIY",
                     @"provider_code":@"SG",@"color":@"5"} mutableCopy];
-        
-        
+    
         if (product.other_designer != nil)
         {
             [params setObject:product.other_designer.name forKey:@"other_designer"];
@@ -920,8 +919,8 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
    // NSLog(@"%@",imageData);
-      NSLog(@"%@",type);
-     NSString* url = [NSString stringWithFormat:@"%@api/v1/products/%d/pictures", DefApiHost, productId];
+    NSLog(@"%@",type);
+    NSString* url = [NSString stringWithFormat:@"%@api/v1/products/%d/picture", DefApiHost, productId];
     NSDictionary* params = @{@"label": type,@"order":@"1",@"main":@"true"};
     NSLog(@"%@",params);
     @try
@@ -930,7 +929,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSDictionary *param = params;
         AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
-        [requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
         [requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
         manager.requestSerializer=requestSerializer;
         [manager.requestSerializer setTimeoutInterval:150];
@@ -939,7 +938,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         }];
         [manager POST:url parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
          {
-             [formData appendPartWithFileData:imageData name:@"files" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+             [formData appendPartWithFileData:imageData name:@"file" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
              
          } success:^(AFHTTPRequestOperation *operation, id responseObject)
          {
