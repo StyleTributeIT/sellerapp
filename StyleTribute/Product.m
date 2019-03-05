@@ -100,7 +100,7 @@ STCategory *pCategory = nil;
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
- //   NSLog(@"%@",dict);
+    NSLog(@"%@",dict);
     Product* product = [Product new];
     NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
     product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
@@ -213,33 +213,42 @@ STCategory *pCategory = nil;
             [product.photos addObject:photo];
         }
     }
-  
-    
     NSString* dimensions = [dict objectForKey:@"dimensions"];
-    if(!dimensions) {
-       // NSArray *listItems = [list componentsSeparatedByString:@"x"];
-        NSString* width = @"35"; //listItems[0];
-        NSString* height = @"12"; //listItems[1];
-        NSString* depth = @"35";//listItems[2];
+    if( dimensions == nil || [dimensions isEqual:[NSNull null]] ) {
+        
+    }else
+    {
+        NSArray *listItems = [dimensions componentsSeparatedByString:@"x"];
+        NSString* width = listItems[0];
+        NSString* height = listItems[1];
+        NSString* depth = listItems[2];
         product.dimensions = @[width, height, depth];
     }
     if ([dict valueForKey:@"size"] != nil)
     {
        // NSLog(@"size");
-        product.kidzsize = [dict valueForKey:@"size"];
+        product.kidzsize = [[dict valueForKey:@"data"] valueForKey:@"name"];
+      
     }
     
-   // product.sizeId = [self parseInt:@"size_id" fromDict:dict];
+    if( [dict valueForKey:@"size_id"] == nil || [[dict valueForKey:@"size_id"] isEqual:[NSNull null]] )
+    {
+        
+    }
+    else
+    {
+        product.sizeId = [[dict valueForKey:@"size_id"] integerValue];
+    }
     product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
     
     // sizeId -> unit  & size
     if(product.sizeId && [DataCache sharedInstance].units != nil) {
         [[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
+            NSLog(@"%@",unit);
             for(NamedItem* size in sizes) {
                 if(size.identifier == product.sizeId) {
                     product.unit = unit;
                     product.size = size.name;
-                    
                     *stop = YES;
                     break;
                 }

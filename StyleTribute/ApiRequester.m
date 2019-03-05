@@ -806,21 +806,21 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
         {
             [params setObject:product.kidzsize forKey:firstSize];
-        } else
-            if([firstSize isEqualToString:@"size"]) {
+        }
+        else if([firstSize isEqualToString:@"size"]) {
                 [params setObject:@[product.unit, product.size] forKey:@"size"];
-            }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
-                NSString* width = [product.dimensions objectAtIndex:0];
-                NSString* height = [product.dimensions objectAtIndex:1];
-                NSString* depth = [product.dimensions objectAtIndex:2];
-                
-                if(width)
-                    [params setObject:width forKey:@"dimensions[width]"];
-                if(height)
-                    [params setObject:height forKey:@"dimensions[height]"];
-                if(depth)
-                    [params setObject:depth forKey:@"dimensions[depth]"];
-            }
+        }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
+            NSString* width = [product.dimensions objectAtIndex:0];
+            NSString* height = [product.dimensions objectAtIndex:1];
+            NSString* depth = [product.dimensions objectAtIndex:2];
+            NSString *dimension = [[[[width stringByAppendingString:@"x"] stringByAppendingString:height] stringByAppendingString:@"x"] stringByAppendingString:depth];
+
+            [params setObject:dimension forKey:@"dimensions"];
+        }else if([firstSize isEqualToString:@"shoesize"]) {
+            [params setObject:@(product.shoeSize.identifier) forKey:@"size_id"];
+            if(product.heelHeight)
+                [params setObject:product.heelHeight forKey:@"heel_height"];
+        }
       
         if(product.identifier > 0) {
             [params setObject:@(product.identifier) forKey:@"id"];
@@ -839,6 +839,10 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                     @"original_price": @(product.originalPrice),
                     @"price": @(product.price)} mutableCopy];
       
+        if(product.processStatus.length > 0) {
+            [params setObject:product.processStatus forKey:@"process_status"];
+        }
+        
         if (product.other_designer != nil)
         {
             [params setObject:product.other_designer.name forKey:@"other_designer"];
@@ -850,28 +854,21 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
         {
             [params setObject:product.kidzsize forKey:firstSize];
-        } else
-            if([firstSize isEqualToString:@"size"]) {
-                [params setObject:@[product.unit, product.size] forKey:@"size"];
-            }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
-                NSString* width = [product.dimensions objectAtIndex:0];
-                NSString* height = [product.dimensions objectAtIndex:1];
-                NSString* depth = [product.dimensions objectAtIndex:2];
-                
-                if(width)
-                    [params setObject:width forKey:@"dimensions[width]"];
-                if(height)
-                    [params setObject:height forKey:@"dimensions[height]"];
-                if(depth)
-                    [params setObject:depth forKey:@"dimensions[depth]"];
-            }
-        /*
-         else if([firstSize isEqualToString:@"shoesize"]) {
-         [params setObject:@(product.shoeSize.identifier) forKey:@"shoesize"];
-         if(product.heelHeight)
-         [params setObject:product.heelHeight forKey:@"heel_height"];
-         }
-         */
+        }
+        else if([firstSize isEqualToString:@"size"]) {
+            [params setObject:@[product.unit, product.size] forKey:@"size"];
+        }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
+            NSString* width = [product.dimensions objectAtIndex:0];
+            NSString* height = [product.dimensions objectAtIndex:1];
+            NSString* depth = [product.dimensions objectAtIndex:2];
+            NSString *dimension = [[[[width stringByAppendingString:@"x"] stringByAppendingString:height] stringByAppendingString:@"x"] stringByAppendingString:depth];
+            [params setObject:dimension forKey:@"dimensions"];
+        }else if([firstSize isEqualToString:@"shoesize"]) {
+            [params setObject:@(product.shoeSize.identifier) forKey:@"size_id"];
+            if(product.heelHeight)
+                [params setObject:product.heelHeight forKey:@"heel_height"];
+        }
+        
         if(product.identifier > 0) {
             [params setObject:@(product.identifier) forKey:@"id"];
         }
