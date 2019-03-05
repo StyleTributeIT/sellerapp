@@ -55,7 +55,7 @@
     bool is_editing = [DataCache sharedInstance].isEditingItem;
     float price = [self.priceField.text floatValue];
     Product *p = [DataCache getSelectedItem];
-    
+    p.price = price;
     if (is_editing == true){
         if (price > p.savedPrice){
             UIAlertController * alert=   [UIAlertController
@@ -104,14 +104,15 @@
             [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
 
             float price = [self.priceField.text floatValue];
-            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(NSDictionary *priceSuggestion) {
-                //  [[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
-
-            //[[ApiRequester sharedInstance] getPriceSuggestionForProduct:[DataCache getSelectedItem] andOriginalPrice:[self.priceField.text floatValue] success:^(float priceSuggestion) {
+            p.price = price;
+            
+            [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:p.originalPrice success:^(NSDictionary* priceSuggestion) {
+                NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
+                
                 self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
-                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [priceSuggestion valueForKey:@"price"]];
+                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [dcit valueForKey:@"price"]];
                 self.priceEarned.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 Product *p = [DataCache getSelectedItem];
                 p.price = [self.priceField.text floatValue];
@@ -119,9 +120,10 @@
                 [DataCache setSelectedItem:p];
                 self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            } failure:^(NSString *error) {
-                self.isInProgress = NO;
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                self.isInProgress = NO;
             }];
         }
     }

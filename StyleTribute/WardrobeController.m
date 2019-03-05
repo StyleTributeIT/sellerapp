@@ -171,15 +171,15 @@
         }];
     }
 
-//    if([DataCache sharedInstance].units == nil) {
-//        dispatch_group_enter(group);
-//        [[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
-//            [DataCache sharedInstance].units = units;
-//            dispatch_group_leave(group);
-//        } failure:^(NSString *error) {
-//            dispatch_group_leave(group);
-//        }];
-//   }
+    if([DataCache sharedInstance].units == nil) {
+        dispatch_group_enter(group);
+        [[ApiRequester sharedInstance] getUnitAndSizeValues:@"size" success:^(NSDictionary *units) {
+            [DataCache sharedInstance].units = units;
+            dispatch_group_leave(group);
+        } failure:^(NSString *error) {
+            dispatch_group_leave(group);
+        }];
+   }
 	  [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
     dispatch_group_notify(group, queue, ^{
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {

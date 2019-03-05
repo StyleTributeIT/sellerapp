@@ -728,14 +728,11 @@ int sectionOffset = 0;
     {
         sizes = [DataCache sharedInstance].kidzSizes;
     } else {
-//        for (NamedItem *item in [DataCache sharedInstance].units) {
-//            NamedItem* sizeItem = [NamedItem parseFromJson:item];
-//            [sizeVaules addObject:sizeItem];
-//        }
-        sizes = [DataCache sharedInstance].Clothes;
-       // sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
-        //    return [unit isEqualToString:self.curProduct.unit];
-       // }] allValues] firstObject];
+
+        sizes = [[[[DataCache sharedInstance].units linq_where:^BOOL(NSString* unit, id value) {
+            return [unit isEqualToString:self.curProduct.unit];
+        }] allValues] firstObject];
+       
         
     }
     for (NamedItem *dc in sizes) {

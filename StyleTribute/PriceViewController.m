@@ -50,13 +50,7 @@
                 [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 self.isInProgress = NO;
             }];
-            /*
-            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:original_price success:^(float price) {
-                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", price];
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            } failure:^(NSString *error) {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            }];*/
+           
         }
         else{
             self.additionalButtons.hidden = YES;
@@ -223,16 +217,6 @@
                 }];
 
             }
-
-            /*
-            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(float price) {
-                self.priceEarned.text = [NSString stringWithFormat:@" $%.2f", price];
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                self.isInProgress = NO;
-            } failure:^(NSString *error) {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                self.isInProgress = NO;
-            }];*/
 
         }
     }

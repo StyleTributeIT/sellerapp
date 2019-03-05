@@ -1057,10 +1057,10 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    
-                                                    NSPredicate *filter = [NSPredicate predicateWithFormat:@"age_group contains[c] %@ AND type contains[c] %@ ",@"H",@"SH"];
+                                                     NSLog(@"%@",forJSONObject);
+                                                    NSPredicate *filter = [NSPredicate predicateWithFormat:@"age_group contains[c] %@ AND type contains[c] %@ ",@"S",@"SH"];
                                                     NSArray *filteredContacts = [[forJSONObject valueForKey:@"data"] filteredArrayUsingPredicate:filter];
-                                                    
+                                                     NSLog(@"%@",filteredContacts);
                                                     NSMutableArray* sizeVaules = [NSMutableArray new];
                                                     for (NSDictionary* item in filteredContacts) {
                                                         NamedItem* sizeItem = [NamedItem parseFromJson:item];
@@ -1105,8 +1105,6 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                     
                                                     NSPredicate *filter = [NSPredicate predicateWithFormat:@"age_group contains[c] %@ AND type contains[c] %@",@"K",@"CL"];
                                                     NSArray *filteredContacts = [[forJSONObject valueForKey:@"data"] filteredArrayUsingPredicate:filter];
-                                                    
-                                                    
                                                     NSMutableArray* sizeVaules = [NSMutableArray new];
                                                     for (NSDictionary* item in filteredContacts) {
                                                         NamedItem* sizeItem = [NamedItem parseFromJson:item];
@@ -1130,8 +1128,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
 -(void)getUnitAndSizeValues:(NSString*)attrName success:(JSONRespDictionary)success failure:(JSONRespError)failure {
 	if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSDictionary *parameter = [[NSDictionary alloc] initWithObjectsAndKeys:@"CL",@"type",@"S",@"age_group", nil];
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/sizes/list?constraints=%@", DefApiHost,parameter];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1//sizes/clothes/units", DefApiHost];
     NSLog(@"%@",urlString1);
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
@@ -1152,42 +1149,68 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"%@",forJSONObject);
-                                                  NSMutableArray* sizeVaules = [NSMutableArray new];
-                                                    for (NSDictionary* item in [forJSONObject valueForKey:@"data"]) {
-                                                        NamedItem* sizeItem = [NamedItem parseFromJson:item];
-                                                        [sizeVaules addObject:sizeItem];
-                                        }
-                                            success(sizeVaules);
+                                                    NSMutableDictionary* units = [NSMutableDictionary new];
+                                                    [[forJSONObject valueForKey:@"data"] enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* responseSize, BOOL *stop) {
+                                                        NSLog(@"%@",responseSize);
+                                                        NSMutableArray* sizeVaules = [NSMutableArray new];
+                                                        for (NSArray* item in [responseSize valueForKey:@"data"])
+                                                        {
+                                                            NamedItem* sizeItem = [NamedItem new];
+                                                            NSLog(@"%@",item);
+                                                            sizeItem.identifier = (NSUInteger)[[item valueForKey:@"id"] integerValue];
+                                                            sizeItem.name = [item valueForKey:@"name"];
+                                                            [sizeVaules addObject:sizeItem];
+                                                        }
+                                                        units[unit] = sizeVaules;
+                                                    }];
+                                                    success(units);
                                     }else {
                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                     failure([forJSONObject valueForKey:@"message"]);
                             }
-                                            
                 }];
     [task resume];
-
 }
 
 -(void)getSellerPayoutForProduct:(NSUInteger)category price:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    NSDictionary* params = @{@"original_price": [NSString stringWithFormat:@"%f", price], @"category_id": [NSString stringWithFormat:@"%d",category]};
     
+    NSLog(@"%@",params);
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
+    NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/price/suggest", DefApiHost];
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+    [request setURL:[NSURL URLWithString:urlString1]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:token forHTTPHeaderField:@"Authorization"];
+    [request setHTTPBody:jsonBodyData];
+    [request setURL:[NSURL URLWithString:urlString1]];
     
-    
-    
-    
-    
-    
-    
-//    NSString* url = [NSString stringWithFormat:@"/seller/payout/category/%lu/price/%f",
-//                     (unsigned long)category, price];
-//    NSLog(@"%@", url);
-//    [self.sessionManager GET:url parameters:nil success:^(NSURLSessionDataTask *task, NSDecimalNumber* responseObject) {
-//        success([responseObject floatValue]);
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        [self logError:error withCaption:@"getSellerPayoutForProduct error"];
-//        failure(DefGeneralErrMsg);
-//    }];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil  delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData * _Nullable data,
+                                                                NSURLResponse * _Nullable response,
+                                                                NSError * _Nullable error) {
+                                                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                long l = (long)[httpResponse statusCode];
+                                                if (l == 200)
+                                                {
+                                                    
+                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    
+                                                    success(forJSONObject);
+                                                }else {
+                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    failure(DefGeneralErrMsg);
+                                                    
+                                                }
+                                                
+                                            }];
+    [task resume];
 }
 
 -(void)getPriceSuggestionForProduct:(Product*)product andOriginalPrice:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
