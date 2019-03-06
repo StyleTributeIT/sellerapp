@@ -783,7 +783,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
          urlString1 = [NSString stringWithFormat:@"%@api/v1/products", DefApiHost];
         params = [@{@"name": product.name,
                     @"description": product.descriptionText,
-                    @"condition": @(product.condition.identifier),
+                    @"condition_id": @(product.condition.identifier),
                     @"designer_id": @(product.designer.identifier),
                     @"price": @(product.price),
                     @"original_price": @(product.originalPrice),
@@ -1033,7 +1033,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
 -(void)getshoesSizeValues:(NSString*)attrName success:(JSONRespArray)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/sizes/list?type=SH&age_group=H", DefApiHost];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/sizes/list?type=SH&age_group=S", DefApiHost];
     NSLog(@"%@",urlString1);
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
@@ -1058,8 +1058,20 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                     NSPredicate *filter = [NSPredicate predicateWithFormat:@"age_group contains[c] %@ AND type contains[c] %@ ",@"S",@"SH"];
                                                     NSArray *filteredContacts = [[forJSONObject valueForKey:@"data"] filteredArrayUsingPredicate:filter];
                                                      NSLog(@"%@",filteredContacts);
+                                                    
+                                                    NSMutableArray * groupsFiltered = [[NSMutableArray alloc] init];
+                                                    NSMutableArray * groupNamesEncountered = [[NSMutableArray alloc] init];
+                                                    
+                                                    NSString * name;
+                                                    for (NSDictionary * group in filteredContacts) {                                                        name =[group objectForKey:@"name"];
+                                                        if ([groupNamesEncountered indexOfObject: name]==NSNotFound) {
+                                                            [groupNamesEncountered addObject:name];
+                                                            [groupsFiltered addObject:group];
+                                                        }
+                                                    }
+                
                                                     NSMutableArray* sizeVaules = [NSMutableArray new];
-                                                    for (NSDictionary* item in filteredContacts) {
+                                                    for (NSDictionary* item in groupsFiltered) {
                                                         NamedItem* sizeItem = [NamedItem parseFromJson:item];
                                                         [sizeVaules addObject:sizeItem];
                                                     }

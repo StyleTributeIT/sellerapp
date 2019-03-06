@@ -105,14 +105,14 @@
 
             float price = [self.priceField.text floatValue];
             p.price = price;
-            
+            p.originalPrice = price;
             [[ApiRequester sharedInstance] getPriceSuggestionForProduct:p andOriginalPrice:p.originalPrice success:^(NSDictionary* priceSuggestion) {
                 NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
-                
+                NSLog(@"%@",dcit);
                 self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
-                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [dcit valueForKey:@"price"]];
+                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"earning"] floatValue]];
                 self.priceEarned.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 Product *p = [DataCache getSelectedItem];
                 p.price = [self.priceField.text floatValue];

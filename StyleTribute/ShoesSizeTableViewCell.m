@@ -81,7 +81,6 @@ UIPickerView* picker;
     if ([textField isEqual:self.shoeSize])
     {
         NSArray *sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].shoeSizes valueForKey:@"name"]];
-        
         [ActionSheetStringPicker showPickerWithTitle:@""
                                                 rows:sizes
                                     initialSelection:0
