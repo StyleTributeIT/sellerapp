@@ -105,9 +105,8 @@
 
             float price = [self.priceField.text floatValue];
             p.price = price;
-             [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:[self.priceField.text intValue] success:^(NSDictionary* priceSuggestion) {
+            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:[self.priceField.text intValue] success:^(NSDictionary* priceSuggestion) {
                 NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
-                NSLog(@"%@",dcit);
                 self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
                 self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;

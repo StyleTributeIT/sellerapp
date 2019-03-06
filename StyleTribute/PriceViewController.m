@@ -208,7 +208,8 @@
                 [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
                 
                 [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(NSDictionary* priceSuggestion) {
-                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [priceSuggestion valueForKey:@"price"]];
+                    NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
+                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [dcit valueForKey:@"earning"]];
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     self.isInProgress = NO;
                 } failure:^(NSString *error) {
