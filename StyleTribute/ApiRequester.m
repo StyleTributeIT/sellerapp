@@ -1181,14 +1181,14 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
     [task resume];
 }
 
--(void)getSellerPayoutForProduct:(NSUInteger)category price:(float)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
+-(void)getSellerPayoutForProduct:(NSUInteger)category price:(int)price success:(JSONRespPrice)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    NSDictionary* params = @{@"original_price": [NSString stringWithFormat:@"%f", price], @"category_id": [NSString stringWithFormat:@"%d",category]};
+    NSDictionary* params = @{@"price": [NSString stringWithFormat:@"%d",price], @"category_id": [NSString stringWithFormat:@"%d",category]};
     
     NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/price/suggest", DefApiHost];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/price/commission", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"POST";
     [request setURL:[NSURL URLWithString:urlString1]];
