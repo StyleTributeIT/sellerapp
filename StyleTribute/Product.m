@@ -106,7 +106,7 @@ STCategory *pCategory = nil;
     product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
     product.name = [self parseString:@"name" fromDict:dict];
     product.processStatus = [self parseString:@"name" fromDict:dicttemp];
-    product.originalPrice = [self parseFloat:@"original_price" fromDict:dict];
+    product.originalPrice = [self parseFloatprice:@"original_price" fromDict:dict];
     product.price = [self parseFloatprice:@"price" fromDict:dict];
     product.savedPrice = [self parseFloatprice:@"price" fromDict:dict];
     product.descriptionText = [self parseString:@"description" fromDict:dict];
@@ -230,41 +230,54 @@ STCategory *pCategory = nil;
         product.kidzsize = [[dict valueForKey:@"data"] valueForKey:@"name"];
       
     }
-    
+
     if( [dict valueForKey:@"size_id"] == nil || [[dict valueForKey:@"size_id"] isEqual:[NSNull null]] )
     {
         
     }
     else
     {
-        product.sizeId = [[dict valueForKey:@"size_id"] integerValue];
+        
+        NSUInteger shoesizeId = [[dict valueForKey:@"size_id"] integerValue];
+        product.sizeId = shoesizeId;
+        NSArray * designers = [DataCache sharedInstance].shoeSizes;
+        for(int i = 0; i < designers.count; i++) {
+            NamedItem *item = [designers objectAtIndex:i];
+            if (item.identifier == shoesizeId)
+            {
+                product.shoeSize = item;
+            }
+        }
     }
     product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
-    
-    // sizeId -> unit  & size
-    if(product.sizeId && [DataCache sharedInstance].units != nil) {
-        [[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
-            NSLog(@"%@",unit);
-            for(NamedItem* size in sizes) {
-                if(size.identifier == product.sizeId) {
-                    product.unit = unit;
-                    product.size = size.name;
-                    *stop = YES;
-                    break;
-                }
-            }
-        }];
+    if( [dict valueForKey:@"size_id"] == nil || [[dict valueForKey:@"size_id"] isEqual:[NSNull null]] )
+    {
+        
     }
-    
+    else
+    {
+        
+        NSUInteger shoesizeId = [[dict valueForKey:@"size_id"] integerValue];
+        product.sizeId = shoesizeId;
+        if(product.sizeId && [DataCache sharedInstance].units != nil) {
+            [[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
+                NSLog(@"%@",unit);
+                for(NamedItem* size in sizes) {
+                    NSLog(@"%lu",(unsigned long)size.identifier);
+                    if(size.identifier == product.sizeId) {
+                        product.unit = unit;
+                        product.size = size.name;
+                        *stop = YES;
+                        break;
+                    }
+                }
+            }];
+        }
+    }
     product.processComment = [self parseString:@"process_status_comment" fromDict:dict];
     product.processStatusDisplay = [self parseString:@"name" fromDict:[[dict valueForKey:@"process_status"] valueForKey:@"data"]];
     
-    NSUInteger shoesizeId = (NSUInteger)[[self parseString:@"shoe_size" fromDict:dict] integerValue];
-    if([DataCache sharedInstance].shoeSizes) {
-        product.shoeSize = [[[DataCache sharedInstance].shoeSizes linq_where:^BOOL(NamedItem* item) {
-            return (item.identifier == shoesizeId);
-        }] firstObject];
-    }
+    
     return product;
 }
 

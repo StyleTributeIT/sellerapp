@@ -182,6 +182,7 @@
    }
 	  [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
     dispatch_group_notify(group, queue, ^{
+        [DataCache sharedInstance].category = @"";
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             [DataCache sharedInstance].products = [products mutableCopy];
@@ -443,6 +444,7 @@
 
 -(void)refreshProducts:(UIRefreshControl*)sender {
     NSLog(@"start refresh");
+     [DataCache sharedInstance].category = @"";
     [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
         [sender endRefreshing];
         [DataCache sharedInstance].products = [products mutableCopy];

@@ -107,35 +107,50 @@
 
 +(float)parseFloat:(NSString*)param fromDict:(NSDictionary*)dict {
      NSString* val = [dict valueForKey:param];
-    //NSLog(@"%@",val);
     if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
         return 0.0;
     } else {
-      //  NSLog(@"%f", [val floatValue]);
-
         return [val floatValue];
     }
-   // return 0.0;
+
 }
 
 +(float)parseFloatprice:(NSString*)param fromDict:(NSDictionary*)dict {
-    NSString* val = [dict valueForKey:param];
-   // NSLog(@"%@",val);
-    if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
-        return 0.0;
-    } else {
-      //  NSLog(@"%f", [val floatValue]);
+    
+    if ([dict isKindOfClass:[NSDictionary class]])
+    {
+        @try {
+            if ([dict isKindOfClass:[NSDictionary class]])
+            {
+                NSNumber* val = [dict objectForKey:param];
+                if(val) {
+                    return [val floatValue];
+                } else {
+                    return 0;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+            
+        }
+        @finally {
+            NSLog(@"Finally condition");
+        }
         
-        return [val floatValue];
+        
+        
+        
+        
+       
+    }else
+    {
+        return 0.0;
     }
-//    NSNumber * val = [dict valueForKey:param];
-//    if (!val)
-//    {
-//        return 0.0;
-//    }else
-//    {
-//        return [val floatValue];
-//    }
 }
 
 

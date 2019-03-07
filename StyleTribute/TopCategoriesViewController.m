@@ -119,6 +119,10 @@
     //TopCategoriesViewController *categoris = [[TopCategoriesViewController alloc] init];
     if (((STCategory*)[self.categories objectAtIndex:indexPath.row]).children.count != 0)
     {
+        if ([[DataCache sharedInstance].category isEqualToString:@""] || [DataCache sharedInstance].category == nil || [[DataCache sharedInstance].category isEqualToString: self.selectedCategory.name])
+        {
+            [DataCache sharedInstance].category = self.selectedCategory.name;
+        }
         TopCategoriesViewController *viewController = [[UIStoryboard storyboardWithName:@"ProductFlow" bundle:nil] instantiateViewControllerWithIdentifier:@"categorySelection"];
         [viewController loadWithChildrens:((STCategory*)[self.categories objectAtIndex:indexPath.row]).children andPrevCategorie:self.selectedCategory];
         [self.navigationController pushViewController:viewController animated:YES];
@@ -144,6 +148,13 @@
     
     cell.tag = indexPath.row;
     cell.categoryName.text = category.name;
+    if ([category.name isEqualToString:@"KIDS"])
+    {
+         [DataCache sharedInstance].category = @"";
+    }else if ([category.name isEqualToString:@"MEN"])
+    {
+        [DataCache sharedInstance].category = @"";
+    }
     NSLog(@"categoryName :%@ id:%d",category.name,category.idNum);
     if(category.thumbnail.length > 0) {
        

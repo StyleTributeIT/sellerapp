@@ -625,8 +625,6 @@ typedef void(^ImageLoadBlock)(int);
         
         [[ApiRequester sharedInstance] setProduct:self.curProduct Tag:false success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-//            self.curProduct.identifier = product.identifier;
-//            self.curProduct.processStatus = product.processStatus;
             NSArray* oldPhotos = product.photos;
             NSArray* oldImageTypes = product.category.imageTypes;
             product.photos = self.curProduct.photos;

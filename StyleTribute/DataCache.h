@@ -28,6 +28,10 @@
 @property NSArray* designers;
 @property NSUInteger openProductOnstart;
 @property NSDictionary* units;
+@property NSString* category;
+@property NSArray* MENShoesize;
+@property NSArray* WOMENShoesize;
+@property NSArray* KIDSShoesize;
 
 //remove: @property NSArray* sizes;
 @property NSArray* shoeSizes;

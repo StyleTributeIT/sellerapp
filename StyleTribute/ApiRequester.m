@@ -808,7 +808,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
             [params setObject:product.kidzsize forKey:firstSize];
         }
         else if([firstSize isEqualToString:@"size"]) {
-                [params setObject:@[product.unit, product.size] forKey:@"size"];
+                [params setObject:@(product.sizeId) forKey:@"size_id"];
         }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
             NSString* width = [product.dimensions objectAtIndex:0];
             NSString* height = [product.dimensions objectAtIndex:1];
@@ -849,14 +849,13 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         } else {
             [params setValue:@(product.designer.identifier) forKey:@"designer_id"];
         }
-        
         NSString* firstSize = [product.category.sizeFields firstObject];
         if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
         {
             [params setObject:product.kidzsize forKey:firstSize];
         }
         else if([firstSize isEqualToString:@"size"]) {
-            [params setObject:@[product.unit, product.size] forKey:@"size"];
+            [params setObject:@(product.sizeId) forKey:@"size_id"];
         }else if([firstSize isEqualToString:@"dimensions"] && product.dimensions) {
             NSString* width = [product.dimensions objectAtIndex:0];
             NSString* height = [product.dimensions objectAtIndex:1];
@@ -904,6 +903,7 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                     NSLog(@"%@",forJSONObject);
                                                     NSDictionary* productDict = [forJSONObject objectForKey:@"data"];
                                                     Product* product = [Product parseFromJson:productDict];
+                                                    [DataCache sharedInstance].category = @"";
                                                     success(product);
                                                     
                                                     
@@ -1059,22 +1059,41 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                     NSArray *filteredContacts = [[forJSONObject valueForKey:@"data"] filteredArrayUsingPredicate:filter];
                                                      NSLog(@"%@",filteredContacts);
                                                     
-                                                    NSMutableArray * groupsFiltered = [[NSMutableArray alloc] init];
-                                                    NSMutableArray * groupNamesEncountered = [[NSMutableArray alloc] init];
-                                                    
-                                                    NSString * name;
-                                                    for (NSDictionary * group in filteredContacts) {                                                        name =[group objectForKey:@"name"];
-                                                        if ([groupNamesEncountered indexOfObject: name]==NSNotFound) {
-                                                            [groupNamesEncountered addObject:name];
-                                                            [groupsFiltered addObject:group];
-                                                        }
-                                                    }
-                
+                                            
                                                     NSMutableArray* sizeVaules = [NSMutableArray new];
-                                                    for (NSDictionary* item in groupsFiltered) {
+                                                    for (NSDictionary* item in filteredContacts) {
                                                         NamedItem* sizeItem = [NamedItem parseFromJson:item];
                                                         [sizeVaules addObject:sizeItem];
                                                     }
+                                                    
+                                                    NSMutableArray *kidssizeVaules = [NSMutableArray new];
+                                                    NSMutableArray *womensizeVaules = [NSMutableArray new];
+                                                    NSMutableArray *MensizeVaules = [NSMutableArray new];
+                                                    for(int i=0;i<filteredContacts.count;i++)
+                                                    {
+                                                        NSDictionary *dict = [filteredContacts objectAtIndex:i];
+                                                        NSLog(@"%@",[dict valueForKey:@"gender"]);
+                                                        if ([[dict valueForKey:@"gender"] isEqualToString:@"FEMALE"])
+                                                        {
+                                                            NamedItem* sizeItem = [NamedItem parseFromJson:dict];
+                                                            [womensizeVaules addObject:sizeItem];
+                                                        }else if ([[dict valueForKey:@"gender"] isEqualToString:@"MALE"])
+                                                        {
+                                                            NamedItem* sizeItem = [NamedItem parseFromJson:dict];
+                                                            [MensizeVaules addObject:sizeItem];
+                                                        }else
+                                                        {
+                                                            NamedItem* sizeItem = [NamedItem parseFromJson:dict];
+                                                            [kidssizeVaules addObject:sizeItem];
+                                                        }
+                                                    }
+                                                    [DataCache sharedInstance].MENShoesize = MensizeVaules;
+                                                    [DataCache sharedInstance].WOMENShoesize = womensizeVaules;
+                                                    [DataCache sharedInstance].KIDSShoesize = kidssizeVaules;
+                                                    
+                                                    
+                                                    
+                            
                                                     success(sizeVaules);
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];

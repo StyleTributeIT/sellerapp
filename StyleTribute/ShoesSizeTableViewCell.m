@@ -80,12 +80,37 @@ UIPickerView* picker;
 {
     if ([textField isEqual:self.shoeSize])
     {
-        NSArray *sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].shoeSizes valueForKey:@"name"]];
+        NSArray *sizes = [[NSArray alloc] init];
+    
+        if ([[DataCache sharedInstance].category isEqualToString:@"KIDS"])
+        {
+            sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].KIDSShoesize valueForKey:@"name"]];
+        }else if ([[DataCache sharedInstance].category isEqualToString:@"MEN"])
+        {
+             sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].MENShoesize valueForKey:@"name"]];
+        }
+        else
+        {
+             sizes = [NSArray arrayWithArray:[[DataCache sharedInstance].WOMENShoesize valueForKey:@"name"]];
+        }
+        NSLog(@"%@",sizes);
         [ActionSheetStringPicker showPickerWithTitle:@""
                                                 rows:sizes
                                     initialSelection:0
                                            doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                               self.selectedSize = [[DataCache sharedInstance].shoeSizes objectAtIndex:selectedIndex];
+                                               
+                                               if ([[DataCache sharedInstance].category isEqualToString:@"KIDS"])
+                                               {
+                                                  self.selectedSize = [[DataCache sharedInstance].KIDSShoesize objectAtIndex:selectedIndex];
+                                               }else if ([[DataCache sharedInstance].category isEqualToString:@"MEN"])
+                                               {
+                                                   self.selectedSize = [[DataCache sharedInstance].MENShoesize objectAtIndex:selectedIndex];
+                                               }
+                                               else
+                                               {
+                                                   self.selectedSize = [[DataCache sharedInstance].WOMENShoesize objectAtIndex:selectedIndex];
+                                               }
+                                               NSLog(@"%ld", self.selectedSize.identifier);
                                                self.shoeSize.text = sizes[selectedIndex];
                                            }
                                          cancelBlock:nil

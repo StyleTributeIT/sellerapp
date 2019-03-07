@@ -132,6 +132,7 @@ int sectionOffset = 0;
                 dispatch_group_leave(group);
             }];
             dispatch_group_notify(group, queue, ^{
+                 [DataCache sharedInstance].category = @"";
                 [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
                     [self.tableView reloadData];
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
@@ -1195,14 +1196,14 @@ int sectionOffset = 0;
     BOOL result = YES;
     
     // TODO: check only required images
-    for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
-        Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
-        ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
-        
-        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && ([curPhoto isKindOfClass:[NSNull class]] || (curPhoto.imageUrl.length == 0 && curPhoto.image == nil)))
-            result = NO;
-    }
-    
+//    for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
+//        Photo* curPhoto = [self.curProduct.photos objectAtIndex:i];
+//        ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
+//        
+//        if(curImgType.state != ImageStateNew && curImgType.state != ImageStateModified && ([curPhoto isKindOfClass:[NSNull class]] || (curPhoto.imageUrl.length == 0 && curPhoto.image == nil)))
+//            result = NO;
+//    }
+//    
     return result;
 }
 
