@@ -874,7 +874,6 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
         if(product.processStatus.length > 0) {
             [params setObject:product.processStatus forKey:@"process_status"];
         }
-        
     }
     NSLog(@"%@",params);
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];

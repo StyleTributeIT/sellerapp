@@ -169,9 +169,9 @@ STCategory *pCategory = nil;
         @try {
 
             NSArray * designers = [DataCache sharedInstance].designers;
-          //  NSLog(@"%@",designers);
+           // NSLog(@"%@",designers);
             NSUInteger designerId = (NSInteger)[[dict valueForKey:@"designer_id"] integerValue];
-             for(int i = 0; i < designers; ++i) {
+             for(int i = 0; i < [designers count]; i++) {
                  NamedItem *item = [designers objectAtIndex:i];
                  if (item.identifier == designerId)
                  {
@@ -190,7 +190,7 @@ STCategory *pCategory = nil;
     
    
     product.photos = [[NSMutableArray alloc] initWithCapacity:product.category.imageTypes.count];
-    for(int i = 0; i < product.category.imageTypes.count; ++i) {
+    for(int i = 0; i < product.category.imageTypes.count; i++) {
         [product.photos addObject:[NSNull null]];
     }
     
@@ -214,11 +214,13 @@ STCategory *pCategory = nil;
         }
     }
     NSString* dimensions = [dict objectForKey:@"dimensions"];
-    if( dimensions == nil || [dimensions isEqual:[NSNull null]] ) {
+    if( dimensions == nil || [dimensions isEqual:[NSNull null]] || [dimensions  isEqual: @"<null>"] || [dimensions  isEqual: @""])
+    {
         
     }else
     {
         NSArray *listItems = [dimensions componentsSeparatedByString:@"x"];
+        NSLog(@"%@",listItems);
         NSString* width = listItems[0];
         NSString* height = listItems[1];
         NSString* depth = listItems[2];
