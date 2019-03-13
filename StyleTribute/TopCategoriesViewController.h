@@ -11,9 +11,10 @@
 #import "Product.h"
 
 @interface TopCategoriesViewController : UIViewController
-@property STCategory* selectedCategory;
+
 @property NSString* brandField;
 @property (weak) Product* product;
+@property STCategory* selectedCategory;
 
 -(void)loadWithChildrens:(NSArray*)childrens andPrevCategorie:(STCategory*)categorie;
 

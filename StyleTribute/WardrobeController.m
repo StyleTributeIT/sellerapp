@@ -180,7 +180,6 @@
             dispatch_group_leave(group);
         }];
    }
-	  [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
     dispatch_group_notify(group, queue, ^{
         [DataCache sharedInstance].category = @"";
         [[ApiRequester sharedInstance] getProducts:^(NSArray *products) {
