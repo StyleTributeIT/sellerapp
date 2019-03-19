@@ -976,16 +976,16 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
 -(void)setProcessStatus:(NSString*)status forProduct:(NSUInteger)productId success:(JSONRespProduct)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSLog(@"%@",@{@"id":@(productId),@"process_status":status});
-    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:@{@"id":@(productId),@"process_status":status} options:kNilOptions error:nil];
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:@{@"process_status_code":status} options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/products/%@/%@/selling", DefApiHost,@(productId),status];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/products/%@", DefApiHost,@(productId)];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"POST";
+    request.HTTPMethod = @"PUT";
     [request setURL:[NSURL URLWithString:urlString1]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:token forHTTPHeaderField:@"Authorization"];
-    [request setHTTPBody:nil];
+    [request setHTTPBody:jsonBodyData];
     [request setURL:[NSURL URLWithString:urlString1]];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -1000,12 +1000,9 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     NSLog(@"%@",forJSONObject);
-                                                    NSUserDefaults *userdefauls = [NSUserDefaults standardUserDefaults];
-                                                    [userdefauls setValue:[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"id"] forKey:@"cust_id"];
-                                                    [userdefauls synchronize];
-                                                    [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
-                                                    
-                                                    success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
+                                                  
+                                                    Product* product = [Product parseFromJson:[forJSONObject valueForKey:@"data"]];
+                                                    success(product);
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                      NSLog(@"%@",forJSONObject);
