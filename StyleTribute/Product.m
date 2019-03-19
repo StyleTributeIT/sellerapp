@@ -364,6 +364,7 @@ STCategory *pCategory = nil;
             [self.processStatus isEqualToString:@"REJECTED_SEND_BACK"] ||
             [self.processStatus isEqualToString:@"COMPLETE"] ||
             [self.processStatus isEqualToString:@"PAYMENT_IN_CREDITS"]||
+            [self.processStatus isEqualToString:@"SOLD"] ||
             [self.processStatus isEqualToString:@"PAYMENT_FAILED"])
     {
         return ProductTypeSold;
