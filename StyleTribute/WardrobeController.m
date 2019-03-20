@@ -262,7 +262,7 @@
     MGSwipeButton* suspendButton = [MGSwipeButton buttonWithTitle:@"Suspend" backgroundColor:[UIColor darkGrayColor]];
     suspendButton.tag = 2;
     MGSwipeButton* relistButton = [MGSwipeButton buttonWithTitle:@"re-list" backgroundColor:[UIColor darkGrayColor]];
-    relistButton.tag = 3;
+    relistButton.tag = 3;  
     
     if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"IN_REVIEW"] || [transition isEqualToString:@"INFORMATION REQUIRED"]; }]) {
         [buttons addObject:delButton];
