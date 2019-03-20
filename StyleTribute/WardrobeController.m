@@ -264,19 +264,19 @@
     MGSwipeButton* relistButton = [MGSwipeButton buttonWithTitle:@"re-list" backgroundColor:[UIColor darkGrayColor]];
     relistButton.tag = 3;
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"deleted"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"DELETED"]; }]) {
         [buttons addObject:delButton];
     }
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"archived"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"ARCHIVED"]; }]) {
         [buttons addObject:archiveButton];
     }
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"suspended"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"SUSPENDED"]; }]) {
         [buttons addObject:suspendButton];
     }
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"selling"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"SELLING"]; }]) {
         [buttons addObject:relistButton];
     }
     
@@ -329,17 +329,17 @@
     
     switch (button.tag) {
         case 0:  // Delete button
-            newStatus = @"deleted";
+            newStatus = @"DELETED";
             warningMessage = DefProductDeleteWarning;
             break;
         case 1:  // Archive button
-            newStatus = @"archived";
+            newStatus = @"ARCHIVED";
             break;
         case 2:  // Suspend button
-            newStatus = @"suspended";
+            newStatus = @"SUSPENDED";
             break;
         case 3:  // re-list button
-            newStatus = @"selling";
+            newStatus = @"SELLING";
             break;
         
         default:

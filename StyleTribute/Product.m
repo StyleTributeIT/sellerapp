@@ -113,7 +113,7 @@ STCategory *pCategory = nil;
     product.url = [self parseString:@"partner_url" fromDict:dict];
     product.share_text = [self parseString:@"share_text" fromDict:dict];
     product.allowedTransitions = [NSMutableArray new];
-    NSArray *transitions = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW", nil];
+    NSArray *transitions = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW",@"SOLD", nil];
     
     //NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
     if(transitions != nil) for(NSString* transition in transitions) {
@@ -345,7 +345,6 @@ STCategory *pCategory = nil;
        [self.processStatus isEqualToString:@"SELLING"] ||
        [self.processStatus isEqualToString:@"REJECTED"] ||
        [self.processStatus isEqualToString:@"DECLINED"] ||
-       [self.processStatus isEqualToString:@"SOLD"] ||
        [self.processStatus isEqualToString:@"SUSPENDED"])
     {
         return ProductTypeSelling;
@@ -364,6 +363,7 @@ STCategory *pCategory = nil;
             [self.processStatus isEqualToString:@"REJECTED_SEND_BACK"] ||
             [self.processStatus isEqualToString:@"COMPLETE"] ||
             [self.processStatus isEqualToString:@"PAYMENT_IN_CREDITS"]||
+            [self.processStatus isEqualToString:@"SOLD"] ||
             [self.processStatus isEqualToString:@"PAYMENT_FAILED"])
     {
         return ProductTypeSold;
