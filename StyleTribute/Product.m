@@ -113,13 +113,18 @@ STCategory *pCategory = nil;
     product.url = [self parseString:@"partner_url" fromDict:dict];
     product.share_text = [self parseString:@"share_text" fromDict:dict];
     product.allowedTransitions = [NSMutableArray new];
-    NSArray *transitions = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW",@"SOLD", nil];
+  //  NSArray *transitions = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW",@"SOLD",@"DELETED", nil];
     
-    //NSArray* transitionsArray = [dict objectForKey:@"allowed_transitions"];
-    if(transitions != nil) for(NSString* transition in transitions) {
-        [product.allowedTransitions addObject:transition];
-    }
+    NSDictionary* transitionsArray = [[dict objectForKey:@"process_status"] valueForKey:@"data"];
+        if(transitionsArray != nil) {
+            [product.allowedTransitions addObject:[transitionsArray valueForKey:@"name"]];
+        }
     
+
+//    if(transitions != nil) for(NSString* transition in transitions) {
+//        [product.allowedTransitions addObject:transition];
+//    }
+//
     // Uncomment this to test transitions
     //    [product.allowedTransitions addObject:@"archived"];
     //    [product.allowedTransitions addObject:@"deleted"];
@@ -345,6 +350,8 @@ STCategory *pCategory = nil;
        [self.processStatus isEqualToString:@"SELLING"] ||
        [self.processStatus isEqualToString:@"REJECTED"] ||
        [self.processStatus isEqualToString:@"DECLINED"] ||
+       [self.processStatus isEqualToString:@"INFORMATION REQUIRED"] ||
+        [self.processStatus isEqualToString:@"PRODUCT DECLINED"] ||
        [self.processStatus isEqualToString:@"SUSPENDED"])
     {
         return ProductTypeSelling;

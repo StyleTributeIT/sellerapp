@@ -975,7 +975,6 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
 
 -(void)setProcessStatus:(NSString*)status forProduct:(NSUInteger)productId success:(JSONRespProduct)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    NSLog(@"%@",@{@"id":@(productId),@"process_status":status});
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:@{@"process_status_code":status} options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
     NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/products/%@", DefApiHost,@(productId)];

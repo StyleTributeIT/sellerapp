@@ -264,11 +264,11 @@
     MGSwipeButton* relistButton = [MGSwipeButton buttonWithTitle:@"re-list" backgroundColor:[UIColor darkGrayColor]];
     relistButton.tag = 3;
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"DELETED"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"IN_REVIEW"] || [transition isEqualToString:@"INFORMATION REQUIRED"]; }]) {
         [buttons addObject:delButton];
     }
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"ARCHIVED"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"PRODUCT DECLINED"] || [transition isEqualToString:@"DECLINED"]; }]) {
         [buttons addObject:archiveButton];
     }
     
