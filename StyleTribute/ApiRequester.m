@@ -527,11 +527,11 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
                         if (l == 200)
                         {
                             NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                      //      NSLog(@"%@",forJSONObject);
+                           NSLog(@"%@",[forJSONObject valueForKey:@"data"]);
                            NSMutableArray* products = [NSMutableArray new];
                             for (NSDictionary* productDict in [forJSONObject valueForKey:@"data"]) {
-                            Product* product = [Product parseFromJson:productDict];
-                            [products addObject:product];
+                                Product* product = [Product parseFromJson:productDict];
+                                [products addObject:product];
                             }
                              success(products);
                        

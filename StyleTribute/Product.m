@@ -106,6 +106,7 @@ STCategory *pCategory = nil;
     product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
     product.name = [self parseString:@"name" fromDict:dict];
     product.processStatus = [self parseString:@"name" fromDict:dicttemp];
+    product.processStatusDisplay =  [self parseString:@"public_display" fromDict:dicttemp];
     product.originalPrice = [self parseFloatprice:@"original_price" fromDict:dict];
     product.price = [self parseFloatprice:@"price" fromDict:dict];
     product.savedPrice = [self parseFloatprice:@"price" fromDict:dict];
@@ -113,31 +114,36 @@ STCategory *pCategory = nil;
     product.url = [self parseString:@"partner_url" fromDict:dict];
     product.share_text = [self parseString:@"share_text" fromDict:dict];
     product.allowedTransitions = [NSMutableArray new];
-  //  NSArray *transitions = [NSArray arrayWithObjects:@"ARCHIVED",@"IMAGE_PROCESSING",@"REJECTED",@"INCOMPLETE",@"INCOMPLETE",@"READY_FOR_SALE",@"IN_REVIEW",@"SOLD",@"DELETED", nil];
-    
-    NSDictionary* transitionsArray = [[dict objectForKey:@"process_status"] valueForKey:@"data"];
-        if(transitionsArray != nil) {
-            [product.allowedTransitions addObject:[transitionsArray valueForKey:@"name"]];
+    @try {
+      
+        NSArray* transitionsArray = [[[[dict objectForKey:@"process_status"] valueForKey:@"data"] valueForKey:@"allowed_transition"] valueForKey:@"data"];
+        for(NSDictionary* transition in transitionsArray) {
+            [product.allowedTransitions addObject:[transition valueForKey:@"name"]];
         }
-    
-
-//    if(transitions != nil) for(NSString* transition in transitions) {
-//        [product.allowedTransitions addObject:transition];
-//    }
-//
-    // Uncomment this to test transitions
-    //    [product.allowedTransitions addObject:@"archived"];
-    //    [product.allowedTransitions addObject:@"deleted"];
+        
+    }@catch (NSException *exception) {
+        NSLog(@"%@", exception.reason);
+        
+    }
+    @finally {
+        NSLog(@"Finally condition");
+    }
     
     if([DataCache sharedInstance].categories != nil) {
         
         @try {
             NSArray * categories = [DataCache sharedInstance].categories;
             NSArray *arrcatefories = [[dict objectForKey:@"categories"] valueForKey:@"data"];
-            NSDictionary *dictcategpries = arrcatefories[0];
-            NSUInteger categoryId = (NSUInteger)[[dictcategpries objectForKey:@"id"] intValue];
-            
-            product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
+            if (arrcatefories == nil || [arrcatefories count] == 0)
+            {
+            }
+            else
+            {
+                NSDictionary *dictcategpries = arrcatefories[0];
+                NSUInteger categoryId = (NSUInteger)[[dictcategpries objectForKey:@"id"] intValue];
+                product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
+            }
+          
         }
         @catch (NSException *exception) {
             NSLog(@"%@", exception.reason);
@@ -146,9 +152,6 @@ STCategory *pCategory = nil;
         @finally {
             NSLog(@"Finally condition");
         }
-        
-        
-       
     }
     
     if([DataCache sharedInstance].conditions != nil) {
@@ -282,9 +285,6 @@ STCategory *pCategory = nil;
         }
     }
     product.processComment = [self parseString:@"process_status_comment" fromDict:dict];
-    product.processStatusDisplay = [self parseString:@"name" fromDict:[[dict valueForKey:@"process_status"] valueForKey:@"data"]];
-    
-    
     return product;
 }
 
@@ -351,7 +351,8 @@ STCategory *pCategory = nil;
        [self.processStatus isEqualToString:@"REJECTED"] ||
        [self.processStatus isEqualToString:@"DECLINED"] ||
        [self.processStatus isEqualToString:@"INFORMATION REQUIRED"] ||
-        [self.processStatus isEqualToString:@"PRODUCT DECLINED"] ||
+       [self.processStatus isEqualToString:@"PRODUCT DECLINED"] ||
+       [self.processStatus isEqualToString:@"SOLD"] ||
        [self.processStatus isEqualToString:@"SUSPENDED"])
     {
         return ProductTypeSelling;
@@ -370,7 +371,7 @@ STCategory *pCategory = nil;
             [self.processStatus isEqualToString:@"REJECTED_SEND_BACK"] ||
             [self.processStatus isEqualToString:@"COMPLETE"] ||
             [self.processStatus isEqualToString:@"PAYMENT_IN_CREDITS"]||
-            [self.processStatus isEqualToString:@"SOLD"] ||
+            
             [self.processStatus isEqualToString:@"PAYMENT_FAILED"])
     {
         return ProductTypeSold;
