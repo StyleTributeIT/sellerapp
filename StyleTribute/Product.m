@@ -115,12 +115,12 @@ STCategory *pCategory = nil;
     product.share_text = [self parseString:@"share_text" fromDict:dict];
     product.allowedTransitions = [NSMutableArray new];
     @try {
-      
         NSArray* transitionsArray = [[[[dict objectForKey:@"process_status"] valueForKey:@"data"] valueForKey:@"allowed_transition"] valueForKey:@"data"];
         for(NSDictionary* transition in transitionsArray) {
             [product.allowedTransitions addObject:[transition valueForKey:@"name"]];
+            [product.allowedTransitionsID addObject:[transition valueForKey:@"id"]];
+            
         }
-        
     }@catch (NSException *exception) {
         NSLog(@"%@", exception.reason);
         
@@ -308,6 +308,7 @@ STCategory *pCategory = nil;
     self.suggestedPrice = [[decoder decodeObjectForKey:@"suggestedPrice"] floatValue];
     self.price = [[decoder decodeObjectForKey:@"price"] floatValue];
     self.allowedTransitions = [decoder decodeObjectForKey:@"allowedTransitions"];
+    self.allowedTransitionsID = [decoder decodeObjectForKey:@"allowedTransitionsID"];
     self.descriptionText = [decoder decodeObjectForKey:@"descriptionText"];
 	self.unit = [decoder decodeObjectForKey:@"unit"];
     self.size = [decoder decodeObjectForKey:@"size"];
@@ -331,6 +332,7 @@ STCategory *pCategory = nil;
     [encoder encodeObject:@(self.suggestedPrice) forKey:@"suggestedPrice"];
     [encoder encodeObject:@(self.price) forKey:@"price"];
     [encoder encodeObject:self.allowedTransitions forKey:@"allowedTransitions"];
+    [encoder encodeObject:self.allowedTransitionsID forKey:@"allowedTransitionsID"];
     [encoder encodeObject:self.descriptionText forKey:@"descriptionText"];
 	[encoder encodeObject:self.unit forKey:@"unit"];
     [encoder encodeObject:self.size forKey:@"size"];
@@ -431,6 +433,7 @@ STCategory *pCategory = nil;
     newProduct.suggestedPrice = _suggestedPrice;
     newProduct.price = _price;
     newProduct.allowedTransitions = [_allowedTransitions mutableCopy];
+    newProduct.allowedTransitionsID = [_allowedTransitionsID mutableCopy];
     newProduct.descriptionText = [_descriptionText copy];
     newProduct.unit = [_unit copy];
     newProduct.size = [_size copy];

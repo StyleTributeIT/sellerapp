@@ -323,24 +323,28 @@
 
 -(BOOL) swipeTableCell:(MGSwipeTableCell*) cell tappedButton:(MGSwipeButton*)button AtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion {
     Product* p = [[self getCurrentItemsArray] objectAtIndex:cell.tag];
-    NSString* newStatus = p.processStatus;
+    //NSString* newStatus = p.processStatus;
+    NSString* newStatus;
     NSString* warningMessage = nil;
     
     switch (button.tag) {
         case 0:  // Delete button
-            newStatus = @"DELETED";
+            newStatus = @"6";
             warningMessage = DefProductDeleteWarning;
             break;
         case 1:  // Archive button
-            newStatus = @"ARCHIVED";
+            //newStatus = @"ARCHIVED";
+            newStatus = @"8";
+            
             break;
         case 2:  // Suspend button
-            newStatus = @"SUSPENDED";
+            //newStatus = @"SUSPENDED";
+             newStatus = @"19";
             break;
         case 3:  // re-list button
-            newStatus = @"SELLING";
+           // newStatus = @"SELLING";
+            newStatus = @"1";
             break;
-        
         default:
             break;
     }
@@ -358,6 +362,7 @@
 
 -(void)setStatus:(NSString*)status forProduct:(Product*)p {
     [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    NSLog(@"%@",status);
     [[ApiRequester sharedInstance] setProcessStatus:status forProduct:p.identifier success:^(Product *product) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         p.processStatus = product.processStatus;
