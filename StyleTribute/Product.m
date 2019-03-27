@@ -117,9 +117,7 @@ STCategory *pCategory = nil;
     @try {
         NSArray* transitionsArray = [[[[dict objectForKey:@"process_status"] valueForKey:@"data"] valueForKey:@"allowed_transition"] valueForKey:@"data"];
         for(NSDictionary* transition in transitionsArray) {
-            [product.allowedTransitions addObject:[transition valueForKey:@"name"]];
-            [product.allowedTransitionsID addObject:[transition valueForKey:@"id"]];
-            
+             [product.allowedTransitions addObject:transition];
         }
     }@catch (NSException *exception) {
         NSLog(@"%@", exception.reason);
@@ -315,7 +313,6 @@ STCategory *pCategory = nil;
     self.shoeSize = [decoder decodeObjectForKey:@"shoesize"];
     self.heelHeight = [decoder decodeObjectForKey:@"heelHeight"];
     self.dimensions = [decoder decodeObjectForKey:@"dimensions"];
-    
     return self;
 }
 

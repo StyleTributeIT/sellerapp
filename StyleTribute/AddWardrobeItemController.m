@@ -127,8 +127,8 @@ typedef void(^ImageLoadBlock)(int);
 //    [self.priceButton setEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
     [self.collectionView setUserInteractionEnabled:((editingType == EditingTypeAll || !self.isEditing) ? YES : NO)];
     
-    if(self.isEditing && [self.curProduct.allowedTransitions linq_any:^BOOL(NSString* item) {
-        return [item isEqualToString:@"product_not_available"];
+    if(self.isEditing && [self.curProduct.allowedTransitions linq_any:^BOOL(NSDictionary* item) {
+        return [[item valueForKey:@"name"] isEqualToString:@"product_not_available"];
     }]) {
         [self.cantSellButton setHidden:NO];
     } else {

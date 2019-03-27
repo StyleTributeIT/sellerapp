@@ -264,21 +264,23 @@
     MGSwipeButton* relistButton = [MGSwipeButton buttonWithTitle:@"re-list" backgroundColor:[UIColor darkGrayColor]];
     relistButton.tag = 3;
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"DELETED"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSDictionary* transition) { return [[transition valueForKey:@"name"] isEqualToString:@"DELETED"]; }]) {
         [buttons addObject:delButton];
     }
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"ARCHIVED"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSDictionary* transition) { return [[transition valueForKey:@"name"] isEqualToString:@"ARCHIVED"]; }]) {
         [buttons addObject:archiveButton];
     }
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"SUSPENDED"]; }]) {
+    if([product.allowedTransitions linq_any:^BOOL(NSDictionary* transition) { return [[transition valueForKey:@"name"] isEqualToString:@"SUSPENDED"]; }]) {
         [buttons addObject:suspendButton];
     }
     
-    if([product.allowedTransitions linq_any:^BOOL(NSString* transition) { return [transition isEqualToString:@"SELLING"]; }]) {
+    
+    if([product.allowedTransitions linq_any:^BOOL(NSDictionary* transition) { return [[transition valueForKey:@"name"] isEqualToString:@"SELLING"]; }]) {
         [buttons addObject:relistButton];
-    }	
+    }
+   
     return buttons;
 }
 
@@ -329,21 +331,47 @@
     
     switch (button.tag) {
         case 0:  // Delete button
-            newStatus = @"6";
+            for(int i=0;i<p.allowedTransitions.count;i++)
+            {
+                NSDictionary *dicttemp = [p.allowedTransitions objectAtIndex:i];
+               if ([[dicttemp valueForKey:@"name"]isEqualToString:@"DELETED"])
+               {
+                   newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
+               }
+            }
             warningMessage = DefProductDeleteWarning;
             break;
         case 1:  // Archive button
-            //newStatus = @"ARCHIVED";
-            newStatus = @"8";
+            for(int i=0;i<p.allowedTransitions.count;i++)
+            {
+                NSDictionary *dicttemp = [p.allowedTransitions objectAtIndex:i];
+                if ([[dicttemp valueForKey:@"name"]isEqualToString:@"ARCHIVED"])
+                {
+                    newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
+                }
+            }
             
             break;
         case 2:  // Suspend button
-            //newStatus = @"SUSPENDED";
-             newStatus = @"19";
+            
+            for(int i=0;i<p.allowedTransitions.count;i++)
+            {
+                NSDictionary *dicttemp = [p.allowedTransitions objectAtIndex:i];
+                if ([[dicttemp valueForKey:@"name"]isEqualToString:@"SUSPENDED"])
+                {
+                    newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
+                }
+            }
             break;
         case 3:  // re-list button
-           // newStatus = @"SELLING";
-            newStatus = @"1";
+            for(int i=0;i<p.allowedTransitions.count;i++)
+            {
+                NSDictionary *dicttemp = [p.allowedTransitions objectAtIndex:i];
+                if ([[dicttemp valueForKey:@"name"]isEqualToString:@"SELLING"])
+                {
+                    newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
+                }
+            }
             break;
         default:
             break;
