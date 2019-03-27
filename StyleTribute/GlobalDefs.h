@@ -9,14 +9,28 @@
 #ifndef StyleTribute_GlobalDefs_h
 #define StyleTribute_GlobalDefs_h
 
+
+
 #import <Foundation/Foundation.h>
 
-//static NSString* const DefApiHost		= @"https://temptest.styletribute.com";
+
+// NOT used anymore - configured in the global variable at scheme level
+//static NSString* const DefApiHost        = @"https://testapi.styletribute.com";
+//static NSString* const DefApiHost        = @"https://temptest.styletribute.com";
+
+
+#ifdef DEBUG
+static NSString* DefApiHost        = @"https://api-dev.styletribute.com/";
+#else
+static NSString* DefApiHost        = @"https://api-prod.styletribute.com/";
+#endif
+
+
+
 static NSString* const DefZendeskKey    = @"4ESfRZZCFkTFeyuNML1TA3qTOljfAxI2";
-static NSString* const DefApiHost		= @"https://api-dev.styletribute.com/";
 
 
-static NSString* const DefGeneralErrMsg	= @"Oops! Something has gone wrong.Please try again later.";
+static NSString* const DefGeneralErrMsg    = @"Oops! Something has gone wrong.Please try again later.";
 static NSString* const DefInternetUnavailableMsg = @"internet connection not reachable";
 static NSString* const DefInvalidLoginPassword = @"Invalid login or password";
 static NSString* const DefInvalidEmail = @"Invalid email";
