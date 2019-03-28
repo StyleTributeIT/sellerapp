@@ -7,7 +7,6 @@
 //
 
 #import "BaseTabBar.h"
-
 @interface BaseTabBar ()
 
 @end

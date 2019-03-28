@@ -173,27 +173,24 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                             completionHandler:^(NSData * _Nullable data,
                                                                 NSURLResponse * _Nullable response,
                                                                 NSError * _Nullable error) {
-                                                
                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
                     long l = (long)[httpResponse statusCode];
                     if (l == 200)
                     {
-                            NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                             NSUserDefaults *pref = [NSUserDefaults standardUserDefaults];
-                            [pref setValue:[[forJSONObject valueForKey:@"data"] valueForKey:@"access_token"] forKey:@"Token"];
+                           [pref setValue:[[forJSONObject valueForKey:@"data"] valueForKey:@"access_token"] forKey:@"Token"];
                            [pref synchronize];
                         success([UserProfile parseFromJson:[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]]);
                     }else {
                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                         failure([forJSONObject valueForKey:@"message"]);
                     }
-                                                
                 }];
     [task resume];
 }
 
 -(void)getAccountWithSuccess:(JSONRespAccount)success failure:(JSONRespError)failure {
-    
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     NSString *token = @"";
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"Token"] == nil)
@@ -204,7 +201,6 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     {
         token =  [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
     }
-    
     NSLog(@"%@",token);
     NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
@@ -289,7 +285,6 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
     [request setValue:token forHTTPHeaderField:@"Authorization"];
     [request setHTTPBody:jsonBodyData];
     [request setURL:[NSURL URLWithString:urlString1]];
-    
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil  delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -329,29 +324,44 @@ NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"cust
 
 
 -(void)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:fbToken,@"token",@"facebook",@"type", nil];
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/auth/register/social", DefApiHost];
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+    [request setURL:[NSURL URLWithString:urlString1]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonBodyData];
+    [request setURL:[NSURL URLWithString:urlString1]];
     
-    [self.sessionManager POST:@"authorizeFb" parameters:@{@"token":fbToken} success:^(NSURLSessionDataTask *task, id responseObject) {
-        if([self checkSuccessForResponse:responseObject errCalback:failure]) {
-            UserProfile* profile = nil;
-            BOOL isLoggedIn = [[responseObject objectForKey:@"loggedIn"] boolValue];
-            if(isLoggedIn) {
-                NSString* token = [responseObject objectForKey:@"token"];
-                [self.sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"X-Auth-Token"];
-                NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-                [defs setObject:token forKey:@"apiToken"];
-                [defs synchronize];
-                profile = [UserProfile parseFromJson:[responseObject objectForKey:@"model"]];
-            } else {
-                profile = [UserProfile parseFromFBJson:[responseObject objectForKey:@"fb"]];
-            }
-            
-            success(isLoggedIn, profile);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self logError:error withCaption:@"FB login error"];
-        failure(DefGeneralErrMsg);
-    }];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil  delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData * _Nullable data,
+                                                                NSURLResponse * _Nullable response,
+                                                                NSError * _Nullable error) {
+                                                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                long l = (long)[httpResponse statusCode];
+                                                if (l == 200)
+                                                {
+                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    NSLog(@"%@",forJSONObject);
+                                                    NSUserDefaults *pref = [NSUserDefaults standardUserDefaults];
+                                                    [pref setValue:[[forJSONObject valueForKey:@"data"] valueForKey:@"access_token"] forKey:@"Token"];
+                                                    [pref synchronize];
+                                                    UserProfile* profile = nil;
+                                                    BOOL isLoggedIn = [[forJSONObject objectForKey:@"loggedIn"] boolValue];
+                                                    success(isLoggedIn, profile);
+                                                }else {
+                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    NSLog(@"%@",forJSONObject);
+                                                    failure([forJSONObject valueForKey:@"message"]);
+                                                }
+                                                
+                                            }];
+    [task resume];
+
 }
 
 -(void)logoutWithSuccess:(JSONRespEmpty)success failure:(JSONRespError)failure {
