@@ -85,13 +85,6 @@
 }
 
 -(IBAction)fbLogin:(id)sender {
-//    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-//    NSString* token = [defs stringForKey:@"fbToken"];
-//    if(token) {
-//        [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-//        return;
-//    }
-    
     if ([self tryLock])
     {
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
@@ -111,16 +104,24 @@
                 [[ApiRequester sharedInstance] loginWithFBToken:result.token.tokenString success:^(BOOL loggedIn, UserProfile* profile) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     
-                    [DataCache sharedInstance].userProfile = profile;
-                    if(loggedIn) {
+        
+                    [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile){
+                        [DataCache sharedInstance].userProfile = profile;
+                        
                         if([profile isFilled]) {
+                            
                             [reference performSegueWithIdentifier:@"showMainScreenSegue" sender:reference];
-                        } else {
+                        }else
+                        {
                             [reference performSegueWithIdentifier:@"moreDetailsSegue" sender:reference];
+                            //[reference performSegueWithIdentifier:@"FBRegistrationSegue" sender:reference];
                         }
-                    } else {
-                        [reference performSegueWithIdentifier:@"FBRegistrationSegue" sender:reference];
+                        
                     }
+                    failure:^(NSString *error)
+                     {
+                         
+                     }];
                 } failure:^(NSString *error) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
                     [GlobalHelper showMessage:error withTitle:@"Login error"];
