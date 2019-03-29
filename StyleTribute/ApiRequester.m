@@ -20,6 +20,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginManagerLoginResult.h>
 #import "Address.h"
+#include <sys/sysctl.h>
 
 static NSString *const boundary = @"0Xvdfegrdf876fRD";
 
@@ -558,7 +559,21 @@ NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:fbToken,@"to
 
 -(void)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    NSDictionary *params1 = [[NSDictionary alloc] initWithObjectsAndKeys:[DataCache sharedInstance].deviceToken,@"device_token",@"iOS",@"os",@"7.1.5",@"os_version",@"device_brand",@"device_brand",@"6s",@"device_model", nil];
+    
+    NSOperatingSystemVersion osVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
+    NSString* majorVersion = [NSString stringWithFormat:@"%d", osVersion.majorVersion];
+    NSString* minorVersion = [NSString stringWithFormat:@"%d", osVersion.minorVersion];
+    NSString* patchVersion = [NSString stringWithFormat:@"%d", osVersion.patchVersion];
+    NSString* version = [NSString stringWithFormat:@"%@.%@", majorVersion, minorVersion];
+    if(patchVersion && ![patchVersion isEqualToString:@"0"]){version = [NSString stringWithFormat:@"%@.%@", version, patchVersion];}
+    
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *params1 = [[NSDictionary alloc] initWithObjectsAndKeys:[DataCache sharedInstance].deviceToken,@"device_token",@"iOS",@"os", version ,@"os_version",@"apple",@"device_brand",platform,@"device_model", nil];
    
     NSDictionary* params = @{@"data":params1};
   NSString *token1 = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
