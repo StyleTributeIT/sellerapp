@@ -230,7 +230,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                         [userdefauls setValue:[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"id"] forKey:@"cust_id"];
                         [userdefauls synchronize];
                     
-                        NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
+//                        NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
                         
                         
                         NSArray *shippingDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"addresses"] valueForKey:@"data"];
@@ -244,21 +244,19 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                         }
                         
                         
-NSArray *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"payment_details"] valueForKey:@"data"];
+                        NSDictionary *BANKDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"default_payment_detail"] valueForKey:@"data"];
                         
-                       
-                        if (BANKDict == nil || BANKDict.count == 0)
-                        {
-               
-                        }else
-                        {
-                            NSDictionary *dictdata = [BANKDict firstObject];
-                            NSLog(@"%@",dictdata);
-                            [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dictdata];
-                        }
                         
-                       
+                        [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:BANKDict];
                         
+//                        if (BANKDict == nil || BANKDict.count == 0){
+//
+//                        } else{
+//                            NSDictionary *dictdata = [BANKDict firstObject];
+//                            NSLog(@"%@",dictdata);
+//                            [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dictdata];
+//                        }
+
                         [DataCache sharedInstance].userProfile = [UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]];
                         success([UserProfile parseFromJson:[forJSONObject objectForKey:@"data"]]);
                     }else {
@@ -608,16 +606,16 @@ NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:fbToken,@"to
     [task resume];
 }
 
--(void)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    
-    [self.sessionManager GET:@"seller/bankAccount" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        success([BankAccount parseFromJson:responseObject]);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self logError:error withCaption:@"getBankAccount error"];
-        failure(DefGeneralErrMsg);
-    }];
-}
+//-(void)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure {
+//    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+//
+//    [self.sessionManager GET:@"wwwwseller/bankAccount" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        success([BankAccount parseFromJson:responseObject]);
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        [self logError:error withCaption:@"getBankAccount error"];
+//        failure(DefGeneralErrMsg);
+//    }];
+//}
 
 -(void)setBankAccountWithBankName:(NSString*)bankName
                                             bankCode:(NSString*)bankCode
@@ -656,9 +654,12 @@ NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:fbToken,@"to
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     
-                                                    NSArray *dicttme = [[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"payment_details"] valueForKey:@"data"];
+//                                                    NSArray *dicttme = [[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"payment_details"] valueForKey:@"data"];
+//
+//                                                    NSDictionary *dict = [dicttme firstObject];
                                                     
-                                                    NSDictionary *dict = [dicttme firstObject];
+                                                    NSDictionary *dict = [[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"];
+                                                    
                                                     [DataCache sharedInstance].bankAccount = [BankAccount parseFromJson:dict];
                                                     success();
                                                 }else {
@@ -986,17 +987,17 @@ NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:fbToken,@"to
     }
 }
 
--(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure {
-    if(![self checkInternetConnectionWithErrCallback:failure]) return;
-    
-    NSString* url = [NSString stringWithFormat:@"seller/product/%zd/photos/%zd", productId, imageId];
-    [self.sessionManager DELETE:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        success();
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self logError:error withCaption:@"deleteImage error"];
-        failure(DefGeneralErrMsg);
-    }];
-}
+//-(void)deleteImage:(NSUInteger)imageId fromProduct:(NSUInteger)productId success:(JSONRespEmpty)success failure:(JSONRespError)failure {
+//    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+//
+//    NSString* url = [NSString stringWithFormat:@"seller/product/%zd/photos/%zd", productId, imageId];
+//    [self.sessionManager DELETE:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        success();
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        [self logError:error withCaption:@"deleteImage error"];
+//        failure(DefGeneralErrMsg);
+//    }];
+//}
 
 -(void)setProcessStatus:(NSString*)status forProduct:(NSUInteger)productId success:(JSONRespProduct)success failure:(JSONRespError)failure {
     if(![self checkInternetConnectionWithErrCallback:failure]) return;

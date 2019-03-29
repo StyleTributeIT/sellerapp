@@ -21,8 +21,10 @@
 
 #ifdef DEBUG
 static NSString* DefApiHost        = @"https://api-dev.styletribute.com/";
+static NSString* DefMediaHost        = @"https://mediatest.styletribute.com";
 #else
 static NSString* DefApiHost        = @"https://api-prod.styletribute.com/";
+static NSString* DefMediaHost        = @"https://media.styletribute.com";
 #endif
 
 

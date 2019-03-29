@@ -17,7 +17,7 @@
     item.identifier = (NSUInteger)[[self parseString:@"id" fromDict:dict] integerValue];
     item.label = [self parseString:@"label" fromDict:dict];
     item.imageUrl = [self parseString:@"file" fromDict:dict];
-    item.thumbnailUrl = [@"https://mediatest.styletribute.com" stringByAppendingString:[self parseString:@"thumbnail_image" fromDict:dict]];
+    item.thumbnailUrl = [DefMediaHost stringByAppendingString:[self parseString:@"thumbnail_image" fromDict:dict]];
     
     return item;
 }

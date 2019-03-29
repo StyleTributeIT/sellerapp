@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -207,13 +207,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-dn-4dR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-jq-QA3">
-                                                <rect key="frame" x="32" y="8" width="256" height="256"/>
+                                                <rect key="frame" x="152" y="8" width="16" height="16"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyO-9Y-oef" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="346" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="106" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your email"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sVs-KJ-a1f"/>
@@ -225,7 +225,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="392" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="152" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="fFH-Aq-LfI"/>
@@ -237,7 +237,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please log in to proceed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-tQ-Hms">
-                                                <rect key="frame" x="16" y="306" width="288" height="25"/>
+                                                <rect key="frame" x="16" y="66" width="288" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="fHy-pP-I9a"/>
                                                 </constraints>
@@ -246,7 +246,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJM-Um-52Y">
-                                                <rect key="frame" x="40" y="438" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="198" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Sign in"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JpL-78-iKv"/>
@@ -260,7 +260,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kV-EV-Gpy" customClass="AttributedLabel">
-                                                <rect key="frame" x="16" y="272" width="288" height="21"/>
+                                                <rect key="frame" x="16" y="32" width="288" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="dgZ-Uh-32N"/>
                                                 </constraints>
@@ -279,7 +279,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-xw-gUD">
-                                                <rect key="frame" x="40" y="482" width="240" height="28"/>
+                                                <rect key="frame" x="40" y="242" width="240" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="f3m-Vk-SCL"/>
                                                 </constraints>
@@ -1216,7 +1216,7 @@
                                                     <outlet property="delegate" destination="4Gf-0K-49B" id="ZJC-99-lbC"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Swift code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvC-GE-7yw" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bank code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvC-GE-7yw" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="137" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="AhW-HI-urI"/>
@@ -1505,7 +1505,7 @@ Citilink Warehouse Complex
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="229" y="45" width="169" height="14"/>
+                                                    <rect key="frame" x="229" y="45" width="169" height="14.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2251,19 +2251,19 @@ Citilink Warehouse Complex
     <resources>
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
-        <image name="Logo" width="256" height="256"/>
+        <image name="Logo" width="85.333335876464844" height="85.333335876464844"/>
         <image name="backBtn" width="19.333333969116211" height="32"/>
-        <image name="notifications" width="94" height="90"/>
-        <image name="notifications-pink" width="94" height="90"/>
-        <image name="profile" width="90" height="90"/>
-        <image name="profile-pink" width="90" height="90"/>
-        <image name="shop" width="90" height="90"/>
-        <image name="shop-pink" width="90" height="90"/>
+        <image name="notifications" width="31.333333969116211" height="30"/>
+        <image name="notifications-pink" width="31.333333969116211" height="30"/>
+        <image name="profile" width="30" height="30"/>
+        <image name="profile-pink" width="30" height="30"/>
+        <image name="shop" width="30" height="30"/>
+        <image name="shop-pink" width="30" height="30"/>
         <image name="start_selling" width="315" height="482"/>
         <image name="stub" width="64" height="64"/>
         <image name="tabBg" width="316.66665649414062" height="45"/>
-        <image name="wardrobe" width="75" height="75"/>
-        <image name="wardrobe-pink" width="75" height="75"/>
+        <image name="wardrobe" width="25" height="25"/>
+        <image name="wardrobe-pink" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cSg-UA-WeG"/>
