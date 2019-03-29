@@ -372,9 +372,9 @@ NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:fbToken,@"to
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params1 options:kNilOptions error:nil];
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
     NSLog(@"%@",token);
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/users/me/device", DefApiHost];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/auth/logout", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
-    request.HTTPMethod = @"DELETE";
+    request.HTTPMethod = @"POST";
     [request setURL:[NSURL URLWithString:urlString1]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
