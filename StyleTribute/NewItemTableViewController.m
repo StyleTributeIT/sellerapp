@@ -1033,7 +1033,7 @@ int sectionOffset = 0;
             }
             
             if(imgType && imgType.outline.length > 0) {
-                [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:[[DefMediaHost stringByAppendingString:@"/"] stringByAppendingString:imgType.outline]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:[DefMediaHost stringByAppendingString:imgType.outline]] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 } completed:^(UIImage *outline, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                     if(error != nil) {
                         NSLog(@"error loading outline image: %@", [error description]);

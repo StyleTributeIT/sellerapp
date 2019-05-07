@@ -104,7 +104,7 @@
             }
         } else {
             
-            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:[[DefMediaHost stringByAppendingString:@"/"] stringByAppendingString:imgType.preview]] placeholderImage:[UIImage imageNamed:@"stub"]];
+            [newCell.photoView sd_setImageWithURL:[NSURL URLWithString:[DefMediaHost stringByAppendingString:imgType.preview]] placeholderImage:[UIImage imageNamed:@"stub"]];
             newCell.photoView.alpha = 0.5f;
         }
     }/*else {

@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -96,6 +96,12 @@
 	<string>Allow StyleTribute to use your camera.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Allow StyleTribute to access your contacts.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Styletribute would like to access your location while using the app to offer you the best shopping experience in local currency.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Styletribute would like to access your location to offer you the best shopping experience in local currency.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Styletribute would like to access your location when you use the app to offer you the best shopping experience in local currency.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow StyleTribute to use your photo library.</string>
 	<key>UIBackgroundModes</key>

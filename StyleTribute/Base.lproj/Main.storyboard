@@ -207,13 +207,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-dn-4dR">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="347.33333333333331"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-jq-QA3">
-                                                <rect key="frame" x="152" y="8" width="16" height="16"/>
+                                                <rect key="frame" x="117.33333333333334" y="8" width="85.333333333333343" height="85.333333333333329"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JyO-9Y-oef" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="106" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="175.33333333333334" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your email"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sVs-KJ-a1f"/>
@@ -225,7 +225,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-i6-V2o" customClass="UIFloatLabelTextField">
-                                                <rect key="frame" x="40" y="152" width="240" height="38"/>
+                                                <rect key="frame" x="40" y="221.33333333333331" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter your password"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="fFH-Aq-LfI"/>
@@ -237,7 +237,7 @@
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please log in to proceed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-tQ-Hms">
-                                                <rect key="frame" x="16" y="66" width="288" height="25"/>
+                                                <rect key="frame" x="16" y="135.33333333333334" width="288" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="fHy-pP-I9a"/>
                                                 </constraints>
@@ -246,7 +246,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJM-Um-52Y">
-                                                <rect key="frame" x="40" y="198" width="240" height="30"/>
+                                                <rect key="frame" x="40" y="267.33333333333331" width="240" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" label="Sign in"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="JpL-78-iKv"/>
@@ -260,7 +260,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WWW.STYLETRIBUTE.COM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kV-EV-Gpy" customClass="AttributedLabel">
-                                                <rect key="frame" x="16" y="32" width="288" height="21"/>
+                                                <rect key="frame" x="16" y="101.33333333333334" width="288" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="dgZ-Uh-32N"/>
                                                 </constraints>
@@ -279,7 +279,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkA-xw-gUD">
-                                                <rect key="frame" x="40" y="242" width="240" height="28"/>
+                                                <rect key="frame" x="40" y="311.33333333333331" width="240" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="f3m-Vk-SCL"/>
                                                 </constraints>
@@ -1505,7 +1505,7 @@ Citilink Warehouse Complex
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="7Wf-il-BAC">
-                                                    <rect key="frame" x="229" y="45" width="169" height="14.666666666666664"/>
+                                                    <rect key="frame" x="229" y="45" width="169" height="14"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-UltraLight" family="Montserrat" pointSize="12"/>
                                                     <color key="textColor" red="0.32584697008132935" green="0.32583719491958618" blue="0.32584273815155029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
