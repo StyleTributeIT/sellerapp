@@ -472,7 +472,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
     if(![self checkInternetConnectionWithErrCallback:failure]) return;
     
     NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/categories/list/outlines", DefApiHost];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/categories/list/outlines/mobile", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"GET";
     [request setURL:[NSURL URLWithString:urlString1]];
