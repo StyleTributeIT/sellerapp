@@ -532,11 +532,14 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     NSLog(@"%@",[forJSONObject valueForKey:@"data"]);
                                                     NSMutableArray* products = [NSMutableArray new];
-                                                    for (NSDictionary* productDict in [forJSONObject valueForKey:@"data"]) {
+                                                    @try {
+                                                        NSDictionary* productDict = [forJSONObject objectForKey:@"data"];
                                                         Product* product = [Product parseFromJson:productDict];
-                                                        [products addObject:product];
+                                                        [DataCache sharedInstance].category = @"";
+                                                        success(product);
+                                                    }@catch (NSException *exception) {
+                                                        NSLog(@"%@", exception.reason);
                                                     }
-                                                    success(products);
                                                     
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -917,10 +920,15 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     NSLog(@"%@",forJSONObject);
-                                                    NSDictionary* productDict = [forJSONObject objectForKey:@"data"];
-                                                    Product* product = [Product parseFromJson:productDict];
-                                                    [DataCache sharedInstance].category = @"";
-                                                    success(product);
+                                                    @try {
+                                                        NSDictionary* productDict = [forJSONObject objectForKey:@"data"];
+                                                        Product* product = [Product parseFromJson:productDict];
+                                                        [DataCache sharedInstance].category = @"";
+                                                        success(product);
+                                                    }@catch (NSException *exception) {
+                                                        NSLog(@"%@", exception.reason);
+                                                    }
+                                                    
                                                     
                                                     
                                                 }else {
