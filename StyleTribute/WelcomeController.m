@@ -55,32 +55,37 @@
         
         float curVersion = [[[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"] floatValue];
         [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-        [[ApiRequester sharedInstance] getMinimumAppVersionWithSuccess:^(float minimumAppVersion) {
-            if(curVersion < minimumAppVersion) {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                self.needUpdate = YES;
-                [self setInterfaceEnabled:NO];
-                [self showVertionAlert];
-            } else {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                
-                [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
+        @try {
+            [[ApiRequester sharedInstance] getMinimumAppVersionWithSuccess:^(float minimumAppVersion) {
+                if(curVersion < minimumAppVersion) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                   
-                    //if([profile isFilled]) {
+                    self.needUpdate = YES;
+                    [self setInterfaceEnabled:NO];
+                    [self showVertionAlert];
+                } else {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    
+                    [[ApiRequester sharedInstance] getAccountWithSuccess:^(UserProfile *profile) {
+                        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                        
+                        //if([profile isFilled]) {
                         [self performSegueWithIdentifier:@"showMainScreenSegue" sender:self];
-                    //} else {
-                     //   [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
-                   // }
-                } failure:^(NSString *error) {
-                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                    NSLog(@"getAccount error: %@", [error description]);
-                }];
-            }
-        } failure:^(NSString *error) {
-            [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            [GlobalHelper showMessage:error withTitle:@"error"];
-        }];
+                        //} else {
+                        //   [self performSegueWithIdentifier:@"moreDetailsSegue" sender:self];
+                        // }
+                    } failure:^(NSString *error) {
+                        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                        NSLog(@"getAccount error: %@", [error description]);
+                    }];
+                }
+            } failure:^(NSString *error) {
+                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                [GlobalHelper showMessage:error withTitle:@"error"];
+            }];
+        }@catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+        }
+       
     }
 }
 

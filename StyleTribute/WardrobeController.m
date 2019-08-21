@@ -131,12 +131,17 @@
 
     if([DataCache sharedInstance].conditions == nil) {
         dispatch_group_enter(group);
-        [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
-            [DataCache sharedInstance].conditions = conditions;
-            dispatch_group_leave(group);
-        } failure:^(NSString *error) {
-            dispatch_group_leave(group);
-        }];
+        @try {
+            [[ApiRequester sharedInstance] getConditions:^(NSArray *conditions) {
+                [DataCache sharedInstance].conditions = conditions;
+                dispatch_group_leave(group);
+            } failure:^(NSString *error) {
+                dispatch_group_leave(group);
+            }];
+        }@catch (NSException *exception) {
+            NSLog(@"%@", exception.reason);
+        }
+        
     }
 
     if([DataCache sharedInstance].countries == nil) {
