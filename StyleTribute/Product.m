@@ -101,189 +101,204 @@ STCategory *pCategory = nil;
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
     NSLog(@"%@",dict);
-    Product* product = [Product new];
-    NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
-    product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
-    product.name = [self parseString:@"name" fromDict:dict];
-    product.processStatus = [self parseString:@"name" fromDict:dicttemp];
-    product.processStatusDisplay =  [self parseString:@"public_display" fromDict:dicttemp];
-    product.originalPrice = [self parseFloatprice:@"original_price" fromDict:dict];
-    product.price = [self parseFloatprice:@"price" fromDict:dict];
-    product.savedPrice = [self parseFloatprice:@"price" fromDict:dict];
-    product.descriptionText = [self parseString:@"description" fromDict:dict];
-    product.url = [self parseString:@"partner_url" fromDict:dict];
-    product.share_text = [self parseString:@"share_text" fromDict:dict];
-    product.allowedTransitions = [NSMutableArray new];
-    @try {
-        NSArray* transitionsArray = [[[[dict objectForKey:@"process_status"] valueForKey:@"data"] valueForKey:@"allowed_transition"] valueForKey:@"data"];
-        for(NSDictionary* transition in transitionsArray) {
-             [product.allowedTransitions addObject:transition];
-        }
-    }@catch (NSException *exception) {
-        NSLog(@"%@", exception.reason);
-        
-    }
-    @finally {
-        NSLog(@"Finally condition");
-    }
-    
-    if([DataCache sharedInstance].categories != nil) {
-        
-        @try {
-            NSArray * categories = [DataCache sharedInstance].categories;
-            NSArray *arrcatefories = [[dict objectForKey:@"categories"] valueForKey:@"data"];
-            if (arrcatefories == nil || [arrcatefories count] == 0)
-            {
-            }
-            else
-            {
-                NSDictionary *dictcategpries = arrcatefories[0];
-                NSUInteger categoryId = (NSUInteger)[[dictcategpries objectForKey:@"id"] intValue];
-                product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
-            }
-          
-        }
-        @catch (NSException *exception) {
-            NSLog(@"%@", exception.reason);
-            
-        }
-        @finally {
-            NSLog(@"Finally condition");
-        }
-    }
-    
-    if([DataCache sharedInstance].conditions != nil) {
-        @try {
-            NSArray * categories = [DataCache sharedInstance].conditions;
-            NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition_id"] integerValue];
-            product.condition = [[categories linq_where:^BOOL(NamedItem* condition) {
-                return (condition.identifier == conditionId);
-            }] firstObject];
-            
-        }
-        @catch (NSException *exception) {
-            NSLog(@"%@", exception.reason);
-            
-        }
-        @finally {
-            NSLog(@"Finally condition");
-        }
+    if(dict == nil)
+    {
+        Product* product = [Product new];
+        return product;
+    }else{
        
-    }
-    
-    if([DataCache sharedInstance].designers != nil) {
+        Product* product = [Product new];
+        NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
+        product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
+        product.name = [self parseString:@"name" fromDict:dict];
+        product.processStatus = [self parseString:@"name" fromDict:dicttemp];
+        product.processStatusDisplay =  [self parseString:@"public_display" fromDict:dicttemp];
+        product.originalPrice = [self parseFloatprice:@"original_price" fromDict:dict];
+        product.price = [self parseFloatprice:@"price" fromDict:dict];
+        product.savedPrice = [self parseFloatprice:@"price" fromDict:dict];
+        product.descriptionText = [self parseString:@"description" fromDict:dict];
+        product.url = [self parseString:@"partner_url" fromDict:dict];
+        product.share_text = [self parseString:@"share_text" fromDict:dict];
+        product.allowedTransitions = [NSMutableArray new];
+       
         @try {
-
-            NSArray * designers = [DataCache sharedInstance].designers;
-           // NSLog(@"%@",designers);
-            NSUInteger designerId = (NSInteger)[[dict valueForKey:@"designer_id"] integerValue];
-             for(int i = 0; i < [designers count]; i++) {
-                 NamedItem *item = [designers objectAtIndex:i];
-                 if (item.identifier == designerId)
-                 {
-                     product.designer = item;
-                 }
+//            NSArray* transitionsArray = [[[[dict objectForKey:@"process_status"] valueForKey:@"data"] valueForKey:@"allowed_transition"] valueForKey:@"data"];
+              NSArray* transitionsArray = [[dicttemp valueForKey:@"allowed_transition"] valueForKey:@"data"];
+            if(transitionsArray.count == 0)
+            {
+                
+            }else{
+                for(NSDictionary* transition in transitionsArray) {
+                    [product.allowedTransitions addObject:transition];
+                }
             }
-        }
-        @catch (NSException *exception) {
+        }@catch (NSException *exception) {
             NSLog(@"%@", exception.reason);
-
+            
         }
         @finally {
             NSLog(@"Finally condition");
         }
-    }
-    
-   
-    product.photos = [[NSMutableArray alloc] initWithCapacity:product.category.imageTypes.count];
-    for(int i = 0; i < product.category.imageTypes.count; i++) {
-        [product.photos addObject:[NSNull null]];
-    }
-    
-    NSArray* images = [[dict objectForKey:@"media"] valueForKey:@"data"];
- //   NSLog(@"%@",images);
-    if(images != nil) for(NSDictionary* imageDict in images) {
-        Photo* photo = [Photo parseFromJson:imageDict];
-        ImageType* type = [[product.category.imageTypes linq_where:^BOOL(ImageType* imgType) {
-            //
-            return [imgType.type isEqualToString:photo.label];
-        }] firstObject];
         
-        if(type != nil) {
-            NSUInteger index = [product.category.imageTypes indexOfObject:type];
-            if(index < product.photos.count) {
-                [product.photos replaceObjectAtIndex:index withObject:photo];
+        if([DataCache sharedInstance].categories != nil) {
+            
+            @try {
+                NSArray * categories = [DataCache sharedInstance].categories;
+                NSArray *arrcatefories = [[dict objectForKey:@"categories"] valueForKey:@"data"];
+                if (arrcatefories == nil || [arrcatefories count] == 0)
+                {
+                }
+                else
+                {
+                    NSDictionary *dictcategpries = arrcatefories[0];
+                    NSUInteger categoryId = (NSUInteger)[[dictcategpries objectForKey:@"id"] intValue];
+                    product.category = [self searchCategory:categories forId:categoryId nextIndex:-1];
+                }
+                
             }
-        } else {
-            // additional image
-            [product.photos addObject:photo];
-        }
-    }
-    NSString* dimensions = [dict objectForKey:@"dimensions"];
-    if( dimensions == nil || [dimensions isEqual:[NSNull null]] || [dimensions  isEqual: @"<null>"] || [dimensions  isEqual: @""])
-    {
-        
-    }else
-    {
-        NSArray *listItems = [dimensions componentsSeparatedByString:@"x"];
-        NSLog(@"%@",listItems);
-        NSString* width = listItems[0];
-        NSString* height = listItems[1];
-        NSString* depth = listItems[2];
-        product.dimensions = @[width, height, depth];
-    }
-    if ([dict valueForKey:@"size"] != nil)
-    {
-       // NSLog(@"size");
-        product.kidzsize = [[dict valueForKey:@"data"] valueForKey:@"name"];
-      
-    }
-
-    if( [dict valueForKey:@"size_id"] == nil || [[dict valueForKey:@"size_id"] isEqual:[NSNull null]] )
-    {
-        
-    }
-    else
-    {
-        
-        NSUInteger shoesizeId = [[dict valueForKey:@"size_id"] integerValue];
-        product.sizeId = shoesizeId;
-        NSArray * designers = [DataCache sharedInstance].shoeSizes;
-        for(int i = 0; i < designers.count; i++) {
-            NamedItem *item = [designers objectAtIndex:i];
-            if (item.identifier == shoesizeId)
-            {
-                product.shoeSize = item;
+            @catch (NSException *exception) {
+                NSLog(@"%@", exception.reason);
+                
+            }
+            @finally {
+                NSLog(@"Finally condition");
             }
         }
-    }
-    product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
-    if( [dict valueForKey:@"size_id"] == nil || [[dict valueForKey:@"size_id"] isEqual:[NSNull null]] )
-    {
         
-    }
-    else
-    {
+        if([DataCache sharedInstance].conditions != nil) {
+            @try {
+                NSArray * categories = [DataCache sharedInstance].conditions;
+                NSUInteger conditionId = (NSUInteger)[[dict objectForKey:@"condition_id"] integerValue];
+                product.condition = [[categories linq_where:^BOOL(NamedItem* condition) {
+                    return (condition.identifier == conditionId);
+                }] firstObject];
+                
+            }
+            @catch (NSException *exception) {
+                NSLog(@"%@", exception.reason);
+                
+            }
+            @finally {
+                NSLog(@"Finally condition");
+            }
+            
+        }
         
-        NSUInteger shoesizeId = [[dict valueForKey:@"size_id"] integerValue];
-        product.sizeId = shoesizeId;
-        if(product.sizeId && [DataCache sharedInstance].units != nil) {
-            [[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
-                NSLog(@"%@",unit);
-                for(NamedItem* size in sizes) {
-                    NSLog(@"%lu",(unsigned long)size.identifier);
-                    if(size.identifier == product.sizeId) {
-                        product.unit = unit;
-                        product.size = size.name;
-                        *stop = YES;
-                        break;
+        if([DataCache sharedInstance].designers != nil) {
+            @try {
+                
+                NSArray * designers = [DataCache sharedInstance].designers;
+                // NSLog(@"%@",designers);
+                NSUInteger designerId = (NSInteger)[[dict valueForKey:@"designer_id"] integerValue];
+                for(int i = 0; i < [designers count]; i++) {
+                    NamedItem *item = [designers objectAtIndex:i];
+                    if (item.identifier == designerId)
+                    {
+                        product.designer = item;
                     }
                 }
-            }];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"%@", exception.reason);
+                
+            }
+            @finally {
+                NSLog(@"Finally condition");
+            }
         }
+        
+        
+        product.photos = [[NSMutableArray alloc] initWithCapacity:product.category.imageTypes.count];
+        for(int i = 0; i < product.category.imageTypes.count; i++) {
+            [product.photos addObject:[NSNull null]];
+        }
+        
+        NSArray* images = [[dict objectForKey:@"media"] valueForKey:@"data"];
+        //   NSLog(@"%@",images);
+        if(images != nil) for(NSDictionary* imageDict in images) {
+            Photo* photo = [Photo parseFromJson:imageDict];
+            ImageType* type = [[product.category.imageTypes linq_where:^BOOL(ImageType* imgType) {
+                //
+                return [imgType.type isEqualToString:photo.label];
+            }] firstObject];
+            
+            if(type != nil) {
+                NSUInteger index = [product.category.imageTypes indexOfObject:type];
+                if(index < product.photos.count) {
+                    [product.photos replaceObjectAtIndex:index withObject:photo];
+                }
+            } else {
+                // additional image
+                [product.photos addObject:photo];
+            }
+        }
+        NSString* dimensions = [dict objectForKey:@"dimensions"];
+        if( dimensions == nil || [dimensions isEqual:[NSNull null]] || [dimensions  isEqual: @"<null>"] || [dimensions  isEqual: @""])
+        {
+            
+        }else
+        {
+            NSArray *listItems = [dimensions componentsSeparatedByString:@"x"];
+            NSLog(@"%@",listItems);
+            NSString* width = listItems[0];
+            NSString* height = listItems[1];
+            NSString* depth = listItems[2];
+            product.dimensions = @[width, height, depth];
+        }
+        if ([dict valueForKey:@"size"] != nil)
+        {
+            // NSLog(@"size");
+            product.kidzsize = [[dict valueForKey:@"data"] valueForKey:@"name"];
+            
+        }
+        
+        if( [dict valueForKey:@"size_id"] == nil || [[dict valueForKey:@"size_id"] isEqual:[NSNull null]] )
+        {
+            
+        }
+        else
+        {
+            
+            NSUInteger shoesizeId = [[dict valueForKey:@"size_id"] integerValue];
+            product.sizeId = shoesizeId;
+            NSArray * designers = [DataCache sharedInstance].shoeSizes;
+            for(int i = 0; i < designers.count; i++) {
+                NamedItem *item = [designers objectAtIndex:i];
+                if (item.identifier == shoesizeId)
+                {
+                    product.shoeSize = item;
+                }
+            }
+        }
+        product.heelHeight = [self parseString:@"heel_height" fromDict:dict];
+        if( [dict valueForKey:@"size_id"] == nil || [[dict valueForKey:@"size_id"] isEqual:[NSNull null]] )
+        {
+            
+        }
+        else
+        {
+            
+            NSUInteger shoesizeId = [[dict valueForKey:@"size_id"] integerValue];
+            product.sizeId = shoesizeId;
+            if(product.sizeId && [DataCache sharedInstance].units != nil) {
+                [[DataCache sharedInstance].units enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* sizes, BOOL *stop) {
+                    NSLog(@"%@",unit);
+                    for(NamedItem* size in sizes) {
+                        NSLog(@"%lu",(unsigned long)size.identifier);
+                        if(size.identifier == product.sizeId) {
+                            product.unit = unit;
+                            product.size = size.name;
+                            *stop = YES;
+                            break;
+                        }
+                    }
+                }];
+            }
+        }
+        product.processComment = [self parseString:@"process_status_comment" fromDict:dict];
+        return product;
     }
-    product.processComment = [self parseString:@"process_status_comment" fromDict:dict];
-    return product;
+   
 }
 
 #pragma mark - NSCoding

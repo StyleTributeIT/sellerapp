@@ -530,23 +530,22 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 if (l == 200)
                                                 {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"%@",[forJSONObject valueForKey:@"data"]);
-                                                    NSMutableArray* products = [NSMutableArray new];
-                                                    @try {
-                                                        NSDictionary* productDict = [forJSONObject objectForKey:@"data"];
-                                                        Product* product = [Product parseFromJson:productDict];
-                                                        [DataCache sharedInstance].category = @"";
-                                                        success(product);
-                                                    }@catch (NSException *exception) {
-                                                        NSLog(@"%@", exception.reason);
+                                                   NSMutableArray* products = [NSMutableArray new];
+                                                    NSArray* productDict = [forJSONObject objectForKey:@"data"];
+                                                    for(int i=0;i<productDict.count;i++)
+                                                    {
+                                                        Product* product = [Product parseFromJson:productDict[i]];
+                                                        [products addObject:product];
                                                     }
-                                                    
+                                                        [DataCache sharedInstance].category = @"";
+                                                    success(products);
+    
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     NSLog(@"%@",forJSONObject);
                                                     failure([forJSONObject valueForKey:@"message"]);
                                                 }
-                                                
+                                
                                             }];
     [task resume];
 }
@@ -921,10 +920,17 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     NSLog(@"%@",forJSONObject);
                                                     @try {
-                                                        NSDictionary* productDict = [forJSONObject objectForKey:@"data"];
-                                                        Product* product = [Product parseFromJson:productDict];
+                                                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        NSMutableArray* products = [NSMutableArray new];
+                                                        NSArray* productDict = [forJSONObject objectForKey:@"data"];
+                                                        for(int i=0;i<productDict.count;i++)
+                                                        {
+                                                            Product* product = [Product parseFromJson:productDict[i]];
+                                                            [products addObject:product];
+                                                        }
                                                         [DataCache sharedInstance].category = @"";
-                                                        success(product);
+                                                        success(products);
+                                                        
                                                     }@catch (NSException *exception) {
                                                         NSLog(@"%@", exception.reason);
                                                     }
