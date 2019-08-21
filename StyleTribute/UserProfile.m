@@ -19,30 +19,36 @@
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-    
     NSDictionary *dicttemp = [[dict valueForKey:@"customer"] valueForKey:@"data"];
-   // NSLog(@"%@",dicttemp);
     UserProfile* profile = [UserProfile new];
-    profile.isActive = [[self class] parseBool:@"is_active" fromDict:dicttemp];
-    profile.entity_id = [[self class] parseString:@"entity_id" fromDict:dicttemp];
-    profile.email = [[self class] parseString:@"email" fromDict:dict];
-    profile.phone = [[self class] parseString:@"phone" fromDict:dicttemp];
-    profile.gender = [[self class] parseString:@"gender" fromDict:dicttemp];
-    profile.country = [[self class] parseString:@"country" fromDict:dicttemp];
-    profile.userName = [[self class] parseString:@"nickname" fromDict:dicttemp];
-    profile.firstName = [[self class] parseString:@"first_name" fromDict:dicttemp];
-    profile.lastName = [[self class] parseString:@"last_name" fromDict:dicttemp];
-   // profile.shippingAddress = [[dicttemp valueForKey:@"addresses"] valueForKey:@"data"];
-    
-    NSArray* shippingDict = [[dict objectForKey:@"addresses"] valueForKey:@"data"];
-    if (shippingDict != nil || shippingDict.count != 0)
-    {
-        NSDictionary *dictdata = [shippingDict lastObject];
-        profile.shippingAddress = [Address parseFromJson:dictdata];
+    @try {
+        profile.isActive = [[self class] parseBool:@"is_active" fromDict:dicttemp];
+        profile.entity_id = [[self class] parseString:@"entity_id" fromDict:dicttemp];
+        profile.email = [[self class] parseString:@"email" fromDict:dict];
+        profile.phone = [[self class] parseString:@"phone" fromDict:dicttemp];
+        profile.gender = [[self class] parseString:@"gender" fromDict:dicttemp];
+        profile.country = [[self class] parseString:@"country" fromDict:dicttemp];
+        profile.userName = [[self class] parseString:@"nickname" fromDict:dicttemp];
+        profile.firstName = [[self class] parseString:@"first_name" fromDict:dicttemp];
+        profile.lastName = [[self class] parseString:@"last_name" fromDict:dicttemp];
+        // profile.shippingAddress = [[dicttemp valueForKey:@"addresses"] valueForKey:@"data"];
+        
+        NSArray* shippingDict = [[dict objectForKey:@"addresses"] valueForKey:@"data"];
+        if (shippingDict != nil || shippingDict.count != 0)
+        {
+            NSDictionary *dictdata = [shippingDict lastObject];
+            profile.shippingAddress = [Address parseFromJson:dictdata];
+        }
+        
+        
+        
+    }@catch (NSException *exception) {
+    }
+    @finally {
+        NSLog(@"Finally condition");
     }
     
-    
-    
+   
     return profile;
 }
 

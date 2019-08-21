@@ -48,11 +48,17 @@
 }
 
 +(instancetype)parseFromJson:(NSDictionary*)dict {
-    NSLog(@"%@",dict);
-    NamedItem *item = [self new];
-    item.identifier = [[dict valueForKey:@"id"] integerValue];
-    item.name = [self parseString:@"name" fromDict:dict];
-    
+      NamedItem *item = [self new];
+    @try {
+        item.identifier = [[dict valueForKey:@"id"] integerValue];
+        item.name = [self parseString:@"name" fromDict:dict];
+        
+    }@catch (NSException *exception) {
+    }
+    @finally {
+        NSLog(@"Finally condition");
+    }
+  
     return item;
 }
 

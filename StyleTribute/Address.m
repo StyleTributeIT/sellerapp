@@ -14,24 +14,31 @@
    // NSLog(@"%@",dict);
     
     Address *item = [self new];
-    item.addressid =  [[dict valueForKey:@"id"] integerValue];
-    item.firstName = [self parseString:@"first_name" fromDict:dict];
-    item.lastName = [self parseString:@"last_name" fromDict:dict];
-    item.company = [self parseString:@"company" fromDict:dict];
-    item.address = [self parseString:@"street" fromDict:dict];
-    item.city = [self parseString:@"city" fromDict:dict];
-    item.zipCode = [self parseString:@"zipcode" fromDict:dict];
-    item.countryId = [self parseString:@"country" fromDict:dict];
-    item.contactNumber = [self parseString:@"phone" fromDict:dict];
-    item.cusomer_id = [self parseString:@"cusomer_id" fromDict:dict];
-    item.firstlineaddress =  [self parseString:@"address_1" fromDict:dict];
-    item.secondlineaddress = [self parseString:@"address_2" fromDict:dict];
-    item.dialcode = [self parseString:@"phone_code" fromDict:dict];
-    item.states = [self parseString:@"state" fromDict:dict];
-    
-    NSString* region = [self parseString:@"region" fromDict:dict];
-    NSUInteger regionId = (NSUInteger)[[self parseString:@"region_id" fromDict:dict] integerValue];
-    item.state = [[NamedItem alloc] initWithName:region andId:regionId];
+    @try {
+        item.addressid =  [[dict valueForKey:@"id"] integerValue];
+        item.firstName = [self parseString:@"first_name" fromDict:dict];
+        item.lastName = [self parseString:@"last_name" fromDict:dict];
+        item.company = [self parseString:@"company" fromDict:dict];
+        item.address = [self parseString:@"street" fromDict:dict];
+        item.city = [self parseString:@"city" fromDict:dict];
+        item.zipCode = [self parseString:@"zipcode" fromDict:dict];
+        item.countryId = [self parseString:@"country" fromDict:dict];
+        item.contactNumber = [self parseString:@"phone" fromDict:dict];
+        item.cusomer_id = [self parseString:@"cusomer_id" fromDict:dict];
+        item.firstlineaddress =  [self parseString:@"address_1" fromDict:dict];
+        item.secondlineaddress = [self parseString:@"address_2" fromDict:dict];
+        item.dialcode = [self parseString:@"phone_code" fromDict:dict];
+        item.states = [self parseString:@"state" fromDict:dict];
+        
+        NSString* region = [self parseString:@"region" fromDict:dict];
+        NSUInteger regionId = (NSUInteger)[[self parseString:@"region_id" fromDict:dict] integerValue];
+        item.state = [[NamedItem alloc] initWithName:region andId:regionId];
+    }@catch (NSException *exception) {
+    }
+    @finally {
+        NSLog(@"Finally condition");
+    }
+   
     
     return item;
 }

@@ -229,8 +229,8 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                     [userdefauls setValue:[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"id"] forKey:@"cust_id"];
                                                     [userdefauls synchronize];
                                                     
-                                                    NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
-                                                    
+//                                                    NSDictionary *dicttme = [[[[[[forJSONObject valueForKey:@"data"] valueForKey:@"customer"] valueForKey:@"data"] valueForKey:@"default_payment_detail"] valueForKey:@"data"] valueForKey:@"data"];
+//                                                    
                                                     
                                                     NSArray *shippingDict =   [[[[[forJSONObject objectForKey:@"data"]valueForKey:@"customer"]valueForKey:@"data"]valueForKey:@"addresses"] valueForKey:@"data"];
                                                     if (shippingDict == nil || shippingDict.count == 0)
@@ -675,12 +675,20 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 long l = (long)[httpResponse statusCode];
                                                 if (l == 200)
                                                 {
-                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSMutableArray* designers = [NSMutableArray new];
-                                                    for (NSDictionary* designerDict in [forJSONObject valueForKey:@"data"]) {
-                                                        [designers addObject:[NamedItem parseFromJson:designerDict]];
+                                                    @try {
+                                                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        NSMutableArray* designers = [NSMutableArray new];
+                                                        for (NSDictionary* designerDict in [forJSONObject valueForKey:@"data"]) {
+                                                            [designers addObject:[NamedItem parseFromJson:designerDict]];
+                                                        }
+                                                        success(designers);
+                                                    }@catch (NSException *exception) {
+                                                        failure(@"");
                                                     }
-                                                    success(designers);
+                                                    @finally {
+                                                        NSLog(@"Finally condition");
+                                                    }
+                                                    
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     failure([forJSONObject valueForKey:@"message"]);
@@ -715,14 +723,22 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 long l = (long)[httpResponse statusCode];
                                                 if (l == 200)
                                                 {
-                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSLog(@"One of these might exist - object: %@", forJSONObject);
-                                                    NSMutableArray* conditions = [NSMutableArray new];
-                                                    for (NSDictionary* conditionDict in [forJSONObject valueForKey:@"data"]) {
-                                                        NSLog(@"%@",conditionDict);
-                                                        [conditions addObject:[NamedItem parseFromJson:conditionDict]];
+                                                    @try {
+                                                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        NSLog(@"One of these might exist - object: %@", forJSONObject);
+                                                        NSMutableArray* conditions = [NSMutableArray new];
+                                                        for (NSDictionary* conditionDict in [forJSONObject valueForKey:@"data"]) {
+                                                            NSLog(@"%@",conditionDict);
+                                                            [conditions addObject:[NamedItem parseFromJson:conditionDict]];
+                                                        }
+                                                        success(conditions);;
+                                                    }@catch (NSException *exception) {
+                                                        failure(@"");
                                                     }
-                                                    success(conditions);
+                                                    @finally {
+                                                        NSLog(@"Finally condition");
+                                                    }
+                                                   
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     failure([forJSONObject valueForKey:@"message"]);
@@ -1182,16 +1198,24 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 long l = (long)[httpResponse statusCode];
                                                 if (l == 200)
                                                 {
-                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    
-                                                    NSPredicate *filter = [NSPredicate predicateWithFormat:@"age_group contains[c] %@ AND type contains[c] %@",@"K",@"CL"];
-                                                    NSArray *filteredContacts = [[forJSONObject valueForKey:@"data"] filteredArrayUsingPredicate:filter];
-                                                    NSMutableArray* sizeVaules = [NSMutableArray new];
-                                                    for (NSDictionary* item in filteredContacts) {
-                                                        NamedItem* sizeItem = [NamedItem parseFromJson:item];
-                                                        [sizeVaules addObject:sizeItem];
+                                                    @try {
+                                                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        
+                                                        NSPredicate *filter = [NSPredicate predicateWithFormat:@"age_group contains[c] %@ AND type contains[c] %@",@"K",@"CL"];
+                                                        NSArray *filteredContacts = [[forJSONObject valueForKey:@"data"] filteredArrayUsingPredicate:filter];
+                                                        NSMutableArray* sizeVaules = [NSMutableArray new];
+                                                        for (NSDictionary* item in filteredContacts) {
+                                                            NamedItem* sizeItem = [NamedItem parseFromJson:item];
+                                                            [sizeVaules addObject:sizeItem];
+                                                        }
+                                                        success(sizeVaules);
+                                                    }@catch (NSException *exception) {
+                                                        failure(@"");
                                                     }
-                                                    success(sizeVaules);
+                                                    @finally {
+                                                        NSLog(@"Finally condition");
+                                                    }
+                                                   
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     failure([forJSONObject valueForKey:@"message"]);
@@ -1230,22 +1254,30 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 long l = (long)[httpResponse statusCode];
                                                 if (l == 200)
                                                 {
-                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    NSMutableDictionary* units = [NSMutableDictionary new];
-                                                    [[forJSONObject valueForKey:@"data"] enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* responseSize, BOOL *stop) {
-                                                        NSLog(@"%@",responseSize);
-                                                        NSMutableArray* sizeVaules = [NSMutableArray new];
-                                                        for (NSArray* item in [responseSize valueForKey:@"data"])
-                                                        {
-                                                            NamedItem* sizeItem = [NamedItem new];
-                                                            NSLog(@"%@",item);
-                                                            sizeItem.identifier = (NSUInteger)[[item valueForKey:@"id"] integerValue];
-                                                            sizeItem.name = [item valueForKey:@"name"];
-                                                            [sizeVaules addObject:sizeItem];
-                                                        }
-                                                        units[unit] = sizeVaules;
-                                                    }];
-                                                    success(units);
+                                                    @try {
+                                                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        NSMutableDictionary* units = [NSMutableDictionary new];
+                                                        [[forJSONObject valueForKey:@"data"] enumerateKeysAndObjectsUsingBlock:^(NSString* unit, NSArray* responseSize, BOOL *stop) {
+                                                            NSLog(@"%@",responseSize);
+                                                            NSMutableArray* sizeVaules = [NSMutableArray new];
+                                                            for (NSArray* item in [responseSize valueForKey:@"data"])
+                                                            {
+                                                                NamedItem* sizeItem = [NamedItem new];
+                                                                NSLog(@"%@",item);
+                                                                sizeItem.identifier = (NSUInteger)[[item valueForKey:@"id"] integerValue];
+                                                                sizeItem.name = [item valueForKey:@"name"];
+                                                                [sizeVaules addObject:sizeItem];
+                                                            }
+                                                            units[unit] = sizeVaules;
+                                                        }];
+                                                        success(units);
+                                                    }@catch (NSException *exception) {
+                                                        failure(@"");
+                                                    }
+                                                    @finally {
+                                                        NSLog(@"Finally condition");
+                                                    }
+                                                   
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     failure([forJSONObject valueForKey:@"message"]);
@@ -1464,10 +1496,19 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                 long l = (long)[httpResponse statusCode];
                                                 if (l == 200)
                                                 {
-                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                    
-                                                    NSString* versionString = [[[forJSONObject objectForKey:@"data"] valueForKey:@"mobile_app"] valueForKey:@"ios"];
-                                                    success([versionString floatValue]);
+                                                    @try {
+                                                        NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                        
+                                                        NSString* versionString = [[[forJSONObject objectForKey:@"data"] valueForKey:@"mobile_app"] valueForKey:@"ios"];
+                                                        success([versionString floatValue]);
+                                                    }@catch (NSException *exception) {
+                                                        failure(@"");
+                                                        
+                                                    }
+                                                    @finally {
+                                                        NSLog(@"Finally condition");
+                                                    }
+                                                  
                                                 }else {
                                                     NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     failure([forJSONObject valueForKey:@"message"]);
