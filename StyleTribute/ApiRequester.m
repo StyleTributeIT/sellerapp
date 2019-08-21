@@ -320,7 +320,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
 -(void)loginWithFBToken:(NSString*)fbToken success:(JSONRespFBLogin)success failure:(JSONRespError)failure {
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:fbToken,@"token",@"facebook",@"grant_type", nil];
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:params options:kNilOptions error:nil];
-    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/auth/token", DefApiHost];
+    NSString* urlString1 = [NSString stringWithFormat:@"%@api/v1/auth/facebook", DefApiHost];
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     request.HTTPMethod = @"POST";
     [request setURL:[NSURL URLWithString:urlString1]];
