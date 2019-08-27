@@ -13,6 +13,7 @@
 #import "TopCategoriesViewController.h"
 #import "ClothingSizeTableViewCell.h"
 #import "ConditionPriceViewController.h"
+#import "DeleteTableViewCell.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "SingleUnitTableViewCell.h"
 #import "MessageTableViewCell.h"
@@ -34,7 +35,7 @@
 #import "Photo.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Photos/Photos.h>
-
+#import  "QuartzCore/QuartzCore.h"
 typedef void(^ImageLoadBlock)(int);
 
 @interface NewItemTableViewController ()< UIActionSheetDelegate, PhotoCellDelegate, SharingTableViewCellDelegate, GuidViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -52,6 +53,8 @@ typedef void(^ImageLoadBlock)(int);
 @property Product *originalCopy;
 @property NSMutableArray* photosToDelete;
 @property NSInteger *productid;
+@property (strong, nonatomic) IBOutlet UIView *Footer;
+@property (strong, nonatomic) IBOutlet UIButton *btnDelete;
 @property XCDFormInputAccessoryView* inputAccessoryView;
 @end
 
@@ -66,7 +69,8 @@ int sectionOffset = 0;
     self.isInitialized = NO;
     self.hideSkipInGuide = NO;
     self.isTutorialPresented = NO;
-    self.photosToDelete = [NSMutableArray new];    
+    self.photosToDelete = [NSMutableArray new];
+   // [self.tableFooterView addSubview:_Footer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
     self.productCopy = [self.curProduct copy];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
@@ -225,6 +229,9 @@ int sectionOffset = 0;
     self.productid = self.curProduct.identifier;
     [self saveProduct:self.curProduct];
 
+}
+- (IBAction)btnDelete_Prassed:(UIButton *)sender {
+    
 }
 
 -(void)saveProduct:(BOOL)pushToServer
@@ -489,11 +496,19 @@ int sectionOffset = 0;
             rowHeight = 88;
         return rowHeight;
     }
+    if (indexPath.section == 4)
+    {
+        return 60;
+    }
     return 50;
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger initialSection = 4;
+    NSInteger initialSection = 5;
+    if ([_curProduct.process_type  isEqual: @""] || _curProduct.process_type == nil)
+    {
+        initialSection = 4;
+    }
     STCategory *category = self.curProduct.category;
     NSString* firstSize = [category.sizeFields firstObject];
     sectionOffset = 0;
@@ -520,7 +535,7 @@ int sectionOffset = 0;
     
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
     {
-       if (section == 0)
+       if (section == 0 || section == 4)
             return 0.1;
         return 50;
     }
@@ -545,6 +560,7 @@ int sectionOffset = 0;
     [view addSubview: label];
     return view;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
@@ -649,7 +665,13 @@ int sectionOffset = 0;
             }
         }
     }
-    return [self setupShoesSizeCell:indexPath];
+    if (indexPath.section == 4)
+    {
+        return [self Footercell:indexPath];
+        
+    }else{
+        return [self setupShoesSizeCell:indexPath];
+    }
 }
 
 -(void)addBordersForCell:(UITableViewCell*)cell addBottomBorder:(BOOL)addBottom
@@ -752,7 +774,37 @@ int sectionOffset = 0;
   //  cell.separatorInset = UIEdgeInsetsMake(1.0f, 1.0f, 1.0f, cell.bounds.size.width);
     return cell;
 }
-    
+- (void) touchDownMethod:(UIButton *)sender
+{
+    if([_curProduct.process_type  isEqual: @"DIY"])
+    {
+        NSString* newStatus;
+        for(int i=0;i<_curProduct.allowedTransitions.count;i++)
+        {
+            NSDictionary *dicttemp = [_curProduct.allowedTransitions objectAtIndex:i];
+            if ([[dicttemp valueForKey:@"name"]isEqualToString:@"SUSPENDED"])
+            {
+                newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
+            }
+        }
+        [self setStatus:newStatus forProduct:_curProduct];
+    }else
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Contact the support" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+- (UITableViewCell*)Footercell:(NSIndexPath*)indexPath
+{
+    DeleteTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DeleteCell" forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell.btndelete.layer setBorderWidth:2.0];
+    [cell.btndelete.layer setBorderColor:[[UIColor redColor] CGColor]];
+    cell.btndelete.layer.cornerRadius = 15.0;
+    cell.btndelete.clipsToBounds = true;
+    [cell.btndelete addTarget:self action:@selector(touchDownMethod:) forControlEvents:UIControlEventTouchDown];
+    return cell;
+}
 -(UITableViewCell*)setupShoesSizeCell:(NSIndexPath*)indexPath
     {
         ShoesSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"shoesSizeCell" forIndexPath:indexPath];
@@ -829,7 +881,21 @@ int sectionOffset = 0;
 
 
 #pragma mark Self delegates
-
+-(void)setStatus:(NSString*)status forProduct:(Product*)p {
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    NSLog(@"%@",status);
+    [[ApiRequester sharedInstance] setProcessStatus:status forProduct:_curProduct.identifier success:^(Product *product) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        p.processStatus = product.processStatus;
+       // p.processStatusDisplay = product.processStatusDisplay;
+       // [self storeProductsInGroups:[DataCache sharedInstance].products];
+      //  [self updateProducts];
+      //  [self updateWelcomeView];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [GlobalHelper showMessage:error withTitle:@"error"];
+    }];
+}
 -(void)selectedImageIndex:(NSUInteger)selectedImageIndex
 {
     self.selectedImageIndex = selectedImageIndex;

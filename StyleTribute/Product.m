@@ -109,7 +109,9 @@ STCategory *pCategory = nil;
        
         Product* product = [Product new];
         NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
+        NSDictionary *process_type = [[dict valueForKey:@"process_type"] valueForKey:@"data"];
         product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
+        product.process_type = [self parseString:@"name" fromDict:process_type];
         product.name = [self parseString:@"name" fromDict:dict];
         product.processStatus = [self parseString:@"name" fromDict:dicttemp];
         product.processStatusDisplay =  [self parseString:@"public_display" fromDict:dicttemp];

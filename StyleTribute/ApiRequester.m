@@ -937,13 +937,13 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                     NSLog(@"%@",forJSONObject);
                                                     @try {
                                                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-                                                        NSMutableArray* products = [NSMutableArray new];
-                                                        NSArray* productDict = [forJSONObject objectForKey:@"data"];
-                                                        for(int i=0;i<productDict.count;i++)
-                                                        {
-                                                            Product* product = [Product parseFromJson:productDict[i]];
+                                                    NSMutableArray *products = [NSMutableArray new];
+                                                        NSDictionary *productDict = [forJSONObject objectForKey:@"data"];
+//                                                        for(int i=0;i<productDict.count;i++)
+//                                                        {
+                                                            Product* product = [Product parseFromJson:productDict];
                                                             [products addObject:product];
-                                                        }
+                                                       // }
                                                         [DataCache sharedInstance].category = @"";
                                                         success(products);
                                                         
