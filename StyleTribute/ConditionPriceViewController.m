@@ -61,23 +61,29 @@
 }
 
 - (IBAction)done:(id)sender {
-    NSArray *vc = self.navigationController.viewControllers;
-    UINavigationController * navController;
-    for (UIViewController *controller in self.navigationController.viewControllers) {
-        
-        if ([controller isKindOfClass:[ProductNavigationViewController class]])
-        {
-            navController = (ProductNavigationViewController*)controller;
-        } else
-        if ([controller isKindOfClass:[NewItemTableViewController class]]) {
+      Product *product = [DataCache getSelectedItem];
+    if (product.price == 0.0f)
+    {
+        [GlobalHelper showMessage:@"Please Set Price." withTitle:@"error"];
+    }else{
+        NSArray *vc = self.navigationController.viewControllers;
+        UINavigationController * navController;
+        for (UIViewController *controller in self.navigationController.viewControllers) {
             
-            [self.navigationController popToViewController:controller
-                                                  animated:YES];
-         //   [self.navigationController popToRootViewControllerAnimated:YES];
-            break;
+            if ([controller isKindOfClass:[ProductNavigationViewController class]])
+            {
+                navController = (ProductNavigationViewController*)controller;
+            } else
+                if ([controller isKindOfClass:[NewItemTableViewController class]]) {
+                    
+                    [self.navigationController popToViewController:controller
+                                                          animated:YES];
+                    //   [self.navigationController popToRootViewControllerAnimated:YES];
+                    break;
+                }
         }
+        [self.navigationController.navigationController popToRootViewControllerAnimated:YES];
     }
-    [self.navigationController.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

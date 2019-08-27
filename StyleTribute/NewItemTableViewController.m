@@ -156,8 +156,6 @@ int sectionOffset = 0;
             
             [self.tableView reloadData];
         }
-        
-        
     }
 
     -(void)viewDidAppear:(BOOL)animated {
