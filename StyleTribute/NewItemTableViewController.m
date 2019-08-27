@@ -53,8 +53,7 @@ typedef void(^ImageLoadBlock)(int);
 @property Product *originalCopy;
 @property NSMutableArray* photosToDelete;
 @property NSInteger *productid;
-@property (strong, nonatomic) IBOutlet UIView *Footer;
-@property (strong, nonatomic) IBOutlet UIButton *btnDelete;
+
 @property XCDFormInputAccessoryView* inputAccessoryView;
 @end
 
@@ -490,7 +489,13 @@ int sectionOffset = 0;
     {
         int rowHeight = 50;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
-            rowHeight = 180;
+            if ([_curProduct.sku isEqualToString:@""] || [_curProduct.sku isEqualToString:nil])
+            {
+                 rowHeight = 180;
+            }else{
+                 rowHeight = 210;
+            }
+        
         else
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
@@ -790,7 +795,7 @@ int sectionOffset = 0;
         [self setStatus:newStatus forProduct:_curProduct];
     }else
     {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Contact the support" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Contact the support to delete the product." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
 }
@@ -851,6 +856,16 @@ int sectionOffset = 0;
     [self addBordersForCell:cell addBottomBorder:YES];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGuide)];
     [cell.guideLabel addGestureRecognizer:tap];
+    NSString *val = _curProduct.sku;
+    if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
+        cell.btnSkuid.hidden = true;
+        cell.btnSku.hidden = true;
+    } else {
+        cell.btnSkuid.hidden = false;
+        cell.btnSku.hidden = false;
+        cell.btnSkuid.text = _curProduct.sku;
+    }
+   
     return cell;
 }
 

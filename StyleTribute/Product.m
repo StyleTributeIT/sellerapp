@@ -113,6 +113,7 @@ STCategory *pCategory = nil;
         product.identifier = (NSUInteger)[self parseLong:@"id" fromDict:dict];
         product.process_type = [self parseString:@"name" fromDict:process_type];
         product.name = [self parseString:@"name" fromDict:dict];
+        product.sku = [self parseString:@"sku" fromDict:dict];
         product.processStatus = [self parseString:@"name" fromDict:dicttemp];
         product.processStatusDisplay =  [self parseString:@"public_display" fromDict:dicttemp];
         product.originalPrice = [self parseFloatprice:@"original_price" fromDict:dict];
