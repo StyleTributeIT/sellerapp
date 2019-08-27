@@ -236,8 +236,6 @@ int sectionOffset = 0;
 -(void)saveProduct:(BOOL)pushToServer
 {
     {
-        
-        
         bool product_valid = [self productIsValid];
         bool images_filled = [self imagesAreFilled];
         
@@ -270,12 +268,11 @@ int sectionOffset = 0;
         {
             isedit = true;
         }
-        
+       
         [[ApiRequester sharedInstance] setProduct:self.curProduct Tag:isedit success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             
             self.productid = product.identifier;
-            NSLog(@"%d",self.productid);
             if (self.isEditingItem)
             {
                 NSMutableArray *tempImages = [[NSMutableArray alloc] init];
@@ -1235,6 +1232,10 @@ int sectionOffset = 0;
     {
         return NO;
     }
+    if (self.curProduct.price == 0)
+    {
+        return NO;
+    }
     if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
     {
         if (self.curProduct.kidzsize == nil)
@@ -1269,7 +1270,7 @@ int sectionOffset = 0;
         }
     }
 
-
+  
     return YES;
 }
 
