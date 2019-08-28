@@ -22,6 +22,7 @@
 @property NSMutableArray* soldItems;
 @property NSMutableArray* archivedItems;
 @property UIRefreshControl* refreshControl;
+@property NSInteger index;
 @property (strong, nonatomic) IBOutlet UIView *tabsContainer;
 
 @end
@@ -32,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+    self.index = -1;
 	[self updateWelcomeView];
     
     [GlobalHelper addLogoToNavBar:self.navigationItem];
@@ -69,16 +70,60 @@
     [self.refreshControl addTarget:self action:@selector(refreshProducts:) forControlEvents:UIControlEventValueChanged];
     [self.itemsTable insertSubview:self.refreshControl atIndex:0];
     [self customizeSegment];
+    [self updateProducts];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    NSMutableArray *arrtemp = [[NSMutableArray alloc] init];
+    if (_index == -1)
+    {
+        
+    }else
+    {
+        switch(self.wardrobeType.selectedSegmentIndex)
+        {
+            case 0:
+                for(int i=0;i<self.sellingItems.count;i++)
+                {
+                    if (i == _index)
+                    {
+                        [arrtemp addObject: [DataCache getSelectedItem]];
+                    }else{
+                        [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                    }
+                }
+                [_itemsTable reloadData];
+                
+            case 1:
+                for(int i=0;i<self.soldItems.count;i++)
+                {
+                    if (i == _index)
+                    {
+                        [arrtemp addObject: [DataCache getSelectedItem]];
+                    }else{
+                        [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                    }
+                }
+                [_itemsTable reloadData];
+            case 2:
+                for(int i=0;i<self.archivedItems.count;i++)
+                {
+                    if (i == _index)
+                    {
+                        [arrtemp addObject: [DataCache getSelectedItem]];
+                    }else{
+                        [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                    }
+                }
+                [_itemsTable reloadData];
+        }
+    }
     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self updateProducts];
     self.itemsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 - (void) popToSupport{
@@ -308,6 +353,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.index = indexPath.row;
     [self openProductDetails:[[self getCurrentItemsArray] objectAtIndex:indexPath.row]];
 }
 

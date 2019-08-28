@@ -945,6 +945,7 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                             [products addObject:product];
                                                        // }
                                                         [DataCache sharedInstance].category = @"";
+                                                        [DataCache setSelectedItem:product];
                                                         success(products);
                                                         
                                                     }@catch (NSException *exception) {
