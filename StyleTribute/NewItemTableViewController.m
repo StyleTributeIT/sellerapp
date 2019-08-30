@@ -96,6 +96,7 @@ int sectionOffset = 0;
     {
         self.originalCopy = [self.curProduct copy];
     }
+
     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
       //  NSLog(@"%@",)
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
@@ -495,7 +496,7 @@ int sectionOffset = 0;
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
         return rowHeight;
-    }else if (indexPath.section == 4 || indexPath.section == 3)
+    }else if (indexPath.section == 4)
     {
         return 60;
     }
@@ -669,11 +670,11 @@ int sectionOffset = 0;
             }
         }
     }
-    if (indexPath.section == 4 || indexPath.section == 3)
+    if (indexPath.section == 4 - sectionOffset)
     {
         return [self Footercell:indexPath];
-        
     }
+
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     return  cell;
 }
