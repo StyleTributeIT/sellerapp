@@ -939,14 +939,13 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                                         NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                                                     NSMutableArray *products = [NSMutableArray new];
                                                         NSDictionary *productDict = [forJSONObject objectForKey:@"data"];
-//                                                        for(int i=0;i<productDict.count;i++)
-//                                                        {
-                                                            Product* product = [Product parseFromJson:productDict];
-                                                            [products addObject:product];
-                                                       // }
+//
+                                                        Product* product = [Product parseFromJson:productDict];
+                                                        [products addObject:product];
+                                                      
                                                         [DataCache sharedInstance].category = @"";
                                                         [DataCache setSelectedItem:product];
-                                                        success(products);
+                                                        success(product);
                                                         
                                                     }@catch (NSException *exception) {
                                                         NSLog(@"%@", exception.reason);

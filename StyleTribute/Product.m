@@ -106,7 +106,6 @@ STCategory *pCategory = nil;
         Product* product = [Product new];
         return product;
     }else{
-       
         Product* product = [Product new];
         NSDictionary *dicttemp = [[dict valueForKey:@"process_status"] valueForKey:@"data"];
         NSDictionary *process_type = [[dict valueForKey:@"process_type"] valueForKey:@"data"];

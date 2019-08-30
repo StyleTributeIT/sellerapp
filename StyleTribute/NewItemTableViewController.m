@@ -495,8 +495,7 @@ int sectionOffset = 0;
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
         return rowHeight;
-    }
-    if (indexPath.section == 4)
+    }else if (indexPath.section == 4 || indexPath.section == 3)
     {
         return 60;
     }
@@ -504,22 +503,27 @@ int sectionOffset = 0;
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger initialSection = 5;
-    if ([_curProduct.process_type  isEqual: @""] || _curProduct.process_type == nil)
-    {
-        initialSection = 4;
-    }
-    STCategory *category = self.curProduct.category;
-    NSString* firstSize = [category.sizeFields firstObject];
-    sectionOffset = 0;
-    if([firstSize containsString:@"size"] || [firstSize isEqualToString:@"kidzshoes"]) {
-    } else if([firstSize isEqualToString:@"shoesize"]) {
-    } else if([firstSize isEqualToString:@"dimensions"]) {
-    } else {
-        initialSection--;
-        sectionOffset = 1;
-    }
-    return initialSection;
+   if (_curProduct == nil)
+   {
+       return 0;
+   }else{
+       NSInteger initialSection = 5;
+       if ([_curProduct.process_type  isEqual: @""] || _curProduct.process_type == nil)
+       {
+           initialSection--;
+       }
+       STCategory *category = self.curProduct.category;
+       NSString* firstSize = [category.sizeFields firstObject];
+       sectionOffset = 0;
+       if([firstSize containsString:@"size"] || [firstSize isEqualToString:@"kidzshoes"]) {
+       } else if([firstSize isEqualToString:@"shoesize"]) {
+       } else if([firstSize isEqualToString:@"dimensions"]) {
+       } else {
+           initialSection--;
+           sectionOffset = 1;
+       }
+       return initialSection;
+   }
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -665,13 +669,13 @@ int sectionOffset = 0;
             }
         }
     }
-    if (indexPath.section == 4)
+    if (indexPath.section == 4 || indexPath.section == 3)
     {
         return [self Footercell:indexPath];
         
-    }else{
-        return [self setupShoesSizeCell:indexPath];
     }
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    return  cell;
 }
 
 -(void)addBordersForCell:(UITableViewCell*)cell addBottomBorder:(BOOL)addBottom

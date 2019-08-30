@@ -64,7 +64,7 @@
       Product *product = [DataCache getSelectedItem];
     if (product.price == 0.0f)
     {
-        [GlobalHelper showMessage:@"Please Set Price." withTitle:@"error"];
+        [GlobalHelper showMessage:@"Price can not be 0." withTitle:@"error"];
     }else{
         NSArray *vc = self.navigationController.viewControllers;
         UINavigationController * navController;
