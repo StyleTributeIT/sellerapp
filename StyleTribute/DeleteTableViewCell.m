@@ -11,6 +11,7 @@
 @implementation DeleteTableViewCell
 
 - (void)awakeFromNib {
+
     [super awakeFromNib];
 }
 
