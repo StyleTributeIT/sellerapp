@@ -509,10 +509,17 @@ int sectionOffset = 0;
        return 0;
    }else{
        NSInteger initialSection = 5;
-       if ([_curProduct.process_type  isEqual: @""] || _curProduct.process_type == nil)
+       if (self.isEditingItem)
+       {
+           if ([_curProduct.processStatus  isEqual: @""] || [_curProduct.processStatus  isEqual: @"SUSPENDED"] || _curProduct.processStatus == nil)
+           {
+                initialSection--;
+           }
+       }else
        {
            initialSection--;
        }
+     
        STCategory *category = self.curProduct.category;
        NSString* firstSize = [category.sizeFields firstObject];
        sectionOffset = 0;
@@ -903,10 +910,8 @@ int sectionOffset = 0;
     [[ApiRequester sharedInstance] setProcessStatus:status forProduct:_curProduct.identifier success:^(Product *product) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         p.processStatus = product.processStatus;
-       // p.processStatusDisplay = product.processStatusDisplay;
-       // [self storeProductsInGroups:[DataCache sharedInstance].products];
-      //  [self updateProducts];
-      //  [self updateWelcomeView];
+        [DataCache setSelectedItem:product];
+         [self dismissViewControllerAnimated:true completion:nil];
     } failure:^(NSString *error) {
         [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
         [GlobalHelper showMessage:error withTitle:@"error"];

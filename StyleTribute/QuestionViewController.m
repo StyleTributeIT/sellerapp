@@ -48,25 +48,7 @@
 }
 
 -(void)inputDone {
- //   Product *p = [DataCache getSelectedItem];
     int new_price = [self.priceField.text intValue];
-    
- //   bool is_editing = [DataCache sharedInstance].isEditingItem;
-    
-   /* if (is_editing == true){
-        if (new_price > p.price && p.price != 0)
-        {
-            NSString *str = [NSString stringWithFormat:@"New price cannot be higher than original price of $%.02f", p.price];
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:str delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            return;
-        }
-        else if (new_price == 0){
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"New price cannot be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            return;
-        }
-    }*/
     if (new_price == 0){
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
@@ -76,28 +58,36 @@
 }
 - (IBAction)nextPressed:(id)sender {
     [self.priceField resignFirstResponder];
-    if (!self.priceField.hidden)
+    int new_price = [self.priceField.text intValue];
+    if (new_price == 0){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }else
     {
-        if (self.priceField.text.length != 0)
+        if (!self.priceField.hidden)
         {
-            Product *product = [DataCache getSelectedItem];
-            product.originalPrice = [self.priceField.text floatValue];
-            [DataCache setSelectedItem:product];
+            if (self.priceField.text.length != 0)
+            {
+                Product *product = [DataCache getSelectedItem];
+                product.originalPrice = [self.priceField.text floatValue];
+                [DataCache setSelectedItem:product];
+            } else
+            {
+                [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
+                return;
+            }
+            self.priceField.hidden = YES;
+            [self performSegueWithIdentifier:@"yesSegue" sender:nil];
         } else
         {
-            [GlobalHelper showMessage:DefEmptyFields withTitle:@"error"];
-            return;
+            Product *product = [DataCache getSelectedItem];
+            product.originalPrice = 0;
+            [DataCache setSelectedItem:product];
+            self.priceField.text = @"";
+            [self.priceField resignFirstResponder];
+            [self performSegueWithIdentifier:@"priceSegue" sender:self];
         }
-        self.priceField.hidden = YES;
-        [self performSegueWithIdentifier:@"yesSegue" sender:nil];
-    } else
-    {
-        Product *product = [DataCache getSelectedItem];
-        product.originalPrice = 0;
-        [DataCache setSelectedItem:product];
-        self.priceField.text = @"";
-        [self.priceField resignFirstResponder];
-        [self performSegueWithIdentifier:@"priceSegue" sender:self];
     }
 }
 

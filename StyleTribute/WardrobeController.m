@@ -76,50 +76,56 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSMutableArray *arrtemp = [[NSMutableArray alloc] init];
+    
     if (_index == -1)
     {
         
     }else
     {
-        switch(self.wardrobeType.selectedSegmentIndex)
+        if([[DataCache getSelectedItem].process_type  isEqual: @"DIY"])
         {
-            case 0:
-                for(int i=0;i<self.sellingItems.count;i++)
-                {
-                    if (i == _index)
+            switch(self.wardrobeType.selectedSegmentIndex)
+            {
+                case 0:
+                    for(int i=0;i<self.sellingItems.count;i++)
                     {
-                        [arrtemp addObject: [DataCache getSelectedItem]];
-                    }else{
-                        [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                        if (i == _index)
+                        {
+                            [arrtemp addObject: [DataCache getSelectedItem]];
+                        }else{
+                            [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                        }
                     }
-                }
-                [_itemsTable reloadData];
-                
-            case 1:
-                for(int i=0;i<self.soldItems.count;i++)
-                {
-                    if (i == _index)
+                    self.sellingItems = arrtemp;
+                    [self.itemsTable reloadData];
+                    
+                case 1:
+                    for(int i=0;i<self.soldItems.count;i++)
                     {
-                        [arrtemp addObject: [DataCache getSelectedItem]];
-                    }else{
-                        [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                        if (i == _index)
+                        {
+                            [arrtemp addObject: [DataCache getSelectedItem]];
+                        }else{
+                            [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                        }
                     }
-                }
-                [_itemsTable reloadData];
-            case 2:
-                for(int i=0;i<self.archivedItems.count;i++)
-                {
-                    if (i == _index)
+                    self.soldItems = arrtemp;
+                    [self.itemsTable reloadData];
+                case 2:
+                    for(int i=0;i<self.archivedItems.count;i++)
                     {
-                        [arrtemp addObject: [DataCache getSelectedItem]];
-                    }else{
-                        [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                        if (i == _index)
+                        {
+                            [arrtemp addObject: [DataCache getSelectedItem]];
+                        }else{
+                            [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
+                        }
                     }
-                }
-                [_itemsTable reloadData];
+                    self.archivedItems = arrtemp;
+                    [self.itemsTable reloadData];
+            }
         }
     }
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -128,9 +134,7 @@
 }
 - (void) popToSupport{
     [ZDCChat initializeWithAccountKey:DefZendeskKey];
-
     UserProfile* profile = [DataCache sharedInstance].userProfile;
-    
     [ZDCChat updateVisitor:^(ZDCVisitorInfo *user) {
         user.phone = profile.phone;
         user.name = [NSString stringWithFormat:@"%@ %@", profile.firstName, profile.lastName];
@@ -288,7 +292,8 @@
                 [cell.image setImage:photo.image];
         }
     }
-    
+    NSLog(@"%@",p.name);
+    NSLog(@"%@",p.processStatusDisplay);
     cell.tag = indexPath.row;
     cell.delegate = self;
     cell.title.text = p.name;

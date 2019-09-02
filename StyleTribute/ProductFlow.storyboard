@@ -127,15 +127,15 @@
                                                         <constraint firstAttribute="width" constant="79" id="0Zg-Bm-enK"/>
                                                         <constraint firstAttribute="height" constant="21" id="1qD-Rr-c7q"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SKU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKx-2o-ak4">
-                                                    <rect key="frame" x="331" y="14" width="33" height="21"/>
+                                                    <rect key="frame" x="339.5" y="14" width="24.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="FFs-fm-Les"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -542,12 +542,12 @@
                                 <rect key="frame" x="0.0" y="674" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WMt-Uz-NOh" id="Kpx-aj-oLp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYb-rB-GuY">
-                                            <rect key="frame" x="103" y="23" width="169" height="38"/>
-                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                            <rect key="frame" x="115" y="25.5" width="145" height="33"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                             <inset key="contentEdgeInsets" minX="25" minY="8" maxX="25" maxY="8"/>
                                             <state key="normal" title="delete product">
                                                 <color key="titleColor" red="0.65098039220000004" green="0.1019607843" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2217,8 +2217,8 @@ AAAAAEpkA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9wA-EM-tEe"/>
-        <segue reference="1pN-dY-0wd"/>
-        <segue reference="Wj1-sl-60G"/>
+        <segue reference="UiL-Tr-kkL"/>
+        <segue reference="vxI-uo-w8w"/>
         <segue reference="deF-6c-laT"/>
         <segue reference="xms-ox-tR1"/>
     </inferredMetricsTieBreakers>
