@@ -513,7 +513,7 @@ int sectionOffset = 0;
        {
            if ([_curProduct.processStatus  isEqual: @""] || [_curProduct.processStatus  isEqual: @"SUSPENDED"] || _curProduct.processStatus == nil)
            {
-                initialSection--;
+               // initialSection--;
            }
        }else
        {
@@ -789,16 +789,15 @@ int sectionOffset = 0;
 }
 - (void) touchDownMethod:(UIButton *)sender
 {
+    
     if([_curProduct.process_type  isEqual: @"DIY"])
     {
         NSString* newStatus;
-        for(int i=0;i<_curProduct.allowedTransitions.count;i++)
+        if ([_curProduct.processStatus  isEqual: @"SUSPENDED"])
         {
-            NSDictionary *dicttemp = [_curProduct.allowedTransitions objectAtIndex:i];
-            if ([[dicttemp valueForKey:@"name"]isEqualToString:@"SUSPENDED"])
-            {
-                newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
-            }
+            newStatus = [NSString stringWithFormat:@"%@",@"1"];
+        }else{
+            newStatus = [NSString stringWithFormat:@"%@",@"13"];
         }
         [self setStatus:newStatus forProduct:_curProduct];
     }else
@@ -815,6 +814,12 @@ int sectionOffset = 0;
     [cell.btndelete.layer setBorderColor:[[UIColor redColor] CGColor]];
     cell.btndelete.layer.cornerRadius = 15.0;
     cell.btndelete.clipsToBounds = true;
+    if ([_curProduct.processStatus  isEqual: @""] || [_curProduct.processStatus  isEqual: @"SUSPENDED"] || _curProduct.processStatus == nil)
+    {
+        [cell.btndelete setTitle:@"re-list" forState:UIControlStateNormal];
+    }else{
+        [cell.btndelete setTitle:@"delete product" forState:UIControlStateNormal];
+    }
     [cell.btndelete addTarget:self action:@selector(touchDownMethod:) forControlEvents:UIControlEventTouchDown];
     return cell;
 }
