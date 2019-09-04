@@ -391,9 +391,7 @@ int sectionOffset = 0;
                             }];
                             return;
                         }
-                        
-                        // Additional images
-                        //ImageType* imageType = [self.curProduct.category.imageTypes objectAtIndex:i];
+                    
                         if(photo != nil && photo.image != nil) {
                             [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, cur_product.photos.count]];
                             dispatch_group_enter(group);

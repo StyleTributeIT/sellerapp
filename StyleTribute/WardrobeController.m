@@ -420,14 +420,15 @@
             }
             break;
         case 3:  // re-list button
-            for(int i=0;i<p.allowedTransitions.count;i++)
-            {
-                NSDictionary *dicttemp = [p.allowedTransitions objectAtIndex:i];
-                if ([[dicttemp valueForKey:@"name"]isEqualToString:@"SELLING"])
-                {
-                    newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
-                }
-            }
+//            for(int i=0;i<p.allowedTransitions.count;i++)
+//            {
+//                NSDictionary *dicttemp = [p.allowedTransitions objectAtIndex:i];
+//                if ([[dicttemp valueForKey:@"name"]isEqualToString:@"INREVIEW"])
+//                {
+//                    newStatus = [NSString stringWithFormat:@"%@",[dicttemp valueForKey:@"id"]];
+//                }
+//            }
+             newStatus = [NSString stringWithFormat:@"%@",@"1"];
             break;
         default:
             break;
