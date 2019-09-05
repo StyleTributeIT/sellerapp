@@ -787,22 +787,36 @@ int sectionOffset = 0;
 }
 - (void) touchDownMethod:(UIButton *)sender
 {
-    
-    if([_curProduct.process_type  isEqual: @"DIY"])
+    NSString* newStatus;
+    if ([_curProduct.processStatus  isEqual: @"SUSPENDED"])
     {
-        NSString* newStatus;
-        if ([_curProduct.processStatus  isEqual: @"SUSPENDED"])
+        if([_curProduct.process_type  isEqual: @"VIP"] || [_curProduct.process_type  isEqual: @"B2B"])
+        {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@ "This product is in consignment, to re-list this product contact customer support" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }else
         {
             newStatus = [NSString stringWithFormat:@"%@",@"1"];
-        }else{
-            newStatus = [NSString stringWithFormat:@"%@",@"13"];
+             [self setStatus:newStatus forProduct:_curProduct];
         }
-        [self setStatus:newStatus forProduct:_curProduct];
-    }else
-    {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Contact the support to delete the product." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        
+    }else{
+        if([_curProduct.process_type  isEqual: @"DIY"])
+        {
+            
+            newStatus = [NSString stringWithFormat:@"%@",@"13"];
+             [self setStatus:newStatus forProduct:_curProduct];
+        }else{
+            if([_curProduct.process_type  isEqual: @"VIP"] || [_curProduct.process_type  isEqual: @"B2B"])
+            {
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"This product is in consignment, to delete this product contact customer support" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+           
+        }
+        
     }
+   
 }
 - (UITableViewCell*)Footercell:(NSIndexPath*)indexPath
 {
