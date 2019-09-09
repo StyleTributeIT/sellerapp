@@ -48,13 +48,14 @@
 }
 
 -(void)inputDone {
-    int new_price = [self.priceField.text intValue];
-    if (new_price == 0){
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    [self nextPressed:nil];
+    [self.view endEditing:true];
+//    int new_price = [self.priceField.text intValue];
+//    if (new_price == 0){
+//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
+//    [self nextPressed:nil];
 }
 - (IBAction)nextPressed:(id)sender {
     [self.priceField resignFirstResponder];

@@ -75,61 +75,76 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSMutableArray *arrtemp = [[NSMutableArray alloc] init];
-    
+   
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSMutableArray *arrtemp = [NSMutableArray new];
+    [arrtemp removeAllObjects];
     if (_index == -1)
     {
         
     }else
     {
-        if([[DataCache getSelectedItem].process_type  isEqual: @"DIY"])
+        switch(self.wardrobeType.selectedSegmentIndex)
         {
-            switch(self.wardrobeType.selectedSegmentIndex)
-            {
+              
                 case 0:
-                    for(int i=0;i<self.sellingItems.count;i++)
+                for(int i=0;i<self.sellingItems.count;i++)
+            {
+                if (i == _index)
+                {
+                    [arrtemp addObject: [DataCache getSelectedItem]];
+                }else{
+                    if([arrtemp containsObject:[self.sellingItems objectAtIndex:i]])
                     {
-                        if (i == _index)
-                        {
-                            [arrtemp addObject: [DataCache getSelectedItem]];
-                        }else{
-                            [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
-                        }
+                    }else{
+                       [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
                     }
-                    self.sellingItems = arrtemp;
-                    [self.itemsTable reloadData];
                     
-                case 1:
-                    for(int i=0;i<self.soldItems.count;i++)
-                    {
-                        if (i == _index)
-                        {
-                            [arrtemp addObject: [DataCache getSelectedItem]];
-                        }else{
-                            [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
-                        }
-                    }
-                    self.soldItems = arrtemp;
-                    [self.itemsTable reloadData];
-                case 2:
-                    for(int i=0;i<self.archivedItems.count;i++)
-                    {
-                        if (i == _index)
-                        {
-                            [arrtemp addObject: [DataCache getSelectedItem]];
-                        }else{
-                            [arrtemp addObject: [self.sellingItems objectAtIndex:i]];
-                        }
-                    }
-                    self.archivedItems = arrtemp;
-                    [self.itemsTable reloadData];
+                }
             }
+                self.index = -1;
+                self.sellingItems = arrtemp;
+                [self.itemsTable reloadData];
+                
+                case 1:
+                for(int i=0;i<self.soldItems.count;i++)
+            {
+                if (i == _index)
+                {
+                    [arrtemp addObject: [DataCache getSelectedItem]];
+                }else{
+                    if([arrtemp containsObject:[self.soldItems objectAtIndex:i]])
+                    {
+                    }else{
+                        [arrtemp addObject: [self.soldItems objectAtIndex:i]];
+                    }
+                }
+            }
+                  self.index = -1;
+                self.soldItems = arrtemp;
+                [self.itemsTable reloadData];
+                case 2:
+                for(int i=0;i<self.archivedItems.count;i++)
+            {
+                if (i == _index)
+                {
+                    [arrtemp addObject: [DataCache getSelectedItem]];
+                }else{
+                    if([arrtemp containsObject:[self.archivedItems objectAtIndex:i]])
+                    {
+                    }else{
+                        [arrtemp addObject: [self.archivedItems objectAtIndex:i]];
+                    }
+                }
+            }
+                  self.index = -1;
+                self.archivedItems = arrtemp;
+                [self.itemsTable reloadData];
         }
     }
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
     self.itemsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 - (void) popToSupport{
