@@ -134,7 +134,7 @@
 
 - (IBAction)goNext:(id)sender {
     Product *p = [DataCache getSelectedItem];
-    [self.priceField resignFirstResponder];
+   // [self.priceField resignFirstResponder];
     int new_price = [self.priceField.text intValue];
     if (new_price == 0){
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -177,7 +177,7 @@
 
 -(void)inputDone {
     {
-//        [self.priceField resignFirstResponder];
+        [self.priceField resignFirstResponder];
 //        if(self.priceField.text.length > 0 && !self.isInProgress) {
 //            Product *p = [DataCache getSelectedItem];
 //            NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
