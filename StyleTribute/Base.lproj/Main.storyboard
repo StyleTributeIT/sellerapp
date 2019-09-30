@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,13 +22,13 @@
         <!--welcomeController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="welcomeController" customClass="WelcomeController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="vXZ-lx-hvc" userLabel="welcomeController" customClass="WelcomeController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-xd-dpw" customClass="KASlideShow">
-                                <rect key="frame" x="0.0" y="316" width="414" height="356"/>
+                                <rect key="frame" x="0.0" y="316" width="414" height="376"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FoV-xd-dpw" secondAttribute="height" multiplier="641:507" id="Xua-zg-CtR"/>
@@ -198,13 +196,13 @@
         <!--loginController-->
         <scene sceneID="tqf-KH-Ftc">
             <objects>
-                <viewController id="W2W-9d-Wfs" userLabel="loginController" customClass="LoginController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="W2W-9d-Wfs" userLabel="loginController" customClass="LoginController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NY5-ro-TzI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-aZ-Jzd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9L-dn-4dR">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="347.33333333333331"/>
@@ -377,7 +375,7 @@
         <!--My Account Controller-->
         <scene sceneID="900-3Z-7Sr">
             <objects>
-                <viewController id="tSN-ez-241" customClass="MyAccountController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="tSN-ez-241" customClass="MyAccountController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YQq-a8-tND">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,8 +383,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfr-uw-wMs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7xF-vN-mHu">
-                                        <rect key="frame" x="0.0" y="68" width="320" height="432"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xF-vN-mHu">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feel free to change your personal details to better assist you with payments and password credentials in this space" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Cl-eb-aQj">
                                                 <rect key="frame" x="10" y="42" width="300" height="49"/>
@@ -414,7 +412,7 @@
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="eXp-aJ-P6h" customClass="MyAccountCell">
-                                                        <rect key="frame" x="0.0" y="22" width="304" height="50"/>
+                                                        <rect key="frame" x="0.0" y="28" width="304" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eXp-aJ-P6h" id="h0F-28-CnO">
                                                             <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
@@ -545,7 +543,7 @@
         <!--Shop View Controller-->
         <scene sceneID="yuc-83-dqw">
             <objects>
-                <viewController id="yz9-vj-pKk" customClass="ShopViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="yz9-vj-pKk" customClass="ShopViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QM0-6Z-mWE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -579,7 +577,7 @@
         <!--Notifications View Controller-->
         <scene sceneID="0bM-4E-ufZ">
             <objects>
-                <tableViewController id="qaw-2c-nim" userLabel="Notifications View Controller" customClass="NotificationsViewController" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="qaw-2c-nim" userLabel="Notifications View Controller" customClass="NotificationsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="mIe-WV-bZ6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -589,7 +587,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ufD-n1-fKf" id="feW-ez-2gs">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="nlG-Fq-cpY">
@@ -664,12 +662,12 @@
         <!--Notifications-->
         <scene sceneID="As9-Y2-XEX">
             <objects>
-                <navigationController id="ERL-qa-c60" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="ERL-qa-c60" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="notifications" selectedImage="notifications-pink" id="7Ro-sA-wqG">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rhq-u5-YGq">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -683,7 +681,7 @@
         <!--Title-->
         <scene sceneID="WcV-1w-xQW">
             <objects>
-                <viewController id="tr0-6J-Wdp" customClass="EditProfileController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="tr0-6J-Wdp" customClass="EditProfileController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xap-Yh-O5U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -824,7 +822,7 @@
         <!--Title-->
         <scene sceneID="I17-3T-zC4">
             <objects>
-                <viewController id="grn-Wi-nkv" customClass="ResidentAddressController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="grn-Wi-nkv" customClass="ResidentAddressController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ocD-tc-kDY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1048,7 +1046,7 @@
         <!--Title-->
         <scene sceneID="Ka6-Vr-ZoQ">
             <objects>
-                <viewController id="HNe-sU-zJZ" customClass="ChangePasswordController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="HNe-sU-zJZ" customClass="ChangePasswordController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWT-D0-ePX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1174,7 +1172,7 @@
         <!--Title-->
         <scene sceneID="lC3-OS-TXm">
             <objects>
-                <viewController id="4Gf-0K-49B" customClass="BankDetailsController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="4Gf-0K-49B" customClass="BankDetailsController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gPf-No-Oyh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1330,7 +1328,7 @@
         <!--Contact us-->
         <scene sceneID="02h-ZL-Kac">
             <objects>
-                <viewController id="dMc-TR-sjB" customClass="ContactUsController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="dMc-TR-sjB" customClass="ContactUsController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iic-X1-5Hj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1454,7 +1452,7 @@ Citilink Warehouse Complex
         <!--Wardrobe Controller-->
         <scene sceneID="Pip-kP-ofg">
             <objects>
-                <viewController id="gWl-q7-vZa" customClass="WardrobeController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="gWl-q7-vZa" customClass="WardrobeController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ATV-x9-siS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1466,7 +1464,7 @@ Citilink Warehouse Complex
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woZ-Hb-gQN">
-                                <rect key="frame" x="4" y="64" width="410" height="45"/>
+                                <rect key="frame" x="4" y="44" width="410" height="45"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-oq-fgh">
                                         <rect key="frame" x="0.0" y="8" width="410" height="29"/>
@@ -1486,19 +1484,19 @@ Citilink Warehouse Complex
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ydo-Bi-8mJ">
-                                <rect key="frame" x="4" y="112" width="406" height="565"/>
+                                <rect key="frame" x="4" y="92" width="406" height="585"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="wardrobeCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wardrobeCell" rowHeight="104" id="dOn-Le-vWG" customClass="WardrobeCell">
-                                        <rect key="frame" x="0.0" y="22" width="406" height="104"/>
+                                        <rect key="frame" x="0.0" y="28" width="406" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dOn-Le-vWG" id="KIm-Or-0xq">
-                                            <rect key="frame" x="0.0" y="0.0" width="406" height="103.66666666666667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="406" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-kO-QAU">
-                                                    <rect key="frame" x="16" y="20" width="66" height="65.666666666666671"/>
+                                                    <rect key="frame" x="16" y="20" width="66" height="66"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="66" id="w2Q-gH-c4y"/>
@@ -1582,7 +1580,7 @@ Citilink Warehouse Complex
         <!--Tabbet View Controller-->
         <scene sceneID="5D6-10-5KI">
             <objects>
-                <tabBarController id="dua-YX-667" customClass="TabbetViewController" sceneMemberID="viewController">
+                <tabBarController modalPresentationStyle="fullScreen" id="dua-YX-667" customClass="TabbetViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBg" id="eKq-5x-BKt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1609,13 +1607,13 @@ Citilink Warehouse Complex
         <!--fbRegistrationController-->
         <scene sceneID="pPC-bg-00S">
             <objects>
-                <viewController id="sjP-DD-tuF" userLabel="fbRegistrationController" customClass="FBRegistrationController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="sjP-DD-tuF" userLabel="fbRegistrationController" customClass="FBRegistrationController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J5N-YH-Eaa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyP-SH-YtR">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgL-KE-yG7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="386"/>
@@ -1805,11 +1803,11 @@ Citilink Warehouse Complex
             <objects>
                 <viewController id="lMP-mB-1Ki" customClass="RegistrationController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hM7-JS-bIu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bi-CW-Ped">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQp-DS-sci">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="444"/>
@@ -2040,10 +2038,10 @@ Citilink Warehouse Complex
         <!--Navigation Controller-->
         <scene sceneID="4PT-dv-nv1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU1-hE-138" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="aU1-hE-138" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="cNQ-w8-3DE">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
@@ -2062,11 +2060,11 @@ Citilink Warehouse Complex
         <!--Wardrobe-->
         <scene sceneID="dii-Pr-ipc">
             <objects>
-                <navigationController id="KH2-pt-0fW" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="KH2-pt-0fW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Wardrobe" image="wardrobe" selectedImage="wardrobe-pink" id="1lF-wO-pHw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lPr-LJ-R6v">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2081,7 +2079,7 @@ Citilink Warehouse Complex
         <!--Category selection-->
         <scene sceneID="ohv-na-xxH">
             <objects>
-                <tableViewController id="kpk-cm-DsD" userLabel="Category selection" customClass="ChooseCategoryController" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="kpk-cm-DsD" userLabel="Category selection" customClass="ChooseCategoryController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" id="HMG-Gc-zjG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2089,10 +2087,10 @@ Citilink Warehouse Complex
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="96" id="EF3-7w-xOt" customClass="CategoryCell">
-                                <rect key="frame" x="0.0" y="22" width="414" height="96"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EF3-7w-xOt" id="CGq-z7-XlJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="95.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stub" translatesAutoresizingMaskIntoConstraints="NO" id="28B-eB-BtK">
@@ -2148,12 +2146,12 @@ Citilink Warehouse Complex
         <!--ShopItem-->
         <scene sceneID="2TK-Bj-0EM">
             <objects>
-                <navigationController id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="cBC-gf-KFd" userLabel="ShopItem" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shop" image="shop" selectedImage="shop-pink" id="1mj-Cd-aNH">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aaO-y8-Qml">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2167,13 +2165,13 @@ Citilink Warehouse Complex
         <!--Profile-->
         <scene sceneID="yse-FJ-1hJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kTd-Km-Eng" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="kTd-Km-Eng" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile-pink" id="6Az-wg-XNO">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FPs-3n-4n4">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2188,13 +2186,13 @@ Citilink Warehouse Complex
         <!--Add Item Nav Controller-->
         <scene sceneID="BWq-Cj-uqG">
             <objects>
-                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AddItemNavController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="ohT-Nb-oJU" userLabel="Add Item Nav Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" enabled="NO" title="" id="VZF-2f-aWD">
                         <inset key="imageInsets" minX="0.0" minY="-45" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ylh-HF-fxa">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2209,16 +2207,16 @@ Citilink Warehouse Complex
         <!--View Controller-->
         <scene sceneID="NXL-hK-0LT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="iP8-pg-fu8" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="iP8-pg-fu8" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZZ2-j3-YMt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="s3p-LN-sHj">
-                                <rect key="frame" x="0.0" y="59" width="414" height="593"/>
+                                <rect key="frame" x="0.0" y="39" width="414" height="613"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start_selling" translatesAutoresizingMaskIntoConstraints="NO" id="kPA-K8-Owj">
-                                        <rect key="frame" x="116.66666666666669" y="299" width="181" height="277"/>
+                                        <rect key="frame" x="116.66666666666669" y="319" width="181" height="277"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="181" id="8au-PL-dJO"/>
                                             <constraint firstAttribute="height" constant="277" id="IUX-n1-paj"/>
@@ -2266,7 +2264,7 @@ Citilink Warehouse Complex
         <image name="wardrobe-pink" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cSg-UA-WeG"/>
-        <segue reference="mG1-qk-ojj"/>
+        <segue reference="ReU-Ip-U3f"/>
+        <segue reference="1dd-Ww-h8O"/>
     </inferredMetricsTieBreakers>
 </document>
