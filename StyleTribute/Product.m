@@ -368,8 +368,7 @@ STCategory *pCategory = nil;
        [self.processStatus isEqualToString:@"DECLINED"] ||
        [self.processStatus isEqualToString:@"INFORMATION REQUIRED"] ||
        [self.processStatus isEqualToString:@"PRODUCT DECLINED"] ||
-       [self.processStatus isEqualToString:@"SOLD"] ||
-       [self.processStatus isEqualToString:@"SUSPENDED"])
+       [self.processStatus isEqualToString:@"SOLD"])
     {
         return ProductTypeSelling;
     }
@@ -393,7 +392,8 @@ STCategory *pCategory = nil;
         return ProductTypeSold;
     }
     else if([self.processStatus isEqualToString:@"ARCHIVED"] ||
-            [self.processStatus isEqualToString:@"DELETED"])
+            [self.processStatus isEqualToString:@"DELETED"] ||
+                  [self.processStatus isEqualToString:@"SUSPENDED"])
     {
         return ProductTypeArchived;
     }

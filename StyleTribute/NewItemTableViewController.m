@@ -822,8 +822,13 @@ int sectionOffset = 0;
 {
     DeleteTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DeleteCell" forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell.btndelete.layer setBorderWidth:2.0];
-    [cell.btndelete.layer setBorderColor:[[UIColor redColor] CGColor]];
+    [cell.btndelete.layer setBorderWidth:1.0];
+    [cell.btndelete.layer setBorderColor:[[UIColor
+                                           colorWithRed:233.0f/255.0f
+                                           green:59.0f/255.0f
+                                           blue:117.0f/255.0f
+                                           alpha:1.0f]
+                          CGColor]];
     cell.btndelete.layer.cornerRadius = 15.0;
     cell.btndelete.clipsToBounds = true;
     if ([_curProduct.processStatus  isEqual: @""] || [_curProduct.processStatus  isEqual: @"SUSPENDED"] || _curProduct.processStatus == nil)
