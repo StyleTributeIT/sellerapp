@@ -19,6 +19,8 @@
     @property (strong, nonatomic) IBOutlet UILabel *guideLabel;
     @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIView *titleBorder;
+@property (strong, nonatomic) IBOutlet UILabel *btnSku;
+@property (strong, nonatomic) IBOutlet UILabel *btnSkuid;
 @property (strong, nonatomic) id<PhotoCellDelegate> delegate;
     @property Product* curProduct;
     

@@ -29,6 +29,8 @@ typedef NS_ENUM(NSUInteger, EditingType) {
 
 @property NSUInteger identifier;
 @property ProductType type;
+@property NSString *process_type;
+@property NSString *sku;
 @property NSString* name;
 @property NSString* processStatus;
 @property NSString* processStatusDisplay;

@@ -52,39 +52,17 @@
 }
 
 - (IBAction)next:(id)sender {
-    bool is_editing = [DataCache sharedInstance].isEditingItem;
-    float price = [self.priceField.text floatValue];
-    Product *p = [DataCache getSelectedItem];
-    p.price = price;
-    if (is_editing == true){
-        if (price > p.savedPrice){
-            UIAlertController * alert=   [UIAlertController
-                                          alertControllerWithTitle:@"Error"
-                                          message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice]
-                                          preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            }];
-            [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:nil];
-            return;
-        }
-    }
-    [self performSegueWithIdentifier:@"showResult" sender:nil];
-}
-
--(IBAction)textFieldDidChange :(UITextField *)theTextField{
-    
-}
-
--(void)inputDone {
+    int new_price = [self.priceField.text intValue];
+    if (new_price == 0){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }else
     {
-        [self.priceField resignFirstResponder];
-        
         bool is_editing = [DataCache sharedInstance].isEditingItem;
         float price = [self.priceField.text floatValue];
         Product *p = [DataCache getSelectedItem];
-        
+        p.price = price;
         if (is_editing == true){
             if (price > p.savedPrice){
                 UIAlertController * alert=   [UIAlertController
@@ -99,30 +77,67 @@
                 return;
             }
         }
-        if(self.priceField.text.length > 0 && !self.isInProgress) {
-            self.isInProgress = YES;
-            [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+        [self performSegueWithIdentifier:@"showResult" sender:nil];
+    }
+}
 
+-(IBAction)textFieldDidChange :(UITextField *)theTextField{
+    
+}
+
+-(void)inputDone {
+    {
+        [self.priceField resignFirstResponder];
+        int new_price = [self.priceField.text intValue];
+        if (new_price == 0){
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            return;
+        }else
+        {
+            bool is_editing = [DataCache sharedInstance].isEditingItem;
             float price = [self.priceField.text floatValue];
-            p.price = price;
-            [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:[self.priceField.text intValue] success:^(NSDictionary* priceSuggestion) {
-                NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
-                self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
-                self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
-                self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
-                self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"earning"] floatValue]];
-                self.priceEarned.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
-                Product *p = [DataCache getSelectedItem];
-                p.price = [self.priceField.text floatValue];
-                //p.suggestedPrice = priceSuggestion;
-                [DataCache setSelectedItem:p];
-                self.isInProgress = NO;
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            } failure:^(NSString *error) {
-                [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                self.isInProgress = NO;
-            }];
+            Product *p = [DataCache getSelectedItem];
+            
+            if (is_editing == true){
+                if (price > p.savedPrice){
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Error"
+                                                  message:[NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice]
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    }];
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    return;
+                }
+            }
+            if(self.priceField.text.length > 0 && !self.isInProgress) {
+                self.isInProgress = YES;
+                [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+                
+                float price = [self.priceField.text floatValue];
+                p.price = price;
+                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:[self.priceField.text intValue] success:^(NSDictionary* priceSuggestion) {
+                    NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
+                    self.earnLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                    self.enterPriceLabel.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                    self.earnPriceView.layer.borderColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f].CGColor;
+                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [[dcit valueForKey:@"earning"] floatValue]];
+                    self.priceEarned.textColor = [UIColor colorWithRed:1.f green:64/255.f blue:140/255.f alpha:1.f];
+                    Product *p = [DataCache getSelectedItem];
+                    p.price = [self.priceField.text floatValue];
+                    //p.suggestedPrice = priceSuggestion;
+                    [DataCache setSelectedItem:p];
+                    self.isInProgress = NO;
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                } failure:^(NSString *error) {
+                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                    self.isInProgress = NO;
+                }];
+            }
         }
     }
     

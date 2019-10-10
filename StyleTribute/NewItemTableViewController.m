@@ -13,6 +13,7 @@
 #import "TopCategoriesViewController.h"
 #import "ClothingSizeTableViewCell.h"
 #import "ConditionPriceViewController.h"
+#import "DeleteTableViewCell.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import "SingleUnitTableViewCell.h"
 #import "MessageTableViewCell.h"
@@ -34,7 +35,7 @@
 #import "Photo.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Photos/Photos.h>
-
+#import  "QuartzCore/QuartzCore.h"
 typedef void(^ImageLoadBlock)(int);
 
 @interface NewItemTableViewController ()< UIActionSheetDelegate, PhotoCellDelegate, SharingTableViewCellDelegate, GuidViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -52,6 +53,7 @@ typedef void(^ImageLoadBlock)(int);
 @property Product *originalCopy;
 @property NSMutableArray* photosToDelete;
 @property NSInteger *productid;
+
 @property XCDFormInputAccessoryView* inputAccessoryView;
 @end
 
@@ -66,7 +68,8 @@ int sectionOffset = 0;
     self.isInitialized = NO;
     self.hideSkipInGuide = NO;
     self.isTutorialPresented = NO;
-    self.photosToDelete = [NSMutableArray new];    
+    self.photosToDelete = [NSMutableArray new];
+   // [self.tableFooterView addSubview:_Footer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setPickerData:) name:UIKeyboardWillShowNotification object:nil];
     self.productCopy = [self.curProduct copy];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
@@ -93,6 +96,7 @@ int sectionOffset = 0;
     {
         self.originalCopy = [self.curProduct copy];
     }
+
     for (int i = 0; i < self.curProduct.category.imageTypes.count; ++i) {
       //  NSLog(@"%@",)
         ImageType* curImgType = [self.curProduct.category.imageTypes objectAtIndex:i];
@@ -153,8 +157,6 @@ int sectionOffset = 0;
             
             [self.tableView reloadData];
         }
-        
-        
     }
 
     -(void)viewDidAppear:(BOOL)animated {
@@ -226,12 +228,13 @@ int sectionOffset = 0;
     [self saveProduct:self.curProduct];
 
 }
+- (IBAction)btnDelete_Prassed:(UIButton *)sender {
+    
+}
 
 -(void)saveProduct:(BOOL)pushToServer
 {
     {
-        
-        
         bool product_valid = [self productIsValid];
         bool images_filled = [self imagesAreFilled];
         
@@ -264,12 +267,11 @@ int sectionOffset = 0;
         {
             isedit = true;
         }
-        
+       
         [[ApiRequester sharedInstance] setProduct:self.curProduct Tag:isedit success:^(Product* product){
             [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
             
             self.productid = product.identifier;
-            NSLog(@"%d",self.productid);
             if (self.isEditingItem)
             {
                 NSMutableArray *tempImages = [[NSMutableArray alloc] init];
@@ -389,9 +391,7 @@ int sectionOffset = 0;
                             }];
                             return;
                         }
-                        
-                        // Additional images
-                        //ImageType* imageType = [self.curProduct.category.imageTypes objectAtIndex:i];
+                    
                         if(photo != nil && photo.image != nil) {
                             [progressView setTitleLabelText:[NSString stringWithFormat:@"Uploading image %d/%zd", i + 1, cur_product.photos.count]];
                             dispatch_group_enter(group);
@@ -483,28 +483,53 @@ int sectionOffset = 0;
     {
         int rowHeight = 50;
         if (((self.curProduct.processComment == nil || self.curProduct.processComment.length == 0) && ![self.curProduct.processStatus isEqualToString:@"selling"]) || indexPath.row == 1)
-            rowHeight = 180;
+            if ([_curProduct.sku isEqualToString:@""] || [_curProduct.sku isEqualToString:nil])
+            {
+                 rowHeight = 180;
+            }else{
+                 rowHeight = 210;
+            }
+        
         else
         if ([self.curProduct.processStatus isEqualToString:@"selling"] && indexPath.row == 0)
             rowHeight = 88;
         return rowHeight;
+    }else if (indexPath.section == 4)
+    {
+        return 60;
     }
     return 50;
 }
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger initialSection = 4;
-    STCategory *category = self.curProduct.category;
-    NSString* firstSize = [category.sizeFields firstObject];
-    sectionOffset = 0;
-    if([firstSize containsString:@"size"] || [firstSize isEqualToString:@"kidzshoes"]) {
-    } else if([firstSize isEqualToString:@"shoesize"]) {
-    } else if([firstSize isEqualToString:@"dimensions"]) {
-    } else {
-        initialSection--;
-        sectionOffset = 1;
-    }
-    return initialSection;
+   if (_curProduct == nil)
+   {
+       return 0;
+   }else{
+       NSInteger initialSection = 5;
+       if (self.isEditingItem)
+       {
+           if ([_curProduct.processStatus  isEqual: @""] || [_curProduct.processStatus  isEqual: @"SUSPENDED"] || _curProduct.processStatus == nil)
+           {
+               // initialSection--;
+           }
+       }else
+       {
+           initialSection--;
+       }
+     
+       STCategory *category = self.curProduct.category;
+       NSString* firstSize = [category.sizeFields firstObject];
+       sectionOffset = 0;
+       if([firstSize containsString:@"size"] || [firstSize isEqualToString:@"kidzshoes"]) {
+       } else if([firstSize isEqualToString:@"shoesize"]) {
+       } else if([firstSize isEqualToString:@"dimensions"]) {
+       } else {
+           initialSection--;
+           sectionOffset = 1;
+       }
+       return initialSection;
+   }
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -520,7 +545,7 @@ int sectionOffset = 0;
     
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
     {
-       if (section == 0)
+       if (section == 0 || section == 4)
             return 0.1;
         return 50;
     }
@@ -545,6 +570,7 @@ int sectionOffset = 0;
     [view addSubview: label];
     return view;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
@@ -649,7 +675,14 @@ int sectionOffset = 0;
             }
         }
     }
-    return [self setupShoesSizeCell:indexPath];
+    if (indexPath.section == 4 - sectionOffset)
+    {
+        // Testing git push
+        return [self Footercell:indexPath];
+    }
+
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    return  cell;
 }
 
 -(void)addBordersForCell:(UITableViewCell*)cell addBottomBorder:(BOOL)addBottom
@@ -752,7 +785,61 @@ int sectionOffset = 0;
   //  cell.separatorInset = UIEdgeInsetsMake(1.0f, 1.0f, 1.0f, cell.bounds.size.width);
     return cell;
 }
-    
+- (void) touchDownMethod:(UIButton *)sender
+{
+    NSString* newStatus;
+    if ([_curProduct.processStatus  isEqual: @"SUSPENDED"])
+    {
+        if([_curProduct.process_type  isEqual: @"VIP"] || [_curProduct.process_type  isEqual: @"B2B"])
+        {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@ "This product is in consignment, to re-list this product contact customer support" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }else
+        {
+            newStatus = [NSString stringWithFormat:@"%@",@"1"];
+             [self setStatus:newStatus forProduct:_curProduct];
+        }
+        
+    }else{
+        if([_curProduct.process_type  isEqual: @"DIY"])
+        {
+            
+            newStatus = [NSString stringWithFormat:@"%@",@"13"];
+             [self setStatus:newStatus forProduct:_curProduct];
+        }else{
+            if([_curProduct.process_type  isEqual: @"VIP"] || [_curProduct.process_type  isEqual: @"B2B"])
+            {
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"This product is in consignment, to delete this product contact customer support" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+           
+        }
+        
+    }
+   
+}
+- (UITableViewCell*)Footercell:(NSIndexPath*)indexPath
+{
+    DeleteTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"DeleteCell" forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell.btndelete.layer setBorderWidth:1.0];
+    [cell.btndelete.layer setBorderColor:[[UIColor
+                                           colorWithRed:233.0f/255.0f
+                                           green:59.0f/255.0f
+                                           blue:117.0f/255.0f
+                                           alpha:1.0f]
+                          CGColor]];
+    cell.btndelete.layer.cornerRadius = 15.0;
+    cell.btndelete.clipsToBounds = true;
+    if ([_curProduct.processStatus  isEqual: @""] || [_curProduct.processStatus  isEqual: @"SUSPENDED"] || _curProduct.processStatus == nil)
+    {
+        [cell.btndelete setTitle:@"re-list" forState:UIControlStateNormal];
+    }else{
+        [cell.btndelete setTitle:@"delete product" forState:UIControlStateNormal];
+    }
+    [cell.btndelete addTarget:self action:@selector(touchDownMethod:) forControlEvents:UIControlEventTouchDown];
+    return cell;
+}
 -(UITableViewCell*)setupShoesSizeCell:(NSIndexPath*)indexPath
     {
         ShoesSizeTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"shoesSizeCell" forIndexPath:indexPath];
@@ -799,6 +886,16 @@ int sectionOffset = 0;
     [self addBordersForCell:cell addBottomBorder:YES];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGuide)];
     [cell.guideLabel addGestureRecognizer:tap];
+    NSString *val = _curProduct.sku;
+    if(val == nil || ![val isKindOfClass:[NSString class]] || [val isEqualToString:@"<null>"]) {
+        cell.btnSkuid.hidden = true;
+        cell.btnSku.hidden = true;
+    } else {
+        cell.btnSkuid.hidden = false;
+        cell.btnSku.hidden = false;
+        cell.btnSkuid.text = _curProduct.sku;
+    }
+   
     return cell;
 }
 
@@ -829,7 +926,19 @@ int sectionOffset = 0;
 
 
 #pragma mark Self delegates
-
+-(void)setStatus:(NSString*)status forProduct:(Product*)p {
+    [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    NSLog(@"%@",status);
+    [[ApiRequester sharedInstance] setProcessStatus:status forProduct:_curProduct.identifier success:^(Product *product) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        p.processStatus = product.processStatus;
+        [DataCache setSelectedItem:product];
+         [self dismissViewControllerAnimated:true completion:nil];
+    } failure:^(NSString *error) {
+        [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        [GlobalHelper showMessage:error withTitle:@"error"];
+    }];
+}
 -(void)selectedImageIndex:(NSUInteger)selectedImageIndex
 {
     self.selectedImageIndex = selectedImageIndex;
@@ -1154,6 +1263,10 @@ int sectionOffset = 0;
     {
         return NO;
     }
+    if (self.curProduct.price == 0)
+    {
+        return NO;
+    }
     if ([firstSize isEqualToString:@"kidzsize"] || [firstSize isEqualToString:@"kidzshoes"])
     {
         if (self.curProduct.kidzsize == nil)
@@ -1188,7 +1301,7 @@ int sectionOffset = 0;
         }
     }
 
-
+  
     return YES;
 }
 

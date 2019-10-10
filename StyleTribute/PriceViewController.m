@@ -134,30 +134,40 @@
 
 - (IBAction)goNext:(id)sender {
     Product *p = [DataCache getSelectedItem];
-    NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
-                                                                          withString:@""];
-    int price = [new_price intValue];
-    self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
-    bool is_editing = [DataCache sharedInstance].isEditingItem;
-    if (price > p.savedPrice && p.savedPrice != 0 && is_editing == true)
-    {
-        NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice];
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"error"
-                                      message:str
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        }];
-        [alert addAction:okAction];
-        //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-        [self presentViewController:alert animated:YES completion:nil];
+   // [self.priceField resignFirstResponder];
+    int new_price = [self.priceField.text intValue];
+    if (new_price == 0){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Price cannnot be 0" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
         return;
+    }else
+    {
+        NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
+                                                                              withString:@""];
+        int price = [new_price intValue];
+        self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
+        bool is_editing = [DataCache sharedInstance].isEditingItem;
+        if (price > p.savedPrice && p.savedPrice != 0 && is_editing == true)
+        {
+            NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice];
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"error"
+                                          message:str
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            }];
+            [alert addAction:okAction];
+            //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        else{
+            self.additionalButtons.hidden = YES;
+            [self performSegueWithIdentifier:@"showResult" sender:nil];
+        }
     }
-    else{
-        self.additionalButtons.hidden = YES;
-        [self performSegueWithIdentifier:@"showResult" sender:nil];
-    }
+    
 }
     
 -(IBAction)textFieldDidChange :(UITextField *)theTextField
@@ -168,58 +178,58 @@
 -(void)inputDone {
     {
         [self.priceField resignFirstResponder];
-        if(self.priceField.text.length > 0 && !self.isInProgress) {
-            Product *p = [DataCache getSelectedItem];
-            NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
-                                                                       withString:@""];
-            int price = [new_price intValue];
-            self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
-            
-            bool is_editing = [DataCache sharedInstance].isEditingItem;
-
-            if (price > p.savedPrice && p.savedPrice != 0 && is_editing == true)
-            {
-                NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice];
-                UIAlertController * alert=   [UIAlertController
-                                              alertControllerWithTitle:@"error"
-                                              message:str
-                                              preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-                }];
-                [alert addAction:okAction];
-                //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-                [self presentViewController:alert animated:YES completion:nil];
-                return;
-            }
-             if (price == 0){
-                UIAlertController * alert=   [UIAlertController
-                                              alertControllerWithTitle:@"Error"
-                                              message:@"Price cannot be 0"
-                                              preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-                }];
-                [alert addAction:okAction];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-            else{
-                self.isInProgress = YES;
-                [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
-                
-                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(NSDictionary* priceSuggestion) {
-                    NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
-                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [dcit valueForKey:@"earning"]];
-                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                    self.isInProgress = NO;
-                } failure:^(NSString *error) {
-                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
-                    self.isInProgress = NO;
-                }];
-
-            }
-
-        }
+//        if(self.priceField.text.length > 0 && !self.isInProgress) {
+//            Product *p = [DataCache getSelectedItem];
+//            NSString *new_price = [self.priceField.text stringByReplacingOccurrencesOfString:@"$"
+//                                                                       withString:@""];
+//            int price = [new_price intValue];
+//            self.priceField.text = [NSString stringWithFormat:@"%.02f", (float) price];
+//
+//            bool is_editing = [DataCache sharedInstance].isEditingItem;
+//
+//            if (price > p.savedPrice && p.savedPrice != 0 && is_editing == true)
+//            {
+//                NSString *str = [NSString stringWithFormat:@"New price cannot be higher than current selling price of $%.02f", p.savedPrice];
+//                UIAlertController * alert=   [UIAlertController
+//                                              alertControllerWithTitle:@"error"
+//                                              message:str
+//                                              preferredStyle:UIAlertControllerStyleAlert];
+//
+//                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+//                }];
+//                [alert addAction:okAction];
+//                //UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+//                [self presentViewController:alert animated:YES completion:nil];
+//                return;
+//            }
+//             if (price == 0){
+//                UIAlertController * alert=   [UIAlertController
+//                                              alertControllerWithTitle:@"Error"
+//                                              message:@"Price cannot be 0"
+//                                              preferredStyle:UIAlertControllerStyleAlert];
+//
+//                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+//                }];
+//                [alert addAction:okAction];
+//                [self presentViewController:alert animated:YES completion:nil];
+//            }
+//            else{
+//                self.isInProgress = YES;
+//                [MRProgressOverlayView showOverlayAddedTo:[UIApplication sharedApplication].keyWindow title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+//
+//                [[ApiRequester sharedInstance] getSellerPayoutForProduct:p.category.idNum price:price success:^(NSDictionary* priceSuggestion) {
+//                    NSDictionary *dcit = [priceSuggestion valueForKey:@"data"];
+//                    self.priceEarned.text = [NSString stringWithFormat:@"%.2f", [dcit valueForKey:@"earning"]];
+//                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+//                    self.isInProgress = NO;
+//                } failure:^(NSString *error) {
+//                    [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];
+//                    self.isInProgress = NO;
+//                }];
+//
+//            }
+//
+//        }
     }
 }
 

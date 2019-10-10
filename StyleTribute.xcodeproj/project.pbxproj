@@ -82,6 +82,7 @@
 		7AFF6EEB1BA1B2460023CDD4 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */; };
 		7AFF6EEE1BA2BCD40023CDD4 /* ChooseBrandController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */; };
 		A2EFAC48A62AB8E6BC1BEC61 /* libPods-StyleTributeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EC17BF39BCB91EB4BC8CE5 /* libPods-StyleTributeTests.a */; };
+		BD550EA723150B0300FE6104 /* DeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD550EA623150B0300FE6104 /* DeleteTableViewCell.m */; };
 		E133008B1DE06ACB00D798F2 /* SharingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E133008A1DE06ACB00D798F2 /* SharingTableViewCell.m */; };
 		E133008E1DE0DE0500D798F2 /* ReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E133008D1DE0DE0500D798F2 /* ReplaceSegue.m */; };
 		E13300971DE18DC800D798F2 /* DetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E13300961DE18DC800D798F2 /* DetailsTableViewCell.m */; };
@@ -267,6 +268,8 @@
 		7AFF6EEA1BA1B2460023CDD4 /* PushNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNoAnimationSegue.m; sourceTree = "<group>"; };
 		7AFF6EEC1BA2BCD40023CDD4 /* ChooseBrandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBrandController.h; sourceTree = "<group>"; };
 		7AFF6EED1BA2BCD40023CDD4 /* ChooseBrandController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBrandController.m; sourceTree = "<group>"; };
+		BD550EA523150B0300FE6104 /* DeleteTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeleteTableViewCell.h; sourceTree = "<group>"; };
+		BD550EA623150B0300FE6104 /* DeleteTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeleteTableViewCell.m; sourceTree = "<group>"; };
 		D10E0F606CBC8A31C08A85A9 /* libPods-StyleTribute.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StyleTribute.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED3510CF8368A99375B0A7A /* Pods-StyleTribute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTribute.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTribute/Pods-StyleTribute.release.xcconfig"; sourceTree = "<group>"; };
 		E13300891DE06ACB00D798F2 /* SharingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharingTableViewCell.h; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 		7A4AA2C61AEFF45300190ED3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BD550EA523150B0300FE6104 /* DeleteTableViewCell.h */,
+				BD550EA623150B0300FE6104 /* DeleteTableViewCell.m */,
 				7A4AA2C71AEFF47C00190ED3 /* WardrobeCell.h */,
 				7A4AA2C81AEFF47C00190ED3 /* WardrobeCell.m */,
 				7A05074B1B0E220F00438D64 /* MyAccountCell.h */,
@@ -1127,6 +1132,7 @@
 				7A60FCD51B160F7800731F6E /* RFPasswordGenerator.m in Sources */,
 				7A4AA2C91AEFF47C00190ED3 /* WardrobeCell.m in Sources */,
 				E18060BA1DD3230800B4056F /* MessageTableViewCell.m in Sources */,
+				BD550EA723150B0300FE6104 /* DeleteTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1254,6 +1260,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1264,6 +1271,7 @@
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.styletribute.seller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1282,6 +1290,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6SEHKYT2JG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1293,6 +1302,7 @@
 				INFOPLIST_FILE = StyleTribute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.styletribute.seller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
