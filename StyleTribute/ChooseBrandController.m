@@ -17,6 +17,8 @@
 @property NSArray* sectionNames;
 @property NSArray* sections;
 @property NSString* searchingString;
+@property (strong, nonatomic) UISearchController *searchController;
+
 @end
 
 @implementation ChooseBrandController
@@ -35,6 +37,7 @@
     [aButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:aButton];
     self.navigationItem.leftBarButtonItem = backButton;
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -147,13 +150,38 @@
     [self performSegueWithIdentifier:@"showItemEdited" sender:self];
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    self.searchingString = searchString;
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchString];
-    self.designers = [[DataCache sharedInstance].designers filteredArrayUsingPredicate:resultPredicate];
-    [self updateSections];
-    return YES;
+
+
+- (void)searchBar:(UISearchBar *)searchBar
+textDidChange:(NSString *)searchText;
+{
+  self.searchingString = searchText;
+    
+     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+     self.designers = [[DataCache sharedInstance].designers filteredArrayUsingPredicate:resultPredicate];
+    if([searchText length] == 0){
+        self.designers = [DataCache sharedInstance].designers;
+    }
+     [self updateSections];
+     [self.tableView reloadData];
 }
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+  NSString *searchString = searchController.searchBar.text;
+  self.searchingString = searchString;
+     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchString];
+     self.designers = [[DataCache sharedInstance].designers filteredArrayUsingPredicate:resultPredicate];
+     [self updateSections];
+}
+
+//-(BOOL)searchController:(UISearchController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+//    self.searchingString = searchString;
+//    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchString];
+//    self.designers = [[DataCache sharedInstance].designers filteredArrayUsingPredicate:resultPredicate];
+//    [self updateSections];
+//    return YES;
+//}
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     self.designers = [DataCache sharedInstance].designers;

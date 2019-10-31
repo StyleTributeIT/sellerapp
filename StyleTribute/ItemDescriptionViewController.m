@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.descriptionField.placeholder = @"Description";
+//    self.descriptionField.text = @"Description";
     
     CALayer *bottomBorder = [CALayer layer];
     bottomBorder.frame = CGRectMake(0.0f, self.borderedFrame.frame.size.height - 1, self.borderedFrame.frame.size.width, 1.0f);
