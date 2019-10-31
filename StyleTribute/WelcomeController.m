@@ -93,11 +93,11 @@
     if ([self tryLock])
     {
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-        login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
+//        login.loginBehavior = FBSDKLoginBehaviorSystemAccount;
 
         __weak WelcomeController* reference = self;
 
-        [login logInWithReadPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+        [login logInWithPermissions:@[@"email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
             if (error) {
                 NSLog(@"FB login error: %@", [error description]);
             } else if (result.isCancelled) {
@@ -125,7 +125,7 @@
                     }
                     failure:^(NSString *error)
                      {
-                         
+                        NSLog(@"Error");
                      }];
                 } failure:^(NSString *error) {
                     [MRProgressOverlayView dismissOverlayForView:[UIApplication sharedApplication].keyWindow animated:YES];

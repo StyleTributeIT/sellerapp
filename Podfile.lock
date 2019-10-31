@@ -21,43 +21,40 @@ PODS:
   - AFNetworking/UIKit (2.7.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - CRToast (0.0.9)
   - Fabric (1.7.13)
-  - FacebookSDK (4.38.0):
-    - Bolts (~> 1.9)
-    - FacebookSDK/CoreKit (= 4.38.0)
-    - FacebookSDK/MarketingKit (= 4.38.0)
-  - FacebookSDK/CoreKit (4.38.0):
-    - Bolts (~> 1.9)
-    - FBSDKCoreKit
-  - FacebookSDK/LoginKit (4.38.0):
-    - Bolts (~> 1.9)
+  - FacebookSDK (5.9.0):
+    - FacebookSDK/CoreKit (= 5.9.0)
+    - FacebookSDK/MarketingKit (= 5.9.0)
+  - FacebookSDK/CoreKit (5.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookSDK/LoginKit (5.9.0):
     - FacebookSDK/CoreKit
-    - FBSDKLoginKit
-  - FacebookSDK/MarketingKit (4.38.0):
-    - Bolts (~> 1.9)
+    - FBSDKLoginKit (~> 5.0)
+  - FacebookSDK/MarketingKit (5.9.0):
     - FacebookSDK/CoreKit
-    - FBSDKMarketingKit
-  - FacebookSDK/ShareKit (4.38.0):
-    - Bolts (~> 1.9)
+    - FBSDKMarketingKit (~> 5.0)
+  - FacebookSDK/ShareKit (5.9.0):
     - FacebookSDK/CoreKit
-    - FBSDKShareKit
-  - FBSDKCoreKit (4.40.0):
-    - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.40.0):
-    - FBSDKCoreKit
-  - FBSDKMarketingKit (4.38.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.40.0):
-    - FBSDKCoreKit
+    - FBSDKShareKit (~> 5.0)
+  - FBSDKCoreKit (5.8.0):
+    - FBSDKCoreKit/Basics (= 5.8.0)
+    - FBSDKCoreKit/Core (= 5.8.0)
+  - FBSDKCoreKit/Basics (5.8.0)
+  - FBSDKCoreKit/Core (5.8.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.8.0):
+    - FBSDKLoginKit/Login (= 5.8.0)
+  - FBSDKLoginKit/Login (5.8.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKMarketingKit (5.9.0):
+    - FBSDKCoreKit (~> 5.5)
+  - FBSDKShareKit (5.8.0):
+    - FBSDKShareKit/Share (= 5.8.0)
+  - FBSDKShareKit/Share (5.8.0):
+    - FBSDKCoreKit (~> 5.0)
   - Firebase/Core (5.17.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.6.0)
@@ -161,9 +158,9 @@ DEPENDENCIES:
   - Crashlytics (~> 3.9.3)
   - CRToast
   - Fabric
-  - FacebookSDK (~> 4.38.0)
-  - FacebookSDK/LoginKit (~> 4.38.0)
-  - FacebookSDK/ShareKit (~> 4.38.0)
+  - FacebookSDK
+  - FacebookSDK/LoginKit
+  - FacebookSDK/ShareKit
   - Firebase/Core
   - KASlideShow (= 2.2)
   - KIF
@@ -175,18 +172,12 @@ DEPENDENCIES:
   - ZDCChat
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - ActionSheetPicker-3.0
     - AFNetworking
-    - Bolts
     - Crashlytics
     - CRToast
     - Fabric
-    - FacebookSDK
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FBSDKMarketingKit
-    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -202,19 +193,24 @@ SPEC REPOS:
     - SDWebImage
     - UIActivityIndicator-for-SDWebImage
     - ZDCChat
+  trunk:
+    - FacebookSDK
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKMarketingKit
+    - FBSDKShareKit
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: 8dd5f9b9691e09186393069a12cc3b5ed7c8b511
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
-  FacebookSDK: 73f54b8b94e09b05647cdef0af147f470cd3edc6
-  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
-  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
-  FBSDKMarketingKit: e609f39d74ab273cf52e2f8b7e8829ed412b2827
-  FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
+  FacebookSDK: 4c2af71cd691904a1829503fa38f33cbc922b3ae
+  FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
+  FBSDKLoginKit: 1b0cf04df0370b37404213157b060d6666ede814
+  FBSDKMarketingKit: 9978074f24b325d3d4f479d90906daf23f80cf67
+  FBSDKShareKit: abc29e1bb4f9f59f679adf1ae191006d68455f96
   Firebase: 59d557e064217fab6a03ff00baa73c06e73832e6
   FirebaseAnalytics: 75e4bbc6417d190cc98ec1f17c41a4fad4c2c976
   FirebaseCore: c0c4befb82374d6aef64d800e569f47625352edc
@@ -231,6 +227,6 @@ SPEC CHECKSUMS:
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   ZDCChat: 1def9764647bb81cf71aebd9df38aa4024c52d12
 
-PODFILE CHECKSUM: 806e137a92c839b708803b07cf01afcbf8a5cd53
+PODFILE CHECKSUM: f621239bab90c9beb0f83085f4c1987a1808dd43
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

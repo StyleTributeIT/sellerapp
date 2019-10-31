@@ -14,9 +14,9 @@ target 'StyleTribute' do
 	pod 'Crashlytics', '~> 3.9.3'
 	pod 'ZDCChat'
 
-    pod 'FacebookSDK', '~>4.38.0'
-    pod 'FacebookSDK/LoginKit', '~>4.38.0'
-    pod 'FacebookSDK/ShareKit', '~>4.38.0'
+  pod 'FacebookSDK'
+  pod 'FacebookSDK/LoginKit'
+  pod 'FacebookSDK/ShareKit'
 
 end
 
