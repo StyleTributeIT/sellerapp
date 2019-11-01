@@ -93,9 +93,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow StyleTribute to use your camera.</string>
+	<string>Allow StyleTribute to use your camera to take pictures of the products you want to resell.</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Allow StyleTribute to access your contacts.</string>
+	<string>Allow StyleTribute to access your contacts to share your selling products with your friends.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Styletribute would like to access your location while using the app to offer you the best shopping experience in local currency.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
