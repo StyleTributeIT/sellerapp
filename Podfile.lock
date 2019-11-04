@@ -25,18 +25,18 @@ PODS:
     - Fabric (~> 1.7.2)
   - CRToast (0.0.9)
   - Fabric (1.7.13)
-  - FacebookSDK (5.9.0):
-    - FacebookSDK/CoreKit (= 5.9.0)
-    - FacebookSDK/MarketingKit (= 5.9.0)
-  - FacebookSDK/CoreKit (5.9.0):
+  - FacebookSDK (5.8.0):
+    - FacebookSDK/CoreKit (= 5.8.0)
+    - FacebookSDK/MarketingKit (= 5.8.0)
+  - FacebookSDK/CoreKit (5.8.0):
     - FBSDKCoreKit (~> 5.0)
-  - FacebookSDK/LoginKit (5.9.0):
+  - FacebookSDK/LoginKit (5.8.0):
     - FacebookSDK/CoreKit
     - FBSDKLoginKit (~> 5.0)
-  - FacebookSDK/MarketingKit (5.9.0):
+  - FacebookSDK/MarketingKit (5.8.0):
     - FacebookSDK/CoreKit
     - FBSDKMarketingKit (~> 5.0)
-  - FacebookSDK/ShareKit (5.9.0):
+  - FacebookSDK/ShareKit (5.8.0):
     - FacebookSDK/CoreKit
     - FBSDKShareKit (~> 5.0)
   - FBSDKCoreKit (5.8.0):
@@ -49,60 +49,74 @@ PODS:
     - FBSDKLoginKit/Login (= 5.8.0)
   - FBSDKLoginKit/Login (5.8.0):
     - FBSDKCoreKit (~> 5.0)
-  - FBSDKMarketingKit (5.9.0):
+  - FBSDKMarketingKit (5.5.0):
     - FBSDKCoreKit (~> 5.5)
   - FBSDKShareKit (5.8.0):
     - FBSDKShareKit/Share (= 5.8.0)
   - FBSDKShareKit/Share (5.8.0):
     - FBSDKCoreKit (~> 5.0)
-  - Firebase/Core (5.17.0):
+  - Firebase/Core (6.10.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.6.0)
-  - Firebase/CoreOnly (5.17.0):
-    - FirebaseCore (= 5.3.0)
-  - FirebaseAnalytics (5.6.0):
-    - FirebaseCore (~> 5.3)
-    - FirebaseInstanceID (~> 3.5)
-    - GoogleAppMeasurement (= 5.6.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
-    - nanopb (~> 0.3)
-  - FirebaseCore (5.3.0):
-    - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseInstanceID (3.5.0):
-    - FirebaseCore (~> 5.3)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
-  - GoogleAppMeasurement (5.6.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
-    - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (5.3.7):
+    - FirebaseAnalytics (= 6.1.3)
+  - Firebase/CoreOnly (6.10.0):
+    - FirebaseCore (= 6.3.1)
+  - FirebaseAnalytics (6.1.3):
+    - FirebaseCore (~> 6.3)
+    - FirebaseInstanceID (~> 4.2)
+    - GoogleAppMeasurement (= 6.1.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3.901)
+  - FirebaseCore (6.3.1):
+    - FirebaseCoreDiagnostics (~> 1.0)
+    - FirebaseCoreDiagnosticsInterop (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Logger (~> 6.2)
+  - FirebaseCoreDiagnostics (1.1.1):
+    - FirebaseCoreDiagnosticsInterop (~> 1.0)
+    - GoogleDataTransportCCTSupport (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Logger (~> 6.2)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.0.0)
+  - FirebaseInstanceID (4.2.5):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - GoogleAppMeasurement (6.1.3):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3.901)
+  - GoogleDataTransport (3.0.1)
+  - GoogleDataTransportCCTSupport (1.2.1):
+    - GoogleDataTransport (~> 3.0)
+    - nanopb (~> 0.3.901)
+  - GoogleUtilities/AppDelegateSwizzler (6.3.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.3.7)
-  - GoogleUtilities/Logger (5.3.7):
+  - GoogleUtilities/Environment (6.3.1)
+  - GoogleUtilities/Logger (6.3.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.3.7):
+  - GoogleUtilities/MethodSwizzler (6.3.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.3.7):
+  - GoogleUtilities/Network (6.3.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.3.7)"
-  - GoogleUtilities/Reachability (5.3.7):
+  - "GoogleUtilities/NSData+zlib (6.3.1)"
+  - GoogleUtilities/Reachability (6.3.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.3.7):
+  - GoogleUtilities/UserDefaults (6.3.1):
     - GoogleUtilities/Logger
   - KASlideShow (2.2)
-  - KIF (3.7.4):
-    - KIF/Core (= 3.7.4)
-  - KIF/Core (3.7.4)
+  - KIF (3.7.8):
+    - KIF/Core (= 3.7.8)
+  - KIF/Core (3.7.8)
   - LinqToObjectiveC (2.1.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -138,18 +152,18 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Reachability (3.2)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (3.8.3):
+    - SDWebImage/Core (= 3.8.3)
+  - SDWebImage/Core (3.8.3)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
-  - ZDCChat (1.4.0):
-    - ZDCChat/API (= 1.4.0)
-    - ZDCChat/Localization (= 1.4.0)
-    - ZDCChat/UI (= 1.4.0)
-  - ZDCChat/API (1.4.0)
-  - ZDCChat/Localization (1.4.0)
-  - ZDCChat/UI (1.4.0):
+  - ZDCChat (1.4.1):
+    - ZDCChat/API (= 1.4.1)
+    - ZDCChat/Localization (= 1.4.1)
+    - ZDCChat/UI (= 1.4.1)
+  - ZDCChat/API (1.4.1)
+  - ZDCChat/Localization (1.4.1)
+  - ZDCChat/UI (1.4.1):
     - ZDCChat/API
 
 DEPENDENCIES:
@@ -172,17 +186,26 @@ DEPENDENCIES:
   - ZDCChat
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - ActionSheetPicker-3.0
     - AFNetworking
     - Crashlytics
     - CRToast
     - Fabric
+    - FacebookSDK
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKMarketingKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
     - FirebaseInstanceID
     - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - KASlideShow
     - KIF
@@ -193,12 +216,6 @@ SPEC REPOS:
     - SDWebImage
     - UIActivityIndicator-for-SDWebImage
     - ZDCChat
-  trunk:
-    - FacebookSDK
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FBSDKMarketingKit
-    - FBSDKShareKit
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
@@ -206,26 +223,30 @@ SPEC CHECKSUMS:
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
-  FacebookSDK: 4c2af71cd691904a1829503fa38f33cbc922b3ae
+  FacebookSDK: 01ce488e7399bae3e2689ed8416e94174836eaf9
   FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
   FBSDKLoginKit: 1b0cf04df0370b37404213157b060d6666ede814
-  FBSDKMarketingKit: 9978074f24b325d3d4f479d90906daf23f80cf67
+  FBSDKMarketingKit: 570d0c2778a2166b0cd55b301160d662ccbe8927
   FBSDKShareKit: abc29e1bb4f9f59f679adf1ae191006d68455f96
-  Firebase: 59d557e064217fab6a03ff00baa73c06e73832e6
-  FirebaseAnalytics: 75e4bbc6417d190cc98ec1f17c41a4fad4c2c976
-  FirebaseCore: c0c4befb82374d6aef64d800e569f47625352edc
-  FirebaseInstanceID: 4522aad88f69297622062c0e9ffccdee3dd9b151
-  GoogleAppMeasurement: 008e04ecd8efedd97a693aea8634aefe220bd26e
-  GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
+  Firebase: 5e6b7b12bf9adb90986688edc06b156c37e109cd
+  FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
+  FirebaseCore: 064c2dd92a8ca5974bbdcb080df9921e46bd34cd
+  FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
+  FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
+  FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
+  GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
+  GoogleDataTransport: 166f9b9f82cbf60a204e8fe2daa9db3e3ec1fb15
+  GoogleDataTransportCCTSupport: f6ab1962e9dc05ab1fb938b795e5b310209edeec
+  GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
-  KIF: f3d01c109ee9d1cfe6b0f2bb2aa278e807e971e2
+  KIF: 52e1af1a78cf6fe4ec6777b14776f3dd2eccc32e
   LinqToObjectiveC: f0e40c137a458b6b9725c4c7b6a575c0c72e3aec
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
-  ZDCChat: 1def9764647bb81cf71aebd9df38aa4024c52d12
+  ZDCChat: ead4909dceb46e82f7dbedf3a1721332e6df078e
 
 PODFILE CHECKSUM: f621239bab90c9beb0f83085f4c1987a1808dd43
 
