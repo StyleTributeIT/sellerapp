@@ -220,7 +220,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
     NSDate *notificationDate = [dateFormatter dateFromString:notification.sent_date];
     NSDateFormatter* df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"MM/dd/yyyy"];
+    [df setDateFormat:@"dd/MM/yyyy"];
     cell.dateLabel.text = [df stringFromDate:notificationDate];
     
     
