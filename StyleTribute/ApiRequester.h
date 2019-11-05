@@ -28,6 +28,7 @@ typedef void (^JSONRespProduct)(Product* product);
 typedef void (^JSONRespPrice)(NSDictionary* priceSuggestion);
 typedef void (^JSONRespAppViersion)(float appVersion);
 
+
 @interface ApiRequester : NSObject
 
 +(ApiRequester*)sharedInstance;
@@ -52,6 +53,8 @@ typedef void (^JSONRespAppViersion)(float appVersion);
 -(void)getProducts:(JSONRespArray)success failure:(JSONRespError)failure;
 -(void)setDeviceToken:(NSString*)token success:(JSONRespEmpty)success failure:(JSONRespError)failure;
 -(void)getBankAccount:(JSONRespBankAccount)success failure:(JSONRespError)failure;
+-(void)getNotifications:(NSString*)userEmail success:(JSONRespArray)success failure:(JSONRespError)failure;
+
 
 -(void)setBankAccountWithBankName:(NSString*)bankName
                                             bankCode:(NSString*)bankCode

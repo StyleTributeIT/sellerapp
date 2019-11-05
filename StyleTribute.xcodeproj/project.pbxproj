@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0303D8F22370415500737823 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303D8F12370415500737823 /* Notification.m */; };
 		16F40E4FA68FDFB8CBF7C829 /* libPods-StyleTribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D10E0F606CBC8A31C08A85A9 /* libPods-StyleTribute.a */; };
 		5330FFAA1DDE2FF0001B0D0D /* ProductFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFA91DDE2FF0001B0D0D /* ProductFlow.storyboard */; };
 		5330FFAD1DDE425A001B0D0D /* GuidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5330FFAC1DDE425A001B0D0D /* GuidViewController.m */; };
@@ -135,6 +136,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0303D8F02370415500737823 /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		0303D8F12370415500737823 /* Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		40DD61A744D9448179AF13A3 /* Pods-StyleTributeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5330FFA91DDE2FF0001B0D0D /* ProductFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProductFlow.storyboard; sourceTree = "<group>"; };
 		5330FFAB1DDE425A001B0D0D /* GuidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidViewController.h; sourceTree = "<group>"; };
@@ -544,6 +547,8 @@
 				7A44696B1B61228000E3A752 /* Photo.m */,
 				7A3FA4A11AEFE5720050803C /* Product.h */,
 				7A3FA4A21AEFE5720050803C /* Product.m */,
+				0303D8F02370415500737823 /* Notification.h */,
+				0303D8F12370415500737823 /* Notification.m */,
 				7A1E44AD1B296CD000063F17 /* ProductPhoto.h */,
 				7A1E44AE1B296CD000063F17 /* ProductPhoto.m */,
 				7A6097961B133BA000209340 /* UserProfile.h */,
@@ -1086,6 +1091,7 @@
 				E173F48F1DE8F97200D86141 /* ItemNavigationBase.m in Sources */,
 				7A116C8F1AFA449300A4D7D9 /* TutorialController.m in Sources */,
 				E18442731E2CF8490052C50C /* SingleUnitTableViewCell.m in Sources */,
+				0303D8F22370415500737823 /* Notification.m in Sources */,
 				7AFE43631AF22935004B982B /* AddWardrobeItemController.m in Sources */,
 				5330FFB01DDE4834001B0D0D /* SwipeView.m in Sources */,
 				7A4AA2CC1AF0F2A900190ED3 /* FBRegistrationController.m in Sources */,

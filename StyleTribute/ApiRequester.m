@@ -15,6 +15,7 @@
 #import "DataCache.h"
 #import "Photo.h"
 #import "NamedItems.h"
+#import "Notification.h"
 #import <FBSDKLoginKit/FBSDKLoginManager.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -548,6 +549,54 @@ static NSString *const boundary = @"0Xvdfegrdf876fRD";
                                 
                                             }];
     [task resume];
+}
+
+-(void)getNotifications:(NSString*)userEmail success:(JSONRespArray)success failure:(JSONRespError)failure {
+    if(![self checkInternetConnectionWithErrCallback:failure]) return;
+    
+    NSString *token = [@"Bearer " stringByAppendingString:[[NSUserDefaults standardUserDefaults] valueForKey:@"Token"]];
+    NSLog(@"%@",token);
+    NSString* urlString1 = [NSString stringWithFormat:@"%@notification/inapp/recipient/%@?offset=0&amount=3", DefNotificationHost,userEmail];
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"GET";
+    [request setURL:[NSURL URLWithString:urlString1]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"no-cache" forHTTPHeaderField:@"cache-control"];
+    [request setValue:@"Xd9bpn4p3z" forHTTPHeaderField:@"x-stylemailer-token"];
+    [request setValue:@"58fae0f9-31f5-4797-9a1a-fd27472290af" forHTTPHeaderField:@"Postman-Token"];
+
+    [request setHTTPBody:nil];
+    [request setURL:[NSURL URLWithString:urlString1]];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil  delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData * _Nullable data,
+                                                                NSURLResponse * _Nullable response,
+                                                                NSError * _Nullable error) {
+                                                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                long l = (long)[httpResponse statusCode];
+                                                if (l == 200)
+                                                {
+                                                    NSArray *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                   NSMutableArray* notifications = [NSMutableArray new];
+                                                    for(int i=0;i<forJSONObject.count;i++)
+                                                    {
+                                                        Notification* product = [Notification parseFromJson:forJSONObject[i]];
+                                                        [notifications addObject:product];
+                                                    }
+                                                        [DataCache sharedInstance].category = @"";
+                                                    success(notifications);
+    
+                                                }else {
+                                                    NSDictionary *forJSONObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+                                                    NSLog(@"%@",forJSONObject);
+                                                    failure([forJSONObject valueForKey:@"message"]);
+                                                }
+                                
+                                            }];
+    [task resume];
+
 }
 
 
