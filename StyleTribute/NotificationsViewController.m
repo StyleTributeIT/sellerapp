@@ -214,9 +214,21 @@
     Notification *notification = self.notifications[indexPath.row];
     
     cell.title.text = notification.subject;
+    cell.message.text = notification.body.message;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
+    NSDate *notificationDate = [dateFormatter dateFromString:notification.sent_date];
+    NSDateFormatter* df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"MM/dd/yyyy"];
+    cell.dateLabel.text = [df stringFromDate:notificationDate];
+    
+//    NSString *imageURL = @"https://mediatest.styletribute.com/products/20670/120x120/460e83df28b1a6a7f5e9007c256a63d4.jpeg";
+    NSString *imageURL = [NSString stringWithFormat: @"https://mediatest.styletribute.com%@",notification.body.picture];
+    [cell.photoView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"stub"]];
     return cell;
 }
-
+	
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    NSMutableDictionary *d = [[self.prods objectAtIndex:indexPath.row] mutableCopy];

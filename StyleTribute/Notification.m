@@ -20,7 +20,6 @@
         item.from = [self parseString:@"from" fromDict:dict];
         item.recipient = [self parseString:@"recipient" fromDict:dict];
         item.subject = [self parseString:@"subject" fromDict:dict];
-        item.body = [self parseString:@"body" fromDict:dict];
         item.sent_date = [self parseString:@"sent_date" fromDict:dict];
         item.paramTry = (NSUInteger)[[self parseString:@"try" fromDict:dict] integerValue];
         item.last_try = [self parseString:@"last_try" fromDict:dict];
@@ -29,6 +28,13 @@
 
         item.createdAt =  [self parseString:@"createdAt" fromDict:dict];
         item.updatedAt = [self parseString:@"updatedAt" fromDict:dict];
+        
+        NSString *dicttemp = [dict valueForKey:@"body"];
+        NSData *data = [dicttemp dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary  *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        item.body = [NotificationBody parseFromJson: json];
+        
     }@catch (NSException *exception) {
     }
     @finally {

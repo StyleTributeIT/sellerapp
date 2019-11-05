@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0303D8F22370415500737823 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303D8F12370415500737823 /* Notification.m */; };
+		0360F3062371549200F656D9 /* NotificationBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 0360F3052371549200F656D9 /* NotificationBody.m */; };
 		16F40E4FA68FDFB8CBF7C829 /* libPods-StyleTribute.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D10E0F606CBC8A31C08A85A9 /* libPods-StyleTribute.a */; };
 		5330FFAA1DDE2FF0001B0D0D /* ProductFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5330FFA91DDE2FF0001B0D0D /* ProductFlow.storyboard */; };
 		5330FFAD1DDE425A001B0D0D /* GuidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5330FFAC1DDE425A001B0D0D /* GuidViewController.m */; };
@@ -138,6 +139,8 @@
 /* Begin PBXFileReference section */
 		0303D8F02370415500737823 /* Notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
 		0303D8F12370415500737823 /* Notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
+		0360F3042371549200F656D9 /* NotificationBody.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationBody.h; sourceTree = "<group>"; };
+		0360F3052371549200F656D9 /* NotificationBody.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationBody.m; sourceTree = "<group>"; };
 		40DD61A744D9448179AF13A3 /* Pods-StyleTributeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StyleTributeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StyleTributeTests/Pods-StyleTributeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5330FFA91DDE2FF0001B0D0D /* ProductFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProductFlow.storyboard; sourceTree = "<group>"; };
 		5330FFAB1DDE425A001B0D0D /* GuidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidViewController.h; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 				7A3FA4A21AEFE5720050803C /* Product.m */,
 				0303D8F02370415500737823 /* Notification.h */,
 				0303D8F12370415500737823 /* Notification.m */,
+				0360F3042371549200F656D9 /* NotificationBody.h */,
+				0360F3052371549200F656D9 /* NotificationBody.m */,
 				7A1E44AD1B296CD000063F17 /* ProductPhoto.h */,
 				7A1E44AE1B296CD000063F17 /* ProductPhoto.m */,
 				7A6097961B133BA000209340 /* UserProfile.h */,
@@ -1131,6 +1136,7 @@
 				E141DF081DD13B9B001693F7 /* ClothingSizeTableViewCell.m in Sources */,
 				E133008E1DE0DE0500D798F2 /* ReplaceSegue.m in Sources */,
 				7A1E44AF1B296CD000063F17 /* ProductPhoto.m in Sources */,
+				0360F3062371549200F656D9 /* NotificationBody.m in Sources */,
 				7AA5EAD81AEE2F6500CAB83B /* ApiRequester.m in Sources */,
 				E173F4791DE6D68500D86141 /* BaseTabBar.m in Sources */,
 				E141DF111DD1488C001693F7 /* ItemDescriptionViewController.m in Sources */,

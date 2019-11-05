@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
+#import "NotificationBody.h"
 
 
 @interface Notification : BaseModel<NSCoding,NSCopying>
@@ -17,7 +18,7 @@
 @property NSString* from;
 @property NSString* recipient;
 @property NSString* subject;
-@property NSString* body;
+@property NotificationBody* body;
 @property NSString* sent_date;
 @property NSUInteger* paramTry;
 @property NSString* last_try;
