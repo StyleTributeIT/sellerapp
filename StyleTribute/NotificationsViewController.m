@@ -223,8 +223,9 @@
     [df setDateFormat:@"MM/dd/yyyy"];
     cell.dateLabel.text = [df stringFromDate:notificationDate];
     
+    
 //    NSString *imageURL = @"https://mediatest.styletribute.com/products/20670/120x120/460e83df28b1a6a7f5e9007c256a63d4.jpeg";
-    NSString *imageURL = [NSString stringWithFormat: @"https://mediatest.styletribute.com%@",notification.body.picture];
+    NSString *imageURL = [DefMediaHost stringByAppendingString:notification.body.picture];
     [cell.photoView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"stub"]];
     return cell;
 }
