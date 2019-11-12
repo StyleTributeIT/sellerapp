@@ -18,6 +18,7 @@
 #import "WelcomeController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "UITextViewWorkaround.h"
 
 @import Firebase;
 
@@ -33,6 +34,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [FIRApp configure];
     [Fabric with:@[[Crashlytics class]]];
+    
+    
+    [UITextViewWorkaround executeWorkaround];// Workaround for the Xcode 11.2 bug
 
     // Override point for customization after application launch.
     NSLog( @"### running FB sdk version: %@", [FBSDKSettings sdkVersion] );
