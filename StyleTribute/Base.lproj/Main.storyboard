@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aU1-hE-138">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1634,7 +1634,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="sjP-DD-tuF" id="I9t-mH-yhh"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ac-YBF" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number *" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ac-YBF" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="302" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sv0-hP-qlB"/>
@@ -1905,7 +1905,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="cwm-UW-mO4"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number *" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="360" width="240" height="38"/>
                                                 <accessibility key="accessibilityConfiguration" label="Phone number"/>
                                                 <constraints>
@@ -2240,6 +2240,10 @@ Citilink Warehouse Complex
             <point key="canvasLocation" x="4041" y="-1336"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ReU-Ip-U3f"/>
+        <segue reference="XTf-8t-q92"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Button" width="205" height="30"/>
         <image name="Edit" width="205" height="30"/>
@@ -2257,8 +2261,4 @@ Citilink Warehouse Complex
         <image name="wardrobe" width="25" height="25"/>
         <image name="wardrobe-pink" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="cSg-UA-WeG"/>
-        <segue reference="Iws-61-RlG"/>
-    </inferredMetricsTieBreakers>
 </document>
