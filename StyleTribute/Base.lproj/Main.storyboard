@@ -1634,7 +1634,7 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="sjP-DD-tuF" id="I9t-mH-yhh"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ac-YBF" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number *" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ac-YBF" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="302" width="240" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="sv0-hP-qlB"/>
@@ -1905,9 +1905,9 @@ Citilink Warehouse Complex
                                                     <outlet property="delegate" destination="lMP-mB-1Ki" id="cwm-UW-mO4"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ" customClass="UIFloatLabelTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number *" textAlignment="center" minimumFontSize="17" background="Edit" translatesAutoresizingMaskIntoConstraints="NO" id="0nx-2n-PqJ" customClass="UIFloatLabelTextField">
                                                 <rect key="frame" x="40" y="360" width="240" height="38"/>
-                                                <accessibility key="accessibilityConfiguration" label="Phone number"/>
+                                                <accessibility key="accessibilityConfiguration" label="Phone number *"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38" id="dRa-Rn-4oT"/>
                                                 </constraints>
